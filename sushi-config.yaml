@@ -2,31 +2,31 @@
 # ───────────────────────────────────────────────────
 # the id should be lowercase made up of "ihe." + {domain acronym} + "." + {profile acronym/short-name}
 # e.g. ihe.iti.mhds, or ihe.iti.basicaudit
-id: ihe.domain.profile
-canonical: https://profiles.ihe.net/Domain/Profile
+id: ihe.rad.rtc-imr
+canonical: https://profiles.ihe.net/RAD/RTC-IMR
 version: 0.1.1
-name: IHE_Domain_Profile
-title: "spelled out name of the IHE Profile"
-description: put the short description of the profile here. it should explain what problem is being solved
 releaseLabel: ci-build
+#releaseLabel: ballot
 #releaseLabel: Trial-Implementation
-#date: 2022-01-02
+#date: 2022-07-25
+name: IHE_RAD_RTC_IMR
+title: "Realtime Communication for Interactive Multimedia Report (RTC-IMR)"
 status: active
 publisher:
-  - name: IHE IT Infrastructure Technical Committee
-  - url: https://www.ihe.net/ihe_domains/it_infrastructure/
-  - email: iti@ihe.net
+  - name: IHE Radiology Technical Committee
+  - url: https://www.ihe.net/ihe_domains/radiology/
+  - email: radiology@ihe.net
 contact:
-  - name: IHE IT Infrastructure Technical Committee
+  - name: IHE Radiology Technical Committee
     telecom:
       - system: email
-        value: iti@ihe.net
+        value: radiology@ihe.net
+description: Realtime communication between systems to enable interactive multimedia reporting
 license:  CC-BY-4.0
 fhirVersion: 4.0.1
 jurisdiction: 'http://unstats.un.org/unsd/methods/m49/m49.htm#001'
 #copyright: IHE http://www.ihe.net/Governance/#Intellectual_Property
 copyrightYear: 2021+
-
 
 parameters:  # see https://confluence.hl7.org/display/FHIR/Implementation+Guide+Parameters
   path-resource:
