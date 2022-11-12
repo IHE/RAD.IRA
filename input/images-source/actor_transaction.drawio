@@ -1,0 +1,142 @@
+<mxfile host="65bd71144e">
+    <diagram id="Cj2AH4w940lRSTdbU1Wp" name="Page-1">
+        <mxGraphModel dx="1391" dy="476" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="5MxmsDKmRoS-tkQn45uH-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=none;endFill=0;" parent="1" source="5MxmsDKmRoS-tkQn45uH-1" target="5MxmsDKmRoS-tkQn45uH-2" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="5MxmsDKmRoS-tkQn45uH-1" value="Report Creator" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
+                    <mxGeometry x="240" y="18" width="80" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="5MxmsDKmRoS-tkQn45uH-2" value="Hub" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
+                    <mxGeometry x="240" y="544" width="80" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="5MxmsDKmRoS-tkQn45uH-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=none;endFill=0;" parent="1" source="5MxmsDKmRoS-tkQn45uH-6" target="5MxmsDKmRoS-tkQn45uH-20" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="5MxmsDKmRoS-tkQn45uH-6" value="Application Invoker" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
+                    <mxGeometry x="260" y="950" width="80" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="5MxmsDKmRoS-tkQn45uH-8" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="110" y="1100" as="sourcePoint"/>
+                        <mxPoint x="110" y="1130" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="5MxmsDKmRoS-tkQn45uH-9" value="Launch Application [RAD-X0]" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="130" y="1100" width="160" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="5MxmsDKmRoS-tkQn45uH-12" value="" style="endArrow=classic;html=1;rounded=0;startArrow=none;startFill=0;endFill=1;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="342" y="120" as="sourcePoint"/>
+                        <mxPoint x="342" y="150" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="5MxmsDKmRoS-tkQn45uH-13" value="Subscribe Reporting Session [RAD-X1]" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="362" y="120" width="218" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="5MxmsDKmRoS-tkQn45uH-14" value="" style="endArrow=none;html=1;rounded=0;startArrow=classic;startFill=1;endFill=0;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="343" y="451" as="sourcePoint"/>
+                        <mxPoint x="343" y="481" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="5MxmsDKmRoS-tkQn45uH-15" value="Send Context Event [RAD-X3]" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="363" y="451" width="178" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="5MxmsDKmRoS-tkQn45uH-18" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="343" y="160" as="sourcePoint"/>
+                        <mxPoint x="343" y="190" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="5MxmsDKmRoS-tkQn45uH-19" value="Initiate Report Context [RAD-X2]" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="363" y="160" width="178" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="5MxmsDKmRoS-tkQn45uH-20" value="Sync Application" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
+                    <mxGeometry x="260" y="1180" width="80" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="5MxmsDKmRoS-tkQn45uH-21" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="342" y="200" as="sourcePoint"/>
+                        <mxPoint x="342" y="230" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="5MxmsDKmRoS-tkQn45uH-22" value="Terminate Report Context [RAD-X4]" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="362" y="200" width="198" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="5MxmsDKmRoS-tkQn45uH-23" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="342" y="242" as="sourcePoint"/>
+                        <mxPoint x="342" y="272" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="5MxmsDKmRoS-tkQn45uH-24" value="Update Report Context [RAD-X5]" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="362" y="242" width="198" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="5MxmsDKmRoS-tkQn45uH-25" value="" style="endArrow=classic;html=1;rounded=0;startArrow=none;startFill=0;endFill=1;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="343" y="410" as="sourcePoint"/>
+                        <mxPoint x="343" y="440" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="5MxmsDKmRoS-tkQn45uH-26" value="Get Current Context [RAD-X6]" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="363" y="410" width="198" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="5MxmsDKmRoS-tkQn45uH-29" value="" style="endArrow=none;html=1;rounded=0;startArrow=classic;startFill=1;endFill=0;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="342" y="491" as="sourcePoint"/>
+                        <mxPoint x="342" y="521" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="5MxmsDKmRoS-tkQn45uH-30" value="Send SyncError Event [RAD-X7]" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="362" y="491" width="198" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="5MxmsDKmRoS-tkQn45uH-31" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="342" y="364" as="sourcePoint"/>
+                        <mxPoint x="342" y="394" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="5MxmsDKmRoS-tkQn45uH-32" value="Select Report Context [RAD-X8]" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="362" y="364" width="198" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="2" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="341.9999999999999" y="280" as="sourcePoint"/>
+                        <mxPoint x="341.9999999999999" y="310" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="3" value="Send Error Context [RAD-X9]" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="362" y="280" width="198" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="" style="endArrow=classic;html=1;rounded=0;startArrow=none;startFill=0;endFill=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="341.9999999999999" y="320" as="sourcePoint"/>
+                        <mxPoint x="341.9999999999999" y="350" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="5" value="Unsubscribe Reporting Session [RAD-X10]" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="362" y="320" width="238" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.25;entryDx=0;entryDy=0;startArrow=none;startFill=0;endArrow=none;endFill=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;rounded=0;" edge="1" parent="1" source="6" target="5MxmsDKmRoS-tkQn45uH-2">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="Image Display" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+                    <mxGeometry x="120" y="18" width="80" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;entryX=0;entryY=0.75;entryDx=0;entryDy=0;startArrow=none;startFill=0;endArrow=none;endFill=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="7" target="5MxmsDKmRoS-tkQn45uH-2">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="Evidence Creator" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+                    <mxGeometry y="18" width="80" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="Image Display" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+                    <mxGeometry x="-130" y="18" width="80" height="80" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

@@ -1,0 +1,64 @@
+@startuml rapid_switch_context
+
+title Rapid Context Switch Workflow
+
+actor Radiologist
+participant "PACS" as PACS
+participant "Hub" as Hub
+participant "Reporting System" as Report
+
+Radiologist->PACS: //Select **__multiple__** studies in worklist//\n//to be reported//\n(Study 1, 2, 3, ...)
+Radiologist->PACS: //Start dictation//
+
+== Step 1: Initiate Report Context ==
+
+PACS->Hub: Initiate Report Context [RAD-X2]\n//on Study 1//\n(event: id = 1000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
+Hub->Hub: //Create DiagnosticReport Context in session 12345//\n(event: id = 1000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
+
+Hub->Report: Send Event Context [RAD-X3]
+Hub->PACS: Send Event Context [RAD-X3]
+
+== Step 2: Report Sign-Off and Continue with next Study ==
+
+Radiologist->Report: //Complete reporting and sign off report//
+Report->Hub: Terminate Report Context [RAD-X4] //on Study 1//\n(event: id = 1000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
+
+Radiologist->PACS: //Click "Next study"//
+PACS->Hub: Initiate Report Context [RAD-X2] //on Study 2//\n(event: id = 1111,\ncontext = DiagnosticReport aaa\nrelated context = Patient bbb, ImagingStudy ccc)
+note over PACS
+Repeat Step 2 for the new patient, study
+and procedure.
+
+Note that switching study happened before the
+Close Context event of the previously signed-off
+study is received.
+end note
+
+Hub->Hub: //Create DiagnosticReport Context in session 12345//\n(event: id = 1111,\ncontext = DiagnosticReport aaa\nrelated context = Patient bbb, ImagingStudy ccc)
+note over Hub
+The existing context DiagnosticReport xxx remains
+in the Hub but it is not the active context.
+end note
+
+Hub->PACS: Send Context Event [RAD-X3]\n//of previous study//\n(event: id = 1000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
+note over Hub
+It is NOT an error if the *-close event
+does not match the most recent *-open event.
+end note
+
+PACS->PACS: //Update study status//\n//and drop the study from worklist//
+note over PACS
+This may be done in the background. The study
+to be dropped from the worklist does not have
+to be the study currently in focus in PACS.
+end note
+
+PACS-->Hub: //Success//
+
+Hub->Report: Send Context Event [RAD-X3]\n//of previous study//\n(event: id = 1000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
+Report->Report: //no action required//
+Report-->Hub: //Success//
+
+Hub->Hub: //Delete DiagnosticReport context in session 12345//\n(context = DiagnosticReport xxx)
+
+@enduml

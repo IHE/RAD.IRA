@@ -1,11 +1,9 @@
 
-# 1:XX Profile name
-
-**TODO: Provide an end-user friendly overview of what the profile does for them. Keep it brief (a paragraph or two, up to a page). If extensive detail is needed, it should be included in Section XX.4- Use Cases.**
+# 1:XX Realtime Bidirectional Communication for Interactive Multimedia Reporting
 
 **TODO: Explicitly state whether this is a Workflow, Transport, or Content Module (or combination) profile. See the IHE Technical Frameworks General Introduction for definitions of these profile types. The IHE Technical Frameworks [General Introduction](https://profiles.ihe.net/GeneralIntro/). **
 
-## 1:X.1 FooBar Actors, Transactions, and Content Modules <a name="actors-and-transactions"> </a>
+## 1:X.1 RTC-IMR Actors, Transactions, and Content Modules <a name="actors-and-transactions"> </a>
 
 * Actors
 
@@ -380,7 +378,7 @@ different.
 
 ### XX.4.2 Use Cases
 
-#### XX.4.2.1 Use Case \#1: simple name
+#### XX.4.2.1 Use Case \#1: Simple Reporting
 
 One or two sentence simple description of this particular use
 case.
@@ -416,7 +414,7 @@ actor from a different profile.
 Modify the following “Swimlane Diagram”.
 
 <div>
-{%include usecase1-processflow.svg%}
+{%include ReportingFlow.svg%}
 </div>
 <br clear="all">
 
@@ -446,6 +444,62 @@ when, where, and how this content module would be used.
 Very briefly (typically one sentence) describe the state of the
 clinical scenario after this content module has been created including
 examples of potential next steps.
+
+The following sections elaborate on this use case, showing how this profile enables different systems to collaborate and hence implement this use case.
+
+###### XX.4.2.1.2.1 Step 1: Simple Reporting Session Flow
+
+<div>
+{%include simple_reporting.svg%}
+</div>
+<br clear="all">
+
+Figure XX.4.2.1.2.1-1: Simple Reporting Session Flow in RTC-IMR Profile
+
+###### XX.4.2.1.2.2 Step 2: Update Report Context Flow
+
+<div>
+{%include reporting_with_content_sharing.svg%}
+</div>
+<br clear="all">
+
+Figure XX.4.2.1.2.2-1: Update Report Context Flow in RTC-IMR Profile
+
+###### XX.4.2.1.2.3 Step 3: Automate Reporting Session Flow
+
+<div>
+{%include reporting_with_selection.svg%}
+</div>
+<br clear="all">
+
+Figure XX.4.2.1.2.3-1: Automate Reporting Session Flow in RTC-IMR Profile
+
+##### XX.4.2.1.2.4 Step 4: Rapid Context Switching Flow
+
+<div>
+{%include rapid_switch_context.svg%}
+</div>
+<br clear="all">
+
+Figure XX.4.2.1.2.4-1: Rapid Context Switching Flow in RTC-IMR Profile
+
+#### XX.4.2.2 Use Case: High Collaboration Reporting Flow
+
+<div>
+{%include multi_app.svg%}
+</div>
+<br clear="all">
+
+Figure XX.4.2.2-1: High Collaboration Reporting Flow in RTC-IMR Profile
+
+#### XX.4.2.3 Use Case: Error Handling Flow
+
+<div>
+{%include syncerror.svg%}
+</div>
+<br clear="all">
+
+Figure XX.4.2.3-1: Error Handling Flow in RTC-IMR Profile
 
 ## XX.5 FooBar Security Considerations <a name="security-considerations"> </a>
 

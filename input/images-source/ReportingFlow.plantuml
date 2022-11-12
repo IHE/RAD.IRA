@@ -1,0 +1,19 @@
+@startuml
+
+hide footbox
+title Simple Reporting flow
+
+participant "Radiologist" as User
+participant "PACS" as PACS
+participant "Reporting App" as Reporter
+
+User -> PACS: Open reporting session
+User -> PACS: Select Patient and Study
+PACS -> PACS: Open Study and show Chest X-Ray
+PACS -> PACS: Measure area of Pneumothorax
+User -> Reporter: Fill General Report Text
+User -> Reporter: There is "measurement" 
+User -> Reporter: As seen at Image
+User -> Reporter: Close Report
+
+@enduml

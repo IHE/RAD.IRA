@@ -62,6 +62,18 @@ pages:
   domain-YY.md:
     title: 2:3.YY Transaction one [Domain-YY]
     generation: markdown
+  open_study_for_reporting.md:
+    title: Initiate Report Context
+    generation: markdown
+  update_study_with_measurement.md:
+    title: Update Report Context
+    generation: markdown
+  select_study_and_observation.md:
+    title: Select Report Context
+    generation: markdown
+  close_study_after_signoff.md:
+    title: Terminate Report Context
+    generation: markdown
   testplan.md:
     title: "Test Plan"
     generation: markdown
@@ -73,7 +85,7 @@ pages:
     generation: markdown
     
 menu:
-  FooBar Home: index.html
+  RTC-IMR Home: index.html
   Volume 1:
     Introduction: volume-1.html
     Actors and Transactions: volume-1.html#actors-and-transactions
@@ -83,7 +95,12 @@ menu:
     Security Considerations: volume-1.html#security-considerations
     Cross-Profile Considerations: volume-1.html#other-grouping
   Volume 2:
-    "Transaction one [Domain-YY]": domain-YY.html
+    Transaction one [Domain-YY]: domain-YY.html
+  Examples:
+    Initiate Report Context: open_study_for_reporting.html
+    Update Report Context: update_study_with_measurement.html
+    Select Report Context: select_study_and_observation.html
+    Terminate Report Context: close_study_after_signoff.html
   Test Plan: testplan.html
   Artifacts: artifacts.html
   Other: other.html

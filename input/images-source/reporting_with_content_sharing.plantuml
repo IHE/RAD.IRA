@@ -1,0 +1,90 @@
+@startuml reporting_with_content_sharing
+
+title Reporting with Content Sharing Workflow
+
+actor Radiologist
+participant "PACS" as PACS
+participant "Data Hub" as Hub
+participant "Reporting System" as Report
+
+Radiologist->PACS: //Open study//
+Radiologist->PACS: //Start dictation//
+
+== Step 1: Launch Application ==
+
+PACS->Report: Launch Reporting System [RAD-X0]
+note over PACS
+In the launch mechanism, it includes the following information:
+
+hub.url: the base URL of the Hub
+hub.topic: the unique ID representing the ID of the session
+end note
+
+PACS->Hub: Subscribe Topic [RAD-X1]
+Hub-->PACS: //Accept//\n//with hub.channel.endpoint//
+PACS->Hub: Connect Notification Channel [RAD-X9]
+Hub-->PACS: //Confirm subscription//
+PACS->Hub: Get Current Context [RAD-X6]
+
+Report->Hub: Subscribe Topic [RAD-X1]
+Hub-->Report: //Accept//\n//with hub.channel.endpoint//
+Report->Hub: Connect Notification Channel [RAD-X9]
+Hub-->Report: //Confirm subscription//
+
+== Step 2: Open Context ==
+
+PACS->Hub: Open Context [RAD-X2]
+note over PACS
+Reporting context includes:
+* DiagnosticReport
+* Patient
+* ImagingStudy
+* ServiceRequext ??
+end note
+
+Hub->Report: Send Context Event [RAD-X3]
+
+== Step 3: Content Sharing ==
+
+loop
+PACS->Hub: Update Context Content [RAD-X5]
+Hub->Hub: //Maintain order of content update//
+Hub->Report: Send Context Event [RAD-X3]
+Report->Report: //Verify if content received in order//
+
+    opt If event is not in order
+    Report->Hub: Get Current Context [RAD-R6]
+    note over Report
+    Request all the missing events from
+    the last known event.
+    end note
+    Hub-->Report: Return events
+    end opt
+
+Report->Report: //Apply event//
+note over Report
+The event is applied transactionally, meaning that
+the application should apply all actions defined in
+the event. However, the application may choose to
+ignore any specific action in event if it is not
+applicable.
+end note
+end loop
+
+== Step 4: Close Context ==
+
+Radiologist->Report: //Sign off report//
+Report->Hub: Close Context [RAD-X4]
+Hub->PACS: Send Context Event [RAD-X3]
+
+PACS->PACS: //Update study status//\n//and drop the study from worklist//
+
+== Step 5: Close Application ==
+
+Radiologist->Report: //Close application//
+
+Report->Hub: Unsubscribe Topic [RAD-X10]
+Hub-->Report: //Accept//
+Hub->Hub: //Close channel to Report//
+
+@enduml

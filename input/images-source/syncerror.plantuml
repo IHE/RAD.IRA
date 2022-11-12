@@ -1,0 +1,22 @@
+@startuml syncerror
+
+title Sync Error Workflow
+
+participant "PACS" as PACS
+participant "Data Hub" as Hub
+participant "Reporting System" as Report
+
+PACS->Hub: Open Context [RAD-X2]
+Hub->Hub: //Internal verify event//
+opt If Hub failed to process event
+Hub-->PACS: Return error
+end opt
+
+Hub->Report: Send Context Event [RAD-X3]
+Report->Report: //Internal verify event//
+opt If failed to apply event
+Report->Hub: Send SyncError Event [RAD-X7]
+Hub->PACS: Send SyncError Event [RAD-X7]
+end opt
+
+@enduml

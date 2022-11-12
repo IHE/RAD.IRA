@@ -1,0 +1,133 @@
+@startuml simple_reporting
+
+title Simple Reporting Workflow
+
+actor Radiologist
+participant "PACS" as PACS
+participant "Hub" as Hub
+participant "Reporting System" as Report
+
+== Step 0: Prepare  Reporting Session ==
+
+PACS->PACS: //Ready to start reporting//\n//e.g. When application started//
+
+note over PACS
+Generate unique session ID
+end note
+PACS->Hub: Subscribe Reporting Session [RAD-X1]\n(session 12345:\nevents = DiagnosticReport-*, syncerror)
+
+Hub->Hub: //Create Reporting Session with ID 12345//
+note over PACS
+Subscribe to its topic so that
+* It can be notified about reporting context close notification
+* Aware of concurrent dictation and resolve the conflict
+end note
+Hub-->PACS: //Accept//\n//with hub.channel.endpoint//
+PACS->Hub: Connect Notification Channel [RAD-X9]
+Hub-->PACS: //Confirm subscription//
+
+== Step 1: Launch Application ==
+
+PACS->Report: Launch Application
+note over PACS
+In the launch mechanism, it includes the following information:
+
+hub.url: the base URL of the Hub
+hub.topic: the unique ID representing the ID of the session
+end note
+
+Report->Hub: Subscribe Reporting Session [RAD-X1]\n(session 12345:\nevents = DiagnosticReport-*, syncerror)
+Hub-->Report: //Accept//\n//with hub.channel.endpoint//
+Report->Hub: Connect Notification Channel [RAD-X9]
+Hub-->Report: //Confirm subscription//
+Report->Hub: Get Current Context [RAD-X6]\n(catch up with current context and content)
+note over Report
+This immediate query is to ensure that
+the subscribing application is aware
+of the latest context in the session.
+This is necessary because the Application
+Invoker does not know when the
+Sync Application completed the
+subscription. Therefore it is possible the
+Application Invoker has already changed
+context before the subscription is complete.
+
+Note: FHIRcast requires Hub to automatically
+send the last *-open event to all new
+subscribers.
+end note
+Hub-->Report: //Return empty context//
+
+loop During a reporting session
+== Step 2: Initiate Report Context ==
+
+Radiologist->PACS: //Open study//
+Radiologist->PACS: //Start dictation//
+
+PACS->Hub: Initiate Report Context [RAD-X2]\n(event: id = 1000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
+activate Hub
+note over PACS, Hub
+Create the following report context entry
+for session 12345:
+* DiagnosticReport
+* Patient
+* ImagingStudy
+* ServiceRequext ??
+end note
+
+Hub->Hub: //Create DiagnosticReport Context in session 12345//\n(event: id = 1000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
+Hub-->PACS: Accept
+
+Hub->Report: Send Context Event [RAD-X3]\n(event: id = 1000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
+Report->Report: //Initiate new report//\n//based on the received context//
+Report-->Hub: //Success (id = 1000, status = 200)//
+
+Hub->PACS: Send Context Event [RAD-X3]\n(event: id = 1000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
+PACS->PACS: //No action required//
+PACS-->Hub: //Success (id = 1000, status = 200)//
+deactivate Hub
+
+== Step 2.1: Create Report Content ==
+
+Radiologist->Report: //Dictate report//
+Report->Report: //Persist report//
+
+== Step 3: Terminate Report Context ==
+
+Radiologist->Report: //Sign off report//
+note over Report
+DiagnosticReport status = FINAL
+end note
+
+Report->: //Send final report//
+
+Report->Hub: Terminate Report Context [RAD-X4]\n(event: id = 2000,\ncontext = DiagnosticReport xxx)
+activate Hub
+
+Hub->Hub: //Update DiagnosticReport context in session 12345//\n(event: id = 2000,\ncontext = DiagnosticReport xxx)
+
+Hub->PACS: Send Context Event [RAD-X3]\n(event: id = 2000,\ncontext = DiagnosticReport xxx)
+PACS->PACS: //Update study status//\n//and drop the study from worklist//
+PACS-->Hub: //Success (id = 2000, status = 200)//
+Hub->Report: Send Context Event [RAD-X3]\n(event: id = 2000,\ncontext = DiagnosticReport xxx)
+Report->Report: //No action required//
+Report-->Hub: //Success (id = 2000, status = 200)//
+
+Hub->Hub: //Delete DiagnosticReport context in session 12345//\n(context = DiagnosticReport xxx)
+deactivate Hub
+end loop
+
+== Step 4: Close Application ==
+
+Radiologist->Report: //Close application//
+
+Report->Hub: Unsubscribe Reporting Session [RAD-X10]\n(session 12345)
+Hub-->Report: //Accept//
+Hub->Hub: //Close channel to Reporting System//
+note over Hub
+If there are other subscribers on the same topic,
+those subscriptions are not affected and will
+continue to receive notification on the topic.
+end note
+
+@enduml
