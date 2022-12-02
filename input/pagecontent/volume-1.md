@@ -1,397 +1,454 @@
+The Realtime Bidirectional Communication for Interactive Multimedia Report (RTC-IMR) Profile specifies how systems can be communicated efficiently in context with realtime content in order to provide a streamlined user experience during reporting.
 
-# 1:XX Realtime Bidirectional Communication for Interactive Multimedia Reporting
+# 1:XX.1 Realtime Bidirectional Communication for Interactive Multimedia Reporting
 
-**TODO: Explicitly state whether this is a Workflow, Transport, or Content Module (or combination) profile. See the IHE Technical Frameworks General Introduction for definitions of these profile types. The IHE Technical Frameworks [General Introduction](https://profiles.ihe.net/GeneralIntro/). **
+This section defines the actors, transactions, and/or content modules in this profile. General
+definitions of actors are given in the Technical Frameworks General Introduction [Appendix A](https://profiles.ihe.net/GeneralIntro/ch-A.html).
+IHE Transactions can be found in the Technical Frameworks General Introduction [Appendix B](https://profiles.ihe.net/GeneralIntro/ch-B.html).
+Both appendices are located at <https://profiles.ihe.net/GeneralIntro/>.
 
-## 1:X.1 RTC-IMR Actors, Transactions, and Content Modules <a name="actors-and-transactions"> </a>
-
-* Actors
-
-  - [Client](#client)
-
-  - [Server](#server)
-
-* Transactions
-
-  - [do domain-Y](domain-YY.html)
-
-Actors and transactions are used to achieve this use-case...
+Figure 1:XX.1-1 shows the actors directly involved in the RTC-IMR Profile and the relevant transactions
+between them. If needed for context, other actors that may be indirectly involved due to their participation
+in other related profiles are shown in dotted lines. Actors which have a required
+grouping are shown in conjoined boxes (see [Section 1:XX.3](#1XX3-rtc-imr-required-actor-groupings)).
 
 <div>
-{%include usecase1-processflow.svg%}
+    <img src="actor_transaction.png" width="80%">
 </div>
 <br clear="all">
 
-**Figure: Use Case 1 Process Flow**
+**Figure 1:XX.1-1: RTC-IMR Actor Diagram**
 
-This section defines the actors and transactions in this implementation guide.
+Table 1:XX.1-1 lists the transactions for each actor directly involved in the IMR Profile. To claim compliance with this profile, an actor shall support all required transactions (labeled “R”) and may support the optional transactions (labeled “O”).
 
-Figure below shows the actors directly
-involved in the FooBar 
-Profile and the relevant transactions between them.
+**Table 1:XX.1-1: RTC-IMR Profile - Actors and Transactions**
 
-<div>
-{%include ActorsAndTransactions.svg%}
-</div>
-<br clear="all">
+<table class="grid">
+  <thead>
+    <tr>
+      <th>Actors</th>
+      <th>Transactions</th>
+      <th>Initiator or Responder</th>
+      <th>Optionality</th>
+      <th>Reference</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="10"><a href="#1XX111-image-display">Image Display</a></td>
+      <td>Subscribe Reporting Session [RAD-X1]</td>
+      <td>Initiator</td>
+      <td>R</td>
+      <td><a href="RAD-X1.html">RAD TF-2: 4.X1</a></td>
+    </tr>
+    <tr>
+      <td>Connect Notification Channel [RAD-X2]</td>
+      <td>Initiator</td>
+      <td>R</td>
+      <td><a href="RAD-X2.html">RAD TF-2: 4.X2</a></td>
+    </tr>
+    <tr>
+      <td>Initiate Report Context [RAD-X3]</td>
+      <td>Initiator</td>
+      <td>R</td>
+      <td><a href="RAD-X3.html">RAD TF-2: 4.X3</a></td>
+    </tr>
+    <tr>
+      <td>Terminate Report Context [RAD-X4]</td>
+      <td>Initiator</td>
+      <td>R</td>
+      <td><a href="RAD-X4.html">RAD TF-2: 4.X4</a></td>
+    </tr>
+    <tr>
+      <td>Update Report Content [RAD-X5]</td>
+      <td>Initiator</td>
+      <td>R</td>
+      <td><a href="RAD-X5.html">RAD TF-2: 4.X5</a></td>
+    </tr>
+    <tr>
+      <td>Select Report Context [RAD-X6]</td>
+      <td>Initiator</td>
+      <td>R</td>
+      <td><a href="RAD-X6.html">RAD TF-2: 4.X6</a></td>
+    </tr>
+    <tr>
+      <td>Unsubscribe Reporting Session [RAD-X7]</td>
+      <td>Initiator</td>
+      <td>R</td>
+      <td><a href="RAD-X7.html">RAD TF-2: 4.X7</a></td>
+    </tr>
+    <tr>
+      <td>Get Current Context [RAD-X8]</td>
+      <td>Initiator</td>
+      <td>R</td>
+      <td><a href="RAD-X8.html">RAD TF-2: 4.X8</a></td>
+    </tr>
+    <tr>
+      <td>Send Context Event [RAD-X9]</td>
+      <td>Responder</td>
+      <td>R</td>
+      <td><a href="RAD-X9.html">RAD TF-2: 4.X9</a></td>
+    </tr>
+    <tr>
+      <td>Send SyncError Event [RAD-X10]</td>
+      <td>Responder</td>
+      <td>R</td>
+      <td><a href="RAD-X10.html">RAD TF-2: 4.X10</a></td>
+    </tr>
+    <tr>
+      <td rowspan="10"><a href="#1XX112-evidence-creator">Evidence Creator</a></td>
+      <td>Subscribe Reporting Session [RAD-X1]</td>
+      <td>Initiator</td>
+      <td>R</td>
+      <td><a href="RAD-X1.html">RAD TF-2: 4.X1</a></td>
+    </tr>
+    <tr>
+      <td>Connect Notification Channel [RAD-X2]</td>
+      <td>Initiator</td>
+      <td>R</td>
+      <td><a href="RAD-X2.html">RAD TF-2: 4.X2</a></td>
+    </tr>
+    <tr>
+      <td>Initiate Report Context [RAD-X3]</td>
+      <td>Initiator</td>
+      <td>R</td>
+      <td><a href="RAD-X3.html">RAD TF-2: 4.X3</a></td>
+    </tr>
+    <tr>
+      <td>Terminate Report Context [RAD-X4]</td>
+      <td>Initiator</td>
+      <td>R</td>
+      <td><a href="RAD-X4.html">RAD TF-2: 4.X4</a></td>
+    </tr>
+    <tr>
+      <td>Update Report Content [RAD-X5]</td>
+      <td>Initiator</td>
+      <td>R</td>
+      <td><a href="RAD-X5.html">RAD TF-2: 4.X5</a></td>
+    </tr>
+    <tr>
+      <td>Select Report Context [RAD-X6]</td>
+      <td>Initiator</td>
+      <td>R</td>
+      <td><a href="RAD-X6.html">RAD TF-2: 4.X6</a></td>
+    </tr>
+    <tr>
+      <td>Unsubscribe Reporting Session [RAD-X7]</td>
+      <td>Initiator</td>
+      <td>R</td>
+      <td><a href="RAD-X7.html">RAD TF-2: 4.X7</a></td>
+    </tr>
+    <tr>
+      <td>Get Current Context [RAD-X8]</td>
+      <td>Initiator</td>
+      <td>R</td>
+      <td><a href="RAD-X8.html">RAD TF-2: 4.X8</a></td>
+    </tr>
+    <tr>
+      <td>Send Context Event [RAD-X9]</td>
+      <td>Responder</td>
+      <td>R</td>
+      <td><a href="RAD-X9.html">RAD TF-2: 4.X9</a></td>
+    </tr>
+    <tr>
+      <td>Send SyncError Event [RAD-X10]</td>
+      <td>Responder</td>
+      <td>R</td>
+      <td><a href="RAD-X10.html">RAD TF-2: 4.X10</a></td>
+    </tr>
+    <tr>
+      <td rowspan="10"><a href="#1XX113-report-creator">Report Creator</a></td>
+      <td>Subscribe Reporting Session [RAD-X1]</td>
+      <td>Initiator</td>
+      <td>R</td>
+      <td><a href="RAD-X1.html">RAD TF-2: 4.X1</a></td>
+    </tr>
+    <tr>
+      <td>Connect Notification Channel [RAD-X2]</td>
+      <td>Initiator</td>
+      <td>R</td>
+      <td><a href="RAD-X2.html">RAD TF-2: 4.X2</a></td>
+    </tr>
+    <tr>
+      <td>Initiate Report Context [RAD-X3]</td>
+      <td>Initiator</td>
+      <td>R</td>
+      <td><a href="RAD-X3.html">RAD TF-2: 4.X3</a></td>
+    </tr>
+    <tr>
+      <td>Terminate Report Context [RAD-X4]</td>
+      <td>Initiator</td>
+      <td>R</td>
+      <td><a href="RAD-X4.html">RAD TF-2: 4.X4</a></td>
+    </tr>
+    <tr>
+      <td>Update Report Content [RAD-X5]</td>
+      <td>Initiator</td>
+      <td>R</td>
+      <td><a href="RAD-X5.html">RAD TF-2: 4.X5</a></td>
+    </tr>
+    <tr>
+      <td>Select Report Context [RAD-X6]</td>
+      <td>Initiator</td>
+      <td>R</td>
+      <td><a href="RAD-X6.html">RAD TF-2: 4.X6</a></td>
+    </tr>
+    <tr>
+      <td>Unsubscribe Reporting Session [RAD-X7]</td>
+      <td>Initiator</td>
+      <td>R</td>
+      <td><a href="RAD-X7.html">RAD TF-2: 4.X7</a></td>
+    </tr>
+    <tr>
+      <td>Get Current Context [RAD-X8]</td>
+      <td>Initiator</td>
+      <td>R</td>
+      <td><a href="RAD-X8.html">RAD TF-2: 4.X8</a></td>
+    </tr>
+    <tr>
+      <td>Send Context Event [RAD-X9]</td>
+      <td>Responder</td>
+      <td>R</td>
+      <td><a href="RAD-X9.html">RAD TF-2: 4.X9</a></td>
+    </tr>
+    <tr>
+      <td>Send SyncError Event [RAD-X10]</td>
+      <td>Responder</td>
+      <td>R</td>
+      <td><a href="RAD-X10.html">RAD TF-2: 4.X10</a></td>
+    </tr>
+    <tr>
+      <td rowspan="10"><a href="#1XX114-worklist-manager">Worklist Manager</a></td>
+      <td>Subscribe Reporting Session [RAD-X1]</td>
+      <td>Initiator</td>
+      <td>R</td>
+      <td><a href="RAD-X1.html">RAD TF-2: 4.X1</a></td>
+    </tr>
+    <tr>
+      <td>Connect Notification Channel [RAD-X2]</td>
+      <td>Initiator</td>
+      <td>R</td>
+      <td><a href="RAD-X2.html">RAD TF-2: 4.X2</a></td>
+    </tr>
+    <tr>
+      <td>Initiate Report Context [RAD-X3]</td>
+      <td>Initiator</td>
+      <td>R</td>
+      <td><a href="RAD-X3.html">RAD TF-2: 4.X3</a></td>
+    </tr>
+    <tr>
+      <td>Terminate Report Context [RAD-X4]</td>
+      <td>Initiator</td>
+      <td>R</td>
+      <td><a href="RAD-X4.html">RAD TF-2: 4.X4</a></td>
+    </tr>
+    <tr>
+      <td>Update Report Content [RAD-X5]</td>
+      <td>Initiator</td>
+      <td>R</td>
+      <td><a href="RAD-X5.html">RAD TF-2: 4.X5</a></td>
+    </tr>
+    <tr>
+      <td>Select Report Context [RAD-X6]</td>
+      <td>Initiator</td>
+      <td>R</td>
+      <td><a href="RAD-X6.html">RAD TF-2: 4.X6</a></td>
+    </tr>
+    <tr>
+      <td>Unsubscribe Reporting Session [RAD-X7]</td>
+      <td>Initiator</td>
+      <td>R</td>
+      <td><a href="RAD-X7.html">RAD TF-2: 4.X7</a></td>
+    </tr>
+    <tr>
+      <td>Get Current Context [RAD-X8]</td>
+      <td>Initiator</td>
+      <td>R</td>
+      <td><a href="RAD-X8.html">RAD TF-2: 4.X8</a></td>
+    </tr>
+    <tr>
+      <td>Send Context Event [RAD-X9]</td>
+      <td>Responder</td>
+      <td>R</td>
+      <td><a href="RAD-X9.html">RAD TF-2: 4.X9</a></td>
+    </tr>
+    <tr>
+      <td>Send SyncError Event [RAD-X10]</td>
+      <td>Responder</td>
+      <td>R</td>
+      <td><a href="RAD-X10.html">RAD TF-2: 4.X10</a></td>
+    </tr>
+    <tr>
+      <td rowspan="10"><a href="#1XX115-hub">Hub</a></td>
+      <td>Subscribe Reporting Session [RAD-X1]</td>
+      <td>Responder</td>
+      <td>R</td>
+      <td><a href="RAD-X1.html">RAD TF-2: 4.X1</a></td>
+    </tr>
+    <tr>
+      <td>Connect Notification Channel [RAD-X2]</td>
+      <td>Responder</td>
+      <td>R</td>
+      <td><a href="RAD-X2.html">RAD TF-2: 4.X2</a></td>
+    </tr>
+    <tr>
+      <td>Initiate Report Context [RAD-X3]</td>
+      <td>Responder</td>
+      <td>R</td>
+      <td><a href="RAD-X3.html">RAD TF-2: 4.X3</a></td>
+    </tr>
+    <tr>
+      <td>Terminate Report Context [RAD-X4]</td>
+      <td>Responder</td>
+      <td>R</td>
+      <td><a href="RAD-X4.html">RAD TF-2: 4.X4</a></td>
+    </tr>
+    <tr>
+      <td>Update Report Content [RAD-X5]</td>
+      <td>Responder</td>
+      <td>R</td>
+      <td><a href="RAD-X5.html">RAD TF-2: 4.X5</a></td>
+    </tr>
+    <tr>
+      <td>Select Report Context [RAD-X6]</td>
+      <td>Responder</td>
+      <td>R</td>
+      <td><a href="RAD-X6.html">RAD TF-2: 4.X6</a></td>
+    </tr>
+    <tr>
+      <td>Unsubscribe Reporting Session [RAD-X7]</td>
+      <td>Responder</td>
+      <td>R</td>
+      <td><a href="RAD-X7.html">RAD TF-2: 4.X7</a></td>
+    </tr>
+    <tr>
+      <td>Get Current Context [RAD-X8]</td>
+      <td>Responder</td>
+      <td>R</td>
+      <td><a href="RAD-X8.html">RAD TF-2: 4.X8</a></td>
+    </tr>
+    <tr>
+      <td>Send Context Event [RAD-X9]</td>
+      <td>Initiator</td>
+      <td>R</td>
+      <td><a href="RAD-X9.html">RAD TF-2: 4.X9</a></td>
+    </tr>
+    <tr>
+      <td>Send SyncError Event [RAD-X10]</td>
+      <td>Initiator</td>
+      <td>R</td>
+      <td><a href="RAD-X10.html">RAD TF-2: 4.X10</a></td>
+    </tr>
+  </tbody>
+</table>
 
-**Figure: FooBar Actor Diagram**
+### 1:XX.1.1 Actors Description and Actor Profile Requirements
+Most requirements are documented in RAD TF-2 Transactions. This section documents any additional requirements on this profile's actors.
 
-Table XX.1-1: Profile Acronym Profile - Actors and Transactions
+#### 1:XX.1.1.1 Image Display
 
-|         |               |                        |                 |                                   |
-|---------|---------------|------------------------|-----------------|-----------------------------------|
-| Actors  | Transactions  | Initiator or Responder | Optionality     | Reference                         |
-| Actor A | Transaction 1 |                        | R               | Domain Acronym TF-2: 3.Y1 |
-|         | Transaction 2 |                        | R               | Domain Acronym TF-2: 3.Y2 |
-| Actor F | Transaction 1 |                        | R               | Domain Acronym TF-2: 3.Y1 |
-|         | Transaction 2 |                        | R               | Domain Acronym TF-2: 3.Y2 |
-| Actor D | Transaction 1 |                        | R               | Domain Acronym TF-2: 3.Y1 |
-| Actor E | Transaction 2 |                        | R               | Domain Acronym TF-2: 3.Y2 |
-|         | Transaction 3 |                        | O ( See Note 1) | Domain Acronym TF-2: 3.Y3 |
-|         | Transaction 4 |                        | O ( See Note 1) | Domain Acronym TF-2: 3.Y4 |
-| Actor B | Transaction 3 |                        | R               | Domain Acronym TF-2: 3.Y3 |
-|         | Transaction 4 |                        | O ( See Note 2) | Domain Acronym TF-2: 3.Y4 |
-{: .grid}
+An Image Display 
 
-Note 1: *For example, a note could specify that at least one of the
-transactions shall be supported by an actor or other variations. For
-example: Note: Either Transaction Y3 or Transaction Y4 shall be
-implemented for Actor E. *
-
-Note 2: *For example, could specify that Transaction Y4 is required
-if Actor B supports XYZ Option, see Section XX.3.X.*
-
-### XX.1.1 Actors
-The actors in this profile are described in more detail in the sections below.
-
-#### XX.1.1.1 Client <a name="client"> </a>
-
-The Client queries for blah meeting certain criteria and may retrieve selected blah.
-
-FHIR Capability Statement for [Client]{CapabilityStatement-IHE.FooBar.client.html}
-
-#### XX.1.1.2 Server <a name="server"> </a>
+#### 1:XX.1.1.2 Evidence Creator
 
 The Sever processes query request from the Client actor.
 
-FHIR Capability Statement for [Server](CapabilityStatement-IHE.FooBar.server.html)
+#### 1:XX.1.1.3 Report Creatort
 
-### Transaction Descriptions
-The transactions in this profile are summarized in the sections below.
+The Sever processes query request from the Client actor.
 
-#### FooBar do transaction
+#### 1:XX.1.1.4 Worklist Manager
 
-This transaction is used to **do things**
+The Sever processes query request from the Client actor.
 
-For more details see the detailed [transaction description](domain-YY.html)
+#### 1:XX.1.1.5 Hub
 
-## XX.2 FooBar Actor Options <a name="actor-options"> </a>
+The Sever processes query request from the Client actor.
 
-Options that may be selected for each actor in this implementation guide, are listed in Table 3.2-1 below. Dependencies 
-between options when applicable are specified in notes.
+## 1:XX.2 RTC-IMR Actor Options
 
-|         |             |
-|---------|-------------|
-| Actor   | Option Name |
-| Actor A | Option AB  |
-| Actor B | none |
+Options that may be selected for each actor in this implementation guide, are listed in Table 1:XX.2-1 below. Dependencies between options, when applicable, are specified in notes.
+
+**Table 1:XX.2-1: RTC-IMR - Actors and Options**
+
+<table class="grid">
+  <thead>
+    <tr>
+      <th>Actor</th>
+      <th>Option Name</th>
+      <th>Reference</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Image Display</td>
+      <td>No options defined</td>
+      <td>–</td>
+    </tr>
+    <tr>
+      <td>Evidence Creator</td>
+      <td>No options defined</td>
+      <td>–</td>
+    </tr>
+    <tr>
+      <td>Report Creator</td>
+      <td>No options defined</td>
+      <td>–</td>
+    </tr>
+    <tr>
+      <td>Worklist Manager</td>
+      <td>No options defined</td>
+      <td>–</td>
+    </tr>
+    <tr>
+      <td>Hub</td>
+      <td>No options defined</td>
+      <td>–</td>
+    </tr>
+  </tbody>
+</table>
+
+## 1:XX.3 RTC-IMR Required Actor Groupings
+
+An actor from this profile (Column 1) shall implement all of the required transactions and/or
+content modules in this profile ***in addition to all*** of the requirements for the grouped actor (Column 3).
+
+In some cases, required groupings are defined as at least one of an enumerated set of possible actors; this is designated by merging column one into a single cell spanning multiple potential grouped actors. Notes are used to highlight this situation.
+
+Section 1:XX.5 describes some optional groupings that may be of interest for security
+considerations and Section 1:52.6 describes some optional groupings in other related profiles.
+
+**Table 1:XX.3-1: RTC-IMR Required Actor Groupings**
+
+| IMR Actor | Grouping Condition | Actor(s) to be grouped with | Reference |
+|-----------|--------------------|-----------------------------|-----------|
+| Image Display | -- | None | -- |
+| Evidence Creator | -- | None | -- |
+| Report Creator | -- | None | -- |
+| Worklist Manager | -- | None | -- |
+| Hub | -- | None | -- |
 {: .grid}
 
-#### XX.2.1 AB Option
+## 1:XX.4 RTC-IMR Overview
 
-**TODO: describe this option and the Volume 1 requirements for this option
+### 1:XX.4.1 Concepts
 
-## XX.3 FooBar Required Actor Groupings <a name="required-groupings"> </a>
+### 1:XX.4.2 Use Cases
 
-*Describe any requirements for actors in this profile to be grouped
-with other actors.*
-
-*This section specifies all REQUIRED Actor Groupings (although
-“required” sometimes allows for a selection of one of several). To
-SUGGEST other profile groupings or helpful references for other profiles
-to consider, use Section XX.6 Cross Profile Considerations. Use Section
-X.5 for security profile recommendations.*
-
-An actor from this profile (Column 1) shall implement all of the
-required transactions and/or content modules in this profile ***in
-addition to*** ***<u>all</u>*** of the requirements for the grouped
-actor (Column 2) (Column 3 in alternative 2).
-
-If this is a content profile, and actors from this profile are grouped
-with actors from a workflow or transport profile, the Reference column
-references any specifications for mapping data from the content module
-into data elements from the workflow or transport transactions.
-
-In some cases, required groupings are defined as at least one of an
-enumerated set of possible actors; this is designated by merging column
-one into a single cell spanning multiple potential grouped actors. Notes
-are used to highlight this situation.
-
-Section XX.5 describes some optional groupings that may be of interest
-for security considerations and Section XX.6 describes some optional
-groupings in other related profiles.
-
-Two alternatives for Table XX.3-1 are presented below.
-
--   If there are no required groupings for any actor in this profile,
-    use alternative 1 as a template.
-
--   If an actor in this profile (with no option), has a required
-    grouping, use alternative 1.
-
--   If any required grouping is associated with an actor/option
-    combination in this profile, use alternative 2.
-
-alternative 1 Table XX.3-1: Profile Name - Required Actor
-Groupings
-
-All actors from this profile should be listed in Column 1, even if
-none of the actors has a required groupings. If no required grouping
-exists, “None” should be indicated in Column 2. If an actor in a content
-profile is required to be grouped with an actor in a transport or
-workflow profile, it will be listed **with at least one** required
-grouping. Do not use “XD\*” as an actor name.
-
-In some cases, required groupings are defined as at least one of an
-enumerated set of possible actors; to designate this, create a row for
-each potential actor grouping and merge column one to form a single cell
-containing the profile actor which should be grouped with at least one
-of the actors in the spanned rows. In addition, a note should be
-included to explain the enumerated set. See example below showing
-Document Consumer needing to be grouped with at least one of XDS.b
-Document Consumer, XDR Document Recipient or XDM Portable Media
-Importer
-
-The author should pay special consideration to security profiles in
-this grouping section. Consideration should be given to Consistent Time
-(CT) Client, ATNA Secure Node or Secure Application, as well as other
-profiles. For the sake of clarity and completeness, even if this table
-begins to become long, a line should be added for each actor for each of
-the required grouping for security. Also see the ITI document titled
-‘Cookbook: Preparing the IHE Profile Security Section’ at
-<http://ihe.net/Technical_Frameworks/#IT> for a list of suggested IT and
-security groupings.
-
-<table border="1" borderspacing="0" style='border: 1px solid black; border-collapse: collapse'>
-<thead>
-<tr class="header">
-<th>this Profile Acronym Actor</th>
-<th>Actor(s) to be grouped with</th>
-<th>Reference</th>
-<th>Content Bindings Reference</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Actor A</td>
-<td><p><em>external Domain Acronym or blank</em></p>
-<p><em>profile acronym/Actor</em></p>
-<p><em>e.g., ITI CT / Time Client</em></p></td>
-<td><p><em>TF Reference; typically from Vol 1</em></p>
-<p><em>e.g., ITI-TF-1: 7.1</em></p></td>
-<td>--</td>
-</tr>
-<tr class="even">
-<td>Actor B</td>
-<td>None</td>
-<td>--</td>
-<td>--</td>
-</tr>
-<tr class="odd">
-<td><p>Actor C</p>
-<p><em>In this example, Actor C shall be grouped with all three actors listed in column 2</em></p></td>
-<td><p><em>external Domain Acronym or blank</em></p>
-<p><em>profile acronym/Actor</em></p></td>
-<td>--</td>
-<td>See Note 1</td>
-</tr>
-<tr class="even">
-<td></td>
-<td><em>external Domain Acronym or blank profile acronym/Actor</em></td>
-<td>--</td>
-<td>See Note 1</td>
-</tr>
-<tr class="odd">
-<td></td>
-<td><p><em>external Domain Acronym or blank</em></p>
-<p><em>profile acronym/Actor</em></p></td>
-<td>--</td>
-<td>See Note 1</td>
-</tr>
-<tr class="even">
-<td><p>Actor D <em>(See note 1)</em></p>
-<p><em>In this example, the note is used to indicate that the Actor D shall be grouped with one or more of the two actors of the two actors in column 2.</em></p></td>
-<td><p><em>external Domain Acronym or blank</em></p>
-<p><em>profile acronym/Actor</em></p></td>
-<td>--</td>
-<td>See Note 1</td>
-</tr>
-<tr class="odd">
-<td></td>
-<td><p><em>external Domain Acronym or blank</em></p>
-<p><em>profile acronym/Actor</em></p></td>
-<td>--</td>
-<td>See Note 1</td>
-</tr>
-<tr class="even">
-<td><p>Actor E</p>
-<p><em>In rare cases, the actor to be grouped with must implement an option. An example is in column 2.)</em></p></td>
-<td><p><em>external Domain Acronym or blank</em></p>
-<p><em>profile acronym Actor</em></p>
-<p><em>e.g., ITI RFD Form Filler with the Archive Form Option</em></p></td>
-<td><p><em>TF Reference to the Option definition; typically from Vol 1</em></p>
-<p><em>(e.g., ITI TF-1: 17.3.11)</em></p></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td><em>e.g., Content Consumer (See Note 1)</em></td>
-<td><em>ITI XDS.b / Document Consumer</em></td>
-<td><em>ITI TF-1: 10.1</em></td>
-<td><em>PCC TF-2:4.1 (See Note 2)</em></td>
-</tr>
-<tr class="even">
-<td></td>
-<td><em>ITI XDR / Document Recipient</em></td>
-<td><em>ITI TF-1: 15.1</em></td>
-<td><em>PCC TF-2:4.1 (See Note 2)</em></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td><em>ITI XDM / Portable Media Importer</em></td>
-<td><em>ITI TF-1: 16.1</em></td>
-<td><em>PCC TF-2:4.1 (See Note 2)</em></td>
-</tr>
-<tr class="even">
-<td><em>e.g., Content Consumer</em></td>
-<td><em>ITI CT / Time Client</em></td>
-<td><em>ITI TF-1: 7.1</em></td>
-<td>--</td>
-</tr>
-</tbody>
-</table>
-
-Note 1: *This is a short note. It may be used to describe situations
-where an actor from this profile may be grouped with one of several
-other profiles/actors.*
-
-Note 2: *A note could also be used to explain why the grouping is
-required, if that is still not clear from the text above.*
-
-alternative 2 Table XX.3-1: this Profile Acronym Profile
-- Required Actor Groupings
-
-All actors from this profile should be listed in Column 1. If no
-required grouping exists, “None” should be indicated in Column 3. 
-
-Guidance on using the “Grouping Condition” column:
-
--   If an actor has no required grouping, Column 2 should contain “--“.
-    See Actor A below.
-
--   If an actor has a required grouping that is not associated with a
-    profile option (i.e., it has no condition), column 2 should contain
-    “Required”. See Actor B below.
-
--   Sometimes an option requires that an actor in this profile be
-    grouped with an actor in another profile. That condition is
-    specified in Column 2. See Actor C below.
-
-<table border="1" borderspacing="0" style='border: 1px solid black; border-collapse: collapse'>
-<tbody>
-<tr class="odd">
-<td>this Profile Acronym Actor</td>
-<td>Grouping Condition</td>
-<td>Actor(s) to be grouped with</td>
-<td>Reference</td>
-</tr>
-<tr class="even">
-<td>Actor A</td>
-<td>--</td>
-<td>None</td>
-<td>--</td>
-</tr>
-<tr class="odd">
-<td>Actor B</td>
-<td>Required</td>
-<td><p><em>external Domain Acronym or blank profile acronym/Actor</em></p>
-<p><em>e.g., ITI CT / Time Client</em></p></td>
-<td><p><em>TF Reference; typically from Vol 1</em></p>
-<p><em>(e.g., ITI TF-1: 7.1)</em></p></td>
-</tr>
-<tr class="even">
-<td>Actor C</td>
-<td>With the <em>Option name in this profile</em> Option</td>
-<td><em>external Domain Acronym or blank profile acronym/Actor</em></td>
-<td><em>Where the Option is defined in this profile Section XX.3 z</em></td>
-</tr>
-<tr class="odd">
-<td><p>Actor D</p>
-<p><em>if an actor has both required and conditional groupings, list the Required grouping first</em></p></td>
-<td>Required</td>
-<td><em>external Domain Acronym or blank profile acronym/Actor</em></td>
-<td><em>TF Reference; typically from Vol 1</em></td>
-</tr>
-<tr class="even">
-<td></td>
-<td>If the <em>Option name in this profile</em> Option is supported.</td>
-<td><em>external Domain Acronym or blank profile acronym/Actor</em></td>
-<td><em>TF Reference; typically from Vol 1</em></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td>If the <em>other Option name in this profile</em> Option is supported.</td>
-<td><em>external Domain Acronym or blank profile acronym/Actor</em></td>
-<td><em>TF Reference; typically from Vol 1</em></td>
-</tr>
-<tr class="even">
-<td><p>Actor E</p>
-<p><em>(In rare cases, the actor to be grouped with must implement an option, an example is in column 3)</em></p></td>
-<td>Required</td>
-<td><p><em>external Domain Acronym or blank profile acronym/Actor</em> with the <em>option name</em></p>
-<p><em>e.g. ITI RFD Form Filler with the Archive Form Option</em></p></td>
-<td><p><em>TF Reference to the Option definition; typically from Vol 1</em></p>
-<p><em>(eg ITI TF-1:17.3.11)</em></p></td>
-</tr>
-</tbody>
-</table>
-
-
-## XX.4 FooBar Overview <a name="overview"> </a>
-
-This section shows how the transactions/content modules of the profile
-are combined to address the use cases.
-
-Use cases are informative, not normative, and “SHALL” language is
-not allowed in use cases.
-
-### XX.4.1 Concepts
-
-If needed, this section provides an overview of the concepts that
-provide necessary background for understanding the profile. If not
-needed, state “Not applicable.” For an example of why/how this section
-may be needed, please see ITI Cross Enterprise Workflow (XDW).
-
-It may be useful in this section but is not necessary, to provide a
-short list of the use cases described below and explain why they are
-different.
-
-### XX.4.2 Use Cases
-
-#### XX.4.2.1 Use Case \#1: Simple Reporting
+#### 1:XX.4.2.1 Use Case \#1: Simple Reporting
 
 One or two sentence simple description of this particular use
 case.
 
-Note that Section XX.4.2.1 repeats in its entirety for additional use
-cases (replicate as Section XX.4.2.2, XX.4.2.3, etc.).
+Note that Section 1:XX.4.2.1 repeats in its entirety for additional use
+cases (replicate as Section 1:XX.4.2.2, 1:XX.4.2.3, etc.).
 
-##### XX.4.2.1.1 simple name Use Case Description
+##### 1:XX.4.2.1.1 simple name Use Case Description
 
 Describe the key use cases addressed by the profile. Limit to a
 maximum of one page of text or consider an appendix.
 
-##### XX.4.2.1.2 simple name Process Flow
+##### 1:XX.4.2.1.2 simple name Process Flow
 
 Diagram and describe the process flow(s) covered by this profile in
 order to satisfy the use cases. Demonstrate how the profile transactions
@@ -418,7 +475,7 @@ Modify the following “Swimlane Diagram”.
 </div>
 <br clear="all">
 
-Figure XX.4.2.2-1: Basic Process Flow in Profile Acronym Profile
+Figure 1:XX.4.2.2-1: Basic Process Flow in Profile Acronym Profile
 
 If process flow “swimlane” diagrams require additional explanation
 to clarify conditional flows, or flow variations need to be described
@@ -447,61 +504,61 @@ examples of potential next steps.
 
 The following sections elaborate on this use case, showing how this profile enables different systems to collaborate and hence implement this use case.
 
-###### XX.4.2.1.2.1 Step 1: Simple Reporting Session Flow
+###### 1:XX.4.2.1.2.1 Step 1: Simple Reporting Session Flow
 
 <div>
 {%include simple_reporting.svg%}
 </div>
 <br clear="all">
 
-Figure XX.4.2.1.2.1-1: Simple Reporting Session Flow in RTC-IMR Profile
+Figure 1:XX.4.2.1.2.1-1: Simple Reporting Session Flow in RTC-IMR Profile
 
-###### XX.4.2.1.2.2 Step 2: Update Report Context Flow
+###### 1:XX.4.2.1.2.2 Step 2: Update Report Context Flow
 
 <div>
 {%include reporting_with_content_sharing.svg%}
 </div>
 <br clear="all">
 
-Figure XX.4.2.1.2.2-1: Update Report Context Flow in RTC-IMR Profile
+Figure 1:XX.4.2.1.2.2-1: Update Report Context Flow in RTC-IMR Profile
 
-###### XX.4.2.1.2.3 Step 3: Automate Reporting Session Flow
+###### 1:XX.4.2.1.2.3 Step 3: Automate Reporting Session Flow
 
 <div>
 {%include reporting_with_selection.svg%}
 </div>
 <br clear="all">
 
-Figure XX.4.2.1.2.3-1: Automate Reporting Session Flow in RTC-IMR Profile
+Figure 1:XX.4.2.1.2.3-1: Automate Reporting Session Flow in RTC-IMR Profile
 
-##### XX.4.2.1.2.4 Step 4: Rapid Context Switching Flow
+##### 1:XX.4.2.1.2.4 Step 4: Rapid Context Switching Flow
 
 <div>
 {%include rapid_switch_context.svg%}
 </div>
 <br clear="all">
 
-Figure XX.4.2.1.2.4-1: Rapid Context Switching Flow in RTC-IMR Profile
+Figure 1:XX.4.2.1.2.4-1: Rapid Context Switching Flow in RTC-IMR Profile
 
-#### XX.4.2.2 Use Case: High Collaboration Reporting Flow
+#### 1:XX.4.2.2 Use Case: High Collaboration Reporting Flow
 
 <div>
 {%include multi_app.svg%}
 </div>
 <br clear="all">
 
-Figure XX.4.2.2-1: High Collaboration Reporting Flow in RTC-IMR Profile
+Figure 1:XX.4.2.2-1: High Collaboration Reporting Flow in RTC-IMR Profile
 
-#### XX.4.2.3 Use Case: Error Handling Flow
+#### 1:XX.4.2.3 Use Case: Error Handling Flow
 
 <div>
 {%include syncerror.svg%}
 </div>
 <br clear="all">
 
-Figure XX.4.2.3-1: Error Handling Flow in RTC-IMR Profile
+Figure 1:XX.4.2.3-1: Error Handling Flow in RTC-IMR Profile
 
-## XX.5 FooBar Security Considerations <a name="security-considerations"> </a>
+## 1:XX.5 FooBar Security Considerations <a name="security-considerations"> </a>
 
 See ITI TF-2x: [Appendix Z.8 “Mobile Security Considerations”](https://profiles.ihe.net/ITI/TF/Volume2/ch-Z.html#z.8-mobile-security-considerations)
 
@@ -588,7 +645,7 @@ This section also include specific considerations regarding Digital Signatures, 
 
 Where audit logging is specified, a StructureDefinition profile(s) should be included, and Examples of those logs might be included.
 
-## XX.6 FooBar Cross-Profile Considerations <a name="other-grouping"> </a>
+## 1:XX.6 FooBar Cross-Profile Considerations <a name="other-grouping"> </a>
 
 This section is informative, not normative. It is intended to put
 this profile in context with other profiles. Any required groupings

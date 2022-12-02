@@ -54,13 +54,40 @@ resources:
 pages:
 # itemize here each narrative page. Include assigned section numbers when appropriate
   index.md:
-    title: 1:XX. Profile Home
+    title: 1:XX. RTC-IMR Home
     generation: markdown
   volume-1.md:
-    title: 1:XX. Profile Volume 1
+    title: 1:XX. RTC-IMR Volume 1
     generation: markdown
-  domain-YY.md:
-    title: 2:3.YY Transaction one [Domain-YY]
+  rad-x1.md:
+    title: 2:3.X1 Subscribe Reporting Session [RAD-X1]
+    generation: markdown
+  rad-x2.md:
+    title: 2:3.X2 Connect Notification Channel [RAD-X2]
+    generation: markdown
+  rad-x3.md:
+    title: 2:3.X3 Initiate Report Context [RAD-X3]
+    generation: markdown
+  rad-x4.md:
+    title: 2:3.X4 Terminate Report Context [RAD-X4]
+    generation: markdown
+  rad-x5.md:
+    title: 2:3.X5 Update Report Content [RAD-X5]
+    generation: markdown
+  rad-x6.md:
+    title: 2:3.X6 Select Report Content [RAD-X6]
+    generation: markdown
+  rad-x7.md:
+    title: 2:3.X7 Unsubscribe Reporting Session [RAD-X7]
+    generation: markdown
+  rad-x8.md:
+    title: 2:3.X8 Get Current Context [RAD-X8]
+    generation: markdown
+  rad-x9.md:
+    title: 2:3.X9 Send Context Event [RAD-X9]
+    generation: markdown
+  rad-x10.md:
+    title: 2:3.X10 Send SyncError Event [RAD-X10]
     generation: markdown
   open_study_for_reporting.md:
     title: Initiate Report Context
@@ -95,7 +122,16 @@ menu:
     Security Considerations: volume-1.html#security-considerations
     Cross-Profile Considerations: volume-1.html#other-grouping
   Volume 2:
-    Transaction one [Domain-YY]: domain-YY.html
+    Subscribe Reporting Session [RAD-X1]: rad-x1.html
+    Connect Notification Channel [RAD-X2]: rad-x2.html
+    Initiate Report Context [RAD-X3]: rad-x3.html
+    Terminate Report Context [RAD-X4]: rad-x4.html
+    Update Report Content [RAD-X5]: rad-x5.html
+    Select Report Content [RAD-X6]: rad-x6.html
+    Unsubscribe Reporting Session [RAD-X7]: rad-x7.html
+    Get Current Context [RAD-X8]: rad-x8.html
+    Send Context Event [RAD-X9]: rad-x9.html
+    Send SyncError Event [RAD-X10]: rad-x10.html
   Examples:
     Initiate Report Context: open_study_for_reporting.html
     Update Report Context: update_study_with_measurement.html
