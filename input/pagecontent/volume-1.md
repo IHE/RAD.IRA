@@ -435,7 +435,7 @@ considerations and Section 1:52.6 describes some optional groupings in other rel
 
 ### 1:XX.4.2 Use Cases
 
-#### 1:XX.4.2.1 Use Case \#1: Simple Reporting
+#### 1:XX.4.2.1 Use Case \#1: PACS Driven Reporting
 
 One or two sentence simple description of this particular use
 case.
@@ -504,6 +504,31 @@ examples of potential next steps.
 
 The following sections elaborate on this use case, showing how this profile enables different systems to collaborate and hence implement this use case.
 
+###### 1:XX.4.2.1.2.0 Common Subscription Flow
+
+Subscribing to a reporting session is a common starting step for an actor to start participating in a realtime communication session with other actors.
+
+Subscribing to a reporting session involves two transactions:
+
+- Subscribe Reporting Session [RAD-X1]
+- Connect Notification Channel [RAD-X2]
+
+<div>
+{%include common-subscription.svg%}
+</div>
+<br clear="all">
+
+Figure 1:XX.4.2.1.2.0-1: Common Subscription Flow in RTC-IMR Profile
+
+To simplify the subsequent use case flows for readability, this common subscription flow will be represented as a single line as a meta transaction [RAD-Sub]. The following is an example with PACS as a Subscriber.
+
+<div>
+{%include condensed-subscription-transaction.svg%}
+</div>
+<br clear="all">
+
+Figure 1:XX.4.2.1.2.0-2: Condensed Subscription Transaction in RTC-IMR Profile
+
 ###### 1:XX.4.2.1.2.1 Step 1: Simple Reporting Session Flow
 
 <div>
@@ -540,14 +565,14 @@ Figure 1:XX.4.2.1.2.3-1: Automate Reporting Session Flow in RTC-IMR Profile
 
 Figure 1:XX.4.2.1.2.4-1: Rapid Context Switching Flow in RTC-IMR Profile
 
-#### 1:XX.4.2.2 Use Case: High Collaboration Reporting Flow
+#### 1:XX.4.2.2 Use Case: Worklist Manager Driven Reporting
 
 <div>
 {%include multi_app.svg%}
 </div>
 <br clear="all">
 
-Figure 1:XX.4.2.2-1: High Collaboration Reporting Flow in RTC-IMR Profile
+Figure 1:XX.4.2.2-1: Worklist Manager Driven Reporting in RTC-IMR Profile
 
 #### 1:XX.4.2.3 Use Case: Error Handling Flow
 

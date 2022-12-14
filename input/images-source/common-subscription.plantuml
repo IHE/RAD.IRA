@@ -1,0 +1,27 @@
+@startuml
+
+title Subscription Flow
+
+participant Subscriber as Sub
+participant Hub as Hub
+
+Sub->Hub: Subscribe Reporting Session [RAD-X1]\n(session 12345:\nevents = DiagnosticReport-*, syncerror)
+
+note over Sub
+If the Subscriber is starting a new session,
+then the Subscriber generates a new Session ID.
+Otherwise, Subscriber uses the provided Session ID
+from invocation.
+end note
+
+opt If session does not exist
+Hub->Hub: //Create Reporting Session with ID 12345//
+end
+
+Hub->Hub: //Add Subscriber to session//
+
+Hub-->Sub: //Accept//\n//with hub.channel.endpoint//
+Sub->Hub: Connect Notification Channel [RAD-X2]
+Hub-->Sub: //Confirm subscription//
+
+@enduml
