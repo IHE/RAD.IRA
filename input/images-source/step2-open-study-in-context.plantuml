@@ -1,0 +1,48 @@
+@startuml
+
+actor Radiologist as User
+participant "PACS" as PACS
+participant "Hub" as Hub
+participant "Reporting App" as Report
+
+== Step 2: Open Study in Context ==
+
+PACS->Report: //Launch Application//
+
+Report->Hub: Subscribe to reporting session [RAD-Sub]
+note over Hub
+Hub adds Reporting App to the reporting session.
+end note
+
+Report->Hub: Get Current Context [RAD-X6]\n(catch up with current context and content)
+Hub-->Report: //Return empty context//
+
+User->PACS: //Select Patient and Study//
+PACS->PACS: //Open Study and show Chest X-Ray//
+
+PACS->Hub: Initiate Report Context [RAD-X3]\n(event: id = 1000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
+activate Hub
+note over PACS, Hub
+Create the following report context entry
+for session 12345:
+* DiagnosticReport
+* Patient
+* ImagingStudy
+* ServiceRequext ??
+end note
+
+Hub->Hub: //Create DiagnosticReport Context in session 12345//\n(event: id = 1000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)\n[[open_study_for_reporting.html#available-context-and-content-in-hub Example]]
+Hub-->PACS: Accept
+
+Hub->Report: Send Context Event [RAD-X9]\n(event: id = 1000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
+Report->Report: //Initiate new report//\n//based on the received context//
+Report-->Hub: //Success (id = 1000, status = 200)//
+
+Hub->PACS: Send Context Event [RAD-X9]\n(event: id = 1000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
+PACS->PACS: //No action required//
+PACS-->Hub: //Success (id = 1000, status = 200)//
+deactivate Hub
+
+User->PACS: //Start dictation//
+
+@enduml

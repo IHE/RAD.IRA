@@ -54,6 +54,7 @@ This example closes a DiagnosticReport anchor context.
   }
 }
 ```
+### Available Context and Content in Hub
 
 | Event | Session ID | Current Context | Anchor Context |  Contexts Present | Content | Content Selected | Version ID | Prior Version ID | 
 |--|--|--|--|--|--|--|--|--|

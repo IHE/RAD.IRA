@@ -1,0 +1,28 @@
+@startuml
+
+actor Radiologist as User
+participant "PACS" as PACS
+participant "Hub" as Hub
+participant "Reporting App" as Report
+
+User->PACS: //Start dictation//
+
+== Step 3: Add Contents (Optional) ==
+
+User->PACS: //Measure area of Pneumothorax//
+
+PACS->Hub: Update Report Content [RAD-X5]
+Hub->Hub: //Maintain sequence of content update//\n[[update_study_with_measurement.html#available-context-and-content-in-hub Example]]
+Hub->Report: Send Context Event [RAD-X9]
+Report->Report: //Verify if content received in sequence//
+
+    opt If there are missing events
+    Report->Hub: Get Current Context [RAD-R8]
+    Hub-->Report: Return current context and content
+    end opt
+
+Report->Report: //Apply event//\n//Autopopulate report fields with received content//
+
+User->Report: //Fill general report text//
+
+@enduml

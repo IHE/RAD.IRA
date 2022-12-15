@@ -210,6 +210,8 @@ The HUB SHALL distribute a corresponding event to all applications currently sub
 }
 ```
 
+### Available Context and Content in Hub
+
 | Event | Session ID | Current Context | Anchor Context | Contexts Present | Content | Content Selected | Version ID | Prior Version ID | 
 |--|--|--|--|--|--|--|--|--|
 | DiagnosticReport-open | e62b4411-55f3-431a-94e8-ef4af537511c | report: DiagnosticReport<br>id: 40012366 | report: DiagnosticReport<br>id: 40012366 | report: DiagnosticReport<br>id: 40012366<br>patient: Patient<br>id: ewUbXT9RWEbSj5wPEdgRaBw3<br>mrn: 185444<br>study: ImagingStudy<br>id: 8i7tbu6fby5ftfbku6fniuf<br>study uid: 2.16.124.113543.6003.1154777499.38476.11982.4847614254<br>accnum: 342123458 | none | none | b9574cb0-e9e5-4be1-8957-5fcb51ef33c1 | none |

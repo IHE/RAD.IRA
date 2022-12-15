@@ -89,14 +89,17 @@ pages:
   rad-x10.md:
     title: 2:3.X10 Send SyncError Event [RAD-X10]
     generation: markdown
+  example.md:
+    title: Introduction to Examples
+    generation: markdown
   open_study_for_reporting.md:
     title: Initiate Report Context
     generation: markdown
   update_study_with_measurement.md:
-    title: Update Report Context
+    title: Update Report Content
     generation: markdown
   select_study_and_observation.md:
-    title: Select Report Context
+    title: Select Report Content
     generation: markdown
   close_study_after_signoff.md:
     title: Terminate Report Context
@@ -133,9 +136,10 @@ menu:
     Send Context Event [RAD-X9]: rad-x9.html
     Send SyncError Event [RAD-X10]: rad-x10.html
   Examples:
+    Introduction: example.html
     Initiate Report Context: open_study_for_reporting.html
-    Update Report Context: update_study_with_measurement.html
-    Select Report Context: select_study_and_observation.html
+    Update Report Content: update_study_with_measurement.html
+    Select Report Content: select_study_and_observation.html
     Terminate Report Context: close_study_after_signoff.html
   Test Plan: testplan.html
   Artifacts: artifacts.html

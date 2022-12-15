@@ -1,0 +1,21 @@
+@startuml
+
+actor Radiologist as User
+participant "PACS" as PACS
+participant "Hub" as Hub
+participant "Reporting App" as Report
+
+== Step 6: Terminate Reporting Session ==
+
+User->Report: //Close application//
+
+Report->Hub: Unsubscribe Reporting Session [RAD-X7]\n(session 12345)
+Hub-->Report: //Accept//
+Hub->Hub: //Close channel to Reporting System//
+note over Hub
+If there are other subscribers on the same topic,
+those subscriptions are not affected and will
+continue to receive notification on the topic.
+end note
+
+@enduml

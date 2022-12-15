@@ -165,6 +165,7 @@ The event distributed by the Hub includes a context version in the `context.vers
 }
 ```
 
+### Available Context and Content in Hub
 
 | Event | Session ID | Current Context | Anchor Context |  Contexts Present | Content | Content Selected | Version ID | Prior Version ID | 
 |--|--|--|--|--|--|--|--|--|

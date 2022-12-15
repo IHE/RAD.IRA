@@ -66,7 +66,7 @@ Table 1:XX.1-1 lists the transactions for each actor directly involved in the IM
       <td><a href="RAD-X5.html">RAD TF-2: 4.X5</a></td>
     </tr>
     <tr>
-      <td>Select Report Context [RAD-X6]</td>
+      <td>Select Report Content [RAD-X6]</td>
       <td>Initiator</td>
       <td>R</td>
       <td><a href="RAD-X6.html">RAD TF-2: 4.X6</a></td>
@@ -127,7 +127,7 @@ Table 1:XX.1-1 lists the transactions for each actor directly involved in the IM
       <td><a href="RAD-X5.html">RAD TF-2: 4.X5</a></td>
     </tr>
     <tr>
-      <td>Select Report Context [RAD-X6]</td>
+      <td>Select Report Content [RAD-X6]</td>
       <td>Initiator</td>
       <td>R</td>
       <td><a href="RAD-X6.html">RAD TF-2: 4.X6</a></td>
@@ -188,7 +188,7 @@ Table 1:XX.1-1 lists the transactions for each actor directly involved in the IM
       <td><a href="RAD-X5.html">RAD TF-2: 4.X5</a></td>
     </tr>
     <tr>
-      <td>Select Report Context [RAD-X6]</td>
+      <td>Select Report Content [RAD-X6]</td>
       <td>Initiator</td>
       <td>R</td>
       <td><a href="RAD-X6.html">RAD TF-2: 4.X6</a></td>
@@ -249,7 +249,7 @@ Table 1:XX.1-1 lists the transactions for each actor directly involved in the IM
       <td><a href="RAD-X5.html">RAD TF-2: 4.X5</a></td>
     </tr>
     <tr>
-      <td>Select Report Context [RAD-X6]</td>
+      <td>Select Report Content [RAD-X6]</td>
       <td>Initiator</td>
       <td>R</td>
       <td><a href="RAD-X6.html">RAD TF-2: 4.X6</a></td>
@@ -310,7 +310,7 @@ Table 1:XX.1-1 lists the transactions for each actor directly involved in the IM
       <td><a href="RAD-X5.html">RAD TF-2: 4.X5</a></td>
     </tr>
     <tr>
-      <td>Select Report Context [RAD-X6]</td>
+      <td>Select Report Content [RAD-X6]</td>
       <td>Responder</td>
       <td>R</td>
       <td><a href="RAD-X6.html">RAD TF-2: 4.X6</a></td>
@@ -450,63 +450,20 @@ maximum of one page of text or consider an appendix.
 
 ##### 1:XX.4.2.1.2 simple name Process Flow
 
-Diagram and describe the process flow(s) covered by this profile in
-order to satisfy the use cases. Demonstrate how the profile transactions
-are combined/sequenced. To provide context and demonstrate how the
-profile interacts with other profiles, feel free to include transactions
-and events that are “external” to this profile (using appropriate
-notation.)
-
-The set of process flows will typically be exemplary, not exhaustive
-(i.e., it will address all the use cases, but will not show all possible
-combinations of actors, or all possible sequencing of transactions).
-
-If there are detailed behavioral rules that apply to a specific process
-flow or multiple process flows, an appendix may be added as needed.
-
-The roles at the top of the swimlane diagram should correspond to
-actor names, include the profile acronym:actor name if referencing an
-actor from a different profile.
-
-Modify the following “Swimlane Diagram”.
-
 <div>
 {%include ReportingFlow.svg%}
 </div>
 <br clear="all">
 
-Figure 1:XX.4.2.2-1: Basic Process Flow in Profile Acronym Profile
+Figure 1:XX.4.2.2-1: PACS Driven Reporting Flow in RTC-IMR Profile
 
-If process flow “swimlane” diagrams require additional explanation
-to clarify conditional flows, or flow variations need to be described
-where alternate systems may be playing different actor roles, document
-those conditional flows here.
+The following sections elaborate on each step in this use case. The hyperlinks in the use case diagram above link to the corresponding step for quick access.
 
-Delete the material below if this is a workflow or transport
-profile. Delete the material above if this profile is a content module
-only profile.
-
-**Pre-conditions**:
-
-Very briefly (typically one sentence) describe the conditions or
-timing when this content module would be used.
-
-**Main Flow**:
-
-Typically in an enumerated list, describe the clinical workflow
-when, where, and how this content module would be used.
-
-**Post-conditions:**
-
-Very briefly (typically one sentence) describe the state of the
-clinical scenario after this content module has been created including
-examples of potential next steps.
-
-The following sections elaborate on this use case, showing how this profile enables different systems to collaborate and hence implement this use case.
+Furthermore, in the [Examples](example.html) tab, it contains sample events following this use case.
 
 ###### 1:XX.4.2.1.2.0 Common Subscription Flow
 
-Subscribing to a reporting session is a common starting step for an actor to start participating in a realtime communication session with other actors.
+Subscribing to a reporting session is a common starting step for an actor to start communicating with other actors in the reporting session in realtime.
 
 Subscribing to a reporting session involves two transactions:
 
@@ -529,41 +486,79 @@ To simplify the subsequent use case flows for readability, this common subscript
 
 Figure 1:XX.4.2.1.2.0-2: Condensed Subscription Transaction in RTC-IMR Profile
 
-###### 1:XX.4.2.1.2.1 Step 1: Simple Reporting Session Flow
+###### 1:XX.4.2.1.2.1 Step 1: Open Reporting Session
+
+When a radiologist starts reporting, the PACS, as the initiator, opens a reporting session.
+
+Note that there is no explicit creation of a session. If the Hub receives a session ID (i.e. topic) that is not already exist, then the Hub will automatically create the session and add the subscriber (i.e. PACS) to the session.
 
 <div>
-{%include simple_reporting.svg%}
+{%include step1-open-reporting-session.svg%}
 </div>
 <br clear="all">
 
-Figure 1:XX.4.2.1.2.1-1: Simple Reporting Session Flow in RTC-IMR Profile
+Figure 1:XX.4.2.1.2.1-1: Open Reporting Session Flow in RTC-IMR Profile
 
-###### 1:XX.4.2.1.2.2 Step 2: Update Report Context Flow
+###### 1:XX.4.2.1.2.2 Step 2: Open Study in Context
 
 <div>
-{%include reporting_with_content_sharing.svg%}
+{%include step2-open-study-in-context.svg%}
 </div>
 <br clear="all">
 
-Figure 1:XX.4.2.1.2.2-1: Update Report Context Flow in RTC-IMR Profile
+Figure 1:XX.4.2.1.2.1-2: Open Study in Context Flow in RTC-IMR Profile
 
-###### 1:XX.4.2.1.2.3 Step 3: Automate Reporting Session Flow
+Note that when the Reporting App successfully completed the subscription, it immediately queries for the current context from the Hub. This immediate query is to ensure that the Reporting App is aware of the latest context in the session.
+This is necessary because the PACS does not know when the Reporting App completed the subscription. Therefore it is possible the PACS has already changed context before the subscription is complete.
+
+###### 1:XX.4.2.1.2.3 Step 3: Add Content (Optional)
 
 <div>
-{%include reporting_with_selection.svg%}
+{%include step3-add-measurements.svg%}
 </div>
 <br clear="all">
 
-Figure 1:XX.4.2.1.2.3-1: Automate Reporting Session Flow in RTC-IMR Profile
+Figure 1:XX.4.2.1.2.1-3: Add Content Flow in RTC-IMR Profile
 
-##### 1:XX.4.2.1.2.4 Step 4: Rapid Context Switching Flow
+###### 1:XX.4.2.1.2.4 Step 4: Select Content (Optional)
+
+<div>
+{%include step4-select-measurements.svg%}
+</div>
+<br clear="all">
+
+Figure 1:XX.4.2.1.2.1-4: Select Content Flow in RTC-IMR Profile
+
+Selected contents are put into 'focus' by the Reporting App. Note that here 'focus' is agnostic about the user interface implementation. It may result in the selected contents being highlighted in the user interface, or it may result in the selected contents being flagged in the backend service. Specific behavior depends on the implementation.
+
+###### 1:XX.4.2.1.2.5 Step 5: Sign-off Report
+
+<div>
+{%include step5-signoff-report.svg%}
+</div>
+<br clear="all">
+
+Figure 1:XX.4.2.1.2.1-5: Sign-off Report Flow in RTC-IMR Profile
+
+The flow above shows the simple case focuses on a single report context. In practice, the radiologist is likely to continue with the next study in the worklist without any awareness of the events happening behind the scene. Such rapid context switching is supported by the Hub because it can maintain multiple context simultaneously.
+
+The following diagram shows what can happen in case of rapid switching of the report context.
 
 <div>
 {%include rapid_switch_context.svg%}
 </div>
 <br clear="all">
 
-Figure 1:XX.4.2.1.2.4-1: Rapid Context Switching Flow in RTC-IMR Profile
+Figure 1:XX.4.2.1.2.1-5b: Rapid Context Switching Flow in RTC-IMR Profile
+
+###### 1:XX.4.2.1.2.6 Step 6: Terminate Reporting Session
+
+<div>
+{%include step6-terminate-reporting-session.svg%}
+</div>
+<br clear="all">
+
+Figure 1:XX.4.2.1.2.1-6: Terminate Reporting Session Flow in RTC-IMR Profile
 
 #### 1:XX.4.2.2 Use Case: Worklist Manager Driven Reporting
 

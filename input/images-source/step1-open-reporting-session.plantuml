@@ -1,0 +1,27 @@
+@startuml
+
+actor Radiologist as User
+participant "PACS" as PACS
+participant "Hub" as Hub
+participant "Reporting App" as Report
+
+== Step 1: Open Reporting Session ==
+
+User->PACS: //Open reporting session//
+PACS->PACS: //Ready to start reporting//
+note over PACS
+Generate unique session ID
+end note
+
+PACS->Hub: Subscribe to reporting session [RAD-Sub]
+note over Hub
+Hub creates a new session.
+end note
+
+note over PACS
+PACS subscribes to its topic so that
+* It can be notified about reporting context close notification
+* Aware of concurrent dictation and resolve the conflict
+end note
+
+@enduml

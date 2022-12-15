@@ -1,0 +1,27 @@
+@startuml
+
+actor Radiologist as User
+participant "PACS" as PACS
+participant "Hub" as Hub
+participant "Reporting App" as Report
+
+== Step 4: Select Contents (Optional) ==
+
+User->PACS: //Select measurements as seen in images//\n//as current focus//
+
+PACS->Hub: Select Report Content [RAD-X6]
+Hub->Hub: //Mark selected contents//\n[[select_study_and_observation.html#available-context-and-content-in-hub Example]]
+Hub->Report: Send Context Event [RAD-X9]
+
+Report->Report: //Select referenced report content//
+note over Report
+Selection can be visible to the user or
+invisible in the background tracked by the
+application.
+end note
+
+User->Report: //Auto-populate report with selected measurements//\n//e.g. Insert Hyperlink via a voice command//
+
+Report->Report: //Insert hyperlink in report//\n//with current focused content//
+
+@enduml
