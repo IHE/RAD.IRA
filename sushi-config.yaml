@@ -118,12 +118,12 @@ menu:
   RTC-IMR Home: index.html
   Volume 1:
     Introduction: volume-1.html
-    Actors and Transactions: volume-1.html#actors-and-transactions
-    Actor Options: volume-1.html#actor-options
-    Required Groupings: volume-1.html#required-groupings
-    Overview: volume-1.html#overview
-    Security Considerations: volume-1.html#security-considerations
-    Cross-Profile Considerations: volume-1.html#other-grouping
+    Actors and Transactions: volume-1.html#1xx1-realtime-bidirectional-communication-for-interactive-multimedia-reporting
+    Actor Options: volume-1.html#1xx2-rtc-imr-actor-options
+    Required Groupings: volume-1.html#1xx3-rtc-imr-required-actor-groupings
+    Overview: volume-1.html#1xx4-rtc-imr-overview
+    Security Considerations: volume-1.html#1xx5-rtc-imr-security-considerations
+    Cross-Profile Considerations: volume-1.html#1xx6-rtc-imr-cross-profile-considerations
   Volume 2:
     Subscribe Reporting Session [RAD-X1]: rad-x1.html
     Connect Notification Channel [RAD-X2]: rad-x2.html

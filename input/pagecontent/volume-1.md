@@ -578,7 +578,7 @@ Figure 1:XX.4.2.2-1: Worklist Manager Driven Reporting in RTC-IMR Profile
 
 Figure 1:XX.4.2.3-1: Error Handling Flow in RTC-IMR Profile
 
-## 1:XX.5 FooBar Security Considerations <a name="security-considerations"> </a>
+## 1:XX.5 RTC-IMR Security Considerations
 
 See ITI TF-2x: [Appendix Z.8 “Mobile Security Considerations”](https://profiles.ihe.net/ITI/TF/Volume2/ch-Z.html#z.8-mobile-security-considerations)
 
@@ -665,7 +665,7 @@ This section also include specific considerations regarding Digital Signatures, 
 
 Where audit logging is specified, a StructureDefinition profile(s) should be included, and Examples of those logs might be included.
 
-## 1:XX.6 FooBar Cross-Profile Considerations <a name="other-grouping"> </a>
+## 1:XX.6 RTC-IMR Cross-Profile Considerations
 
 This section is informative, not normative. It is intended to put
 this profile in context with other profiles. Any required groupings
