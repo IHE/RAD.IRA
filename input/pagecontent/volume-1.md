@@ -353,7 +353,7 @@ An Image Display
 
 The Sever processes query request from the Client actor.
 
-#### 1:XX.1.1.3 Report Creatort
+#### 1:XX.1.1.3 Report Creator
 
 The Sever processes query request from the Client actor.
 
@@ -432,6 +432,82 @@ considerations and Section 1:52.6 describes some optional groupings in other rel
 ## 1:XX.4 RTC-IMR Overview
 
 ### 1:XX.4.1 Concepts
+
+#### 1:XX.4.1.1 FHIRcast and the Publish and Subscribe Model
+
+To ensure that the user acts on the same clinical information across different applications, this profile is based on [FHIRcast](https://build.fhir.org/ig/HL7/fhircast-docs/index.html) which uses a Publish and Subscribe model based on [WebSub](https://www.w3.org/TR/websub/) to synchronize applications in real time.
+
+The following are some key concepts:
+* A `Hub` receives events from a driving application and forwards the events to subscribing applications (i.e. `Subscriber`) according to their subscription.
+* The `Hub` is also responsible for keeping track of the events and maintain a view of the current context.
+* A driving application is a `Subscriber` that performs an action, captures the result of the action as an event, and sends the event to the `Hub`
+* Other `Subscribers` (i.e. not the driving application) receive events from the `Hub` according to their subscription.
+* The driving application is unaware of who are the `Subscribers` on the events that it sends and how will they react upon receiving the events.
+* Each `Subscriber` determines how it should react upon receiving an event.
+* The driving application is responsible for setting up the session (identified by a unique topic ID), launching the other applications with the session and address of the `Hub`.
+* Both the driving application and other launched applications subscribe to the same session at the `Hub` so that communications can flow in both directions.
+* The `Hub` only processes events sent by authenticated `Subscribers`. 
+
+TODO: Replace the FHIRcast link to the published version if ready by the time of publication.
+
+#### 1:XX.4.1.2 Terminology and Data Model
+
+The terminology used in FHIRcast and adopted in this profile can be found in the [Glossary](https://build.fhir.org/ig/HL7/fhircast-docs/5_glossary.html) page.
+
+The following is a representation of the data model:
+
+<div>
+    <img src="data_model.png" width="80%">
+</div>
+<br clear="all">
+
+#### 1:XX.4.1.3 Events vs Commands
+
+`Events` represent facts that have happened. For example, DiagnosticReport-open represents an event that an application opens a study for reporting. Note that an event has no direct target audience. Any applications subscribed to the event will receive the event and the application can determine how to process the event. The application that producing the event is not aware of the actions being performed by different consuming applications, unless these consuming applications in turn publishes additional events.
+
+On the other hand, `Commands` represents intention, often associated with specific target audience(s). For example, Send-Study represents an intention to send a study Therefore the application that sends the commands often has direct knowledge of which applications should execute the commands, or delegate to a proxy service that has the knowledge.
+
+In this profile, the messages that a `Subscriber` sends to the `Hub` represents an `Event`. There is no support for sending `Commands` in this profile.
+
+#### 1:XX.4.1.4 Awareness vs Usage
+
+`Awareness` means an application, upon receiving an event from the `Hub`, has the knowledge of an event has happened.
+
+`Usage` means an application, upon receiving an event from the `Hub`, reacts to the event and performed some actions according to its business logic.
+
+This means from the driving application perspective, in order to synchronize the context with other applications, it is desirable to publish as many events as reasonable so that other subscribers can be aware of the same context as in the driving application.
+
+On the other hand, from the subscribing application perspective, it is up to its business logic to determine how to react to the received event. This business logic may be automatic or requires additional user input.
+
+For example, in a nodule tracking application, when the user goes through the study images, the user may keep track of (a.k.a. bookmarking) nodules observed (e.g. 1, 2, ..., 9, 10). Then once the user reviewed the full study, the user may select a subset of the nodules (e.g. 2, 3, 5, 9) identified as important to be added to the report. In this scenario, it is highly recommended that the nodule tracking application sends an event for each nodule (i.e. 1, 2, ..., 9, 10) being bookmarked so that the reporting application is aware of all the nodules the user observed (but not necessary added to the report yet). THe user can then instruct the reporting application to add a subset of the nodules (i.e. 2, 3, 5, 9) to the report. Note that since the reporting application is aware of all the nodules observed by synchronizing the context with the nodule tracking application, selecting a subset of the nodules is a local operation and can be in any order (i.e. the action is not required to only apply to the most recent context received).
+
+Note that this implies the reporting application has to keep track of all the context in the received events independent of whether the context will be used in the report later. This is important because there is no `Command` defined in this profile and the reporting application cannot request past context from the reporting application or the `Hub`. (The reporting application may provide other means to support a query mechanism, but this is out of scope of this profile).
+
+#### 1:XX.4.1.5 Timing of Sending an Event
+
+On one hand, it is desirable for all subscribed applications to be synchronized with the driving application as soon as possible. On the other hand, FHIRcast is a network protocol which incurs a non-trivial cost to send each event. Therefore any implementation should take into account when an action is considered to be complete or stable, and hence ready to be captured and communicated as events.
+
+For example, when a user is making measurements or annotations, instead of capturing every single measurement or annotation as an event, an application may use an idle time threshold to detect if the user completed the action or not.
+
+Furthermore, this profile is designed to communicate _in-progress_ data as soon as possible. Therefore it is not desirable for the driving application to _wait_ too long. For example, if the driving application supports exporting measurements and annotations as DICOM SR or other DICOM objects, it is not necessary to wait until the DICOM objects are created before sending the corresponding event.  
+
+This profile does not mandate any specific implementation design regarding when an application should capture the result of an action as an event.
+
+#### 1:XX.4.1.6 Transient Resource vs Persistent Resource
+
+FHIRcast uses FHIR resources to capture the context and content in an event. These FHIR resources may be transient, meaning that they do not necessarily exist in any system, nor are they expected to be persisted by any system. Furthermore, even an application decides to persist the FHIR resource(s), it is not required to use the same resource ID in the event as the ID of the persisted resource. The application can generate new IDs instead.
+
+Since the FHIR resources specified in the event may or may not exist, to differentiate between the two cases, this profile defines that transient resources are identified by relative references (e.g. Patient/12345) and persisted resources that already exist are identified by full URL (e.g. http://myserver.com/Patient/12345).
+
+#### 1:XX.4.1.7 Communication of Processing Result
+
+Upon receiving an event, the `Hub` and `Subscribers` processes the event according to its business logic. There are several possible outcome:
+
+| Actor | Process Successfully | Process Successfully with no action | Failed Processing |
+| -- | -- | -- | -- |
+| `Hub` | Forwards to `Subscribers` based on subscription | NA | Return `SyncError` back to driving application |
+| `Subscriber` | No action required. May send new events to the `Hub` | No action required | Send `SyncError` to the `Hub` which forwards them back to the driving application and all other `Subscribers` |
+{: .grid}
 
 ### 1:XX.4.2 Use Cases
 
