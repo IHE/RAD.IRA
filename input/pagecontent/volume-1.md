@@ -433,9 +433,9 @@ considerations and Section 1:52.6 describes some optional groupings in other rel
 
 ### 1:XX.4.1 Concepts
 
-#### 1:XX.4.1.1 FHIRcast and the Publish and Subscribe Model
+#### 1:XX.4.1.1 Publish and Subscribe Model
 
-To ensure that the user acts on the same clinical information across different applications, this profile is based on [FHIRcast](https://build.fhir.org/ig/HL7/fhircast-docs/index.html) which uses a Publish and Subscribe model based on [WebSub](https://www.w3.org/TR/websub/) to synchronize applications in real time.
+This profile is based on [FHIRcast](https://build.fhir.org/ig/HL7/fhircast-docs/index.html) which uses a Publish and Subscribe model based on [WebSub](https://www.w3.org/TR/websub/) to synchronize applications in real time.
 
 The following are some key concepts:
 * A `Hub` receives events from a driving application and forwards the events to subscribing applications (i.e. `Subscriber`) according to their subscription.
@@ -469,11 +469,11 @@ On the other hand, `Commands` represents intention, often associated with specif
 
 In this profile, the messages that a `Subscriber` sends to the `Hub` represents an `Event`. There is no support for sending `Commands` in this profile.
 
-#### 1:XX.4.1.4 Awareness vs Usage
+#### 1:XX.4.1.4 Event Awareness vs Event Consumption
 
-`Awareness` means an application, upon receiving an event from the `Hub`, has the knowledge of an event has happened.
+`Event Awareness` means an application, upon receiving an event from the `Hub`, has the knowledge of an event has happened.
 
-`Usage` means an application, upon receiving an event from the `Hub`, reacts to the event and performed some actions according to its business logic.
+`Event Consumption` means an application, upon receiving an event from the `Hub`, reacts to the event and performed some actions according to its business logic.
 
 This means from the driving application perspective, in order to synchronize the context with other applications, it is desirable to publish as many events as reasonable so that other subscribers can be aware of the same context as in the driving application.
 
