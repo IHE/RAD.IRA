@@ -461,7 +461,15 @@ The following is a representation of the data model:
 </div>
 <br clear="all">
 
-#### 1:XX.4.1.3 Events vs Commands
+#### 1:XX.4.1.3 Long Session and Short Context
+
+A `Session` is a communication channel setup between the `Subscribers` via the `Hub`. As long as `Subscribers` are active and have events to communicate with each other, the `Session` can stay open. Therefore a `Session` has a long duration.
+
+A `Context` is used to communicate a subject on which the `Subscribers` should synchronize as appropriate to their business logic. As soon as the subject is complete, then the corresponding `Context` can be closed. Therefore a `Context` has a short duration.
+
+Note that occasionally a `Context` may be _interrupted_ because of _suspension_, meaning that before the `Context` is closed, another `Context` is opened (e.g. a radiologist needs to suspend the current report on a study in order to review another urgent study). In this case, the information of the previous `Context` is still maintained by the `Hub` since it is not closed, but it is _suspended_ (i.e. not the `Current Context`). Instead the `Current Context` is switched to the urgent study being opened. As soon as the user finished reviewing the urgent study and hence closing the `Context` of the urgent study, the _suspended_ `Context` will resume to be the `Current Context` since it is the last opened `Context`.
+
+#### 1:XX.4.1.4 Events vs Commands
 
 `Events` represent facts that have happened. For example, DiagnosticReport-open represents an event that an application opens a study for reporting. Note that an event has no direct target audience. Any applications subscribed to the event will receive the event and the application can determine how to process the event. The application that producing the event is not aware of the actions being performed by different consuming applications, unless these consuming applications in turn publishes additional events.
 
@@ -469,7 +477,7 @@ On the other hand, `Commands` represents intention, often associated with specif
 
 In this profile, the messages that a `Subscriber` sends to the `Hub` represents an `Event`. There is no support for sending `Commands` in this profile.
 
-#### 1:XX.4.1.4 Event Awareness vs Event Consumption
+#### 1:XX.4.1.5 Event Awareness vs Event Consumption
 
 `Event Awareness` means an application, upon receiving an event from the `Hub`, has the knowledge of an event has happened.
 
@@ -483,7 +491,7 @@ For example, in a nodule tracking application, when the user goes through the st
 
 Note that this implies the reporting application has to keep track of all the context in the received events independent of whether the context will be used in the report later. This is important because there is no `Command` defined in this profile and the reporting application cannot request past context from the reporting application or the `Hub`. (The reporting application may provide other means to support a query mechanism, but this is out of scope of this profile).
 
-#### 1:XX.4.1.5 Timing of Sending an Event
+#### 1:XX.4.1.6 Timing of Sending an Event
 
 On one hand, it is desirable for all subscribed applications to be synchronized with the driving application as soon as possible. On the other hand, FHIRcast is a network protocol which incurs a non-trivial cost to send each event. Therefore any implementation should take into account when an action is considered to be complete or stable, and hence ready to be captured and communicated as events.
 
@@ -493,13 +501,13 @@ Furthermore, this profile is designed to communicate _in-progress_ data as soon 
 
 This profile does not mandate any specific implementation design regarding when an application should capture the result of an action as an event.
 
-#### 1:XX.4.1.6 Transient Resource vs Persistent Resource
+#### 1:XX.4.1.7 Transient Resource vs Persistent Resource
 
 FHIRcast uses FHIR resources to capture the context and content in an event. These FHIR resources may be transient, meaning that they do not necessarily exist in any system, nor are they expected to be persisted by any system. Furthermore, even an application decides to persist the FHIR resource(s), it is not required to use the same resource ID in the event as the ID of the persisted resource. The application can generate new IDs instead.
 
 Since the FHIR resources specified in the event may or may not exist, to differentiate between the two cases, this profile defines that transient resources are identified by relative references (e.g. Patient/12345) and persisted resources that already exist are identified by full URL (e.g. http://myserver.com/Patient/12345).
 
-#### 1:XX.4.1.7 Communication of Processing Result
+#### 1:XX.4.1.8 Communication of Processing Result
 
 Upon receiving an event, the `Hub` and `Subscribers` processes the event according to its business logic. There are several possible outcome:
 
