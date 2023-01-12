@@ -15,12 +15,12 @@ This guide is organized into the following sections:
 
 1. Volume 1:
    1. [Introduction](volume-1.html)
-   1. [Actors and Transactions](volume-1.html#actors-and-transactions)
-   1. [Actor Options](volume-1.html#actor-options)
-   1. [Actor Required Groupings](volume-1.html#required-groupings)
-   1. [Overview](volume-1.html#overview)
-   1. [Security Considerations](volume-1.html#security-considerations)
-   1. [Cross Profile Considerations](volume-1.html#other-grouping)
+   1. [Actors and Transactions](volume-1.html#1xx1-realtime-bidirectional-communication-for-interactive-multimedia-reporting)
+   1. [Actor Options](volume-1.html#1xx2-rtc-imr-actor-options)
+   1. [Actor Required Groupings](volume-1.html#1xx3-rtc-imr-required-actor-groupings)
+   1. [Overview](volume-1.html#1xx4-rtc-imr-overview)
+   1. [Security Considerations](volume-1.html#1xx5-rtc-imr-security-considerations)
+   1. [Cross Profile Considerations](volume-1.html#1xx6-rtc-imr-cross-profile-considerations)
 
 2. Volume 2: Transaction Detail
    1. [FooBar do \[domain-YY\]](domain-YY.html)

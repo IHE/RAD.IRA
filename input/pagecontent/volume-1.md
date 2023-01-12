@@ -10,7 +10,7 @@ Both appendices are located at <https://profiles.ihe.net/GeneralIntro/>.
 Figure 1:XX.1-1 shows the actors directly involved in the RTC-IMR Profile and the relevant transactions
 between them. If needed for context, other actors that may be indirectly involved due to their participation
 in other related profiles are shown in dotted lines. Actors which have a required
-grouping are shown in conjoined boxes (see [Section 1:XX.3](#1XX3-rtc-imr-required-actor-groupings)).
+grouping are shown in conjoined boxes (see [Section 1:XX.3](#1xx3-rtc-imr-required-actor-groupings)).
 
 <div>
     <img src="actor_transaction.png" width="80%">
@@ -35,7 +35,7 @@ Table 1:XX.1-1 lists the transactions for each actor directly involved in the IM
   </thead>
   <tbody>
     <tr>
-      <td rowspan="10"><a href="#1XX111-image-display">Image Display</a></td>
+      <td rowspan="10"><a href="volume-1.html#1xx111-image-display">Image Display</a></td>
       <td>Subscribe Reporting Session [RAD-X1]</td>
       <td>Initiator</td>
       <td>R</td>
@@ -96,7 +96,7 @@ Table 1:XX.1-1 lists the transactions for each actor directly involved in the IM
       <td><a href="RAD-X10.html">RAD TF-2: 4.X10</a></td>
     </tr>
     <tr>
-      <td rowspan="10"><a href="#1XX112-evidence-creator">Evidence Creator</a></td>
+      <td rowspan="10"><a href="volume-1.html#1xx112-evidence-creator">Evidence Creator</a></td>
       <td>Subscribe Reporting Session [RAD-X1]</td>
       <td>Initiator</td>
       <td>R</td>
@@ -157,7 +157,7 @@ Table 1:XX.1-1 lists the transactions for each actor directly involved in the IM
       <td><a href="RAD-X10.html">RAD TF-2: 4.X10</a></td>
     </tr>
     <tr>
-      <td rowspan="10"><a href="#1XX113-report-creator">Report Creator</a></td>
+      <td rowspan="10"><a href="volume-1.html#1xx113-report-creator">Report Creator</a></td>
       <td>Subscribe Reporting Session [RAD-X1]</td>
       <td>Initiator</td>
       <td>R</td>
@@ -218,7 +218,7 @@ Table 1:XX.1-1 lists the transactions for each actor directly involved in the IM
       <td><a href="RAD-X10.html">RAD TF-2: 4.X10</a></td>
     </tr>
     <tr>
-      <td rowspan="10"><a href="#1XX114-worklist-manager">Worklist Manager</a></td>
+      <td rowspan="10"><a href="volume-1.html#1xx114-worklist-manager">Worklist Manager</a></td>
       <td>Subscribe Reporting Session [RAD-X1]</td>
       <td>Initiator</td>
       <td>R</td>
@@ -279,7 +279,7 @@ Table 1:XX.1-1 lists the transactions for each actor directly involved in the IM
       <td><a href="RAD-X10.html">RAD TF-2: 4.X10</a></td>
     </tr>
     <tr>
-      <td rowspan="10"><a href="#1XX115-hub">Hub</a></td>
+      <td rowspan="10"><a href="volume-1.html#1xx115-hub">Hub</a></td>
       <td>Subscribe Reporting Session [RAD-X1]</td>
       <td>Responder</td>
       <td>R</td>

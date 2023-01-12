@@ -90,7 +90,7 @@ Content-Type: application/json
 
 #### DiagnosticReport-open Event Example
 
-The event distributed by the Hub includes a context version in the `context.versionId` event attribute which will be used by subscribers to make subsequent [`DiagnosticReport-update`](3-6-3-diagnosticreport-update.html) requests.
+The event distributed by the Hub includes a context version in the `context.versionId` event attribute which will be used by subscribers to make subsequent [`DiagnosticReport-update`](https://build.fhir.org/ig/HL7/fhircast-docs/3-6-3-diagnosticreport-update.html) requests.
 
 ```json
 {
