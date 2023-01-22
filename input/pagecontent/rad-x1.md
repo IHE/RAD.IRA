@@ -6,7 +6,7 @@ This transaction is used to subscribe to a reporting session.
 
 The roles in this transaction are defined in the following table and may be played by the actors shown here:
 
-**Table 2:3.X1.1-1: Actor Roles**
+**Table 2:3.X1.2-1: Actor Roles**
 
 | Role | Description | Actor(s) |
 |------|-------------|----------|
@@ -26,7 +26,7 @@ The roles in this transaction are defined in the following table and may be play
 
 <div style="clear: left"/>
 
-**Figure 2:3.x1.4-1: Interaction Diagram**
+**Figure 2:3.X1.4-1: Interaction Diagram**
 
 #### 2:3.X1.4.1 Subscribe to Reporting Session Request Message
 
@@ -51,6 +51,8 @@ This message is an HTTP POST request. The Sender is the User Agent. The Receiver
 The Sender shall perform an HTTP POST to the Hub’s base URL (as specified in `hub.url`). This request shall have a HTTP header `Content-Type` with the value `application/x-www-form-urlencoded`.
 
 The request shall have the payload with the parameters in the following table:
+
+**Table 2:3.X1.4.1.2-1: Subscribe to Reporting Session Request Parameters**
 
 | Field                 | Optionality | Type     | Description |
 | ----------------------| ----------- | -------- | ------------|
