@@ -53,11 +53,15 @@ The Receiver shall use the opened websocket connection when sending subsequent e
 
 ##### 2:3.X2.4.2.1 Trigger Events
 
-The Receiver accepted the websocket connection request.
+The Receiver accepted or rejected the websocket connection request.
 
 ##### 2:3.X2.4.2.2 Message Semantics
 
-The Receiver shall send a confirmation message back to the Sender using the established websocket connection. The confirmation message shall include the parameters as defined in [Section 2.4.3 Subscription Confirmation](https://build.fhir.org/ig/HL7/fhircast-docs/2-4-Subscribing.html#subscription-confirmation).
+The Receiver shall send a confirmation message back to the Sender using the established websocket connection.
+
+If the Receiver accepts the subscription from the Sender, then the confirmation message shall include the parameters as defined in [Section 2.4.3 Subscription Confirmation](https://build.fhir.org/ig/HL7/fhircast-docs/2-4-Subscribing.html#subscription-confirmation).
+
+If the Receiver rejects the subscription from the Sender, or if the subscription has expired, then the rejection message shall include the parameters as defined in [Section 2.4.5 Subscription Denial](https://build.fhir.org/ig/HL7/fhircast-docs/2-4-Subscribing.html#subscription-denial)
 
 ##### 2:3.X2.4.2.3 Expected Actions
 
