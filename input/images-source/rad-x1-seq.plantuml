@@ -2,18 +2,12 @@
 
 hide footbox
 
-participant "Subscriber" as Sub
-participant "Read-Only\nSubscriber" as ROSub
-participant "Hub" as Hub
+participant "Sender" as Sender
+participant "Receiver" as Receiver
 
-Sub->Hub: Subscribe to Reporting Session Request
-activate Hub
-Hub-->Sub: Subscribe to Reporting Session Response
-deactivate Hub
-
-ROSub->Hub: Subscribe to Reporting Session Request
-activate Hub
-Hub-->ROSub: Subscribe to Reporting Session Response
-deactivate Hub
+Sender->Receiver: Subscribe to Reporting Session Request
+activate Receiver
+Receiver-->Sender: Subscribe to Reporting Session Response
+deactivate Receiver
 
 @enduml
