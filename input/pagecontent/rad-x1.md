@@ -81,7 +81,11 @@ The Receiver shall return an error if the `subscriber.name` is empty.
 
 The Receiver shall create the topic if the topic specified in `hub.topic` does not exist.
 
-The Receiver shall maintain a list of subscribers and their subscribed events for each topic.
+The Receiver shall add the Sender and its subscribed events for the topic.
+
+The Receiver shall generate a cryptographically random, unique and unguessable identifier to be used for the websocket connection for the given Sender.
+
+The Receiver shall associate the Sender to the websocket identifier.
 
 If the Receiver receives a request from a Sender and the Sender already exist as a subscriber on the combination of `hub.topic` and `hub.channel.endpoint`, then the Receiver shall update the Sender subscribed events in `hub.events` with the value from the request.
 
@@ -99,11 +103,11 @@ The Receiver receives a Subscribe to Reporting Session Request message.
 
 This message is an HTTP POST response. The Sender is the User Agent. The Receiver is the Origin Server.
 
-If the Hub successfully processed the request, the Hub shall respond with an HTTP 202 “Accepted” response.
+If the Receiver successfully processed the request, the Receiver shall respond with an HTTP 202 “Accepted” response.
 
 The HTTP body of the response shall consist of a JSON object containing an element name `hub.channel.endpoint` and a value for the WSS URL. The WebSocket WSS URL shall be cryptographically random, unique, and unguessable. 
 
-If a Hub refuses the request according to its policy or finds any errors in the request, it shall return an appropriate HTTP error response code (4xx or 5xx). In the event of an error, the Hub may return a description of the error in the response body as plain text.
+If a Receiver refuses the request according to its policy or finds any errors in the request, it shall return an appropriate HTTP error response code (4xx or 5xx). In the event of an error, the Receiver may return a description of the error in the response body as plain text.
 
 ##### 2:3.X1.4.2.3 Expected Actions
 
