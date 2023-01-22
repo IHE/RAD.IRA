@@ -1,73 +1,73 @@
-This section corresponds to transaction [ITI-Y] of the IHE Technical Framework. Transaction [ITI-Y] is used by the Client and Server Actors. The go [ITI-Y] transaction is used to query and get back results.
+### 2:3.X2.1 Scope
 
-### Scope
+This transaction is used to complete the subscription by connecting to the notification channel in order to receive synchronization events.
 
-The Client [ITI-Y] transaction passes a go Request from a Client to a Server.
+### 2:3.X2.2 Actors Roles
 
-### Actors Roles
+**Table 2:3.X2.2-1: Actor Roles**
 
-**Table: Actor Roles**
+| Role | Description | Actor(s) |
+|------|-------------|----------|
+| Sender | Connect to a websocket notification channel | Subscriber<br>Read-Only Subscriber |
+| Receiver | Establish a websocket notification channel and manage subscription | Hub |
+{: .grid}
 
-|Actor | Role |
-|-------------------+--------------------------|
-| [Client](volume-1.html#client)    | Sends query to Server |
-| [Server](volume-1.html#server) | Receives the query and responds |
+### 2:3.X2.3 Referenced Standards
 
-### Referenced Standards
+**FHIRcast**: [Subscribing to Events](https://build.fhir.org/ig/HL7/fhircast-docs/2-4-Subscribing.html)
 
-**FHIR-R4** [HL7 FHIR Release 4.0](http://www.hl7.org/FHIR/R4)
-
-### Interactions
+### 2:3.X2.4 Messages
 
 <div>
-{%include domain-Y-seq.svg%}
+{%include rad-x2-seq.svg%}
 </div>
-<br clear="all">
 
-**Figure: Go Interactions**
+<div style="clear: left"/>
 
+**Figure 2:3.X2.4-1: Interaction Diagram**
 
-#### go Query Message
-This message uses the HTTP GET method on the target Server endpoint to convey the query parameters FHIR query.
+#### 2:3.X2.4.1 Connect to Websocket Request Message
+The Sender sends a websocket connection request to the Receiver. The Sender shall support sending such messages to more than one Receiver.
 
-##### Trigger Events
+The Receiver shall support handling such messages from more than one Sender. 
 
-''TODO: define the triggers''
+##### 2:3.X2.4.1.1 Trigger Events
 
-##### Message Semantics
+The Sender receives a successful Subscribe Reporting Session [RAD-X1] response.
 
-''TODO: define the message -- usually with a StructureDefintion''
+##### 2:3.X2.4.1.2 Message Semantics
 
-##### Expected Actions
+This message is a websocket request. The Sender is the User Agent. The Receiver is the Origin Server.
 
-''TODO: define expected actions''
+The Sender shall send a websocket request to the `hub.channel.endpoint` websocket WSS URL received from the successful Subscribe Reporting Session [RAD-X1] response. 
 
-#### Go Response Message
+##### 2:3.X2.4.1.3 Expected Actions
 
-##### Trigger Events
+The Receiver shall return an error if the websocket identifier in the WSS URL does not exist.
 
-''TODO: define the triggers''
+The Receiver shall keep the websocket connection open for use as a notification channel.
 
-##### Message Semantics
+The Receiver shall use the opened websocket connection when sending subsequent events to the Sender.
 
-''TODO: define the message -- usually with a StructureDefintion''
+#### 2:3.X2.4.2 Connect to Websocket Response Message
 
-##### Expected Actions
+##### 2:3.X2.4.2.1 Trigger Events
 
-''TODO: define expected actions''
+The Receiver accepted the websocket connection request.
 
+##### 2:3.X2.4.2.2 Message Semantics
 
-### CapabilityStatement Resource
+The Receiver shall send a confirmation message back to the Sender using the established websocket connection. The confirmation message shall include the parameters as defined in [Section 2.4.3 Subscription Confirmation](https://build.fhir.org/ig/HL7/fhircast-docs/2-4-Subscribing.html#subscription-confirmation).
 
-Server implementing this transaction shall provide a CapabilityStatement Resource as described in ITI TF-2x: Appendix Z.3 indicating the transaction has been implemented. 
-* Requirements CapabilityStatement for [Client](CapabilityStatement-IHE.FooBar.client.html)
-* Requirements CapabilityStatement for [Server](CapabilityStatement-IHE.FooBar.server.html)
+##### 2:3.X2.4.2.3 Expected Actions
 
-### Security Considerations
+If the Sender wants to maintain the subscription, then it shall renew the subscription using Subscribe Reporting Session [RAD-X1] before the subscription expired according to `hub.lease_seconds` specified in the confirmation.
 
-See [MHD Security Considerations](volume-1.html#security-considerations)
+### 2:3.X2.5 Security Considerations
 
-#### Security Audit Considerations
+See [RTC-IMR Security Considerations](volume-1.html#1xx5-rtc-imr-security-considerations)
+
+#### 2:3.X2.5.1 Security Audit Considerations
 
 ''TODO: The security audit criteria ''
 

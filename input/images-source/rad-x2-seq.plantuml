@@ -1,0 +1,19 @@
+@startuml
+
+hide footbox
+
+participant "Subscriber" as Sub
+participant "Read-Only\nSubscriber" as ROSub
+participant "Hub" as Hub
+
+Sub->Hub: Connect to Websocket Request
+activate Hub
+Hub-->Sub: Connect to Websocket Response
+deactivate Hub
+
+ROSub->Hub: Connect to Websocket Request
+activate Hub
+Hub-->ROSub: Connect to Websocket Response
+deactivate Hub
+
+@enduml
