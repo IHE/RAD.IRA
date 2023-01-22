@@ -1,71 +1,121 @@
-This section corresponds to transaction [ITI-Y] of the IHE Technical Framework. Transaction [ITI-Y] is used by the Client and Server Actors. The go [ITI-Y] transaction is used to query and get back results.
+### 2:3.X1.1 Scope
 
-### Scope
+This transaction is used to subscribe to a reporting session.
 
-The Client [ITI-Y] transaction passes a go Request from a Client to a Server.
+### 2:3.X1.2 Actors Roles
 
-### Actors Roles
+The roles in this transaction are defined in the following table and may be played by the actors shown here:
 
-**Table: Actor Roles**
+**Table 2:3.X1.1-1: Actor Roles**
 
-|Actor | Role |
-|-------------------+--------------------------|
-| [Client](volume-1.html#client)    | Sends query to Server |
-| [Server](volume-1.html#server) | Receives the query and responds |
+| Role | Description | Actor(s) |
+|------|-------------|----------|
+| Sender | Subscribes to a topic | Subscriber<br>Read-Only Subscriber |
+| Receiver | Receives and manages subscription requests | Hub |
+{: .grid}
 
-### Referenced Standards
+### 2:3.X1.3 Referenced Standards
 
-**FHIR-R4** [HL7 FHIR Release 4.0](http://www.hl7.org/FHIR/R4)
+**FHIRcast**: [Subscribing to Events](https://build.fhir.org/ig/HL7/fhircast-docs/2-4-Subscribing.html)
 
-### Interactions
+### 2:3.X1.4 Messages
 
 <div>
-{%include domain-Y-seq.svg%}
+{%include rad-x1-seq.svg%}
 </div>
-<br clear="all">
 
-**Figure: Go Interactions**
+<div style="clear: left"/>
 
+**Figure 2:3.x1.4-1: Interaction Diagram**
 
-#### go Query Message
-This message uses the HTTP GET method on the target Server endpoint to convey the query parameters FHIR query.
+#### 2:3.X1.4.1 Subscribe to Reporting Session Request Message
 
-##### Trigger Events
+The Sender sends a reporting session subscription request to the Receiver. The Sender shall support sending such messages to more than one Receiver.
 
-''TODO: define the triggers''
+The Receiver shall support handling such messages from more than one Sender. 
 
-##### Message Semantics
+##### 2:3.X1.4.1.1 Trigger Events
 
-''TODO: define the message -- usually with a StructureDefintion''
+If the Sender is the driving application that starts the reporting session, then the Sender sends the request when it starts the reporting session.
 
-##### Expected Actions
+If the Sender is a synchronizing application, then the Sender sends the request when it is launched by the driving application.
 
-''TODO: define expected actions''
+The Sender sends the request when it decided to change the subscribed events.
 
-#### Go Response Message
+The Sender sends the request to renew an existing subscription.
 
-##### Trigger Events
+##### 2:3.X1.4.1.2 Message Semantics
 
-''TODO: define the triggers''
+This message is an HTTP POST request. The Sender is the User Agent. The Receiver is the Origin Server.
 
-##### Message Semantics
+The Sender shall perform an HTTP POST to the Hub’s base URL (as specified in `hub.url`). This request shall have a HTTP header `Content-Type` with the value `application/x-www-form-urlencoded`.
 
-''TODO: define the message -- usually with a StructureDefintion''
+The request shall have the payload with the parameters in the following table:
 
-##### Expected Actions
+| Field                 | Optionality | Type     | Description |
+| ----------------------| ----------- | -------- | ------------|
+|`hub.channel.type`     | Required    | *string* | The Subscriber shall specify the channel type of `websocket`.|
+|`hub.mode`             | Required    | *string* | The literal string `subscribe`.|
+|`hub.topic`            | Required    | *string* | The identifier of the session that the Subscriber wishes to subscribe to.| 
+|`hub.events`           | Required    | *string* | Shall include these five events, comma-separated: <br>`diagnosticreport-open`,<br>`diagnosticreport-close`,<br>`diagnosticreport-update`, <br>`diagnosticreport-select`,<br>`syncerror`<br><br>The Subscriber may include other events.|
+|`hub.lease_seconds`    | Optional    | *number* | The positive integer indicating the number of seconds that the Subscriber wants the subscription to be active. |
+|`hub.channel.endpoint` | Conditional | *string* | The WSS URL identifying an existing WebSocket subscription.|
+|`subscriber.name`      | Required    | *string* | A unique identifier of the Subscriber.|
+{: .grid}
 
-''TODO: define expected actions''
+If the Sender wants to re-request on the same topic (e.g. modify the subscribed events in `hub.events` or renew an existing subscription), the Sender shall specify `hub.channel.endpoint` with the value of the existing websocket URL.
 
+##### 2:3.X1.4.1.3 Expected Actions
 
-### CapabilityStatement Resource
+The Receiver shall receives and validates the message.
 
-Server implementing this transaction shall provide a CapabilityStatement Resource as described in ITI TF-2x: Appendix Z.3 indicating the transaction has been implemented. 
-* Requirements CapabilityStatement for [Client](CapabilityStatement-IHE.FooBar.client.html)
-* Requirements CapabilityStatement for [Server](CapabilityStatement-IHE.FooBar.server.html)
+The Receiver shall return an error if the `hub.channel.type` is not `websocket`.
+
+The Receiver shall return an error if the `hub.topic` is empty.
+
+The Receiver shall return an error if the `hub.mode` is `subscribe` and there is no `hub.events` or its value is empty.
+
+The Receiver shall return an error if the `subscriber.name` is empty.
+
+The Receiver shall create the topic if the topic specified in `hub.topic` does not exist.
+
+The Receiver shall maintain a list of subscribers and their subscribed events for each topic.
+
+If the Receiver receives a request from a Sender and the Sender already exist as a subscriber on the combination of `hub.topic` and `hub.channel.endpoint`, then the Receiver shall update the Sender subscribed events in `hub.events` with the value from the request.
+
+The Receiver may honour `hub.lease_seconds` specified in the request by the Sender, or it may specify its own default according to its policy. When the subscription of the Sender expired according to `hub.lease_seconds`, the Receiver shall automatically unsubscribe the Sender on the associated `hub.topic`.
+
+#### 2:3.X1.4.2 Subscribe to Reporting Session Response Message
+
+The Receiver sends a response message describing the message outcome to the Sender.
+
+##### 2:3.X1.4.2.1 Trigger Events
+
+The Receiver receives a Subscribe to Reporting Session Request message.
+
+##### 2:3.X1.4.2.2 Message Semantics
+
+This message is an HTTP POST response. The Sender is the User Agent. The Receiver is the Origin Server.
+
+If the Hub successfully processed the request, the Hub shall respond with an HTTP 202 “Accepted” response.
+
+The HTTP body of the response shall consist of a JSON object containing an element name `hub.channel.endpoint` and a value for the WSS URL. The WebSocket WSS URL shall be cryptographically random, unique, and unguessable. 
+
+If a Hub refuses the request according to its policy or finds any errors in the request, it shall return an appropriate HTTP error response code (4xx or 5xx). In the event of an error, the Hub may return a description of the error in the response body as plain text.
+
+##### 2:3.X1.4.2.3 Expected Actions
+
+If the HTTP response code is 202 "Accepted", the Sender shall extract the websocket WSS URL from `hub.channel.endpoint` and send Connect Notification Channel [RAD-X2] to this URL.
+
+The Sender shall maintain this WSS URL for subsequent subscription update or renewal.
+
+If the HTTP response code is 4xx or 5xx, then the Sender may adjust the request and retry.
 
 ### Security Considerations
 
-See [MHD Security Considerations](volume-1.html#security-considerations)
+See [RTC-IMR Security Considerations](volume-1.html#1xx5-rtc-imr-security-considerations)
+
+The Sender which is a synchronizing application should authenticate and authorize the driving application before it accepts the provided `hub.topic` and `hub.url` and sends this request.
 
 #### Security Audit Considerations
 
