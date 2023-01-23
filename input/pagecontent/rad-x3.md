@@ -71,6 +71,8 @@ The Receiver shall validate the request as follow:
 
 If the Receiver accepts the request, then the Receiver shall set the current context to be the `report` context of the received DiagnosticReport-open event.
 
+The Receiver shall broadcast the event to all subscribers that subscribed to the received event using Send Context Event [RAD-X9].
+
 #### 2:3.X3.4.2 Connect to Websocket Response Message
 
 ##### 2:3.X3.4.2.1 Trigger Events
