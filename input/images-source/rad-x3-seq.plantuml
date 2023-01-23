@@ -1,0 +1,13 @@
+@startuml
+
+hide footbox
+
+participant "Sender" as Sender
+participant "Receiver" as Receiver
+
+Sender->Receiver: Change Report Context Request
+activate Receiver
+Receiver-->Sender: Change Report Context Response
+deactivate Receiver
+
+@enduml
