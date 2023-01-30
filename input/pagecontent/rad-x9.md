@@ -21,7 +21,7 @@ This transaction is used to send accepted events to all subscribers that subscri
 ### 2:3.X9.4 Messages
 
 <div>
-{%include rad-X9-seq.svg%}
+{%include rad-x9-seq.svg%}
 </div>
 
 <div style="clear: left"/>
