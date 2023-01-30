@@ -22,7 +22,7 @@ This transaction is used to initiate a report context that all synchronizing app
 ### 2:3.X3.4 Messages
 
 <div>
-{%include rad-X3-seq.svg%}
+{%include rad-x3-seq.svg%}
 </div>
 
 <div style="clear: left"/>
