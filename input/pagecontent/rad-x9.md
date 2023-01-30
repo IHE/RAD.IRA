@@ -10,7 +10,7 @@ This transaction is used to send accepted events to all subscribers that subscri
 
 | Role | Description | Actor(s) |
 |------|-------------|----------|
-| Sender | Send accepted event to subscribers | Hub |
+| Manager | Send accepted event to subscribers | Hub |
 | Receiver | Receive synchronization events | Subscriber<br>Read-Only Subscriber |
 {: .grid}
 
@@ -29,25 +29,25 @@ This transaction is used to send accepted events to all subscribers that subscri
 **Figure 2:3.X9.4-1: Interaction Diagram**
 
 #### 2:3.X9.4.1 Send Event Request Message
-The Sender sends the received events via the established websocket connection to the corresponding Receiver.
+The Manager sends the received events via the established websocket connection to the corresponding Receiver.
 
-The Sender shall support sending such messages to more than one Receiver.
+The Manager shall support sending such messages to more than one Receiver.
 
-The Receiver shall support handling such messages from more than one Sender. 
+The Receiver shall support handling such messages from more than one Manager. 
 
 ##### 2:3.X9.4.1.1 Trigger Events
 
-The Sender accepted a event from a Subscriber.
+The Manager accepted a event from a Subscriber.
 
 ##### 2:3.X9.4.1.2 Message Semantics
 
-This message is a websocket event. The Sender is the User Agent. The Receiver is the Origin Server.
+This message is a websocket event. The Manager is the User Agent. The Receiver is the Origin Server.
 
-The Sender shall send a websocket event to all Receivers that subscribed to the given event via the corresponding websocket associated to each Receiver.
+The Manager shall send a websocket event to all Receivers that subscribed to the given event via the corresponding websocket associated to each Receiver.
 
 The message body shall follow [Section 2.5.1 Event Notification Request](https://build.fhir.org/ig/HL7/fhircast-docs/2-5-EventNotification.html#event-notification-request) and include the same context and content from the request received.
 
-The Sender shall support [content sharing](https://build.fhir.org/ig/HL7/fhircast-docs/2-10-ContentSharing.html) in FHIRcast, specifically:
+The Manager shall support [content sharing](https://build.fhir.org/ig/HL7/fhircast-docs/2-10-ContentSharing.html) in FHIRcast, specifically:
 - It shall assign and maintain an anchor context's `context.versionId` when processing the `[FHIR reousrce]-open` event. The `context.versionId` shall be unique within the topic.
 - It shall assign and maintain a new `context.versionId` for each subsequent anchor context's content received via the `[FHIR resource]-update` event.
 - It shall provide the new `context.versionId` along with the previous versionId as `context.priorVersionId` in the event
@@ -76,7 +76,7 @@ The Receiver accepted or rejected the event received.
 
 ##### 2:3.X9.4.2.2 Message Semantics
 
-The Receiver shall send a confirmation message back to the Sender using the established websocket connection.
+The Receiver shall send a confirmation message back to the Manager using the established websocket connection.
 
 The Receiver shall include `id` and `status` parameters as defined in [Section 2.5.2 Event Notification Response](https://build.fhir.org/ig/HL7/fhircast-docs/2-5-EventNotification.html#event-notification-response) in the confirmation message.
 
@@ -91,7 +91,7 @@ The `status` shall be one of the following:
 
 ##### 2:3.X9.4.2.3 Expected Actions
 
-If the Sender receives an error confirmation message (i.e. `status` `4xx` or `5xx`) from at least one of the Receivers, then the Sender shall send a `syncerror` event following [Send SyncError Event](rad-x10.html) to all subscribers that subscribed to the `syncerror` event.
+If the Manager receives an error confirmation message (i.e. `status` `4xx` or `5xx`) from at least one of the Receivers, then the Manager shall send a `syncerror` event following [Send SyncError Event](rad-x10.html) to all subscribers that subscribed to the `syncerror` event.
 
 ### 2:3.X9.5 Security Considerations
 
