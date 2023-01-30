@@ -3,11 +3,18 @@
 hide footbox
 
 participant "Sender" as Sender
+participant "Manager" as Manager
 participant "Receiver" as Receiver
 
-Sender->Receiver: Change Report Context Request
-activate Receiver
-Receiver-->Sender: Change Report Context Response
-deactivate Receiver
+== Initial Report Context ==
+
+Sender->Manager: Change Report Context Request
+activate Manager
+Manager-->Sender: Change Report Context Response
+deactivate Manager
+
+== Process DiagnosticReport-open Event ==
+Manager->Receiver: //Send Context Event [RAD-X9]//
+Receiver->Receiver: Process Report Context
 
 @enduml

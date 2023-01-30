@@ -9,8 +9,11 @@ This transaction is used to initiate a report context that all synchronizing app
 | Role | Description | Actor(s) |
 |------|-------------|----------|
 | Sender | Initiate a report context | Subscriber |
-| Receiver | Receives and maintain anchor and current context | Hub |
+| Manager | Receives and maintain anchor and current context<br>and forward events to other Receivers | Hub |
+| Receiver | Receives events from Manager | Subscriber (See note 1) |
 {: .grid}
+
+> Note 1: The Receiver Role is played by Subscribers subscribed to the event. This may include the original Sender as well as other Subscribers.
 
 ### 2:3.X3.3 Referenced Standards
 
@@ -26,10 +29,10 @@ This transaction is used to initiate a report context that all synchronizing app
 
 **Figure 2:3.X3.4-1: Interaction Diagram**
 
-#### 2:3.X3.4.1 Emit Report Context Event Message
-The Sender sends an event to the Receiver to change report context. The Sender shall support sending such messages to more than one Receiver.
+#### 2:3.X3.4.1 Change Report Context Request Message
+The Sender sends an event to the Manager to change report context. The Sender shall support sending such messages to more than one Manager.
 
-The Receiver shall support handling such messages from more than one Sender. 
+The Manager shall support handling such messages from more than one Sender. 
 
 ##### 2:3.X3.4.1.1 Trigger Events
 
@@ -37,7 +40,7 @@ The Sender identifies a new report context.
 
 ##### 2:3.X3.4.1.2 Message Semantics
 
-This message is an HTTP POST request. The Sender is the User Agent. The Receiver is the Origin Server.
+This message is an HTTP POST request. The Sender is the User Agent. The Manager is the Origin Server.
 
 The Sender shall send a HTTP POST request to the Receiver `hub.url`.
 
@@ -56,43 +59,60 @@ Key | Optionality | FHIR operation to generate context | Description
 `patient` | REQUIRED | `Patient/{id}?_elements=identifier` | Conform to the RTC-IMR-Patient resource
 `study` | REQUIRED | `ImagingStudy/{id}?_elements=identifier,accession` | COnform to the RTC-IMR-ImagingStudy resource
 
-If the Sender retries the same request due to a timeout, then the Sender shall use the same `event.id` such that the Receiver can detect if it is a duplicate message.
+If the Sender retries the same request due to a timeout, then the Sender shall use the same `event.id` such that the Manager can detect if it is a duplicate message.
 
-If the Sender retries the same request due to an error response from the Receiver, then the Sender shall assign a new `event.id` to indicate that it is a new message.
+If the Sender retries the same request due to an error response from the Manager, then the Sender shall assign a new `event.id` to indicate that it is a new message.
 
 ##### 2:3.X3.4.1.3 Expected Actions
 
-The Receiver shall validate the request as follow:
+The Manager shall validate the request as follow:
 
 * If `timestamp`, `id` or `event` are not set, then return an error
 * If `event.context` does not include `report`, `patient` and `study`, then return an error
 * If each context does not conform to the corresponding resource definition, then return an error
 * if `event`.`hub.topic` is not a known topic, then return an error
 
-If the Receiver accepts the request, then the Receiver shall set the current context to be the `report` context of the received DiagnosticReport-open event.
+If the Manager accepts the request, then the Manager shall set the current context to be the `report` context of the received DiagnosticReport-open event.
 
-The Receiver shall broadcast the event to all subscribers that subscribed to the received event using Send Context Event [RAD-X9].
+The Manager shall broadcast the event to all subscribers that subscribed to the received event using Send Context Event [RAD-X9](rad-x9.html).
 
-#### 2:3.X3.4.2 Connect to Websocket Response Message
+#### 2:3.X3.4.2 Change Report Context Response Message
 
 ##### 2:3.X3.4.2.1 Trigger Events
 
-The Receiver finished process the Change Report Context request.
+The Manager finished process the Change Report Context request.
 
 ##### 2:3.X3.4.2.2 Message Semantics
 
-If the Receiver accepted the Change Report Context request, then the Receiver shall send a 2xx HTTP status:
+If the Manager accepted the Change Report Context request, then the Manager shall send a 2xx HTTP status:
 
-* If the Receiver processed the request successfully, then it shall return 200 OK or 201 Created
-* If the Receiver processed the request asynchronously, then it may return 202 Accepted
+* If the Manager processed the request successfully, then it shall return 200 OK or 201 Created
+* If the Manager processed the request asynchronously, then it may return 202 Accepted
 
-If the Receiver rejected the Change Report Context request, then the Receiver shall return a 4xx or 5xx HTTP error response code.
+If the Manager rejected the Change Report Context request, then the Manager shall return a 4xx or 5xx HTTP error response code.
 
 ##### 2:3.X3.4.2.3 Expected Actions
 
 If the response is a success, then no further action expected.
 
 If the response is an error, then the Sender may consider retrying the request.
+
+#### 2:3.X3.4.3 Process Report Context Message
+
+##### 2:3.X3.4.3.1 Trigger Events
+
+The Receiver receives a `DiagnosticReport-open` event from Manager via Send Context Event [RAD-X9](rad-x9.html).
+
+> Note: This message is not a traditional message in a transaction between two devices; the primary focus is on the required behavior of the Receiver upon receiving the event from the Manager triggered by the request from the Sender. The Send Context Event [RAD-X9](rad-x9.html) specifies the general requirement between the Manager and the Receiver and it is agnostic about the specific event.
+
+##### 2:3.X3.4.3.1 Message Semantics
+
+The Receiver shall *open* the corresponding `event.context` according to its application logic. In particular,
+- An Image Display shall display the patient's study corresponding to the `patient` and `study` context.
+- A Report Creator shall open the procedure corresponding to the `patient` and `study` context and be ready for reporting. It may use the `id` in the `report` context as the report ID for the eventual created report.
+- An Evidence Creator shall process the patient's study corresponding to the `patient` and `study` context.
+
+If the Receiver failed to process the event, then it shall return a `syncerror` back to the Manager using Send SyncError Event [RAD-X10](rad-10.html).
 
 ### 2:3.X3.5 Security Considerations
 
