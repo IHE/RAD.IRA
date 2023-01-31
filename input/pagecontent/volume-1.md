@@ -1,4 +1,4 @@
-The Realtime Bidirectional Communication for Interactive Multimedia Report (RTC-IMR) Profile specifies how systems can be communicated efficiently in context with realtime content in order to provide a streamlined user experience during reporting.
+The Realtime Bidirectional Communication for Interactive Multimedia Report (RTC-IMR) Profile specifies how systems can  communicate efficiently in context with realtime content in order to provide a streamlined user experience during reporting.
 
 # 1:XX.1 Realtime Bidirectional Communication for Interactive Multimedia Reporting
 
