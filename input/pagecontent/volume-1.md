@@ -574,7 +574,7 @@ Figure 1:XX.4.2.1.2.0-2: Condensed Subscription Transaction in RTC-IMR Profile
 
 When a radiologist starts reporting, the PACS, as the initiator, opens a reporting session.
 
-Note that there is no explicit creation of a session. If the Hub receives a session ID (i.e. topic) that is not already exist, then the Hub will automatically create the session and add the subscriber (i.e. PACS) to the session.
+Note that there is no explicit creation of a session. If the Hub receives a session ID (i.e. topic) that does not already exist, then the Hub will automatically create the session and add the subscriber (i.e. PACS) to the session.
 
 <div>
 {%include step1-open-reporting-session.svg%}
@@ -592,7 +592,7 @@ Figure 1:XX.4.2.1.2.1-1: Open Reporting Session Flow in RTC-IMR Profile
 
 Figure 1:XX.4.2.1.2.1-2: Open Study in Context Flow in RTC-IMR Profile
 
-Note that when the Reporting App successfully completed the subscription, it immediately queries for the current context from the Hub. This immediate query is to ensure that the Reporting App is aware of the latest context in the session.
+Note that when the Reporting App successfully completes the subscription, it immediately queries for the current context from the Hub. This immediate query is to ensure that the Reporting App is aware of the latest context in the session.
 This is necessary because the PACS does not know when the Reporting App completed the subscription. Therefore it is possible the PACS has already changed context before the subscription is complete.
 
 ###### 1:XX.4.2.1.2.3 Step 3: Add Content (Optional)
@@ -613,7 +613,7 @@ Figure 1:XX.4.2.1.2.1-3: Add Content Flow in RTC-IMR Profile
 
 Figure 1:XX.4.2.1.2.1-4: Select Content Flow in RTC-IMR Profile
 
-Selected contents are put into 'focus' by the Reporting App. Note that here 'focus' is agnostic about the user interface implementation. It may result in the selected contents being highlighted in the user interface, or it may result in the selected contents being flagged in the backend service. Specific behavior depends on the implementation.
+Selected contents are put into 'focus' by the Reporting App. Note that the 'focus' is agnostic about the user interface implementation. It may result in the selected contents being highlighted in the user interface, or it may result in the selected contents being flagged in the backend service. Specific behavior depends on the implementation.
 
 ###### 1:XX.4.2.1.2.5 Step 5: Sign-off Report
 
