@@ -613,7 +613,7 @@ Figure 1:XX.4.2.1.2.1-3: Add Content Flow in RTC-IMR Profile
 
 Figure 1:XX.4.2.1.2.1-4: Select Content Flow in RTC-IMR Profile
 
-Selected contents are put into 'focus' by the Reporting App. Note that the 'focus' is agnostic about the user interface implementation. It may result in the selected contents being highlighted in the user interface, or it may result in the selected contents being flagged in the backend service. Specific behavior depends on the implementation.
+Selected contents are put into 'focus' by the Reporting App. Note that this profile is agnostic about the user interface implementation of 'focus', e.g., it may result in the selected contents being highlighted in the user interface, or it may result in the selected contents being flagged in the backend service. Specific behavior depends on the implementation.
 
 ###### 1:XX.4.2.1.2.5 Step 5: Sign-off Report
 
@@ -624,7 +624,7 @@ Selected contents are put into 'focus' by the Reporting App. Note that the 'focu
 
 Figure 1:XX.4.2.1.2.1-5: Sign-off Report Flow in RTC-IMR Profile
 
-The flow above shows the simple case focuses on a single report context. In practice, the radiologist is likely to continue with the next study in the worklist without any awareness of the events happening behind the scene. Such rapid context switching is supported by the Hub because it can maintain multiple context simultaneously.
+The flow above shows the simple case with a single report context. In practice, the radiologist is likely to continue with the next study in the worklist without any awareness of the events happening behind the scene. Such rapid context switching is supported by the Hub because it can maintain multiple context simultaneously.
 
 The following diagram shows what can happen in case of rapid switching of the report context.
 
@@ -666,10 +666,7 @@ Figure 1:XX.4.2.3-1: Error Handling Flow in RTC-IMR Profile
 
 See ITI TF-2x: [Appendix Z.8 “Mobile Security Considerations”](https://profiles.ihe.net/ITI/TF/Volume2/ch-Z.html#z.8-mobile-security-considerations)
 
-The following is instructions to the editor and this text is not to be included in a publication. 
-The material initially from [RFC 3552 "Security Considerations Guidelines" July 2003](https://tools.ietf.org/html/rfc3552).
-
-This section should address downstream design considerations, specifically for: Privacy, Security, and Safety. These might need to be individual header sections if they are significant or need to be referenced.
+TO DO...UPDATE THIS BOILERPLATE TEXT FROM THE SUPP. TEMPLATE: This section should address downstream design considerations, specifically for: Privacy, Security, and Safety. These might need to be individual header sections if they are significant or need to be referenced.
 
 The editor needs to understand Security and Privacy fundamentals. 
 General [Security and Privacy guidance](http://hl7.org/fhir/secpriv-module.html) is provided in the FHIR Specification. 
@@ -751,7 +748,7 @@ Where audit logging is specified, a StructureDefinition profile(s) should be inc
 
 ## 1:XX.6 RTC-IMR Cross-Profile Considerations
 
-This section is informative, not normative. It is intended to put
+TO DO: This section is informative, not normative. It is intended to put
 this profile in context with other profiles. Any required groupings
 should have already been described above. Brief descriptions can go
 directly into this section; lengthy descriptions should go into an
