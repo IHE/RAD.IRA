@@ -509,7 +509,7 @@ Since the FHIR resources specified in the event may or may not exist, to differe
 
 #### 1:XX.4.1.8 Communication of Processing Result
 
-Upon receiving an event, the `Hub` and `Subscribers` processes the event according to its business logic. There are several possible outcome:
+Upon receiving an event, the `Hub` and `Subscribers` process the event according to their own business logic. There are several possible outcome:
 
 | Actor | Process Successfully | Process Successfully with no action | Failed Processing |
 | -- | -- | -- | -- |
@@ -521,7 +521,7 @@ Upon receiving an event, the `Hub` and `Subscribers` processes the event accordi
 
 #### 1:XX.4.2.1 Use Case \#1: PACS Driven Reporting
 
-One or two sentence simple description of this particular use
+TO DO: One or two sentence simple description of this particular use
 case.
 
 Note that Section 1:XX.4.2.1 repeats in its entirety for additional use
@@ -529,7 +529,7 @@ cases (replicate as Section 1:XX.4.2.2, 1:XX.4.2.3, etc.).
 
 ##### 1:XX.4.2.1.1 simple name Use Case Description
 
-Describe the key use cases addressed by the profile. Limit to a
+TO DO: Describe the key use cases addressed by the profile. Limit to a
 maximum of one page of text or consider an appendix.
 
 ##### 1:XX.4.2.1.2 simple name Process Flow
@@ -543,11 +543,11 @@ Figure 1:XX.4.2.2-1: PACS Driven Reporting Flow in RTC-IMR Profile
 
 The following sections elaborate on each step in this use case. The hyperlinks in the use case diagram above link to the corresponding step for quick access.
 
-Furthermore, in the [Examples](example.html) tab, it contains sample events following this use case.
+Furthermore, the [Examples](example.html) tab, contains sample events following this use case.
 
 ###### 1:XX.4.2.1.2.0 Common Subscription Flow
 
-Subscribing to a reporting session is a common starting step for an actor to start communicating with other actors in the reporting session in realtime.
+Subscribing to a reporting session is a common starting point for an actor to start communicating with other actors in the reporting session in realtime.
 
 Subscribing to a reporting session involves two transactions:
 
