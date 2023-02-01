@@ -48,7 +48,7 @@ The Sender sends the request to renew an existing subscription.
 
 This message is an HTTP POST request. The Sender is the User Agent. The Receiver is the Origin Server.
 
-The Sender shall perform an HTTP POST to the Hub’s base URL (as specified in `hub.url`). This request shall have a HTTP header `Content-Type` with the value `application/x-www-form-urlencoded`.
+The Sender shall perform an HTTP POST to the Receiver's base URL (as specified in `hub.url`). This request shall have a HTTP header `Content-Type` with the value `application/x-www-form-urlencoded`.
 
 The request shall have the payload with the parameters in the following table:
 
@@ -56,11 +56,11 @@ The request shall have the payload with the parameters in the following table:
 
 | Field                 | Optionality | Type     | Description |
 | ----------------------| ----------- | -------- | ------------|
-|`hub.channel.type`     | Required    | *string* | The Subscriber shall specify the channel type of `websocket`.|
+|`hub.channel.type`     | Required    | *string* | The channel type of `websocket`.|
 |`hub.mode`             | Required    | *string* | The literal string `subscribe`.|
 |`hub.topic`            | Required    | *string* | The identifier of the session that the Subscriber wishes to subscribe to.| 
 |`hub.events`           | Required    | *string* | Shall include these five events, comma-separated: <br>`diagnosticreport-open`,<br>`diagnosticreport-close`,<br>`diagnosticreport-update`, <br>`diagnosticreport-select`,<br>`syncerror`<br><br>The Subscriber may include other events.|
-|`hub.lease_seconds`    | Optional    | *number* | The positive integer indicating the number of seconds that the Subscriber wants the subscription to be active. |
+|`hub.lease_seconds`    | Optional    | *number* | The positive integer indicating the number of seconds that the Sender wants the subscription to be active. |
 |`hub.channel.endpoint` | Conditional | *string* | The WSS URL identifying an existing WebSocket subscription.|
 |`subscriber.name`      | Required    | *string* | A unique identifier of the Subscriber.|
 {: .grid}
@@ -69,7 +69,7 @@ If the Sender wants to re-request on the same topic (e.g. modify the subscribed 
 
 ##### 2:3.X1.4.1.3 Expected Actions
 
-The Receiver shall receives and validates the message.
+The Receiver shall receive and validate the message.
 
 The Receiver shall return an error if the `hub.channel.type` is not `websocket`.
 
@@ -87,9 +87,9 @@ The Receiver shall generate a cryptographically random, unique and unguessable i
 
 The Receiver shall associate the Sender to the websocket identifier.
 
-If the Receiver receives a request from a Sender and the Sender already exist as a subscriber on the combination of `hub.topic` and `hub.channel.endpoint`, then the Receiver shall update the Sender subscribed events in `hub.events` with the value from the request.
+If the Receiver receives a request from a Sender and the Sender already exists as a subscriber on the combination of `hub.topic` and `hub.channel.endpoint`, then the Receiver shall update the Sender-subscribed events in `hub.events` with the value from the request.
 
-The Receiver may honour `hub.lease_seconds` specified in the request by the Sender, or it may specify its own default according to its policy. When the subscription of the Sender expired according to `hub.lease_seconds`, the Receiver shall automatically unsubscribe the Sender on the associated `hub.topic`.
+The Receiver may honor `hub.lease_seconds` specified in the request by the Sender, or it may specify its own default according to its policy.  When the subscription of the Sender expired according to `hub.lease_seconds`, the Receiver shall automatically unsubscribe the Sender on the associated `hub.topic`.
 
 #### 2:3.X1.4.2 Subscribe to Reporting Session Response Message
 

@@ -1,4 +1,4 @@
-The Realtime Bidirectional Communication for Interactive Multimedia Report (RTC-IMR) Profile specifies how systems can be communicated efficiently in context with realtime content in order to provide a streamlined user experience during reporting.
+The Realtime Bidirectional Communication for Interactive Multimedia Report (RTC-IMR) Profile specifies how systems can  communicate efficiently in context with realtime content in order to provide a streamlined user experience during reporting.
 
 # 1:XX.1 Realtime Bidirectional Communication for Interactive Multimedia Reporting
 
@@ -467,15 +467,15 @@ A `Session` is a communication channel setup between the `Subscribers` via the `
 
 A `Context` is used to communicate a subject on which the `Subscribers` should synchronize as appropriate to their business logic. As soon as the subject is complete, then the corresponding `Context` can be closed. Therefore a `Context` has a short duration.
 
-Note that occasionally a `Context` may be _interrupted_ because of _suspension_, meaning that before the `Context` is closed, another `Context` is opened (e.g. a radiologist needs to suspend the current report on a study in order to review another urgent study). In this case, the information of the previous `Context` is still maintained by the `Hub` since it is not closed, but it is _suspended_ (i.e. not the `Current Context`). Instead the `Current Context` is switched to the urgent study being opened. As soon as the user finished reviewing the urgent study and hence closing the `Context` of the urgent study, the _suspended_ `Context` will resume to be the `Current Context` since it is the last opened `Context`.
+Note that occasionally a `Context` may be _interrupted_ because of _suspension_, meaning that before the `Context` is closed, another `Context` is opened (e.g. a radiologist needs to suspend the current report on a study in order to review another urgent study). In this case, the information of the previous `Context` is still maintained by the `Hub` since it is not closed, but it is _suspended_ (i.e. not the `Current Context`). Instead the `Current Context` is switched to the urgent study being opened. As soon as the user finished reviewing the urgent study and hence has closed the `Context` of the urgent study, the _suspended_ `Context` will resume to be the `Current Context` since it is the last opened `Context`.
 
 #### 1:XX.4.1.4 Events vs Commands
 
-`Events` represent facts that have happened. For example, DiagnosticReport-open represents an event that an application opens a study for reporting. Note that an event has no direct target audience. Any applications subscribed to the event will receive the event and the application can determine how to process the event. The application that producing the event is not aware of the actions being performed by different consuming applications, unless these consuming applications in turn publishes additional events.
+`Events` represent facts that have happened. For example, DiagnosticReport-open represents an event that an application opens a study for reporting. Note that an event has no direct target audience. Any applications subscribed to the event will receive the event and the application can determine how to process the event. The application that is producing the event is not aware of the actions being performed by different consuming applications, unless these consuming applications in turn publishes additional events.
 
-On the other hand, `Commands` represents intention, often associated with specific target audience(s). For example, Send-Study represents an intention to send a study Therefore the application that sends the commands often has direct knowledge of which applications should execute the commands, or delegate to a proxy service that has the knowledge.
+On the other hand, `Commands` represent intention, often associated with specific target audience(s). For example, Send-Study represents an intention to send a study. Therefore the application that sends the commands often has direct knowledge of which applications should execute the commands, or delegate to a proxy service that has the knowledge.
 
-In this profile, the messages that a `Subscriber` sends to the `Hub` represents an `Event`. There is no support for sending `Commands` in this profile.
+In this profile, the messages that a `Subscriber` sends to the `Hub` represents an `Event`. This RTC-IMR Profile has no support for sending `Commands`.
 
 #### 1:XX.4.1.5 Event Awareness vs Event Consumption
 
@@ -487,9 +487,9 @@ This means from the driving application perspective, in order to synchronize the
 
 On the other hand, from the subscribing application perspective, it is up to its business logic to determine how to react to the received event. This business logic may be automatic or requires additional user input.
 
-For example, in a nodule tracking application, when the user goes through the study images, the user may keep track of (a.k.a. bookmarking) nodules observed (e.g. 1, 2, ..., 9, 10). Then once the user reviewed the full study, the user may select a subset of the nodules (e.g. 2, 3, 5, 9) identified as important to be added to the report. In this scenario, it is highly recommended that the nodule tracking application sends an event for each nodule (i.e. 1, 2, ..., 9, 10) being bookmarked so that the reporting application is aware of all the nodules the user observed (but not necessary added to the report yet). THe user can then instruct the reporting application to add a subset of the nodules (i.e. 2, 3, 5, 9) to the report. Note that since the reporting application is aware of all the nodules observed by synchronizing the context with the nodule tracking application, selecting a subset of the nodules is a local operation and can be in any order (i.e. the action is not required to only apply to the most recent context received).
+For example, in a nodule tracking application, when the user goes through the study images, the user may keep track of (a.k.a. bookmarking) nodules observed (e.g. 1, 2, ..., 9, 10). Then once the user reviewed the full study, the user may select a subset of the nodules (e.g. 2, 3, 5, 9) identified as important to be added to the report. In this scenario, it is highly recommended that the nodule tracking application sends an event for each nodule (i.e. 1, 2, ..., 9, 10) being bookmarked so that the reporting application is aware of all the nodules the user observed (but not necessary added to the report yet). The user can then instruct the reporting application to add a subset of the nodules (i.e. 2, 3, 5, 9) to the report. Note that since the reporting application is aware of all the nodules observed by synchronizing the context with the nodule tracking application, selecting a subset of the nodules is a local operation and can be done in any order (i.e. the action is not required to only apply to the most recent context received).
 
-Note that this implies the reporting application has to keep track of all the context in the received events independent of whether the context will be used in the report later. This is important because there is no `Command` defined in this profile and the reporting application cannot request past context from the reporting application or the `Hub`. (The reporting application may provide other means to support a query mechanism, but this is out of scope of this profile).
+Note that this implies the reporting application has to keep track of all the contexts in the received events, independent of whether the context will be used in the report later. This is important because there is no `Command` defined in this profile, and the reporting application cannot request past context from the reporting application or the `Hub`. (The reporting application may provide other means to support a query mechanism, but this is out of scope of this profile).
 
 #### 1:XX.4.1.6 Timing of Sending an Event
 
@@ -509,7 +509,7 @@ Since the FHIR resources specified in the event may or may not exist, to differe
 
 #### 1:XX.4.1.8 Communication of Processing Result
 
-Upon receiving an event, the `Hub` and `Subscribers` processes the event according to its business logic. There are several possible outcome:
+Upon receiving an event, the `Hub` and `Subscribers` process the event according to their own business logic. There are several possible outcome:
 
 | Actor | Process Successfully | Process Successfully with no action | Failed Processing |
 | -- | -- | -- | -- |
@@ -521,7 +521,7 @@ Upon receiving an event, the `Hub` and `Subscribers` processes the event accordi
 
 #### 1:XX.4.2.1 Use Case \#1: PACS Driven Reporting
 
-One or two sentence simple description of this particular use
+TO DO: One or two sentence simple description of this particular use
 case.
 
 Note that Section 1:XX.4.2.1 repeats in its entirety for additional use
@@ -529,7 +529,7 @@ cases (replicate as Section 1:XX.4.2.2, 1:XX.4.2.3, etc.).
 
 ##### 1:XX.4.2.1.1 simple name Use Case Description
 
-Describe the key use cases addressed by the profile. Limit to a
+TO DO: Describe the key use cases addressed by the profile. Limit to a
 maximum of one page of text or consider an appendix.
 
 ##### 1:XX.4.2.1.2 simple name Process Flow
@@ -543,11 +543,11 @@ Figure 1:XX.4.2.2-1: PACS Driven Reporting Flow in RTC-IMR Profile
 
 The following sections elaborate on each step in this use case. The hyperlinks in the use case diagram above link to the corresponding step for quick access.
 
-Furthermore, in the [Examples](example.html) tab, it contains sample events following this use case.
+Furthermore, the [Examples](example.html) tab, contains sample events following this use case.
 
 ###### 1:XX.4.2.1.2.0 Common Subscription Flow
 
-Subscribing to a reporting session is a common starting step for an actor to start communicating with other actors in the reporting session in realtime.
+Subscribing to a reporting session is a common starting point for an actor to start communicating with other actors in the reporting session in realtime.
 
 Subscribing to a reporting session involves two transactions:
 
@@ -574,7 +574,7 @@ Figure 1:XX.4.2.1.2.0-2: Condensed Subscription Transaction in RTC-IMR Profile
 
 When a radiologist starts reporting, the PACS, as the initiator, opens a reporting session.
 
-Note that there is no explicit creation of a session. If the Hub receives a session ID (i.e. topic) that is not already exist, then the Hub will automatically create the session and add the subscriber (i.e. PACS) to the session.
+Note that there is no explicit creation of a session. If the Hub receives a session ID (i.e. topic) that does not already exist, then the Hub will automatically create the session and add the subscriber (i.e. PACS) to the session.
 
 <div>
 {%include step1-open-reporting-session.svg%}
@@ -592,7 +592,7 @@ Figure 1:XX.4.2.1.2.1-1: Open Reporting Session Flow in RTC-IMR Profile
 
 Figure 1:XX.4.2.1.2.1-2: Open Study in Context Flow in RTC-IMR Profile
 
-Note that when the Reporting App successfully completed the subscription, it immediately queries for the current context from the Hub. This immediate query is to ensure that the Reporting App is aware of the latest context in the session.
+Note that when the Reporting App successfully completes the subscription, it immediately queries for the current context from the Hub. This immediate query is to ensure that the Reporting App is aware of the latest context in the session.
 This is necessary because the PACS does not know when the Reporting App completed the subscription. Therefore it is possible the PACS has already changed context before the subscription is complete.
 
 ###### 1:XX.4.2.1.2.3 Step 3: Add Content (Optional)
@@ -613,7 +613,7 @@ Figure 1:XX.4.2.1.2.1-3: Add Content Flow in RTC-IMR Profile
 
 Figure 1:XX.4.2.1.2.1-4: Select Content Flow in RTC-IMR Profile
 
-Selected contents are put into 'focus' by the Reporting App. Note that here 'focus' is agnostic about the user interface implementation. It may result in the selected contents being highlighted in the user interface, or it may result in the selected contents being flagged in the backend service. Specific behavior depends on the implementation.
+Selected contents are put into 'focus' by the Reporting App. Note that this profile is agnostic about the user interface implementation of 'focus', e.g., it may result in the selected contents being highlighted in the user interface, or it may result in the selected contents being flagged in the backend service. Specific behavior depends on the implementation.
 
 ###### 1:XX.4.2.1.2.5 Step 5: Sign-off Report
 
@@ -624,7 +624,7 @@ Selected contents are put into 'focus' by the Reporting App. Note that here 'foc
 
 Figure 1:XX.4.2.1.2.1-5: Sign-off Report Flow in RTC-IMR Profile
 
-The flow above shows the simple case focuses on a single report context. In practice, the radiologist is likely to continue with the next study in the worklist without any awareness of the events happening behind the scene. Such rapid context switching is supported by the Hub because it can maintain multiple context simultaneously.
+The flow above shows the simple case with a single report context. In practice, the radiologist is likely to continue with the next study in the worklist without any awareness of the events happening behind the scene. Such rapid context switching is supported by the Hub because it can maintain multiple context simultaneously.
 
 The following diagram shows what can happen in case of rapid switching of the report context.
 
@@ -666,10 +666,7 @@ Figure 1:XX.4.2.3-1: Error Handling Flow in RTC-IMR Profile
 
 See ITI TF-2x: [Appendix Z.8 “Mobile Security Considerations”](https://profiles.ihe.net/ITI/TF/Volume2/ch-Z.html#z.8-mobile-security-considerations)
 
-The following is instructions to the editor and this text is not to be included in a publication. 
-The material initially from [RFC 3552 "Security Considerations Guidelines" July 2003](https://tools.ietf.org/html/rfc3552).
-
-This section should address downstream design considerations, specifically for: Privacy, Security, and Safety. These might need to be individual header sections if they are significant or need to be referenced.
+TO DO...UPDATE THIS BOILERPLATE TEXT FROM THE SUPP. TEMPLATE: This section should address downstream design considerations, specifically for: Privacy, Security, and Safety. These might need to be individual header sections if they are significant or need to be referenced.
 
 The editor needs to understand Security and Privacy fundamentals. 
 General [Security and Privacy guidance](http://hl7.org/fhir/secpriv-module.html) is provided in the FHIR Specification. 
@@ -751,7 +748,7 @@ Where audit logging is specified, a StructureDefinition profile(s) should be inc
 
 ## 1:XX.6 RTC-IMR Cross-Profile Considerations
 
-This section is informative, not normative. It is intended to put
+TO DO: This section is informative, not normative. It is intended to put
 this profile in context with other profiles. Any required groupings
 should have already been described above. Brief descriptions can go
 directly into this section; lengthy descriptions should go into an
