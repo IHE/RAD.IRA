@@ -58,9 +58,9 @@ The Receiver shall handle events `[FHIR resource]-open` | `update` | `select` | 
 
 Upon receiving a `[FHIR resource]-open` event, the Receiver shall *open* the corresponding `event.context` according to its application logic.
 
-> Note: The Receiver may use all or a subset of the context provided. For example, a Receiver that is aReport Creator may use the patient and study context to open the corresponding procedure and make it ready for dictation, and ignore the report context since the Report Creator will create its own. On the other hand, an Evidence Creator (such as a specialty AI application) may use only the study context to run an inference model on the study on demand, ignoring the report and patient context.
+> Note: The Receiver may use all or a subset of the context provided. For example, a Receiver that is a Report Creator may use the patient and study context to open the corresponding procedure and make it ready for dictation, and ignore the report context since the Report Creator will create its own. On the other hand, an Evidence Creator (such as a specialty AI application) may use only the study context to run an inference model on the study on demand, ignoring the report and patient context.
 
-The Receiver shall validate and maintain locally current context versionId as follow:
+The Receiver shall validate and maintain the locally current context versionId as follows:
 - Maintain locally the current context versionId according to the `context.versionId` from the event.
 - Upon receiving a `[FHIR resource]-update` event, validate if the `context.priorVersionId` in the event matches the local current context versionId.
     - If not, this means the Receiver missed one or more prior events. In this case, the Receiver shall use [Get Current Context](rad-x8.html) to retrieve the current context.
@@ -91,7 +91,7 @@ The `status` shall be one of the following:
 
 ##### 2:4.X9.4.2.3 Expected Actions
 
-If the Manager receives an error confirmation message (i.e. `status` `4xx` or `5xx`) from at least one of the Receivers, then the Manager shall send a `syncerror` event following [Send SyncError Event](rad-x10.html) to all subscribers that subscribed to the `syncerror` event.
+If the Manager receives an error confirmation message (i.e. `status` `4xx` or `5xx`) from at least one of the Receivers, then the Manager shall send a `syncerror` event following [Send SyncError Event](rad-x10.html) to all Receivers (Subscribers) that subscribed to the `syncerror` event.
 
 ### 2:4.X9.5 Security Considerations
 
