@@ -1,12 +1,12 @@
-### 2:3.X1.1 Scope
+### 2:4.X1.1 Scope
 
 This transaction is used to subscribe to a reporting session.
 
-### 2:3.X1.2 Actors Roles
+### 2:4.X1.2 Actors Roles
 
 The roles in this transaction are defined in the following table and may be played by the actors shown here:
 
-**Table 2:3.X1.2-1: Actor Roles**
+**Table 2:4.X1.2-1: Actor Roles**
 
 | Role | Description | Actor(s) |
 |------|-------------|----------|
@@ -14,11 +14,11 @@ The roles in this transaction are defined in the following table and may be play
 | Receiver | Receives and manages subscription requests | Hub |
 {: .grid}
 
-### 2:3.X1.3 Referenced Standards
+### 2:4.X1.3 Referenced Standards
 
 **FHIRcast**: [Subscribing to Events](https://build.fhir.org/ig/HL7/fhircast-docs/2-4-Subscribing.html)
 
-### 2:3.X1.4 Messages
+### 2:4.X1.4 Messages
 
 <div>
 {%include rad-x1-seq.svg%}
@@ -26,15 +26,15 @@ The roles in this transaction are defined in the following table and may be play
 
 <div style="clear: left"/>
 
-**Figure 2:3.X1.4-1: Interaction Diagram**
+**Figure 2:4.X1.4-1: Interaction Diagram**
 
-#### 2:3.X1.4.1 Subscribe to Reporting Session Request Message
+#### 2:4.X1.4.1 Subscribe to Reporting Session Request Message
 
 The Sender sends a Subscribe to Reporting Session Request message to the Receiver. The Sender shall support sending such messages to more than one Receiver.
 
 The Receiver shall support handling such messages from more than one Sender. 
 
-##### 2:3.X1.4.1.1 Trigger Events
+##### 2:4.X1.4.1.1 Trigger Events
 
 If the Sender is the driving application that starts the reporting session, then the Sender sends the request when it starts the reporting session.
 
@@ -44,7 +44,7 @@ The Sender sends the request when it decided to change the subscribed events.
 
 The Sender sends the request to renew an existing subscription.
 
-##### 2:3.X1.4.1.2 Message Semantics
+##### 2:4.X1.4.1.2 Message Semantics
 
 This message is an HTTP POST request. The Sender is the User Agent. The Receiver is the Origin Server.
 
@@ -52,7 +52,7 @@ The Sender shall perform an HTTP POST to the Receiver's base URL (as specified i
 
 The request shall have the payload with the parameters in the following table:
 
-**Table 2:3.X1.4.1.2-1: Subscribe to Reporting Session Request Parameters**
+**Table 2:4.X1.4.1.2-1: Subscribe to Reporting Session Request Parameters**
 
 | Field                 | Optionality | Type     | Description |
 | ----------------------| ----------- | -------- | ------------|
@@ -67,7 +67,7 @@ The request shall have the payload with the parameters in the following table:
 
 If the Sender wants to re-request on the same topic (e.g., modify the subscribed events in `hub.events` or renew an existing subscription), the Sender shall specify `hub.channel.endpoint` with the value of the existing websocket URL.
 
-##### 2:3.X1.4.1.3 Expected Actions
+##### 2:4.X1.4.1.3 Expected Actions
 
 The Receiver shall receive and validate the message.
 
@@ -91,15 +91,15 @@ If the Receiver receives a request from a Sender and the Sender already exists a
 
 The Receiver may honor `hub.lease_seconds` specified in the request by the Sender, or it may specify its own default according to its policy.  When the subscription of the Sender expired according to `hub.lease_seconds`, the Receiver shall automatically unsubscribe the Sender on the associated `hub.topic`.
 
-#### 2:3.X1.4.2 Subscribe to Reporting Session Response Message
+#### 2:4.X1.4.2 Subscribe to Reporting Session Response Message
 
 The Receiver sends a response message describing the message outcome to the Sender.
 
-##### 2:3.X1.4.2.1 Trigger Events
+##### 2:4.X1.4.2.1 Trigger Events
 
 The Receiver receives a Subscribe to Reporting Session Request message.
 
-##### 2:3.X1.4.2.2 Message Semantics
+##### 2:4.X1.4.2.2 Message Semantics
 
 This message is an HTTP POST response. The Sender is the User Agent. The Receiver is the Origin Server.
 
@@ -109,7 +109,7 @@ The HTTP body of the response shall consist of a JSON object containing an eleme
 
 If a Receiver refuses the request according to its policy or finds any errors in the request, it shall return an appropriate HTTP error response code (4xx or 5xx). In the event of an error, the Receiver may return a description of the error in the response body as plain text.
 
-##### 2:3.X1.4.2.3 Expected Actions
+##### 2:4.X1.4.2.3 Expected Actions
 
 If the HTTP response code is 202 "Accepted", the Sender shall extract the websocket WSS URL from `hub.channel.endpoint` and send Connect Notification Channel [RAD-X2] to this URL.
 
@@ -117,20 +117,20 @@ The Sender shall maintain this WSS URL for subsequent subscription update or ren
 
 If the HTTP response code is 4xx or 5xx, then the Sender may adjust the request and retry.
 
-### Security Considerations
+### 2:4.X1.5 Security Considerations
 
 See [RTC-IMR Security Considerations](volume-1.html#1xx5-rtc-imr-security-considerations)
 
 The Sender which is a synchronizing application should authenticate and authorize the driving application before it accepts the provided `hub.topic` and `hub.url` and sends this request.
 
-#### Security Audit Considerations
+#### 2:4.X1.5.1 Security Audit Considerations
 
 ''TODO: The security audit criteria ''
 
-##### Client Audit 
+##### 2:4.X1.5.1.1 Sender Audit 
 
 ''TODO: the specifics''
 
-##### Server Audit 
+##### 2:4.X1.5.1.2 Receiver Audit 
 
 ''TODO: the specifics''
