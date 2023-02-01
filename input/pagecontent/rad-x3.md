@@ -52,6 +52,7 @@ The `event.context` shall conform to [DiagnosticReport open Event](https://build
 
 In addition, the contexts in the `event.context` shall conform to the following table:
 
+**Table 2:4.X3.4.1.2-1-1: Requirements for event.context**
 {:.grid}
 Key | Optionality | FHIR operation to generate context | Description
 --- | --- | --- | ---
@@ -86,8 +87,8 @@ The Manager finished processing the Open Report Context request.
 
 If the Manager accepts the Open Report Context request, then the Manager shall send a 2xx HTTP status:
 
-* If the Manager processed the request successfully, then it shall return 200 OK or 201 Created
-* If the Manager processed the request asynchronously, then it may return 202 Accepted
+* If the Manager processed the request successfully, then it shall return 200 OK or 201 Created.
+* If the Manager processed the request asynchronously, then it may return 202 Accepted.
 
 If the Manager rejects the Open Report Context request, then the Manager shall return a 4xx or 5xx HTTP error response code.
 
