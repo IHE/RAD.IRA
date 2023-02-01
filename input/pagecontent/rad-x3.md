@@ -52,13 +52,14 @@ The `event.context` shall conform to [DiagnosticReport open Event](https://build
 
 In addition, the contexts in the `event.context` shall conform to the following table:
 
-**Table 2:4.X3.4.1.2-1-1: Requirements for event.context**
-{:.grid}
+**Table 2:4.X3.4.1.2-1: Requirements for event.context**
+
 Key | Optionality | FHIR operation to generate context | Description
 --- | --- | --- | ---
 `report`| REQUIRED | `DiagnosticReport/{id}?_elements=identifier` | Conform to the RTC-IMR-DiagnosticReport resource
 `patient` | REQUIRED | `Patient/{id}?_elements=identifier` | Conform to the RTC-IMR-Patient resource
 `study` | REQUIRED | `ImagingStudy/{id}?_elements=identifier,accession` | Conform to the RTC-IMR-ImagingStudy resource
+{:.grid}
 
 If the Sender retries the same request due to a timeout, then the Sender shall use the same `event.id` such that the Manager can detect that it is a duplicate request message.
 
@@ -110,14 +111,14 @@ The Receiver receives a `DiagnosticReport-open` event from Manager via Send Cont
 
 The Receiver shall keep track of the `report` context (i.e. the anchor context).
 
-> Note: This is important because although the `DiagnosticReport-open` event includes other associated contexts such as `patient` and `study` in additional to the `report` anchor context, subsequent event(s) for this anchor context will only provide the `report` context. Therefore, keeping track of the `report` anchor context, regardless of whether the Receiver actually uses the context in its business logic, enables the Receiver to match subsequent events and hence reacts accordingly. 
+> Note: This is important because although the `DiagnosticReport-open` event includes other associated contexts such as `patient` and `study` in addition to the `report` anchor context, subsequent event(s) for this anchor context will only provide the `report` context. Therefore, keeping track of the `report` anchor context, regardless of whether the Receiver actually uses the context in its business logic, enables the Receiver to match subsequent events and hence react accordingly. 
 
 The Receiver shall *open* the corresponding `event.context` according to its application logic. In particular,
 - An Image Display shall display the patient's study corresponding to the `patient` and `study` context.
 - A Report Creator shall open the procedure corresponding to the `patient` and `study` context and be ready for reporting. It may use the `id` in the `report` context as the report ID for the eventual created report.
 - An Evidence Creator shall process the patient's study corresponding to the `patient` and `study` context.
 
-If the Receiver failed to process the event, then it shall return a `syncerror` back to the Manager using Send SyncError Event [RAD-X10](rad-10.html).
+If the Receiver fails to process the event, it shall return a `syncerror` to the Manager using Send SyncError Event [RAD-X10](rad-10.html).
 
 ### 2:4.X3.5 Security Considerations
 
