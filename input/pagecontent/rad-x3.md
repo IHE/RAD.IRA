@@ -9,8 +9,8 @@ This transaction is used to initiate a report context that all subscribed applic
 | Role | Description | Actor(s) |
 |------|-------------|----------|
 | Sender | Initiates a report context | Subscriber |
-| Manager | Receive and maintain anchor and current context<br>and forward events to other Receivers | Hub |
-| Receiver | Receivess events from Manager | Subscriber (See nNte 1) |
+| Manager | Receivez and maintainz anchor and current context<br>and forwards events to other Receivers | Hub |
+| Receiver | Receives events from Manager | Subscriber (See nNte 1) |
 {: .grid}
 
 > Note 1: The Receiver Role is played by Subscribers subscribed to the event. This may include the original Sender as well as other Subscribers.
@@ -76,7 +76,7 @@ The Manager shall validate the request as follows:
 
 If the Manager accepts the request, then the Manager shall set the current context to be the `report` context of the received DiagnosticReport-open event.
 
-The Manager shall broadcast the event to all Subscribers that subscribed to the received event using Send Context Event [RAD-X9](rad-x9.html).
+The Manager shall broadcast the event to all Senders that subscribed to the received event using Send Context Event [RAD-X9](rad-x9.html).
 
 #### 2:4.X3.4.2 Open Report Context Response Message
 
@@ -103,9 +103,9 @@ If the response is an error, then the Sender may retry the request.
 
 ##### 2:4.X3.4.3.1 Trigger Events
 
-The Receiver receives a `DiagnosticReport-open` event from Manager via Send Context Event [RAD-X9](rad-x9.html).
+The Receiver receives a `DiagnosticReport-open` event from a Manager via Send Context Event [RAD-X9](rad-x9.html).
 
-> Note: This message is not a traditional message in a transaction between two devices; the primary focus is on the required behavior of the Receiver upon receiving the event from the Manager triggered by the request from the Sender. The Send Context Event [RAD-X9](rad-x9.html) specifies the general requirement between the Manager and the Receiver and it is agnostic about the specific event.
+> Note: This message is not a traditional message in a transaction between two actors; the primary focus is on the required behavior of the Receiver upon receiving the event from the Manager, triggered by the request from the Sender. The Send Context Event [RAD-X9](rad-x9.html) specifies the general requirement between the Manager and the Receiver and that transaction is agnostic about the specific event.
 
 ##### 2:4.X3.4.3.1 Message Semantics
 
