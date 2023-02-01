@@ -30,7 +30,7 @@ The roles in this transaction are defined in the following table and may be play
 
 #### 2:3.X1.4.1 Subscribe to Reporting Session Request Message
 
-The Sender sends a reporting session subscription request to the Receiver. The Sender shall support sending such messages to more than one Receiver.
+The Sender sends a Subscribe to Reporting Session Request message to the Receiver. The Sender shall support sending such messages to more than one Receiver.
 
 The Receiver shall support handling such messages from more than one Sender. 
 
@@ -65,7 +65,7 @@ The request shall have the payload with the parameters in the following table:
 |`subscriber.name`      | Required    | *string* | A unique identifier of the Subscriber.|
 {: .grid}
 
-If the Sender wants to re-request on the same topic (e.g. modify the subscribed events in `hub.events` or renew an existing subscription), the Sender shall specify `hub.channel.endpoint` with the value of the existing websocket URL.
+If the Sender wants to re-request on the same topic (e.g., modify the subscribed events in `hub.events` or renew an existing subscription), the Sender shall specify `hub.channel.endpoint` with the value of the existing websocket URL.
 
 ##### 2:3.X1.4.1.3 Expected Actions
 
@@ -83,7 +83,7 @@ The Receiver shall create the topic if the topic specified in `hub.topic` does n
 
 The Receiver shall add the Sender and its subscribed events for the topic.
 
-The Receiver shall generate a cryptographically random, unique and unguessable identifier to be used for the websocket connection for the given Sender.
+The Receiver shall generate a cryptographically random, unique, and unguessable identifier to be used for the websocket connection for the given Sender.
 
 The Receiver shall associate the Sender to the websocket identifier.
 
