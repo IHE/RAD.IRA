@@ -50,52 +50,52 @@ The body of the request shall have the attributes according to [Section 2.6.1 Re
 
 The `event.context` shall conform to [DiagnosticReport open Event](https://build.fhir.org/ig/HL7/fhircast-docs/3-6-1-diagnosticreport-open.html).
 
-Additional, the contexts in the `event.context` shall conform to the following table:
+In addition, the contexts in the `event.context` shall conform to the following table:
 
 {:.grid}
 Key | Optionality | FHIR operation to generate context | Description
 --- | --- | --- | ---
 `report`| REQUIRED | `DiagnosticReport/{id}?_elements=identifier` | Conform to the RTC-IMR-DiagnosticReport resource
 `patient` | REQUIRED | `Patient/{id}?_elements=identifier` | Conform to the RTC-IMR-Patient resource
-`study` | REQUIRED | `ImagingStudy/{id}?_elements=identifier,accession` | COnform to the RTC-IMR-ImagingStudy resource
+`study` | REQUIRED | `ImagingStudy/{id}?_elements=identifier,accession` | Conform to the RTC-IMR-ImagingStudy resource
 
-If the Sender retries the same request due to a timeout, then the Sender shall use the same `event.id` such that the Manager can detect if it is a duplicate message.
+If the Sender retries the same request due to a timeout, then the Sender shall use the same `event.id` such that the Manager can detect that it is a duplicate request message.
 
-If the Sender retries the same request due to an error response from the Manager, then the Sender shall assign a new `event.id` to indicate that it is a new message.
+If the Sender retries the same request due to an error response from the Manager, then the Sender shall assign a new `event.id` to indicate that it is a new request message.
 
 ##### 2:4.X3.4.1.3 Expected Actions
 
 The Manager shall validate the request as follows:
 
-* If `timestamp`, `id` or `event` are not set, then return an error
-* If `event.context` does not include `report`, `patient` and `study`, then return an error
-* If each context does not conform to the corresponding resource definition, then return an error
-* if `event`.`hub.topic` is not a known topic, then return an error
+* If `timestamp`, `id` or `event` are not set, then return an error.
+* If `event.context` does not include `report`, `patient` and `study`, then return an error.
+* If any context does not conform to the corresponding resource definition, then return an error.
+* if `event`.`hub.topic` is not a known topic, then return an error.
 
 If the Manager accepts the request, then the Manager shall set the current context to be the `report` context of the received DiagnosticReport-open event.
 
-The Manager shall broadcast the event to all subscribers that subscribed to the received event using Send Context Event [RAD-X9](rad-x9.html).
+The Manager shall broadcast the event to all Subscribers that subscribed to the received event using Send Context Event [RAD-X9](rad-x9.html).
 
 #### 2:4.X3.4.2 Open Report Context Response Message
 
 ##### 2:4.X3.4.2.1 Trigger Events
 
-The Manager finished process the Open Report Context request.
+The Manager finished processing the Open Report Context request.
 
 ##### 2:4.X3.4.2.2 Message Semantics
 
-If the Manager accepted the Open Report Context request, then the Manager shall send a 2xx HTTP status:
+If the Manager accepts the Open Report Context request, then the Manager shall send a 2xx HTTP status:
 
 * If the Manager processed the request successfully, then it shall return 200 OK or 201 Created
 * If the Manager processed the request asynchronously, then it may return 202 Accepted
 
-If the Manager rejected the Open Report Context request, then the Manager shall return a 4xx or 5xx HTTP error response code.
+If the Manager rejects the Open Report Context request, then the Manager shall return a 4xx or 5xx HTTP error response code.
 
 ##### 2:4.X3.4.2.3 Expected Actions
 
-If the response is a success, then no further action expected.
+If the response is a success, then no further action is expected.
 
-If the response is an error, then the Sender may consider retrying the request.
+If the response is an error, then the Sender may retry the request.
 
 #### 2:4.X3.4.3 Initiate Report Context Message
 
