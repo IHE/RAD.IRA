@@ -113,10 +113,10 @@ The Receiver shall keep track of the `report` context (i.e. the anchor context).
 
 > Note: This is important because although the `DiagnosticReport-open` event includes other associated contexts such as `patient` and `study` in addition to the `report` anchor context, subsequent event(s) for this anchor context will only provide the `report` context. Therefore, keeping track of the `report` anchor context, regardless of whether the Receiver actually uses the context in its business logic, enables the Receiver to match subsequent events and hence react accordingly. 
 
-The Receiver shall *open* the corresponding `event.context` according to its application logic. In particular,
-- An Image Display shall display the patient's study corresponding to the `patient` and `study` context.
-- A Report Creator shall open the procedure corresponding to the `patient` and `study` context and be ready for reporting. It may use the `id` in the `report` context as the report ID for the eventual created report.
-- An Evidence Creator shall process the patient's study corresponding to the `patient` and `study` context.
+The Receiver shall *open* the corresponding `event.context` according to its application logic. In particular, a Receiver that is:
+- an Image Display shall display the patient's study corresponding to the `patient` and `study` context.
+- a Report Creator shall open the procedure corresponding to the `patient` and `study` context and be ready for reporting. It may use the `id` in the `report` context as the report ID for the eventual created report.
+- an Evidence Creator shall process the patient's study corresponding to the `patient` and `study` context.
 
 If the Receiver fails to process the event, it shall return a `syncerror` to the Manager using Send SyncError Event [RAD-X10](rad-10.html).
 
