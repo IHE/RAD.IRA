@@ -27,7 +27,7 @@ This transaction is used to complete the subscription by connecting to the notif
 **Figure 2:4.X2.4-1: Interaction Diagram**
 
 #### 2:4.X2.4.1 Connect to Websocket Request Message
-The Sender sends a websocket connection request to the Receiver. The Sender shall support sending such messages to more than one Receiver.
+The Sender sends a Connect to Websocket Request message to the Receiver. The Sender shall support sending such messages to more than one Receiver.
 
 The Receiver shall support handling such messages from more than one Sender. 
 
