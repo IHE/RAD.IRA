@@ -10,7 +10,7 @@ This transaction is used to initiate a report context that all subscribed applic
 |------|-------------|----------|
 | Sender | Initiates a report context | Subscriber |
 | Manager | Receivez and maintainz anchor and current context<br>and forwards events to other Receivers | Hub |
-| Receiver | Receives events from Manager | Subscriber (See nNte 1) |
+| Receiver | Receives events from Manager | Subscriber (See Note 1) |
 {: .grid}
 
 > Note 1: The Receiver Role is played by Subscribers subscribed to the event. This may include the original Sender as well as other Subscribers.
