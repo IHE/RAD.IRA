@@ -1,6 +1,6 @@
 ### 2:4.X3.1 Scope
 
-This transaction is used to initiate a report context that all synchronizing applications will be synchronized to.
+This transaction is used to initiate a report context that all subscribed applications will be synchronized to.
 
 ### 2:4.X3.2 Actors Roles
 
@@ -8,9 +8,9 @@ This transaction is used to initiate a report context that all synchronizing app
 
 | Role | Description | Actor(s) |
 |------|-------------|----------|
-| Sender | Initiate a report context | Subscriber |
-| Manager | Receives and maintain anchor and current context<br>and forward events to other Receivers | Hub |
-| Receiver | Receives events from Manager | Subscriber (See note 1) |
+| Sender | Initiates a report context | Subscriber |
+| Manager | Receive and maintain anchor and current context<br>and forward events to other Receivers | Hub |
+| Receiver | Receivess events from Manager | Subscriber (See nNte 1) |
 {: .grid}
 
 > Note 1: The Receiver Role is played by Subscribers subscribed to the event. This may include the original Sender as well as other Subscribers.
