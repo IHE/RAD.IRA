@@ -30,7 +30,7 @@ This transaction is used to initiate a report context that all synchronizing app
 **Figure 2:3.X3.4-1: Interaction Diagram**
 
 #### 2:3.X3.4.1 Open Report Context Request Message
-The Sender sends an event to the Manager to change report context. The Sender shall support sending such messages to more than one Manager.
+The Sender sends an event to the Manager to initiate a new report context. The Sender shall support sending such messages to more than one Manager.
 
 The Manager shall support handling such messages from more than one Sender. 
 
@@ -80,16 +80,16 @@ The Manager shall broadcast the event to all subscribers that subscribed to the 
 
 ##### 2:3.X3.4.2.1 Trigger Events
 
-The Manager finished process the Change Report Context request.
+The Manager finished process the Open Report Context request.
 
 ##### 2:3.X3.4.2.2 Message Semantics
 
-If the Manager accepted the Change Report Context request, then the Manager shall send a 2xx HTTP status:
+If the Manager accepted the Open Report Context request, then the Manager shall send a 2xx HTTP status:
 
 * If the Manager processed the request successfully, then it shall return 200 OK or 201 Created
 * If the Manager processed the request asynchronously, then it may return 202 Accepted
 
-If the Manager rejected the Change Report Context request, then the Manager shall return a 4xx or 5xx HTTP error response code.
+If the Manager rejected the Open Report Context request, then the Manager shall return a 4xx or 5xx HTTP error response code.
 
 ##### 2:3.X3.4.2.3 Expected Actions
 
@@ -106,6 +106,10 @@ The Receiver receives a `DiagnosticReport-open` event from Manager via Send Cont
 > Note: This message is not a traditional message in a transaction between two devices; the primary focus is on the required behavior of the Receiver upon receiving the event from the Manager triggered by the request from the Sender. The Send Context Event [RAD-X9](rad-x9.html) specifies the general requirement between the Manager and the Receiver and it is agnostic about the specific event.
 
 ##### 2:3.X3.4.3.1 Message Semantics
+
+The Receiver shall keep track of the `report` context (i.e. the anchor context).
+
+> Note: This is important because although the `DiagnosticReport-open` event includes other associated contexts such as `patient` and `study` in additional to the `report` anchor context, subsequent event(s) for this anchor context will only provide the `report` context. Therefore, keeping track of the `report` anchor context, regardless of whether the Receiver actually uses the context in its business logic, enables the Receiver to match subsequent events and hence reacts accordingly. 
 
 The Receiver shall *open* the corresponding `event.context` according to its application logic. In particular,
 - An Image Display shall display the patient's study corresponding to the `patient` and `study` context.
