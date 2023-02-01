@@ -8,13 +8,13 @@ participant "Receiver" as Receiver
 
 == Initial Report Context ==
 
-Sender->Manager: Change Report Context Request
+Sender->Manager: Open Report Context Request
 activate Manager
-Manager-->Sender: Change Report Context Response
+Manager-->Sender: Open Report Context Response
 deactivate Manager
 
 == Process DiagnosticReport-open Event ==
 Manager->Receiver: //Send Context Event [RAD-X9]//
-Receiver->Receiver: Process Report Context
+Receiver->Receiver: Initiate Report Context
 
 @enduml

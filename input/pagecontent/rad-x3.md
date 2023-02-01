@@ -29,7 +29,7 @@ This transaction is used to initiate a report context that all synchronizing app
 
 **Figure 2:3.X3.4-1: Interaction Diagram**
 
-#### 2:3.X3.4.1 Change Report Context Request Message
+#### 2:3.X3.4.1 Open Report Context Request Message
 The Sender sends an event to the Manager to change report context. The Sender shall support sending such messages to more than one Manager.
 
 The Manager shall support handling such messages from more than one Sender. 
@@ -76,7 +76,7 @@ If the Manager accepts the request, then the Manager shall set the current conte
 
 The Manager shall broadcast the event to all subscribers that subscribed to the received event using Send Context Event [RAD-X9](rad-x9.html).
 
-#### 2:3.X3.4.2 Change Report Context Response Message
+#### 2:3.X3.4.2 Open Report Context Response Message
 
 ##### 2:3.X3.4.2.1 Trigger Events
 
@@ -97,7 +97,7 @@ If the response is a success, then no further action expected.
 
 If the response is an error, then the Sender may consider retrying the request.
 
-#### 2:3.X3.4.3 Process Report Context Message
+#### 2:3.X3.4.3 Initiate Report Context Message
 
 ##### 2:3.X3.4.3.1 Trigger Events
 
