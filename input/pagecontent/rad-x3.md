@@ -9,7 +9,7 @@ This transaction is used to initiate a report context that all subscribed applic
 | Role | Description | Actor(s) |
 |------|-------------|----------|
 | Sender | Initiates a report context | Subscriber |
-| Manager | Receivez and maintainz anchor and current context<br>and forwards events to other Receivers | Hub |
+| Manager | Receives and maintains anchor and current context<br>and forwards events to other Receivers | Hub |
 | Receiver | Receives events from Manager | Subscriber (See Note 1) |
 {: .grid}
 
