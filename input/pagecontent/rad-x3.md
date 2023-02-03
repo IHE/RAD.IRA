@@ -71,7 +71,6 @@ The Manager shall validate the request as follow:
 
 * If `timestamp`, `id` or `event` are not set, then return an error
 * If `event.context` does not include `report`, `patient` and `study`, then return an error
-* If each context does not conform to the corresponding resource definition, then return an error
 * if `event`.`hub.topic` is not a known topic, then return an error
 
 If the Manager accepts the request, then the Manager shall set the current context to be the `report` context of the received DiagnosticReport-open event.
@@ -108,6 +107,8 @@ The Receiver receives a `DiagnosticReport-open` event from Manager via Send Cont
 > Note: This message is not a traditional message in a transaction between two devices; the primary focus is on the required behavior of the Receiver upon receiving the event from the Manager triggered by the request from the Sender. The Send Context Event [RAD-X9](rad-x9.html) specifies the general requirement between the Manager and the Receiver and it is agnostic about the specific event.
 
 ##### 2:3.X3.4.3.1 Message Semantics
+
+The Receiver shall validate the context in the received event. If each context does not conform to the corresponding resource definition, then return an error.
 
 The Receiver shall keep track of the `report` context (i.e. the anchor context).
 
