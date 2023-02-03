@@ -173,7 +173,7 @@ Hub->WF: Send Context Event [RAD-X3]
 == Step 8: Close Applications ==
 
 Radiologist->WF: //Close application//
-WF->Hub: Unsubscribe Reporting Session [RAD-X10]\n(session 12345)
+WF->Hub: Unsubscribe Session [RAD-X10]\n(session 12345)
 Hub-->WF: //Accept//
 Hub->Hub: //Close channel to Worklist Orchestrator//
 

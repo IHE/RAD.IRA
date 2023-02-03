@@ -72,7 +72,7 @@ Table 1:XX.1-1 lists the transactions for each actor directly involved in the IM
       <td><a href="RAD-X6.html">RAD TF-2: 4.X6</a></td>
     </tr>
     <tr>
-      <td>Unsubscribe Reporting Session [RAD-X7]</td>
+      <td>Unsubscribe Session [RAD-X7]</td>
       <td>Initiator</td>
       <td>R</td>
       <td><a href="RAD-X7.html">RAD TF-2: 4.X7</a></td>
@@ -133,7 +133,7 @@ Table 1:XX.1-1 lists the transactions for each actor directly involved in the IM
       <td><a href="RAD-X6.html">RAD TF-2: 4.X6</a></td>
     </tr>
     <tr>
-      <td>Unsubscribe Reporting Session [RAD-X7]</td>
+      <td>Unsubscribe Session [RAD-X7]</td>
       <td>Initiator</td>
       <td>R</td>
       <td><a href="RAD-X7.html">RAD TF-2: 4.X7</a></td>
@@ -194,7 +194,7 @@ Table 1:XX.1-1 lists the transactions for each actor directly involved in the IM
       <td><a href="RAD-X6.html">RAD TF-2: 4.X6</a></td>
     </tr>
     <tr>
-      <td>Unsubscribe Reporting Session [RAD-X7]</td>
+      <td>Unsubscribe Session [RAD-X7]</td>
       <td>Initiator</td>
       <td>R</td>
       <td><a href="RAD-X7.html">RAD TF-2: 4.X7</a></td>
@@ -255,7 +255,7 @@ Table 1:XX.1-1 lists the transactions for each actor directly involved in the IM
       <td><a href="RAD-X6.html">RAD TF-2: 4.X6</a></td>
     </tr>
     <tr>
-      <td>Unsubscribe Reporting Session [RAD-X7]</td>
+      <td>Unsubscribe Session [RAD-X7]</td>
       <td>Initiator</td>
       <td>R</td>
       <td><a href="RAD-X7.html">RAD TF-2: 4.X7</a></td>
@@ -316,7 +316,7 @@ Table 1:XX.1-1 lists the transactions for each actor directly involved in the IM
       <td><a href="RAD-X6.html">RAD TF-2: 4.X6</a></td>
     </tr>
     <tr>
-      <td>Unsubscribe Reporting Session [RAD-X7]</td>
+      <td>Unsubscribe Session [RAD-X7]</td>
       <td>Responder</td>
       <td>R</td>
       <td><a href="RAD-X7.html">RAD TF-2: 4.X7</a></td>

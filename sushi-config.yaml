@@ -78,7 +78,7 @@ pages:
     title: 2:3.X6 Select Report Content [RAD-X6]
     generation: markdown
   rad-x7.md:
-    title: 2:3.X7 Unsubscribe Reporting Session [RAD-X7]
+    title: 2:3.X7 Unsubscribe Session [RAD-X7]
     generation: markdown
   rad-x8.md:
     title: 2:3.X8 Get Current Context [RAD-X8]
@@ -131,7 +131,7 @@ menu:
     Terminate Report Context [RAD-X4]: rad-x4.html
     Update Report Content [RAD-X5]: rad-x5.html
     Select Report Content [RAD-X6]: rad-x6.html
-    Unsubscribe Reporting Session [RAD-X7]: rad-x7.html
+    Unsubscribe Session [RAD-X7]: rad-x7.html
     Get Current Context [RAD-X8]: rad-x8.html
     Send Context Event [RAD-X9]: rad-x9.html
     Send SyncError Event [RAD-X10]: rad-x10.html

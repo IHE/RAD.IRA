@@ -121,7 +121,7 @@ end loop
 
 Radiologist->Report: //Close application//
 
-Report->Hub: Unsubscribe Reporting Session [RAD-X10]\n(session 12345)
+Report->Hub: Unsubscribe Session [RAD-X10]\n(session 12345)
 Hub-->Report: //Accept//
 Hub->Hub: //Close channel to Reporting System//
 note over Hub
