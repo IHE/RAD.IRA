@@ -106,7 +106,7 @@ The Manager received a SyncError event from a Sender.
 
 The Manager received a 4xx or 5xx error response from a Receiver when executing the Send Context Event [RAD-X9](rad-x9.html) transaction.
 
-The Manager detected a connection issue with a Subscriber.
+The Manager detected a websocket connection issue with a Receiver.
 
 ##### 2:3.X10.4.3.2 Message Semantics
 
@@ -123,6 +123,10 @@ The `issue[0].severity` of the `operationoutcome` context shall be set to `infor
 If the Manager initiated the `syncerror` event (instead of receiving a `syncerror` event from a Sender), then it:
 - shall generate a new `event.id`
 - shall leave the code value in `issue[0].details.coding[2]` (i.e. Subscriber's name) as empty
+
+If the Manager initiated the `syncerror` event because it detected a websocket connection issue with the Receiver, then the Manager shall unsubscribe the Receiver and drop the websocket connection.
+
+> Note: In this case, the Manager shall only send `syncerror` event to the affected Receiver and not broadcast the event to other Receivers that subscribed to `syncerror` event.
 
 ##### 2:3.X10.4.3.3 Expected Actions
 
