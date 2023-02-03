@@ -43,8 +43,6 @@ This message is an HTTP GET request. The Sender is the User Agent. The Manager i
 
 The Sender shall send a HTTP GET request to the url `hub.url`/`topic`.
 
-The `Content-Type` of the request shall be `application/json`.
-
 ##### 2:3.X8.4.1.3 Expected Actions
 
 The Manager shall retrieve the current context and all associated contents associated to the `topic` in the request URL.
