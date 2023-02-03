@@ -114,6 +114,13 @@ The Manager detected a websocket connection issue with a Receiver.
 
 This message is a websocket request. The Manager is the User Agent. The Receiver is the Origin Server.
 
+The Manager shall initiate a `syncerror` event in the following situations:
+- Event triggered errors
+    - Received a `4xx` or `5xx` error response from a Receiver when executing the Send Context Event [RAD-X9](rad-x9.html) transaction
+    - Did not receive a `200` OK or `202` Accepted response within a predetermined time frame from a Receiver after it sent a context event
+- Non-Event Triggered errors
+    - Detected a websocket connection issue with a Receiver
+
 The Manager shall send a websocket request to all Receivers subscribed to the `syncerror` event.
 
 The body of the request shall have the attributes according to [Section 2.6.1 Request Context Change body](https://build.fhir.org/ig/HL7/fhircast-docs/2-6-RequestContextChange.html#request-context-change-body).
@@ -122,22 +129,18 @@ The `event.context` shall conform to [SyncError Context](https://build.fhir.org/
 
 The `issue[0].severity` of the `operationoutcome` context shall be set to `information`.
 
-If the Manager initiated the `syncerror` event (instead of receiving a `syncerror` event from a Sender), then it:
-- shall generate a new `event.id`
-- shall leave the code value in `issue[0].details.coding[2]` (i.e. Subscriber's name) as empty
+For `syncerror` initiated by the Manager, the Manager shall set the `operationoutcome` `issue[0].details` as follow:
+- `issue[0].details.coding[0].code` shall be the `event.id` of the event that triggered the error, or a generated ID for non-event triggered errors
+- `issue[0].details.coding[1].code` shall be the `event`.`hub.event` of the event that triggered the error, or `synncerror` for non-event triggered errors
+- `issue[0].details.coding[2].code` shall be the Receiver's `subscriber.name`
 
 If the Manager initiated the `syncerror` event because it detected a websocket connection issue with the Receiver, then the Manager shall unsubscribe the Receiver and drop the websocket connection.
 
-> Note: In this case, the Manager shall only send `syncerror` event to the affected Receiver and not broadcast the event to other Receivers that subscribed to `syncerror` event.
-
 ##### 2:3.X10.4.3.3 Expected Actions
 
-The Receiver shall report the error according to its business logic. For example, display an error message to the user.
+The Receiver may handle the error according to its business logic. For example, display an error message to the user, or close the context.
 
-The error being reported shall include the following attributes from the `operationoutcome` context:
-- The id of the event from `issue[0].details.coding[0]`
-- The name of the event from `issue[0].details.coding[1]`
-- The Subscriber's name that originated the `syncerror` event from `issue[0].details.coding[2]`
+Since the `event.id` is an opaque ID, the Receiver may consider finding the corresponding `contexts` that match the `event.id` in `issue[0].details.coding[0].code` and use them in the error handling logic.
 
 #### 2:3.X10.4.4 Send SyncError Response Message
 
