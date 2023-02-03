@@ -1,0 +1,13 @@
+@startuml
+
+hide footbox
+
+participant "Requester" as Requester
+participant "Manager" as Manager
+
+Requester->Manager: Get Current Context Request
+activate Manager
+Manager-->Requester: Get Current Context Response
+deactivate Manager
+
+@enduml
