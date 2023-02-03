@@ -52,6 +52,8 @@ The body of the request shall have the attributes according to [Secion 2.6.1 Req
 
 The `event.context` shall conform to [DiagnosticReport update Event](https://build.fhir.org/ig/HL7/fhircast-docs/3-6-3-diagnosticreport-update.html).
 
+The Sender shall include `event`.`context.versionId` of the last known version ID of the report context.
+
 The `Bundle` resource in the `updates` key shall have zero or more FHIR resources.
 
 > Note: There are zero entries in case there are only attribute updates of the anchor context or associated context.
