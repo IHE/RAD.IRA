@@ -1,6 +1,6 @@
 ### 2:3.X4.1 Scope
 
-This transaction is used to initiate a report context that all synchronizing applications will be synchronized to.
+This transaction is used to terminate a report context that all synchronizing applications will close their respective context.
 
 ### 2:3.X4.2 Actors Roles
 
@@ -10,7 +10,7 @@ This transaction is used to initiate a report context that all synchronizing app
 |------|-------------|----------|
 | Sender | Terminate a report context | Subscriber |
 | Manager | Receives and delete anchor context<br>and forward events to other Receivers | Hub |
-| Receiver | Receives events from Manager | Subscriber (See note 1) |
+| Receiver | Receives termination event and close the context | Subscriber (See note 1) |
 {: .grid}
 
 > Note 1: The Receiver Role is played by Subscribers subscribed to the event. This may include the original Sender as well as other Subscribers.
@@ -18,6 +18,8 @@ This transaction is used to initiate a report context that all synchronizing app
 ### 2:3.X4.3 Referenced Standards
 
 **FHIRcast**: [Request Context Change](https://build.fhir.org/ig/HL7/fhircast-docs/2-6-RequestContextChange.html#request-context-change)
+
+**FHIRcast**: [DiagnosticReport close Event](https://build.fhir.org/ig/HL7/fhircast-docs/3-6-2-diagnosticreport-close.html)
 
 ### 2:3.X4.4 Messages
 
@@ -50,13 +52,6 @@ The body of the request shall have the attributes according to [Section 2.6.1 Re
 
 The `event.context` shall conform to [DiagnosticReport close Event](https://build.fhir.org/ig/HL7/fhircast-docs/3-6-2-diagnosticreport-close.html).
 
-Additional, the contexts in the `event.context` shall conform to the following table:
-
-{:.grid}
-Key | Optionality | FHIR operation to generate context | Description
---- | --- | --- | ---
-`report`| REQUIRED | `DiagnosticReport/{id}?_elements=identifier` | Conform to the RTC-IMR-DiagnosticReport resource
-
 If the Sender retries the same request due to a timeout, then the Sender shall use the same `event.id` such that the Manager can detect if it is a duplicate message.
 
 If the Sender retries the same request due to an error response from the Manager, then the Sender shall assign a new `event.id` to indicate that it is a new message.
@@ -67,10 +62,10 @@ The Manager shall validate the request as follow:
 
 * If `timestamp`, `id` or `event` are not set, then return an error
 * If `event.context` does not include `report`, then return an error
-* If each context does not conform to the corresponding resource definition, then return an error
+* If the `report` context does not include `resource.id`, then return an error
 * if `event`.`hub.topic` is not a known topic, then return an error
 
-If the Manager accepts the request, then the Manager shall delete the `report` context of the received DiagnosticReport-open event, as well as all associated context and content.
+If the Manager accepts the request, then the Manager shall delete the `report` context of the received `DiagnosticReport-close` event, as well as all associated context and content.
 
 The Manager shall set the `current context` to the last context that was initiated by a `[FHIR resource]-open` event and has not been terminated by a corresponding `[FHIR resource]-close` event. If there is no such context, then the Manager shall set the `current context` to *empty*.
 
@@ -112,7 +107,7 @@ The Receiver shall *close* the corresponding `event.context` according to its ap
 - A Report Creator shall close the procedure. It may use the `id` in the `report` context as the report ID for the eventual created report.
 - An Evidence Creator shall close the patient's study.
 
-If the Receiver failed to process the event, then it shall return a `syncerror` back to the Manager using Send SyncError Event [RAD-X10](rad-10.html).
+If the Receiver accepted the event initially (i.e. return `202` Accepted) and later decided to refuse the context or failed to process the event, then it shall send a `syncerror` event back to the Manager using Send SyncError Event [RAD-X10](rad-10.html).
 
 ### 2:3.X4.5 Security Considerations
 
