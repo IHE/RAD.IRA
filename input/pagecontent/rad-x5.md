@@ -57,13 +57,14 @@ The `Bundle` resource in the `updates` key shall have zero or more FHIR resource
 > Note: There are zero entries in case there are only attribute updates of the anchor context or associated context.
 
 The Sender shall support one or more of the following FHIR resources for content sharing:
-{:.grid}
-FHIR Resource | Usage | Conformance
--- | -- | --
-[ImagingStudy](https://www.hl7.org/fhir/imagingstudy.html) | Additional studies related to the report in context. For example, comparison studies, grouped procedures, etc. | IMR-ImagingStudy
-[ImagingSelection](https://build.fhir.org/imagingselection.html) | Key image references and annotations | IMR-ImagingSelection
-[Observation](https://www.hl7.org/fhir/observation.html) | Measurements and assertions | RTC-IMR-Observation
-[DocumentReference](https://www.hl7.org/fhir/documentreference.html) | Reference to any kind of document. For example, JSON Structured Report | RTC-IMR-DocumentReference
+
+| FHIR Resource | Usage | Conformance |
+| -- | -- | -- |
+| [ImagingStudy](https://www.hl7.org/fhir/imagingstudy.html) | Additional studies related to the report in context. For example, comparison studies, grouped procedures, etc. | IMR-ImagingStudy |
+| [ImagingSelection](https://build.fhir.org/imagingselection.html) | Key image references and annotations | IMR-ImagingSelection |
+| [Observation](https://www.hl7.org/fhir/observation.html) | Measurements and assertions | RTC-IMR-Observation |
+| [DocumentReference](https://www.hl7.org/fhir/documentreference.html) | Reference to any kind of document. For example, JSON Structured Report | RTC-IMR-DocumentReference |
+{: .grid}
 
 THe Sender may support other FHIR resources for content sharing.
 
