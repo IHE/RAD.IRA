@@ -1,0 +1,20 @@
+@startuml
+
+hide footbox
+
+participant "Sender" as Sender
+participant "Manager" as Manager
+participant "Receiver" as Receiver
+
+== Select Report Content ==
+
+Sender->Manager: Select Report Content Request
+activate Manager
+Manager-->Sender: Select Report Content Response
+deactivate Manager
+
+== Process DiagnosticReport-select Event ==
+Manager->Receiver: //Send Context Event [RAD-X9]//
+Receiver->Receiver: Select Report Content
+
+@enduml
