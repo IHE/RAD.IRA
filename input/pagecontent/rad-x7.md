@@ -1,71 +1,94 @@
-This section corresponds to transaction [ITI-Y] of the IHE Technical Framework. Transaction [ITI-Y] is used by the Client and Server Actors. The go [ITI-Y] transaction is used to query and get back results.
+### 2:3.X7.1 Scope
 
-### Scope
+This transaction is used to unsubscribe to a FHIRcast session.
 
-The Client [ITI-Y] transaction passes a go Request from a Client to a Server.
+### 2:3.X7.2 Actors Roles
 
-### Actors Roles
+The roles in this transaction are defined in the following table and may be played by the actors shown here:
 
-**Table: Actor Roles**
+**Table 2:3.X7.2-1: Actor Roles**
 
-|Actor | Role |
-|-------------------+--------------------------|
-| [Client](volume-1.html#client)    | Sends query to Server |
-| [Server](volume-1.html#server) | Receives the query and responds |
+| Role | Description | Actor(s) |
+|------|-------------|----------|
+| Sender | Unsubscribes to a topic | Subscriber<br>Read-Only Subscriber |
+| Receiver | Receives and manages subscription requests | Hub |
+{: .grid}
 
-### Referenced Standards
+### 2:3.X7.3 Referenced Standards
 
-**FHIR-R4** [HL7 FHIR Release 4.0](http://www.hl7.org/FHIR/R4)
+**FHIRcast**: [Unsubscribe](https://build.fhir.org/ig/HL7/fhircast-docs/2-4-Subscribing.html#unsubscribe)
 
-### Interactions
+### 2:3.X7.4 Messages
 
 <div>
-{%include domain-Y-seq.svg%}
+{%include rad-x7-seq.svg%}
 </div>
-<br clear="all">
 
-**Figure: Go Interactions**
+<div style="clear: left"/>
 
+**Figure 2:3.X7.4-1: Interaction Diagram**
 
-#### go Query Message
-This message uses the HTTP GET method on the target Server endpoint to convey the query parameters FHIR query.
+#### 2:3.X7.4.1 Unsubscribe Session Request Message
 
-##### Trigger Events
+The Sender sends a session unsubscription request to the Receiver. The Sender shall support sending such messages to more than one Receiver.
 
-''TODO: define the triggers''
+The Receiver shall support handling such messages from more than one Sender. 
 
-##### Message Semantics
+##### 2:3.X7.4.1.1 Trigger Events
 
-''TODO: define the message -- usually with a StructureDefintion''
+The Sender no longer wants to receive event notification on a given session from Receiver.
 
-##### Expected Actions
+##### 2:3.X7.4.1.2 Message Semantics
 
-''TODO: define expected actions''
+This message is an HTTP POST request. The Sender is the User Agent. The Receiver is the Origin Server.
 
-#### Go Response Message
+The Sender shall perform an HTTP POST to the Receiver's base URL (as specified in `hub.url`). This request shall have a HTTP header `Content-Type` with the value `application/x-www-form-urlencoded`.
 
-##### Trigger Events
+The request shall have the payload with the parameters conforming to [Section 2.4.6 Unsubscribe](https://build.fhir.org/ig/HL7/fhircast-docs/2-4-Subscribing.html#unsubscribe).
 
-''TODO: define the triggers''
+##### 2:3.X7.4.1.3 Expected Actions
 
-##### Message Semantics
+The Receiver shall receive and validate the message.
 
-''TODO: define the message -- usually with a StructureDefintion''
+The Receiver shall return an error if the `hub.channel.type` is not `websocket`.
 
-##### Expected Actions
+The Receiver shall return an error if the `hub.topic` is empty.
 
-''TODO: define expected actions''
+The Receiver shall return an error if the `hub.mode` is `unsubscribe` and there is no `hub.channel.endpoint` or its value is empty.
 
+The Receiver shall return an error if the `hub.channel.endpoint` does not match the websocket associated to the Sender.
 
-### CapabilityStatement Resource
+The Receiver shall remove the Sender and its subscribed events from the topic.
 
-Server implementing this transaction shall provide a CapabilityStatement Resource as described in ITI TF-2x: Appendix Z.3 indicating the transaction has been implemented. 
-* Requirements CapabilityStatement for [Client](CapabilityStatement-IHE.FooBar.client.html)
-* Requirements CapabilityStatement for [Server](CapabilityStatement-IHE.FooBar.server.html)
+The Receiver shall terminate the websocket connection delete the websocket identifier.
+
+#### 2:3.X7.4.2 Unsubscribe Session Response Message
+
+The Receiver sends a response message describing the message outcome to the Sender.
+
+##### 2:3.X7.4.2.1 Trigger Events
+
+The Receiver receives a Unsubscribe Session Request message.
+
+##### 2:3.X7.4.2.2 Message Semantics
+
+This message is an HTTP POST response. The Sender is the User Agent. The Receiver is the Origin Server.
+
+If the Receiver successfully processed the request, the Receiver shall respond with an HTTP 202 “Accepted” response.
+
+The HTTP body of the response shall consist of a JSON object containing an element name `hub.channel.endpoint` and a value for the WSS URL that is associated to the Sender.
+
+##### 2:3.X7.4.2.3 Expected Actions
+
+If the HTTP response code is 202 "Accepted", no further action is required from the Sender.
+
+If the HTTP response code is 4xx or 5xx, then the Sender may adjust the request and retry.
 
 ### Security Considerations
 
-See [MHD Security Considerations](volume-1.html#security-considerations)
+See [RTC-IMR Security Considerations](volume-1.html#1xx5-rtc-imr-security-considerations)
+
+The Sender which is a synchronizing application should authenticate and authorize the driving application before it accepts the provided `hub.topic` and `hub.url` and sends this request.
 
 #### Security Audit Considerations
 
