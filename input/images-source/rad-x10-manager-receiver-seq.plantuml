@@ -1,0 +1,13 @@
+@startuml
+
+hide footbox
+
+participant "Manager" as Manager
+participant "Receiver" as Receiver
+
+Manager->Receiver: Send SyncError Request
+activate Receiver
+Receiver-->Manager: Send SyncError Response
+deactivate Receiver
+
+@enduml
