@@ -106,6 +106,8 @@ The Manager received a SyncError event from a Sender.
 
 The Manager received a 4xx or 5xx error response from a Receiver when executing the Send Context Event [RAD-X9](rad-x9.html) transaction.
 
+The Manager did not receive a `2xx` response within a predetermined time frame from a Receiver after the Manager sent a context event. 
+
 The Manager detected a websocket connection issue with a Receiver.
 
 ##### 2:3.X10.4.3.2 Message Semantics
