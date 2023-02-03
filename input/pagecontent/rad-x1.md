@@ -58,7 +58,7 @@ The request shall have the payload with the parameters in the following table:
 | ----------------------| ----------- | -------- | ------------|
 |`hub.channel.type`     | Required    | *string* | The channel type of `websocket`.|
 |`hub.mode`             | Required    | *string* | The literal string `subscribe`.|
-|`hub.topic`            | Required    | *string* | The identifier of the session that the Subscriber wishes to subscribe to.| 
+|`hub.topic`            | Required    | *string* | The identifier of the session that the Sender wishes to subscribe to.| 
 |`hub.events`           | Required    | *string* | Shall include these five events, comma-separated: <br>`diagnosticreport-open`,<br>`diagnosticreport-close`,<br>`diagnosticreport-update`, <br>`diagnosticreport-select`,<br>`syncerror`<br><br>The Subscriber may include other events.|
 |`hub.lease_seconds`    | Optional    | *number* | The positive integer indicating the number of seconds that the Sender wants the subscription to be active. |
 |`hub.channel.endpoint` | Conditional | *string* | The WSS URL identifying an existing WebSocket subscription.|
