@@ -19,7 +19,7 @@ This transaction is used to initiate a report context that all synchronizing app
 
 **FHIRcast**: [Request Context Change](https://build.fhir.org/ig/HL7/fhircast-docs/2-6-RequestContextChange.html#request-context-change)
 
-**FHIRcast**: [DiagnosticReport open Event](https://build.fhir.org/ig/HL7/fhircast-docs/3-6-1-diagnosticreport-open.html#diagnosticsreport-open-event)
+**FHIRcast**: [DiagnosticReport open Event](https://build.fhir.org/ig/HL7/fhircast-docs/3-6-1-diagnosticreport-open.html)
 
 ### 2:3.X3.4 Messages
 
