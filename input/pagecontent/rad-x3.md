@@ -116,7 +116,7 @@ The Receiver shall *open* the corresponding `event.context` according to its app
 - A Report Creator shall open the procedure corresponding to the `patient` and `study` context and be ready for reporting. It may use the `id` in the `report` context as the report ID for the eventual created report.
 - An Evidence Creator shall process the patient's study corresponding to the `patient` and `study` context.
 
-If the Receiver failed to process the event, then it shall return a `syncerror` back to the Manager using Send SyncError Event [RAD-X10](rad-10.html).
+If the Receiver accepted the event initially (i.e. return `202` Accepted) and later decided to refuse the context or failed to process the event, then it shall send a `syncerror` event back to the Manager using Send SyncError Event [RAD-X10](rad-10.html).
 
 ### 2:3.X3.5 Security Considerations
 
