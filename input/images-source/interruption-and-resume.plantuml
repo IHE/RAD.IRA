@@ -1,0 +1,106 @@
+@startuml
+
+actor Radiologist as User
+participant "PACS" as PACS
+participant "Hub" as Hub
+participant "Reporting App" as Report
+
+== Step 2: Open Study in Context ==
+
+PACS->Report: //Launch Application//
+
+Report->Hub: Subscribe to reporting session [RAD-Sub]
+note over Hub
+Hub adds Reporting App to the reporting session.
+end note
+
+Report->Hub: Get Current Context [RAD-X6]\n(catch up with current context and content)
+Hub-->Report: //Return empty context//
+
+User->PACS: //Select Patient and Study//
+PACS->PACS: //Open Study and show Chest X-Ray//
+
+PACS->Hub: Initiate Report Context [RAD-X3]\n(event: id = 1000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
+activate Hub
+note over PACS, Hub
+Create the following report context entry
+for session 12345:
+* DiagnosticReport
+* Patient
+* ImagingStudy
+end note
+
+Hub->Hub: //Create DiagnosticReport Context in session 12345//\n(event: id = 1000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)\n[[open_study_for_reporting.html#available-context-and-content-in-hub Example]]
+Hub-->PACS: Accept
+
+Hub->Report: Send Context Event [RAD-X9]\n(event: id = 1000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
+Report->Report: //Initiate new report//\n//based on the received context//
+Report-->Hub: //Success (id = 1000, status = 200)//
+
+Hub->PACS: Send Context Event [RAD-X9]\n(event: id = 1000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
+PACS->PACS: //No action required//
+PACS-->Hub: //Success (id = 1000, status = 200)//
+deactivate Hub
+
+== Step 2b: Interruption Occurred ==
+
+User->User: //Received an interruption to consult on another study//
+
+User->PACS: //Select **Another** Patient and Study//
+PACS->PACS: //Open Study and show Chest CT//
+
+PACS->Hub: Initiate Report Context [RAD-X3]\n(event: id = 2000,\ncontext = DiagnosticReport aaa\nrelated context = Patient bbb, ImagingStudy ccc)
+activate Hub
+note over PACS, Hub
+Create the following report context entry
+for session 12345:
+* DiagnosticReport aaa
+* Patient bbb
+* ImagingStudy ccc
+end note
+
+Hub->Hub: //Create DiagnosticReport Context in session 12345//\n(event: id = 2000,\ncontext = DiagnosticReport aaa\nrelated context = Patient bbb, ImagingStudy ccc)\n[[open_study_for_reporting.html#available-context-and-content-in-hub Example]]
+note over Hub
+At this moment, the current context is DiagnosticReport aaa
+because it is the last context that has been initiated and not
+yet terminated.
+
+However, the anchor context DiagnosticReport xxx remains in
+the Hub's tracking since it has not yet been closed.
+end note
+Hub-->PACS: Accept
+
+Hub->Report: Send Context Event [RAD-X9]\n(event: id = 2000,\ncontext = DiagnosticReport aaa\nrelated context = Patient bbb, ImagingStudy ccc)
+Report->Report: //Initiate new report//\n//based on the received context//
+Report-->Hub: //Success (id = 2000, status = 200)//
+
+Hub->PACS: Send Context Event [RAD-X9]\n(event: id = 2000,\ncontext = DiagnosticReport aaa\nrelated context = Patient bbb, ImagingStudy ccc)
+PACS->PACS: //No action required//
+PACS-->Hub: //Success (id = 2000, status = 200)//
+deactivate Hub
+
+User->PACS: //Start reviewing the new study for consultation//
+
+...
+
+User->PACS: //Complete review for consultation and close study//
+
+PACS->Hub: Terminate Report Context [RAD-X4]\n(event: id = 3000,\ncontext = DiagnosticReport aaa)
+note over Hub
+Hub completed tracking of context DiagnosticReport aaa
+and deleted this context.
+
+Hub resumes context DiagnosticReport xxx as current context.
+end note
+
+Hub->Report: Send Context Event [RAD-X9]\n(event: id = 3000,\ncontext = DiagnositcReport aaa)
+Report->Report: //Close study in consultation//\n//and resume to the last open context DiagnosticReport xxx)//
+Report-->Hub: //Success//
+
+Hub->PACS: Send Context Event [RAD-X9]\n(event: id = 3000,\ncontext = DiagnosticReport aaa)
+PACS->PACS: //Resume to the previously open study in context//\n//DiagnosticReport xxx, patient yyy, study zzz//
+PACS-->Hub: //Success//
+
+User->PACS: //Resume reporting on study zzz as Step 3//
+
+@enduml

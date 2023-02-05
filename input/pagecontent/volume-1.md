@@ -618,14 +618,23 @@ Figure 1:XX.4.2.1.2.1-6: Terminate Reporting Session Flow in RTC-IMR Profile
 
 Figure 1:XX.4.2.2-1: Worklist Manager Driven Reporting in RTC-IMR Profile
 
-#### 1:XX.4.2.3 Use Case: Error Handling Flow
+#### 1:XX.4.2.3 Use Case: Interruption and Resume Flow
+
+<div>
+{%include interruption-and-resume.svg%}
+</div>
+<br clear="all">
+
+Figure 1:XX.4.2.3-1: Interruption and Resume Flow in RTC-IMR Profile
+
+#### 1:XX.4.2.4 Use Case: Error Handling Flow
 
 <div>
 {%include syncerror.svg%}
 </div>
 <br clear="all">
 
-Figure 1:XX.4.2.3-1: Error Handling Flow in RTC-IMR Profile
+Figure 1:XX.4.2.4-1: Error Handling Flow in RTC-IMR Profile
 
 ## 1:XX.5 RTC-IMR Security Considerations
 
