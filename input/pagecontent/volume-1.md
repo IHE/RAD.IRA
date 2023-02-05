@@ -35,309 +35,248 @@ Table 1:XX.1-1 lists the transactions for each actor directly involved in the IM
   </thead>
   <tbody>
     <tr>
-      <td rowspan="10"><a href="volume-1.html#1xx111-image-display">Image Display</a></td>
+      <td rowspan="10"><a href="volume-1.html#1xx111-read-only-subscriber">Read-Only Subscriber</a></td>
       <td>Subscribe Reporting Session [RAD-X1]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="RAD-X1.html">RAD TF-2: 4.X1</a></td>
+      <td><a href="rad-x1.html">RAD TF-2: 4.X1</a></td>
     </tr>
     <tr>
       <td>Connect Notification Channel [RAD-X2]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="RAD-X2.html">RAD TF-2: 4.X2</a></td>
+      <td><a href="rad-x2.html">RAD TF-2: 4.X2</a></td>
     </tr>
     <tr>
       <td>Initiate Report Context [RAD-X3]</td>
       <td>Initiator</td>
-      <td>R</td>
-      <td><a href="RAD-X3.html">RAD TF-2: 4.X3</a></td>
+      <td>O</td>
+      <td><a href="rad-x3.html">RAD TF-2: 4.X3</a></td>
     </tr>
     <tr>
       <td>Terminate Report Context [RAD-X4]</td>
       <td>Initiator</td>
-      <td>R</td>
-      <td><a href="RAD-X4.html">RAD TF-2: 4.X4</a></td>
+      <td>O</td>
+      <td><a href="rad-x4.html">RAD TF-2: 4.X4</a></td>
     </tr>
     <tr>
       <td>Update Report Content [RAD-X5]</td>
       <td>Initiator</td>
-      <td>R</td>
-      <td><a href="RAD-X5.html">RAD TF-2: 4.X5</a></td>
+      <td>O</td>
+      <td><a href="rad-x5.html">RAD TF-2: 4.X5</a></td>
     </tr>
     <tr>
       <td>Select Report Content [RAD-X6]</td>
       <td>Initiator</td>
-      <td>R</td>
-      <td><a href="RAD-X6.html">RAD TF-2: 4.X6</a></td>
+      <td>O</td>
+      <td><a href="rad-x6.html">RAD TF-2: 4.X6</a></td>
     </tr>
     <tr>
       <td>Unsubscribe Session [RAD-X7]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="RAD-X7.html">RAD TF-2: 4.X7</a></td>
+      <td><a href="rad-x7.html">RAD TF-2: 4.X7</a></td>
     </tr>
     <tr>
       <td>Get Current Context [RAD-X8]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="RAD-X8.html">RAD TF-2: 4.X8</a></td>
+      <td><a href="rad-x8.html">RAD TF-2: 4.X8</a></td>
     </tr>
     <tr>
       <td>Send Context Event [RAD-X9]</td>
       <td>Responder</td>
       <td>R</td>
-      <td><a href="RAD-X9.html">RAD TF-2: 4.X9</a></td>
+      <td><a href="rad-x9.html">RAD TF-2: 4.X9</a></td>
     </tr>
     <tr>
       <td>Send SyncError Event [RAD-X10]</td>
-      <td>Responder</td>
+      <td>Initiator & Responder</td>
       <td>R</td>
-      <td><a href="RAD-X10.html">RAD TF-2: 4.X10</a></td>
+      <td><a href="rad-x10.html">RAD TF-2: 4.X10</a></td>
     </tr>
     <tr>
-      <td rowspan="10"><a href="volume-1.html#1xx112-evidence-creator">Evidence Creator</a></td>
+      <td rowspan="10"><a href="volume-1.html#1xx112-context-sharing-subscriber">Context Sharing Subscriber</a></td>
       <td>Subscribe Reporting Session [RAD-X1]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="RAD-X1.html">RAD TF-2: 4.X1</a></td>
+      <td><a href="rad-x1.html">RAD TF-2: 4.X1</a></td>
     </tr>
     <tr>
       <td>Connect Notification Channel [RAD-X2]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="RAD-X2.html">RAD TF-2: 4.X2</a></td>
+      <td><a href="rad-x2.html">RAD TF-2: 4.X2</a></td>
     </tr>
     <tr>
       <td>Initiate Report Context [RAD-X3]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="RAD-X3.html">RAD TF-2: 4.X3</a></td>
+      <td><a href="rad-x3.html">RAD TF-2: 4.X3</a></td>
     </tr>
     <tr>
       <td>Terminate Report Context [RAD-X4]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="RAD-X4.html">RAD TF-2: 4.X4</a></td>
+      <td><a href="rad-x4.html">RAD TF-2: 4.X4</a></td>
     </tr>
     <tr>
       <td>Update Report Content [RAD-X5]</td>
       <td>Initiator</td>
-      <td>R</td>
-      <td><a href="RAD-X5.html">RAD TF-2: 4.X5</a></td>
+      <td>O</td>
+      <td><a href="rad-x5.html">RAD TF-2: 4.X5</a></td>
     </tr>
     <tr>
       <td>Select Report Content [RAD-X6]</td>
       <td>Initiator</td>
-      <td>R</td>
-      <td><a href="RAD-X6.html">RAD TF-2: 4.X6</a></td>
+      <td>O</td>
+      <td><a href="rad-x6.html">RAD TF-2: 4.X6</a></td>
     </tr>
     <tr>
       <td>Unsubscribe Session [RAD-X7]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="RAD-X7.html">RAD TF-2: 4.X7</a></td>
+      <td><a href="rad-x7.html">RAD TF-2: 4.X7</a></td>
     </tr>
     <tr>
       <td>Get Current Context [RAD-X8]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="RAD-X8.html">RAD TF-2: 4.X8</a></td>
+      <td><a href="rad-x8.html">RAD TF-2: 4.X8</a></td>
     </tr>
     <tr>
       <td>Send Context Event [RAD-X9]</td>
       <td>Responder</td>
       <td>R</td>
-      <td><a href="RAD-X9.html">RAD TF-2: 4.X9</a></td>
+      <td><a href="rad-x9.html">RAD TF-2: 4.X9</a></td>
     </tr>
     <tr>
       <td>Send SyncError Event [RAD-X10]</td>
-      <td>Responder</td>
+      <td>Initiator & Responder</td>
       <td>R</td>
-      <td><a href="RAD-X10.html">RAD TF-2: 4.X10</a></td>
+      <td><a href="rad-x10.html">RAD TF-2: 4.X10</a></td>
     </tr>
     <tr>
-      <td rowspan="10"><a href="volume-1.html#1xx113-report-creator">Report Creator</a></td>
+      <td rowspan="10"><a href="volume-1.html#1xx113-content-sharing-subscriber">Content Sharing Subscriber</a></td>
       <td>Subscribe Reporting Session [RAD-X1]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="RAD-X1.html">RAD TF-2: 4.X1</a></td>
+      <td><a href="rad-x1.html">RAD TF-2: 4.X1</a></td>
     </tr>
     <tr>
       <td>Connect Notification Channel [RAD-X2]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="RAD-X2.html">RAD TF-2: 4.X2</a></td>
+      <td><a href="rad-x2.html">RAD TF-2: 4.X2</a></td>
     </tr>
     <tr>
       <td>Initiate Report Context [RAD-X3]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="RAD-X3.html">RAD TF-2: 4.X3</a></td>
+      <td><a href="rad-x3.html">RAD TF-2: 4.X3</a></td>
     </tr>
     <tr>
       <td>Terminate Report Context [RAD-X4]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="RAD-X4.html">RAD TF-2: 4.X4</a></td>
+      <td><a href="rad-x4.html">RAD TF-2: 4.X4</a></td>
     </tr>
     <tr>
       <td>Update Report Content [RAD-X5]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="RAD-X5.html">RAD TF-2: 4.X5</a></td>
+      <td><a href="rad-x5.html">RAD TF-2: 4.X5</a></td>
     </tr>
     <tr>
       <td>Select Report Content [RAD-X6]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="RAD-X6.html">RAD TF-2: 4.X6</a></td>
+      <td><a href="rad-x6.html">RAD TF-2: 4.X6</a></td>
     </tr>
     <tr>
       <td>Unsubscribe Session [RAD-X7]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="RAD-X7.html">RAD TF-2: 4.X7</a></td>
+      <td><a href="rad-x7.html">RAD TF-2: 4.X7</a></td>
     </tr>
     <tr>
       <td>Get Current Context [RAD-X8]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="RAD-X8.html">RAD TF-2: 4.X8</a></td>
+      <td><a href="rad-x8.html">RAD TF-2: 4.X8</a></td>
     </tr>
     <tr>
       <td>Send Context Event [RAD-X9]</td>
       <td>Responder</td>
       <td>R</td>
-      <td><a href="RAD-X9.html">RAD TF-2: 4.X9</a></td>
+      <td><a href="rad-x9.html">RAD TF-2: 4.X9</a></td>
     </tr>
     <tr>
       <td>Send SyncError Event [RAD-X10]</td>
-      <td>Responder</td>
+      <td>Initiator & Responder</td>
       <td>R</td>
-      <td><a href="RAD-X10.html">RAD TF-2: 4.X10</a></td>
+      <td><a href="rad-x10.html">RAD TF-2: 4.X10</a></td>
     </tr>
     <tr>
-      <td rowspan="10"><a href="volume-1.html#1xx114-worklist-manager">Worklist Manager</a></td>
-      <td>Subscribe Reporting Session [RAD-X1]</td>
-      <td>Initiator</td>
-      <td>R</td>
-      <td><a href="RAD-X1.html">RAD TF-2: 4.X1</a></td>
-    </tr>
-    <tr>
-      <td>Connect Notification Channel [RAD-X2]</td>
-      <td>Initiator</td>
-      <td>R</td>
-      <td><a href="RAD-X2.html">RAD TF-2: 4.X2</a></td>
-    </tr>
-    <tr>
-      <td>Initiate Report Context [RAD-X3]</td>
-      <td>Initiator</td>
-      <td>R</td>
-      <td><a href="RAD-X3.html">RAD TF-2: 4.X3</a></td>
-    </tr>
-    <tr>
-      <td>Terminate Report Context [RAD-X4]</td>
-      <td>Initiator</td>
-      <td>R</td>
-      <td><a href="RAD-X4.html">RAD TF-2: 4.X4</a></td>
-    </tr>
-    <tr>
-      <td>Update Report Content [RAD-X5]</td>
-      <td>Initiator</td>
-      <td>R</td>
-      <td><a href="RAD-X5.html">RAD TF-2: 4.X5</a></td>
-    </tr>
-    <tr>
-      <td>Select Report Content [RAD-X6]</td>
-      <td>Initiator</td>
-      <td>R</td>
-      <td><a href="RAD-X6.html">RAD TF-2: 4.X6</a></td>
-    </tr>
-    <tr>
-      <td>Unsubscribe Session [RAD-X7]</td>
-      <td>Initiator</td>
-      <td>R</td>
-      <td><a href="RAD-X7.html">RAD TF-2: 4.X7</a></td>
-    </tr>
-    <tr>
-      <td>Get Current Context [RAD-X8]</td>
-      <td>Initiator</td>
-      <td>R</td>
-      <td><a href="RAD-X8.html">RAD TF-2: 4.X8</a></td>
-    </tr>
-    <tr>
-      <td>Send Context Event [RAD-X9]</td>
-      <td>Responder</td>
-      <td>R</td>
-      <td><a href="RAD-X9.html">RAD TF-2: 4.X9</a></td>
-    </tr>
-    <tr>
-      <td>Send SyncError Event [RAD-X10]</td>
-      <td>Responder</td>
-      <td>R</td>
-      <td><a href="RAD-X10.html">RAD TF-2: 4.X10</a></td>
-    </tr>
-    <tr>
-      <td rowspan="10"><a href="volume-1.html#1xx115-hub">Hub</a></td>
+      <td rowspan="10"><a href="volume-1.html#1xx118-hub">Hub</a></td>
       <td>Subscribe Reporting Session [RAD-X1]</td>
       <td>Responder</td>
       <td>R</td>
-      <td><a href="RAD-X1.html">RAD TF-2: 4.X1</a></td>
+      <td><a href="rad-x1.html">RAD TF-2: 4.X1</a></td>
     </tr>
     <tr>
       <td>Connect Notification Channel [RAD-X2]</td>
       <td>Responder</td>
       <td>R</td>
-      <td><a href="RAD-X2.html">RAD TF-2: 4.X2</a></td>
+      <td><a href="rad-x2.html">RAD TF-2: 4.X2</a></td>
     </tr>
     <tr>
       <td>Initiate Report Context [RAD-X3]</td>
       <td>Responder</td>
       <td>R</td>
-      <td><a href="RAD-X3.html">RAD TF-2: 4.X3</a></td>
+      <td><a href="rad-x3.html">RAD TF-2: 4.X3</a></td>
     </tr>
     <tr>
       <td>Terminate Report Context [RAD-X4]</td>
       <td>Responder</td>
       <td>R</td>
-      <td><a href="RAD-X4.html">RAD TF-2: 4.X4</a></td>
+      <td><a href="rad-x4.html">RAD TF-2: 4.X4</a></td>
     </tr>
     <tr>
       <td>Update Report Content [RAD-X5]</td>
       <td>Responder</td>
       <td>R</td>
-      <td><a href="RAD-X5.html">RAD TF-2: 4.X5</a></td>
+      <td><a href="rad-x5.html">RAD TF-2: 4.X5</a></td>
     </tr>
     <tr>
       <td>Select Report Content [RAD-X6]</td>
       <td>Responder</td>
       <td>R</td>
-      <td><a href="RAD-X6.html">RAD TF-2: 4.X6</a></td>
+      <td><a href="rad-x6.html">RAD TF-2: 4.X6</a></td>
     </tr>
     <tr>
       <td>Unsubscribe Session [RAD-X7]</td>
       <td>Responder</td>
       <td>R</td>
-      <td><a href="RAD-X7.html">RAD TF-2: 4.X7</a></td>
+      <td><a href="rad-x7.html">RAD TF-2: 4.X7</a></td>
     </tr>
     <tr>
       <td>Get Current Context [RAD-X8]</td>
       <td>Responder</td>
       <td>R</td>
-      <td><a href="RAD-X8.html">RAD TF-2: 4.X8</a></td>
+      <td><a href="rad-x8.html">RAD TF-2: 4.X8</a></td>
     </tr>
     <tr>
       <td>Send Context Event [RAD-X9]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="RAD-X9.html">RAD TF-2: 4.X9</a></td>
+      <td><a href="rad-x9.html">RAD TF-2: 4.X9</a></td>
     </tr>
     <tr>
       <td>Send SyncError Event [RAD-X10]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="RAD-X10.html">RAD TF-2: 4.X10</a></td>
+      <td><a href="rad-x10.html">RAD TF-2: 4.X10</a></td>
     </tr>
   </tbody>
 </table>
@@ -345,25 +284,51 @@ Table 1:XX.1-1 lists the transactions for each actor directly involved in the IM
 ### 1:XX.1.1 Actors Description and Actor Profile Requirements
 Most requirements are documented in RAD TF-2 Transactions. This section documents any additional requirements on this profile's actors.
 
-#### 1:XX.1.1.1 Image Display
+#### 1:XX.1.1.1 Read-Only Subscriber
 
-An Image Display 
+The Read-Only Subscriber actor is responsible for subscribing to a given reporting session and handling events received from the session.
 
-#### 1:XX.1.1.2 Evidence Creator
+#### 1:XX.1.1.2 Context Sharing Subscriber
 
-The Sever processes query request from the Client actor.
+The Context Sharing Subscriber actor is responsible for subscribing to a given reporting session, initiating and terminating a report context, and handling events received from the session.
 
-#### 1:XX.1.1.3 Report Creator
+#### 1:XX.1.1.3 Content Sharing Subscriber
 
-The Sever processes query request from the Client actor.
+The Context Sharing Subscriber actor is responsible for subscribing to a given reporting session, initiating and terminating a report context, updating and selecting additional content for a report context, and handling events received from the session.
 
-#### 1:XX.1.1.4 Worklist Manager
+#### 1:XX.1.1.4 Image Display
 
-The Sever processes query request from the Client actor.
+The Image Display actor is responsible for presenting patients' studies and relevant information to the user.
 
-#### 1:XX.1.1.5 Hub
+The Image Display is required to be grouped with either the Context Sharing Subscriber or the Content Sharing Subscriber.
 
-The Sever processes query request from the Client actor.
+If the Image Display is the driving application that launches other synchronized applications, then it is responsible for providing the URL of the Hub actor as `hub.url` and the reporting session as `hub.topic` to each synchronized application.
+
+#### 1:XX.1.1.5 Evidence Creator
+
+The Evidence Creator actor is responsible for producing evidence data for the patients' studies.
+
+The Evidence Creator is required to be grouped with the Read-Only Subscriber or the Content Sharing Subscriber.
+
+#### 1:XX.1.1.6. Report Creator
+
+The Report Creator actor is responsible for producing a diagnostic report for patients' studies.
+
+The Report Creator is required to be grouped with the Read-Only Subscriber, the Context Sharing Subscriber, or the Content Sharing Subscriber.
+
+If the Report Creator is the driving application that launches other synchronized applications, then it is responsible for providing the URL of the Hub actor as `hub.url` and the reporting session as `hub.topic` to each synchronized application.
+
+#### 1:XX.1.1.7 Worklist Display
+
+The Worklist Display actor is responsible for presenting a worklist for the user and launching other connected applications on demand.
+
+The Worklist Display is required to be grouped with the Read-Only Subscriber or the Context Sharing Subscriber.
+
+If the Worklist Display is the driving application that launches other synchronized applications, then it is responsible for providing the URL of the Hub actor as `hub.url` and the reporting session as `hub.topic` to each synchronized application.
+
+#### 1:XX.1.1.8 Hub
+
+The Hub actor is responsible for managing a context, content and subscribers in communication sessions.
 
 ## 1:XX.2 RTC-IMR Actor Options
 
