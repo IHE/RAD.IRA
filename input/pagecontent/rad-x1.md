@@ -36,13 +36,11 @@ The Receiver shall support handling such messages from more than one Sender.
 
 ##### 2:3.X1.4.1.1 Trigger Events
 
-If the Sender is the driving application that starts the reporting session, then the Sender sends the request when it starts the reporting session.
-
-If the Sender is a synchronizing application, then the Sender sends the request when it is launched by the driving application.
-
-The Sender sends the request when it decided to change the subscribed events.
-
-The Sender sends the request to renew an existing subscription.
+A Sender uses this transaction when:
+- It wants to start a reporting session
+- It wants to join an existing reporting session
+- It wants to change the event filter for its existing subscription
+- It wants to renew its existing subscription
 
 ##### 2:3.X1.4.1.2 Message Semantics
 
