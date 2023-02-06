@@ -638,108 +638,71 @@ Figure 1:XX.4.2.4-1: Error Handling Flow in RTC-IMR Profile
 
 ## 1:XX.5 RTC-IMR Security Considerations
 
-See ITI TF-2x: [Appendix Z.8 “Mobile Security Considerations”](https://profiles.ihe.net/ITI/TF/Volume2/ch-Z.html#z.8-mobile-security-considerations)
+This profile strongly recommends all actors group with an ITI ATNA Secure Application or Secure Node Actor using the Radiology Audit Trail Option.
 
-TO DO...UPDATE THIS BOILERPLATE TEXT FROM THE SUPP. TEMPLATE: This section should address downstream design considerations, specifically for: Privacy, Security, and Safety. These might need to be individual header sections if they are significant or need to be referenced.
+The ATNA Profile requires actors to implement:
+- [Record Audit Event](https://profiles.ihe.net/ITI/TF/Volume2/ITI-20.html) [ITI-20] transaction which would record when and where analysis results are distributed and displayed.
+- [Authenticate Node](https://profiles.ihe.net/ITI/TF/Volume2/ITI-19.html) [ITI-19] transaction to further ensure the integrity of transactions via node authentication and communication encryption.
 
-The editor needs to understand Security and Privacy fundamentals. 
-General [Security and Privacy guidance](http://hl7.org/fhir/secpriv-module.html) is provided in the FHIR Specification. 
-The FHIR core specification should be leveraged where possible to inform the reader of your specification.
+Furthermore, for the HTTP-based transactions, this profile strongly recommends the use of ITI [Internet User Authorization](https://profiles.ihe.net/ITI/TF/Volume1/ch-34.html) (IUA) Profile to ensure that communications are only allowed for authenticated and authorized users and/or systems.
 
-IHE FHIR based profiles should reference the [ITI Appendix Z](https://profiles.ihe.net/ITI/TF/Volume2/ch-Z.html) section 8 Mobile Security and Privacy Considerations base when appropriate.
+Additionally, although this profile does not specify any particular method for the driving application to launch the synchronizing application, this profile strongly recommends the use of SMART on FHIR for application launching. In addition to the use of OAuth2 as specified in the ITI IUA profile, SMART on FHIR defines custom scopes that can be used by the Hub to validate if the Subscriber is authorized to invoke the transaction.
 
-IHE Document Content profiles can reference the security and privacy provided by the Document Sharing infrastructure as directly grouped or possibly to be grouped.
+Note that with FHIRcast, the authentication and authorization is controlled by the HTTP requests. Once the websocket connections are established, there is no further authorization per events.
 
-   While it is not a requirement that any given specification or system be
-   immune to all forms of attack, it is still necessary for authors of specifications to
-   consider as many forms as possible.  Part of the purpose of the
-   Security and Privacy Considerations section is to explain what attacks have been 
-   considered and what countermeasures can be applied to defend against them.
-   
-   There should be a clear description of the kinds of threats on the
-   described specification.  This should be approached as an
-   effort to perform "due diligence" in describing all known or
-   foreseeable risks and threats to potential implementers and users.
-
-Authors MUST describe:
-* which attacks have been considered and addressed in the specification
-* which attacks have been considered but not addressed in the specification
-* what could be done in system design, system deployment, or user training
-
-
-   At least the following forms of attack MUST be considered:
-   eavesdropping, replay, message insertion, deletion, modification, and
-   man-in-the-middle.  Potential denial of service attacks MUST be
-   identified as well.  If the specification incorporates cryptographic
-   protection mechanisms, it should be clearly indicated which portions
-   of the data are protected and what the protections are (i.e.,
-   integrity only, confidentiality, and/or endpoint authentication,
-   etc.).  Some indication should also be given to what sorts of attacks
-   the cryptographic protection is susceptible.  Data which should be
-   held secret (keying material, random seeds, etc.) should be clearly
-   labeled.
-
-   If the specification involves authentication, particularly user-host
-   authentication, the security of the authentication method MUST be
-   clearly specified.  That is, authors MUST document the assumptions
-   that the security of this authentication method is predicated upon.
-
-   The threat environment addressed by the Security and Privacy Considerations
-   section MUST at a minimum include deployment across the global
-   Internet across multiple administrative boundaries without assuming
-   that firewalls are in place, even if only to provide justification
-   for why such consideration is out of scope for the protocol.  It is
-   not acceptable to only discuss threats applicable to LANs and ignore
-   the broader threat environment.  In
-   some cases, there might be an Applicability Statement discouraging
-   use of a technology or protocol in a particular environment.
-   Nonetheless, the security issues of broader deployment should be
-   discussed in the document.
-
-   There should be a clear description of the residual risk to the user
-   or operator of that specification after threat mitigation has been
-   deployed.  Such risks might arise from compromise in a related
-   specification (e.g., IPsec is useless if key management has been
-   compromised), from incorrect implementation, compromise of the
-   security technology used for risk reduction (e.g., a cipher with a
-   40-bit key), or there might be risks that are not addressed by the
-   specification (e.g., denial of service attacks on an
-   underlying link protocol).  Particular care should be taken in
-   situations where the compromise of a single system would compromise
-   an entire protocol.  For instance, in general specification designers
-   assume that end-systems are inviolate and don't worry about physical
-   attack.  However, in cases (such as a certificate authority) where
-   compromise of a single system could lead to widespread compromises,
-   it is appropriate to consider systems and physical security as well.
-
-   There should also be some discussion of potential security risks
-   arising from potential misapplications of the specification or technology
-   described in the specification.  
-  
-This section also include specific considerations regarding Digital Signatures, Provenance, Audit Logging, and De-Identification.
-
-Where audit logging is specified, a StructureDefinition profile(s) should be included, and Examples of those logs might be included.
+The events as defined in this profile contain personal demographic information and clinical information. It is appropriate for products implementing the this profile to include appropriate PHI controls. Specifying such mechanisms and features is outside the scope of this profile.
 
 ## 1:XX.6 RTC-IMR Cross-Profile Considerations
 
-TO DO: This section is informative, not normative. It is intended to put
-this profile in context with other profiles. Any required groupings
-should have already been described above. Brief descriptions can go
-directly into this section; lengthy descriptions should go into an
-appendix. Examples of this material include ITI Cross Community Access
-(XCA) Grouping Rules (Section 18.2.3), the Radiology associated profiles
-listed at wiki.ihe.net, or ITI Volume 1 Appendix E “Cross Profile
-Considerations”, and the “See Also” sections Radiology Profile
-descriptions on the wiki such as
-<http://wiki.ihe.net/index.php/Scheduled_Workflow#See_Also>. If this
-section is left blank, add “Not applicable.”
+Table 1:XX.6-1 describes various actors in various other profiles that might be useful to group with RTC-IMR Profile actors.
 
-Consider using a format such as the following:
+**Table 1:XX.6-1: RTC-IMR - Optional Actor Groupings**
 
-other profile acronym - other profile name
-
-A other profile actor name in other profile name might
-be grouped with a this profile actor name to describe
-benefit/what is accomplished by grouping.
-
-
+<table class="grid">
+  <thead>
+    <tr>
+      <th>IMR Actor</th>
+      <th>Might group with</th>
+      <th>Potential Purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="2">Report Creator</td>
+      <td><a href="https://www.ihe.net/uploadedFiles/Documents/Radiology/IHE_RAD_Suppl_RD.pdf">IMR Report Creator</a></td>
+      <td>To produce multi-media interactive report using the context and content received.</td>
+    </tr>
+    <tr>
+      <td><a href="https://profiles.ihe.net/ITI/IUA/index.html">IUA Authorization Client</a></td>
+      <td>To provide authorization claims when invoking a request with another actor.</td>
+    </tr>
+    <tr>
+      <td rowspan="2">Image Display</td>
+      <td><a href="https://www.ihe.net/uploadedFiles/Documents/Radiology/IHE_RAD_TF_Vol1.pdf">SWF.b Image Display</a></td>
+      <td>To display patients' studies and share context and content with other synchronized applications</td>
+    </tr>
+    <tr>
+      <td><a href="https://profiles.ihe.net/ITI/IUA/index.html">IUA Authorization Client</a></td>
+      <td>To provide authorization claims when invoking a request with another actor.</td>
+    </tr>
+    <tr>
+      <td rowspan="2">Evidence Creator</td>
+      <td><a href="https://www.ihe.net/uploadedFiles/Documents/Radiology/IHE_RAD_TF_Vol1.pdf">SWF.b Evidence Creator</a></td>
+      <td>To provide measurements and other evidence data and share the content with other synchronized applications.</td>
+    </tr>
+    <tr>
+      <td><a href="https://profiles.ihe.net/ITI/IUA/index.html">IUA Authorization Client</a></td>
+      <td>To provide authorization claims when invoking a request with another actor.</td>
+    </tr>
+    <tr>
+      <td>Worklist Display</td>
+      <td><a href="https://profiles.ihe.net/ITI/IUA/index.html">IUA Authorization Client</a></td>
+      <td>To provide authorization claims when invoking a request with another actor.</td>
+    </tr>
+    <tr>
+      <td>Hub</td>
+      <td><a href="https://profiles.ihe.net/ITI/IUA/index.html">IUA Resource Server</a></td>
+      <td>To enforce only authorized access to the resources stored in the repository.</td>
+    </tr>
+  </tbody>
+</table>
