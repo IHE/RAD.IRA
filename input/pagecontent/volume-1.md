@@ -427,8 +427,6 @@ considerations and Section 1:52.6 describes some optional groupings in other rel
 
 At its heart, this profile synchronizes a group of applications using a Publish and Subscribe model as implemented by [FHIRcast](https://build.fhir.org/ig/HL7/fhircast-docs/index.html) which in turn is an implementation of [WebSub](https://www.w3.org/TR/websub/).
 
-FHIRcast defines a number of terminologies in its [Glossary](https://build.fhir.org/ig/HL7/fhircast-docs/5_glossary.html).
-
 The following are some key concepts:
 - Participating applications are `Subscribers` that register with and communicate with a `Hub`
 - `Subscribers` do not communicate with other `Subscribers` directly.
@@ -451,6 +449,8 @@ TODO: Replace the FHIRcast link to the published version if ready by the time of
 The terminology used in FHIRcast and adopted in this profile can be found in the [Glossary](https://build.fhir.org/ig/HL7/fhircast-docs/5_glossary.html) page.
 
 The following is a representation of the data model:
+
+**Figure 1:XX.4,1.2-1: FHIRcast Concept Data Model**
 
 <div>
     <img src="data_model.png" width="80%">
@@ -584,6 +584,8 @@ It is necessary for the Driving Application to subscribe to the reporting events
 - Receives synchronization error events from the Hub or from other Synchronizing Applications.
 
 Once the Image Display completed its subscription, it launches the Report Creator. The Report Creator, as a Synchronizing Application, can follows the context and content events automatically.
+
+> Note that *launching* the Report Creator (or any Synchronizing Application) by the Image Display (or any Driving Application) may be implemented in different ways. For example, the Synchronizing Application can be started and terminated, or it can be put in focus and minimize when not needed but keep running in the background for efficiency.
 
 When launched, the first thing that the Report Creator does as a Synchronizing Application is to subscribe to the reporting session. The information about the Hub and the session is provided by the Image Display during launch.
 
