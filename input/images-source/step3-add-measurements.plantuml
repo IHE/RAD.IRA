@@ -1,9 +1,9 @@
 @startuml
 
 actor Radiologist as User
-participant "PACS" as PACS
+participant "Image Display\n(as Driving App\nand Content Sharing App)" as PACS
 participant "Hub" as Hub
-participant "Reporting App" as Report
+participant "Report Creator\n(as Synchronizing App\nand Driving App)" as Report
 
 User->PACS: //Start dictation//
 

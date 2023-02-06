@@ -1,8 +1,8 @@
 @startuml
 
-participant PACS as PACS
+participant "Image Display" as Display
 participant Hub as Hub
 
-PACS->Hub: Subscribe to reporting session [RAD-Sub]
+Display->Hub: Subscribe to reporting session [RAD-Sub]
 
 @enduml

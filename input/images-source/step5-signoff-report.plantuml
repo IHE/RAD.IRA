@@ -1,9 +1,9 @@
 @startuml
 
 actor Radiologist as User
-participant "PACS" as PACS
+participant "Image Display\n(as Driving App\nand Content Sharing App)" as PACS
 participant "Hub" as Hub
-participant "Reporting App" as Report
+participant "Report Creator\n(as Synchronizing App\nand Driving App)" as Report
 
 User->Report: //Complete dictate report//
 Report->Report: //Persist report//
@@ -12,10 +12,8 @@ Report->Report: //Persist report//
 
 User->Report: //Sign off report//
 note over Report
-DiagnosticReport status = FINAL
+Report status = FINAL
 end note
-
-Report->: //Send final report//
 
 Report->Hub: Terminate Report Context [RAD-X4]\n(event: id = 2000,\ncontext = DiagnosticReport xxx)
 activate Hub
@@ -31,5 +29,21 @@ Report-->Hub: //Success (id = 2000, status = 200)//
 
 Hub->Hub: //Delete DiagnosticReport context in session 12345//\n(context = DiagnosticReport xxx)\n[[close_study_after_signoff.html#available-context-and-content-in-hub Example]]
 deactivate Hub
+
+...
+note over Report
+Some Report Creator may have a grace period
+between the report sign-off and the report
+being sent to other recipients.
+end note
+Report->: //Send final report//
+
+User->PACS: //Proceed to next study//
+
+note over PACS
+Image Display repeates Step 2 to
+open the next study as the new context.
+end note
+PACS->Hub: Initiate Report Context [RAD-X3]
 
 @enduml

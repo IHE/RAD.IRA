@@ -3,8 +3,8 @@
 hide footbox
 
 actor Radiologist as User
-participant "PACS" as PACS
-participant "Reporting App" as Report
+participant "Image Display\n(as Driving App\nand Content Sharing App)" as PACS
+participant "Report Creator\n(as Synchronizing App\nand Driving App)" as Report
 
 User -> PACS: Open reporting session [[volume-1.html#1xx42121-step-1-open-reporting-session Step 1]]
 
