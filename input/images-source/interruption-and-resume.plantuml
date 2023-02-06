@@ -94,8 +94,14 @@ Hub resumes context DiagnosticReport xxx as current context.
 end note
 
 Hub->Report: Send Context Event [RAD-X9]\n(event: id = 3000,\ncontext = DiagnositcReport aaa)
-Report->Report: //Close study in consultation//\n//and resume to the last open context DiagnosticReport xxx)//
+Report->Report: //Close study in consultation//
 Report-->Hub: //Success//
+
+opt If Report Creator does not locally maintain the context
+Report->Hub: Get Current Context [RAD-X8]
+Hub-->Report: Return current context and content
+end opt
+Report->Report: //Switch the context back to the previous study//
 
 Hub->PACS: Send Context Event [RAD-X9]\n(event: id = 3000,\ncontext = DiagnosticReport aaa)
 PACS->PACS: //Resume to the previously open study in context//\n//DiagnosticReport xxx, patient yyy, study zzz//
