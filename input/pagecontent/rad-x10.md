@@ -108,7 +108,7 @@ The Manager received a 4xx or 5xx error response from a Receiver when executing 
 
 The Manager did not receive a `2xx` response within a predetermined time frame from a Receiver after the Manager sent a context event. 
 
-The Manager initially responded with a `202` Accepted when received a context or content change via Initiate Report Context [RAD-X3](rad-x3.html), Terminate Report Context [RAD-X4](rad-x4.html), Update Report Content [RAX-X5](rad-x5.html) or Select Report Content [RAD-X6](rad-x6.html), but later rejected the reqeust.
+The Manager initially responded with a `202` Accepted when received a context or content change via Initiate Report Context [RAD-X3](rad-x3.html), Terminate Report Context [RAD-X4](rad-x4.html), Update Report Content [RAX-X5](rad-x5.html) or Select Report Content [RAD-X6](rad-x6.html), but later rejected the request.
 
 The Manager detected a websocket connection issue with a Receiver.
 
