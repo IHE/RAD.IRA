@@ -2,6 +2,8 @@
 
 #### Open Issues
 
+* Q: Should the application that initiated the report context be the one that terminate the report context?<br><br>Is it valid for one application to initiate the report context and then another application to terminate the same report context? In this case, there is some implicit coordination between these two applications (e.g. by configuration) that is outside the scope of this profile.
+
 * Q: Should Evidence Creator be required to support Initiate Reporting Session [RAD-X1]?<br><br>Often an Evidence Creator is invoked on demand by an Image Display. As a result, it is unlikely that an Evidence Creator is the actor that initiates a reporting session.
 
 * Q: Should simplified JSON representation of DICOM SR be supported as a payload for content sharing?<br><br>DICOM SR with TID 1500 is used in the IHE AIR profile to capture various kind of evidence. In DICOM, [Supp219](https://www.dicomstandard.org/News-dir/ftsup/docs/sups/Sup219.pdf) defines a simplified JSON representation of structured report, with the intention that this is a simpler format to generate and hence can be used as an output from AI models.
