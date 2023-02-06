@@ -702,6 +702,16 @@ Figure 1:XX.4.2.3-1: Interruption and Resume Flow in RTC-IMR Profile
 
 #### 1:XX.4.2.4 Use Case \#4: Error Handling Flow
 
+Error handling can be synchronous or asynchronous:
+- Synchronous: When the Hub or the Synchronizing Application receives an event, it processes the event immediately and failed, then it returns an error status `4xx` or `5xx`.
+- Asynchronous: When the Hub or the Synchronizing Application receives an event, it immediates responds with `202` Accepted and process the event asynchronously. If it failed to process the event within a threshold (e.g. FHIRcast recommends <10 seconds), then it sends a `syncerror` using Send SyncError Event [RAD-X10].
+
+> Note that if the Synchronizing Application returns `202` Accepted to the Hub, it is the responsibility of the Synchronizing Application to send a `syncerror` event to the Hub later if it failed to process the event or cannot process the event within a threshold. There is no standard mechanism for the Hub to detect if the Synchronizing Application finished processing or not (there is no *process success* confirmation event).
+
+In some situations, the Hub may initiate the `syncerro` events:
+- It receives a `4xx` or `5xx` error from a Synchronizing Application. 
+- It detected a Synchronizing Application is not available (via missing heartbeat events) or websocket connection is dropped.
+
 <div>
 {%include syncerror.svg%}
 </div>

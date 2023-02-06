@@ -1,22 +1,46 @@
 @startuml syncerror
 
-title Sync Error Workflow
+title Error Handling Workflow
 
-participant "PACS" as PACS
-participant "Data Hub" as Hub
-participant "Reporting System" as Report
+participant "Image Display\n(as Driving App\nand Content Sharing App)" as PACS
+participant "Hub" as Hub
+participant "Report Creator\n(as Synchronizing App\nand Driving App)" as Report
 
-PACS->Hub: Open Context [RAD-X2]
-Hub->Hub: //Internal verify event//
-opt If Hub failed to process event
-Hub-->PACS: Return error
-end opt
+== Synnchronous Failure on Context / Content Event Request ==
 
-Hub->Report: Send Context Event [RAD-X3]
-Report->Report: //Internal verify event//
-opt If failed to apply event
-Report->Hub: Send SyncError Event [RAD-X7]
-Hub->PACS: Send SyncError Event [RAD-X7]
-end opt
+PACS->Hub: Initiate Report Context [RAD-X3]
+Hub->Hub: //Failed request//
+Hub-->PACS: Return error\nwith HTTP 4xx or 5xx error codes
+
+== Asynchronous Failure on Context / Content Event Request ==
+
+PACS->Hub: Initiate Report Context [RAD-X3]
+Hub->Hub: Return HTTP 202 Accepted
+...
+Hub->Hub: //Failed request// 
+Hub->Hub: //Generate syncerror event//
+Hub->PACS: Send SyncError Event [RAD-X10]\nusing websocket
+
+== Synchronous Error Reporting ==
+Hub->Report: Send Context Event [RAD-X9]
+Report-->Hub: Return HTTP 4xx or 5xx error codes
+Hub->Hub: //Generate syncerror event//
+Hub->PACS: Send SyncError Event [RAD-X10]\nusing websocket
+Hub->Report: Send SyncError Event [RAD-X10]\nusing websocket
+
+== Asynchronous Error Reporting by Application ==
+Hub->Report: Send Context Event [RAD-X9]
+Report-->Hub: Return HTTP 202 Accepted
+Report->Report: //Failed request//
+Report->Hub: Send SyncError Event [RAD-X10]\nusing HTTP
+Hub-->Report: Return HTTP 200 OK
+Hub->PACS: Send SyncError Event [RAD-X10]\nusing websocket
+Hub->Report: Send SyncError Event [RAD-X10]\nusing websocket
+
+== Network Error ==
+Hub->x Report: Failed websocket heartbeat check
+Hub->Hub: //Remove Report from subscription//
+Hub->Hub: //Generate syncerror event//
+Hub->PACS: Send SyncError Event [RAD-X10]\nusing websocket
 
 @enduml
