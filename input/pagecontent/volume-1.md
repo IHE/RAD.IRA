@@ -35,7 +35,7 @@ Table 1:XX.1-1 lists the transactions for each actor directly involved in the IM
   </thead>
   <tbody>
     <tr>
-      <td rowspan="10"><a href="volume-1.html#1xx111-read-only-subscriber">Read-Only Subscriber</a></td>
+      <td rowspan="6"><a href="volume-1.html#1xx111-synchronizing-application">Synchronizing Application (See Note 1)</a></td>
       <td>Subscribe Reporting Session [RAD-X1]</td>
       <td>Initiator</td>
       <td>R</td>
@@ -46,30 +46,6 @@ Table 1:XX.1-1 lists the transactions for each actor directly involved in the IM
       <td>Initiator</td>
       <td>R</td>
       <td><a href="rad-x2.html">RAD TF-2: 4.X2</a></td>
-    </tr>
-    <tr>
-      <td>Initiate Report Context [RAD-X3]</td>
-      <td>Initiator</td>
-      <td>O</td>
-      <td><a href="rad-x3.html">RAD TF-2: 4.X3</a></td>
-    </tr>
-    <tr>
-      <td>Terminate Report Context [RAD-X4]</td>
-      <td>Initiator</td>
-      <td>O</td>
-      <td><a href="rad-x4.html">RAD TF-2: 4.X4</a></td>
-    </tr>
-    <tr>
-      <td>Update Report Content [RAD-X5]</td>
-      <td>Initiator</td>
-      <td>O</td>
-      <td><a href="rad-x5.html">RAD TF-2: 4.X5</a></td>
-    </tr>
-    <tr>
-      <td>Select Report Content [RAD-X6]</td>
-      <td>Initiator</td>
-      <td>O</td>
-      <td><a href="rad-x6.html">RAD TF-2: 4.X6</a></td>
     </tr>
     <tr>
       <td>Unsubscribe Session [RAD-X7]</td>
@@ -96,7 +72,7 @@ Table 1:XX.1-1 lists the transactions for each actor directly involved in the IM
       <td><a href="rad-x10.html">RAD TF-2: 4.X10</a></td>
     </tr>
     <tr>
-      <td rowspan="10"><a href="volume-1.html#1xx112-context-sharing-subscriber">Context Sharing Subscriber</a></td>
+      <td rowspan="8"><a href="volume-1.html#1xx112-driving-application">Driving Application (See Note 1)</a></td>
       <td>Subscribe Reporting Session [RAD-X1]</td>
       <td>Initiator</td>
       <td>R</td>
@@ -119,18 +95,6 @@ Table 1:XX.1-1 lists the transactions for each actor directly involved in the IM
       <td>Initiator</td>
       <td>R</td>
       <td><a href="rad-x4.html">RAD TF-2: 4.X4</a></td>
-    </tr>
-    <tr>
-      <td>Update Report Content [RAD-X5]</td>
-      <td>Initiator</td>
-      <td>O</td>
-      <td><a href="rad-x5.html">RAD TF-2: 4.X5</a></td>
-    </tr>
-    <tr>
-      <td>Select Report Content [RAD-X6]</td>
-      <td>Initiator</td>
-      <td>O</td>
-      <td><a href="rad-x6.html">RAD TF-2: 4.X6</a></td>
     </tr>
     <tr>
       <td>Unsubscribe Session [RAD-X7]</td>
@@ -157,7 +121,7 @@ Table 1:XX.1-1 lists the transactions for each actor directly involved in the IM
       <td><a href="rad-x10.html">RAD TF-2: 4.X10</a></td>
     </tr>
     <tr>
-      <td rowspan="10"><a href="volume-1.html#1xx113-content-sharing-subscriber">Content Sharing Subscriber</a></td>
+      <td rowspan="8"><a href="volume-1.html#1xx113-content-sharing-application">Content Sharing Application (See Note 1)</a></td>
       <td>Subscribe Reporting Session [RAD-X1]</td>
       <td>Initiator</td>
       <td>R</td>
@@ -168,18 +132,6 @@ Table 1:XX.1-1 lists the transactions for each actor directly involved in the IM
       <td>Initiator</td>
       <td>R</td>
       <td><a href="rad-x2.html">RAD TF-2: 4.X2</a></td>
-    </tr>
-    <tr>
-      <td>Initiate Report Context [RAD-X3]</td>
-      <td>Initiator</td>
-      <td>R</td>
-      <td><a href="rad-x3.html">RAD TF-2: 4.X3</a></td>
-    </tr>
-    <tr>
-      <td>Terminate Report Context [RAD-X4]</td>
-      <td>Initiator</td>
-      <td>R</td>
-      <td><a href="rad-x4.html">RAD TF-2: 4.X4</a></td>
     </tr>
     <tr>
       <td>Update Report Content [RAD-X5]</td>
@@ -278,57 +230,105 @@ Table 1:XX.1-1 lists the transactions for each actor directly involved in the IM
       <td>R</td>
       <td><a href="rad-x10.html">RAD TF-2: 4.X10</a></td>
     </tr>
+    <tr>
+      <td><a href="volume-1.html#1xx114-image-display">Image Display</a></td>
+      <td>See Note 2</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td><a href="volume-1.html#1xx115-evidence-creator">Evidence Creator</a></td>
+      <td>See Note 2</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td><a href="volume-1.html#1xx116-report-creator">Report Creator</a></td>
+      <td>See Note 2</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td><a href="volume-1.html#1xx117-worklist-display">Worklist Display</a></td>
+      <td>See Note 2</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
   </tbody>
 </table>
+
+> Note 1: These actors are *abstract* actors that cannot be claimed directly. They provide the necessary required transactions for other actors to group with.
+
+> Note 2: These actors are *concrete* actors that an implementation can claim. They are required to group with one or more of the *abstract* actors and hence inherits the corresponding requirements. See the actor description section for specific required grouping details.
 
 ### 1:XX.1.1 Actors Description and Actor Profile Requirements
 Most requirements are documented in RAD TF-2 Transactions. This section documents any additional requirements on this profile's actors.
 
-#### 1:XX.1.1.1 Read-Only Subscriber
+#### 1:XX.1.1.1 Synchronizing Application
 
-The Read-Only Subscriber actor is responsible for subscribing to a given reporting session and handling events received from the session.
+The Synchronizing Application actor is responsible for listening on events and synchronize according to its internal business logic.
 
-#### 1:XX.1.1.2 Context Sharing Subscriber
+The Synchronizing Application shall specify the events that it can support during subscription.
 
-The Context Sharing Subscriber actor is responsible for subscribing to a given reporting session, initiating and terminating a report context, and handling events received from the session.
+This is the minimum requirements in this profile.
 
-#### 1:XX.1.1.3 Content Sharing Subscriber
+#### 1:XX.1.1.2 Driving Application
 
-The Context Sharing Subscriber actor is responsible for subscribing to a given reporting session, initiating and terminating a report context, updating and selecting additional content for a report context, and handling events received from the session.
+The Driving Application actor is a Synchronizing Application. It is responsible for launching other Synchronizing Applications. it is also responsible for initiating and terminating the report context.
+
+The Driving Application shall provide the URL of the Hub actor as `hub.url` and the reporting session as `hub.topic` to the Synchronizing Application during launch.
+
+> Note that the actual application launch method is out of scope of this profile. See [Application Launch Scenarios and Session Discovery](https://build.fhir.org/ig/HL7/fhircast-docs/4-1-launch-scenarios.html) for more details.
+
+#### 1:XX.1.1.3 Content Sharing Application
+
+The Content Sharing Application actor is a Synchronizing Application and it is also responsible for sharing content to a given report context with other Synchronizing Applications.
 
 #### 1:XX.1.1.4 Image Display
 
 The Image Display actor is responsible for presenting patients' studies and relevant information to the user.
 
-The Image Display is required to be grouped with either the Context Sharing Subscriber or the Content Sharing Subscriber.
+The Image Display shall be grouped with the Synchronizing Application actor.
 
-If the Image Display is the driving application that launches other synchronized applications, then it is responsible for providing the URL of the Hub actor as `hub.url` and the reporting session as `hub.topic` to each synchronized application.
+The Image Display shall be grouped with the Driving Application actor if it drives the reporting session.
+
+The Image Display is recommended to be grouped with the Content Sharing Application actor to share image references and measurements with other Synchronizing Applications.
 
 #### 1:XX.1.1.5 Evidence Creator
 
 The Evidence Creator actor is responsible for producing evidence data for the patients' studies.
 
-The Evidence Creator is required to be grouped with the Read-Only Subscriber or the Content Sharing Subscriber.
+The Evidence Creator shall be grouped with the Synchronizing Application actor.
+
+The Evidence Creator is recommended to be grouped with the Content Sharing Application actor to share captured evidences with other Synchronizing Applications.
 
 #### 1:XX.1.1.6. Report Creator
 
 The Report Creator actor is responsible for producing a diagnostic report for patients' studies.
 
-The Report Creator is required to be grouped with the Read-Only Subscriber, the Context Sharing Subscriber, or the Content Sharing Subscriber.
+The Report Creator shall be grouped with the Synchronizing Application actor.
 
-If the Report Creator is the driving application that launches other synchronized applications, then it is responsible for providing the URL of the Hub actor as `hub.url` and the reporting session as `hub.topic` to each synchronized application.
+The Report Creator shall be grouped with the Driving Application actor if it drives the reporting session.
 
 #### 1:XX.1.1.7 Worklist Display
 
 The Worklist Display actor is responsible for presenting a worklist for the user and launching other connected applications on demand.
 
-The Worklist Display is required to be grouped with the Read-Only Subscriber or the Context Sharing Subscriber.
+The Worklist Display shall be grouped with the Synchronizing Application actor.
 
-If the Worklist Display is the driving application that launches other synchronized applications, then it is responsible for providing the URL of the Hub actor as `hub.url` and the reporting session as `hub.topic` to each synchronized application.
+The Worklist Display shall be grouped with the Driving Application actor if it drives the reporting session.
 
 #### 1:XX.1.1.8 Hub
 
 The Hub actor is responsible for managing a context, content and subscribers in communication sessions.
+
+The Hub shall support accepting and sending all events, including events defined in this profile, defined in FHIRcast or custom events.
+
+For all context events (i.e. events defined as `*-open` or `*-close`), the Hub shall support maintaining the context and set the current context. For all other events (including custom events), the Hub may treat the events as opaque events and shall support at least sending the events to other Synchronizing Applications.
 
 ## 1:XX.2 RTC-IMR Actor Options
 
@@ -345,6 +345,21 @@ Options that may be selected for each actor in this implementation guide, are li
     </tr>
   </thead>
   <tbody>
+    <tr>
+      <td>Synchronizing Application</td>
+      <td>No options defined</td>
+      <td>–</td>
+    </tr>
+    <tr>
+      <td>Driving Application</td>
+      <td>SMART on FHIR Launch</td>
+      <td><a href="volume-1.html#1xx21-smart-on-fhir-launch">1:XX.2.1</a></td>
+    </tr>
+    <tr>
+      <td>Content Sharing Application</td>
+      <td>No options defined</td>
+      <td>–</td>
+    </tr>
     <tr>
       <td>Image Display</td>
       <td>No options defined</td>
@@ -373,6 +388,14 @@ Options that may be selected for each actor in this implementation guide, are li
   </tbody>
 </table>
 
+### 1:XX.2.1 SMART on FHIR Launch
+
+The Driving Application that supports the SMART on FHIR Launch option shall use the [SMART on FHIR](http://www.hl7.org/fhir/smart-app-launch/) to launch an application.
+
+Additionally, the Driving Application shall use the FHIRcast [OAuth 2.0 Authorization Scope](https://build.fhir.org/ig/HL7/fhircast-docs/2-2-FhircastScopes.html) to request a token with the authorized events.
+
+See FHIRcast [Section 4.1.1 SMART on FHIR](https://build.fhir.org/ig/HL7/fhircast-docs/4-1-launch-scenarios.html#smart-on-fhir) for more details and examples.
+
 ## 1:XX.3 RTC-IMR Required Actor Groupings
 
 An actor from this profile (Column 1) shall implement all of the required transactions and/or
@@ -393,6 +416,8 @@ considerations and Section 1:52.6 describes some optional groupings in other rel
 | Worklist Manager | -- | None | -- |
 | Hub | -- | None | -- |
 {: .grid}
+
+> Note: This table excludes the *abstract* actors because they cannot be claimed directly.
 
 ## 1:XX.4 RTC-IMR Overview
 
