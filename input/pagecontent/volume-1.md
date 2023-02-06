@@ -425,18 +425,24 @@ considerations and Section 1:52.6 describes some optional groupings in other rel
 
 #### 1:XX.4.1.1 Publish and Subscribe Model
 
-This profile is based on [FHIRcast](https://build.fhir.org/ig/HL7/fhircast-docs/index.html) which uses a Publish and Subscribe model based on [WebSub](https://www.w3.org/TR/websub/) to synchronize applications in real time.
+At its heart, this profile synchronizes a group of applications using a Publish and Subscribe model as implemented by [FHIRcast](https://build.fhir.org/ig/HL7/fhircast-docs/index.html) which in turn is an implementation of [WebSub](https://www.w3.org/TR/websub/).
+
+FHIRcast defines a number of terminologies in its [Glossary](https://build.fhir.org/ig/HL7/fhircast-docs/5_glossary.html).
 
 The following are some key concepts:
-* A `Hub` receives events from a driving application and forwards the events to subscribing applications (i.e. `Subscriber`) according to their subscription.
-* The `Hub` is also responsible for keeping track of the events and maintain a view of the current context.
-* A driving application is a `Subscriber` that performs an action, captures the result of the action as an event, and sends the event to the `Hub`
-* Other `Subscribers` (i.e. not the driving application) receive events from the `Hub` according to their subscription.
-* The driving application is unaware of who are the `Subscribers` on the events that it sends and how will they react upon receiving the events.
-* Each `Subscriber` determines how it should react upon receiving an event.
-* The driving application is responsible for setting up the session (identified by a unique topic ID), launching the other applications with the session and address of the `Hub`.
-* Both the driving application and other launched applications subscribe to the same session at the `Hub` so that communications can flow in both directions.
-* The `Hub` only processes events sent by authenticated `Subscribers`. 
+- Participating applications are `Subscribers` that register with and communicate with a `Hub`
+- `Subscribers` do not communicate with other `Subscribers` directly.
+- Typically the `Hub` only communicates with authenticated `Subscribers`
+- When `Subscribers` generate data that needs to be made available to other applications, or perform actions that the other applications should be notified of, they *publish* it by sending an event with the relevant details to the Hub
+- The `Hub` forwards events received from Driving Applications to the other Synchronizing Applications
+- `Subscribers` can configure their subscription to limit what types of events the `Hub` sends to them.
+- `Subscribers` react to events from the `Hub` based on their internal business logic
+- `Subscribers` do not need to be explicitly aware of what other subscribers (if any) are receiving their events or how they react to them
+- The `Hub` also maintains the collection of data it has received, organized them according to the context
+- `Subscribers` can request the current context and associated contents from the `Hub`
+- The `Hub` can simultaneously manage multiple groups of `Subscribers` and their associated data in different `sessions`
+- Each `session` is identified by a unique “topic ID”
+- The `Subscriber` that initiates and terminates context is referred to as the Driving Application. A Driving Application usually also launches other applications, providing them with the address of the `Hub` and the `topic ID` so they can join the same `session`.
 
 TODO: Replace the FHIRcast link to the published version if ready by the time of publication.
 
