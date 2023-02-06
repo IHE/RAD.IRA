@@ -28,7 +28,7 @@ The roles in this transaction are defined in the following table and may be play
 
 **Figure 2:3.X1.4-1: Interaction Diagram**
 
-#### 2:3.X1.4.1 Subscribe to Reporting Session Request Message
+#### 2:3.X1.4.1 Subscription Request Message
 
 The Sender sends a reporting session subscription request to the Receiver. The Sender shall support sending such messages to more than one Receiver.
 
@@ -52,7 +52,7 @@ The Sender shall perform an HTTP POST to the Receiver's base URL (as specified i
 
 The request shall have the payload with the parameters in the following table:
 
-**Table 2:3.X1.4.1.2-1: Subscribe to Reporting Session Request Parameters**
+**Table 2:3.X1.4.1.2-1: Subscription Request Parameters**
 
 | Field                 | Optionality | Type     | Description |
 | ----------------------| ----------- | -------- | ------------|
@@ -91,7 +91,7 @@ If the Receiver receives a request from a Sender and the Sender already exists a
 
 The Receiver may honor `hub.lease_seconds` specified in the request by the Sender, or it may specify its own default according to its policy.  When the subscription of the Sender expired according to `hub.lease_seconds`, the Receiver shall automatically unsubscribe the Sender on the associated `hub.topic`.
 
-#### 2:3.X1.4.2 Subscribe to Reporting Session Response Message
+#### 2:3.X1.4.2 Subscription Response Message
 
 The Receiver sends a response message describing the message outcome to the Sender.
 
