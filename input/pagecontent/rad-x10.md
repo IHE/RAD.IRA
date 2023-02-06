@@ -108,6 +108,8 @@ The Manager received a 4xx or 5xx error response from a Receiver when executing 
 
 The Manager did not receive a `2xx` response within a predetermined time frame from a Receiver after the Manager sent a context event. 
 
+The Manager initially responded with a `202` Accepted when received a context or content change via Initiate Report Context [RAD-X3](rad-x3.html), Terminate Report Context [RAD-X4](rad-x4.html), Update Report Content [RAX-X5](rad-x5.html) or Select Report Content [RAD-X6](rad-x6.html), but later rejected the reqeust.
+
 The Manager detected a websocket connection issue with a Receiver.
 
 ##### 2:3.X10.4.3.2 Message Semantics
@@ -133,6 +135,8 @@ For `syncerror` initiated by the Manager, the Manager shall set the `operationou
 - `issue[0].details.coding[0].code` shall be the `event.id` of the event that triggered the error, or a generated ID for non-event triggered errors
 - `issue[0].details.coding[1].code` shall be the `event`.`hub.event` of the event that triggered the error, or `synncerror` for non-event triggered errors
 - `issue[0].details.coding[2].code` shall be the Receiver's `subscriber.name`
+
+If the Manager initiated the `syncerror` event because it initially accepted the context or content change request (i.e. responded with a `202` Accepted respond) but later rejected the request, then the Manager shall send the `syncerror` event only to the original requesting Sender. 
 
 If the Manager initiated the `syncerror` event because it detected a websocket connection issue with the Receiver, then the Manager shall unsubscribe the Receiver and drop the websocket connection.
 
