@@ -682,7 +682,7 @@ The Hub closes the connection to the Report Creator. Note that if there are othe
 
 Figure 1:XX.4.2.1.2.1-6: Terminate Reporting Session Flow in RTC-IMR Profile
 
-#### 1:XX.4.2.2 Use Case: Worklist Manager Driven Reporting
+#### 1:XX.4.2.2 Use Case \#2: Worklist Manager Driven Reporting
 
 <div>
 {%include multi_app.svg%}
@@ -691,7 +691,7 @@ Figure 1:XX.4.2.1.2.1-6: Terminate Reporting Session Flow in RTC-IMR Profile
 
 Figure 1:XX.4.2.2-1: Worklist Manager Driven Reporting in RTC-IMR Profile
 
-#### 1:XX.4.2.3 Use Case: Interruption and Resume Flow
+#### 1:XX.4.2.3 Use Case \#3: Interruption and Resume Flow
 
 <div>
 {%include interruption-and-resume.svg%}
@@ -700,7 +700,7 @@ Figure 1:XX.4.2.2-1: Worklist Manager Driven Reporting in RTC-IMR Profile
 
 Figure 1:XX.4.2.3-1: Interruption and Resume Flow in RTC-IMR Profile
 
-#### 1:XX.4.2.4 Use Case: Error Handling Flow
+#### 1:XX.4.2.4 Use Case \#4: Error Handling Flow
 
 <div>
 {%include syncerror.svg%}
