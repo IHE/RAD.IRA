@@ -511,18 +511,22 @@ Upon receiving an event, the `Hub` and `Subscribers` process the event according
 
 #### 1:XX.4.2.1 Use Case \#1: PACS Driven Reporting
 
-TO DO: One or two sentence simple description of this particular use
-case.
+This use case shows a simple two actors scenarios in a reporting session. The PACS is the Image Display acting as a combined Driving Application and a Content Sharing Application while the Reporting App is a Report Creator acting as a Synchronizing Application.
 
 Note that Section 1:XX.4.2.1 repeats in its entirety for additional use
 cases (replicate as Section 1:XX.4.2.2, 1:XX.4.2.3, etc.).
 
-##### 1:XX.4.2.1.1 simple name Use Case Description
+##### 1:XX.4.2.1.1 PACS Driven Reporting Use Case Description
 
-TO DO: Describe the key use cases addressed by the profile. Limit to a
-maximum of one page of text or consider an appendix.
+The Image Display launches the Report Creator when a reporting session starts.
 
-##### 1:XX.4.2.1.2 simple name Process Flow
+A radiologist using the worklist function in the Image Display to work through the list of studies to be reported. As the radiologist proceeds, when the Image Display displays each study in the worklist, she uses the Report Creator, loaded with the corresponding procedure for the same study, to create the diagnostic report. During reporting, she creates annotations and measurements on some of the images. These annotations and measurements are selected and populated in the report accordingly. Once she completed the report for the study, she signs off the report and proceeds with the next study in the worklist. Eventually she finishes all the studies in the worklist and close the reporting session.
+
+This is intentionally a high level description depicting a reporting session from the user perspective. In the following subsections, each step will be described in more details regarding how this profile can automatically synchronize the Image Display and the Report Creator.
+
+> Note: The hyperlinks provided in the diagram links to the specific detailed description of each step.
+
+##### 1:XX.4.2.1.2 PACS Driven Reporting Process Flow
 
 <div>
 {%include ReportingFlow.svg%}
@@ -530,8 +534,6 @@ maximum of one page of text or consider an appendix.
 <br clear="all">
 
 Figure 1:XX.4.2.2-1: PACS Driven Reporting Flow in RTC-IMR Profile
-
-The following sections elaborate on each step in this use case. The hyperlinks in the use case diagram above link to the corresponding step for quick access.
 
 Furthermore, the [Examples](example.html) tab, contains sample events following this use case.
 
@@ -544,6 +546,10 @@ Subscribing to a reporting session involves two transactions:
 - Subscribe Reporting Session [RAD-X1]
 - Connect Notification Channel [RAD-X2]
 
+For a Synchronizing Application, the session is provided by the Driving Application during launch.
+
+For a Driving Application (which is also a Synchronizing Application), it generates a unique session ID to start a new session.
+
 <div>
 {%include common-subscription.svg%}
 </div>
@@ -551,7 +557,7 @@ Subscribing to a reporting session involves two transactions:
 
 Figure 1:XX.4.2.1.2.0-1: Common Subscription Flow in RTC-IMR Profile
 
-To simplify the subsequent use case flows for readability, this common subscription flow will be represented as a single line as a meta transaction [RAD-Sub]. The following is an example with PACS as a Subscriber.
+To simplify the subsequent use case flows for readability, this common subscription flow will be represented as a single line as a meta transaction [RAD-Sub]. The following is an example between the Image Display and the Hub.
 
 <div>
 {%include condensed-subscription-transaction.svg%}
@@ -562,9 +568,20 @@ Figure 1:XX.4.2.1.2.0-2: Condensed Subscription Transaction in RTC-IMR Profile
 
 ###### 1:XX.4.2.1.2.1 Step 1: Open Reporting Session
 
-When a radiologist starts reporting, the PACS, as the initiator, opens a reporting session.
+When a radiologist starts reporting, the Image Display, as a Driving Application, starts a reporting session.
 
-Note that there is no explicit creation of a session. If the Hub receives a session ID (i.e. topic) that does not already exist, then the Hub will automatically create the session and add the subscriber (i.e. PACS) to the session.
+Note that there is no explicit creation of a session. If the Hub receives a session ID (i.e. topic) that does not already exist, then the Hub will automatically create the session and add the subscriber (i.e. Image Display) to the session.
+
+It is necessary for the Driving Application to subscribe to the reporting events:
+- Receives its own events as a confirmation
+- Receives the version ID of the event which is required for concurrency control
+- Receives synchronization error events from the Hub or from other Synchronizing Applications.
+
+Once the Image Display completed its subscription, it launches the Report Creator. The Report Creator, as a Synchronizing Application, can follows the context and content events automatically.
+
+When launched, the first thing that the Report Creator does as a Synchronizing Application is to subscribe to the reporting session. The information about the Hub and the session is provided by the Image Display during launch.
+
+Furthermore, the Report Creator as a Synchronizing Application queries the Hub to get the current context. This ensures that the Synchronizing Application has the most recent context and content. If the reporting session just begins, then the result of the query will be empty. This is necessary because the Image Display does not know when the Report Creator completed its subscription. Therefore it is possible the Image Display has already changed context before the subscription is complete.
 
 <div>
 {%include step1-open-reporting-session.svg%}
@@ -575,6 +592,14 @@ Figure 1:XX.4.2.1.2.1-1: Open Reporting Session Flow in RTC-IMR Profile
 
 ###### 1:XX.4.2.1.2.2 Step 2: Open Study in Context
 
+When the radiologist selects a study in the worklist in the Image Display, as a Driving Application, it initiates a new report context. Once the Hub accepted the event, it broadcasts the event to all Synchronizing Applications.
+
+The Report Creator, as a Synchronizing Application, receives the event and opens the corresponding procedure for the study.
+
+The Image Display, as a Driving Application, also receives its own event because it subscribes to the event as well. This is a confirmation that that the event is received properly by the Hub.
+
+Furthermore, the event has a version ID which is important for all Synchronizing Applications and Driving Applications. For the Image Display as a Driving Application, including the version ID when submitting the next event ensures proper event sequence. For the Report Creator as a Synchronizing Application, keeping track of the version ID enables it to check if it missed any prior events. Event sequencing is important for content sharing because all updates and selects are expected to be applied in the same sequence as they are emitted by the Driving Application.
+
 <div>
 {%include step2-open-study-in-context.svg%}
 </div>
@@ -582,10 +607,13 @@ Figure 1:XX.4.2.1.2.1-1: Open Reporting Session Flow in RTC-IMR Profile
 
 Figure 1:XX.4.2.1.2.1-2: Open Study in Context Flow in RTC-IMR Profile
 
-Note that when the Reporting App successfully completes the subscription, it immediately queries for the current context from the Hub. This immediate query is to ensure that the Reporting App is aware of the latest context in the session.
-This is necessary because the PACS does not know when the Reporting App completed the subscription. Therefore it is possible the PACS has already changed context before the subscription is complete.
-
 ###### 1:XX.4.2.1.2.3 Step 3: Add Content (Optional)
+
+Sometimes the radiologist may annotate the images with markups and measurements. When this happened, the Image Display, as a Content Sharing Application, updates the report context at the Hub with new content via Update Report Content [RAD-X5]. The Hub broadcasts the event to all Synchronizing Applications.
+
+When the Report Creator receives the event, it can apply the updates according to its business logic. For example, it may automatically create a hyperlink in the report, or keeps track of the content in a panel for the user to perform other activities later.
+
+For content sharing events, the Report Creator, as a Synchronizing Application, checks if the event is in the right sequence according to the version ID. If it detected that it missed some prior events, then it queries the hub to retrieve the latest context and content and apply accordingly. 
 
 <div>
 {%include step3-add-measurements.svg%}
@@ -596,6 +624,12 @@ Figure 1:XX.4.2.1.2.1-3: Add Content Flow in RTC-IMR Profile
 
 ###### 1:XX.4.2.1.2.4 Step 4: Select Content (Optional)
 
+Sometimes the radiologist selected certain elements (e.g. images, annotation, specific measurements, etc.) in the Image Display. When this happened, the Image Display, as a Content Sharing Application, sends a event to the Hub via Select Report Content [RAD-X6] indicating what contents have been selected. The Hub broadcasts the event to all Synchronizing Applications.
+
+When the Report Creator receives the event, it can apply the selection according to its business logic. For example, it can highlight to the user what are selected so that the user can perform some actions. In this example, the radiologist uses a voice command to insert a hyperlink in the report. The Report Creator uses the selected content to generate the hyperlink.
+
+Generally, selecting a content means putting the content in 'focus'. Note that this profile is agnostic about the user interface implementation of 'focus', e.g., it may result in the selected contents being highlighted in the user interface, or it may result in the selected contents being flagged in the backend service. Specific behavior depends on the implementation.
+
 <div>
 {%include step4-select-measurements.svg%}
 </div>
@@ -603,9 +637,15 @@ Figure 1:XX.4.2.1.2.1-3: Add Content Flow in RTC-IMR Profile
 
 Figure 1:XX.4.2.1.2.1-4: Select Content Flow in RTC-IMR Profile
 
-Selected contents are put into 'focus' by the Reporting App. Note that this profile is agnostic about the user interface implementation of 'focus', e.g., it may result in the selected contents being highlighted in the user interface, or it may result in the selected contents being flagged in the backend service. Specific behavior depends on the implementation.
-
 ###### 1:XX.4.2.1.2.5 Step 5: Sign-off Report
+
+When the radiologist completes dictating the report, the radiologist signs off the report. The Report Creator persists the report according to its business logic. The Report Creator, as a Driving Application, terminates the report context immediately via Terminate Report Context [RAD-X4]. The Hub broadcasts the event to all Synchronizing Applications. Furthermore, the Hub closes the report context.
+
+The Image Display, as a Synchronizing Application in this case, marks the study as reported and removes the study from the worklist.
+
+Note that quite often, the Report Creator has some internal mechanism to keep the report for a grace period after signed off and before sending it out to other recipients. The Terminate Report Context [RAD-X4] event enables the Image Display to quickly aware that the Report Creator has completed the sign-off without affected by the grace period.
+
+Note that in this use case example, the initiating Driving Application (Image Display) is not the same actor as the terminating Driving Application (Report Creator). This requires some coordination between the Image Display and the Report Creator. Such coordination is out of scope of this profile. Other arrangement is possible so that the same Image Display being both the initiating and terminating Driving Application.
 
 <div>
 {%include step5-signoff-report.svg%}
@@ -614,7 +654,11 @@ Selected contents are put into 'focus' by the Reporting App. Note that this prof
 
 Figure 1:XX.4.2.1.2.1-5: Sign-off Report Flow in RTC-IMR Profile
 
-The flow above shows the simple case with a single report context. In practice, the radiologist is likely to continue with the next study in the worklist without any awareness of the events happening behind the scene. Such rapid context switching is supported by the Hub because it can maintain multiple context simultaneously.
+The flow above shows the simple case with a sequential switching of report context. In this case, a report context is initiated and then terminated before the next report context is opened.
+
+In practice, the radiologist is likely to continue with the next study in the worklist without any awareness of the events happening behind the scene. If the initiating Driving Application and terminating Driving Application are different as in this example, then it is possible that the radiologist moves to the next study and hence the Image Display initiates a new report context before the Image Display receives the Terminate Report Context [RAD-X5] event.
+
+Such rapid context switching is supported by this profile. The Hub and each Synchronizing Application maintain multiple open context simultaneously. As long as the context is not terminated, it still exists. Each event is associated to a particular anchor context. Therefore a Synchronizing Application can reliably match an event to its internal state according to the context ID in the event. 
 
 The following diagram shows what can happen in case of rapid switching of the report context.
 
@@ -626,6 +670,10 @@ The following diagram shows what can happen in case of rapid switching of the re
 Figure 1:XX.4.2.1.2.1-5b: Rapid Context Switching Flow in RTC-IMR Profile
 
 ###### 1:XX.4.2.1.2.6 Step 6: Terminate Reporting Session
+
+Eventually, the radiologist completed all the studies in the worklist and closes the Report Creator. The Report Creator unsubscribes to the reporting session so that it will no longer receives any future events.
+
+The Hub closes the connection to the Report Creator. Note that if there are other Synchronizing Applications on the same session, those applications are not affected and will continue to receive notification on the session.
 
 <div>
 {%include step6-terminate-reporting-session.svg%}
