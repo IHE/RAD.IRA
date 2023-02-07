@@ -2,9 +2,9 @@
 
 title Error Handling Workflow
 
-participant "Image Display\n(as Driving App\nand Content Sharing App)" as PACS
+participant "Image Display" as PACS
 participant "Hub" as Hub
-participant "Report Creator\n(as Synchronizing App\nand Driving App)" as Report
+participant "Report Creator" as Report
 
 == Synnchronous Failure on Context / Content Event Request ==
 

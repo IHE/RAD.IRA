@@ -1,9 +1,9 @@
 @startuml
 
 actor Radiologist as User
-participant "Image Display\n(as Driving App\nand Content Sharing App)" as PACS
+participant "Image Display" as PACS
 participant "Hub" as Hub
-participant "Report Creator\n(as Synchronizing App\nand Driving App)" as Report
+participant "Report Creator" as Report
 
 User->Report: //Complete dictate report//
 Report->Report: //Persist report//

@@ -1,6 +1,6 @@
 @startuml
 
-participant "Synchronizing App" as Sub
+participant "Any Subscriber" as Sub
 participant Hub as Hub
 
 == Common Subscription Flow ==

@@ -1,9 +1,9 @@
 @startuml
 
 actor Radiologist as User
-participant "PACS" as PACS
+participant "Image Display" as PACS
 participant "Hub" as Hub
-participant "Reporting App" as Report
+participant "Report Creator" as Report
 
 == Step 2: Open Study in Context ==
 
