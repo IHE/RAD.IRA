@@ -1,0 +1,38 @@
+- 4 layers
+    - Session: Can launch other applications and generate a new reporting session (i.e. generate a new session ID)
+    - Context: Can initiate or terminate report context
+    - Content: Can update and select report content to a given context
+    - Event: Can consume all events according to its business logic
+- Actors:
+    - Watcher: Req - Event
+    - Image Display: Req - Event, Context, Session
+    - Evidence Creator: Req - Event
+    - Report Creator: Req - Event, Context, Session
+    - Worklist Display: Req - Event, Context, Session
+    - Hub: All levels as a manager
+    - Report Content Creator: Req - Content
+- Every application shall be able to start a reporting session (i.e. generate the session ID)
+- For Evidence Creator actor description, add more specific expectation what outputs it can produce.
+- Navigation (series / image level), does it need X5 and X6?
+- Add Watcher actor (same as Synchronizing Application, no contribution, just consume)
+- SMART on FHIR client side behavior needs to be added to other actors as a client behavior as well
+- check IUA
+- 1:XX.2.1: Missing an option introduction line.
+- Add SMART on FHIR as an open question
+- Data Model:
+    - Separate the data model from the interaction model
+        - For the data model, on the side, explain how the model maps to a reporting session
+    - Add selected content to the diagram
+- 1:XX.4.1.3
+    - Rewrite the first paragraph
+        - focus on use case in a reporting
+        - look at 4.1.1
+- Add a concept section about Driving Application and Synchronizing Application
+- 1:XX.4.1.6
+    - Granularity of communication / interactivity
+        - in addition to time
+        - related to the previous concept regarding 'frequency'
+    - Dynamically interactive vs handoff
+        - handoff: one app is 'done' and no further action expected
+        - Dynamically interaction: continuous update is expected between applications
+- TODO: Transient vs Persistent - clarify text
