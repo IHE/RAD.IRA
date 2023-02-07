@@ -35,7 +35,7 @@ Table 1:XX.1-1 lists the transactions for each actor directly involved in the IM
   </thead>
   <tbody>
     <tr>
-      <td rowspan="6"><a href="volume-1.html#1xx111-synchronizing-application">Synchronizing Application (See Note 1)</a></td>
+      <td rowspan="8"><a href="volume-1.html#1xx111-image-display">Image Display</a></td>
       <td>Subscribe Reporting Session [RAD-X1]</td>
       <td>Initiator</td>
       <td>R</td>
@@ -46,6 +46,18 @@ Table 1:XX.1-1 lists the transactions for each actor directly involved in the IM
       <td>Initiator</td>
       <td>R</td>
       <td><a href="rad-x2.html">RAD TF-2: 4.X2</a></td>
+    </tr>
+    <tr>
+      <td>Initiate Report Context [RAD-X3]</td>
+      <td>Initiator</td>
+      <td>R</td>
+      <td><a href="rad-x3.html">RAD TF-2: 4.X3</a></td>
+    </tr>
+    <tr>
+      <td>Terminate Report Context [RAD-X4]</td>
+      <td>Initiator</td>
+      <td>R</td>
+      <td><a href="rad-x4.html">RAD TF-2: 4.X4</a></td>
     </tr>
     <tr>
       <td>Unsubscribe Session [RAD-X7]</td>
@@ -71,8 +83,57 @@ Table 1:XX.1-1 lists the transactions for each actor directly involved in the IM
       <td>R</td>
       <td><a href="rad-x10.html">RAD TF-2: 4.X10</a></td>
     </tr>
+      <tr>
+      <td rowspan="8"><a href="volume-1.html#1xx112-report-creator">Report Creator</a></td>
+      <td>Subscribe Reporting Session [RAD-X1]</td>
+      <td>Initiator</td>
+      <td>R</td>
+      <td><a href="rad-x1.html">RAD TF-2: 4.X1</a></td>
+    </tr>
     <tr>
-      <td rowspan="8"><a href="volume-1.html#1xx112-driving-application">Driving Application (See Note 1)</a></td>
+      <td>Connect Notification Channel [RAD-X2]</td>
+      <td>Initiator</td>
+      <td>R</td>
+      <td><a href="rad-x2.html">RAD TF-2: 4.X2</a></td>
+    </tr>
+    <tr>
+      <td>Initiate Report Context [RAD-X3]</td>
+      <td>Initiator</td>
+      <td>R</td>
+      <td><a href="rad-x3.html">RAD TF-2: 4.X3</a></td>
+    </tr>
+    <tr>
+      <td>Terminate Report Context [RAD-X4]</td>
+      <td>Initiator</td>
+      <td>R</td>
+      <td><a href="rad-x4.html">RAD TF-2: 4.X4</a></td>
+    </tr>
+    <tr>
+      <td>Unsubscribe Session [RAD-X7]</td>
+      <td>Initiator</td>
+      <td>R</td>
+      <td><a href="rad-x7.html">RAD TF-2: 4.X7</a></td>
+    </tr>
+    <tr>
+      <td>Get Current Context [RAD-X8]</td>
+      <td>Initiator</td>
+      <td>R</td>
+      <td><a href="rad-x8.html">RAD TF-2: 4.X8</a></td>
+    </tr>
+    <tr>
+      <td>Send Context Event [RAD-X9]</td>
+      <td>Responder</td>
+      <td>R</td>
+      <td><a href="rad-x9.html">RAD TF-2: 4.X9</a></td>
+    </tr>
+    <tr>
+      <td>Send SyncError Event [RAD-X10]</td>
+      <td>Initiator & Responder</td>
+      <td>R</td>
+      <td><a href="rad-x10.html">RAD TF-2: 4.X10</a></td>
+    </tr>
+      <tr>
+      <td rowspan="8"><a href="volume-1.html#1xx113-worklist-display">Worklist Display</a></td>
       <td>Subscribe Reporting Session [RAD-X1]</td>
       <td>Initiator</td>
       <td>R</td>
@@ -121,7 +182,7 @@ Table 1:XX.1-1 lists the transactions for each actor directly involved in the IM
       <td><a href="rad-x10.html">RAD TF-2: 4.X10</a></td>
     </tr>
     <tr>
-      <td rowspan="8"><a href="volume-1.html#1xx113-content-sharing-application">Content Sharing Application (See Note 1)</a></td>
+      <td rowspan="6"><a href="volume-1.html#1xx114-evidence-creator">Evidence Creator</a></td>
       <td>Subscribe Reporting Session [RAD-X1]</td>
       <td>Initiator</td>
       <td>R</td>
@@ -134,6 +195,31 @@ Table 1:XX.1-1 lists the transactions for each actor directly involved in the IM
       <td><a href="rad-x2.html">RAD TF-2: 4.X2</a></td>
     </tr>
     <tr>
+      <td>Unsubscribe Session [RAD-X7]</td>
+      <td>Initiator</td>
+      <td>R</td>
+      <td><a href="rad-x7.html">RAD TF-2: 4.X7</a></td>
+    </tr>
+    <tr>
+      <td>Get Current Context [RAD-X8]</td>
+      <td>Initiator</td>
+      <td>R</td>
+      <td><a href="rad-x8.html">RAD TF-2: 4.X8</a></td>
+    </tr>
+    <tr>
+      <td>Send Context Event [RAD-X9]</td>
+      <td>Responder</td>
+      <td>R</td>
+      <td><a href="rad-x9.html">RAD TF-2: 4.X9</a></td>
+    </tr>
+    <tr>
+      <td>Send SyncError Event [RAD-X10]</td>
+      <td>Initiator & Responder</td>
+      <td>R</td>
+      <td><a href="rad-x10.html">RAD TF-2: 4.X10</a></td>
+    </tr>
+      <tr>
+      <td rowspan="2"><a href="volume-1.html#1xx115-report-content-creator">Report Content Creator</a></td>
       <td>Update Report Content [RAD-X5]</td>
       <td>Initiator</td>
       <td>R</td>
@@ -144,6 +230,19 @@ Table 1:XX.1-1 lists the transactions for each actor directly involved in the IM
       <td>Initiator</td>
       <td>R</td>
       <td><a href="rad-x6.html">RAD TF-2: 4.X6</a></td>
+    </tr>
+    <tr>
+      <td rowspan="6"><a href="volume-1.html#1xx116-watcher">Watcher</a></td>
+      <td>Subscribe Reporting Session [RAD-X1]</td>
+      <td>Initiator</td>
+      <td>R</td>
+      <td><a href="rad-x1.html">RAD TF-2: 4.X1</a></td>
+    </tr>
+    <tr>
+      <td>Connect Notification Channel [RAD-X2]</td>
+      <td>Initiator</td>
+      <td>R</td>
+      <td><a href="rad-x2.html">RAD TF-2: 4.X2</a></td>
     </tr>
     <tr>
       <td>Unsubscribe Session [RAD-X7]</td>
@@ -230,105 +329,128 @@ Table 1:XX.1-1 lists the transactions for each actor directly involved in the IM
       <td>R</td>
       <td><a href="rad-x10.html">RAD TF-2: 4.X10</a></td>
     </tr>
-    <tr>
-      <td><a href="volume-1.html#1xx114-image-display">Image Display</a></td>
-      <td>See Note 2</td>
-      <td>-</td>
-      <td>-</td>
-      <td>-</td>
-    </tr>
-    <tr>
-      <td><a href="volume-1.html#1xx115-evidence-creator">Evidence Creator</a></td>
-      <td>See Note 2</td>
-      <td>-</td>
-      <td>-</td>
-      <td>-</td>
-    </tr>
-    <tr>
-      <td><a href="volume-1.html#1xx116-report-creator">Report Creator</a></td>
-      <td>See Note 2</td>
-      <td>-</td>
-      <td>-</td>
-      <td>-</td>
-    </tr>
-    <tr>
-      <td><a href="volume-1.html#1xx117-worklist-display">Worklist Display</a></td>
-      <td>See Note 2</td>
-      <td>-</td>
-      <td>-</td>
-      <td>-</td>
-    </tr>
   </tbody>
 </table>
-
-> Note 1: These actors are *abstract* actors that cannot be claimed directly. They provide the necessary required transactions for other actors to group with.
-
-> Note 2: These actors are *concrete* actors that an implementation can claim. They are required to group with one or more of the *abstract* actors and hence inherits the corresponding requirements. See the actor description section for specific required grouping details.
 
 ### 1:XX.1.1 Actors Description and Actor Profile Requirements
 Most requirements are documented in RAD TF-2 Transactions. This section documents any additional requirements on this profile's actors.
 
-#### 1:XX.1.1.1 Synchronizing Application
+#### 1:XX.1.1.0 Common Functionalities
 
-The Synchronizing Application actor is responsible for listening on events and synchronize according to its internal business logic.
+Many actors in this profile can be grouped into the following categories:
 
-The Synchronizing Application shall specify the events that it can support during subscription.
+- Subscriber
+- Synchronizing Application
+- Driving Application
 
-This is the minimum requirements in this profile.
+> Note: These are NOT actors in this profile and hence they cannot be directly claimed.
 
-#### 1:XX.1.1.2 Driving Application
+The following subsections define in more details the general behavior and requirements for each category.
 
-The Driving Application actor is a Synchronizing Application. It is responsible for launching other Synchronizing Applications. it is also responsible for initiating and terminating the report context.
+#### 1:XX.1.1.0.1 Subscriber
 
-The Driving Application shall provide the URL of the Hub actor as `hub.url` and the reporting session as `hub.topic` to the Synchronizing Application during launch.
+A `Subscriber` is an application which subscribes to and receives session events.
 
-> Note that the actual application launch method is out of scope of this profile. See [Application Launch Scenarios and Session Discovery](https://build.fhir.org/ig/HL7/fhircast-docs/4-1-launch-scenarios.html) for more details.
+A `Subscriber` is capable of the following common functionalities:
+- Subscribe to a reporting session
+- Receive all events from the Hub and apply the events according to its business logic
+- Retrieve the current context from the Hub
+- Report errors
 
-#### 1:XX.1.1.3 Content Sharing Application
+#### 1:XX.1.1.0.2 Synchronizing Application
 
-The Content Sharing Application actor is a Synchronizing Application and it is also responsible for sharing content to a given report context with other Synchronizing Applications.
+A `Synchronizing Application` is a `Subscriber` that can be launched by a `Driving Application` to complete a reporting task.
 
-#### 1:XX.1.1.4 Image Display
+A `Synchronizing Application` shall be capable of being launched by another actor and use the provided `hub.url` and `hub.topic` to subscribe to a reporting session.
 
-The Image Display actor is responsible for presenting patients' studies and relevant information to the user.
+> Note that the actual application launch method is out of scope of this profile. Different `Synchronizing Application` may provide different launch method, which may be standard based or proprietary. See [Application Launch Scenarios and Session Discovery](https://build.fhir.org/ig/HL7/fhircast-docs/4-1-launch-scenarios.html) for more details.
 
-The Image Display shall be grouped with the Synchronizing Application actor.
+#### 1:XX.1.1.0.3 Driving Application
 
-The Image Display shall be grouped with the Driving Application actor if it drives the reporting session.
+A `Driving Application` is an application that drives a reporting session to complete reporting tasks.
 
-The Image Display is recommended to be grouped with the Content Sharing Application actor to share image references and measurements with other Synchronizing Applications.
+A `Driving Application` is capable of the following:
+- Start a new reporting session
+- Launch other Subscribers to join the reporting session to complete reporting tasks
+- Initiate or terminate a report context
 
-#### 1:XX.1.1.5 Evidence Creator
+A `Driving Application` shall be able to launch other Subscribers. It shall provide the URL of the Hub actor as `hub.url` and the reporting session as `hub.topic` to the `Synchronizing Application` during launch.
 
-The Evidence Creator actor is responsible for producing evidence data for the patients' studies.
+> Note that the actual application launch method is out of scope of this profile. A `Driving Application` may provide its method (standard based on proprietary) to drive a `Synchronizing Application`, or it may use the `Synchronizing Application`'s launch method. See [Application Launch Scenarios and Session Discovery](https://build.fhir.org/ig/HL7/fhircast-docs/4-1-launch-scenarios.html) for more details.
 
-The Evidence Creator shall be grouped with the Synchronizing Application actor.
+#### 1:XX.1.1.1 Image Display
 
-The Evidence Creator is recommended to be grouped with the Content Sharing Application actor to share captured evidences with other Synchronizing Applications.
+The Image Display actor is responsible for presenting patients' studies and relevant information to the user. It provides tools for the user to navigate images in a study. It publishes and consumes reporting events to streamline report creation workflow.
 
-#### 1:XX.1.1.6. Report Creator
+The Image Display is a [Synchronizing Application](volume-1.html#1xx1102-synchronizing-application).
 
-The Report Creator actor is responsible for producing a diagnostic report for patients' studies.
+The Image Display is also a [Driving Application](volume-1.html#1xx1103-driving-application).
 
-The Report Creator shall be grouped with the Synchronizing Application actor.
+The Image Display shall be capable of being configured as a `Synchronizing Application` or `Driving Application` based on the need for a specific deployment.
 
-The Report Creator shall be grouped with the Driving Application actor if it drives the reporting session.
+If the Image Display is grouped with a Report Content Creator to publish additional content events to a reporting session, then it shall support at least one of the following FHIR resources:
 
-#### 1:XX.1.1.7 Worklist Display
+- `Patient`: patient in the anchor context
+- `ImagingStudy`: imaging study in either the anchor context (i.e. the study subject to be reported) or as additional studies (e.g. a comparison study)
+- `ImagingSelection`: image / series references and simple annotations
+- `Observation`: measurements and annotations
 
-The Worklist Display actor is responsible for presenting a worklist for the user and launching other connected applications on demand.
+The Image Display may support other FHIR resources.
 
-The Worklist Display shall be grouped with the Synchronizing Application actor.
+#### 1:XX.1.1.2 Report Creator
 
-The Worklist Display shall be grouped with the Driving Application actor if it drives the reporting session.
+The Report Creator actor is responsible for producing a diagnostic report for patients' studies. It publishes and consumes reporting events to streamline report creation workflow.
 
-#### 1:XX.1.1.8 Hub
+The Report Creator is a [Synchronizing Application](volume-1.html#1xx1102-synchronizing-application).
 
-The Hub actor is responsible for managing a context, content and subscribers in communication sessions.
+The Report Creator is also a [Driving Application](volume-1.html#1xx1103-driving-application).
+
+The Report Creator shall be capable of being configured as a `Synchronizing Application` or `Driving Application` based on the need for a specific deployment.
+
+#### 1:XX.1.1.3 Worklist Display
+
+The Worklist Display actor is responsible for presenting a worklist for the user during a reporting session.
+
+The Worklist Display is a [Subscriber](volume-1.html#1xx1101-subscriber).
+
+The Worklist Display is also a [Driving Application](volume-1.html#1xx1103-driving-application).
+
+#### 1:XX.1.1.4 Evidence Creator
+
+The Evidence Creator actor is responsible for producing evidence data such as annotations, measurements, key image references, etc. for the patients' studies during a reporting session.
+
+The Evidence Creator is a [Synchronizing Application](volume-1.html#1xx1102-synchronizing-application).
+
+If the Evidence Creator is grouped with a Report Content Creator to publish additional content events to a reporting session, then it shall support at least one of the following FHIR resources:
+
+- `ImagingSelection`: image / series references and simple annotations
+- `Observation`: measurements and annotations
+
+The Evidence Creator may support other FHIR resources.
+
+> Note: The Evidence Creator may be capable of producing evidence data in formats like DICOM SR, but may not be able to share these evidence data in a reporting session as defined in this profile. Therefore the baseline requirement is that an Evidence Creator is a `Synchronizing Application` that can consumes reporting events. If it can publish the evidence data using the content sharing mechanism defined in this profile, then the Evidence Creator can also claim support for Report Content Creator.
+
+#### 1:XX.1.1.5 Report Content Creator
+
+The Report Content Creator actor is responsible for publishing context and/or content changes (add, modify or delete) as events to a reporting session.
+
+The Report Content Creator is also capable of selecting one or more contents and publishing the selection events to a reporting session.
+
+The Report Content Creator supports the necessary transaction to publish or select content events. The specific FHIR resources payload support is defined by the grouped actor.
+
+#### 1:XX.1.1.6. Watcher
+
+The Watcher actor is responsible for listening to events in a session and perform some actions. The specific actions are out of scope of this profile.
+
+The Watcher is a [Synchronizing Application](volume-1.html#1xx1102-synchronizing-application).
+
+#### 1:XX.1.1.7 Hub
+
+The Hub actor is responsible for managing event flows in reporting sessions and maintain the data model in each session.
 
 The Hub shall support accepting and sending all events, including events defined in this profile, defined in FHIRcast or custom events.
 
-For all context events (i.e. events defined as `*-open` or `*-close`), the Hub shall support maintaining the context and set the current context. For all other events (including custom events), the Hub may treat the events as opaque events and shall support at least sending the events to other Synchronizing Applications.
+For all context events (i.e. events defined as `*-open` or `*-close`), the Hub shall support maintaining the context and set the current context. For all other events (including custom events), the Hub may treat the events as opaque events and shall support at least sending the events to other `Synchronizing Applications`.
 
 ## 1:XX.2 RTC-IMR Actor Options
 
@@ -346,22 +468,17 @@ Options that may be selected for each actor in this implementation guide, are li
   </thead>
   <tbody>
     <tr>
-      <td>Synchronizing Application</td>
+      <td>Image Display</td>
       <td>No options defined</td>
       <td>–</td>
     </tr>
     <tr>
-      <td>Driving Application</td>
+      <td>Report Creator</td>
       <td>SMART on FHIR Launch</td>
       <td><a href="volume-1.html#1xx21-smart-on-fhir-launch">1:XX.2.1</a></td>
     </tr>
     <tr>
-      <td>Content Sharing Application</td>
-      <td>No options defined</td>
-      <td>–</td>
-    </tr>
-    <tr>
-      <td>Image Display</td>
+      <td>Worklist Display</td>
       <td>No options defined</td>
       <td>–</td>
     </tr>
@@ -371,12 +488,12 @@ Options that may be selected for each actor in this implementation guide, are li
       <td>–</td>
     </tr>
     <tr>
-      <td>Report Creator</td>
+      <td>Report Content Creator</td>
       <td>No options defined</td>
       <td>–</td>
     </tr>
     <tr>
-      <td>Worklist Manager</td>
+      <td>Watcher</td>
       <td>No options defined</td>
       <td>–</td>
     </tr>
@@ -411,13 +528,13 @@ considerations and Section 1:52.6 describes some optional groupings in other rel
 | IMR Actor | Grouping Condition | Actor(s) to be grouped with | Reference |
 |-----------|--------------------|-----------------------------|-----------|
 | Image Display | -- | None | -- |
-| Evidence Creator | -- | None | -- |
 | Report Creator | -- | None | -- |
-| Worklist Manager | -- | None | -- |
+| Worklist Display | -- | None | -- |
+| Evidence Creator | -- | None | -- |
+| Report Content Creator | -- | None | -- |
+| Watcher | -- | None | -- |
 | Hub | -- | None | -- |
 {: .grid}
-
-> Note: This table excludes the *abstract* actors because they cannot be claimed directly.
 
 ## 1:XX.4 RTC-IMR Overview
 
@@ -461,17 +578,27 @@ The following is a representation of the data model:
 
 A `Session` is a communication channel setup between the `Subscribers` via the `Hub`. As long as `Subscribers` are active and have events to communicate with each other, the `Session` can stay open. Therefore a `Session` has a long duration.
 
-A `Context` is used to communicate a subject on which the `Subscribers` should synchronize as appropriate to their business logic. As soon as the subject is complete, then the corresponding `Context` can be closed. Therefore a `Context` has a short duration.
+TODO: A `Session` represents the activity of a user in a reporting session. Typically a session started ... shared workspace ... It is a scope for the events in the pub/sub model. Glossary Session: an abstract concept representing a shared workspace, such as a user's login session across multiple applications or a shared view of one application distributed to multiple users. A session results from a user logging into an application and can encompass one or more workflows.
+
+TODO: What it represents (conceptually) and what it does (practically)
+
+A `Context` is used to communicate a subject on which the `Subscribers` should synchronize as appropriate to their business logic. As soon as the subject is complete, then the corresponding `Context` can be closed. Therefore a `Context` has a limited duration within a `Session`.
+
+TODO: Reference the interruption use case #3 - put it in a separate concept section.
 
 Note that occasionally a `Context` may be _interrupted_ because of _suspension_, meaning that before the `Context` is closed, another `Context` is opened (e.g. a radiologist needs to suspend the current report on a study in order to review another urgent study). In this case, the information of the previous `Context` is still maintained by the `Hub` since it is not closed, but it is _suspended_ (i.e. not the `Current Context`). Instead the `Current Context` is switched to the urgent study being opened. As soon as the user finished reviewing the urgent study and hence has closed the `Context` of the urgent study, the _suspended_ `Context` will resume to be the `Current Context` since it is the last opened `Context`.
 
 #### 1:XX.4.1.4 Events vs Commands
 
+Communication patterns between two systems fall in two general categories: `Commands` and `Events`. In this profile, the messages that a `Subscriber` sends to the `Hub` represents an `Event`. This RTC-IMR Profile has no support for sending `Commands`.
+
+TODO: Mention the initiator and the recipient(s)
+
 `Events` represent facts that have happened. For example, DiagnosticReport-open represents an event that an application opens a study for reporting. Note that an event has no direct target audience. Any applications subscribed to the event will receive the event and the application can determine how to process the event. The application that is producing the event is not aware of the actions being performed by different consuming applications, unless these consuming applications in turn publishes additional events.
 
 On the other hand, `Commands` represent intention, often associated with specific target audience(s). For example, Send-Study represents an intention to send a study. Therefore the application that sends the commands often has direct knowledge of which applications should execute the commands, or delegate to a proxy service that has the knowledge.
 
-In this profile, the messages that a `Subscriber` sends to the `Hub` represents an `Event`. This RTC-IMR Profile has no support for sending `Commands`.
+TODO: Soften the text. In this profile, there is nothing explicitly define as Command in this profile. Some implementation may define a command out of band.
 
 #### 1:XX.4.1.5 Event Awareness vs Event Consumption
 
@@ -479,13 +606,15 @@ In this profile, the messages that a `Subscriber` sends to the `Hub` represents 
 
 `Event Consumption` means an application, upon receiving an event from the `Hub`, reacts to the event and performed some actions according to its business logic.
 
-This means from the driving application perspective, in order to synchronize the context with other applications, it is desirable to publish as many events as reasonable so that other subscribers can be aware of the same context as in the driving application.
+This means from the content sharing application perspective, in order to synchronize the context with other applications, it may be desirable to publish frequent events so that other subscribers can be aware of the same context as in the content sharing application.
 
 On the other hand, from the subscribing application perspective, it is up to its business logic to determine how to react to the received event. This business logic may be automatic or requires additional user input.
 
 For example, in a nodule tracking application, when the user goes through the study images, the user may keep track of (a.k.a. bookmarking) nodules observed (e.g. 1, 2, ..., 9, 10). Then once the user reviewed the full study, the user may select a subset of the nodules (e.g. 2, 3, 5, 9) identified as important to be added to the report. In this scenario, it is highly recommended that the nodule tracking application sends an event for each nodule (i.e. 1, 2, ..., 9, 10) being bookmarked so that the reporting application is aware of all the nodules the user observed (but not necessary added to the report yet). The user can then instruct the reporting application to add a subset of the nodules (i.e. 2, 3, 5, 9) to the report. Note that since the reporting application is aware of all the nodules observed by synchronizing the context with the nodule tracking application, selecting a subset of the nodules is a local operation and can be done in any order (i.e. the action is not required to only apply to the most recent context received).
 
 Note that this implies the reporting application has to keep track of all the contexts in the received events, independent of whether the context will be used in the report later. This is important because there is no `Command` defined in this profile, and the reporting application cannot request past context from the reporting application or the `Hub`. (The reporting application may provide other means to support a query mechanism, but this is out of scope of this profile).
+
+TODO: Add a counter example that too many events have negative impact. So choose wisely what are reasonable to share.
 
 #### 1:XX.4.1.6 Timing of Sending an Event
 
@@ -501,17 +630,7 @@ This profile does not mandate any specific implementation design regarding when 
 
 FHIRcast uses FHIR resources to capture the context and content in an event. These FHIR resources may be transient, meaning that they do not necessarily exist in any system, nor are they expected to be persisted by any system. Furthermore, even an application decides to persist the FHIR resource(s), it is not required to use the same resource ID in the event as the ID of the persisted resource. The application can generate new IDs instead.
 
-Since the FHIR resources specified in the event may or may not exist, to differentiate between the two cases, this profile defines that transient resources are identified by relative references (e.g. Patient/12345) and persisted resources that already exist are identified by full URL (e.g. http://myserver.com/Patient/12345).
-
-#### 1:XX.4.1.8 Communication of Processing Result
-
-Upon receiving an event, the `Hub` and `Subscribers` process the event according to their own business logic. There are several possible outcome:
-
-| Actor | Process Successfully | Process Successfully with no action | Failed Processing |
-| -- | -- | -- | -- |
-| `Hub` | Forwards to `Subscribers` based on subscription | NA | Return `SyncError` back to driving application |
-| `Subscriber` | No action required. May send new events to the `Hub` | No action required | Send `SyncError` to the `Hub` which forwards them back to the driving application and all other `Subscribers` |
-{: .grid}
+Since the FHIR resources specified in the event may or may not be persisted in any FHIR server, to differentiate between the two cases, this profile defines that transient resources are identified by relative references (e.g. Patient/12345) and persisted resources that already exist are identified by full URL (e.g. http://myserver.com/Patient/12345).
 
 ### 1:XX.4.2 Use Cases
 
