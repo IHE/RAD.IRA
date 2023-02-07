@@ -382,6 +382,10 @@ A `Driving Application` shall be able to launch other Subscribers. It shall prov
 
 The Image Display actor is responsible for presenting patients' studies and relevant information to the user. It provides tools for the user to navigate images in a study. It publishes and consumes reporting events to streamline report creation workflow.
 
+The Image Display may include a worklist component that let the user select which studies to read. The Image Display may also include tools to create annotations, key images, etc.
+
+> Note: If the Image Display actor has the same capabilities as the Evidence Creator, it is not required to also claim support for Evidence Creator in this profile.
+
 The Image Display is a [Synchronizing Application](volume-1.html#1xx1102-synchronizing-application).
 
 The Image Display is also a [Driving Application](volume-1.html#1xx1103-driving-application).
@@ -418,6 +422,8 @@ The Worklist Display is also a [Driving Application](volume-1.html#1xx1103-drivi
 #### 1:XX.1.1.4 Evidence Creator
 
 The Evidence Creator actor is responsible for producing evidence data such as annotations, measurements, key image references, etc. for the patients' studies during a reporting session.
+
+The Evidence Creator is a standalone application such as a specialty AI application.
 
 The Evidence Creator is a [Synchronizing Application](volume-1.html#1xx1102-synchronizing-application).
 
@@ -636,7 +642,7 @@ Since the FHIR resources specified in the event may or may not be persisted in a
 
 #### 1:XX.4.2.1 Use Case \#1: PACS Driven Reporting
 
-This use case shows a simple two actors scenarios in a reporting session. The PACS is the Image Display acting as a combined Driving Application and a Content Sharing Application while the Reporting App is a Report Creator acting as a Synchronizing Application.
+This use case shows a simple two actors scenarios, Image Display and Report Creator, in a reporting session.
 
 Note that Section 1:XX.4.2.1 repeats in its entirety for additional use
 cases (replicate as Section 1:XX.4.2.2, 1:XX.4.2.3, etc.).
