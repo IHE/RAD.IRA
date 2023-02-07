@@ -670,7 +670,7 @@ Furthermore, the [Examples](example.html) tab, contains sample events following 
 
 ###### 1:XX.4.2.1.2.0 Common Subscription Flow
 
-Subscribing to a reporting session is a common starting point for an actor to start communicating with other actors in the reporting session in realtime.
+Subscribing to a reporting session is a common starting point for any `Subscriber` to start communicating with other `Subscribers` via the `Hub` in a reporting session.
 
 Subscribing to a reporting session involves two transactions:
 
@@ -679,7 +679,7 @@ Subscribing to a reporting session involves two transactions:
 
 For a Synchronizing Application, the session is provided by the Driving Application during launch.
 
-For a Driving Application (which is also a Synchronizing Application), it generates a unique session ID to start a new session.
+For a Driving Application, it generates a unique session ID to start a new session.
 
 <div>
 {%include common-subscription.svg%}
@@ -706,11 +706,11 @@ Note that there is no explicit creation of a session. If the Hub receives a sess
 It is necessary for the Driving Application to subscribe to the reporting events:
 - Receives its own events as a confirmation
 - Receives the version ID of the event which is required for concurrency control
-- Receives synchronization error events from the Hub or from other Synchronizing Applications.
+- Receives synchronization error events from the Hub or from other Subscribers.
 
 Once the Image Display completed its subscription, it launches the Report Creator. The Report Creator, as a Synchronizing Application, can follows the context and content events automatically.
 
-> Note that *launching* the Report Creator (or any Synchronizing Application) by the Image Display (or any Driving Application) may be implemented in different ways. For example, the Synchronizing Application can be started and terminated, or it can be put in focus and minimize when not needed but keep running in the background for efficiency.
+> Note that *launching* the Report Creator (or any Synchronizing Application) by the Image Display (or any Driving Application) may be implemented in different ways. For example, the Synchronizing Application can be started and terminated, or it can be put in focus and minimize when not needed but keep running in the background for efficiency, or a combination.
 
 When launched, the first thing that the Report Creator does as a Synchronizing Application is to subscribe to the reporting session. The information about the Hub and the session is provided by the Image Display during launch.
 
@@ -725,13 +725,13 @@ Figure 1:XX.4.2.1.2.1-1: Open Reporting Session Flow in RTC-IMR Profile
 
 ###### 1:XX.4.2.1.2.2 Step 2: Open Study in Context
 
-When the radiologist selects a study in the worklist in the Image Display, as a Driving Application, it initiates a new report context. Once the Hub accepted the event, it broadcasts the event to all Synchronizing Applications.
+When the radiologist selects a study in the worklist in the Image Display, as a Driving Application, initiates a new report context. Once the Hub accepted the event, it broadcasts the event to all Subscribers.
 
 The Report Creator, as a Synchronizing Application, receives the event and opens the corresponding procedure for the study.
 
-The Image Display, as a Driving Application, also receives its own event because it subscribes to the event as well. This is a confirmation that that the event is received properly by the Hub.
+The Image Display also receives its own event because it subscribes to the event as well. This is a confirmation that that the event is received properly by the Hub.
 
-Furthermore, the event has a version ID which is important for all Synchronizing Applications and Driving Applications. For the Image Display as a Driving Application, including the version ID when submitting the next event ensures proper event sequence. For the Report Creator as a Synchronizing Application, keeping track of the version ID enables it to check if it missed any prior events. Event sequencing is important for content sharing because all updates and selects are expected to be applied in the same sequence as they are emitted by the Driving Application.
+Furthermore, the event has a version ID. For the Image Display as a Driving Application, including the version ID when submitting the next event allows the Hub to ensure proper event sequence. For the Report Creator as a Synchronizing Application, keeping track of the version ID enables it to check if it missed any prior events. Event sequencing is important for content sharing because all updates and selects are expected to be applied in the same sequence as they are emitted by the Report Content Creator.
 
 <div>
 {%include step2-open-study-in-context.svg%}
@@ -742,11 +742,11 @@ Figure 1:XX.4.2.1.2.1-2: Open Study in Context Flow in RTC-IMR Profile
 
 ###### 1:XX.4.2.1.2.3 Step 3: Add Content (Optional)
 
-Sometimes the radiologist may annotate the images with markups and measurements. When this happened, the Image Display, as a Content Sharing Application, updates the report context at the Hub with new content via Update Report Content [RAD-X5]. The Hub broadcasts the event to all Synchronizing Applications.
+Sometimes the radiologist may annotate the images with markups and measurements. When this happened, the Image Display, grouped with the Report Content Creator, updates the report context at the Hub with new content via Update Report Content [RAD-X5]. The Hub broadcasts the event to all Synchronizing Applications.
 
 When the Report Creator receives the event, it can apply the updates according to its business logic. For example, it may automatically create a hyperlink in the report, or keeps track of the content in a panel for the user to perform other activities later.
 
-For content sharing events, the Report Creator, as a Synchronizing Application, checks if the event is in the right sequence according to the version ID. If it detected that it missed some prior events, then it queries the hub to retrieve the latest context and content and apply accordingly. 
+For content sharing events, the Report Creator checks if the event is in the right sequence according to the version ID. If it detected that it missed some prior events, then it queries the hub to retrieve the latest context and content and apply accordingly. 
 
 <div>
 {%include step3-add-measurements.svg%}
@@ -757,7 +757,7 @@ Figure 1:XX.4.2.1.2.1-3: Add Content Flow in RTC-IMR Profile
 
 ###### 1:XX.4.2.1.2.4 Step 4: Select Content (Optional)
 
-Sometimes the radiologist selected certain elements (e.g. images, annotation, specific measurements, etc.) in the Image Display. When this happened, the Image Display, as a Content Sharing Application, sends a event to the Hub via Select Report Content [RAD-X6] indicating what contents have been selected. The Hub broadcasts the event to all Synchronizing Applications.
+Sometimes the radiologist selected certain elements (e.g. images, annotation, specific measurements, etc.) in the Image Display. When this happened, the Image Display, grouped with the Report Content Creator, sends a event to the Hub via Select Report Content [RAD-X6] indicating what contents have been selected. The Hub broadcasts the event to all Subscribers.
 
 When the Report Creator receives the event, it can apply the selection according to its business logic. For example, it can highlight to the user what are selected so that the user can perform some actions. In this example, the radiologist uses a voice command to insert a hyperlink in the report. The Report Creator uses the selected content to generate the hyperlink.
 
@@ -772,9 +772,9 @@ Figure 1:XX.4.2.1.2.1-4: Select Content Flow in RTC-IMR Profile
 
 ###### 1:XX.4.2.1.2.5 Step 5: Sign-off Report
 
-When the radiologist completes dictating the report, the radiologist signs off the report. The Report Creator persists the report according to its business logic. The Report Creator, as a Driving Application, terminates the report context immediately via Terminate Report Context [RAD-X4]. The Hub broadcasts the event to all Synchronizing Applications. Furthermore, the Hub closes the report context.
+When the radiologist completes dictating the report, the radiologist signs off the report. The Report Creator persists the report according to its business logic. The Report Creator, as a Driving Application, terminates the report context immediately via Terminate Report Context [RAD-X4]. The Hub broadcasts the event to all Subscribers. Furthermore, the Hub closes the report context.
 
-The Image Display, as a Synchronizing Application in this case, marks the study as reported and removes the study from the worklist.
+The Image Display marks the study as reported and removes the study from the worklist.
 
 Note that quite often, the Report Creator has some internal mechanism to keep the report for a grace period after signed off and before sending it out to other recipients. The Terminate Report Context [RAD-X4] event enables the Image Display to quickly aware that the Report Creator has completed the sign-off without affected by the grace period.
 
@@ -789,9 +789,9 @@ Figure 1:XX.4.2.1.2.1-5: Sign-off Report Flow in RTC-IMR Profile
 
 The flow above shows the simple case with a sequential switching of report context. In this case, a report context is initiated and then terminated before the next report context is opened.
 
-In practice, the radiologist is likely to continue with the next study in the worklist without any awareness of the events happening behind the scene. If the initiating Driving Application and terminating Driving Application are different as in this example, then it is possible that the radiologist moves to the next study and hence the Image Display initiates a new report context before the Image Display receives the Terminate Report Context [RAD-X5] event.
+In practice, the radiologist is likely to continue with the next study in the worklist without any awareness of the events happening behind the scene. If the initiating Driving Application and terminating Driving Application are different as in this example, then it is possible that the radiologist moves to the next study and hence the Image Display initiates a new report context before the Image Display receives the Terminate Report Context [RAD-X5] event of the reported study.
 
-Such rapid context switching is supported by this profile. The Hub and each Synchronizing Application maintain multiple open context simultaneously. As long as the context is not terminated, it still exists. Each event is associated to a particular anchor context. Therefore a Synchronizing Application can reliably match an event to its internal state according to the context ID in the event. 
+Such rapid context switching is supported by this profile. The Hub and each Subscriber maintain multiple open context simultaneously. As long as the context is not terminated, it still exists. Each event is associated to a particular anchor context. Therefore a Subscriber can reliably match an event to its internal state according to the context ID of the anchor context in the event. 
 
 The following diagram shows what can happen in case of rapid switching of the report context.
 
@@ -806,7 +806,7 @@ Figure 1:XX.4.2.1.2.1-5b: Rapid Context Switching Flow in RTC-IMR Profile
 
 Eventually, the radiologist completed all the studies in the worklist and closes the Report Creator. The Report Creator unsubscribes to the reporting session so that it will no longer receives any future events.
 
-The Hub closes the connection to the Report Creator. Note that if there are other Synchronizing Applications on the same session, those applications are not affected and will continue to receive notification on the session.
+The Hub closes the connection to the Report Creator. Note that if there are other Subscribers on the same session, those applications are not affected and will continue to receive notification on the session.
 
 <div>
 {%include step6-terminate-reporting-session.svg%}
@@ -836,14 +836,14 @@ Figure 1:XX.4.2.3-1: Interruption and Resume Flow in RTC-IMR Profile
 #### 1:XX.4.2.4 Use Case \#4: Error Handling Flow
 
 Error handling can be synchronous or asynchronous:
-- Synchronous: When the Hub or the Synchronizing Application receives an event, it processes the event immediately and failed, then it returns an error status `4xx` or `5xx`.
-- Asynchronous: When the Hub or the Synchronizing Application receives an event, it immediates responds with `202` Accepted and process the event asynchronously. If it failed to process the event within a threshold (e.g. FHIRcast recommends <10 seconds), then it sends a `syncerror` using Send SyncError Event [RAD-X10].
+- Synchronous: When the Hub or any Subscriber receives an event, it processes the event immediately and failed, then it returns an error status `4xx` or `5xx`.
+- Asynchronous: When the Hub or any Subcriber receives an event, it immediately responds with `202` Accepted and processes the event asynchronously. If it failed to process the event within a threshold (e.g. FHIRcast recommends <10 seconds), then it sends a `syncerror` using Send SyncError Event [RAD-X10].
 
-> Note that if the Synchronizing Application returns `202` Accepted to the Hub, it is the responsibility of the Synchronizing Application to send a `syncerror` event to the Hub later if it failed to process the event or cannot process the event within a threshold. There is no standard mechanism for the Hub to detect if the Synchronizing Application finished processing or not (there is no *process success* confirmation event).
+> Note that if the Subscriber returns `202` Accepted to the Hub, it is the responsibility of the Subscriber to send a `syncerror` event to the Hub later if it failed to process the event or cannot process the event within a threshold. There is no standard mechanism for the Hub to detect if the Subscriber finished processing or not (there is no *process success* confirmation event).
 
 In some situations, the Hub may initiate the `syncerro` events:
-- It receives a `4xx` or `5xx` error from a Synchronizing Application. 
-- It detected a Synchronizing Application is not available (via missing heartbeat events) or websocket connection is dropped.
+- It receives a `4xx` or `5xx` error from a Subscriber. 
+- It detected a Subscriber is not available (via missing heartbeat events) or websocket connection is dropped.
 
 <div>
 {%include syncerror.svg%}
