@@ -567,7 +567,7 @@ The following are some key concepts:
 
 TODO: Replace the FHIRcast link to the published version if ready by the time of publication.
 
-#### 1:XX.4.1.2 Terminology and Data Model
+#### 1:XX.4.1.2 Terminology and Model
 
 The terminology used in FHIRcast and adopted in this profile can be found in the [Glossary](https://build.fhir.org/ig/HL7/fhircast-docs/5_glossary.html) page.
 
@@ -577,6 +577,15 @@ The following is a representation of the data model:
 
 <div>
     <img src="data_model.png" width="80%">
+</div>
+<br clear="all">
+
+The following is a representation of the interaction model:
+
+**Figure 1:XX.4,1.2-1: FHIRcast Concept Interaction Model**
+
+<div>
+    <img src="interaction_model.png" width="80%">
 </div>
 <br clear="all">
 
