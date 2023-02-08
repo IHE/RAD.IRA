@@ -577,7 +577,7 @@ TODO: Replace the FHIRcast link to the published version if ready by the time of
 
 The terminology used in FHIRcast and adopted in this profile can be found in the [Glossary](https://build.fhir.org/ig/HL7/fhircast-docs/5_glossary.html) page.
 
-The following is a representation of the data model:
+The following is a representation of the data model.
 
 **Figure 1:XX.4,1.2-1: FHIRcast Concept Data Model**
 
@@ -586,7 +586,12 @@ The following is a representation of the data model:
 </div>
 <br clear="all">
 
-The following is a representation of the interaction model:
+The following is a representation of the interaction model.
+
+> Note: The term `Driving Application` and `Synchronizing Application` in the diagram are *convenient* terms instead of actual defined terms. They are used here to highlight the additional capabilities a driving application can do, in particular:
+> - Start a new reporting session
+> - Launch another application
+> - Initiate or terminate a report context
 
 **Figure 1:XX.4,1.2-1: FHIRcast Concept Interaction Model**
 
