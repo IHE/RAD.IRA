@@ -356,7 +356,7 @@ The Image Display shall have the following capabilities:
 
 > Note that the actual application launch method is out of scope of this profile See [Application Launch Scenarios and Session Discovery](https://build.fhir.org/ig/HL7/fhircast-docs/4-1-launch-scenarios.html) for more details.
 
-If the Image Display is grouped with a Content Creator to publish additional content events to a reporting session, then it shall publish events using at least one FHIR resource. The Image Display should publish events using one or more of the following FHIR resources that are expected to be useful in reporting:
+If the Image Display is grouped with a Content Creator to publish additional content events to a reporting session, then it shall publish events using at least one FHIR resource. The Image Display is highly recommended to publish events using one or more of the following FHIR resources that are expected to be useful in reporting:
 
 - `Patient`: patient in the anchor context
 - `ImagingStudy`: imaging study in either the anchor context (i.e. the study subject to be reported) or as additional studies (e.g. a comparison study)
@@ -409,25 +409,20 @@ The Worklist Client shall consume the report anchor context content update event
 
 #### 1:XX.1.1.4 Evidence Creator
 
-The Evidence Creator actor is responsible for producing evidence data such as annotations, measurements, key image references, etc. for the patients' studies during a reporting session.
+The Evidence Creator actor is responsible for consuming events in the reporting session and producing evidence data such as annotations, measurements, key image references, etc. for the patients' studies. For example, it may detect lung nodules and produce measurements and bounding boxes of the nodules detected.
 
-The Evidence Creator is a standalone application such as a specialty AI application.
+The Evidence Creator may capture the evidence data in format such as DICOM SR and shared with other systems using methods outside of this profile (e.g. as Evidence Creator in IHE AIR profile). In this case, other synchronizing applications in the same reporting session may not be aware of the evidence data created by the Evidence Creator.
 
-The Evidence Creator is a [Synchronizing Application](volume-1.html#1xx1102-synchronizing-application).
+Alternatively the Evidence Creator may capture the evidence data (e.g. lung nodule measurements as FHIR Observation resource, image references and bounding box as FHIR ImagingSelection resource) and share them by publishing content sharing events back to the reporting session through the Hub.
 
-TODO: Rework this paragraph
-The Evidence Creator consumes reporting events and may create evidence data such as DICOM SR. These evidence data are communicated with other systems. Note that these evidence data are not shared using the content sharing mechanism defined in this profile. Hence other `Synchronizing Applications` in the reporting session may not be aware of the evidence data created.
+The Evidence Creator may be a standalone application such as an Specialty AI application, or it may be grouped with another actor such as Image Display.
 
-TODO: Open issue if we need two levels of support, or if the first level (just consume) is not good enough.
+In order to complete a study dictation, the Evidence Creator shall be capable of being launched by another application (e.g. Image Display). It shall use the provided `hub.url` and `hub.topic` to join a reporting session and synchronize itself with the report context received.
 
-The Evidence Creator might be capable of producing evidence data in formats like DICOM SR, but might not be able to share these evidence data in a reporting session as defined in this profile. Therefore the baseline requirement is that an Evidence Creator is a `Synchronizing Application` that can consumes reporting events. If it can publish the evidence data using the content sharing mechanism defined in this profile, then the Evidence Creator can also claim support for Content Creator.
+If the Evidence Creator is grouped with a Content Creator to publish content events to a reporting session, then it shall publish events using at least one FHIR resource. The Evidence Creator is highly recommended to publish events using one or more of the following FHIR resources that are expected to be useful in reporting:
 
-If the Evidence Creator is grouped with a Content Creator to publish additional content events to a reporting session, then it shall support at least one FHIR resource. The following ... TODO
-
-- `ImagingSelection`: image / series references and simple annotations
+- `ImagingSelection`: image / series references and simple annotations such as bounding boxes
 - `Observation`: measurements and annotations
-
-The Evidence Creator may support other FHIR resources.
 
 #### 1:XX.1.1.5 Content Creator
 
