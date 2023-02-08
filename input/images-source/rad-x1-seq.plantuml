@@ -2,12 +2,12 @@
 
 hide footbox
 
-participant "Sender" as Sender
-participant "Receiver" as Receiver
+participant "Subscriber" as Subscriber
+participant "Manager" as Manager
 
-Sender->Receiver: Subscription Request
-activate Receiver
-Receiver-->Sender: Subscription Response
-deactivate Receiver
+Subscriber->Manager: Subscription Request
+activate Manager
+Manager-->Subscriber: Subscription Response
+deactivate Manager
 
 @enduml
