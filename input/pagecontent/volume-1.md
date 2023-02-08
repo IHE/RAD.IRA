@@ -460,6 +460,8 @@ The Hub shall provide basic functionalities to all events it received, including
 - It shall manage the current context in the session for all context-change events (i.e. *-open and *-close events)
 - It shall ensure proper event ordering and transaction handling for all content sharing events (i.e. *-update and *-select) events
 
+The Hub shall NOT be limited to the events prescribed in this profile to support synchronizing applications in reporting sessions.
+
 The Hub shall support content sharing events.
 
 ## 1:XX.2 RTC-IMR Actor Options
