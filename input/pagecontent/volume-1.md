@@ -443,11 +443,9 @@ Furthermore, the Content Creator may use the sharing of content selection to ena
 
 #### 1:XX.1.1.6. Watcher
 
-The Watcher actor is responsible for listening to events in a session and perform some actions. The specific actions are out of scope of this profile.
+The Watcher actor is responsible for listening to events in a session and perform actions according to it business logic. The specific actions are out of scope of this profile.
 
-The Watcher is a [Synchronizing Application](volume-1.html#1xx1102-synchronizing-application).
-
-TODO: Give some examples in a reporting scenario.
+For example, the Watcher consumes the initiation and termination of report contexts and calculates the turnaround time for different types of studies in different departments. Another example is that the Watcher monitors how often an Evidence Creator publishes content sharing events and correlates how effective an AI application is with respect to the turnaround time by comparison and time before and after the Evidence Creator is deployed.
 
 #### 1:XX.1.1.7 Hub
 
