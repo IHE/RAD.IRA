@@ -1,16 +1,4 @@
-- 4 layers
-    - Session: Can launch other applications and generate a new reporting session (i.e. generate a new session ID)
-    - Context: Can initiate or terminate report context
-    - Content: Can update and select report content to a given context
-    - Event: Can consume all events according to its business logic
-- Actors:
-    - Watcher: Req - Event
-    - Image Display: Req - Event, Context, Session
-    - Evidence Creator: Req - Event
-    - Report Creator: Req - Event, Context, Session
-    - Worklist Display: Req - Event, Context, Session
-    - Hub: All levels as a manager
-    - Report Content Creator: Req - Content
+
 - Every application shall be able to start a reporting session (i.e. generate the session ID)
 - For Evidence Creator actor description, add more specific expectation what outputs it can produce.
 - Navigation (series / image level), does it need X5 and X6?
@@ -36,3 +24,10 @@
         - handoff: one app is 'done' and no further action expected
         - Dynamically interaction: continuous update is expected between applications
 - TODO: Transient vs Persistent - clarify text
+- TODO: Add a concept section about event
+    - e.g. standard and custom events
+    - event maturity in FHIRcast
+- TODO: Open issue should Report Creator in IMR be grouped with Report Creator in this profile
+    - Note: may be overburden with too many requirements
+- TODO: In X1, note about subscribe to your own events to get confirmation in case of asynchronous Hub responses.
+- TODO: Require the Report Creator share report status update
