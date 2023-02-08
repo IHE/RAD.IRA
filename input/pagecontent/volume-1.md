@@ -426,13 +426,20 @@ If the Evidence Creator is grouped with a Content Creator to publish content eve
 
 #### 1:XX.1.1.5 Content Creator
 
-The Content Creator actor is responsible for publishing context and/or content changes (add, modify or delete) as events to a reporting session.
+The Content Creator actor is responsible for either publishing context and/or content changes (add, modify or delete) as events to a reporting session, or selecting one or more contents and publishing the selection events, or both.
 
-The Content Creator is also capable of selecting one or more contents and publishing the selection events to a reporting session.
+> Note: This actor is intended to be grouped with another actor (excluding the Hub) in this profile to augment the existing actor capabilities with content sharing capabilities. This actor cannot be claimed as a standalone actor since it lacks the capabilities to subscribe to a reporting session.
 
-TODO: Make the description more report specific.
+The specific context or content changes captured by the Content Creator depends on the grouped actor and the specific deployment scenario. For example:
 
-TODO: Make update and select both option but have to support at least one of them. Note that you can select contents created by other actors.
+| Grouped Actor | Potential Use | Relevant Resource |
+| -- | -- | -- |
+| Report Creator | Communicate report status update | DiagnosticReport |
+| Evidence Creator | Image references<br>Bounding Boxes | ImagingSelection<br>Observation |
+| Image Display | Comparison study used during reporting | ImagingStudy |
+{: .grid}
+
+Furthermore, the Content Creator may use the sharing of content selection to enable more efficient reporting flow. For example, when a user clicks on the bounding box of a detected nodule, the grouped Image Display publishes a selection event referencing the affected images and bounding boxes as an ImagingSelection resource and the corresponding measurements as an Observation. Upon receiving the event, the Report Creator captured the details and show them in a side panel to the user. Finally the user issues a voice command to inject hyperlink. The Report Creator, uses the selected contents as input to the voice command, automatically persisted the resources in database and then inject a hyperlink to access them in the finding section.
 
 #### 1:XX.1.1.6. Watcher
 
