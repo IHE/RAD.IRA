@@ -12,23 +12,15 @@ PACS->PACS: //Open Study and show Chest X-Ray//
 
 PACS->Hub: Initiate Report Context [RAD-X3]\n(event: id = 1000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
 activate Hub
-note over PACS, Hub
-Create the following report context entry
-for session 12345:
-* DiagnosticReport
-* Patient
-* ImagingStudy
-end note
 
-Hub->Hub: //Create DiagnosticReport Context in session 12345//\n(event: id = 1000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)\n[[open_study_for_reporting.html#available-context-and-content-in-hub Example]]
+Hub->Hub: //Create DiagnosticReport Context in session 12345//\n[[open_study_for_reporting.html#available-context-and-content-in-hub Example]]
 Hub-->PACS: Accept
 
-Hub->Report: Send Context Event [RAD-X9]\n(event: id = 1000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
+Hub->Report: Send Context Event [RAD-X9]\n(event: id = 1000, ...)
 Report->Report: //Initiate new report//\n//based on the received context//
 Report-->Hub: //Success (id = 1000, status = 200)//
 
-Hub->PACS: Send Context Event [RAD-X9]\n(event: id = 1000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
-PACS->PACS: //No action required//
+Hub->PACS: Send Context Event [RAD-X9]\n(event: id = 1000, ...)
 PACS-->Hub: //Success (id = 1000, status = 200)//
 deactivate Hub
 
