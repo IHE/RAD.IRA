@@ -133,7 +133,7 @@ Table 1:XX.1-1 lists the transactions for each actor directly involved in the IM
       <td><a href="rad-x10.html">RAD TF-2: 4.X10</a></td>
     </tr>
       <tr>
-      <td rowspan="8"><a href="volume-1.html#1xx113-worklist-display">Worklist Display</a></td>
+      <td rowspan="8"><a href="volume-1.html#1xx113-worklist-display">Worklist Client</a></td>
       <td>Subscribe Reporting Session [RAD-X1]</td>
       <td>Initiator</td>
       <td>R</td>
@@ -219,16 +219,16 @@ Table 1:XX.1-1 lists the transactions for each actor directly involved in the IM
       <td><a href="rad-x10.html">RAD TF-2: 4.X10</a></td>
     </tr>
       <tr>
-      <td rowspan="2"><a href="volume-1.html#1xx115-report-content-creator">Report Content Creator</a></td>
+      <td rowspan="2"><a href="volume-1.html#1xx115-report-content-creator">Content Creator</a></td>
       <td>Update Report Content [RAD-X5]</td>
       <td>Initiator</td>
-      <td>R</td>
+      <td>O (Note 1)</td>
       <td><a href="rad-x5.html">RAD TF-2: 4.X5</a></td>
     </tr>
     <tr>
       <td>Select Report Content [RAD-X6]</td>
       <td>Initiator</td>
-      <td>R</td>
+      <td>O (Note 1)</td>
       <td><a href="rad-x6.html">RAD TF-2: 4.X6</a></td>
     </tr>
     <tr>
@@ -332,92 +332,65 @@ Table 1:XX.1-1 lists the transactions for each actor directly involved in the IM
   </tbody>
 </table>
 
+> Note 1: A Content Creator shall support at least one of the update or select transactions.
+
 ### 1:XX.1.1 Actors Description and Actor Profile Requirements
 Most requirements are documented in RAD TF-2 Transactions. This section documents any additional requirements on this profile's actors.
 
-#### 1:XX.1.1.0 Common Functionalities
-
-Many actors in this profile can be grouped into the following categories:
-
-- Subscriber
-- Synchronizing Application
-- Driving Application
-
-> Note: These are NOT actors in this profile and hence they cannot be directly claimed.
-
-The following subsections define in more details the general behavior and requirements for each category.
-
-#### 1:XX.1.1.0.1 Subscriber
-
-A `Subscriber` is an application which subscribes to and receives session events.
-
-A `Subscriber` is capable of the following common functionalities:
-- Subscribe to a reporting session
-- Receive all events from the Hub and apply the events according to its business logic
-- Retrieve the current context from the Hub
-- Report errors
-
-#### 1:XX.1.1.0.2 Synchronizing Application
-
-A `Synchronizing Application` is a `Subscriber` that can be launched by a `Driving Application` to complete a reporting task.
-
-A `Synchronizing Application` shall be capable of being launched by another actor and use the provided `hub.url` and `hub.topic` to subscribe to a reporting session.
-
-> Note that the actual application launch method is out of scope of this profile. Different `Synchronizing Application` may provide different launch method, which may be standard based or proprietary. See [Application Launch Scenarios and Session Discovery](https://build.fhir.org/ig/HL7/fhircast-docs/4-1-launch-scenarios.html) for more details.
-
-#### 1:XX.1.1.0.3 Driving Application
-
-A `Driving Application` is an application that drives a reporting session to complete reporting tasks.
-
-A `Driving Application` is capable of the following:
-- Start a new reporting session
-- Launch other Subscribers to join the reporting session to complete reporting tasks
-- Initiate or terminate a report context
-
-A `Driving Application` shall be able to launch other Subscribers. It shall provide the URL of the Hub actor as `hub.url` and the reporting session as `hub.topic` to the `Synchronizing Application` during launch.
-
-> Note that the actual application launch method is out of scope of this profile. A `Driving Application` may provide its method (standard based on proprietary) to drive a `Synchronizing Application`, or it may use the `Synchronizing Application`'s launch method. See [Application Launch Scenarios and Session Discovery](https://build.fhir.org/ig/HL7/fhircast-docs/4-1-launch-scenarios.html) for more details.
-
 #### 1:XX.1.1.1 Image Display
 
-The Image Display actor is responsible for presenting patients' studies and relevant information to the user. It provides tools for the user to navigate images in a study. It publishes and consumes reporting events to streamline report creation workflow.
+The Image Display actor is responsible for presenting patients' studies and relevant information to the user so that the user can make diagnostic decisions on the studies.
 
-The Image Display may include a worklist component that let the user select which studies to read. The Image Display may also include tools to create annotations, key images, etc.
+The Image Display provides tools for the user to navigate images in a study. It may include a worklist component that let the user select studies to read. It may also include tools to create evidence data such as annotations, key images, etc.
 
-> Note: If the Image Display actor has the same capabilities as the Evidence Creator, it is not required to also claim support for Evidence Creator in this profile.
+In order to complete a study dictation, the Image Display:
+- May launch other applications and synchronize them to the same report context through the Hub
+- May be launched by another application, consume reporting events from the Hub and synchronize itself to the same report context
 
-The Image Display is a [Synchronizing Application](volume-1.html#1xx1102-synchronizing-application).
+The Image Display shall have the following capabilities:
+- Configure the URL of the Hub
+- Generate a unique session ID and start a new reporting session by subscribing to the Hub on its own
+- Launch one or more actors and provide them the URL of the Hub actor as `hub.url` and the reporting session ID as `hub.topic`
+- Launched by another application and use the provided `hub.url` and `hub.topic` to join a reporting session and synchronize itself with the report context received
+- Configure to initiate or terminate (or both) report context based on some business logic
 
-The Image Display is also a [Driving Application](volume-1.html#1xx1103-driving-application).
+> Note that the actual application launch method is out of scope of this profile See [Application Launch Scenarios and Session Discovery](https://build.fhir.org/ig/HL7/fhircast-docs/4-1-launch-scenarios.html) for more details.
 
-The Image Display shall be capable of being configured as a `Synchronizing Application` or `Driving Application` based on the need for a specific deployment.
-
-If the Image Display is grouped with a Report Content Creator to publish additional content events to a reporting session, then it shall support at least one of the following FHIR resources:
+If the Image Display is grouped with a Content Creator to publish additional content events to a reporting session, then it shall publish events using at least one FHIR resource. The Image Display should publish events using one or more of the following FHIR resources that are expected to be useful in reporting:
 
 - `Patient`: patient in the anchor context
 - `ImagingStudy`: imaging study in either the anchor context (i.e. the study subject to be reported) or as additional studies (e.g. a comparison study)
 - `ImagingSelection`: image / series references and simple annotations
 - `Observation`: measurements and annotations
 
-The Image Display may support other FHIR resources.
-
 #### 1:XX.1.1.2 Report Creator
 
-The Report Creator actor is responsible for producing a diagnostic report for patients' studies. It publishes and consumes reporting events to streamline report creation workflow.
+The Report Creator actor is responsible for producing a diagnostic report for patients' studies.
 
-The Report Creator is a [Synchronizing Application](volume-1.html#1xx1102-synchronizing-application).
+In order to complete a study dictation, the Report Creator:
+- May launch other applications and synchronize them to the same report context through the Hub
+- May be launched by another application, consume reporting events from the Hub and synchronize itself to the same report context
 
-The Report Creator is also a [Driving Application](volume-1.html#1xx1103-driving-application).
+The Report Creator provides tools for the user to insert report content such as findings and impressions. The Report Creator may use the report content shared by other applications through the Hub (e.g. image references shared by Image Display, or measurements shared by Evidence Creator) to directly update the report (e.g. insert measurements) or generate derived report content (e.g. inject hyperlinks from image references)
 
-The Report Creator shall be capable of being configured as a `Synchronizing Application` or `Driving Application` based on the need for a specific deployment.
+The Report Creator shall have the following capabilities:
+- Configure the URL of the Hub
+- Generate a unique session ID and start a new reporting session by subscribing to the Hub on its own
+- Launch one or more actors and provide them the URL of the Hub actor as `hub.url` and the reporting session ID as `hub.topic`
+- Launched by another application and use the provided `hub.url` and `hub.topic` to join a reporting session and synchronize itself with the report context received
+- Configure to initiate or terminate (or both) report context based on some business logic
 
-#### 1:XX.1.1.3 Worklist Display
+> Note that the actual application launch method is out of scope of this profile See [Application Launch Scenarios and Session Discovery](https://build.fhir.org/ig/HL7/fhircast-docs/4-1-launch-scenarios.html) for more details.
 
-The Worklist Display actor is responsible for presenting a worklist for the user during a reporting session.
+The Report Creator shall be grouped with a Content Creator to publish report status update using the report anchor context DiagnosticReport resource. It may support other content sharing resources.
 
-The Worklist Display is a [Subscriber](volume-1.html#1xx1101-subscriber).
+#### 1:XX.1.1.3 Worklist Client
 
-The Worklist Display is also a [Driving Application](volume-1.html#1xx1103-driving-application).
+The Worklist Client actor is responsible for providing a reporting worklist to the user. The user selects studies from the worklist and the Worklist Client launches other applications (e.g. Image Display, Report Creator, etc.) to complete dictation on the studies.
+
+The Worklist Client is a [Synchronizing Application](volume-1.html#1xx1102-synchronizing-application).
+
+The Worklist Client is also a [Driving Application](volume-1.html#1xx1103-driving-application).
 
 #### 1:XX.1.1.4 Evidence Creator
 
@@ -427,22 +400,29 @@ The Evidence Creator is a standalone application such as a specialty AI applicat
 
 The Evidence Creator is a [Synchronizing Application](volume-1.html#1xx1102-synchronizing-application).
 
-If the Evidence Creator is grouped with a Report Content Creator to publish additional content events to a reporting session, then it shall support at least one of the following FHIR resources:
+TODO: Rework this paragraph
+The Evidence Creator consumes reporting events and may create evidence data such as DICOM SR. These evidence data are communicated with other systems. Note that these evidence data are not shared using the content sharing mechanism defined in this profile. Hence other `Synchronizing Applications` in the reporting session may not be aware of the evidence data created.
+
+TODO: Open issue if we need two levels of support, or if the first level (just consume) is not good enough.
+
+The Evidence Creator might be capable of producing evidence data in formats like DICOM SR, but might not be able to share these evidence data in a reporting session as defined in this profile. Therefore the baseline requirement is that an Evidence Creator is a `Synchronizing Application` that can consumes reporting events. If it can publish the evidence data using the content sharing mechanism defined in this profile, then the Evidence Creator can also claim support for Content Creator.
+
+If the Evidence Creator is grouped with a Content Creator to publish additional content events to a reporting session, then it shall support at least one FHIR resource. The following ... TODO
 
 - `ImagingSelection`: image / series references and simple annotations
 - `Observation`: measurements and annotations
 
 The Evidence Creator may support other FHIR resources.
 
-> Note: The Evidence Creator may be capable of producing evidence data in formats like DICOM SR, but may not be able to share these evidence data in a reporting session as defined in this profile. Therefore the baseline requirement is that an Evidence Creator is a `Synchronizing Application` that can consumes reporting events. If it can publish the evidence data using the content sharing mechanism defined in this profile, then the Evidence Creator can also claim support for Report Content Creator.
+#### 1:XX.1.1.5 Content Creator
 
-#### 1:XX.1.1.5 Report Content Creator
+The Content Creator actor is responsible for publishing context and/or content changes (add, modify or delete) as events to a reporting session.
 
-The Report Content Creator actor is responsible for publishing context and/or content changes (add, modify or delete) as events to a reporting session.
+The Content Creator is also capable of selecting one or more contents and publishing the selection events to a reporting session.
 
-The Report Content Creator is also capable of selecting one or more contents and publishing the selection events to a reporting session.
+TODO: Make the description more report specific.
 
-The Report Content Creator supports the necessary transaction to publish or select content events. The specific FHIR resources payload support is defined by the grouped actor.
+TODO: Make update and select both option but have to support at least one of them. Note that you can select contents created by other actors.
 
 #### 1:XX.1.1.6. Watcher
 
@@ -450,13 +430,16 @@ The Watcher actor is responsible for listening to events in a session and perfor
 
 The Watcher is a [Synchronizing Application](volume-1.html#1xx1102-synchronizing-application).
 
+TODO: Give some examples in a reporting scenario.
+
 #### 1:XX.1.1.7 Hub
 
-The Hub actor is responsible for managing event flows in reporting sessions and maintain the data model in each session.
+TODO: Rework description
+The Hub actor is responsible for managing event flows in reporting sessions and maintaining the data model in each session.
 
 The Hub shall support accepting and sending all events, including events defined in this profile, defined in FHIRcast or custom events.
 
-For all context events (i.e. events defined as `*-open` or `*-close`), the Hub shall support maintaining the context and set the current context. For all other events (including custom events), the Hub may treat the events as opaque events and shall support at least sending the events to other `Synchronizing Applications`.
+For all other events (including custom events), the Hub may treat the events as opaque events and shall support at least sending the events to other `Synchronizing Applications`.
 
 ## 1:XX.2 RTC-IMR Actor Options
 
@@ -484,7 +467,7 @@ Options that may be selected for each actor in this implementation guide, are li
       <td><a href="volume-1.html#1xx21-smart-on-fhir-launch">1:XX.2.1</a></td>
     </tr>
     <tr>
-      <td>Worklist Display</td>
+      <td>Worklist Client</td>
       <td>No options defined</td>
       <td>–</td>
     </tr>
@@ -494,7 +477,7 @@ Options that may be selected for each actor in this implementation guide, are li
       <td>–</td>
     </tr>
     <tr>
-      <td>Report Content Creator</td>
+      <td>Content Creator</td>
       <td>No options defined</td>
       <td>–</td>
     </tr>
@@ -535,9 +518,9 @@ considerations and Section 1:52.6 describes some optional groupings in other rel
 |-----------|--------------------|-----------------------------|-----------|
 | Image Display | -- | None | -- |
 | Report Creator | -- | None | -- |
-| Worklist Display | -- | None | -- |
+| Worklist Client | -- | None | -- |
 | Evidence Creator | -- | None | -- |
-| Report Content Creator | -- | None | -- |
+| Content Creator | -- | None | -- |
 | Watcher | -- | None | -- |
 | Hub | -- | None | -- |
 {: .grid}
@@ -591,7 +574,7 @@ The following is a representation of the interaction model:
 
 #### 1:XX.4.1.3 Long Session and Short Context
 
-A `Session` is a communication channel setup between the `Subscribers` via the `Hub`. As long as `Subscribers` are active and have events to communicate with each other, the `Session` can stay open. Therefore a `Session` has a long duration.
+A `Session` is a communication channel setup between the `Subscribers` using the `Hub`. As long as `Subscribers` are active and have events to communicate with each other, the `Session` can stay open. Therefore a `Session` has a long duration.
 
 TODO: A `Session` represents the activity of a user in a reporting session. Typically a session started ... shared workspace ... It is a scope for the events in the pub/sub model. Glossary Session: an abstract concept representing a shared workspace, such as a user's login session across multiple applications or a shared view of one application distributed to multiple users. A session results from a user logging into an application and can encompass one or more workflows.
 
@@ -633,7 +616,7 @@ TODO: Add a counter example that too many events have negative impact. So choose
 
 #### 1:XX.4.1.6 Timing of Sending an Event
 
-On one hand, it is desirable for all subscribed applications to be synchronized with the driving application as soon as possible. On the other hand, FHIRcast is a network protocol which incurs a non-trivial cost to send each event. Therefore any implementation should take into account when an action is considered to be complete or stable, and hence ready to be captured and communicated as events.
+On one hand, it is desirable for all subscribed applications to be synchronized with the driving application as soon as possible. On the other hand, FHIRcast is a network protocol which incurs a non-triusingl cost to send each event. Therefore any implementation should take into account when an action is considered to be complete or stable, and hence ready to be captured and communicated as events.
 
 For example, when a user is making measurements or annotations, instead of capturing every single measurement or annotation as an event, an application may use an idle time threshold to detect if the user completed the action or not.
 
@@ -658,13 +641,25 @@ cases (replicate as Section 1:XX.4.2.2, 1:XX.4.2.3, etc.).
 
 ##### 1:XX.4.2.1.1 PACS Driven Reporting Use Case Description
 
+##### TODO: Add a subtitle for user perspective
 The Image Display launches the Report Creator when a reporting session starts.
+
+TODO: Include the 'setup' phase to get the workspace up with the necessary applications ready
+
+TODO: Rework this paragraph
+- Worklist has a set of studies
+- Radiologist use worklist to select one study to report
+- ...
 
 A radiologist using the worklist function in the Image Display to work through the list of studies to be reported. As the radiologist proceeds, when the Image Display displays each study in the worklist, she uses the Report Creator, loaded with the corresponding procedure for the same study, to create the diagnostic report. During reporting, she creates annotations and measurements on some of the images. These annotations and measurements are selected and populated in the report accordingly. Once she completed the report for the study, she signs off the report and proceeds with the next study in the worklist. Eventually she finishes all the studies in the worklist and close the reporting session.
 
-This is intentionally a high level description depicting a reporting session from the user perspective. In the following subsections, each step will be described in more details regarding how this profile can automatically synchronize the Image Display and the Report Creator.
+This is intentionally a high level description. Actors which do not interact with the users are not shown. No actual transactions are shown, instead interaction between the systems are shown with hyperlinks that connect to diagrams that shows the details.
 
 > Note: The hyperlinks provided in the diagram links to the specific detailed description of each step.
+
+> Note: In this use case, the Image Display does ... Alternatively separate Evidence Creator, Worklist Client, etc. ... See Use Case 2 ... TODO
+
+TODO: Change all transactions to be italic
 
 ##### 1:XX.4.2.1.2 PACS Driven Reporting Process Flow
 
@@ -679,7 +674,7 @@ Furthermore, the [Examples](example.html) tab, contains sample events following 
 
 ###### 1:XX.4.2.1.2.0 Common Subscription Flow
 
-Subscribing to a reporting session is a common starting point for any `Subscriber` to start communicating with other `Subscribers` via the `Hub` in a reporting session.
+Subscribing to a reporting session is a common starting point for any `Subscriber` to start communicating with other `Subscribers` using the `Hub` in a reporting session.
 
 Subscribing to a reporting session involves two transactions:
 
@@ -712,18 +707,18 @@ When a radiologist starts reporting, the Image Display, as a Driving Application
 
 Note that there is no explicit creation of a session. If the Hub receives a session ID (i.e. topic) that does not already exist, then the Hub will automatically create the session and add the subscriber (i.e. Image Display) to the session.
 
-It is necessary for the Driving Application to subscribe to the reporting events:
-- Receives its own events as a confirmation
-- Receives the version ID of the event which is required for concurrency control
-- Receives synchronization error events from the Hub or from other Subscribers.
+The Image Display subscribes to events so that it can:
+- Receive events published by other Subscribers
+- Receive the version ID of any events which is required for concurrency control (See Section ... for more information about content sharing TODO)
+- Receive synchronization error events from the Hub or from other Subscribers.
 
-Once the Image Display completed its subscription, it launches the Report Creator. The Report Creator, as a Synchronizing Application, can follows the context and content events automatically.
+Once the Image Display completed its subscription, it launches the Report Creator. The Report Creator, as a Synchronizing Application, can follow the context and content events automatically.
 
 > Note that *launching* the Report Creator (or any Synchronizing Application) by the Image Display (or any Driving Application) may be implemented in different ways. For example, the Synchronizing Application can be started and terminated, or it can be put in focus and minimize when not needed but keep running in the background for efficiency, or a combination.
 
 When launched, the first thing that the Report Creator does as a Synchronizing Application is to subscribe to the reporting session. The information about the Hub and the session is provided by the Image Display during launch.
 
-Furthermore, the Report Creator as a Synchronizing Application queries the Hub to get the current context. This ensures that the Synchronizing Application has the most recent context and content. If the reporting session just begins, then the result of the query will be empty. This is necessary because the Image Display does not know when the Report Creator completed its subscription. Therefore it is possible the Image Display has already changed context before the subscription is complete.
+Furthermore, the Report Creator queries the Hub to get the current context to ensure it has the latest context and content. Since the reporting session has just begun, and the Image Display has not yet initiated any report context, the result of the query will be empty.
 
 <div>
 {%include step1-open-reporting-session.svg%}
@@ -738,9 +733,7 @@ When the radiologist selects a study in the worklist in the Image Display, as a 
 
 The Report Creator, as a Synchronizing Application, receives the event and opens the corresponding procedure for the study.
 
-The Image Display also receives its own event because it subscribes to the event as well. This is a confirmation that that the event is received properly by the Hub.
-
-Furthermore, the event has a version ID. For the Image Display as a Driving Application, including the version ID when submitting the next event allows the Hub to ensure proper event sequence. For the Report Creator as a Synchronizing Application, keeping track of the version ID enables it to check if it missed any prior events. Event sequencing is important for content sharing because all updates and selects are expected to be applied in the same sequence as they are emitted by the Report Content Creator.
+Furthermore, the event has a version ID. For the Image Display as a Driving Application, including the version ID when submitting the next event allows the Hub to ensure proper event sequence. For the Report Creator as a Synchronizing Application, keeping track of the version ID enables it to check if it missed any prior events. Event sequencing is important for content sharing because all updates and selects are expected to be applied in the same sequence as they are emitted by the Content Creator.
 
 <div>
 {%include step2-open-study-in-context.svg%}
@@ -751,11 +744,13 @@ Figure 1:XX.4.2.1.2.1-2: Open Study in Context Flow in RTC-IMR Profile
 
 ###### 1:XX.4.2.1.2.3 Step 3: Add Content (Optional)
 
-Sometimes the radiologist may annotate the images with markups and measurements. When this happened, the Image Display, grouped with the Report Content Creator, updates the report context at the Hub with new content via Update Report Content [RAD-X5]. The Hub broadcasts the event to all Synchronizing Applications.
+Sometimes the radiologist may annotate the images with markups and measurements. When this happened, the Image Display, grouped with the Content Creator, updates the report context at the Hub with new content using Update Report Content [RAD-X5]. The Hub broadcasts the event to all Synchronizing Applications.
 
 When the Report Creator receives the event, it can apply the updates according to its business logic. For example, it may automatically create a hyperlink in the report, or keeps track of the content in a panel for the user to perform other activities later.
 
 For content sharing events, the Report Creator checks if the event is in the right sequence according to the version ID. If it detected that it missed some prior events, then it queries the hub to retrieve the latest context and content and apply accordingly. 
+
+TODO: Description of version ID based verification and retrieval
 
 <div>
 {%include step3-add-measurements.svg%}
@@ -766,7 +761,14 @@ Figure 1:XX.4.2.1.2.1-3: Add Content Flow in RTC-IMR Profile
 
 ###### 1:XX.4.2.1.2.4 Step 4: Select Content (Optional)
 
-Sometimes the radiologist selected certain elements (e.g. images, annotation, specific measurements, etc.) in the Image Display. When this happened, the Image Display, grouped with the Report Content Creator, sends a event to the Hub via Select Report Content [RAD-X6] indicating what contents have been selected. The Hub broadcasts the event to all Subscribers.
+TODO: Add more specific example and language how select is used
+
+TODO: Selection can be used in various way:
+- as input for a follow up action (ImagingSelecion selected as input for hyperlink)
+- bring something to focus (e.g. being the measurement to focus) and follow up action
+- It is the recipient of the event decides on what action to take, may be with input from the user rather than fully automated
+
+Sometimes the radiologist selected certain elements (e.g. images, annotation, specific measurements, etc.) in the Image Display. When this happened, the Image Display, grouped with the Content Creator, sends a event to the Hub using Select Report Content [RAD-X6] indicating what contents have been selected. The Hub broadcasts the event to all Subscribers.
 
 When the Report Creator receives the event, it can apply the selection according to its business logic. For example, it can highlight to the user what are selected so that the user can perform some actions. In this example, the radiologist uses a voice command to insert a hyperlink in the report. The Report Creator uses the selected content to generate the hyperlink.
 
@@ -781,11 +783,17 @@ Figure 1:XX.4.2.1.2.1-4: Select Content Flow in RTC-IMR Profile
 
 ###### 1:XX.4.2.1.2.5 Step 5: Sign-off Report
 
-When the radiologist completes dictating the report, the radiologist signs off the report. The Report Creator persists the report according to its business logic. The Report Creator, as a Driving Application, terminates the report context immediately via Terminate Report Context [RAD-X4]. The Hub broadcasts the event to all Subscribers. Furthermore, the Hub closes the report context.
+The radiologist completes dictation and signs off the report on the Report Creator. Recall that this report context was initiated by the Image Display. The Report Creator terminates the report context. The Hub broadcasts the termination event to all Subscribers and disallows any further interaction of that terminated report context.
 
-The Image Display marks the study as reported and removes the study from the worklist.
+Upon receiving the termination event, the Image Display updates its worklist to mark the study as reported.
 
-Note that quite often, the Report Creator has some internal mechanism to keep the report for a grace period after signed off and before sending it out to other recipients. The Terminate Report Context [RAD-X4] event enables the Image Display to quickly aware that the Report Creator has completed the sign-off without affected by the grace period.
+TODO: Support for reason to terminate the report (e.g. complete normally, drafted complete, radiologist finished and sent to transcriptionist, etc.)
+
+TODO: Describe what other actors might do upon receiving the terminating event
+
+TODO: Right before close, the Report Creator can send an update to change the report status. Make this a requirement.
+
+Note that quite often, the Report Creator has some internal mechanism to keep the report for a grace period after signed off and before sending it out to other recipients. The Terminate Report Context [RAD-X4] event enables the Image Display to quickly aware that the Report Creator has completed the sign-off without affected by the grace period. The Report Creator persists the report according to its business logic.
 
 Note that in this use case example, the initiating Driving Application (Image Display) is not the same actor as the terminating Driving Application (Report Creator). This requires some coordination between the Image Display and the Report Creator. Such coordination is out of scope of this profile. Other arrangement is possible so that the same Image Display being both the initiating and terminating Driving Application.
 
@@ -835,6 +843,16 @@ Figure 1:XX.4.2.2-1: Worklist Manager Driven Reporting in RTC-IMR Profile
 
 #### 1:XX.4.2.3 Use Case \#3: Interruption and Resume Flow
 
+Occasionally a radiologist is interrupted while reporting on a study. She needs to open a different study (e.g. for consultation purpose) before the study that is currently in progress is ready for sign-off.
+
+This profile enables a new report context to be initiated before the previous report context is terminated. The Hub can maintain multiple anchor context simultaneously within a reporting session. It maintains the notion of a current context to be the last anchor context that has been initiated but not yet terminated. This current context enables all Synchronizing Applications to be synchronized and working on the same context all the time.
+
+Once the *interrupting* study is complete, the Image Display terminates the report context of the *interrupting* study. The Hub removes the context of the *interrupting* study and set the current context back to the previously opened study. Note that all associated context and contents remain in the Hub.
+
+All `Synchronizing Applications` may resume to the previous report context in one of the following methods:
+- Internally keep track of received context and hence knows which context is current.
+- Use the Get Current Context [RAD-X8] transaction to query the Hub for which context is current
+
 <div>
 {%include interruption-and-resume.svg%}
 </div>
@@ -852,7 +870,7 @@ Error handling can be synchronous or asynchronous:
 
 In some situations, the Hub may initiate the `syncerro` events:
 - It receives a `4xx` or `5xx` error from a Subscriber. 
-- It detected a Subscriber is not available (via missing heartbeat events) or websocket connection is dropped.
+- It detected a Subscriber is not available (using missing heartbeat events) or websocket connection is dropped.
 
 <div>
 {%include syncerror.svg%}
@@ -867,7 +885,7 @@ This profile strongly recommends all actors group with an ITI ATNA Secure Applic
 
 The ATNA Profile requires actors to implement:
 - [Record Audit Event](https://profiles.ihe.net/ITI/TF/Volume2/ITI-20.html) [ITI-20] transaction which would record when and where analysis results are distributed and displayed.
-- [Authenticate Node](https://profiles.ihe.net/ITI/TF/Volume2/ITI-19.html) [ITI-19] transaction to further ensure the integrity of transactions via node authentication and communication encryption.
+- [Authenticate Node](https://profiles.ihe.net/ITI/TF/Volume2/ITI-19.html) [ITI-19] transaction to further ensure the integrity of transactions using node authentication and communication encryption.
 
 Furthermore, for the HTTP-based transactions, this profile strongly recommends the use of ITI [Internet User Authorization](https://profiles.ihe.net/ITI/TF/Volume1/ch-34.html) (IUA) Profile to ensure that communications are only allowed for authenticated and authorized users and/or systems.
 
@@ -920,7 +938,7 @@ Table 1:XX.6-1 describes various actors in various other profiles that might be 
       <td>To provide authorization claims when invoking a request with another actor.</td>
     </tr>
     <tr>
-      <td>Worklist Display</td>
+      <td>Worklist Client</td>
       <td><a href="https://profiles.ihe.net/ITI/IUA/index.html">IUA Authorization Client</a></td>
       <td>To provide authorization claims when invoking a request with another actor.</td>
     </tr>
