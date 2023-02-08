@@ -449,12 +449,18 @@ For example, the Watcher consumes the initiation and termination of report conte
 
 #### 1:XX.1.1.7 Hub
 
-TODO: Rework description
-The Hub actor is responsible for managing event flows in reporting sessions and maintaining the data model in each session.
+The Hub actor is responsible for managing event flows between Subscribers in reporting sessions and maintaining the current context and transaction of content sharing in each session.
 
-The Hub shall support accepting and sending all events, including events defined in this profile, defined in FHIRcast or custom events.
+The Hub is also responsible for authorizing the following:
+- which Subscriber has permission to invoke what requests
+- which context and content a Subscriber is eligible to access and in what type (e.g. read only, write only or ready and write)
 
-For all other events (including custom events), the Hub may treat the events as opaque events and shall support at least sending the events to other `Synchronizing Applications`.
+The Hub shall provide basic functionalities to all events it received, including custom events. Specifically:
+- It shall receive and send the event to all Subscribers subscribed to the event type
+- It shall manage the current context in the session for all context-change events (i.e. *-open and *-close events)
+- It shall ensure proper event ordering and transaction handling for all content sharing events (i.e. *-update and *-select) events
+
+The Hub shall support content sharing events.
 
 ## 1:XX.2 RTC-IMR Actor Options
 
