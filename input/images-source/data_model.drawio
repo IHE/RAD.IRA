@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="REENpzGBm39CdS1Fk5RU" name="Interaction Model">
-        <mxGraphModel dx="1867" dy="1826" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="1387" dy="1576" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -120,7 +120,7 @@
                 <mxCell id="yhTjSWiZqmDCel7jHeYI-29" value="Report Creator" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
                     <mxGeometry x="-330" y="11" width="120" height="41" as="geometry"/>
                 </mxCell>
-                <mxCell id="yhTjSWiZqmDCel7jHeYI-30" value="Worklist Display" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+                <mxCell id="yhTjSWiZqmDCel7jHeYI-30" value="Worklist Client" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
                     <mxGeometry x="-330" y="61" width="120" height="41" as="geometry"/>
                 </mxCell>
                 <mxCell id="yhTjSWiZqmDCel7jHeYI-31" value="Evidence Creator" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
@@ -133,7 +133,7 @@
         </mxGraphModel>
     </diagram>
     <diagram id="u37TdR3Up0tB3ALFowDp" name="Data Model">
-        <mxGraphModel dx="1867" dy="726" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="1387" dy="476" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>

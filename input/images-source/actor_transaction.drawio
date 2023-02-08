@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="w9eKzpSiwHvzKklawYqQ" name="Full Actors Only">
-        <mxGraphModel dx="1565" dy="1670" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="1418" dy="1576" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -14,7 +14,7 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="gMexnicsG44GviGb2K0t-1" value="Worklist Display" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
+                <mxCell id="gMexnicsG44GviGb2K0t-1" value="Worklist&lt;br&gt;Client" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
                     <mxGeometry x="-780" y="-130" width="80" height="80" as="geometry"/>
                 </mxCell>
                 <mxCell id="u-3bDec00EcQlva4bvqx-18" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="gMexnicsG44GviGb2K0t-2" target="gMexnicsG44GviGb2K0t-4" edge="1">
@@ -131,13 +131,13 @@
                 <mxCell id="R6qVMPqXuL_3hM2V6tge-15" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="u-3bDec00EcQlva4bvqx-22" target="gMexnicsG44GviGb2K0t-4" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
-                            <mxPoint x="-220"/>
+                            <mxPoint x="-210"/>
                             <mxPoint x="-280"/>
                         </Array>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="u-3bDec00EcQlva4bvqx-22" value="Watcher" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
-                    <mxGeometry x="-260" y="-130" width="80" height="80" as="geometry"/>
+                    <mxGeometry x="-250" y="-130" width="80" height="80" as="geometry"/>
                 </mxCell>
                 <mxCell id="R6qVMPqXuL_3hM2V6tge-13" value="" style="group" parent="1" vertex="1" connectable="0">
                     <mxGeometry x="-260" y="30" width="229" height="238" as="geometry"/>
