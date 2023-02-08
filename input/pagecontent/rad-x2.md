@@ -1,6 +1,6 @@
 ### 2:3.X2.1 Scope
 
-This transaction is used to complete the subscription by connecting to the notification channel in order to receive synchronization events.
+This transaction is used to connect to a notification channel to receive synchronization events.
 
 ### 2:3.X2.2 Actors Roles
 
@@ -8,13 +8,15 @@ This transaction is used to complete the subscription by connecting to the notif
 
 | Role | Description | Actor(s) |
 |------|-------------|----------|
-| Sender | Connect to a websocket notification channel | Subscriber<br>Read-Only Subscriber |
-| Receiver | Establish a websocket notification channel and manage subscription | Hub |
+| Sender | Initiate a websocket notification channel request | Image Display<br>Report Creator<br>Worklist Client<br>Evidence Creator<br>Watcher |
+| Manager | Establish a websocket notification channel and manage connection | Hub |
 {: .grid}
 
 ### 2:3.X2.3 Referenced Standards
 
 **FHIRcast**: [Subscribing to Events](https://build.fhir.org/ig/HL7/fhircast-docs/2-4-Subscribing.html)
+
+**Websocket**: [IETF RFC 6455](https://www.rfc-editor.org/rfc/rfc6455)
 
 ### 2:3.X2.4 Messages
 
@@ -26,10 +28,10 @@ This transaction is used to complete the subscription by connecting to the notif
 
 **Figure 2:3.X2.4-1: Interaction Diagram**
 
-#### 2:3.X2.4.1 Connect to Websocket Request Message
-The Sender sends a websocket connection request to the Receiver. The Sender shall support sending such messages to more than one Receiver.
+#### 2:3.X2.4.1 Subscription Request Message
+The Sender sends a websocket connection request to the Manager. The Sender shall support sending such messages to more than one Manager.
 
-The Receiver shall support handling such messages from more than one Sender. 
+The Manager shall support handling such messages from more than one Sender. 
 
 ##### 2:3.X2.4.1.1 Trigger Events
 
@@ -37,35 +39,33 @@ The Sender receives a successful Subscribe Reporting Session [RAD-X1] response.
 
 ##### 2:3.X2.4.1.2 Message Semantics
 
-This message is a websocket request. The Sender is the User Agent. The Receiver is the Origin Server.
+This message is a websocket connection request. The Sender is the Client. The Manager is the Server.
 
 The Sender shall send a websocket request to the `hub.channel.endpoint` websocket WSS URL received from the successful Subscribe Reporting Session [RAD-X1] response. 
 
 ##### 2:3.X2.4.1.3 Expected Actions
 
-The Receiver shall return an error if the websocket identifier in the WSS URL does not exist.
+The Manager shall process the request.
 
-The Receiver shall keep the websocket connection open for use as a notification channel.
+The Manager shall return an error if the websocket identifier in the WSS URL does not exist.
 
-The Receiver shall use the opened websocket connection when sending subsequent events to the Sender.
+The Manager shall keep the websocket connection open for use as a notification channel.
 
-#### 2:3.X2.4.2 Connect to Websocket Response Message
+The Manager shall use the opened websocket connection when sending subsequent events to the Sender.
+
+#### 2:3.X2.4.2 Subscription Response Message
 
 ##### 2:3.X2.4.2.1 Trigger Events
 
-The Receiver accepted or rejected the websocket connection request.
+The Manager processed the websocket connection request.
 
 ##### 2:3.X2.4.2.2 Message Semantics
 
-The Receiver shall send a confirmation message back to the Sender using the established websocket connection.
-
-If the Receiver accepts the subscription from the Sender, then the confirmation message shall include the parameters as defined in [Section 2.4.3 Subscription Confirmation](https://build.fhir.org/ig/HL7/fhircast-docs/2-4-Subscribing.html#subscription-confirmation).
-
-If the Receiver rejects the subscription from the Sender, or if the subscription has expired, then the rejection message shall include the parameters as defined in [Section 2.4.5 Subscription Denial](https://build.fhir.org/ig/HL7/fhircast-docs/2-4-Subscribing.html#subscription-denial)
+This is a [FHIRcast Subscription Confirmation](https://build.fhir.org/ig/HL7/fhircast-docs/2-4-Subscribing.html#subscription-confirmation). The Sender is the FHIRcast Subscriber. The Manager is the FHIRcast Hub.
 
 ##### 2:3.X2.4.2.3 Expected Actions
 
-If the Sender wants to maintain the subscription, then it shall renew the subscription using Subscribe Reporting Session [RAD-X1] before the subscription expired according to `hub.lease_seconds` specified in the confirmation.
+The Sender will find the duration of the websocket lease in the `hub.lease_seconds` attribute of this message. When the lease expires, the Manager may drop the connection. It is the responsibility of the Sender to renew the subscription as needed before it expires using Subscribe Reporting Session [RAD-X1].
 
 ### 2:3.X2.5 Security Considerations
 
