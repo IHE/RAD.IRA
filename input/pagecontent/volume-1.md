@@ -386,11 +386,26 @@ The Report Creator shall be grouped with a Content Creator to publish report sta
 
 #### 1:XX.1.1.3 Worklist Client
 
-The Worklist Client actor is responsible for providing a reporting worklist to the user. The user selects studies from the worklist and the Worklist Client launches other applications (e.g. Image Display, Report Creator, etc.) to complete dictation on the studies.
+The Worklist Client actor is responsible for providing a reporting worklist to the user.
 
-The Worklist Client is a [Synchronizing Application](volume-1.html#1xx1102-synchronizing-application).
+When a user selects studies from the worklist, the Worklist Client launches other applications (e.g. Image Display, Report Creator, etc.) if necessary. It initiates a new report context to synchronize other applications through the Hub to enable dictation on the studies.
 
-The Worklist Client is also a [Driving Application](volume-1.html#1xx1103-driving-application).
+When a study dictation is complete, the Worklist Client consumes the report anchor context update event so that it can mark the study as dictated and remove it from the worklist.
+
+In order to complete a study dictation, the Worklist Client:
+- May launch other applications and synchronize them to the same report context through the Hub
+- May be launched by another application, consume reporting events from the Hub and synchronize itself to the same report context
+
+The Worklist Client shall have the following capabilities:
+- Configure the URL of the Hub
+- Generate a unique session ID and start a new reporting session by subscribing to the Hub on its own
+- Launch one or more actors and provide them the URL of the Hub actor as `hub.url` and the reporting session ID as `hub.topic`
+- Launched by another application and use the provided `hub.url` and `hub.topic` to join a reporting session and synchronize itself with the report context received
+- Configure to initiate or terminate (or both) report context based on some business logic
+
+> Note that the actual application launch method is out of scope of this profile See [Application Launch Scenarios and Session Discovery](https://build.fhir.org/ig/HL7/fhircast-docs/4-1-launch-scenarios.html) for more details.
+
+The Worklist Client shall consume the report anchor context content update event and update the corresponding worklist entry according to its business logic. It may support other content sharing resources. 
 
 #### 1:XX.1.1.4 Evidence Creator
 
