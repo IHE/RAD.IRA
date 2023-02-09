@@ -82,30 +82,6 @@ This message is a [FHIRcast Request Context Change]() response. The Sender is th
 
 If the response is an error, then the Sender may consider retrying the request.
 
-#### 2:3.X6.4.3 Select Report Content Message
-
-##### 2:3.X6.4.3.1 Trigger Events
-
-The Receiver receives a `DiagnosticReport-select` event from Manager via Send Context Event [RAD-X9](rad-x9.html).
-
-> Note: This message is not a traditional message in a transaction between two devices; the primary focus is on the required behavior of the Receiver upon receiving the event from the Manager triggered by the request from the Sender. The Send Context Event [RAD-X9](rad-x9.html) specifies the general requirement between the Manager and the Receiver and it is agnostic about the specific event.
-
-##### 2:3.X6.4.3.1 Message Semantics
-
-The Receiver shall ignore any selected resources in the request that are not known based on any previous `DiagnosticReport-open` or `DiagnosticReport-update` events.
-
-The Receiver shall keep track of the `context.versionId` of the `report` anchor context, regardless of whether it selected any content or not.
-
-> Note: This is important so that the Receiver can use this `context.versionId` to detect if it missed some prior events before the received event. The Receiver is expected to process all events sequentially. So if the Receiver identified that it missed some prior events, then it can use the Get Current Context [RAD-X8](rad-x8.html) transaction to retrieve the latest context and content from the Manager.
-
-The Receiver shall *select* the corresponding `event.context` according to its application logic. For example,
-- An Image Display may display or *put in focus* the comparison study referenced by an `ImagingStudy`, or annotation referenced by an `ImagingSelection`.
-- A Report Creator may add select an nodule and its measurement referenced by an `ImagingSelection` and an `Observation` resource respectively.
-
-The Receiver may provide application logic that can make use of the selected resources. In this case, the Receiver shall apply the application logic to the selected resources. For example, a nodule (as `ImagingSelection`) and corresponding measurements (as `Observation`) are selected. Then the radiology issues a command, say "insert hyperlink". In this case, the Receiver applies the command with the most recent selected resources and insert a hyperlink reference to the nodule with measurement.
-
-If the Receiver accepted the event initially (i.e. return `202` Accepted) and later decided to refuse the context or failed to process the event, then it shall send a `syncerror` event back to the Manager using Send SyncError Event [RAD-X10](rad-10.html).
-
 ### 2:3.X6.5 Security Considerations
 
 See [RTC-IMR Security Considerations](volume-1.html#1xx5-rtc-imr-security-considerations)
