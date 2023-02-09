@@ -1,6 +1,6 @@
 ### 2:3.X3.1 Scope
 
-This transaction is used to initiate a report context that all synchronizing applications will be synchronized to.
+This transaction is used to initiate a report context to which other connected applications may be synchronized. Report contexts are initiated within an existing reporting session.
 
 ### 2:3.X3.2 Actors Roles
 
@@ -8,18 +8,18 @@ This transaction is used to initiate a report context that all synchronizing app
 
 | Role | Description | Actor(s) |
 |------|-------------|----------|
-| Sender | Initiate a report context | Subscriber |
-| Manager | Receives and maintain anchor and current context<br>and forward events to other Receivers | Hub |
-| Receiver | Receives events from Manager | Subscriber (See note 1) |
+| Sender | Initiates a report context | Image Display<br>Report Creator<br>Worklist Client |
+| Manager | Manages initiated context and notifies Subscribers | Hub |
+| Subscriber | Receives and reacts to notifications from Manager | Image Display<br>Report Creator<br>Worklist Client<br>Evidence Creator<br>Watcher |
 {: .grid}
-
-> Note 1: The Receiver Role is played by Subscribers subscribed to the event. This may include the original Sender as well as other Subscribers.
 
 ### 2:3.X3.3 Referenced Standards
 
 **FHIRcast**: [Request Context Change](https://build.fhir.org/ig/HL7/fhircast-docs/2-6-RequestContextChange.html#request-context-change)
 
 **FHIRcast**: [DiagnosticReport open Event](https://build.fhir.org/ig/HL7/fhircast-docs/3-6-1-diagnosticreport-open.html)
+
+**Websocket**: [IETF RFC 6455](https://www.rfc-editor.org/rfc/rfc6455)
 
 ### 2:3.X3.4 Messages
 
@@ -38,28 +38,25 @@ The Manager shall support handling such messages from more than one Sender.
 
 ##### 2:3.X3.4.1.1 Trigger Events
 
-The Sender identifies a new report context.
+The Sender determines that work should begin on a new report, and initiates a new context to coordinate that work with other Subscribers.
 
 ##### 2:3.X3.4.1.2 Message Semantics
 
-This message is an HTTP POST request. The Sender is the User Agent. The Manager is the Origin Server.
-
-The Sender shall send a HTTP POST request to the Receiver `hub.url`.
-
-The `Content-Type` of the request shall be `application/json`.
-
-The body of the request shall have the attributes according to [Section 2.6.1 Request Context Change body](https://build.fhir.org/ig/HL7/fhircast-docs/2-6-RequestContextChange.html#request-context-change-body).
+This message is a [FHIRcast Request Context Change](https://build.fhir.org/ig/HL7/fhircast-docs/2-6-RequestContextChange.html#request-context-change-body) request. The Sender is the FHIRcast Subscriber. The Manager is the FHIRcast Hub.
 
 The `event.context` shall conform to [DiagnosticReport open Event](https://build.fhir.org/ig/HL7/fhircast-docs/3-6-1-diagnosticreport-open.html).
 
-Additional, the contexts in the `event.context` shall conform to the following table:
+Additional, the contexts in the `event.context` shall conform to the Table 2:3.X3.4.1.2-1:
 
+Table 2:3.X3.4.1.2-1: Context Requirements
 {:.grid}
-Key | Optionality | FHIR operation to generate context | Description
---- | --- | --- | ---
-`report`| REQUIRED | `DiagnosticReport/{id}?_elements=identifier` | Conform to the RTC-IMR-DiagnosticReport resource
-`patient` | REQUIRED | `Patient/{id}?_elements=identifier` | Conform to the RTC-IMR-Patient resource
-`study` | REQUIRED | `ImagingStudy/{id}?_elements=identifier,accession` | COnform to the RTC-IMR-ImagingStudy resource
+Key | Optionality | Description
+--- | --- | --
+`report`| REQUIRED | Conform to the RTC-IMR-DiagnosticReport resource
+`patient` | REQUIRED | Conform to the RTC-IMR-Patient resource
+`study` | REQUIRED* | Conform to the RTC-IMR-ImagingStudy resource
+
+> Note: Rows with '*' in the Optionality column have constraints different from baseline FHIRcast Request Context Change request.
 
 If the Sender retries the same request due to a timeout, then the Sender shall use the same `event.id` such that the Manager can detect if it is a duplicate message.
 
@@ -73,53 +70,61 @@ The Manager shall validate the request as follow:
 * If `event.context` does not include `report`, `patient` and `study`, then return an error
 * if `event`.`hub.topic` is not a known topic, then return an error
 
-If the Manager accepts the request, then the Manager shall set the current context to be the `report` context of the received DiagnosticReport-open event.
-
-The Manager shall broadcast the event to all subscribers that subscribed to the received event using Send Context Event [RAD-X9](rad-x9.html).
+Per FHIRcast, this `report` context will become the current context in this reporting session.
 
 #### 2:3.X3.4.2 Open Report Context Response Message
 
 ##### 2:3.X3.4.2.1 Trigger Events
 
-The Manager finished process the Open Report Context request.
+The Manager finishes processing the Open Report Context request.
 
 ##### 2:3.X3.4.2.2 Message Semantics
 
-If the Manager accepted the Open Report Context request, then the Manager shall send a 2xx HTTP status:
-
-* If the Manager processed the request successfully, then it shall return 200 OK or 201 Created
-* If the Manager processed the request asynchronously, then it may return 202 Accepted
-
-If the Manager rejected the Open Report Context request, then the Manager shall return a 4xx or 5xx HTTP error response code.
+This message is a [FHIRcast Request Context Change]() response. The Sender is the FHIRcast Subscriber. The Manager is the FHIRcast Hub.
 
 ##### 2:3.X3.4.2.3 Expected Actions
 
-If the response is a success, then no further action expected.
-
 If the response is an error, then the Sender may consider retrying the request.
 
-#### 2:3.X3.4.3 Initiate Report Context Message
+#### 2:3.X3.4.3 Notification Message
 
 ##### 2:3.X3.4.3.1 Trigger Events
 
-The Receiver receives a `DiagnosticReport-open` event from Manager via Send Context Event [RAD-X9](rad-x9.html).
+The Manager initiates a new report context.
 
-> Note: This message is not a traditional message in a transaction between two devices; the primary focus is on the required behavior of the Receiver upon receiving the event from the Manager triggered by the request from the Sender. The Send Context Event [RAD-X9](rad-x9.html) specifies the general requirement between the Manager and the Receiver and it is agnostic about the specific event.
+##### 2:3.X3.4.3.2 Message Semantics
 
-##### 2:3.X3.4.3.1 Message Semantics
+This message is a Send Context Event - Notification Message. See [Section 2:3.X9.4](rad-x9.html#23x94-messages).
 
-The Receiver shall validate the context in the received event. If each context does not conform to the corresponding resource definition, then return an error.
+##### 2:3.X3.4.3.3 Expected Actions
 
-The Receiver shall keep track of the `report` context (i.e. the anchor context).
+The Subscriber shall validate that the `report`, `patient` and `study` contexts conform to the corresponding resource definition, and return an error if they don't.
 
-> Note: This is important because although the `DiagnosticReport-open` event includes other associated contexts such as `patient` and `study` in additional to the `report` anchor context, subsequent event(s) for this anchor context will only provide the `report` context. Therefore, keeping track of the `report` anchor context, regardless of whether the Receiver actually uses the context in its business logic, enables the Receiver to match subsequent events and hence reacts accordingly. 
+> Note: The `DiagnosticReport-open` event includes both the `report` anchor context and associated contexts `patient` and `study`. Subsequent event(s) for this anchor context will only provide the `report` context. Therefore, it is up to the Subscriber to record internally the `patient` and `study` contexts associated with the `report` anchor context if that information is relevant to its business logic. 
 
-The Receiver shall *open* the corresponding `event.context` according to its application logic. In particular,
-- An Image Display shall display the patient's study corresponding to the `patient` and `study` context.
-- A Report Creator shall open the procedure corresponding to the `patient` and `study` context and be ready for reporting. It may use the `id` in the `report` context as the report ID for the eventual created report.
-- An Evidence Creator shall process the patient's study corresponding to the `patient` and `study` context.
+The Subscriber shall "open" the `report`, `patient` and `study` contexts according to Table 2:3.X3.4.3.3-1.
 
-If the Receiver accepted the event initially (i.e. return `202` Accepted) and later decided to refuse the context or failed to process the event, then it shall send a `syncerror` event back to the Manager using Send SyncError Event [RAD-X10](rad-10.html).
+**Table 2:3.X3.4.3.3-1**: Event Handling Requirements
+| Actor | Event Handling Requirements |
+| -- | -- |
+| Image Display | Display the study images |
+| Report Creator | Open the procedure and be ready for reporting.<br>It may use the `id` in the `report` context as the report ID for the eventual created report.
+| Worklist Client | Display the patient's study data |
+| Evidence Creator | Process the patient's study |
+| Watcher | None |
+{: .grid}
+
+The Subscriber may support additional business logic to handle the event.
+
+> Note: Occasionally, the same `report` anchor context may be re-opened. [Use Case #3: Interruption and Resume Flow](volume-1.html#1xx423-use-case-3-interruption-and-resume-flow) and FHIRcast [Section 4.4 Multi-tab Considerations](https://build.fhir.org/ig/HL7/fhircast-docs/4-4-multitab-considerations.html) are two examples this may happen. In these cases, the Subscriber may behave differently compared to when the event was first received.
+>
+> For example, an Evidence Creator may skip executing the expensive processing on the patient's study if the report context is re-open and the evidence data from previous execution is still available and valid. 
+
+If the Subscriber accepted  the event initially (i.e. return `202` Accepted) and later decided to refuse the context or failed to process the event, then it shall send a `syncerror` event back to the Manager using Send SyncError Event [RAD-X10](rad-10.html).
+
+#### 2:3.X3.4.4 Notification Response Message
+
+This message is a Send Context Event - Notification Response Message. See [Section 2:3.X9.4.2](rad-x9.html#23x942-notification-response-message).
 
 ### 2:3.X3.5 Security Considerations
 

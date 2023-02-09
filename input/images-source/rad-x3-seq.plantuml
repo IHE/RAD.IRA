@@ -14,7 +14,7 @@ Manager-->Sender: Open Report Context Response
 deactivate Manager
 
 == Process DiagnosticReport-open Event ==
-Manager->Receiver: //Send Context Event [RAD-X9]//
-Receiver->Receiver: Initiate Report Context
+Manager->Receiver: Notification
+Receiver-->Manager: Notification Response
 
 @enduml
