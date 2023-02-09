@@ -745,6 +745,10 @@ FHIRcast uses FHIR resources to capture the context and content in an event. The
 
 Since the FHIR resources specified in the event may or may not be persisted in any FHIR server, to differentiate between the two cases, this profile defines that transient resources are identified by relative references (e.g. Patient/12345) and persisted resources that already exist are identified by full URL (e.g. http://myserver.com/Patient/12345).
 
+#### 1:XX.4.1.8 Local Tracking of Context
+
+The `DiagnosticReport-open` event includes both the `report` anchor context and associated contexts `patient` and `study`. Subsequent event(s) for this anchor context will only provide the `report` context. Therefore, it is up to the Subscriber to record internally the `patient` and `study` contexts associated with the `report` anchor context if that information is relevant to its business logic. 
+
 ### 1:XX.4.2 Use Cases
 
 #### 1:XX.4.2.1 Use Case \#1: PACS Driven Reporting
