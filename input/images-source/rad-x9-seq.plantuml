@@ -3,11 +3,11 @@
 hide footbox
 
 participant "Manager" as Manager
-participant "Receiver" as Receiver
+participant "Subscriber" as Subscriber
 
-Manager->Receiver: Send Event Request
-activate Receiver
-Receiver-->Manager: Send Event Response
-deactivate Receiver
+Manager->Subscriber: Notification
+activate Subscriber
+Subscriber-->Manager: Notification Response
+deactivate Subscriber
 
 @enduml
