@@ -270,13 +270,13 @@ Table 1:XX.1-1 lists the transactions for each actor directly involved in the IM
     </tr>
     <tr>
       <td rowspan="10"><a href="volume-1.html#1xx118-hub">Hub</a></td>
-      <td>Subscribe Reporting Session [RAD-X1]</td>
+      <td>Subscribe to Reporting Session [RAD-X1]</td>
       <td>Responder</td>
       <td>R</td>
       <td><a href="rad-x1.html">RAD TF-2: 4.X1</a></td>
     </tr>
     <tr>
-      <td>Connect Notification Channel [RAD-X2]</td>
+      <td>Connect to Notification Channel [RAD-X2]</td>
       <td>Responder</td>
       <td>R</td>
       <td><a href="rad-x2.html">RAD TF-2: 4.X2</a></td>
@@ -306,7 +306,7 @@ Table 1:XX.1-1 lists the transactions for each actor directly involved in the IM
       <td><a href="rad-x6.html">RAD TF-2: 4.X6</a></td>
     </tr>
     <tr>
-      <td>Unsubscribe Session [RAD-X7]</td>
+      <td>Unsubscribe from Session [RAD-X7]</td>
       <td>Responder</td>
       <td>R</td>
       <td><a href="rad-x7.html">RAD TF-2: 4.X7</a></td>
@@ -356,6 +356,23 @@ The Image Display shall have the following capabilities:
 
 > Note that the actual application launch method is out of scope of this profile See [Application Launch Scenarios and Session Discovery](https://build.fhir.org/ig/HL7/fhircast-docs/4-1-launch-scenarios.html) for more details.
 
+##### 1:XX.1.1.1.1 Event Handling Requirements
+
+The Image Display shall handle the `report`, `patient` and `study`, `updates` and `select` contexts according to the event handling requirements defined in Table 1:XX.1.1.1.1-1:
+
+**Table 1:XX.1.1.1.1-1**: Event Handling Requirements
+
+| Event | Handling Requirements |
+| -- | -- |
+| DiagnosticReport-open | Display the study images |
+| DiagnosticReport-close | Stop display the study images |
+| DiagnosticReport-update | Update the patient or study record, or add/modify/delete received contents, if applicable.<br> Display the changes.<br>Shall support the following resources:<br>- `DiagnosticReport` for report status changes |
+| DiagnosticReport-select | Display and put in focus the applicable selected resources |
+| SyncError | Notify to the user regarding the synchronization error, including the details of the error reported and the Subscriber that reported the error |
+{: .grid}
+
+##### 1:XX.1.1.1.2 Event Producing Requirements
+
 If the Image Display is grouped with a Content Creator to publish additional content events to a reporting session, then it shall publish events using at least one FHIR resource. The Image Display is highly recommended to publish events using one or more of the following FHIR resources that are expected to be useful in reporting:
 
 - `Patient`: patient in the anchor context
@@ -382,6 +399,23 @@ The Report Creator shall have the following capabilities:
 
 > Note that the actual application launch method is out of scope of this profile See [Application Launch Scenarios and Session Discovery](https://build.fhir.org/ig/HL7/fhircast-docs/4-1-launch-scenarios.html) for more details.
 
+##### 1:XX.1.1.2.1 Event Handling Requirements
+
+The Report Creator shall handle the `report`, `patient` and `study`, `updates` and `select` contexts according to the event handling requirements defined in Table 1:XX.1.1.2.1-1:
+
+**Table 1:XX.1.1.2.1-1**: Event Handling Requirements
+
+| Event | Handling Requirements |
+| -- | -- |
+| DiagnosticReport-open | Be ready for reporting for the study |
+| DiagnosticReport-close | Stop display the study report. It may use the `id` in the `report` context as the report ID for the eventual created report. |
+| DiagnosticReport-update | Update the report, patient or study record, or add/modify/delete received contents, if applicable.<br>Display the changes.<br>Highly recommended to support the following content update resources:<br>- `ImagingStudy` for comparison study<br>- `ImagingSelection` for image references and annotations<br>- `Observation` for measurements and annotations |
+| DiagnosticReport-select | Display and put in focus the applicable selected resources |
+| SyncError | Notify to the user regarding the synchronization error, including the details of the error reported and the Subscriber that reported the error |
+{: .grid}
+
+##### 1:XX.1.1.2.2 Event Producing Requirements
+
 The Report Creator shall be grouped with a Content Creator to publish report status update using the report anchor context DiagnosticReport resource. It may support other content sharing resources.
 
 #### 1:XX.1.1.3 Worklist Client
@@ -405,7 +439,24 @@ The Worklist Client shall have the following capabilities:
 
 > Note that the actual application launch method is out of scope of this profile See [Application Launch Scenarios and Session Discovery](https://build.fhir.org/ig/HL7/fhircast-docs/4-1-launch-scenarios.html) for more details.
 
-The Worklist Client shall consume the report anchor context content update event and update the corresponding worklist entry according to its business logic. It may support other content sharing resources. 
+##### 1:XX.1.1.3.1 Event Handling Requirements
+
+The Worklist Client shall handle the `report`, `patient` and `study`, `updates` and `select` contexts according to the event handling requirements defined in Table 1:XX.1.1.3.1-1:
+
+**Table 1:XX.1.1.3.1-1**: Event Handling Requirements
+
+| Event | Handling Requirements |
+| -- | -- |
+| DiagnosticReport-open | Display the study metadata and report status |
+| DiagnosticReport-close | Remove the study from reporting worklist |
+| DiagnosticReport-update | Update the report, patient or study record, or add/modify/delete received contents, if applicable.<br> Display the changes.<br>Shall support the following resources:<br>- `DiagnosticReport` for report status changes |
+| DiagnosticReport-select | Display and put in focus the applicable selected resources |
+| SyncError | Notify to the user regarding the synchronization error, including the details of the error reported and the Subscriber that reported the error |
+{: .grid}
+
+##### 1:XX.1.1.3.2 Event Producing Requirements
+
+None
 
 #### 1:XX.1.1.4 Evidence Creator
 
@@ -418,6 +469,23 @@ Alternatively the Evidence Creator may capture the evidence data (e.g. lung nodu
 The Evidence Creator may be a standalone application such as an Specialty AI application, or it may be grouped with another actor such as Image Display.
 
 In order to complete a study dictation, the Evidence Creator shall be capable of being launched by another application (e.g. Image Display). It shall use the provided `hub.url` and `hub.topic` to join a reporting session and synchronize itself with the report context received.
+
+##### 1:XX.1.1.4.1 Event Handling Requirements
+
+The Worklist Client shall handle the `report`, `patient` and `study`, `updates` and `select` contexts according to the event handling requirements defined in Table 1:XX.1.1.4.1-1:
+
+**Table 1:XX.1.1.4.1-1**: Event Handling Requirements
+
+| Event | Handling Requirements |
+| -- | -- |
+| DiagnosticReport-open | Process the study data |
+| DiagnosticReport-close | Stop processing the study data |
+| DiagnosticReport-update | Update the report, patient or study record, or add/modify/delete received contents, if applicable. |
+| DiagnosticReport-select | Process the applicable selected resources |
+| SyncError | Notify to the user, if applicable, regarding the synchronization error, including the details of the error reported and the Subscriber that reported the error |
+{: .grid}
+
+##### 1:XX.1.1.4.2 Event Producing Requirements
 
 If the Evidence Creator is grouped with a Content Creator to publish content events to a reporting session, then it shall publish events using at least one FHIR resource. The Evidence Creator is highly recommended to publish events using one or more of the following FHIR resources that are expected to be useful in reporting:
 
@@ -446,6 +514,25 @@ Furthermore, the Content Creator may use the sharing of content selection to ena
 The Watcher actor is responsible for listening to events in a session and perform actions according to it business logic. The specific actions are out of scope of this profile.
 
 For example, the Watcher consumes the initiation and termination of report contexts and calculates the turnaround time for different types of studies in different departments. Another example is that the Watcher monitors how often an Evidence Creator publishes content sharing events and correlates how effective an AI application is with respect to the turnaround time by comparison and time before and after the Evidence Creator is deployed.
+
+##### 1:XX.1.1.6.1 Event Handling Requirements
+
+The Worklist Client shall handle the `report`, `patient` and `study`, `updates` and `select` contexts according to the event handling requirements defined in Table 1:XX.1.1.6.1-1:
+
+**Table 1:XX.1.1.6.1-1**: Event Handling Requirements
+
+| Event | Handling Requirements |
+| -- | -- |
+| DiagnosticReport-open | Process according to business logic |
+| DiagnosticReport-close | Stop processing the report context |
+| DiagnosticReport-update | Update the report, patient or study record, or add/modify/delete received contents, if applicable. |
+| DiagnosticReport-select | Process the applicable selected resources |
+| SyncError | Notify to the user, if applicable, regarding the synchronization error, including the details of the error reported and the Subscriber that reported the error |
+{: .grid}
+
+##### 1:XX.1.1.4.2 Event Producing Requirements
+
+None
 
 #### 1:XX.1.1.7 Hub
 
@@ -811,7 +898,16 @@ Figure 1:XX.4.2.1.2.1-4: Select Content Flow in RTC-IMR Profile
 
 ###### 1:XX.4.2.1.2.5 Step 5: Sign-off Report
 
-The radiologist completes dictation and signs off the report on the Report Creator. Recall that this report context was initiated by the Image Display. The Report Creator terminates the report context. The Hub broadcasts the termination event to all Subscribers and disallows any further interaction of that terminated report context.
+The radiologist completes dictation and signs off the report on the Report Creator.
+
+TODO: Review this
+TODO: Image Display can terminate context triggered by receiving the Content Change event regarding report status.
+In this diagram, the Report Creator terminates the report context. Recall that this report context was initiated by the Image Display. Alternatively the site product may have been configured for the termination of the report context to be done by the Image Display.
+
+The Hub broadcasts the termination event to all Subscribers and disallows any further interaction of that terminated report context.
+
+TODO: May delete
+> Note that in this use case example, the initiating Driving Application (Image Display) is not the same actor as the terminating Driving Application (Report Creator). This requires some coordination between the Image Display and the Report Creator. Such coordination is out of scope of this profile. Other arrangement is possible so that the same Image Display being both the initiating and terminating Driving Application.
 
 Upon receiving the termination event, the Image Display updates its worklist to mark the study as reported.
 
@@ -821,9 +917,11 @@ TODO: Describe what other actors might do upon receiving the terminating event
 
 TODO: Right before close, the Report Creator can send an update to change the report status. Make this a requirement.
 
-Note that quite often, the Report Creator has some internal mechanism to keep the report for a grace period after signed off and before sending it out to other recipients. The Terminate Report Context [RAD-X4] event enables the Image Display to quickly aware that the Report Creator has completed the sign-off without affected by the grace period. The Report Creator persists the report according to its business logic.
+The Report Creator may have some internal mechanism to keep the report for a grace period after signed off and before sending it out to other recipients. The Report Creator persists the report according to its business logic.
 
-Note that in this use case example, the initiating Driving Application (Image Display) is not the same actor as the terminating Driving Application (Report Creator). This requires some coordination between the Image Display and the Report Creator. Such coordination is out of scope of this profile. Other arrangement is possible so that the same Image Display being both the initiating and terminating Driving Application.
+TODO: Describe what Image Display does when receive the message.
+
+TODO: Add at the beginning of this use case the role of each actor in this use case.
 
 <div>
 {%include step5-signoff-report.svg%}
