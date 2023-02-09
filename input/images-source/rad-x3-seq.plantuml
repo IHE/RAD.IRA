@@ -4,7 +4,6 @@ hide footbox
 
 participant "Sender" as Sender
 participant "Manager" as Manager
-participant "Receiver" as Receiver
 
 == Initial Report Context ==
 
@@ -12,9 +11,5 @@ Sender->Manager: Open Report Context Request
 activate Manager
 Manager-->Sender: Open Report Context Response
 deactivate Manager
-
-== Process DiagnosticReport-open Event ==
-Manager->Receiver: Notification
-Receiver-->Manager: Notification Response
 
 @enduml
