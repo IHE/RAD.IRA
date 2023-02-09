@@ -83,32 +83,6 @@ This message is a [FHIRcast Request Context Change]() response. The Sender is th
 
 If the response is an error, then the Sender may consider retrying the request.
 
-#### 2:3.X3.4.3 Notification Message
-
-##### 2:3.X3.4.3.1 Trigger Events
-
-The Manager processed a new report context request.
-
-##### 2:3.X3.4.3.2 Message Semantics
-
-This message is a [Send Context Event - Notification Message](rad-x9.html#23x94-messages). The Manager is the Notification Manager. The Subscriber is the Notification Subscriber.
-
-##### 2:3.X3.4.3.3 Expected Actions
-
-The Subscriber shall validate that the `report`, `patient` and `study` contexts conform to the corresponding resource definition, and return an error if they don't.
-
-> Note: The `DiagnosticReport-open` event includes both the `report` anchor context and associated contexts `patient` and `study`. Subsequent event(s) for this anchor context will only provide the `report` context. Therefore, it is up to the Subscriber to record internally the `patient` and `study` contexts associated with the `report` anchor context if that information is relevant to its business logic. 
-
-> Note: Occasionally, the same `report` anchor context may be re-opened. e.g. [Use Case #3: Interruption and Resume Flow](volume-1.html#1xx423-use-case-3-interruption-and-resume-flow) and FHIRcast [Section 4.4 Multi-tab Considerations](https://build.fhir.org/ig/HL7/fhircast-docs/4-4-multitab-considerations.html). In these cases, the Subscriber event handling for the subsequent event may differ from the first event.
->
-> For example, an Evidence Creator may skip executing the expensive processing on the patient's study if the report context is re-open and the evidence data from previous execution is still available and valid. 
-
-If the Subscriber accepted  the event initially (i.e. return `202` Accepted) and later decided to refuse the context or failed to process the event, then it shall send a `syncerror` event back to the Manager using Send SyncError Event [RAD-X10](rad-10.html).
-
-#### 2:3.X3.4.4 Notification Response Message
-
-This message is a Send Context Event - Notification Response Message. See [Section 2:3.X9.4.2](rad-x9.html#23x942-notification-response-message).
-
 ### 2:3.X3.5 Security Considerations
 
 See [RTC-IMR Security Considerations](volume-1.html#1xx5-rtc-imr-security-considerations)
