@@ -52,11 +52,17 @@ The Manager shall support [content sharing](https://build.fhir.org/ig/HL7/fhirca
 
 ##### 2:3.X9.4.1.3 Expected Actions
 
+The Subscriber shall validate that the event specific contexts, `updates` and `select` conform to the corresponding resource definition, and return an error if they don't.
+
 The Subscriber shall handle events `[FHIR resource]-open` | `update` | `select` | `close` that it supports. The required supported events are defined in the [Actor Description](volume-1.html#1xx11-actors-description-and-actor-profile-requirements).
 
 Upon receiving a `[FHIR resource]-open` event, the Subscriber shall *open* the corresponding `event.context` according to its application logic.
 
 > Note: The Subscriber may use all or a subset of the context provided. For example, a Report Creator may use the patient and study context to open the corresponding procedure and make it ready for dictation, and ignore the report context since the Report Creator will create its own. On the other hand, an Evidence Creator (such as a specialty AI application) may use only the study context to run an inference model on the study on demand, ignoring the report and patient context.
+
+> Note: For `[FHIRresource]-open` events, occasionally the same anchor context may be re-opened. e.g. [Use Case #3: Interruption and Resume Flow](volume-1.html#1xx423-use-case-3-interruption-and-resume-flow) and FHIRcast [Section 4.4 Multi-tab Considerations](https://build.fhir.org/ig/HL7/fhircast-docs/4-4-multitab-considerations.html). In these cases, the Subscriber event handling for the subsequent event may differ from the first event.
+>
+> For example, an Evidence Creator may skip executing the expensive processing on the patient's study if the report context is re-open and the evidence data from previous execution is still available and valid. 
 
 The Subscriber shall validate and maintain locally current context versionId as follow:
 - Maintain locally the current context versionId according to the `context.versionId` from the event.
@@ -65,6 +71,8 @@ The Subscriber shall validate and maintain locally current context versionId as 
     - If match, the Subscriber shall handle the update event according to its application logic. 
 
     > Note: The Subscriber may choose to accept but ignore the event. In this case, the Subscriber shall continue to maintain the local current context versionId for subsequent events.
+
+If the Subscriber accepted  the event initially (i.e. return `202` Accepted) and later decided to refuse the context or failed to process the event, then it shall send a `syncerror` event back to the Manager using Send SyncError Event [RAD-X10](rad-10.html).
 
 #### 2:3.X9.4.2 Notification Response Message
 
