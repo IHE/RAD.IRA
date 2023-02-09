@@ -367,7 +367,7 @@ The Image Display shall handle the `report`, `patient` and `study`, `updates` an
 | DiagnosticReport-open | Display the study images |
 | DiagnosticReport-close | Stop display the study images |
 | DiagnosticReport-update | Update the patient or study record, or add/modify/delete received contents, if applicable.<br> Display the changes.<br>Shall support the following resources:<br>- `DiagnosticReport` for report status changes |
-| DiagnosticReport-select | Display and put in focus the applicable selected resources |
+| DiagnosticReport-select | Display and put in focus the applicable selected resources.<br>For example:<br>- `ImagingStudy`: Display selected comparison study<br>- `ImagingSelection`: Display selected images and annotations  |
 | SyncError | Notify to the user regarding the synchronization error, including the details of the error reported and the Subscriber that reported the error |
 {: .grid}
 
@@ -409,10 +409,12 @@ The Report Creator shall handle the `report`, `patient` and `study`, `updates` a
 | -- | -- |
 | DiagnosticReport-open | Be ready for reporting for the study |
 | DiagnosticReport-close | Stop display the study report. It may use the `id` in the `report` context as the report ID for the eventual created report. |
-| DiagnosticReport-update | Update the report, patient or study record, or add/modify/delete received contents, if applicable.<br>Display the changes.<br>Highly recommended to support the following content update resources:<br>- `ImagingStudy` for comparison study<br>- `ImagingSelection` for image references and annotations<br>- `Observation` for measurements and annotations |
-| DiagnosticReport-select | Display and put in focus the applicable selected resources |
+| DiagnosticReport-update | Update the report, patient or study record, or add/modify/delete received contents, if applicable.<br>Track / Display the changes.<br>Highly recommended to support the following content update resources:<br>- `ImagingStudy` for comparison study<br>- `ImagingSelection` for image references and annotations<br>- `Observation` for measurements and annotations |
+| DiagnosticReport-select | Select the applicable resources and apply user commands on selected resources. See Note 1. |
 | SyncError | Notify to the user regarding the synchronization error, including the details of the error reported and the Subscriber that reported the error |
 {: .grid}
+
+> Note 1: The Report Creator may provide application logic that can make use of the selected resources. For example, a nodule (as `ImagingSelection`) and corresponding measurements (as `Observation`) are selected. Then the radiologist issues a voice command "insert hyperlink". In this case, the Report Creator applies the command with the selected resources and insert a hyperlink reference to the nodule with measurement.
 
 ##### 1:XX.1.1.2.2 Event Producing Requirements
 
