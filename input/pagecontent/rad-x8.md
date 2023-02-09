@@ -1,6 +1,6 @@
 ### 2:3.X8.1 Scope
 
-This transaction is used to terminate a report context that all synchronizing applications will close their respective context.
+This transaction is used to retrieve the current context in the reporting session.
 
 ### 2:3.X8.2 Actors Roles
 
@@ -8,7 +8,7 @@ This transaction is used to terminate a report context that all synchronizing ap
 
 | Role | Description | Actor(s) |
 |------|-------------|----------|
-| Requester | Retrieves current context | Subscriber |
+| Requester | Retrieves current context in a reporting session | Image Display<br>Report Creator<br>Worklist Client<br>Evidence Creator<br>Watcher |
 | Manager | Returns current context | Hub |
 {: .grid}
 
@@ -27,21 +27,21 @@ This transaction is used to terminate a report context that all synchronizing ap
 **Figure 2:3.X8.4-1: Interaction Diagram**
 
 #### 2:3.X8.4.1 Get Current Context Request Message
-The Sender retrieves the current context available in the Manager. The Sender shall support sending such messages to more than one Manager.
+The Requester retrieves the current context available in the Manager. The Requester shall support sending such messages to more than one Manager.
 
-The Manager shall support handling such messages from more than one Sender. 
+The Manager shall support handling such messages from more than one Requester. 
 
 ##### 2:3.X8.4.1.1 Trigger Events
 
-The Sender successfully subscribed to a topic and wanted to retrieve the current context.
+The Requester successfully subscribed to a topic and wanted to retrieve the current context.
 
-The Sender detected that it missed some events according to the most recent event received and wanted to retrieve the current context. 
+The Requester detected that it missed some events according to the most recent event received and wanted to retrieve the current context. 
 
 ##### 2:3.X8.4.1.2 Message Semantics
 
-This message is an HTTP GET request. The Sender is the User Agent. The Manager is the Origin Server.
+This message is a [Get Current Context Request](https://build.fhir.org/ig/HL7/fhircast-docs/2-9-GetCurrentContext.html#get-current-context-request). The Requester is the FHIRcast Subscriber. The Manager is the FHIRcast Hub.
 
-The Sender shall send a HTTP GET request to the url `hub.url`/`topic`.
+The Requester shall send a HTTP GET request to the url `hub.url`/`topic`.
 
 ##### 2:3.X8.4.1.3 Expected Actions
 
@@ -55,17 +55,15 @@ The Manager retrieved the current context and all associated contents.
 
 ##### 2:3.X8.4.2.2 Message Semantics
 
-The Manager shall prepare the response according to [Get Current Context Response](https://build.fhir.org/ig/HL7/fhircast-docs/2-9-GetCurrentContext.html#get-current-context-response).
+This message is a [Get Current Context Response](https://build.fhir.org/ig/HL7/fhircast-docs/2-9-GetCurrentContext.html#get-current-context-response). The Requester is the FHIRcast Subscriber. The Manager is the FHIRcast Hub.
 
-The Manager shall support content sharing and include all current content in the response.
+The Manager shall support content sharing and include all contents associated to current context in the response.
 
 ##### 2:3.X8.4.2.3 Expected Actions
 
-The Requester shall process the context `report`, `patient` and `study` as if it receives the `DiagnosticReport-open` event in Initiate Report Context [RAD-X3](rad-x3.html) transaction.
+The Requester shall process the context as if it receives the `[FHIRresource]-open` event.
 
-The Requester shall process the resources in the `content` bundle as if it receives the `DiagnosticReport-update` event in Update Report Content [RAD-X5](rad-x5.html) transaction.
-
-If `context.type` is empty and `context` is an empty array, then the Requester has no further action.
+The Requester shall process the resources in the `content` bundle as if it receives the `[FHIRresource]-update` event.
 
 If the Requester failed to process the query response from the Manager, then it shall send a `syncerror` event back to the Manager using Send SyncError Event [RAD-X10](rad-10.html)
 
