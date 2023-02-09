@@ -97,35 +97,6 @@ If the Manager rejected the Update Report Content request, then the Manager shal
 
 If the response is an error, then the Sender may consider retrying the request.
 
-#### 2:3.X5.4.3 Update Report Content Message
-
-##### 2:3.X5.4.3.1 Trigger Events
-
-The Subscriber receives a `DiagnosticReport-update` event from Manager via Send Context Event [RAD-X9](rad-x9.html).
-
-> Note: This message is not a traditional message in a transaction between two devices; the primary focus is on the required behavior of the Subscriber upon receiving the event from the Manager triggered by the request from the Sender. The Send Context Event [RAD-X9](rad-x9.html) specifies the general requirement between the Manager and the Subscriber and it is agnostic about the specific event.
-
-##### 2:3.X5.4.3.1 Message Semantics
-
-The Subscriber shall validate the context and content in the received event. If each context and content does not conform to the corresponding resource definition, then return an error.
-
-The Subscriber shall keep track of the `context.versionId` of the `report` anchor context, regardless of whether it applies the actions in the event or not.
-
-> Note: This is important so that the Subscriber can use this `context.versionId` to detect if it missed some prior events before the received event. The Subscriber is expected to process all events sequentially. So if the Subscriber identified that it missed some prior events, then it can use the Get Current Context [RAD-X8](rad-x8.html) transaction to retrieve the latest context and content from the Manager.
-
-The Subscriber shall *update* the corresponding `event.context` and contents according to its application logic.
-
-> Note: The following actions are all valid for the Subscriber:
-> - Subscriber immediately applies the necessary actions
-> - Subscriber accepts and keep track of the content without immediate actions. Then some automated or manual actions are applied later
-> - Subscriber accepts and ignore one or more of the actions since they are not applicable
->
-> An example of delay action is that a radiologist identifies nodules as she reads the study. These nodules are communicated as `FHIR Observation` in the `DiagnosticReport-update` event. The Report Creator keeps track of these nodules but no immediately action. Later the radiologist review the list of nodules identified and selected the top 3 to include in the final report.
-
-If some of the content are not inline, then the Subscriber shall retrieve the content based on the `entry.fullurl` if permission allowed.
-
-If the Subscriber accepted the event initially (i.e. return `202` Accepted) and later decided to refuse the context or failed to process the event, then it shall send a `syncerror` event back to the Manager using Send SyncError Event [RAD-X10](rad-10.html).
-
 ### 2:3.X5.5 Security Considerations
 
 See [RTC-IMR Security Considerations](volume-1.html#1xx5-rtc-imr-security-considerations)

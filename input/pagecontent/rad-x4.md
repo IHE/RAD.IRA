@@ -74,19 +74,6 @@ This message is a [FHIRcast Request Context Change]() response. The Sender is th
 
 If the response is an error, then the Sender may consider retrying the request.
 
-#### 2:3.X4.4.3 Terminate Report Context Message
-
-##### 2:3.X4.4.3.1 Message Semantics
-
-The Subscriber shall *close* the corresponding `event.context` according to its application logic. In particular,
-- An Image Display shall stop displaying the study.
-- A Report Creator may use the `id` in the `report` context as the report ID for the eventual created report.
-- Worklist Client
-- An Evidence Creator shall close the patient's study.
-- Watcher
-
-If the Subscriber accepted the event initially (i.e. return `202` Accepted) and later decided to refuse the context or failed to process the event, then it shall send a `syncerror` event back to the Manager using Send SyncError Event [RAD-X10](rad-10.html).
-
 ### 2:3.X4.5 Security Considerations
 
 See [RTC-IMR Security Considerations](volume-1.html#1xx5-rtc-imr-security-considerations)
