@@ -1,6 +1,6 @@
 ### 2:3.X5.1 Scope
 
-This transaction is used to add, update or remove contents to a report context that all synchronizing applications will be synchronized to.
+This transaction is used to add, update or remove contents in a report context.
 
 ### 2:3.X5.2 Actors Roles
 
@@ -8,12 +8,9 @@ This transaction is used to add, update or remove contents to a report context t
 
 | Role | Description | Actor(s) |
 |------|-------------|----------|
-| Sender | Add, update or remove report content | Subscriber |
-| Manager | Receives and maintain report content in the context<br>and forward events to other Receivers | Hub |
-| Receiver | Receives events from Manager | Subscriber (See note 1) |
+| Sender | Adds, updates or removes report contents | Content Creator |
+| Manager | Manages the report contents | Hub |
 {: .grid}
-
-> Note 1: The Receiver Role is played by Subscribers subscribed to the event. This may include the original Sender as well as other Subscribers.
 
 ### 2:3.X5.3 Referenced Standards
 
@@ -38,33 +35,20 @@ The Manager shall support handling such messages from more than one Sender.
 
 ##### 2:3.X5.4.1.1 Trigger Events
 
-The Sender identifies new content added, existing content updated, or existing content removed for a report context.
+The Sender determines new content should be added, existing content should be updated, or existing content should be removed for a report context.
 
 ##### 2:3.X5.4.1.2 Message Semantics
 
-This message is an HTTP POST request. The Sender is the User Agent. The Manager is the Origin Server.
-
-The Sender shall send a HTTP POST request to the Receiver `hub.url`.
-
-The `Content-Type` of the request shall be `application/json`.
-
-The body of the request shall have the attributes according to [Secion 2.6.1 Request Context Change body](https://build.fhir.org/ig/HL7/fhircast-docs/2-6-RequestContextChange.html#request-context-change-body).
+This message is a [FHIRcast Request Context Change](https://build.fhir.org/ig/HL7/fhircast-docs/2-6-RequestContextChange.html#request-context-change-body) request. The Sender is the FHIRcast Subscriber. The Manager is the FHIRcast Hub.
 
 The `event.context` shall conform to [DiagnosticReport update Event](https://build.fhir.org/ig/HL7/fhircast-docs/3-6-3-diagnosticreport-update.html).
 
-The Sender shall include `event`.`context.versionId` of the last known version ID of the report context.
-
-The `Bundle` resource in the `updates` key shall have zero or more FHIR resources.
-
-> Note: There are zero entries in case there are only attribute updates of the anchor context or associated context.
+The `event`.`context.versionId` shall be the newest version ID of the report context known to the Sender.
 
 The Sender shall support one or more of the following FHIR resources for content sharing:
 
 | FHIR Resource | Usage | Conformance |
 | -- | -- | -- |
-| [ImagingStudy](https://www.hl7.org/fhir/imagingstudy.html) | Additional studies related to the report in context. For example, comparison studies, grouped procedures, etc. | IMR-ImagingStudy |
-| [ImagingSelection](https://build.fhir.org/imagingselection.html) | Key image references and annotations | IMR-ImagingSelection |
-| [Observation](https://www.hl7.org/fhir/observation.html) | Measurements and assertions | RTC-IMR-Observation |
 | [DocumentReference](https://www.hl7.org/fhir/documentreference.html) | Reference to any kind of document. For example, JSON Structured Report | RTC-IMR-DocumentReference |
 {: .grid}
 
@@ -72,7 +56,7 @@ THe Sender may support other FHIR resources for content sharing.
 
 The Sender should include all contents and referenced resources as inline [contained resources](https://www.hl7.org/fhir/references.html#contained) if possible. This is preferred as most resources in the event are transient. However, in some situations, it is beneficial to reference other resources by reference instead of by value. In this case, the Sender shall specify the `entry.fullurl` with the uri value that the full content can be retrieved.
 
-> Note: The eventual Receiver may or may not have permission to access the referenced resources that are not inline.
+> Note: The eventual Subscriber may or may not have permission to access the referenced resources that are not inline.
 
 If the Sender retries the same request due to a timeout, then the Sender shall use the same `event.id` such that the Manager can detect if it is a duplicate message.
 
@@ -105,16 +89,11 @@ The Manager finished process the Update Report Content request.
 
 ##### 2:3.X5.4.2.2 Message Semantics
 
-If the Manager accepted the Update Report Content request, then the Manager shall send a 2xx HTTP status:
-
-* If the Manager processed the request successfully, then it shall return 200 OK
-* If the Manager processed the request asynchronously, then it may return 202 Accepted
+This message is a [FHIRcast Request Context Change]() response. The Sender is the FHIRcast Subscriber. The Manager is the FHIRcast Hub.
 
 If the Manager rejected the Update Report Content request, then the Manager shall return a 4xx or 5xx HTTP error response code. In this case, the Manager shall reject all the actions in the request. In other words, if the Manager failed partially, then all the applied actions prior to the failure shall be reverted.
 
 ##### 2:3.X5.4.2.3 Expected Actions
-
-If the response is a success, then no further action expected.
 
 If the response is an error, then the Sender may consider retrying the request.
 
@@ -122,30 +101,30 @@ If the response is an error, then the Sender may consider retrying the request.
 
 ##### 2:3.X5.4.3.1 Trigger Events
 
-The Receiver receives a `DiagnosticReport-update` event from Manager via Send Context Event [RAD-X9](rad-x9.html).
+The Subscriber receives a `DiagnosticReport-update` event from Manager via Send Context Event [RAD-X9](rad-x9.html).
 
-> Note: This message is not a traditional message in a transaction between two devices; the primary focus is on the required behavior of the Receiver upon receiving the event from the Manager triggered by the request from the Sender. The Send Context Event [RAD-X9](rad-x9.html) specifies the general requirement between the Manager and the Receiver and it is agnostic about the specific event.
+> Note: This message is not a traditional message in a transaction between two devices; the primary focus is on the required behavior of the Subscriber upon receiving the event from the Manager triggered by the request from the Sender. The Send Context Event [RAD-X9](rad-x9.html) specifies the general requirement between the Manager and the Subscriber and it is agnostic about the specific event.
 
 ##### 2:3.X5.4.3.1 Message Semantics
 
-The Receiver shall validate the context and content in the received event. If each context and content does not conform to the corresponding resource definition, then return an error.
+The Subscriber shall validate the context and content in the received event. If each context and content does not conform to the corresponding resource definition, then return an error.
 
-The Receiver shall keep track of the `context.versionId` of the `report` anchor context, regardless of whether it applies the actions in the event or not.
+The Subscriber shall keep track of the `context.versionId` of the `report` anchor context, regardless of whether it applies the actions in the event or not.
 
-> Note: This is important so that the Receiver can use this `context.versionId` to detect if it missed some prior events before the received event. The Receiver is expected to process all events sequentially. So if the Receiver identified that it missed some prior events, then it can use the Get Current Context [RAD-X8](rad-x8.html) transaction to retrieve the latest context and content from the Manager.
+> Note: This is important so that the Subscriber can use this `context.versionId` to detect if it missed some prior events before the received event. The Subscriber is expected to process all events sequentially. So if the Subscriber identified that it missed some prior events, then it can use the Get Current Context [RAD-X8](rad-x8.html) transaction to retrieve the latest context and content from the Manager.
 
-The Receiver shall *update* the corresponding `event.context` and contents according to its application logic.
+The Subscriber shall *update* the corresponding `event.context` and contents according to its application logic.
 
-> Note: The following actions are all valid for the Receiver:
-> - Receiver immediately applies the necessary actions
-> - Receiver accepts and keep track of the content without immediate actions. Then some automated or manual actions are applied later
-> - Receiver accepts and ignore one or more of the actions since they are not applicable
+> Note: The following actions are all valid for the Subscriber:
+> - Subscriber immediately applies the necessary actions
+> - Subscriber accepts and keep track of the content without immediate actions. Then some automated or manual actions are applied later
+> - Subscriber accepts and ignore one or more of the actions since they are not applicable
 >
 > An example of delay action is that a radiologist identifies nodules as she reads the study. These nodules are communicated as `FHIR Observation` in the `DiagnosticReport-update` event. The Report Creator keeps track of these nodules but no immediately action. Later the radiologist review the list of nodules identified and selected the top 3 to include in the final report.
 
-If some of the content are not inline, then the Receiver shall retrieve the content based on the `entry.fullurl` if permission allowed.
+If some of the content are not inline, then the Subscriber shall retrieve the content based on the `entry.fullurl` if permission allowed.
 
-If the Receiver accepted the event initially (i.e. return `202` Accepted) and later decided to refuse the context or failed to process the event, then it shall send a `syncerror` event back to the Manager using Send SyncError Event [RAD-X10](rad-10.html).
+If the Subscriber accepted the event initially (i.e. return `202` Accepted) and later decided to refuse the context or failed to process the event, then it shall send a `syncerror` event back to the Manager using Send SyncError Event [RAD-X10](rad-10.html).
 
 ### 2:3.X5.5 Security Considerations
 
