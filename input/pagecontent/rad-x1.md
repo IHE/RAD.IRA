@@ -10,7 +10,7 @@ The roles in this transaction are defined in the following table and may be play
 
 | Role | Description | Actor(s) |
 |------|-------------|----------|
-| Subscriber | Request a subscription to a reporting session | Image Display<br>Report Creator<br>Worklist Client<br>Evidence Creator<br>Watcher |
+| Subscriber | Requests a subscription to a reporting session | Image Display<br>Report Creator<br>Worklist Client<br>Evidence Creator<br>Watcher |
 | Manager | Receives and manages subscription requests | Hub |
 {: .grid}
 
