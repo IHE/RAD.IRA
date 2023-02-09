@@ -56,6 +56,10 @@ The Subscriber shall validate that the event specific contexts, `updates` and `s
 
 The Subscriber shall handle events `[FHIR resource]-open` | `update` | `select` | `close` that it supports. The required supported events are defined in the [Actor Description](volume-1.html#1xx11-actors-description-and-actor-profile-requirements).
 
+If the Subscriber accepted  the event initially (i.e. return `202` Accepted) and later decided to refuse the context or failed to process the event, then it shall send a `syncerror` event back to the Manager using Send SyncError Event [RAD-X10](rad-10.html).
+
+##### 2:3.X9.4.1.3.1 Handling open events
+
 Upon receiving a `[FHIR resource]-open` event, the Subscriber shall *open* the corresponding `event.context` according to its application logic.
 
 > Note: The Subscriber may use all or a subset of the context provided. For example, a Report Creator may use the patient and study context to open the corresponding procedure and make it ready for dictation, and ignore the report context since the Report Creator will create its own. On the other hand, an Evidence Creator (such as a specialty AI application) may use only the study context to run an inference model on the study on demand, ignoring the report and patient context.
@@ -64,15 +68,35 @@ Upon receiving a `[FHIR resource]-open` event, the Subscriber shall *open* the c
 >
 > For example, an Evidence Creator may skip executing the expensive processing on the patient's study if the report context is re-open and the evidence data from previous execution is still available and valid. 
 
-The Subscriber shall validate and maintain locally current context versionId as follow:
+##### 2:3.X9.4.1.3.2 Handling update events
+
+The Subscriber shall support [content sharing](https://build.fhir.org/ig/HL7/fhircast-docs/2-10-ContentSharing.html) in FHIRcast, in particular:
+- The Subscriber shall validate and maintain locally current context versionId
 - Maintain locally the current context versionId according to the `context.versionId` from the event.
 - Upon receiving a `[FHIR resource]-update` event, validate if the `context.priorVersionId` in the event matches the local current context versionId.
     - If not, this means the Subscriber missed one or more prior events. In this case, the Subscriber shall use [Get Current Context](rad-x8.html) to retrieve the current context.
     - If match, the Subscriber shall handle the update event according to its application logic. 
+- The Subscriber may choose to accept but ignore the event. Regardless, the Subscriber shall continue to maintain the local current context versionId for subsequent events.
+- For contents that are applicable to the Subscriber and they are not inline in the `[FHIR resource]-update` event, then the Subscriber shall retrieve the content based on the `entry.fullurl` if permission allowed.
 
-    > Note: The Subscriber may choose to accept but ignore the event. In this case, the Subscriber shall continue to maintain the local current context versionId for subsequent events.
+> Note: The following actions are all valid for the Subscriber when handling a `[FHIR resource]-update` event:
+> - Subscriber immediately applies the necessary actions
+> - Subscriber accepts and keep track of the content without immediate actions. Then some automated or manual actions are applied later
+> - Subscriber accepts and ignore one or more of the actions since they are not applicable
+>
+> An example of delay action is that a radiologist identifies nodules as she reads the study. These nodules are communicated as `FHIR Observation` in the `DiagnosticReport-update` event. The Report Creator keeps track of these nodules but no immediately action. Later the radiologist review the list of nodules identified and selected the top 3 to include in the final report.
 
-If the Subscriber accepted  the event initially (i.e. return `202` Accepted) and later decided to refuse the context or failed to process the event, then it shall send a `syncerror` event back to the Manager using Send SyncError Event [RAD-X10](rad-10.html).
+##### 2:3.X9.4.1.3.3 Handling select events
+
+The Subscriber shall ignore any selected resources in the request that are not known based on any previous `[FHIR resource]-open` or `[FHIR resource]-update` events.
+
+The Subscriber shall be capable of using the applicable selected resources in the next immediate user commands.
+
+The Subscriber shall keep track of the `context.versionId` of the anchor context, regardless of whether it selected any content or not.
+
+##### 2:3.X9.4.1.3.4 Handling close events
+
+The Subscriber shall delete the referenced context and all associated contents locally.
 
 #### 2:3.X9.4.2 Notification Response Message
 
