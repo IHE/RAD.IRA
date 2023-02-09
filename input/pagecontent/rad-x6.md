@@ -8,12 +8,9 @@ This transaction is used to select report context and content that all synchroni
 
 | Role | Description | Actor(s) |
 |------|-------------|----------|
-| Sender | Select report content(s) | Subscriber |
+| Sender | Select report content(s) | Content Creator |
 | Manager | Receives and maintains selected contents in the context<br>and forward events to other Receivers | Hub |
-| Receiver | Receives events from Manager | Subscriber (See note 1) |
 {: .grid}
-
-> Note 1: The Receiver Role is played by Subscribers subscribed to the event. This may include the original Sender as well as other Subscribers.
 
 ### 2:3.X6.3 Referenced Standards
 
@@ -42,17 +39,11 @@ The Sender identifies some report context / content are selected automatically o
 
 ##### 2:3.X6.4.1.2 Message Semantics
 
-This message is an HTTP POST request. The Sender is the User Agent. The Manager is the Origin Server.
-
-The Sender shall send a HTTP POST request to the Receiver `hub.url`.
-
-The `Content-Type` of the request shall be `application/json`.
-
-The body of the request shall have the attributes according to [Section 2.6.1 Request Context Change body](https://build.fhir.org/ig/HL7/fhircast-docs/2-6-RequestContextChange.html#request-context-change-body).
+This message is a [FHIRcast Request Context Change](https://build.fhir.org/ig/HL7/fhircast-docs/2-6-RequestContextChange.html#request-context-change-body) request. The Sender is the FHIRcast Subscriber. The Manager is the FHIRcast Hub.
 
 The `event.context` shall conform to [DiagnosticReport select Event](https://build.fhir.org/ig/HL7/fhircast-docs/3-6-4-diagnosticreport-select.html).
 
-The Sender shall include `event`.`context.versionId` of the last known version ID of the report context.
+The `event`.`context.versionId` shall be the newest version ID of the report context known to the Sender.
 
 The Sender shall include all selected resources in the event, including resources that were selected previously and remain selected for this event.
 
@@ -77,8 +68,6 @@ The Manager shall keep track of what contents are being selected. In particular:
 
 The Manager shall ignore any selected resources in the request that are not known based on any previous `DiagnosticReport-open` or `DiagnosticReport-update` events.
 
-The Manager shall broadcast the event to all subscribers that subscribed to the received event using Send Context Event [RAD-X9](rad-x9.html).
-
 #### 2:3.X6.4.2 Select Report Content Response Message
 
 ##### 2:3.X6.4.2.1 Trigger Events
@@ -87,16 +76,9 @@ The Manager finished process the Select Report Content request.
 
 ##### 2:3.X6.4.2.2 Message Semantics
 
-If the Manager accepted the Select Report Content, then the Manager shall send a 2xx HTTP status:
-
-* If the Manager processed the request successfully, then it shall return 200 OK
-* If the Manager processed the request asynchronously, then it may return 202 Accepted
-
-If the Manager rejected the Select Report Content request, then the Manager shall return a 4xx or 5xx HTTP error response code.
+This message is a [FHIRcast Request Context Change]() response. The Sender is the FHIRcast Subscriber. The Manager is the FHIRcast Hub.
 
 ##### 2:3.X6.4.2.3 Expected Actions
-
-If the response is a success, then no further action expected.
 
 If the response is an error, then the Sender may consider retrying the request.
 
