@@ -1,6 +1,6 @@
 ### 2:3.X3.1 Scope
 
-This transaction is used to initiate a report context to which other connected applications may be synchronized. Report contexts are initiated within an existing reporting session.
+This transaction is used to initiate a report context. Report contexts are initiated within an existing reporting session.
 
 ### 2:3.X3.2 Actors Roles
 
@@ -10,7 +10,6 @@ This transaction is used to initiate a report context to which other connected a
 |------|-------------|----------|
 | Sender | Initiates a report context | Image Display<br>Report Creator<br>Worklist Client |
 | Manager | Manages initiated context and notifies Subscribers | Hub |
-| Subscriber | Receives and reacts to notifications from Manager | Image Display<br>Report Creator<br>Worklist Client<br>Evidence Creator<br>Watcher |
 {: .grid}
 
 ### 2:3.X3.3 Referenced Standards
@@ -18,8 +17,6 @@ This transaction is used to initiate a report context to which other connected a
 **FHIRcast**: [Request Context Change](https://build.fhir.org/ig/HL7/fhircast-docs/2-6-RequestContextChange.html#request-context-change)
 
 **FHIRcast**: [DiagnosticReport open Event](https://build.fhir.org/ig/HL7/fhircast-docs/3-6-1-diagnosticreport-open.html)
-
-**Websocket**: [IETF RFC 6455](https://www.rfc-editor.org/rfc/rfc6455)
 
 ### 2:3.X3.4 Messages
 
@@ -50,7 +47,7 @@ Additional, the contexts in the `event.context` shall conform to the Table 2:3.X
 
 Table 2:3.X3.4.1.2-1: Context Requirements
 {:.grid}
-Key | Optionality | Description
+Key | Optionality | Context Requirements
 --- | --- | --
 `report`| REQUIRED | Conform to the RTC-IMR-DiagnosticReport resource
 `patient` | REQUIRED | Conform to the RTC-IMR-Patient resource
@@ -68,7 +65,7 @@ The Manager shall validate the request as follow:
 
 * If `timestamp`, `id` or `event` are not set, then return an error
 * If `event.context` does not include `report`, `patient` and `study`, then return an error
-* if `event`.`hub.topic` is not a known topic, then return an error
+* if `event`.`hub.topic` is not a known session, then return an error
 
 Per FHIRcast, this `report` context will become the current context in this reporting session.
 
@@ -90,11 +87,11 @@ If the response is an error, then the Sender may consider retrying the request.
 
 ##### 2:3.X3.4.3.1 Trigger Events
 
-The Manager initiates a new report context.
+The Manager processed a new report context request.
 
 ##### 2:3.X3.4.3.2 Message Semantics
 
-This message is a Send Context Event - Notification Message. See [Section 2:3.X9.4](rad-x9.html#23x94-messages).
+This message is a [Send Context Event - Notification Message](rad-x9.html#23x94-messages). The Manager is the Notification Manager. The Subscriber is the Notification Subscriber.
 
 ##### 2:3.X3.4.3.3 Expected Actions
 
@@ -102,21 +99,7 @@ The Subscriber shall validate that the `report`, `patient` and `study` contexts 
 
 > Note: The `DiagnosticReport-open` event includes both the `report` anchor context and associated contexts `patient` and `study`. Subsequent event(s) for this anchor context will only provide the `report` context. Therefore, it is up to the Subscriber to record internally the `patient` and `study` contexts associated with the `report` anchor context if that information is relevant to its business logic. 
 
-The Subscriber shall "open" the `report`, `patient` and `study` contexts according to Table 2:3.X3.4.3.3-1.
-
-**Table 2:3.X3.4.3.3-1**: Event Handling Requirements
-| Actor | Event Handling Requirements |
-| -- | -- |
-| Image Display | Display the study images |
-| Report Creator | Open the procedure and be ready for reporting.<br>It may use the `id` in the `report` context as the report ID for the eventual created report.
-| Worklist Client | Display the patient's study data |
-| Evidence Creator | Process the patient's study |
-| Watcher | None |
-{: .grid}
-
-The Subscriber may support additional business logic to handle the event.
-
-> Note: Occasionally, the same `report` anchor context may be re-opened. [Use Case #3: Interruption and Resume Flow](volume-1.html#1xx423-use-case-3-interruption-and-resume-flow) and FHIRcast [Section 4.4 Multi-tab Considerations](https://build.fhir.org/ig/HL7/fhircast-docs/4-4-multitab-considerations.html) are two examples this may happen. In these cases, the Subscriber may behave differently compared to when the event was first received.
+> Note: Occasionally, the same `report` anchor context may be re-opened. e.g. [Use Case #3: Interruption and Resume Flow](volume-1.html#1xx423-use-case-3-interruption-and-resume-flow) and FHIRcast [Section 4.4 Multi-tab Considerations](https://build.fhir.org/ig/HL7/fhircast-docs/4-4-multitab-considerations.html). In these cases, the Subscriber event handling for the subsequent event may differ from the first event.
 >
 > For example, an Evidence Creator may skip executing the expensive processing on the patient's study if the report context is re-open and the evidence data from previous execution is still available and valid. 
 
