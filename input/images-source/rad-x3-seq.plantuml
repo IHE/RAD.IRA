@@ -5,8 +5,6 @@ hide footbox
 participant "Sender" as Sender
 participant "Manager" as Manager
 
-== Initial Report Context ==
-
 Sender->Manager: Open Report Context Request
 activate Manager
 Manager-->Sender: Open Report Context Response
