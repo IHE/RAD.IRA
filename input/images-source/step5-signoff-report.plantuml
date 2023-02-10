@@ -11,38 +11,44 @@ Report->Report: //Persist report//
 == Step 5: Sign-off Report ==
 
 User->Report: //Sign off report//
-note over Report
-Report status = FINAL
-end note
+Report->Report: //Set report status to FINAL//
+
+Report->Hub: Update Report Content [RAD-X5]\n(event: id = 1500,\ncontext = DiagnosticReport xxx, update status FINAL)
+activate Hub
+
+Hub->Hub: //Update DiagnosticReport context in session 12345//\n(event: id = 1500,\ncontext = DiagnosticReport xxx, status FINAL)\n[[update_report_status.html#available-context-and-content-in-hub Example]]
+
+Hub->PACS: Send Context Event [RAD-X9]\n(event: id = 1500 ...)
+PACS->PACS: //Update study status//
+PACS-->Hub: //Success (id = 1500, status = 200)//
+Hub->Report: Send Context Event [RAD-X9]\n(event: id = 1500 ...)
+Report-->Hub: //Success (id = 1500, status = 200)//
+deactivate Hub
+
+...
 
 Report->Hub: Terminate Report Context [RAD-X4]\n(event: id = 2000,\ncontext = DiagnosticReport xxx)
 activate Hub
 
 Hub->Hub: //Update DiagnosticReport context in session 12345//\n(event: id = 2000,\ncontext = DiagnosticReport xxx)
 
-Hub->PACS: Send Context Event [RAD-X3]\n(event: id = 2000,\ncontext = DiagnosticReport xxx)
-PACS->PACS: //Update study status//\n//and drop the study from worklist//
+Hub->PACS: Send Context Event [RAD-X9]\n(event: id = 2000,\ncontext = DiagnosticReport xxx)
+PACS->PACS: //Drop study from worklist//
 PACS-->Hub: //Success (id = 2000, status = 200)//
-Hub->Report: Send Context Event [RAD-X3]\n(event: id = 2000,\ncontext = DiagnosticReport xxx)
-Report->Report: //No action required//
+Hub->Report: Send Context Event [RAD-X9]\n(event: id = 2000,\ncontext = DiagnosticReport xxx)
 Report-->Hub: //Success (id = 2000, status = 200)//
 
 Hub->Hub: //Delete DiagnosticReport context in session 12345//\n(context = DiagnosticReport xxx)\n[[close_study_after_signoff.html#available-context-and-content-in-hub Example]]
 deactivate Hub
 
 ...
-note over Report
-Some Report Creator may have a grace period
-between the report sign-off and the report
-being sent to other recipients.
-end note
+Report->Report: //Wait for the grace period//
 Report->: //Send final report//
 
 User->PACS: //Proceed to next study//
 
 note over PACS
-Image Display repeates Step 2 to
-open the next study as the new context.
+Repeat Step 2.
 end note
 PACS->Hub: Initiate Report Context [RAD-X3]
 

@@ -101,6 +101,9 @@ pages:
   select_study_and_observation.md:
     title: Select Report Content
     generation: markdown
+  update_report_status.md:
+    title: Update Report Status
+    generation: markdown
   close_study_after_signoff.md:
     title: Terminate Report Context
     generation: markdown
@@ -140,6 +143,7 @@ menu:
     Initiate Report Context: open_study_for_reporting.html
     Update Report Content: update_study_with_measurement.html
     Select Report Content: select_study_and_observation.html
+    Update Report Status: update_report_status.html
     Terminate Report Context: close_study_after_signoff.html
   Test Plan: testplan.html
   Artifacts: artifacts.html
