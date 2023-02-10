@@ -99,7 +99,7 @@ The Manager may return other applicable HTTP error status codes.
 
 If the HTTP response code is `202` Accepted, the Subscriber shall extract the websocket WSS URL from `hub.channel.endpoint`.
 
-The Subscriber may use the `hub.channel.endpoint` in a subsequent Connect Notification Channel [RAD-X2] transaction and subsequent subscription update, renewal or Unsubscribe Session [RAD-X7] requests.
+The Subscriber may use the `hub.channel.endpoint` in a subsequent Connect to Notification Channel [RAD-X2] transaction and subsequent subscription update, renewal or Unsubscribe Session [RAD-X7] requests.
 
 If the HTTP response code is 4xx or 5xx, then the Subscriber may adjust the request and retry.
 

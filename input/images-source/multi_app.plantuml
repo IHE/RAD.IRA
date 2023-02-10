@@ -13,12 +13,12 @@ participant "Evidence Creator" as Special
 note over WF
 Generate unique session ID
 end note
-WF->Hub: Subscribe Reporting Session [RAD-X1]\n(session 12345:\nevents = DiagnosticReport-*, syncerror)
+WF->Hub: Subscribe to Reporting Session [RAD-X1]\n(session 12345:\nevents = DiagnosticReport-*, syncerror)
 
 Hub->Hub: //Create Reporting Session with ID 12345//
 
 Hub-->WF: //Accept//\n//with hub.channel.endpoint//
-WF->Hub: Connect Notification Channel [RAD-X2]
+WF->Hub: Connect to Notification Channel [RAD-X2]
 Hub-->WF: //Confirm subscription//
 
 == Step 2: Launch Application in Reporting Session ==
@@ -26,9 +26,9 @@ Hub-->WF: //Confirm subscription//
 WF->WF: //Ready to start reporting//\n//e.g. When application started//
 WF->PACS: //Launch Application (Image Display)//\n//in session 12345//
 
-PACS->Hub: Subscribe Reporting Session [RAD-X1]\n(session 12345:\nevents = DiagnosticReport-*, syncerror)
+PACS->Hub: Subscribe to Reporting Session [RAD-X1]\n(session 12345:\nevents = DiagnosticReport-*, syncerror)
 Hub-->PACS: //Accept//\n//with hub.channel.endpoint//
-PACS->Hub: Connect Notification Channel [RAD-X2]
+PACS->Hub: Connect to Notification Channel [RAD-X2]
 Hub-->PACS: //Confirm subscription//
 PACS->Hub: Get Current Context [RAD-X8]\n(catch up with current context and content)
 
@@ -60,9 +60,9 @@ Radiologist->WF: //Start dictation//
 
 WF->Report: //Launch Application (Report Creator)//\n//in session 12345//
 
-Report->Hub: Subscribe Reporting Session [RAD-X1]\n(session 12345:\nevents = DiagnosticReport-*, syncerror)
+Report->Hub: Subscribe to Reporting Session [RAD-X1]\n(session 12345:\nevents = DiagnosticReport-*, syncerror)
 Hub-->Report: //Accept//\n//with hub.channel.endpoint//
-Report->Hub: Connect Notification Channel [RAD-X2]
+Report->Hub: Connect to Notification Channel [RAD-X2]
 Hub-->Report: //Confirm subscription//
 Report->Hub: Get Current Context [RAD-X8]\n(catch up with current context and content)
 
@@ -80,10 +80,10 @@ launches additional application to join the
 session on demand.
 end note
 
-Special->Hub: Subscribe Reporting Session [RAD-X1]\n(session 12345:\nevents = DiagnosticReport-*, syncerror)
+Special->Hub: Subscribe to Reporting Session [RAD-X1]\n(session 12345:\nevents = DiagnosticReport-*, syncerror)
 
 Hub-->Special: //Accept//\n//with hub.channel.endpoint//
-Special->Hub: Connect Notification Channel [RAD-X2]
+Special->Hub: Connect to Notification Channel [RAD-X2]
 Hub-->Special: //Confirm subscription//
 Special->Hub: Get Current Context [RAD-X8] //on session 12345//\n(catch up with current context and content)
 

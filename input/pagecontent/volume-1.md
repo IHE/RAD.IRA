@@ -36,13 +36,13 @@ Table 1:XX.1-1 lists the transactions for each actor directly involved in the IM
   <tbody>
     <tr>
       <td rowspan="8"><a href="volume-1.html#1xx111-image-display">Image Display</a></td>
-      <td>Subscribe Reporting Session [RAD-X1]</td>
+      <td>Subscribe to Reporting Session [RAD-X1]</td>
       <td>Initiator</td>
       <td>R</td>
       <td><a href="rad-x1.html">RAD TF-2: 4.X1</a></td>
     </tr>
     <tr>
-      <td>Connect Notification Channel [RAD-X2]</td>
+      <td>Connect to Notification Channel [RAD-X2]</td>
       <td>Initiator</td>
       <td>R</td>
       <td><a href="rad-x2.html">RAD TF-2: 4.X2</a></td>
@@ -85,13 +85,13 @@ Table 1:XX.1-1 lists the transactions for each actor directly involved in the IM
     </tr>
       <tr>
       <td rowspan="8"><a href="volume-1.html#1xx112-report-creator">Report Creator</a></td>
-      <td>Subscribe Reporting Session [RAD-X1]</td>
+      <td>Subscribe to Reporting Session [RAD-X1]</td>
       <td>Initiator</td>
       <td>R</td>
       <td><a href="rad-x1.html">RAD TF-2: 4.X1</a></td>
     </tr>
     <tr>
-      <td>Connect Notification Channel [RAD-X2]</td>
+      <td>Connect to Notification Channel [RAD-X2]</td>
       <td>Initiator</td>
       <td>R</td>
       <td><a href="rad-x2.html">RAD TF-2: 4.X2</a></td>
@@ -134,13 +134,13 @@ Table 1:XX.1-1 lists the transactions for each actor directly involved in the IM
     </tr>
       <tr>
       <td rowspan="8"><a href="volume-1.html#1xx113-worklist-display">Worklist Client</a></td>
-      <td>Subscribe Reporting Session [RAD-X1]</td>
+      <td>Subscribe to Reporting Session [RAD-X1]</td>
       <td>Initiator</td>
       <td>R</td>
       <td><a href="rad-x1.html">RAD TF-2: 4.X1</a></td>
     </tr>
     <tr>
-      <td>Connect Notification Channel [RAD-X2]</td>
+      <td>Connect to Notification Channel [RAD-X2]</td>
       <td>Initiator</td>
       <td>R</td>
       <td><a href="rad-x2.html">RAD TF-2: 4.X2</a></td>
@@ -183,13 +183,13 @@ Table 1:XX.1-1 lists the transactions for each actor directly involved in the IM
     </tr>
     <tr>
       <td rowspan="6"><a href="volume-1.html#1xx114-evidence-creator">Evidence Creator</a></td>
-      <td>Subscribe Reporting Session [RAD-X1]</td>
+      <td>Subscribe to Reporting Session [RAD-X1]</td>
       <td>Initiator</td>
       <td>R</td>
       <td><a href="rad-x1.html">RAD TF-2: 4.X1</a></td>
     </tr>
     <tr>
-      <td>Connect Notification Channel [RAD-X2]</td>
+      <td>Connect to Notification Channel [RAD-X2]</td>
       <td>Initiator</td>
       <td>R</td>
       <td><a href="rad-x2.html">RAD TF-2: 4.X2</a></td>
@@ -233,13 +233,13 @@ Table 1:XX.1-1 lists the transactions for each actor directly involved in the IM
     </tr>
     <tr>
       <td rowspan="6"><a href="volume-1.html#1xx116-watcher">Watcher</a></td>
-      <td>Subscribe Reporting Session [RAD-X1]</td>
+      <td>Subscribe to Reporting Session [RAD-X1]</td>
       <td>Initiator</td>
       <td>R</td>
       <td><a href="rad-x1.html">RAD TF-2: 4.X1</a></td>
     </tr>
     <tr>
-      <td>Connect Notification Channel [RAD-X2]</td>
+      <td>Connect to Notification Channel [RAD-X2]</td>
       <td>Initiator</td>
       <td>R</td>
       <td><a href="rad-x2.html">RAD TF-2: 4.X2</a></td>
@@ -799,8 +799,8 @@ Subscribing to a reporting session is a common starting point for any `Subscribe
 
 Subscribing to a reporting session involves two transactions:
 
-- Subscribe Reporting Session [RAD-X1]
-- Connect Notification Channel [RAD-X2]
+- Subscribe to Reporting Session [RAD-X1]
+- Connect to Notification Channel [RAD-X2]
 
 For a Synchronizing Application, the session is provided by the Driving Application during launch.
 

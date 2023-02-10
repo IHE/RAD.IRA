@@ -60,10 +60,10 @@ pages:
     title: 1:XX. RTC-IMR Volume 1
     generation: markdown
   rad-x1.md:
-    title: 2:3.X1 Subscribe Reporting Session [RAD-X1]
+    title: 2:3.X1 Subscribe to Reporting Session [RAD-X1]
     generation: markdown
   rad-x2.md:
-    title: 2:3.X2 Connect Notification Channel [RAD-X2]
+    title: 2:3.X2 Connect to Notification Channel [RAD-X2]
     generation: markdown
   rad-x3.md:
     title: 2:3.X3 Initiate Report Context [RAD-X3]
@@ -125,8 +125,8 @@ menu:
     Security Considerations: volume-1.html#1xx5-rtc-imr-security-considerations
     Cross-Profile Considerations: volume-1.html#1xx6-rtc-imr-cross-profile-considerations
   Volume 2:
-    Subscribe Reporting Session [RAD-X1]: rad-x1.html
-    Connect Notification Channel [RAD-X2]: rad-x2.html
+    Subscribe to Reporting Session [RAD-X1]: rad-x1.html
+    Connect to Notification Channel [RAD-X2]: rad-x2.html
     Initiate Report Context [RAD-X3]: rad-x3.html
     Terminate Report Context [RAD-X4]: rad-x4.html
     Update Report Content [RAD-X5]: rad-x5.html

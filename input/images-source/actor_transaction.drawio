@@ -1,10 +1,10 @@
 <mxfile host="65bd71144e">
     <diagram id="w9eKzpSiwHvzKklawYqQ" name="Full Actors Only">
-        <mxGraphModel dx="1418" dy="1576" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="1504" dy="1751" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
-                <mxCell id="3" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="gMexnicsG44GviGb2K0t-1">
+                <mxCell id="3" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="gMexnicsG44GviGb2K0t-1" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="-320" y="410" as="targetPoint"/>
                         <Array as="points">
@@ -27,7 +27,7 @@
                 <mxCell id="gMexnicsG44GviGb2K0t-2" value="Image&lt;br&gt;Display" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
                     <mxGeometry x="-660" y="-130" width="80" height="80" as="geometry"/>
                 </mxCell>
-                <mxCell id="2" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="gMexnicsG44GviGb2K0t-3" target="gMexnicsG44GviGb2K0t-4">
+                <mxCell id="2" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="gMexnicsG44GviGb2K0t-3" target="gMexnicsG44GviGb2K0t-4" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
                             <mxPoint x="-500"/>
@@ -43,7 +43,7 @@
                     <mxGeometry x="-320" y="370" width="80" height="80" as="geometry"/>
                 </mxCell>
                 <mxCell id="u-3bDec00EcQlva4bvqx-17" value="" style="group" parent="1" vertex="1" connectable="0">
-                    <mxGeometry x="-600" y="30" width="229" height="324" as="geometry"/>
+                    <mxGeometry x="-600" y="30" width="240" height="324" as="geometry"/>
                 </mxCell>
                 <mxCell id="u-3bDec00EcQlva4bvqx-1" value="" style="endArrow=classic;html=1;rounded=0;startArrow=none;startFill=0;endFill=1;" parent="u-3bDec00EcQlva4bvqx-17" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
@@ -51,8 +51,8 @@
                         <mxPoint y="30" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="u-3bDec00EcQlva4bvqx-2" value="Subscribe Reporting Session [RAD-X1]" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="u-3bDec00EcQlva4bvqx-17" vertex="1">
-                    <mxGeometry x="10" width="218" height="30" as="geometry"/>
+                <mxCell id="u-3bDec00EcQlva4bvqx-2" value="Subscribe to Reporting Session [RAD-X1]" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="u-3bDec00EcQlva4bvqx-17" vertex="1">
+                    <mxGeometry x="10" width="230" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="u-3bDec00EcQlva4bvqx-3" value="" style="endArrow=none;html=1;rounded=0;startArrow=classic;startFill=1;endFill=0;" parent="u-3bDec00EcQlva4bvqx-17" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
@@ -69,8 +69,8 @@
                         <mxPoint x="1" y="70" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="u-3bDec00EcQlva4bvqx-6" value="Connect Notification Channel [RAD-X2]" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="u-3bDec00EcQlva4bvqx-17" vertex="1">
-                    <mxGeometry x="10" y="40" width="219" height="30" as="geometry"/>
+                <mxCell id="u-3bDec00EcQlva4bvqx-6" value="Connect to Notification Channel [RAD-X2]" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="u-3bDec00EcQlva4bvqx-17" vertex="1">
+                    <mxGeometry x="10" y="40" width="230" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="u-3bDec00EcQlva4bvqx-7" value="" style="endArrow=classic;html=1;rounded=0;" parent="u-3bDec00EcQlva4bvqx-17" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
@@ -117,7 +117,7 @@
                 <mxCell id="u-3bDec00EcQlva4bvqx-16" value="Initiate Report Context [RAD-X3]" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="u-3bDec00EcQlva4bvqx-17" vertex="1">
                     <mxGeometry x="10" y="82" width="178" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="4" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="u-3bDec00EcQlva4bvqx-21" target="gMexnicsG44GviGb2K0t-4">
+                <mxCell id="4" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="u-3bDec00EcQlva4bvqx-21" target="gMexnicsG44GviGb2K0t-4" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
                             <mxPoint x="-350"/>
@@ -140,7 +140,7 @@
                     <mxGeometry x="-250" y="-130" width="80" height="80" as="geometry"/>
                 </mxCell>
                 <mxCell id="R6qVMPqXuL_3hM2V6tge-13" value="" style="group" parent="1" vertex="1" connectable="0">
-                    <mxGeometry x="-260" y="30" width="229" height="238" as="geometry"/>
+                    <mxGeometry x="-260" y="30" width="240" height="238" as="geometry"/>
                 </mxCell>
                 <mxCell id="R6qVMPqXuL_3hM2V6tge-1" value="" style="endArrow=classic;html=1;rounded=0;startArrow=none;startFill=0;endFill=1;" parent="R6qVMPqXuL_3hM2V6tge-13" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
@@ -148,8 +148,8 @@
                         <mxPoint y="30" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="R6qVMPqXuL_3hM2V6tge-2" value="Subscribe Reporting Session [RAD-X1]" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="R6qVMPqXuL_3hM2V6tge-13" vertex="1">
-                    <mxGeometry x="10" width="218" height="30" as="geometry"/>
+                <mxCell id="R6qVMPqXuL_3hM2V6tge-2" value="Subscribe to Reporting Session [RAD-X1]" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="R6qVMPqXuL_3hM2V6tge-13" vertex="1">
+                    <mxGeometry x="10" width="230" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="R6qVMPqXuL_3hM2V6tge-3" value="" style="endArrow=none;html=1;rounded=0;startArrow=classic;startFill=1;endFill=0;" parent="R6qVMPqXuL_3hM2V6tge-13" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
@@ -166,8 +166,8 @@
                         <mxPoint x="1" y="70" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="R6qVMPqXuL_3hM2V6tge-6" value="Connect Notification Channel [RAD-X2]" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="R6qVMPqXuL_3hM2V6tge-13" vertex="1">
-                    <mxGeometry x="10" y="40" width="219" height="30" as="geometry"/>
+                <mxCell id="R6qVMPqXuL_3hM2V6tge-6" value="Connect to Notification Channel [RAD-X2]" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="R6qVMPqXuL_3hM2V6tge-13" vertex="1">
+                    <mxGeometry x="10" y="40" width="230" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="R6qVMPqXuL_3hM2V6tge-7" value="" style="endArrow=classic;html=1;rounded=0;startArrow=none;startFill=0;endFill=1;" parent="R6qVMPqXuL_3hM2V6tge-13" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
@@ -231,7 +231,7 @@
         </mxGraphModel>
     </diagram>
     <diagram id="iCQe9GTO-GKxjVcRi_pD" name="Driving and Synchronizing">
-        <mxGraphModel dx="1585" dy="557" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="1504" dy="651" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
