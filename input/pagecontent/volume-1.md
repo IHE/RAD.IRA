@@ -827,7 +827,7 @@ Figure 1:XX.4.2.1.2.0-2: Condensed Subscription Transaction in RTC-IMR Profile
 
 When a radiologist starts reporting, the Image Display, as a Driving Application, starts a reporting session.
 
-Note that there is no explicit creation of a session. If the Hub receives a session ID (i.e. topic) that does not already exist, then the Hub will automatically create the session and add the subscriber (i.e. Image Display) to the session.
+Note that there is no explicit creation of a session. If the Hub receives a session (i.e. topic ID) that does not already exist, then the Hub will automatically create the session and add the subscriber (i.e. Image Display) to the session.
 
 The Image Display subscribes to events so that it can:
 - Receive events published by other Subscribers

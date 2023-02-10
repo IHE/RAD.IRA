@@ -59,7 +59,7 @@ The Manager shall validate the request as follow:
 
 * If `timestamp`, `id` or `event` are not set, then return an error
 * If `event.context` does not include `report` and `updates`, then return an error
-* if `event`.`hub.topic` is not a known topic, then return an error
+* if `event`.`hub.topic` is not a known session, then return an error
 * If `context.versionId` does not match the latest version ID of the `report` anchor context, then return an error
 
 The Manager shall apply all actions in the request *atomically*. i.e. The Manager shall apply all actions or none of the actions.

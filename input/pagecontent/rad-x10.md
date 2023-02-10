@@ -64,7 +64,7 @@ The Manager shall validate the request as follow:
 * If `timestamp`, `id` or `event` are not set, then return an error
 * If `event.context` does not include `operationoutcome`, then return an error
 * If the context does not conform to the [SyncError Context](https://build.fhir.org/ig/HL7/fhircast-docs/3-2-1-syncerror.html#context), then return an error
-* if `event`.`hub.topic` is not a known topic, then return an error
+* if `event`.`hub.topic` is not a known session, then return an error
 
 The Manager shall broadcast the event to all subscribers that subscribed to the received event using Send Context Event [RAD-X9](rad-x9.html).
 

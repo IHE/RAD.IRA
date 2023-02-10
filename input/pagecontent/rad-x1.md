@@ -69,7 +69,7 @@ The Manager shall receive and validate the message.
 
 The Manager shall create the reporting session if the session ID specified in `hub.topic` does not exist.
 
-The Manager shall add the Subscriber and its subscribed events for the topic.
+The Manager shall add the Subscriber and its subscribed events for the session.
 
 If the Subscriber already exist, then the Manager shall:
 - Update the list of events subscribed by the Subscriber
