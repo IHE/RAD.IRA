@@ -1,6 +1,6 @@
 ### 2:3.X7.1 Scope
 
-This transaction is used to unsubscribe to a FHIRcast session.
+This transaction is used to unsubscribe a FHIRcast session.
 
 ### 2:3.X7.2 Actors Roles
 
@@ -10,7 +10,7 @@ The roles in this transaction are defined in the following table and may be play
 
 | Role | Description | Actor(s) |
 |------|-------------|----------|
-| Sender | Unsubscribes to a topic | Image Display<br>Report Creator<br>Worklist Client<br>Evidence Creator<br>Watcher |
+| Sender | Unsubscribes a session | Image Display<br>Report Creator<br>Worklist Client<br>Evidence Creator<br>Watcher |
 | Manager | Manages unsubscription requests | Hub |
 {: .grid}
 
@@ -30,7 +30,7 @@ The roles in this transaction are defined in the following table and may be play
 
 #### 2:3.X7.4.1 Unsubscribe Session Request Message
 
-The Sender sends a session unsubscription request to the Manager. The Sender shall support sending such messages to more than one Manager.
+The Sender sends a unsubscribe request to the Manager. The Sender shall support sending such messages to more than one Manager.
 
 The Manager shall support handling such messages from more than one Sender. 
 
@@ -46,17 +46,9 @@ This message is a [FHIRcast Unsubscription Request](https://build.fhir.org/ig/HL
 
 The Manager shall receive and validate the message.
 
-The Manager shall return an error if the `hub.channel.type` is not `websocket`.
+The Manager shall remove the Sender and its subscribed events from the session.
 
-The Manager shall return an error if the `hub.topic` is empty.
-
-The Manager shall return an error if the `hub.mode` is `unsubscribe` and there is no `hub.channel.endpoint` or its value is empty.
-
-The Manager shall return an error if the `hub.channel.endpoint` does not match the websocket associated to the Sender.
-
-The Manager shall remove the Sender and its subscribed events from the topic.
-
-The Manager shall terminate the websocket connection delete the websocket identifier.
+The Manager shall terminate the websocket connection and delete the websocket identifier. The Manager shall not reuse the websocket identifier for other future subscriptions.
 
 #### 2:3.X7.4.2 Unsubscribe Session Response Message
 
@@ -71,6 +63,12 @@ The Manager receives a Unsubscribe Session Request message.
 This message is a [FHIRcast Unsubscription Response](https://build.fhir.org/ig/HL7/fhircast-docs/2-4-Subscribing.html#unsubscribe). The Subscriber is the FHIRcast Subscriber. The Manager is the FHIRcast Hub.
 
 If the Manager successfully processed the request, the Manager shall respond with an HTTP 202 “Accepted” response.
+
+The Manager shall return `400` Bad Request error if:
+- the `hub.channel.type` is not `websocket`
+- the `hub.topic` is empty
+- the `hub.mode` is `unsubscribe` and there is no `hub.channel.endpoint` or its value is empty
+- the `hub.channel.endpoint` does not match the websocket associated to the Sender
 
 The HTTP body of the response shall consist of a JSON object containing an element name `hub.channel.endpoint` and a value for the WSS URL that is associated to the Sender.
 
