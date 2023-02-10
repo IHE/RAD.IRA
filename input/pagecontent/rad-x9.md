@@ -2,8 +2,6 @@
 
 This transaction is used to send accepted events to all subscribers that subscribed to the events.
 
-> Note that this transaction is agnostic about the actual event being transmitted and only describes the general requirements on sending or receiving an event. Event specific requirements are specified in the corresponding event specific transaction.
-
 ### 2:3.X9.2 Actors Roles
 
 **Table 2:3.X9.2-1: Actor Roles**
@@ -54,7 +52,7 @@ The Manager shall support [content sharing](https://build.fhir.org/ig/HL7/fhirca
 
 The Subscriber shall validate that the event specific contexts, `updates` and `select` conform to the corresponding resource definition, and return an error if they don't.
 
-The Subscriber shall handle events `[FHIR resource]-open` | `update` | `select` | `close` that it supports. The required supported events are defined in the [Actor Description](volume-1.html#1xx11-actors-description-and-actor-profile-requirements).
+The Subscriber shall handle events `[FHIR resource]-open` | `update` | `select` | `close` that it supports. The event handling requirements are defined in the Actor Description for each actor per profile.
 
 If the Subscriber accepted  the event initially (i.e. return `202` Accepted) and later decided to refuse the context or failed to process the event, then it shall send a `syncerror` event back to the Manager using Send SyncError Event [RAD-X10](rad-10.html).
 
