@@ -552,7 +552,7 @@ The Hub shall provide basic functionalities to all events it received, including
 
 The Hub shall NOT be limited to the events prescribed in this profile to support synchronizing applications in reporting sessions.
 
-The Hub shall support content sharing events.
+The Hub shall support [content sharing](https://build.fhir.org/ig/HL7/fhircast-docs/2-10-ContentSharing.html).
 
 ## 1:XX.2 RTC-IMR Actor Options
 
