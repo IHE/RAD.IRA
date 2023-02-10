@@ -45,15 +45,6 @@ The `event.context` shall conform to [DiagnosticReport update Event](https://bui
 
 The `event`.`context.versionId` shall be the newest version ID of the report context known to the Sender.
 
-The Sender shall support one or more of the following FHIR resources for content sharing:
-
-| FHIR Resource | Usage | Conformance |
-| -- | -- | -- |
-| [DocumentReference](https://www.hl7.org/fhir/documentreference.html) | Reference to any kind of document. For example, JSON Structured Report | RTC-IMR-DocumentReference |
-{: .grid}
-
-THe Sender may support other FHIR resources for content sharing.
-
 The Sender should include all contents and referenced resources as inline [contained resources](https://www.hl7.org/fhir/references.html#contained) if possible. This is preferred as most resources in the event are transient. However, in some situations, it is beneficial to reference other resources by reference instead of by value. In this case, the Sender shall specify the `entry.fullurl` with the uri value that the full content can be retrieved.
 
 > Note: The eventual Subscriber may or may not have permission to access the referenced resources that are not inline.
@@ -75,17 +66,13 @@ The Manager shall apply all actions in the request *atomically*. i.e. The Manage
 
 > Note: The Manager is only required to apply the actions generically for any resource. For example, identify if the same resource already exist, and add, update or remove the resource as a whole accordingly. There is no requirement for the Manager to understand the deep structure of each resource and perform any validation or application logic at the resource level.
 
-If the Manager accepted the request but later failed to apply all actions, then it shall send a `syncerror` event using Send SyncError Event [RAD-X9](rad-x9.html) transaction.
-
 If the Manager successfully apply all actions in the request, it shall assign a new version ID to the `report` anchor context.
-
-The Manager shall broadcast the event to all subscribers that subscribed to the received event using Send Context Event [RAD-X9](rad-x9.html).
 
 #### 2:3.X5.4.2 Update Report Content Response Message
 
 ##### 2:3.X5.4.2.1 Trigger Events
 
-The Manager finished process the Update Report Content request.
+The Manager finishes processing the Update Report Content request.
 
 ##### 2:3.X5.4.2.2 Message Semantics
 
