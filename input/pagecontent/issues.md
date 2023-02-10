@@ -6,6 +6,8 @@
 
 * Q: Should simplified JSON representation of DICOM SR be supported as a payload for content sharing?<br><br>DICOM SR with TID 1500 is used in the IHE AIR profile to capture various kind of evidence. In DICOM, [Supp219](https://www.dicomstandard.org/News-dir/ftsup/docs/sups/Sup219.pdf) defines a simplified JSON representation of structured report, with the intention that this is a simpler format to generate and hence can be used as an output from AI models.
 
+* Q: Should SMART on FHIR application launch be available as a named option?
+
 #### Closed Issues
 
 * Q: Should [SMART-web-messaging](https://build.fhir.org/ig/HL7/smart-web-messaging/index.html) be included in this profile?<br><br>A: No.<br>SMART-web-messaging currently is limited to web applications running in the same browser only. If there are demand for this integration, a separate profile can be created so that implementations can document what methods they support.
