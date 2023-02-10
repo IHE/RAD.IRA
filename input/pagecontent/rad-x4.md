@@ -57,7 +57,7 @@ The Manager shall validate the request as follow:
 * if `event`.`hub.topic` is not a known session, then return an error
 
 If the Manager accepts the request, then
-- Per FHIRcast (TODO: add reference), the Manager shall set the `current context` to the last context that was initiated by a `[FHIR resource]-open` event and has not been terminated by a corresponding `[FHIR resource]-close` event. If there is no such context, then the Manager shall set the `current context` to *empty*.
+- Per FHIRcast [Section 2.9.2 Get Current Context Response](https://build.fhir.org/ig/HL7/fhircast-docs/2-9-GetCurrentContext.html#get-current-context-response), the Manager shall set the `current context` to the newest context that was initiated by a `[FHIR resource]-open` event and has not been terminated by a corresponding `[FHIR resource]-close` event. If there is no such context, then the Manager shall set the `current context` to *empty*.
 - The Manager shall delete the `report` context of the received `DiagnosticReport-close` event, as well as all associated context and content.
 
 #### 2:3.X4.4.2 Close Report Context Response Message
