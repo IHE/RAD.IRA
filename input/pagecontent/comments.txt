@@ -31,3 +31,8 @@
     - Note: may be overburden with too many requirements
 - TODO: In X1, note about subscribe to your own events to get confirmation in case of asynchronous Hub responses.
 - TODO: Require the Report Creator share report status update
+- TODO: Change all transactions to use the new set of actors
+- TODO: Open issue: can a Subscriber participate with multiple Hubs?
+- TODO: For all transactions, change to reporting session if topic is used.
+- TODO: Add concept section regarding the use case of communicating with multiple Hubs - for different sessions.
+- TODO: Change 'topic' to 'session'
