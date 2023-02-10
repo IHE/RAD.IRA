@@ -8,7 +8,7 @@ This transaction is used to connect to a notification channel to receive synchro
 
 | Role | Description | Actor(s) |
 |------|-------------|----------|
-| Sender | Initiate a websocket notification channel request | Image Display<br>Report Creator<br>Worklist Client<br>Evidence Creator<br>Watcher |
+| Subscriber | Initiate a websocket notification channel request | Image Display<br>Report Creator<br>Worklist Client<br>Evidence Creator<br>Watcher |
 | Manager | Establish a websocket notification channel and manage connection | Hub |
 {: .grid}
 
@@ -29,19 +29,19 @@ This transaction is used to connect to a notification channel to receive synchro
 **Figure 2:3.X2.4-1: Interaction Diagram**
 
 #### 2:3.X2.4.1 Subscription Request Message
-The Sender sends a websocket connection request to the Manager. The Sender shall support sending such messages to more than one Manager.
+The Subscriber sends a websocket connection request to the Manager. The Subscriber shall support sending such messages to more than one Manager.
 
-The Manager shall support handling such messages from more than one Sender. 
+The Manager shall support handling such messages from more than one Subscriber. 
 
 ##### 2:3.X2.4.1.1 Trigger Events
 
-The Sender receives a successful Subscribe Reporting Session [RAD-X1] response.
+The Subscriber receives a successful Subscribe Reporting Session [RAD-X1] response.
 
 ##### 2:3.X2.4.1.2 Message Semantics
 
-This message is a websocket connection request. The Sender is the Client. The Manager is the Server.
+This message is a websocket connection request. The Subscriber is the Client. The Manager is the Server.
 
-The Sender shall send a websocket request to the `hub.channel.endpoint` websocket WSS URL received from the successful Subscribe Reporting Session [RAD-X1] response. 
+The Subscriber shall send a websocket request to the `hub.channel.endpoint` websocket WSS URL received from the successful Subscribe Reporting Session [RAD-X1] response. 
 
 ##### 2:3.X2.4.1.3 Expected Actions
 
@@ -51,7 +51,7 @@ The Manager shall return an error if the websocket identifier in the WSS URL doe
 
 The Manager shall keep the websocket connection open for use as a notification channel.
 
-The Manager shall use the opened websocket connection when sending subsequent events to the Sender.
+The Manager shall use the opened websocket connection when sending subsequent events to the Subscriber.
 
 #### 2:3.X2.4.2 Subscription Response Message
 
@@ -61,11 +61,11 @@ The Manager processed the websocket connection request.
 
 ##### 2:3.X2.4.2.2 Message Semantics
 
-This is a [FHIRcast Subscription Confirmation](https://build.fhir.org/ig/HL7/fhircast-docs/2-4-Subscribing.html#subscription-confirmation). The Sender is the FHIRcast Subscriber. The Manager is the FHIRcast Hub.
+This is a [FHIRcast Subscription Confirmation](https://build.fhir.org/ig/HL7/fhircast-docs/2-4-Subscribing.html#subscription-confirmation). The Subscriber is the FHIRcast Subscriber. The Manager is the FHIRcast Hub.
 
 ##### 2:3.X2.4.2.3 Expected Actions
 
-The Sender will find the duration of the websocket lease in the `hub.lease_seconds` attribute of this message. When the lease expires, the Manager may drop the connection. It is the responsibility of the Sender to renew the subscription as needed before it expires using Subscribe Reporting Session [RAD-X1].
+The Subscriber will find the duration of the websocket lease in the `hub.lease_seconds` attribute of this message. When the lease expires, the Manager may drop the connection. It is the responsibility of the Subscriber to renew the subscription as needed before it expires using Subscribe Reporting Session [RAD-X1].
 
 ### 2:3.X2.5 Security Considerations
 

@@ -10,7 +10,7 @@ The roles in this transaction are defined in the following table and may be play
 
 | Role | Description | Actor(s) |
 |------|-------------|----------|
-| Sender | Unsubscribes a session | Image Display<br>Report Creator<br>Worklist Client<br>Evidence Creator<br>Watcher |
+| Subscriber | Unsubscribes a session | Image Display<br>Report Creator<br>Worklist Client<br>Evidence Creator<br>Watcher |
 | Manager | Manages unsubscription requests | Hub |
 {: .grid}
 
@@ -30,13 +30,13 @@ The roles in this transaction are defined in the following table and may be play
 
 #### 2:3.X7.4.1 Unsubscribe Session Request Message
 
-The Sender sends a unsubscribe request to the Manager. The Sender shall support sending such messages to more than one Manager.
+The Subscriber sends a unsubscribe request to the Manager. The Subscriber shall support sending such messages to more than one Manager.
 
-The Manager shall support handling such messages from more than one Sender. 
+The Manager shall support handling such messages from more than one Subscriber. 
 
 ##### 2:3.X7.4.1.1 Trigger Events
 
-The Sender no longer wants to receive event notification on a given session from Manager.
+The Subscriber no longer wants to receive event notification on a given session from Manager.
 
 ##### 2:3.X7.4.1.2 Message Semantics
 
@@ -46,13 +46,13 @@ This message is a [FHIRcast Unsubscription Request](https://build.fhir.org/ig/HL
 
 The Manager shall receive and validate the message.
 
-The Manager shall remove the Sender and its subscribed events from the session.
+The Manager shall remove the Subscriber and its subscribed events from the session.
 
 The Manager shall terminate the websocket connection and delete the websocket identifier. The Manager shall not reuse the websocket identifier for other future subscriptions.
 
 #### 2:3.X7.4.2 Unsubscribe Session Response Message
 
-The Manager sends a response message describing the message outcome to the Sender.
+The Manager sends a response message describing the message outcome to the Subscriber.
 
 ##### 2:3.X7.4.2.1 Trigger Events
 
@@ -68,19 +68,19 @@ The Manager shall return `400` Bad Request error if:
 - the `hub.channel.type` is not `websocket`
 - the `hub.topic` is empty
 - the `hub.mode` is `unsubscribe` and there is no `hub.channel.endpoint` or its value is empty
-- the `hub.channel.endpoint` does not match the websocket associated to the Sender
+- the `hub.channel.endpoint` does not match the websocket associated to the Subscriber
 
-The HTTP body of the response shall consist of a JSON object containing an element name `hub.channel.endpoint` and a value for the WSS URL that is associated to the Sender.
+The HTTP body of the response shall consist of a JSON object containing an element name `hub.channel.endpoint` and a value for the WSS URL that is associated to the Subscriber.
 
 ##### 2:3.X7.4.2.3 Expected Actions
 
-If the HTTP response code is 4xx or 5xx, then the Sender may adjust the request and retry.
+If the HTTP response code is 4xx or 5xx, then the Subscriber may adjust the request and retry.
 
 ### Security Considerations
 
 See [RTC-IMR Security Considerations](volume-1.html#1xx5-rtc-imr-security-considerations)
 
-The Sender which is a synchronizing application should authenticate and authorize the driving application before it accepts the provided `hub.topic` and `hub.url` and sends this request.
+The Subscriber which is a synchronizing application should authenticate and authorize the driving application before it accepts the provided `hub.topic` and `hub.url` and sends this request.
 
 #### Security Audit Considerations
 

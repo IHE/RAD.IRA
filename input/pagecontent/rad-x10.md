@@ -9,7 +9,7 @@ This transaction is used to send error events to all subscribers that subscribed
 | Role | Description | Actor(s) |
 |------|-------------|----------|
 | Subscriber | Sends error event | Image Display<br>Report Creator<br>Worklist Client<br>Evidence Creator<br>Watcher |
-| Manager | Sends or generate error event to subscribers | Hub |
+| Manager | Sends or generates error event and notifies Subscribers | Hub |
 {: .grid}
 
 ### 2:3.X10.3 Referenced Standards

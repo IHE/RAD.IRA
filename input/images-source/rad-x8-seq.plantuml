@@ -2,12 +2,12 @@
 
 hide footbox
 
-participant "Requester" as Requester
+participant "Subscriber" as Subscriber
 participant "Manager" as Manager
 
-Requester->Manager: Get Current Context Request
+Subscriber->Manager: Get Current Context Request
 activate Manager
-Manager-->Requester: Get Current Context Response
+Manager-->Subscriber: Get Current Context Response
 deactivate Manager
 
 @enduml

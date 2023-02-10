@@ -2,12 +2,12 @@
 
 hide footbox
 
-participant "Sender" as Sender
+participant "Subscriber" as Subscriber
 participant "Manager" as Manager
 
-Sender->Manager: Unsubscribe Session Request
+Subscriber->Manager: Unsubscribe Session Request
 activate Manager
-Manager-->Sender: Unsubscribe Session Response
+Manager-->Subscriber: Unsubscribe Session Response
 deactivate Manager
 
 @enduml

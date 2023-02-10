@@ -3,11 +3,11 @@
 hide footbox
 
 participant "Manager" as Manager
-participant "Receiver" as Receiver
+participant "Subscriber" as Subscriber
 
-Manager->Receiver: Send SyncError Request
-activate Receiver
-Receiver-->Manager: Send SyncError Response
-deactivate Receiver
+Manager->Subscriber: Error Notification
+activate Subscriber
+Subscriber-->Manager: Error Notification Response
+deactivate Subscriber
 
 @enduml

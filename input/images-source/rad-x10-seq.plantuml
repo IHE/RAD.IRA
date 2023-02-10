@@ -2,12 +2,12 @@
 
 hide footbox
 
-participant "Sender" as Sender
+participant "Subscriber" as Subscriber
 participant "Manager" as Manager
 
-Sender->Manager: Report SyncError Request
+Subscriber->Manager: Send SyncError Request
 activate Manager
-Manager-->Sender: Report SyncError Response
+Manager-->Subscriber: Send SyncError Response
 deactivate Manager
 
 @enduml

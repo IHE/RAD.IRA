@@ -2,12 +2,12 @@
 
 hide footbox
 
-participant "Sender" as Sender
+participant "Subscriber" as Subscriber
 participant "Manager" as Manager
 
-Sender->Manager: Connect to Websocket Request
+Subscriber->Manager: Connect to Websocket Request
 activate Manager
-Manager-->Sender: Connect to Websocket Response
+Manager-->Subscriber: Connect to Websocket Response
 deactivate Manager
 
 @enduml
