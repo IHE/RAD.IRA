@@ -8,7 +8,7 @@ This transaction is used to retrieve the current context in the reporting sessio
 
 | Role | Description | Actor(s) |
 |------|-------------|----------|
-| Requester | Retrieves current context in a reporting session | Image Display<br>Report Creator<br>Worklist Client<br>Evidence Creator<br>Watcher |
+| Subscriber | Retrieves current context in a reporting session | Image Display<br>Report Creator<br>Worklist Client<br>Evidence Creator<br>Watcher |
 | Manager | Returns current context | Hub |
 {: .grid}
 
@@ -27,45 +27,46 @@ This transaction is used to retrieve the current context in the reporting sessio
 **Figure 2:3.X8.4-1: Interaction Diagram**
 
 #### 2:3.X8.4.1 Get Current Context Request Message
-The Requester retrieves the current context available in the Manager. The Requester shall support sending such messages to more than one Manager.
+The Subscriber retrieves the current context available in the Manager. The Subscriber shall support sending such messages to more than one Manager.
 
-The Manager shall support handling such messages from more than one Requester. 
+The Manager shall support handling such messages from more than one Subscriber. 
 
 ##### 2:3.X8.4.1.1 Trigger Events
 
-The Requester successfully subscribed to a topic and wanted to retrieve the current context.
-
-The Requester detected that it missed some events according to the most recent event received and wanted to retrieve the current context. 
+The Subscriber uses this transaction when:
+- It successfully subscribed to a session and wants to retrieve the current context
+- It missed some events according to the most recent event received and wants to retrieve the current context
+- It received a `[FHIRresource-close]` event and wants to see if there are any interrupted context that should be resumed
 
 ##### 2:3.X8.4.1.2 Message Semantics
 
-This message is a [Get Current Context Request](https://build.fhir.org/ig/HL7/fhircast-docs/2-9-GetCurrentContext.html#get-current-context-request). The Requester is the FHIRcast Subscriber. The Manager is the FHIRcast Hub.
-
-The Requester shall send a HTTP GET request to the url `hub.url`/`topic`.
+This message is a [Get Current Context Request](https://build.fhir.org/ig/HL7/fhircast-docs/2-9-GetCurrentContext.html#get-current-context-request). The Subscriber is the FHIRcast Subscriber. The Manager is the FHIRcast Hub.
 
 ##### 2:3.X8.4.1.3 Expected Actions
 
-The Manager shall retrieve the current context and all associated contents associated to the `topic` in the request URL.
+The Manager shall validate if the `topic` specified in the request URL is a valid session.
+
+The Manager shall retrieve the current context and all associated contents correspond to the `topic` in the request URL.
 
 #### 2:3.X8.4.2 Get Current Context Response Message
 
 ##### 2:3.X8.4.2.1 Trigger Events
 
-The Manager retrieved the current context and all associated contents.
+The Manager retrieves the current context and all associated contents.
 
 ##### 2:3.X8.4.2.2 Message Semantics
 
-This message is a [Get Current Context Response](https://build.fhir.org/ig/HL7/fhircast-docs/2-9-GetCurrentContext.html#get-current-context-response). The Requester is the FHIRcast Subscriber. The Manager is the FHIRcast Hub.
-
-The Manager shall support content sharing and include all contents associated to current context in the response.
+This message is a [Get Current Context Response](https://build.fhir.org/ig/HL7/fhircast-docs/2-9-GetCurrentContext.html#get-current-context-response). The Subscriber is the FHIRcast Subscriber. The Manager is the FHIRcast Hub.
 
 ##### 2:3.X8.4.2.3 Expected Actions
 
-The Requester shall process the context as if it receives the `[FHIRresource]-open` event.
+The Subscriber shall process the context as if it receives the `[FHIRresource]-open` event with the same context.
 
-The Requester shall process the resources in the `content` bundle as if it receives the `[FHIRresource]-update` event.
+The Subscriber shall process the resources in the `content` bundle as if it receives the `[FHIRresource]-update` event with the same content updates.
 
-If the Requester failed to process the query response from the Manager, then it shall send a `syncerror` event back to the Manager using Send SyncError Event [RAD-X10](rad-10.html)
+If the content update references a resource that does not exist and the Subscriber supports the resource, then the Subscriber shall create the resource with the current content as specified in the received event.
+
+> Note: This is the case if the Subscriber missed a previous content update event in which the missing resource was added.
 
 ### 2:3.X8.5 Security Considerations
 
