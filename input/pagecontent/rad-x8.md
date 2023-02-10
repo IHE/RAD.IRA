@@ -48,6 +48,8 @@ The Manager shall validate if the `topic` specified in the request URL is a vali
 
 The Manager shall retrieve the current context and all associated contents correspond to the `topic` in the request URL.
 
+The Manager shall support content sharing and include the `content` key in the response. See [Content Sharing Support](https://build.fhir.org/ig/HL7/fhircast-docs/2-9-GetCurrentContext.html#content-sharing-support) for details.
+
 #### 2:3.X8.4.2 Get Current Context Response Message
 
 ##### 2:3.X8.4.2.1 Trigger Events
