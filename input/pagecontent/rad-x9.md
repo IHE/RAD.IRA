@@ -8,8 +8,8 @@ This transaction is used to send accepted events to all subscribers that subscri
 
 | Role | Description | Actor(s) |
 |------|-------------|----------|
-| Manager | Send accepted event to subscribers | Hub |
-| Subscriber | Receive synchronization events | Image Display<br>Report Creator<br>Worklist Client<br>Evidence Creator<br>Watcher |
+| Manager | Sends accepted event to Subscribers | Hub |
+| Subscriber | Receives notification events | Image Display<br>Report Creator<br>Worklist Client<br>Evidence Creator<br>Watcher |
 {: .grid}
 
 ### 2:3.X9.3 Referenced Standards
@@ -29,32 +29,29 @@ This transaction is used to send accepted events to all subscribers that subscri
 **Figure 2:3.X9.4-1: Interaction Diagram**
 
 #### 2:3.X9.4.1 Notification Message
-The Manager sends the received events via the established websocket connection to the corresponding Subscriber.
-
-The Manager shall support sending such messages to more than one Subscriber.
+The Manager sends the received notification events to Subscribers that subscribed to the received event. The Manager shall support sending such messages to more than one Subscriber.
 
 The Subscriber shall support handling such messages from more than one Manager. 
 
 ##### 2:3.X9.4.1.1 Trigger Events
 
-The Manager accepted a event from a Subscriber.
+The Manager accepts a notification event request.
 
 ##### 2:3.X9.4.1.2 Message Semantics
 
 This message is a [FHIRcast Event Notification Request](https://build.fhir.org/ig/HL7/fhircast-docs/2-5-EventNotification.html#event-notification-request) request. The Manager is the FHIRcast Hub. The Subscriber is the FHIRcast Subscriber.
 
-The Manager shall support [content sharing](https://build.fhir.org/ig/HL7/fhircast-docs/2-10-ContentSharing.html) in FHIRcast, specifically:
-- It shall assign and maintain an anchor context's `context.versionId` when processing the `[FHIR reousrce]-open` event. The `context.versionId` shall be unique within the topic.
-- It shall assign and maintain a new `context.versionId` for each subsequent anchor context's content received via the `[FHIR resource]-update` event.
-- It shall provide the new `context.versionId` along with the previous versionId as `context.priorVersionId` in the event
+The Manager shall send all events it received to Subscribers that subscribed to the event, including custom events.
+
+The Manager shall support [content sharing](https://build.fhir.org/ig/HL7/fhircast-docs/2-10-ContentSharing.html) in FHIRcast.
 
 ##### 2:3.X9.4.1.3 Expected Actions
 
-The Subscriber shall validate that the event specific contexts, `updates` and `select` conform to the corresponding resource definition, and return an error if they don't.
+The Subscriber shall validate that the event contexts, `updates` and `select` conform to the corresponding resource definition if known, and return an error if they don't.
 
 The Subscriber shall handle events `[FHIR resource]-open` | `update` | `select` | `close` that it supports. The event handling requirements are defined in the Actor Description for each actor per profile.
 
-If the Subscriber accepted  the event initially (i.e. return `202` Accepted) and later decided to refuse the context or failed to process the event, then it shall send a `syncerror` event back to the Manager using Send SyncError Event [RAD-X10](rad-10.html).
+If the Subscriber accepted the event initially (i.e. return `202` Accepted) and later decided to refuse the context or failed to process the event, then it shall send a `syncerror` event back to the Manager using Send SyncError Event [RAD-X10](rad-10.html).
 
 ##### 2:3.X9.4.1.3.1 Handling open events
 
@@ -100,17 +97,13 @@ The Subscriber shall delete the referenced context and all associated contents l
 
 ##### 2:3.X9.4.2.1 Trigger Events
 
-The Subscriber accepted or rejected the event received.
+The Subscriber processes the notification event received.
 
 ##### 2:3.X9.4.2.2 Message Semantics
 
 The message is a [FHIRcast Event Notification Response](https://build.fhir.org/ig/HL7/fhircast-docs/2-5-EventNotification.html#event-notification-response) request. The Subscriber is a FHIRcast Subscriber. The Manager is a FHIRcast Hub.
 
 The Subscriber shall send a confirmation message back to the Manager using the established websocket connection.
-
-The Subscriber shall include `id` and `status` parameters as defined in [Section 2.5.2 Event Notification Response](https://build.fhir.org/ig/HL7/fhircast-docs/2-5-EventNotification.html#event-notification-response) in the confirmation message.
-
-The `id` shall be the `id` from the corresponding received event.
 
 The `status` shall be one of the following:
 - `200` OK if the Subscriber successfully processed the event
@@ -122,6 +115,10 @@ The `status` shall be one of the following:
 ##### 2:3.X9.4.2.3 Expected Actions
 
 If the Manager receives an error confirmation message (i.e. `status` `4xx` or `5xx`) from at least one of the Subscribers, then the Manager shall send a `syncerror` event following [Send SyncError Event](rad-x10.html) to all subscribers that subscribed to the `syncerror` event.
+
+The Manager shall not change the current context in the session even if it receives an error confirmation message.
+
+> Note: The Manager sets the current context as a result of processing a `[FHIR resource]-open` event. Whether or not one or more of the Subscribers failed to apply the context change does not affect the context managed by the Manager.
 
 ### 2:3.X9.5 Security Considerations
 
