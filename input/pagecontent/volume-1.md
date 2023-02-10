@@ -493,6 +493,7 @@ If the Evidence Creator is grouped with a Content Creator to publish content eve
 
 - `ImagingSelection`: image / series references and simple annotations such as bounding boxes
 - `Observation`: measurements and annotations
+- `DocumentReference`:  results from IHE AI Results Profile using the [JSON Representation of DICOM SR](https://www.dicomstandard.org/News-dir/ftsup/docs/sups/Sup219.pdf), or other documents |
 
 #### 1:XX.1.1.5 Content Creator
 
