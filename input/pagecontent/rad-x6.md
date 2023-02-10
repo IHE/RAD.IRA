@@ -1,6 +1,6 @@
 ### 2:3.X6.1 Scope
 
-This transaction is used to select report context and content that all synchronizing applications will be synchronized to.
+This transaction is used to select report context and content.
 
 ### 2:3.X6.2 Actors Roles
 
@@ -8,8 +8,8 @@ This transaction is used to select report context and content that all synchroni
 
 | Role | Description | Actor(s) |
 |------|-------------|----------|
-| Sender | Select report content(s) | Content Creator |
-| Manager | Receives and maintains selected contents in the context<br>and forward events to other Receivers | Hub |
+| Sender | Selects report content(s) | Content Creator |
+| Manager | Manages contents in the context that are selected and notifies Subscribers | Hub |
 {: .grid}
 
 ### 2:3.X6.3 Referenced Standards
@@ -35,7 +35,9 @@ The Manager shall support handling such messages from more than one Sender.
 
 ##### 2:3.X6.4.1.1 Trigger Events
 
-The Sender identifies some report context / content are selected automatically or manually by a user.
+The Sender determines some report context / content are selected automatically or manually by a user, and coordinates the selection with other Subscribers.
+
+The Sender determines that the selected content are no longer required and reset the selection.
 
 ##### 2:3.X6.4.1.2 Message Semantics
 
@@ -47,7 +49,7 @@ The `event`.`context.versionId` shall be the newest version ID of the report con
 
 The Sender shall include all selected resources in the event, including resources that were selected previously and remain selected for this event.
 
-> Note: This is necessary because there is an implicit unselect of any previously selected resources for each new `DiagnosticReport-select` event received.
+> Note: This is necessary because there is an implicit unselect of any previously selected resources for each new `DiagnosticReport-select` event received. See [DiagnosticReport select Event Workflow](https://build.fhir.org/ig/HL7/fhircast-docs/3-6-4-diagnosticreport-select.html#workflow) for details.
 
 If the Sender retries the same request due to a timeout, then the Sender shall use the same `event.id` such that the Manager can detect if it is a duplicate message.
 
@@ -72,7 +74,7 @@ The Manager shall ignore any selected resources in the request that are not know
 
 ##### 2:3.X6.4.2.1 Trigger Events
 
-The Manager finished process the Select Report Content request.
+The Manager finishes processing the Select Report Content request.
 
 ##### 2:3.X6.4.2.2 Message Semantics
 
