@@ -2,11 +2,20 @@
 
 #### Open Issues
 
+* Q: Are there any other context sharing use cases related to reporting that are not covered in this profile?<br><br>This profile covers the following use cases:
+    * Two applications context sharing (e.g. between PACS (Image Display) and Reporting System (Report Creator)
+    * Multiple applications context sharing (e.g. Worklist (Worklist Client) drives PACS (Image Display) and Reporting System (Report Creator), and PACS in turn drives a Specialty App (Evidence Creator))
+    * Content sharing in additional to context sharing (e.g. share measurement and image references)
+    * Interruption and Resume
+    * Error handling from any synchronizing application
+      
 * Q: Should the Evidence Creator actor be required to support content sharing and update the context with evidence data it generated?<br><br>An Evidence Creator supports creating evidence data such as measurements, annotations, etc. However, it may not support capturing the evidence using FHIR resources and not able to share them back to the reporting session using Update Request Content [RAD-X5]. Therefore there may be two levels of support on this profile by an Evidence Creator: (1) as a consumer only, (2) can also publish evidence as FHIR resources and share back to the reporting session.
 
 * Q: Should simplified JSON representation of DICOM SR be supported as a payload for content sharing?<br><br>DICOM SR with TID 1500 is used in the IHE AIR profile to capture various kind of evidence. In DICOM, [Supp219](https://www.dicomstandard.org/News-dir/ftsup/docs/sups/Sup219.pdf) defines a simplified JSON representation of structured report, with the intention that this is a simpler format to generate and hence can be used as an output from AI models.
 
 * Q: Should SMART on FHIR application launch be available as a named option?
+
+* Q: If a Subscriber performs the event asynchronously and return `202 Accepted`, should there be a way to notify the Manager if the processing eventually completed successfully?<br><br>FHIRcast does not specify a method to notify the Hub about successful processing. Error can be communicated using syncerror.
 
 #### Closed Issues
 
@@ -16,4 +25,6 @@
 
 * Q: Should Evidence Creator be required to support Initiate Reporting Session [RAD-X1]?<br><br>Often an Evidence Creator is invoked on demand by an Image Display. As a result, it is unlikely that an Evidence Creator is the actor that initiates a reporting session.<br><br>A: No. It is not expected that an Evidence Creator will start a new session and drives other applications.
 
-* Q: Should the application that initiated the report context be the one that terminate the report context?<br><br>Is it valid for one application to initiate the report context and then another application to terminate the same report context? In this case, there is some implicit coordination between these two applications (e.g. by configuration) that is outside the scope of this profile.<br><br>No. FHIRcast stated that the app that initiates a new context may not be the app that terminates the same context.
+* Q: Should the application that initiated the report context be the one that terminate the report context?<br><br>Is it valid for one application to initiate the report context and then another application to terminate the same report context? In this case, there is some implicit coordination between these two applications (e.g. by configuration) that is outside the scope of this profile.<br><br>A: No. FHIRcast stated that the app that initiates a new context may not be the app that terminates the same context.
+
+* Q: Can the Hub provide additional business logic to determine which context is the current context?<br><br>A: FHIRcast stated that the current context is the context in which there is a `*-open` event and there is no corresponding `*-close` event (Section [2.9.2 Get Current Context Response](https://build.fhir.org/ig/HL7/fhircast-docs/2-9-GetCurrentContext.html#get-current-context-response)). The intention is to keep the Hub as simple as possible. Also since it does not have the business logic exists in the synchronized applications, it is more appropriate for the different Subscribers to change context if desired.
