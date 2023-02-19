@@ -154,6 +154,8 @@ TODO: types of errors for each check, and use the table format
 * If the context does not conform to the [SyncError Context](https://build.fhir.org/ig/HL7/fhircast-docs/3-2-1-syncerror.html#context), then return an error
 * if `event`.`hub.topic` is not a known session, then return an error
 
+The Manager shall process the `SyncError` event the same as any other event following the [Notification Message](#23x941-notification-message) in this transaction.
+
 #### 2:3.X9.4.4 Notify Error Response Message
 
 ##### 2:3.X9.4.4.1 Trigger Events
