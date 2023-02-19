@@ -1,6 +1,6 @@
 ### 2:3.X10.1 Scope
 
-This transaction is used to send error events to all subscribers that subscribed to the events.
+This transaction is used to derive error events and send to all subscribers that subscribed to the events.
 
 ### 2:3.X10.2 Actors Roles
 
@@ -8,8 +8,8 @@ This transaction is used to send error events to all subscribers that subscribed
 
 | Role | Description | Actor(s) |
 |------|-------------|----------|
-| Subscriber | Sends error event | Image Display<br>Report Creator<br>Worklist Client<br>Evidence Creator<br>Watcher |
-| Manager | Sends or generates error event and notifies Subscribers | Hub |
+| Subscriber | Receives and responses to error event | Image Display<br>Report Creator<br>Worklist Client<br>Evidence Creator<br>Watcher |
+| Manager | Generates error event and notifies Subscribers | Hub |
 {: .grid}
 
 ### 2:3.X10.3 Referenced Standards
@@ -28,125 +28,60 @@ This transaction is used to send error events to all subscribers that subscribed
 
 <div style="clear: left"/>
 
-<div>
-{%include rad-x10-manager-receiver-seq.svg%}
-</div>
-
-<div style="clear: left"/>
-
 **Figure 2:3.X10.4-1: Interaction Diagram**
 
-#### 2:3.X10.4.1 Report SyncError Request Message
-The Subscriber sends an error event to the Manager indicated that it failed to process an accepted event. The Subscriber shall support sending such messages to more than one Manager.
+#### 2:3.X10.4.1 Error Notification Message
 
-The Manager shall support handling such messages from more than one Subscriber. 
+This pair of messages is used for SyncError originated by a Manager.
+
+The Manager sends an error event to Subscribers indicated that it detected an error. Manager shall support sending such messages to more than one Subscribers.
+
+The Subscriber shall support handling such messages from more than one Manager. 
 
 ##### 2:3.X10.4.1.1 Trigger Events
 
-The Subscriber failed to process an accepted event (e.g. The Subscriber accepted an event but failed to follow context within a configured timeout after reception).
+The Manager received a 4xx or 5xx error response from a Subscriber when executing the Send Context Event [RAD-X9](rad-x9.html) transaction.
+
+The Manager did not receive a `2xx` response within a predetermined time frame from a Subscriber after the Manager sent a context event. 
+
+The Manager initially responded with a `202` Accepted when received a context or content change, but later rejected the request.
+
+The Manager detected a websocket connection issue with a Subscriber.
 
 ##### 2:3.X10.4.1.2 Message Semantics
 
-This message is a [FHIRcast Request Context Change](https://build.fhir.org/ig/HL7/fhircast-docs/2-6-RequestContextChange.html#request-context-change-body) request. The Sender is the FHIRcast Subscriber. The Manager is the FHIRcast Hub.
+This message is a [FHIRcast Event Notification Request](https://build.fhir.org/ig/HL7/fhircast-docs/2-5-EventNotification.html#event-notification-request) request. The Manager is the FHIRcast Hub. The Subscriber is the FHIRcast Subscriber.
 
 The `event.context` shall conform to [SyncError Context](https://build.fhir.org/ig/HL7/fhircast-docs/3-2-1-syncerror.html#context).
 
-The `issue[0].severity` of the `operationoutcome` context shall be set to `warning`.
-
-If the Subscriber retries the same request due to a timeout, then the Subscriber shall use the same `event.id` such that the Manager can detect if it is a duplicate message.
-
-If the Subscriber retries the same request due to an error response from the Manager, then the Subscriber shall assign a new `event.id` to indicate that it is a new message.
-
-##### 2:3.X10.4.1.3 Expected Actions
-
-The Manager shall validate the request as follow:
-
-* If `timestamp`, `id` or `event` are not set, then return an error
-* If `event.context` does not include `operationoutcome`, then return an error
-* If the context does not conform to the [SyncError Context](https://build.fhir.org/ig/HL7/fhircast-docs/3-2-1-syncerror.html#context), then return an error
-* if `event`.`hub.topic` is not a known session, then return an error
-
-The Manager shall broadcast the event to all subscribers that subscribed to the received event using Send Context Event [RAD-X9](rad-x9.html).
-
-#### 2:3.X10.4.2 Report SyncError Response Message
-
-##### 2:3.X10.4.2.1 Trigger Events
-
-The Manager finished processing the Report SyncError request.
-
-##### 2:3.X10.4.2.2 Message Semantics
-
-This message is a [FHIRcast Request Context Change]() response. The Sender is the FHIRcast Subscriber. The Manager is the FHIRcast Hub.
-
-##### 2:3.X10.4.2.3 Expected Actions
-
-If the response is an error, then the Subscriber may consider retrying the request.
-
-#### 2:3.X10.4.3 Send SyncError Request Message
-
-##### 2:3.X10.4.3.1 Trigger Events
-
-The Manager received a SyncError event from a Subscriber.
-
-The Manager received a 4xx or 5xx error response from a Receiver when executing the Send Context Event [RAD-X9](rad-x9.html) transaction.
-
-The Manager did not receive a `2xx` response within a predetermined time frame from a Receiver after the Manager sent a context event. 
-
-The Manager initially responded with a `202` Accepted when received a context or content change via Initiate Report Context [RAD-X3](rad-x3.html), Terminate Report Context [RAD-X4](rad-x4.html), Update Report Content [RAX-X5](rad-x5.html) or Select Report Content [RAD-X6](rad-x6.html), but later rejected the request.
-
-The Manager detected a websocket connection issue with a Receiver.
-
-##### 2:3.X10.4.3.2 Message Semantics
-
-This message is a websocket request. The Manager is the User Agent. The Receiver is the Origin Server.
-
-The Manager shall initiate a `syncerror` event in the following situations:
-- Event triggered errors
-    - Received a `4xx` or `5xx` error response from a Receiver when executing the Send Context Event [RAD-X9](rad-x9.html) transaction
-    - Did not receive a `200` OK or `202` Accepted response within a predetermined time frame from a Receiver after it sent a context event
-- Non-Event Triggered errors
-    - Detected a websocket connection issue with a Receiver
-
-The Manager shall send a websocket request to all Receivers subscribed to the `syncerror` event.
-
-The body of the request shall have the attributes according to [Section 2.6.1 Request Context Change body](https://build.fhir.org/ig/HL7/fhircast-docs/2-6-RequestContextChange.html#request-context-change-body).
-
-The `event.context` shall conform to [SyncError Context](https://build.fhir.org/ig/HL7/fhircast-docs/3-2-1-syncerror.html#context).
-
-The `issue[0].severity` of the `operationoutcome` context shall be set to `information`.
+Per FHIRcast, the `issue[0].severity` of the `operationoutcome` context will be set to `information`.
 
 For `syncerror` initiated by the Manager, the Manager shall set the `operationoutcome` `issue[0].details` as follow:
 - `issue[0].details.coding[0].code` shall be the `event.id` of the event that triggered the error, or a generated ID for non-event triggered errors
-- `issue[0].details.coding[1].code` shall be the `event`.`hub.event` of the event that triggered the error, or `synncerror` for non-event triggered errors
-- `issue[0].details.coding[2].code` shall be the Receiver's `subscriber.name`
+- `issue[0].details.coding[1].code` shall be the `event`.`hub.event` of the event that triggered the error, or `syncerror` for non-event triggered errors
+- `issue[0].details.coding[2].code` shall be the `subscriber.name` of the Subscriber that originated either the syncerror, or the event that triggered the error.
 
-If the Manager initiated the `syncerror` event because it initially accepted the context or content change request (i.e. responded with a `202` Accepted respond) but later rejected the request, then the Manager shall send the `syncerror` event only to the original requesting Subscriber. 
+If the Manager initiated the `syncerror` event because it initially accepted the context or content change request (i.e. responded with a `202` Accepted respond) but later rejected the request, then the Manager shall send the `syncerror` event only to the original requesting Subscriber.
 
-If the Manager initiated the `syncerror` event because it detected a websocket connection issue with the Receiver, then the Manager shall unsubscribe the Receiver and drop the websocket connection.
+##### 2:3.X10.4.1.3 Expected Actions
 
-##### 2:3.X10.4.3.3 Expected Actions
+The Subscriber will handle the error according to its business logic. For example, display an error message to the user, or close the context.
 
-The Receiver may handle the error according to its business logic. For example, display an error message to the user, or close the context.
+Since the `event.id` is an opaque ID, the Subscriber may consider finding the corresponding `contexts` that match the `event.id` in `issue[0].details.coding[0].code` and use them in the error handling logic.
 
-Since the `event.id` is an opaque ID, the Receiver may consider finding the corresponding `contexts` that match the `event.id` in `issue[0].details.coding[0].code` and use them in the error handling logic.
+#### 2:3.X10.4.2 Error Notification Response Message
 
-#### 2:3.X10.4.4 Send SyncError Response Message
+##### 2:3.X10.4.2.1 Trigger Events
 
-##### 2:3.X10.4.4.1 Trigger Events
+The Subscriber processes the error notification received.
 
-The Receiver accepted or rejected the event received.
+##### 2:3.X10.4.2.2 Message Semantics
 
-##### 2:3.X10.4.4.2 Message Semantics
+The message is a [FHIRcast Event Notification Response](https://build.fhir.org/ig/HL7/fhircast-docs/2-5-EventNotification.html#event-notification-response) request. The Subscriber is a FHIRcast Subscriber. The Manager is a FHIRcast Hub.
 
-The Receiver shall send a confirmation message back to the Manager using the established websocket connection.
+The Subscriber shall send a confirmation message back to the Manager using the established websocket connection.
 
-The Receiver shall include `id` and `status` parameters as defined in [Section 2.5.2 Event Notification Response](https://build.fhir.org/ig/HL7/fhircast-docs/2-5-EventNotification.html#event-notification-response) in the confirmation message.
-
-The `id` shall be the `id` from the corresponding received event.
-
-The `status` shall be `200` OK if the Receiver successfully processed the event.
-
-##### 2:3.X10.4.4.3 Expected Actions
+##### 2:3.X10.4.2.3 Expected Actions
 
 The Manager has no further required action.
 
