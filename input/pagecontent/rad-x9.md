@@ -1,6 +1,6 @@
 ### 2:3.X9.1 Scope
 
-This transaction is used to send accepted events to all subscribers that subscribed to the events.
+This transaction is used to send notification events to subscribers.
 
 ### 2:3.X9.2 Actors Roles
 
@@ -8,7 +8,7 @@ This transaction is used to send accepted events to all subscribers that subscri
 
 | Role | Description | Actor(s) |
 |------|-------------|----------|
-| Manager | Sends accepted event to Subscribers | Hub |
+| Manager | Sends notification event to Subscribers | Hub |
 | Subscriber | Receives notification events | Image Display<br>Report Creator<br>Worklist Client<br>Evidence Creator<br>Watcher |
 {: .grid}
 
@@ -29,39 +29,38 @@ This transaction is used to send accepted events to all subscribers that subscri
 **Figure 2:3.X9.4-1: Interaction Diagram**
 
 #### 2:3.X9.4.1 Notification Message
-The Manager sends the received notification events to Subscribers that subscribed to the received event. The Manager shall support sending such messages to more than one Subscriber.
+The Manager sends the received notification events to Subscribers that listed this event type in their subscription. The Manager shall support sending such messages to more than one Subscriber.
 
 The Subscriber shall support handling such messages from more than one Manager. 
 
 ##### 2:3.X9.4.1.1 Trigger Events
 
-The Manager accepts a notification event request.
+The Manager accepts a notification event request and this Subscriber has listed this event type in its subscription.
 
 ##### 2:3.X9.4.1.2 Message Semantics
 
 This message is a [FHIRcast Event Notification Request](https://build.fhir.org/ig/HL7/fhircast-docs/2-5-EventNotification.html#event-notification-request) request. The Manager is the FHIRcast Hub. The Subscriber is the FHIRcast Subscriber.
 
-The Manager shall send all events it received to Subscribers that subscribed to the event, including custom events.
-
-The Manager shall support [content sharing](https://build.fhir.org/ig/HL7/fhircast-docs/2-10-ContentSharing.html) in FHIRcast.
+Since the Manager is required to support FHIRcast [content sharing](https://build.fhir.org/ig/HL7/fhircast-docs/2-10-ContentSharing.html), it will need to manage the version ID in the event. TODO: Rework. Look at #3.
 
 ##### 2:3.X9.4.1.3 Expected Actions
 
-The Subscriber shall validate that the event contexts, `updates` and `select` conform to the corresponding resource definition if known, and return an error if they don't.
+The Subscriber may validate the received event according to its business logic. If the Subscriber rejects the event, then it shall notify the Manager about the error.
 
 The Subscriber shall handle events `[FHIR resource]-open` | `update` | `select` | `close` that it supports. The event handling requirements are defined in the Actor Description for each actor per profile.
 
 If the Subscriber accepted the event initially (i.e. return `202` Accepted) and later decided to refuse the context or failed to process the event, then it shall send a `syncerror` event back to the Manager using Send SyncError Event [RAD-X10](rad-10.html).
 
+TODO: See if stating parsing vs processing and handle response and error are handled.
+
 ##### 2:3.X9.4.1.3.1 Handling open events
 
-Upon receiving a `[FHIR resource]-open` event, the Subscriber shall *open* the corresponding `event.context` according to its application logic.
+Upon receiving a `[FHIR resource]-open` event, the Subscriber will *open* the corresponding `event.context` according to its application logic. The semantics of the open event may be further described in the corresponding 'open request' transaction.
 
+TODO: Move to Volume 1 if needed
 > Note: The Subscriber may use all or a subset of the context provided. For example, a Report Creator may use the patient and study context to open the corresponding procedure and make it ready for dictation, and ignore the report context since the Report Creator will create its own. On the other hand, an Evidence Creator (such as a specialty AI application) may use only the study context to run an inference model on the study on demand, ignoring the report and patient context.
 
-> Note: For `[FHIRresource]-open` events, occasionally the same anchor context may be re-opened. e.g. [Use Case #3: Interruption and Resume Flow](volume-1.html#1xx423-use-case-3-interruption-and-resume-flow) and FHIRcast [Section 4.4 Multi-tab Considerations](https://build.fhir.org/ig/HL7/fhircast-docs/4-4-multitab-considerations.html). In these cases, the Subscriber event handling for the subsequent event may differ from the first event.
->
-> For example, an Evidence Creator may skip executing the expensive processing on the patient's study if the report context is re-open and the evidence data from previous execution is still available and valid. 
+> Note: For `[FHIRresource]-open` events, this may be the initial creation of the context, or an re-open of the context. Subscriber event handling for the subsequent event may differ from the first event.
 
 ##### 2:3.X9.4.1.3.2 Handling update events
 
@@ -119,6 +118,55 @@ If the Manager receives an error confirmation message (i.e. `status` `4xx` or `5
 The Manager shall not change the current context in the session even if it receives an error confirmation message.
 
 > Note: The Manager sets the current context as a result of processing a `[FHIR resource]-open` event. Whether or not one or more of the Subscribers failed to apply the context change does not affect the context managed by the Manager.
+
+#### 2:3.X9.4.3 Notify Error Message
+
+This pair of messages is used for SyncError originated by a Subscriber.
+
+The Subscriber sends an error event to the Manager indicated that it failed to process an accepted event. The Subscriber shall support sending such messages to more than one Manager.
+
+The Manager shall support handling such messages from more than one Subscriber. 
+
+##### 2:3.X9.4.3.1 Trigger Events
+
+The Subscriber failed to process an accepted event (e.g. The Subscriber accepted an event but failed to follow context within a configured timeout after reception).
+
+##### 2:3.X9.4.3.2 Message Semantics
+
+This message is a [FHIRcast Request Context Change](https://build.fhir.org/ig/HL7/fhircast-docs/2-6-RequestContextChange.html#request-context-change-body) request. The Sender is the FHIRcast Subscriber. The Manager is the FHIRcast Hub.
+
+The `event.context` shall conform to [SyncError Context](https://build.fhir.org/ig/HL7/fhircast-docs/3-2-1-syncerror.html#context).
+
+Per FHIRcast, the `issue[0].severity` of the `operationoutcome` context will be set to `warning`.
+
+If the Subscriber retries the same request due to a timeout, then the Subscriber shall use the same `event.id` such that the Manager can detect if it is a duplicate message.
+
+If the Subscriber retries the same request due to an error response from the Manager, then the Subscriber shall assign a new `event.id` to indicate that it is a new message.
+
+##### 2:3.X9.4.3.3 Expected Actions
+
+The Manager shall validate the request as follow:
+
+TODO: types of errors for each check, and use the table format
+
+* If `timestamp`, `id` or `event` are not set, then return an error
+* If `event.context` does not include `operationoutcome`, then return an error
+* If the context does not conform to the [SyncError Context](https://build.fhir.org/ig/HL7/fhircast-docs/3-2-1-syncerror.html#context), then return an error
+* if `event`.`hub.topic` is not a known session, then return an error
+
+#### 2:3.X9.4.4 Notify Error Response Message
+
+##### 2:3.X9.4.4.1 Trigger Events
+
+The Manager finished processing the Notify Error request.
+
+##### 2:3.X9.4.4.2 Message Semantics
+
+This message is a [FHIRcast Request Context Change]() response. The Sender is the FHIRcast Subscriber. The Manager is the FHIRcast Hub.
+
+##### 2:3.X9.4.4.3 Expected Actions
+
+If the response is an error, then the Subscriber may consider retrying the request.
 
 ### 2:3.X9.5 Security Considerations
 
