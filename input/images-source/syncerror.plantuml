@@ -2,45 +2,45 @@
 
 title Error Handling Workflow
 
-participant "Image Display" as PACS
+participant "(Initiating)\nSubscriber" as Requester
 participant "Hub" as Hub
-participant "Report Creator" as Report
+participant "Subscribers" as Receiver
 
-== Synnchronous Failure on Context / Content Event Request ==
+== Synchronous Event Processing Error from Hub ==
 
-PACS->Hub: Initiate Report Context [RAD-X3]
+Requester->Hub: //Any context / content change events//\n//e.g. RAD-X3, RAD-X4, RAD-X5, RAD-X6//
 Hub->Hub: //Failed request//
-Hub-->PACS: Return error\nwith HTTP 4xx or 5xx error codes
+Hub-->Requester: Return error\nwith HTTP 4xx or 5xx error codes
 
-== Asynchronous Failure on Context / Content Event Request ==
+== Asynchronous Event Processing Error from Hub ==
 
-PACS->Hub: Initiate Report Context [RAD-X3]
+Requester->Hub: //Any context / content change events//\n//e.g. RAD-X3, RAD-X4, RAD-X5, RAD-X6//
 Hub->Hub: Return HTTP 202 Accepted
 ...
-Hub->Hub: //Failed request// 
+Hub->Hub: //Failed processing// 
 Hub->Hub: //Generate syncerror event//
-Hub->PACS: Send SyncError Event [RAD-X10]\nusing websocket
+Hub->Requester: Send SyncError Event [RAD-X10]
 
-== Synchronous Error Reporting ==
-Hub->Report: Send Context Event [RAD-X9]
-Report-->Hub: Return HTTP 4xx or 5xx error codes
+== Synchronous Event Processing Error from Subscriber ==
+Hub->Receiver: Send Context Event [RAD-X9]
+Receiver-->Hub: Return HTTP 4xx or 5xx error codes
 Hub->Hub: //Generate syncerror event//
-Hub->PACS: Send SyncError Event [RAD-X10]\nusing websocket
-Hub->Report: Send SyncError Event [RAD-X10]\nusing websocket
+Hub->Requester: Send SyncError Event [RAD-X10]
+Hub->Receiver: Send SyncError Event [RAD-X10]
 
-== Asynchronous Error Reporting by Application ==
-Hub->Report: Send Context Event [RAD-X9]
-Report-->Hub: Return HTTP 202 Accepted
-Report->Report: //Failed request//
-Report->Hub: Send SyncError Event [RAD-X10]\nusing HTTP
-Hub-->Report: Return HTTP 200 OK
-Hub->PACS: Send SyncError Event [RAD-X10]\nusing websocket
-Hub->Report: Send SyncError Event [RAD-X10]\nusing websocket
+== Asynchronous Event Processing Error from Subscriber ==
+Hub->Receiver: Send Context Event [RAD-X9]
+Receiver-->Hub: Return HTTP 202 Accepted
+Receiver->Receiver: //Failed processing//
+Receiver->Hub: Send SyncError Event [RAD-X10]
+Hub-->Receiver: Return HTTP 200 OK
+Hub->Requester: Send SyncError Event [RAD-X10]
+Hub->Receiver: Send SyncError Event [RAD-X10]
 
-== Network Error ==
-Hub->x Report: Failed websocket heartbeat check
-Hub->Hub: //Remove Report from subscription//
+== Subscriber Network Error ==
+Hub->x Receiver: //Failed websocket heartbeat check//
+Hub->Hub: //Remove Receiver from subscription//
 Hub->Hub: //Generate syncerror event//
-Hub->PACS: Send SyncError Event [RAD-X10]\nusing websocket
+Hub->Requester: Send SyncError Event [RAD-X10]
 
 @enduml
