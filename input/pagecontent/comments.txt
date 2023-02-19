@@ -23,3 +23,14 @@
 - TODO: In X1, note about subscribe to your own events to get confirmation in case of asynchronous Hub responses.
 - TODO: Open issue: can a Subscriber participate with multiple Hubs?
 - TODO: Add concept section regarding the use case of communicating with multiple Hubs - for different sessions.
+
+- TODO: EC in open question moved to close issue.
+- TODO: Are there any missing actors? Follow up Alert app - Can be done by the Watcher :)
+- TODO: Add a concept section about deployment consideration, performance expectation, etc.
+- TODO: Change X9 to 'Distribute FHIRcast Event'
+- TODO: What is the expected behavior of repeated open on the same context?
+- TODO: OQ: Can returning 200 OK and later send syncerror?
+- TODO: Add an example of syncerror for different triggers
+- TODO: Rework the Use Case 4 to show more error sync and handling in the context of a real world use case.
+- TODO: Check consistent case for `operationoutcome`.
+- TODO: Check Use Case 4 to see if this case is in the diagram
