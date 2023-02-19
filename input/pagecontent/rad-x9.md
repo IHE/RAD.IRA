@@ -18,6 +18,8 @@ This transaction is used to send notification events to subscribers.
 
 **Websocket**: [IETF RFC 6455](https://www.rfc-editor.org/rfc/rfc6455)
 
+**FHIRcast**: [Sync error Event](https://build.fhir.org/ig/HL7/fhircast-docs/3-2-1-syncerror.html)
+
 ### 2:3.X9.4 Messages
 
 <div>
