@@ -55,7 +55,7 @@ Key | Optionality | Context Requirements
 
 > Note: Rows with '*' in the Optionality column have constraints different from baseline FHIRcast Request Context Change request.
 
-If the Sender retries the same request due to a timeout, then the Sender shall use the same `event.id` such that the Manager can detect if it is a duplicate message.
+If the Sender retries the same request due to a timeout, then the Sender shall use the same `event.id` so the Manager can detect that it is a duplicate message.
 
 If the Sender retries the same request due to an error response from the Manager, then the Sender shall assign a new `event.id` to indicate that it is a new message.
 

@@ -49,7 +49,7 @@ The Sender should include all contents and referenced resources as inline [conta
 
 > Note: The eventual Subscriber may or may not have permission to access the referenced resources that are not inline.
 
-If the Sender retries the same request due to a timeout, then the Sender shall use the same `event.id` such that the Manager can detect if it is a duplicate message.
+If the Sender retries the same request due to a timeout, then the Sender shall use the same `event.id` so the Manager can detect that it is a duplicate message.
 
 If the Sender retries the same request due to an error response from the Manager, then the Sender shall assign a new `event.id` to indicate that it is a new message.
 
