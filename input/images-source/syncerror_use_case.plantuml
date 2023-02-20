@@ -1,0 +1,38 @@
+@startuml
+
+actor Radiologist as User
+participant "Image Display" as PACS
+participant "Hub" as Hub
+participant "Report Creator" as Report
+participant "Watcher" as Watcher
+
+== Case 1: Hub detected error ==
+
+User->PACS: //Start dictation on study//
+PACS->Hub: Initiate Report Context [RAD-X3]
+Hub->Hub: //Detect missing study context//
+Hub-->PACS: Return 400 Bad Request
+
+== Case 2: Subscriber detected error ==
+
+User->PACS: //Start dictation on study//
+PACS->Hub: Initiate Report Context [RAD-X3]
+Hub-->PACS: Return 200 OK
+Hub->Watcher: Send Context Event [RAD-X9]
+Watcher-->Hub: Return 200 OK
+Hub->PACS: Send Context Event [RAD-X9]
+PACS-->Hub: Return 200 OK
+Hub->Report: Send Context Event [RAD-X9]
+Report-->Hub: Return 202 Accepted
+Report->Report: //Detect study context matches//\n//a different patient context//
+Report->Hub: Send Context Event [RAD-X9]\nwith SyncError
+Hub->Watcher: Send Context Event [RAD-X9]
+Watcher->Watcher: //Update dashboard with error//
+Watcher-->Hub: Return 200 OK
+Hub->PACS: Send Context Event [RAD-X9]
+PACS->User: //Display error to user//
+PACS-->Hub: Return 200 OK
+Hub->Report: Send Context Event [RAD-X9]
+Report-->Hub: Return 200 OK
+
+@enduml
