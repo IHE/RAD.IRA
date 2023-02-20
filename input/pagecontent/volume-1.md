@@ -343,12 +343,14 @@ The Image Display actor is responsible for presenting patients' studies and rele
 
 The Image Display provides tools for the user to navigate images in a study. It may include a worklist component that let the user select studies to read. It may also include tools to create evidence data such as annotations, key images, etc.
 
-In order to complete a study dictation, the Image Display:
+The Image Display:
 - May launch other applications and synchronize them to the same report context through the Hub
 - May be launched by another application, consume reporting events from the Hub and synchronize itself to the same report context
 
+TODO: Separate configuration / install capabilities vs runtime
+
 The Image Display shall have the following capabilities:
-- Configure the URL of the Hub
+- Configure the URL to connect to the Hub - TODO: Rework
 - Generate a unique session ID and start a new reporting session by subscribing to the Hub on its own
 - Launch one or more actors and provide them the URL of the Hub actor as `hub.url` and the reporting session ID as `hub.topic`
 - Launched by another application and use the provided `hub.url` and `hub.topic` to join a reporting session and synchronize itself with the report context received
@@ -358,7 +360,9 @@ The Image Display shall have the following capabilities:
 
 ##### 1:XX.1.1.1.1 Event Handling Requirements
 
-The Image Display shall handle the `report`, `patient` and `study`, `updates` and `select` contexts according to the event handling requirements defined in Table 1:XX.1.1.1.1-1:
+TODO: For all actors, replace all the listed context with just 'event'.
+
+The Image Display shall handle the events according to the event handling requirements defined in Table 1:XX.1.1.1.1-1:
 
 **Table 1:XX.1.1.1.1-1**: Event Handling Requirements
 
@@ -366,7 +370,7 @@ The Image Display shall handle the `report`, `patient` and `study`, `updates` an
 | -- | -- |
 | DiagnosticReport-open | Display the study images |
 | DiagnosticReport-close | Stop display the study images |
-| DiagnosticReport-update | Update the patient or study record, or add/modify/delete received contents, if applicable.<br> Display the changes.<br>Shall support the following resources:<br>- `DiagnosticReport` for report status changes |
+| DiagnosticReport-update | Update the report, patient or study record, or add/modify/delete received contents, if applicable.<br>Display the changes (rephrase it).<br><br>Support the following resources:<br>- `DiagnosticReport` for report status changes, TODO: Update the report status, drop the study from worklist, etc. |
 | DiagnosticReport-select | Display and put in focus the applicable selected resources.<br>For example:<br>- `ImagingStudy`: Display selected comparison study<br>- `ImagingSelection`: Display selected images and annotations  |
 | SyncError | Notify to the user regarding the synchronization error, including the details of the error reported and the Subscriber that reported the error |
 {: .grid}
@@ -407,12 +411,14 @@ The Report Creator shall handle the `report`, `patient` and `study`, `updates` a
 
 | Event | Handling Requirements |
 | -- | -- |
-| DiagnosticReport-open | Be ready for reporting for the study |
+| DiagnosticReport-open | Be ready for reporting for the study TODO: re-open should resume from previous state, rather than start from scratch |
 | DiagnosticReport-close | Stop display the study report. It may use the `id` in the `report` context as the report ID for the eventual created report. |
 | DiagnosticReport-update | Update the report, patient or study record, or add/modify/delete received contents, if applicable.<br>Track / Display the changes.<br>Highly recommended to support the following content update resources:<br>- `ImagingStudy` for comparison study<br>- `ImagingSelection` for image references and annotations<br>- `Observation` for measurements and annotations |
 | DiagnosticReport-select | Select the applicable resources and apply user commands on selected resources. See Note 1. |
-| SyncError | Notify to the user regarding the synchronization error, including the details of the error reported and the Subscriber that reported the error |
+| SyncError | Be able to notify the user regarding the synchronization error, including the details of the error reported and the Subscriber that reported the error |
 {: .grid}
+
+TODO: Add: For syncerror, the originator of the event should consider notifying the user about errors. Other actors may notify the error.
 
 > Note 1: The Report Creator may provide application logic that can make use of the selected resources. For example, a nodule (as `ImagingSelection`) and corresponding measurements (as `Observation`) are selected. Then the radiologist issues a voice command "insert hyperlink". In this case, the Report Creator applies the command with the selected resources and insert a hyperlink reference to the nodule with measurement.
 
@@ -533,7 +539,7 @@ The Worklist Client shall handle the `report`, `patient` and `study`, `updates` 
 | SyncError | Notify to the user, if applicable, regarding the synchronization error, including the details of the error reported and the Subscriber that reported the error |
 {: .grid}
 
-##### 1:XX.1.1.4.2 Event Producing Requirements
+##### 1:XX.1.1.6.2 Event Producing Requirements
 
 None
 
@@ -552,7 +558,21 @@ The Hub shall provide basic functionalities to all events it received, including
 
 The Hub shall NOT be limited to the events prescribed in this profile to support synchronizing applications in reporting sessions.
 
+TODO: The Hub shall support [Request Context Event](...)
+
 The Hub shall support [content sharing](https://build.fhir.org/ig/HL7/fhircast-docs/2-10-ContentSharing.html).
+
+The Hub shall monitor the established websocket connections. If it detected a websocket connection issue with a Subscriber, then the Hub shall
+* Unsubscribe the Subscriber and drop the websocket connection
+* Send a SyncError notification to other Subscribers using [RAD-X10](rad-x10.html)
+
+##### 1:XX.1.1.7.1 Event Handling Requirements
+
+TODO: Distribute events (all) using X9.
+
+##### 1:XX.1.1.7.2 Event Producing Requirements
+
+None
 
 ## 1:XX.2 RTC-IMR Actor Options
 
@@ -571,23 +591,23 @@ Options that may be selected for each actor in this implementation guide, are li
   <tbody>
     <tr>
       <td>Image Display</td>
-      <td>No options defined</td>
-      <td>–</td>
+      <td>SMART App Launch Client</td>
+      <td><a href="volume-1.html#1xx21-smart-on-fhir-launch">1:XX.2.1</a></td>
     </tr>
     <tr>
       <td>Report Creator</td>
-      <td>SMART on FHIR Launch</td>
+      <td>SMART App Launch Client</td>
       <td><a href="volume-1.html#1xx21-smart-on-fhir-launch">1:XX.2.1</a></td>
     </tr>
     <tr>
       <td>Worklist Client</td>
-      <td>No options defined</td>
-      <td>–</td>
+      <td>SMART App Launch Client</td>
+      <td><a href="volume-1.html#1xx21-smart-on-fhir-launch">1:XX.2.1</a></td>
     </tr>
     <tr>
       <td>Evidence Creator</td>
       <td>No options defined</td>
-      <td>–</td>
+      <td>-</td>
     </tr>
     <tr>
       <td>Content Creator</td>
@@ -597,7 +617,7 @@ Options that may be selected for each actor in this implementation guide, are li
     <tr>
       <td>Watcher</td>
       <td>No options defined</td>
-      <td>–</td>
+      <td>-</td>
     </tr>
     <tr>
       <td>Hub</td>
@@ -978,13 +998,17 @@ Figure 1:XX.4.2.2-1: Worklist Manager Driven Reporting in RTC-IMR Profile
 
 Occasionally a radiologist is interrupted while reporting on a study. She needs to open a different study (e.g. for consultation purpose) before the study that is currently in progress is ready for sign-off.
 
-This profile enables a new report context to be initiated before the previous report context is terminated. The Hub can maintain multiple anchor context simultaneously within a reporting session. It maintains the notion of a current context to be the last anchor context that has been initiated but not yet terminated. This current context enables all Synchronizing Applications to be synchronized and working on the same context all the time.
+This profile permits a new report context to be initiated before the previous report context is terminated. The Hub can maintain multiple anchor contexts simultaneously within a reporting session. The current context is the most recent anchor context that has been initiated but not yet terminated. This current context enables all Synchronizing Applications to be synchronized and working on the same context all the time.
 
 Once the *interrupting* study is complete, the Image Display terminates the report context of the *interrupting* study. The Hub removes the context of the *interrupting* study and set the current context back to the previously opened study. Note that all associated context and contents remain in the Hub.
 
 All `Synchronizing Applications` may resume to the previous report context in one of the following methods:
-- Internally keep track of received context and hence knows which context is current.
+- Hub sends the notification to all Subscribers to open (resume) to the previous report context
+  - Hub implicitly initiate the open event (TODO)
 - Use the Get Current Context [RAD-X8] transaction to query the Hub for which context is current
+
+TODO: Rephrase:
+When a context is terminated, who takes the lead to set the next context. e.g. The app that drives the reporting session, if there are any business logic to resume something else rather than the previous report context, that app should send a new DiagnosticReport-open.
 
 <div>
 {%include interruption-and-resume.svg%}
@@ -995,15 +1019,9 @@ Figure 1:XX.4.2.3-1: Interruption and Resume Flow in RTC-IMR Profile
 
 #### 1:XX.4.2.4 Use Case \#4: Error Handling Flow
 
-Error handling can be synchronous or asynchronous:
-- Synchronous: When the Hub or any Subscriber receives an event, it processes the event immediately and failed, then it returns an error status `4xx` or `5xx`.
-- Asynchronous: When the Hub or any Subcriber receives an event, it immediately responds with `202` Accepted and processes the event asynchronously. If it failed to process the event within a threshold (e.g. FHIRcast recommends <10 seconds), then it sends a `syncerror` using Send SyncError Event [RAD-X10].
-
-> Note that if the Subscriber returns `202` Accepted to the Hub, it is the responsibility of the Subscriber to send a `syncerror` event to the Hub later if it failed to process the event or cannot process the event within a threshold. There is no standard mechanism for the Hub to detect if the Subscriber finished processing or not (there is no *process success* confirmation event).
-
-In some situations, the Hub may initiate the `syncerro` events:
-- It receives a `4xx` or `5xx` error from a Subscriber. 
-- It detected a Subscriber is not available (using missing heartbeat events) or websocket connection is dropped.
+Error handling is driven by two factors:
+- Synchronous vs Asynchronous
+- Subscriber initiated vs Hub initiated
 
 <div>
 {%include syncerror.svg%}
@@ -1011,6 +1029,15 @@ In some situations, the Hub may initiate the `syncerro` events:
 <br clear="all">
 
 Figure 1:XX.4.2.4-1: Error Handling Flow in RTC-IMR Profile
+
+Figure 1:XX.4.2.4-2 shows two sample use cases how error handling can be used in reporting.
+
+<div>
+{%include syncerror_use_case.svg%}
+</div>
+<br clear="all">
+
+Figure 1:XX.4.2.4-2: Error Handling Example Flows in RTC-IMR Profile
 
 ## 1:XX.5 RTC-IMR Security Considerations
 
