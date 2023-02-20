@@ -31,3 +31,4 @@
 - TODO: What is the expected behavior of repeated open on the same context?
 - TODO: OQ: Can returning 200 OK and later send syncerror?
 - TODO: Check consistent case for `operationoutcome`.
+- OQ: Can operationoutcome be returned in 4xx / 5xx errors?
