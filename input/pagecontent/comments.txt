@@ -30,7 +30,4 @@
 - TODO: Change X9 to 'Distribute FHIRcast Event'
 - TODO: What is the expected behavior of repeated open on the same context?
 - TODO: OQ: Can returning 200 OK and later send syncerror?
-- TODO: Add an example of syncerror for different triggers
-- TODO: Rework the Use Case 4 to show more error sync and handling in the context of a real world use case.
 - TODO: Check consistent case for `operationoutcome`.
-- TODO: Check Use Case 4 to see if this case is in the diagram
