@@ -1,6 +1,6 @@
 ### 2:3.X10.1 Scope
 
-This transaction is used to derive error events and send to all subscribers that subscribed to the events.
+This transaction is used to distribute notification events to subscribers about synchronization errors detected by the Manager.
 
 ### 2:3.X10.2 Actors Roles
 
@@ -32,19 +32,19 @@ This transaction is used to derive error events and send to all subscribers that
 
 #### 2:3.X10.4.1 Error Notification Message
 
-This pair of messages is used for SyncError originated by a Manager.
-
-The Manager sends an error event to Subscribers indicated that it detected an error. Manager shall support sending such messages to more than one Subscribers.
+The Manager sends an error event to Subscribers indicating that it detected an error. Manager shall support sending such messages to more than one Subscribers.
 
 The Subscriber shall support handling such messages from more than one Manager. 
 
 ##### 2:3.X10.4.1.1 Trigger Events
 
+TODO: Make this a list like rad-x1
+
 The Manager received a 4xx or 5xx error response from a Subscriber when executing the Send Context Event [RAD-X9](rad-x9.html) transaction.
 
-The Manager did not receive a `2xx` response within a predetermined time frame from a Subscriber after the Manager sent a context event. 
+The Manager did not receive a `2xx` response within a predetermined time frame from a Subscriber after the Manager sent a context event.
 
-The Manager initially responded with a `202` Accepted when received a context or content change, but later rejected the request.
+The Manager initially responded with a `202` Accepted when received a context or content change, but later rejects the request associated with the session.
 
 The Manager detected a websocket connection issue with a Subscriber.
 
@@ -56,18 +56,16 @@ The `event.context` shall conform to [SyncError Context](https://build.fhir.org/
 
 Per FHIRcast, the `issue[0].severity` of the `operationoutcome` context will be set to `information`.
 
-For `syncerror` initiated by the Manager, the Manager shall set the `operationoutcome` `issue[0].details` as follow:
+The Manager shall set the `operationoutcome` `issue[0].details` as follow:
 - `issue[0].details.coding[0].code` shall be the `event.id` of the event that triggered the error, or a generated ID for non-event triggered errors
 - `issue[0].details.coding[1].code` shall be the `event`.`hub.event` of the event that triggered the error, or `syncerror` for non-event triggered errors
-- `issue[0].details.coding[2].code` shall be the `subscriber.name` of the Subscriber that originated either the syncerror, or the event that triggered the error.
+- `issue[0].details.coding[2].code` shall be the `subscriber.name` of the Subscriber that originated either the `syncerror`, or the event that triggered the error.
 
-If the Manager initiated the `syncerror` event because it initially accepted the context or content change request (i.e. responded with a `202` Accepted respond) but later rejected the request, then the Manager shall send the `syncerror` event only to the original requesting Subscriber.
+If the `syncerror` event was triggered by the Manager initially accepting the context or content change request (i.e. responded with a `202` Accepted respond) but later rejecting the request, then the Manager shall send the `syncerror` event only to the original requesting Subscriber.
 
 ##### 2:3.X10.4.1.3 Expected Actions
 
-The Subscriber will handle the error according to its business logic. For example, display an error message to the user, or close the context.
-
-Since the `event.id` is an opaque ID, the Subscriber may consider finding the corresponding `contexts` that match the `event.id` in `issue[0].details.coding[0].code` and use them in the error handling logic.
+The Subscriber will handle the error according to its business logic. For example, display an error message to the user, retry the original request, or close the context.
 
 #### 2:3.X10.4.2 Error Notification Response Message
 
@@ -83,7 +81,7 @@ The Subscriber shall send a confirmation message back to the Manager using the e
 
 ##### 2:3.X10.4.2.3 Expected Actions
 
-The Manager has no further required action.
+The Manager may resend the error notification if it does not receive a response from a Subscriber within a timeframe.
 
 ### 2:3.X10.5 Security Considerations
 
