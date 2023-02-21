@@ -8,14 +8,14 @@ participant "Watcher" as Watcher
 
 == Case 1: Hub detected error ==
 
-User->PACS: //Start dictation on study//
+User->PACS: //Select Patient and Study//\n//to start dictation//
 PACS->Hub: Initiate Report Context [RAD-X3]\n//(Study context missing)//
 Hub->Hub: //Detect missing study context//
 Hub-->PACS: Return 400 Bad Request
 
 == Case 2: Subscriber detected error ==
 
-User->PACS: //Start dictation on study//
+User->PACS: //Select Patient and Study//\n//to start dictation//
 PACS->Hub: Initiate Report Context [RAD-X3]\n//(Study context present)//
 Hub-->PACS: Return 200 OK
 Hub->Hub: //Initiate report context//
