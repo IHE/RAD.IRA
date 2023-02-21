@@ -5,8 +5,6 @@ participant "Image Display /\nContent Creator" as PACS
 participant "Hub" as Hub
 participant "Report Creator" as Report
 
-User->PACS: //Start dictation//
-
 == Step 3: Add Contents (Optional) ==
 
 User->PACS: //Measure area of Pneumothorax//
