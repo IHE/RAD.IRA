@@ -24,6 +24,6 @@ Hub->PACS: Send Context Event [RAD-X9]\n(event: id = 1000, ...)
 PACS-->Hub: //Success (id = 1000, status = 200)//
 deactivate Hub
 
-User->PACS: //Start dictation//
+User->Report: //Start dictation//
 
 @enduml
