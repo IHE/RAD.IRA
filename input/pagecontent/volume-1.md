@@ -35,7 +35,7 @@ Table 1:XX.1-1 lists the transactions for each actor directly involved in the IM
   </thead>
   <tbody>
     <tr>
-      <td rowspan="8"><a href="volume-1.html#1xx111-image-display">Image Display</a></td>
+      <td rowspan="9"><a href="volume-1.html#1xx111-image-display">Image Display</a></td>
       <td>Subscribe to Reporting Session [RAD-X1]</td>
       <td>Initiator</td>
       <td>R</td>
@@ -72,19 +72,25 @@ Table 1:XX.1-1 lists the transactions for each actor directly involved in the IM
       <td><a href="rad-x8.html">RAD TF-2: 4.X8</a></td>
     </tr>
     <tr>
-      <td>Send Context Event [RAD-X9]</td>
+      <td>Distribute Context Event [RAD-X9]</td>
       <td>Responder</td>
       <td>R</td>
       <td><a href="rad-x9.html">RAD TF-2: 4.X9</a></td>
     </tr>
     <tr>
-      <td>Send SyncError Event [RAD-X10]</td>
-      <td>Initiator & Responder</td>
+      <td>Generate SyncError Event [RAD-X10]</td>
+      <td>Responder</td>
       <td>R</td>
       <td><a href="rad-x10.html">RAD TF-2: 4.X10</a></td>
     </tr>
-      <tr>
-      <td rowspan="8"><a href="volume-1.html#1xx112-report-creator">Report Creator</a></td>
+    <tr>
+      <td>Notify Error [RAD-X11]</td>
+      <td>Initiator</td>
+      <td>R</td>
+      <td><a href="rad-x11.html">RAD TF-2: 4.X11</a></td>
+    </tr>
+    <tr>
+      <td rowspan="9"><a href="volume-1.html#1xx112-report-creator">Report Creator</a></td>
       <td>Subscribe to Reporting Session [RAD-X1]</td>
       <td>Initiator</td>
       <td>R</td>
@@ -121,19 +127,25 @@ Table 1:XX.1-1 lists the transactions for each actor directly involved in the IM
       <td><a href="rad-x8.html">RAD TF-2: 4.X8</a></td>
     </tr>
     <tr>
-      <td>Send Context Event [RAD-X9]</td>
+      <td>Distribute Context Event [RAD-X9]</td>
       <td>Responder</td>
       <td>R</td>
       <td><a href="rad-x9.html">RAD TF-2: 4.X9</a></td>
     </tr>
     <tr>
-      <td>Send SyncError Event [RAD-X10]</td>
-      <td>Initiator & Responder</td>
+      <td>Generate SyncError Event [RAD-X10]</td>
+      <td>Responder</td>
       <td>R</td>
       <td><a href="rad-x10.html">RAD TF-2: 4.X10</a></td>
     </tr>
-      <tr>
-      <td rowspan="8"><a href="volume-1.html#1xx113-worklist-display">Worklist Client</a></td>
+    <tr>
+      <td>Notify Error [RAD-X11]</td>
+      <td>Initiator</td>
+      <td>R</td>
+      <td><a href="rad-x11.html">RAD TF-2: 4.X11</a></td>
+    </tr>
+    <tr>
+      <td rowspan="9"><a href="volume-1.html#1xx113-worklist-display">Worklist Client</a></td>
       <td>Subscribe to Reporting Session [RAD-X1]</td>
       <td>Initiator</td>
       <td>R</td>
@@ -170,19 +182,25 @@ Table 1:XX.1-1 lists the transactions for each actor directly involved in the IM
       <td><a href="rad-x8.html">RAD TF-2: 4.X8</a></td>
     </tr>
     <tr>
-      <td>Send Context Event [RAD-X9]</td>
+      <td>Distribute Context Event [RAD-X9]</td>
       <td>Responder</td>
       <td>R</td>
       <td><a href="rad-x9.html">RAD TF-2: 4.X9</a></td>
     </tr>
     <tr>
-      <td>Send SyncError Event [RAD-X10]</td>
-      <td>Initiator & Responder</td>
+      <td>Generate SyncError Event [RAD-X10]</td>
+      <td>Responder</td>
       <td>R</td>
       <td><a href="rad-x10.html">RAD TF-2: 4.X10</a></td>
     </tr>
     <tr>
-      <td rowspan="6"><a href="volume-1.html#1xx114-evidence-creator">Evidence Creator</a></td>
+      <td>Notify Error [RAD-X11]</td>
+      <td>Initiator</td>
+      <td>R</td>
+      <td><a href="rad-x11.html">RAD TF-2: 4.X11</a></td>
+    </tr>
+    <tr>
+      <td rowspan="7"><a href="volume-1.html#1xx114-evidence-creator">Evidence Creator</a></td>
       <td>Subscribe to Reporting Session [RAD-X1]</td>
       <td>Initiator</td>
       <td>R</td>
@@ -207,18 +225,24 @@ Table 1:XX.1-1 lists the transactions for each actor directly involved in the IM
       <td><a href="rad-x8.html">RAD TF-2: 4.X8</a></td>
     </tr>
     <tr>
-      <td>Send Context Event [RAD-X9]</td>
+      <td>Distribute Context Event [RAD-X9]</td>
       <td>Responder</td>
       <td>R</td>
       <td><a href="rad-x9.html">RAD TF-2: 4.X9</a></td>
     </tr>
     <tr>
-      <td>Send SyncError Event [RAD-X10]</td>
-      <td>Initiator & Responder</td>
+      <td>Generate SyncError Event [RAD-X10]</td>
+      <td>Responder</td>
       <td>R</td>
       <td><a href="rad-x10.html">RAD TF-2: 4.X10</a></td>
     </tr>
-      <tr>
+    <tr>
+      <td>Notify Error [RAD-X11]</td>
+      <td>Initiator</td>
+      <td>R</td>
+      <td><a href="rad-x11.html">RAD TF-2: 4.X11</a></td>
+    </tr>
+    <tr>
       <td rowspan="2"><a href="volume-1.html#1xx115-report-content-creator">Content Creator</a></td>
       <td>Update Report Content [RAD-X5]</td>
       <td>Initiator</td>
@@ -232,7 +256,7 @@ Table 1:XX.1-1 lists the transactions for each actor directly involved in the IM
       <td><a href="rad-x6.html">RAD TF-2: 4.X6</a></td>
     </tr>
     <tr>
-      <td rowspan="6"><a href="volume-1.html#1xx116-watcher">Watcher</a></td>
+      <td rowspan="7"><a href="volume-1.html#1xx116-watcher">Watcher</a></td>
       <td>Subscribe to Reporting Session [RAD-X1]</td>
       <td>Initiator</td>
       <td>R</td>
@@ -257,19 +281,25 @@ Table 1:XX.1-1 lists the transactions for each actor directly involved in the IM
       <td><a href="rad-x8.html">RAD TF-2: 4.X8</a></td>
     </tr>
     <tr>
-      <td>Send Context Event [RAD-X9]</td>
+      <td>Distribute Context Event [RAD-X9]</td>
       <td>Responder</td>
       <td>R</td>
       <td><a href="rad-x9.html">RAD TF-2: 4.X9</a></td>
     </tr>
     <tr>
-      <td>Send SyncError Event [RAD-X10]</td>
-      <td>Initiator & Responder</td>
+      <td>Generate SyncError Event [RAD-X10]</td>
+      <td>Responder</td>
       <td>R</td>
       <td><a href="rad-x10.html">RAD TF-2: 4.X10</a></td>
     </tr>
     <tr>
-      <td rowspan="10"><a href="volume-1.html#1xx118-hub">Hub</a></td>
+      <td>Notify Error [RAD-X11]</td>
+      <td>Initiator</td>
+      <td>R</td>
+      <td><a href="rad-x11.html">RAD TF-2: 4.X11</a></td>
+    </tr>
+    <tr>
+      <td rowspan="11"><a href="volume-1.html#1xx118-hub">Hub</a></td>
       <td>Subscribe to Reporting Session [RAD-X1]</td>
       <td>Responder</td>
       <td>R</td>
@@ -318,16 +348,22 @@ Table 1:XX.1-1 lists the transactions for each actor directly involved in the IM
       <td><a href="rad-x8.html">RAD TF-2: 4.X8</a></td>
     </tr>
     <tr>
-      <td>Send Context Event [RAD-X9]</td>
+      <td>Distribute Context Event [RAD-X9]</td>
       <td>Initiator</td>
       <td>R</td>
       <td><a href="rad-x9.html">RAD TF-2: 4.X9</a></td>
     </tr>
     <tr>
-      <td>Send SyncError Event [RAD-X10]</td>
+      <td>Generate SyncError Event [RAD-X10]</td>
       <td>Initiator</td>
       <td>R</td>
       <td><a href="rad-x10.html">RAD TF-2: 4.X10</a></td>
+    </tr>
+    <tr>
+      <td>Notify Error [RAD-X11]</td>
+      <td>Responder</td>
+      <td>R</td>
+      <td><a href="rad-x11.html">RAD TF-2: 4.X11</a></td>
     </tr>
   </tbody>
 </table>
@@ -343,7 +379,7 @@ The Image Display actor is responsible for presenting patients' studies and rele
 
 The Image Display provides tools for the user to navigate images in a study. It may include a worklist component that let the user select studies to read. It may also include tools to create evidence data such as annotations, key images, etc.
 
-The Image Dis shall be capable of being launched by another application. It shall use the provided `hub.url` and `hub.topic` to join a reporting session and synchronize itself with the report context received.
+The Image Display shall be capable of being launched by another application. When launched, it shall use the provided `hub.url` and `hub.topic` to join a reporting session.
 
 The Image Display shall be able to launch other applications and synchronize them to the same report context through the Hub. It shall have the following capabilities: 
 - Start a new reporting session by generating a unique session ID and subscribing to the Hub on its own
@@ -354,6 +390,10 @@ The Image Display shall be able to launch other applications and synchronize the
 
 ##### 1:XX.1.1.1.1 Event Handling Requirements
 
+TODO: Add text to explain how to parse the table column 3 and 4 in shall statements.
+- Use "able to" language
+- Move Column 2 to the back
+
 The Image Display shall handle the events according to the event handling requirements defined in Table 1:XX.1.1.1.1-1:
 
 **Table 1:XX.1.1.1.1-1**: Event Handling Requirements
@@ -362,7 +402,7 @@ The Image Display shall handle the events according to the event handling requir
   <thead>
     <tr>
       <th>Event</th>
-      <th>Handling Requirements</th>
+      <th>Required Behaviors?? TODO</th>
       <th>Context Key</th>
       <th>Resources</th>
     </tr>
@@ -450,7 +490,7 @@ In order to complete a study dictation, the Report Creator:
 
 The Report Creator provides tools for the user to insert report content such as findings and impressions. The Report Creator may use the report content shared by other applications through the Hub (e.g. image references shared by Image Display, or measurements shared by Evidence Creator) to directly update the report (e.g. insert measurements) or generate derived report content (e.g. inject hyperlinks from image references)
 
-The Report Creator shall be capable of being launched by another application. It shall use the provided `hub.url` and `hub.topic` to join a reporting session and synchronize itself with the report context received.
+The Report Creator shall be capable of being launched by another application. When launched, it shall use the provided `hub.url` and `hub.topic` to join a reporting session.
 
 The Report Creator shall be able to launch other applications and synchronize them to the same report context through the Hub. It shall have the following capabilities: 
 - Start a new reporting session by generating a unique session ID and subscribing to the Hub on its own
@@ -547,7 +587,7 @@ When a user selects studies from the worklist, the Worklist Client launches othe
 
 When a study dictation is complete, the Worklist Client consumes the report anchor context update event so that it can mark the study as dictated and remove it from the worklist.
 
-The Worklist Client shall be capable of being launched by another application. It shall use the provided `hub.url` and `hub.topic` to join a reporting session and synchronize itself with the report context received.
+The Worklist Client shall be capable of being launched by another application. When launched, it shall use the provided `hub.url` and `hub.topic` to join a reporting session.
 
 The Worklist Client shall be able to launch other applications and synchronize them to the same report context through the Hub. It shall have the following capabilities: 
 - Start a new reporting session by generating a unique session ID and subscribing to the Hub on its own
@@ -629,7 +669,7 @@ Alternatively the Evidence Creator may capture the evidence data (e.g. lung nodu
 
 The Evidence Creator may be a standalone application such as an Specialty AI application, or it may be grouped with another actor such as Image Display.
 
-The Evidence Creator shall be capable of being launched by another application. It shall use the provided `hub.url` and `hub.topic` to join a reporting session and synchronize itself with the report context received.
+The Evidence Creator shall be capable of being launched by another application. When launched, it shall use the provided `hub.url` and `hub.topic` to join a reporting session.
 
 ##### 1:XX.1.1.4.1 Event Handling Requirements
 
@@ -716,7 +756,7 @@ The Watcher actor is responsible for listening to events in a session and perfor
 
 For example, the Watcher consumes the initiation and termination of report contexts and calculates the turnaround time for different types of studies in different departments. Another example is that the Watcher monitors how often an Evidence Creator publishes content sharing events and correlates how effective an AI application is with respect to the turnaround time by comparison and time before and after the Evidence Creator is deployed.
 
-The Watcher shall be capable of being launched by another application. It shall use the provided `hub.url` and `hub.topic` to join a reporting session and synchronize itself with the report context received.
+The Watcher shall be capable of being launched by another application. When launched, it shall use the provided `hub.url` and `hub.topic` to join a reporting session.
 
 ##### 1:XX.1.1.6.1 Event Handling Requirements
 
