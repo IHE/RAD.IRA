@@ -390,11 +390,7 @@ The Image Display shall be able to launch other applications and synchronize the
 
 ##### 1:XX.1.1.1.1 Event Handling Requirements
 
-TODO: Add text to explain how to parse the table column 3 and 4 in shall statements.
-- Use "able to" language
-- Move Column 2 to the back
-
-The Image Display shall handle the events according to the event handling requirements defined in Table 1:XX.1.1.1.1-1:
+The Image Display shall be able to support all required expected behaviors (labeled “R”) and may support the optional behaviors (labeled “O”) when handling the events and corresponding resources according to the event handling requirements defined in Table 1:XX.1.1.1.1-1:
 
 **Table 1:XX.1.1.1.1-1**: Event Handling Requirements
 
