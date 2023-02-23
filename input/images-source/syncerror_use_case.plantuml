@@ -26,7 +26,7 @@ PACS-->Hub: Return 200 OK
 Hub->Report: Distribute Context Event [RAD-X9]\n//(Report context initiated)//
 Report-->Hub: Return 202 Accepted
 Report->Report: //Detect that the identified//\n//patient context does not//\n//match the patient referenced//\n//in the identified study context//
-Report->Hub: Distribute Context Event [RAD-X9]\nwith SyncError
+Report->Hub: Notify Error [RAD-X11]\n//(with SyncError)//
 Hub-->Report: Return 200 OK
 Hub->Watcher: Distribute Context Event [RAD-X9]\n//(SyncError received)//
 Watcher-->Hub: Return 200 OK
