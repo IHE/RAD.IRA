@@ -69,8 +69,6 @@ The Manager shall validate the request as follow:
 
 Per FHIRcast, this `report` context will become the current context in this reporting session.
 
-The Manager shall distribute the received event using [Distribute Context Events [RAD-X9]](rad-x9.html) to all Subscribers that listed this event type in their subscription.
-
 #### 2:3.X3.4.2 Open Report Context Response Message
 
 ##### 2:3.X3.4.2.1 Trigger Events

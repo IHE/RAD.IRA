@@ -68,8 +68,6 @@ The Manager shall apply all actions in the request *atomically*. i.e. The Manage
 
 If the Manager successfully apply all actions in the request, it shall assign a new version ID to the `report` anchor context.
 
-The Manager shall distribute the received event using [Distribute Context Events [RAD-X9]](rad-x9.html) to all Subscribers that listed this event type in their subscription.
-
 #### 2:3.X5.4.2 Update Report Content Response Message
 
 ##### 2:3.X5.4.2.1 Trigger Events

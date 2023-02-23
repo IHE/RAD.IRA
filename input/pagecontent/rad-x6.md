@@ -70,8 +70,6 @@ The Manager shall keep track of what contents are being selected. In particular:
 
 The Manager shall ignore any selected resources in the request that are not known based on any previous `DiagnosticReport-open` or `DiagnosticReport-update` events.
 
-The Manager shall distribute the received event using [Distribute Context Events [RAD-X9]](rad-x9.html) to all Subscribers that listed this event type in their subscription.
-
 #### 2:3.X6.4.2 Select Report Content Response Message
 
 ##### 2:3.X6.4.2.1 Trigger Events
