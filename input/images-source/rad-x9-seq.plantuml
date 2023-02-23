@@ -10,11 +10,4 @@ activate Subscriber
 Subscriber-->Manager: Notification Response
 deactivate Subscriber
 
-opt In case of asynchronous processing
-Subscriber->Manager: Notify Error
-activate Manager
-Manager-->Subscriber: Notify Error Response
-deactivate Manager
-end
-
 @enduml

@@ -1,0 +1,13 @@
+@startuml
+
+hide footbox
+
+participant "Subscriber" as Subscriber
+participant "Manager" as Manager
+
+Subscriber->Manager: Notify Error
+activate Manager
+Manager-->Subscriber: Notify Error Response
+deactivate Manager
+
+@enduml

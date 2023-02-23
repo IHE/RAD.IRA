@@ -84,10 +84,13 @@ pages:
     title: 2:3.X8 Get Current Context [RAD-X8]
     generation: markdown
   rad-x9.md:
-    title: 2:3.X9 Send Context Event [RAD-X9]
+    title: 2:3.X9 Distribute Context Event [RAD-X9]
     generation: markdown
   rad-x10.md:
-    title: 2:3.X10 Send SyncError Event [RAD-X10]
+    title: 2:3.X10 Generate SyncError Event [RAD-X10]
+    generation: markdown
+  rad-x11.md:
+    title: 2:3.X11 Notify Error [RAD-X11]
     generation: markdown
   example.md:
     title: Introduction to Examples
@@ -136,8 +139,9 @@ menu:
     Select Report Content [RAD-X6]: rad-x6.html
     Unsubscribe Session [RAD-X7]: rad-x7.html
     Get Current Context [RAD-X8]: rad-x8.html
-    Send Context Event [RAD-X9]: rad-x9.html
-    Send SyncError Event [RAD-X10]: rad-x10.html
+    Distribute Context Event [RAD-X9]: rad-x9.html
+    Generate SyncError Event [RAD-X10]: rad-x10.html
+    Notify Error [RAD-X11]: rad-x11.html
   Examples:
     Introduction: example.html
     Initiate Report Context: open_study_for_reporting.html

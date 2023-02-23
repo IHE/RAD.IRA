@@ -1,6 +1,6 @@
 ### 2:3.X9.1 Scope
 
-This transaction is used to send notification events to subscribers.
+This transaction is used to distribute notification events to subscribers. This allows a Subscriber to synchronize to changes in the reporting session initiated by other Subscribers.
 
 ### 2:3.X9.2 Actors Roles
 
@@ -8,7 +8,7 @@ This transaction is used to send notification events to subscribers.
 
 | Role | Description | Actor(s) |
 |------|-------------|----------|
-| Manager | Sends notification event to Subscribers | Hub |
+| Manager | Distributes notification event to Subscribers | Hub |
 | Subscriber | Receives notification events | Image Display<br>Report Creator<br>Worklist Client<br>Evidence Creator<br>Watcher |
 {: .grid}
 
@@ -51,9 +51,7 @@ The Subscriber may validate the received event according to its business logic. 
 
 The Subscriber shall handle events `[FHIR resource]-open` | `update` | `select` | `close` that it supports. The event handling requirements are defined in the Actor Description for each actor per profile.
 
-If the Subscriber accepted the event initially (i.e. return `202` Accepted) and later decided to refuse the context or failed to process the event, then it shall send a `syncerror` event back to the Manager using Send SyncError Event [RAD-X10](rad-10.html).
-
-TODO: See if stating parsing vs processing and handle response and error are handled.
+If the Subscriber accepted the event initially (i.e. return `202` Accepted) and later decided to refuse the context or failed to process the event, then it shall send a `syncerror` event back to the Manager using Notify Error [RAD-X11](rad-11.html).
 
 ##### 2:3.X9.4.1.3.1 Handling open events
 
@@ -111,66 +109,15 @@ The `status` shall be one of the following:
 - `202` Accepted if the Subscriber successfully received the event and will process the event asynchronously
 - `4xx` or `5xx` if the Subscriber failed to process the event
 
-> Note: If the Subscriber returned with `status` `202` Accepted and later failed to process the event, then the Subscriber shall send a `syncerror` event following [Send SyncError Event](rad-x10.html).
+> Note: If the Subscriber returned with `status` `202` Accepted and later failed to process the event, then the Subscriber shall send a `syncerror` event following [Notify Error](rad-x11.html).
 
 ##### 2:3.X9.4.2.3 Expected Actions
 
-If the Manager receives an error confirmation message (i.e. `status` `4xx` or `5xx`) from at least one of the Subscribers, then the Manager shall send a `syncerror` event following [Send SyncError Event](rad-x10.html) to all subscribers that subscribed to the `syncerror` event.
+If the Manager receives an error confirmation message (i.e. `status` `4xx` or `5xx`) from at least one of the Subscribers, then the Manager shall send a `syncerror` event following [Notify Error](rad-x11.html) to all subscribers that subscribed to the `syncerror` event.
 
 The Manager shall not change the current context in the session even if it receives an error confirmation message.
 
 > Note: The Manager sets the current context as a result of processing a `[FHIR resource]-open` event. Whether or not one or more of the Subscribers failed to apply the context change does not affect the context managed by the Manager.
-
-#### 2:3.X9.4.3 Notify Error Message
-
-This pair of messages is used for SyncError originated by a Subscriber.
-
-The Subscriber sends an error event to the Manager indicated that it failed to process an accepted event. The Subscriber shall support sending such messages to more than one Manager.
-
-The Manager shall support handling such messages from more than one Subscriber. 
-
-##### 2:3.X9.4.3.1 Trigger Events
-
-The Subscriber failed to process an accepted event (e.g. The Subscriber accepted an event but failed to follow context within a configured timeout after reception).
-
-##### 2:3.X9.4.3.2 Message Semantics
-
-This message is a [FHIRcast Request Context Change](https://build.fhir.org/ig/HL7/fhircast-docs/2-6-RequestContextChange.html#request-context-change-body) request. The Sender is the FHIRcast Subscriber. The Manager is the FHIRcast Hub.
-
-The `event.context` shall conform to [SyncError Context](https://build.fhir.org/ig/HL7/fhircast-docs/3-2-1-syncerror.html#context).
-
-Per FHIRcast, the `issue[0].severity` of the `operationoutcome` context will be set to `warning`.
-
-If the Subscriber retries the same request due to a timeout, then the Subscriber shall use the same `event.id` such that the Manager can detect if it is a duplicate message.
-
-If the Subscriber retries the same request due to an error response from the Manager, then the Subscriber shall assign a new `event.id` to indicate that it is a new message.
-
-##### 2:3.X9.4.3.3 Expected Actions
-
-The Manager shall validate the request as follow:
-
-TODO: types of errors for each check, and use the table format
-
-* If `timestamp`, `id` or `event` are not set, then return an error
-* If `event.context` does not include `operationoutcome`, then return an error
-* If the context does not conform to the [SyncError Context](https://build.fhir.org/ig/HL7/fhircast-docs/3-2-1-syncerror.html#context), then return an error
-* if `event`.`hub.topic` is not a known session, then return an error
-
-The Manager shall process the `SyncError` event the same as any other event following the [Notification Message](#23x941-notification-message) in this transaction.
-
-#### 2:3.X9.4.4 Notify Error Response Message
-
-##### 2:3.X9.4.4.1 Trigger Events
-
-The Manager finished processing the Notify Error request.
-
-##### 2:3.X9.4.4.2 Message Semantics
-
-This message is a [FHIRcast Request Context Change]() response. The Sender is the FHIRcast Subscriber. The Manager is the FHIRcast Hub.
-
-##### 2:3.X9.4.4.3 Expected Actions
-
-If the response is an error, then the Subscriber may consider retrying the request.
 
 ### 2:3.X9.5 Security Considerations
 
