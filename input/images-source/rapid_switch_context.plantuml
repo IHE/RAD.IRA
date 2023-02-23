@@ -26,7 +26,7 @@ The existing context DiagnosticReport xxx remains
 in the Hub but it is not the active context.
 end note
 
-Hub->PACS: Send Context Event [RAD-X9] //of previous study//\n(event: id = 1000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
+Hub->PACS: Distribute Context Event [RAD-X9] //of previous study//\n(event: id = 1000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
 note over Hub
 It is NOT an error if the *-close event
 does not match the most recent *-open event.
@@ -41,7 +41,7 @@ end note
 
 PACS-->Hub: //Success//
 
-Hub->Report: Send Context Event [RAD-X3]\n//of previous study//\n(event: id = 1000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
+Hub->Report: Distribute Context Event [RAD-X3]\n//of previous study//\n(event: id = 1000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
 Report->Report: //no action required//
 Report-->Hub: //Success//
 

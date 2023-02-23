@@ -19,22 +19,22 @@ User->PACS: //Select Patient and Study//\n//to start dictation//
 PACS->Hub: Initiate Report Context [RAD-X3]\n//(Study context present)//
 Hub-->PACS: Return 200 OK
 Hub->Hub: //Initiate report context//
-Hub->Watcher: Send Context Event [RAD-X9]\n//(Report context initiated)//
+Hub->Watcher: Distribute Context Event [RAD-X9]\n//(Report context initiated)//
 Watcher-->Hub: Return 200 OK
-Hub->PACS: Send Context Event [RAD-X9]\n//(Report context initiated)//
+Hub->PACS: Distribute Context Event [RAD-X9]\n//(Report context initiated)//
 PACS-->Hub: Return 200 OK
-Hub->Report: Send Context Event [RAD-X9]\n//(Report context initiated)//
+Hub->Report: Distribute Context Event [RAD-X9]\n//(Report context initiated)//
 Report-->Hub: Return 202 Accepted
 Report->Report: //Detect that the identified//\n//patient context does not//\n//match the patient referenced//\n//in the identified study context//
-Report->Hub: Send Context Event [RAD-X9]\nwith SyncError
+Report->Hub: Distribute Context Event [RAD-X9]\nwith SyncError
 Hub-->Report: Return 200 OK
-Hub->Watcher: Send Context Event [RAD-X9]\n//(SyncError received)//
+Hub->Watcher: Distribute Context Event [RAD-X9]\n//(SyncError received)//
 Watcher-->Hub: Return 200 OK
 Watcher->Watcher: //Update dashboard with error//
-Hub->PACS: Send Context Event [RAD-X9]\n//(SyncError received)//
+Hub->PACS: Distribute Context Event [RAD-X9]\n//(SyncError received)//
 PACS-->Hub: Return 200 OK
 PACS->User: //Display error to user//
-Hub->Report: Send Context Event [RAD-X9]\n//(SyncError received)//
+Hub->Report: Distribute Context Event [RAD-X9]\n//(SyncError received)//
 Report-->Hub: Return 200 OK
 
 @enduml

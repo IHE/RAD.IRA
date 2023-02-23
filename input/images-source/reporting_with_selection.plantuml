@@ -17,12 +17,12 @@ end note
 loop
 PACS->Hub: Update Context Content [RAD-X5]
 Hub->Hub: //Maintain order of content update//
-Hub->Report: Send Context Event [RAD-X3]
+Hub->Report: Distribute Context Event [RAD-X3]
 Report->Report: //Apply event//
 
 Radiologist->PACS: //Select images and/or measurements//\n//as current focus//
 PACS->Hub: Select Context Content [RAD-X8]
-Hub->Report: Send Context Event [RAD-X3]
+Hub->Report: Distribute Context Event [RAD-X3]
 
 Radiologist->Report: //Insert Hyperlink//\n//as a voice command//
 note over Radiologist

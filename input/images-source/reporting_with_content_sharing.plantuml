@@ -42,14 +42,14 @@ Reporting context includes:
 * ServiceRequext ??
 end note
 
-Hub->Report: Send Context Event [RAD-X3]
+Hub->Report: Distribute Context Event [RAD-X3]
 
 == Step 3: Content Sharing ==
 
 loop
 PACS->Hub: Update Context Content [RAD-X5]
 Hub->Hub: //Maintain order of content update//
-Hub->Report: Send Context Event [RAD-X3]
+Hub->Report: Distribute Context Event [RAD-X3]
 Report->Report: //Verify if content received in order//
 
     opt If event is not in order
@@ -75,7 +75,7 @@ end loop
 
 Radiologist->Report: //Sign off report//
 Report->Hub: Close Context [RAD-X4]
-Hub->PACS: Send Context Event [RAD-X3]
+Hub->PACS: Distribute Context Event [RAD-X3]
 
 PACS->PACS: //Update study status//\n//and drop the study from worklist//
 

@@ -78,11 +78,11 @@ end note
 Hub->Hub: //Create DiagnosticReport Context in session 12345//\n(event: id = 1000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
 Hub-->PACS: Accept
 
-Hub->Report: Send Context Event [RAD-X3]\n(event: id = 1000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
+Hub->Report: Distribute Context Event [RAD-X3]\n(event: id = 1000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
 Report->Report: //Initiate new report//\n//based on the received context//
 Report-->Hub: //Success (id = 1000, status = 200)//
 
-Hub->PACS: Send Context Event [RAD-X3]\n(event: id = 1000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
+Hub->PACS: Distribute Context Event [RAD-X3]\n(event: id = 1000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
 PACS->PACS: //No action required//
 PACS-->Hub: //Success (id = 1000, status = 200)//
 deactivate Hub
@@ -106,10 +106,10 @@ activate Hub
 
 Hub->Hub: //Update DiagnosticReport context in session 12345//\n(event: id = 2000,\ncontext = DiagnosticReport xxx)
 
-Hub->PACS: Send Context Event [RAD-X3]\n(event: id = 2000,\ncontext = DiagnosticReport xxx)
+Hub->PACS: Distribute Context Event [RAD-X3]\n(event: id = 2000,\ncontext = DiagnosticReport xxx)
 PACS->PACS: //Update study status//\n//and drop the study from worklist//
 PACS-->Hub: //Success (id = 2000, status = 200)//
-Hub->Report: Send Context Event [RAD-X3]\n(event: id = 2000,\ncontext = DiagnosticReport xxx)
+Hub->Report: Distribute Context Event [RAD-X3]\n(event: id = 2000,\ncontext = DiagnosticReport xxx)
 Report->Report: //No action required//
 Report-->Hub: //Success (id = 2000, status = 200)//
 

@@ -11,7 +11,7 @@ User->PACS: //Select measurements as seen in images//\n//as current focus//
 
 PACS->Hub: Select Report Content [RAD-X6]
 Hub->Hub: //Mark selected contents//\n[[select_study_and_observation.html#available-context-and-content-in-hub Example]]
-Hub->Report: Send Context Event [RAD-X9]
+Hub->Report: Distribute Context Event [RAD-X9]
 
 Report->Report: //Select referenced report content//
 note over Report

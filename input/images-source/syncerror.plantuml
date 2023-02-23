@@ -22,14 +22,14 @@ Hub->Hub: //Generate syncerror event//
 Hub->Requester: Send SyncError Event [RAD-X10]
 
 == Synchronous Event Processing Error from Subscriber ==
-Hub->Receiver: Send Context Event [RAD-X9]
+Hub->Receiver: Distribute Context Event [RAD-X9]
 Receiver-->Hub: Return HTTP 4xx or 5xx error codes
 Hub->Hub: //Generate syncerror event//
 Hub->Requester: Send SyncError Event [RAD-X10]
 Hub->Receiver: Send SyncError Event [RAD-X10]
 
 == Asynchronous Event Processing Error from Subscriber ==
-Hub->Receiver: Send Context Event [RAD-X9]
+Hub->Receiver: Distribute Context Event [RAD-X9]
 Receiver-->Hub: Return HTTP 202 Accepted
 Receiver->Receiver: //Failed processing//
 Receiver->Hub: Send SyncError Event [RAD-X10]

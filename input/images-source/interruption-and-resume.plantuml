@@ -33,11 +33,11 @@ end note
 Hub->Hub: //Create DiagnosticReport Context in session 12345//\n(event: id = 1000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)\n[[open_study_for_reporting.html#available-context-and-content-in-hub Example]]
 Hub-->PACS: Accept
 
-Hub->Report: Send Context Event [RAD-X9]\n(event: id = 1000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
+Hub->Report: Distribute Context Event [RAD-X9]\n(event: id = 1000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
 Report->Report: //Initiate new report//\n//based on the received context//
 Report-->Hub: //Success (id = 1000, status = 200)//
 
-Hub->PACS: Send Context Event [RAD-X9]\n(event: id = 1000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
+Hub->PACS: Distribute Context Event [RAD-X9]\n(event: id = 1000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
 PACS->PACS: //No action required//
 PACS-->Hub: //Success (id = 1000, status = 200)//
 deactivate Hub
@@ -70,11 +70,11 @@ the Hub's tracking since it has not yet been closed.
 end note
 Hub-->PACS: Accept
 
-Hub->Report: Send Context Event [RAD-X9]\n(event: id = 2000,\ncontext = DiagnosticReport aaa\nrelated context = Patient bbb, ImagingStudy ccc)
+Hub->Report: Distribute Context Event [RAD-X9]\n(event: id = 2000,\ncontext = DiagnosticReport aaa\nrelated context = Patient bbb, ImagingStudy ccc)
 Report->Report: //Initiate new report//\n//based on the received context//
 Report-->Hub: //Success (id = 2000, status = 200)//
 
-Hub->PACS: Send Context Event [RAD-X9]\n(event: id = 2000,\ncontext = DiagnosticReport aaa\nrelated context = Patient bbb, ImagingStudy ccc)
+Hub->PACS: Distribute Context Event [RAD-X9]\n(event: id = 2000,\ncontext = DiagnosticReport aaa\nrelated context = Patient bbb, ImagingStudy ccc)
 PACS->PACS: //No action required//
 PACS-->Hub: //Success (id = 2000, status = 200)//
 deactivate Hub
@@ -93,7 +93,7 @@ and deleted this context.
 Hub resumes context DiagnosticReport xxx as current context.
 end note
 
-Hub->Report: Send Context Event [RAD-X9]\n(event: id = 3000,\ncontext = DiagnositcReport aaa)
+Hub->Report: Distribute Context Event [RAD-X9]\n(event: id = 3000,\ncontext = DiagnositcReport aaa)
 Report->Report: //Close study in consultation//
 Report-->Hub: //Success//
 
@@ -103,7 +103,7 @@ Hub-->Report: Return current context and content
 end opt
 Report->Report: //Switch the context back to the previous study//
 
-Hub->PACS: Send Context Event [RAD-X9]\n(event: id = 3000,\ncontext = DiagnosticReport aaa)
+Hub->PACS: Distribute Context Event [RAD-X9]\n(event: id = 3000,\ncontext = DiagnosticReport aaa)
 PACS->PACS: //Resume to the previously open study in context//\n//DiagnosticReport xxx, patient yyy, study zzz//
 PACS-->Hub: //Success//
 

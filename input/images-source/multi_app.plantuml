@@ -44,11 +44,11 @@ activate Hub
 Hub->Hub: //Create DiagnosticReport Context in session 12345//\n(event: id = 1000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
 Hub-->WF: Accept
 
-Hub->WF: Send Context Event [RAD-X3]\n(session 12345, event: id = 1000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
+Hub->WF: Distribute Context Event [RAD-X3]\n(session 12345, event: id = 1000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
 WF->WF: //No action required//
 WF-->Hub: //Success (id = 1000, status = 200)//
 
-Hub->PACS: Send Context Event [RAD-X9]\n(session 12345, event: id = 1000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
+Hub->PACS: Distribute Context Event [RAD-X9]\n(session 12345, event: id = 1000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
 PACS->PACS: //Open patient's study//\n//based on the received context//
 PACS-->Hub: //Success (id = 1000, status = 200)//
 
@@ -96,15 +96,15 @@ activate Hub
 
 Hub-->Special: Accept
 
-Hub->WF: Send Context Event [RAD-X9]\n(session 12345, event: id = 3333,\ncontext = DiagnosticReport xxx, update on ImagingStudy zzz)
+Hub->WF: Distribute Context Event [RAD-X9]\n(session 12345, event: id = 3333,\ncontext = DiagnosticReport xxx, update on ImagingStudy zzz)
 WF->WF: //No action required//
 WF-->Hub: //Success (id = 3333, status = 200)//
 
-Hub->PACS: Send Context Event [RAD-X9]\n(session 12345, event: id = 3333,\ncontext = DiagnosticReport xxx, update on ImagingStudy zzz)
+Hub->PACS: Distribute Context Event [RAD-X9]\n(session 12345, event: id = 3333,\ncontext = DiagnosticReport xxx, update on ImagingStudy zzz)
 PACS->PACS: //Show results from Evidence Creator to user//
 PACS-->Hub: //Success (id = 3333, status = 200)//
 
-Hub->Report: Send Context Event [RAD-X9]\n(session 12345, event: id = 3333,\ncontext = DiagnosticReport xxx, update on ImagingStudy zzz)
+Hub->Report: Distribute Context Event [RAD-X9]\n(session 12345, event: id = 3333,\ncontext = DiagnosticReport xxx, update on ImagingStudy zzz)
 Report->Report: //No action required//
 Report-->Hub: //Success (id = 3333, status = 200)//
 
@@ -115,11 +115,11 @@ deactivate Hub
 Radiologist->PACS: //Verify and accept results from Evidence Creator//
 
 PACS->Hub: Update Report Content [RAD-X5]\n(session 12345, event: id = 4444,\ncontext = DiagnosticReport xxx, add Observation abc)
-Hub->Report: Send Context Event [RAD-X9]
+Hub->Report: Distribute Context Event [RAD-X9]
 Report->Report: //Update report with contents obtained//\n//by Image Display from Evidence Creator//
-Hub->PACS: Send Context Event [RAD-X9]
+Hub->PACS: Distribute Context Event [RAD-X9]
 PACS->PACS: //No action required//
-Hub->WF: Send Context Event [RAD-X9]
+Hub->WF: Distribute Context Event [RAD-X9]
 WF->WF: //No action required//
 
 == Step 7: Close Report Context ==
@@ -136,19 +136,19 @@ activate Hub
 
 Hub->Hub: //Update DiagnosticReport context in session 12345//\n(event: id = 2000,\ncontext = DiagnosticReport xxx)
 
-Hub->WF: Send Context Event [RAD-X9]\n(session 12345, event: id = 2000,\ncontext = DiagnosticReport xxx)
+Hub->WF: Distribute Context Event [RAD-X9]\n(session 12345, event: id = 2000,\ncontext = DiagnosticReport xxx)
 WF->WF: //Update study status//\n//and drop the study from worklist//
 WF-->Hub: //Success (id = 2000, status = 200)//
 
-Hub->PACS: Send Context Event [RAD-X9]\n(session 12345, event: id = 2000,\ncontext = DiagnosticReport xxx)
+Hub->PACS: Distribute Context Event [RAD-X9]\n(session 12345, event: id = 2000,\ncontext = DiagnosticReport xxx)
 PACS->PACS: //Update study status//
 PACS-->Hub: //Success (id = 2000, status = 200)//
 
-Hub->Report: Send Context Event [RAD-X9]\n(session 12345, event: id = 2000,\ncontext = DiagnosticReport xxx)
+Hub->Report: Distribute Context Event [RAD-X9]\n(session 12345, event: id = 2000,\ncontext = DiagnosticReport xxx)
 Report->Report: //No action required//
 Report-->Hub: //Success (id = 2000, status = 200)//
 
-Hub->Special: Send Context Event [RAD-X9]\n(session 12345, event: id = 2000,\ncontext = DiagnosticReport xxx)
+Hub->Special: Distribute Context Event [RAD-X9]\n(session 12345, event: id = 2000,\ncontext = DiagnosticReport xxx)
 Special->Special: //Minimize application//
 Special-->Hub: //Success (id = 2000, status = 200)//
 
@@ -164,9 +164,9 @@ the applications and establish the subscription.
 end note
 
 WF->Hub: Initial Report Context [RAD-X3]\n(session 12345, event: id = 3333,\ncontext = DiagnosticReport kkk)
-Hub->PACS: Send Context Event [RAD-X9]
-Hub->Report: Send Context Event [RAD-X9]
-Hub->WF: Send Context Event [RAD-X9]
+Hub->PACS: Distribute Context Event [RAD-X9]
+Hub->Report: Distribute Context Event [RAD-X9]
+Hub->WF: Distribute Context Event [RAD-X9]
 
 == Step 9: Close Applications ==
 

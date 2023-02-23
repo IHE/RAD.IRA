@@ -16,11 +16,11 @@ activate Hub
 Hub->Hub: //Create DiagnosticReport Context in session 12345//\n[[open_study_for_reporting.html#available-context-and-content-in-hub Example]]
 Hub-->PACS: Accept
 
-Hub->Report: Send Context Event [RAD-X9]\n(event: id = 1000, ...)
+Hub->Report: Distribute Context Event [RAD-X9]\n(event: id = 1000, ...)
 Report->Report: //Initiate new report//\n//based on the received context//
 Report-->Hub: //Success (id = 1000, status = 200)//
 
-Hub->PACS: Send Context Event [RAD-X9]\n(event: id = 1000, ...)
+Hub->PACS: Distribute Context Event [RAD-X9]\n(event: id = 1000, ...)
 PACS-->Hub: //Success (id = 1000, status = 200)//
 deactivate Hub
 
