@@ -402,71 +402,83 @@ The Image Display shall handle the events according to the event handling requir
   <thead>
     <tr>
       <th>Event</th>
-      <th>Required Behaviors?? TODO</th>
       <th>Context Key</th>
       <th>Resources</th>
+      <th>Optionality</th>
+      <th>Expected Behavior</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td rowspan="2">DiagnosticReport-open</td>
-      <td>Track context</td>
       <td><code class="language-plaintext highlighter-rouge">report</code></td>
       <td>DiagnosticReport</td>
+      <td>R</td>
+      <td>Track context</td>
     </tr>
     <tr>
-      <td>Display the study images and metadata</td>
       <td><code class="language-plaintext highlighter-rouge">patient</code><br/><code class="language-plaintext highlighter-rouge">study</code></td>
       <td>Patient<br/>ImagingStudy</td>
+      <td>R</td>
+      <td>Display the study images and metadata</td>
     </tr>
     <tr>
       <td>DiagnosticReport-close</td>
-      <td>Stop display the study images</td>
       <td><code class="language-plaintext highlighter-rouge">report</code></td>
       <td>DiagnosticReport</td>
+      <td>R</td>
+      <td>Stop display the study images</td>      
     </tr>
     <tr>
       <td rowspan="5">DiagnosticReport-update</td>
-      <td>Update study’s reporting status. Remove study from worklist according to its business logic.</td>
       <td><code class="language-plaintext highlighter-rouge">report</code></td>
       <td>DiagnosticReport</td>
+      <td>R</td>
+      <td>Update study’s reporting status. Remove study from worklist according to its business logic.</td>      
     </tr>
     <tr>
-      <td>Update patient records</td>
       <td><code class="language-plaintext highlighter-rouge">patient</code></td>
       <td>Patient</td>
+      <td>R</td>
+      <td>Update patient records</td>      
     </tr>
     <tr>
-      <td>Add comparison study</td>
       <td><code class="language-plaintext highlighter-rouge">updates</code></td>
       <td>ImagingStudy</td>
+      <td>R</td>
+      <td>Add comparison study</td>      
     </tr>
     <tr>
-      <td>Add annotations to selected images</td>
       <td><code class="language-plaintext highlighter-rouge">updates</code></td>
       <td>ImagingSelection</td>
+      <td>R</td>
+      <td>Add annotations to selected images</td>      
     </tr>
     <tr>
-      <td>Add measurements and annotations</td>
       <td><code class="language-plaintext highlighter-rouge">updates</code></td>
       <td>Observation</td>
+      <td>R</td>
+      <td>Add measurements and annotations</td>
     </tr>
     <tr>
       <td rowspan="2">DiagnosticReport-select</td>
-      <td>Display comparison study</td>
       <td><code class="language-plaintext highlighter-rouge">select</code></td>
       <td>ImagingStudy</td>
+      <td>R</td>
+      <td>Display comparison study</td>
     </tr>
     <tr>
-      <td>Display selected images and annotations</td>
       <td><code class="language-plaintext highlighter-rouge">select</code></td>
       <td>ImagingSelection</td>
+      <td>R</td>
+      <td>Display selected images and annotations</td>      
     </tr>
     <tr>
       <td>SyncError</td>
-      <td>Be able to notify to the user regarding the synchronization error, including the details of the error reported and the Subscriber that reported the error</td>
       <td><code class="language-plaintext highlighter-rouge">operationoutcome</code></td>
       <td>OperationOutcome</td>
+      <td>R</td>
+      <td>Be able to notify to the user regarding the synchronization error, including the details of the error reported and the Subscriber that reported the error</td>
     </tr>
   </tbody>
 </table>
@@ -509,9 +521,10 @@ The Report Creator shall handle the events according to the event handling requi
   <thead>
     <tr>
       <th>Event</th>
-      <th>Handling Requirements</th>
       <th>Context Key</th>
       <th>Resources</th>
+      <th>Optionality</th>
+      <th>Expected Behavior</th>
     </tr>
   </thead>
   <tbody>
@@ -520,55 +533,65 @@ The Report Creator shall handle the events according to the event handling requi
       <td>Track context</td>
       <td><code class="language-plaintext highlighter-rouge">report</code></td>
       <td>DiagnosticReport</td>
+      <td>R</td>      
     </tr>
     <tr>
-      <td>Be ready for reporting for the study. If re-open the same report context, resume to the previous state of the report context when it was interrupted.</td>
       <td><code class="language-plaintext highlighter-rouge">patient</code><br/><code class="language-plaintext highlighter-rouge">study</code></td>
       <td>Patient<br/>ImagingStudy</td>
+      <td>R</td>
+      <td>Be ready for reporting for the study. If re-open the same report context, resume to the previous state of the report context when it was interrupted.</td>      
     </tr>
     <tr>
       <td>DiagnosticReport-close</td>
-      <td>Stop display the study report, may use as id in the report context as the report ID for the eventual created report</td>
       <td><code class="language-plaintext highlighter-rouge">report</code></td>
       <td>DiagnosticReport</td>
+      <td>R</td>
+      <td>Stop display the study report, may use as id in the report context as the report ID for the eventual created report</td>      
     </tr>
     <tr>
       <td rowspan="4">DiagnosticReport-update</td>
-      <td>Update patient records</td>
       <td><code class="language-plaintext highlighter-rouge">patient</code></td>
       <td>Patient</td>
+      <td>R</td>
+      <td>Update patient records</td>      
     </tr>
     <tr>
-      <td>Add comparison study</td>
       <td><code class="language-plaintext highlighter-rouge">updates</code></td>
       <td>ImagingStudy</td>
+      <td>R</td>
+      <td>Add comparison study</td>      
     </tr>
     <tr>
-      <td>Add annotations to selected images</td>
       <td><code class="language-plaintext highlighter-rouge">updates</code></td>
       <td>ImagingSelection</td>
+      <td>R</td>
+      <td>Add annotations to selected images</td>      
     </tr>
     <tr>
-      <td>Add measurements and annotations</td>
       <td><code class="language-plaintext highlighter-rouge">updates</code></td>
       <td>Observation</td>
+      <td>R</td>
+      <td>Add measurements and annotations</td>      
     </tr>
     <tr>
       <td rowspan="2">DiagnosticReport-select</td>
-      <td>Select comparison study and able to apply user commands (See Note 1)</td>
       <td><code class="language-plaintext highlighter-rouge">select</code></td>
       <td>ImagingStudy</td>
+      <td>R</td>
+      <td>Select comparison study and able to apply user commands (See Note 1)</td>      
     </tr>
     <tr>
-      <td>Select images and annotations and able to apply user commands (See Note 1)</td>
       <td><code class="language-plaintext highlighter-rouge">select</code></td>
       <td>ImagingSelection</td>
+      <td>R</td>
+      <td>Select images and annotations and able to apply user commands (See Note 1)</td>      
     </tr>
     <tr>
       <td>SyncError</td>
-      <td>Be able to notify to the user regarding the synchronization error, including the details of the error reported and the Subscriber that reported the error</td>
       <td><code class="language-plaintext highlighter-rouge">operationoutcome</code></td>
       <td>OperationOutcome</td>
+      <td>R</td>
+      <td>Be able to notify to the user regarding the synchronization error, including the details of the error reported and the Subscriber that reported the error</td>      
     </tr>
   </tbody>
 </table>
@@ -606,51 +629,59 @@ The Worklist Client shall handle the events according to the event handling requ
   <thead>
     <tr>
       <th>Event</th>
-      <th>Handling Requirements</th>
       <th>Context Key</th>
       <th>Resources</th>
+      <th>Optionality</th>
+      <th>Expected Behavior</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td rowspan="2">DiagnosticReport-open</td>
-      <td>Track context and display report status</td>
       <td><code class="language-plaintext highlighter-rouge">report</code></td>
       <td>DiagnosticReport</td>
+      <td>R</td>
+      <td>Track context and display report status</td>
     </tr>
     <tr>
-      <td>Display the patient and study metadata</td>
       <td><code class="language-plaintext highlighter-rouge">patient</code><br/><code class="language-plaintext highlighter-rouge">study</code></td>
       <td>Patient<br/>ImagingStudy</td>
+      <td>R</td>
+      <td>Display the patient and study metadata</td>
     </tr>
     <tr>
       <td>DiagnosticReport-close</td>
-      <td>Remove the study from reporting worklist</td>
       <td><code class="language-plaintext highlighter-rouge">report</code></td>
       <td>DiagnosticReport</td>
+      <td>R</td>
+      <td>Remove the study from reporting worklist</td>
     </tr>
     <tr>
       <td rowspan="2">DiagnosticReport-update</td>
-      <td>Update study’s reporting status. Remove study from worklist according to its business logic.</td>
       <td><code class="language-plaintext highlighter-rouge">report</code></td>
       <td>DiagnosticReport</td>
+      <td>R</td>
+      <td>Update study’s reporting status. Remove study from worklist according to its business logic.</td>
     </tr>
     <tr>
-      <td>Update patient records</td>
       <td><code class="language-plaintext highlighter-rouge">patient</code></td>
       <td>Patient</td>
+      <td>R</td>
+      <td>Update patient records</td>
     </tr>
     <tr>
       <td>DiagnosticReport-select</td>
-      <td>Select the study in worklist</td>
       <td><code class="language-plaintext highlighter-rouge">report</code></td>
       <td>DiagnosticReport</td>
+      <td>R</td>
+      <td>Select the study in worklist</td>
     </tr>
     <tr>
       <td>SyncError</td>
-      <td>Be able to notify to the user regarding the synchronization error, including the details of the error reported and the Subscriber that reported the error</td>
       <td><code class="language-plaintext highlighter-rouge">operationoutcome</code></td>
       <td>OperationOutcome</td>
+      <td>R</td>
+      <td>Be able to notify to the user regarding the synchronization error, including the details of the error reported and the Subscriber that reported the error</td>
     </tr>
   </tbody>
 </table>
@@ -681,46 +712,53 @@ The Evidence Creator shall handle the events according to the event handling req
   <thead>
     <tr>
       <th>Event</th>
-      <th>Handling Requirements</th>
       <th>Context Key</th>
       <th>Resources</th>
+      <th>Optionality</th>
+      <th>Expected Behavior</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td rowspan="2">DiagnosticReport-open</td>
-      <td>Track context</td>
       <td><code class="language-plaintext highlighter-rouge">report</code></td>
       <td>DiagnosticReport</td>
+      <td>R</td>
+      <td>Track context</td>
     </tr>
     <tr>
-      <td>Process the study data</td>
       <td><code class="language-plaintext highlighter-rouge">patient</code><br/><code class="language-plaintext highlighter-rouge">study</code></td>
       <td>Patient<br/>ImagingStudy</td>
+      <td>R</td>
+      <td>Process the study data</td>
     </tr>
     <tr>
       <td>DiagnosticReport-close</td>
-      <td>Stop processing the study data</td>
       <td><code class="language-plaintext highlighter-rouge">report</code></td>
       <td>DiagnosticReport</td>
+      <td>R</td>
+      <td>Stop processing the study data</td>
     </tr>
     <tr>
       <td>DiagnosticReport-update</td>
+      <td>Any</td>
+      <td>Any</td>
+      <td>R</td>
       <td>Update the report, patient or study record, or add/modify/delete received contents, if applicable.</td>
-      <td>Any</td>
-      <td>Any</td>
     </tr>
     <tr>
       <td>DiagnosticReport-select</td>
+      <td>Any</td>
+      <td>Any</td>
+      <td>R</td>
       <td>Process the applicable selected resources</td>
-      <td>Any</td>
-      <td>Any</td>
     </tr>
     <tr>
       <td>SyncError</td>
-      <td>Be able to notify to the user regarding the synchronization error, including the details of the error reported and the Subscriber that reported the error</td>
       <td><code class="language-plaintext highlighter-rouge">operationoutcome</code></td>
       <td>OperationOutcome</td>
+      <td>R</td>
+      <td>Be able to notify to the user regarding the synchronization error, including the details of the error reported and the Subscriber that reported the error</td>
     </tr>
   </tbody>
 </table>
@@ -768,46 +806,53 @@ The Watcher shall handle the events according to the event handling requirements
   <thead>
     <tr>
       <th>Event</th>
-      <th>Handling Requirements</th>
       <th>Context Key</th>
       <th>Resources</th>
+      <th>Optionality</th>
+      <th>Expected Behavior</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td rowspan="2">DiagnosticReport-open</td>
-      <td>Track context</td>
       <td><code class="language-plaintext highlighter-rouge">report</code></td>
       <td>DiagnosticReport</td>
+      <td>R</td>
+      <td>Track context</td>
     </tr>
     <tr>
-      <td>Process according to business logic</td>
       <td><code class="language-plaintext highlighter-rouge">patient</code><br/><code class="language-plaintext highlighter-rouge">study</code></td>
       <td>Patient<br/>ImagingStudy</td>
+      <td>R</td>
+      <td>Process according to business logic</td>
     </tr>
     <tr>
       <td>DiagnosticReport-close</td>
-      <td>Stop processing the report context</td>
       <td><code class="language-plaintext highlighter-rouge">report</code></td>
       <td>DiagnosticReport</td>
+      <td>R</td>
+      <td>Stop processing the report context</td>
     </tr>
     <tr>
       <td>DiagnosticReport-update</td>
+      <td>Any</td>
+      <td>Any</td>
+      <td>R</td>
       <td>Update the report, patient or study record, or add/modify/delete received contents, if applicable.</td>
-      <td>Any</td>
-      <td>Any</td>
     </tr>
     <tr>
       <td>DiagnosticReport-select</td>
+      <td>Any</td>
+      <td>Any</td>
+      <td>R</td>
       <td>Process the applicable selected resources</td>
-      <td>Any</td>
-      <td>Any</td>
     </tr>
     <tr>
       <td>SyncError</td>
-      <td>Process the synchronization error, including the details of the error reported and the Subscriber that reported the error</td>
       <td><code class="language-plaintext highlighter-rouge">operationoutcome</code></td>
       <td>OperationOutcome</td>
+      <td>R</td>
+      <td>Process the synchronization error, including the details of the error reported and the Subscriber that reported the error</td>
     </tr>
   </tbody>
 </table>
