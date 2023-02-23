@@ -9,7 +9,7 @@ This transaction is used to terminate a report context. All synchronizing applic
 | Role | Description | Actor(s) |
 |------|-------------|----------|
 | Sender | Terminates a report context | Image Display<br>Report Creator<br>Worklist Client |
-| Manager | Deletes report context and notifies Subscribers | Hub |
+| Manager | Deletes report context | Hub |
 {: .grid}
 
 ### 2:3.X4.3 Referenced Standards

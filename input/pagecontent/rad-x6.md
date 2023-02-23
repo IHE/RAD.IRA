@@ -9,7 +9,7 @@ This transaction is used to select report context and content.
 | Role | Description | Actor(s) |
 |------|-------------|----------|
 | Sender | Selects report content(s) | Content Creator |
-| Manager | Manages contents in the context that are selected and notifies Subscribers | Hub |
+| Manager | Manages contents in the context that are selected | Hub |
 {: .grid}
 
 ### 2:3.X6.3 Referenced Standards

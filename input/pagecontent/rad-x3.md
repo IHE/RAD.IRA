@@ -9,7 +9,7 @@ This transaction is used to initiate a report context. Report contexts are initi
 | Role | Description | Actor(s) |
 |------|-------------|----------|
 | Sender | Initiates a report context | Image Display<br>Report Creator<br>Worklist Client |
-| Manager | Manages initiated context and notifies Subscribers | Hub |
+| Manager | Manages initiated context | Hub |
 {: .grid}
 
 ### 2:3.X3.3 Referenced Standards
