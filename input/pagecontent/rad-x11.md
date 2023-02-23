@@ -9,7 +9,7 @@ This transaction is used to send error notifications when a Subscriber initially
 | Role | Description | Actor(s) |
 |------|-------------|----------|
 | Subscriber | Sends error notifications | Image Display<br>Report Creator<br>Worklist Client<br>Evidence Creator<br>Watcher |
-| Manager | Accepts and distributes notification event to Subscribers | Hub |
+| Manager | Accepts and processes notification | Hub |
 {: .grid}
 
 ### 2:3.X11.3 Referenced Standards
@@ -36,7 +36,7 @@ The Manager shall support handling such messages from more than one Subscriber.
 
 ##### 2:3.X11.4.1.1 Trigger Events
 
-The Subscriber failed to successfully process a notification that the Subscriber initially accepted and responded with `202` Accepted.
+The Subscriber failed to successfully process an context event that the Subscriber initially accepted and responded with `202` Accepted.
 
 ##### 2:3.X11.4.1.2 Message Semantics
 
@@ -60,8 +60,6 @@ TODO: types of errors for each check, and use the table format
 * If `event.context` does not include `operationoutcome`, then return an error
 * If the context does not conform to the [SyncError Context](https://build.fhir.org/ig/HL7/fhircast-docs/3-2-1-syncerror.html#context), then return an error
 * if `event`.`hub.topic` is not a known session, then return an error
-
-The Manager shall distribute the received event using [Distribute Context Events [RAD-X9]](rad-x9.html) to all Subscribers that listed this event type in their subscription.
 
 #### 2:3.X11.4.2 Notify Error Response Message
 
