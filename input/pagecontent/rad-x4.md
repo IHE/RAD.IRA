@@ -60,6 +60,8 @@ If the Manager accepts the request, then
 - Per FHIRcast [Section 2.9.2 Get Current Context Response](https://build.fhir.org/ig/HL7/fhircast-docs/2-9-GetCurrentContext.html#get-current-context-response), the Manager shall set the `current context` to the newest context that was initiated by a `[FHIR resource]-open` event and has not been terminated by a corresponding `[FHIR resource]-close` event. If there is no such context, then the Manager shall set the `current context` to *empty*.
 - The Manager shall delete the `report` context of the received `DiagnosticReport-close` event, as well as all associated context and content.
 
+The Manager shall distribute the received event using [Distribute Context Events [RAD-X9]](rad-x9.html) to all Subscribers that listed this event type in their subscription.
+
 #### 2:3.X4.4.2 Close Report Context Response Message
 
 ##### 2:3.X4.4.2.1 Trigger Events
