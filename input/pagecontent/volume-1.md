@@ -390,18 +390,20 @@ The Image Display shall be able to launch other applications and synchronize the
 
 ##### 1:XX.1.1.1.1 Event Handling Requirements
 
-The Image Display shall be able to support all required expected behaviors (labeled “R”) and may support the optional behaviors (labeled “O”) when handling the events and corresponding resources according to the event handling requirements defined in Table 1:XX.1.1.1.1-1:
+In Table 1:XX.1.1.1.1-1, the Received Event shows the context events defined in this profile. For each received event, Context Key specifies the context of the event and Resources specifies the FHIR resources used in the given context for the expected behavior. 
+
+The Image Display shall support handling all events defined in Table 1:XX.1.1.1.1-1. The Image Display shall support all required behaviors (“R” in Optionality). The Image Display may support suggested behaviors ("S" in Optionality).
 
 **Table 1:XX.1.1.1.1-1**: Event Handling Requirements
 
 <table class="grid">
   <thead>
     <tr>
-      <th>Event</th>
+      <th>Received Event</th>
       <th>Context Key</th>
       <th>Resources</th>
       <th>Optionality</th>
-      <th>Expected Behavior</th>
+      <th>Behavior</th>
     </tr>
   </thead>
   <tbody>
@@ -410,71 +412,65 @@ The Image Display shall be able to support all required expected behaviors (labe
       <td><code class="language-plaintext highlighter-rouge">report</code></td>
       <td>DiagnosticReport</td>
       <td>R</td>
-      <td>Track context</td>
+      <td>Maintain association of report context to associated patient and study</td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">patient</code><br/><code class="language-plaintext highlighter-rouge">study</code></td>
       <td>Patient<br/>ImagingStudy</td>
       <td>R</td>
-      <td>Display the study images and metadata</td>
+      <td>Display the study images and patient metadata</td>
     </tr>
     <tr>
       <td>DiagnosticReport-close</td>
       <td><code class="language-plaintext highlighter-rouge">report</code></td>
       <td>DiagnosticReport</td>
       <td>R</td>
-      <td>Stop display the study images</td>      
+      <td>Stop display the study images associated to the report context</td>      
     </tr>
     <tr>
-      <td rowspan="5">DiagnosticReport-update</td>
+      <td rowspan="4">DiagnosticReport-update</td>
       <td><code class="language-plaintext highlighter-rouge">report</code></td>
       <td>DiagnosticReport</td>
       <td>R</td>
-      <td>Update study’s reporting status. Remove study from worklist according to its business logic.</td>      
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">patient</code></td>
-      <td>Patient</td>
-      <td>R</td>
-      <td>Update patient records</td>      
+      <td>Reflect updated status (<code class="language-plaintext highlighter-rouge">DiagnosticReport.status</code>) in worklist</td>      
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">updates</code></td>
       <td>ImagingStudy</td>
-      <td>R</td>
-      <td>Add comparison study</td>      
+      <td>S</td>
+      <td>Display the comparison study</td>      
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">updates</code></td>
       <td>ImagingSelection</td>
-      <td>R</td>
-      <td>Add annotations to selected images</td>      
+      <td>S</td>
+      <td>Display annotations to selected images</td>      
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">updates</code></td>
       <td>Observation</td>
-      <td>R</td>
-      <td>Add measurements and annotations</td>
+      <td>S</td>
+      <td>Display measurements and annotations</td>
     </tr>
     <tr>
       <td rowspan="2">DiagnosticReport-select</td>
       <td><code class="language-plaintext highlighter-rouge">select</code></td>
       <td>ImagingStudy</td>
-      <td>R</td>
-      <td>Display comparison study</td>
+      <td>S</td>
+      <td>Bring the comparison study to focus</td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">select</code></td>
       <td>ImagingSelection</td>
-      <td>R</td>
-      <td>Display selected images and annotations</td>      
+      <td>S</td>
+      <td>Bring selected images and annotations to focus</td>      
     </tr>
     <tr>
       <td>SyncError</td>
       <td><code class="language-plaintext highlighter-rouge">operationoutcome</code></td>
       <td>OperationOutcome</td>
-      <td>R</td>
-      <td>Be able to notify to the user regarding the synchronization error, including the details of the error reported and the Subscriber that reported the error</td>
+      <td>S</td>
+      <td>Notify the user regarding the synchronization error, including the details of the error reported and the Subscriber that reported the error</td>
     </tr>
   </tbody>
 </table>
@@ -509,7 +505,9 @@ The Report Creator shall be able to launch other applications and synchronize th
 
 ##### 1:XX.1.1.2.1 Event Handling Requirements
 
-The Report Creator shall handle the events according to the event handling requirements defined in Table 1:XX.1.1.2.1-1:
+In Table 1:XX.1.1.2.1-1, the Received Event shows the context events defined in this profile. For each received event, Context Key specifies the context of the event and Resources specifies the FHIR resources used in the given context for the expected behavior. 
+
+The Report Creator shall support handling all events defined in Table 1:XX.1.1.2.1-1. The Report Creator shall support all required behaviors (“R” in Optionality). The Report Creator may support suggested behaviors ("S" in Optionality).
 
 **Table 1:XX.1.1.2.1-1**: Event Handling Requirements
 
@@ -520,74 +518,68 @@ The Report Creator shall handle the events according to the event handling requi
       <th>Context Key</th>
       <th>Resources</th>
       <th>Optionality</th>
-      <th>Expected Behavior</th>
+      <th>Behavior</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td rowspan="2">DiagnosticReport-open</td>
-      <td>Track context</td>
       <td><code class="language-plaintext highlighter-rouge">report</code></td>
       <td>DiagnosticReport</td>
-      <td>R</td>      
+      <td>R</td>
+      <td>Maintain association of report context to associated patient and study</td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">patient</code><br/><code class="language-plaintext highlighter-rouge">study</code></td>
       <td>Patient<br/>ImagingStudy</td>
       <td>R</td>
-      <td>Be ready for reporting for the study. If re-open the same report context, resume to the previous state of the report context when it was interrupted.</td>      
+      <td>Be ready for reporting for the study. If re-open a previously opened report context, resume to the previous state of the report context when it was interrupted.</td>      
     </tr>
     <tr>
       <td>DiagnosticReport-close</td>
       <td><code class="language-plaintext highlighter-rouge">report</code></td>
       <td>DiagnosticReport</td>
       <td>R</td>
-      <td>Stop display the study report, may use as id in the report context as the report ID for the eventual created report</td>      
+      <td>Stop display the study report</td>      
     </tr>
     <tr>
-      <td rowspan="4">DiagnosticReport-update</td>
-      <td><code class="language-plaintext highlighter-rouge">patient</code></td>
-      <td>Patient</td>
-      <td>R</td>
-      <td>Update patient records</td>      
-    </tr>
-    <tr>
+      <td rowspan="3">DiagnosticReport-update</td>
       <td><code class="language-plaintext highlighter-rouge">updates</code></td>
       <td>ImagingStudy</td>
-      <td>R</td>
-      <td>Add comparison study</td>      
+      <td>S</td>
+      <td>Add comparison study to report</td>      
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">updates</code></td>
       <td>ImagingSelection</td>
-      <td>R</td>
-      <td>Add annotations to selected images</td>      
+      <td>S</td>
+      <td>Add annotations of selected images to data collection for further processing</td>      
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">updates</code></td>
       <td>Observation</td>
-      <td>R</td>
-      <td>Add measurements and annotations</td>      
+      <td>S</td>
+      <td>Add measurements and annotations to data collection for further processing</td>      
     </tr>
     <tr>
       <td rowspan="2">DiagnosticReport-select</td>
       <td><code class="language-plaintext highlighter-rouge">select</code></td>
       <td>ImagingStudy</td>
-      <td>R</td>
+      <td>S</td>
       <td>Select comparison study and able to apply user commands (See Note 1)</td>      
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">select</code></td>
       <td>ImagingSelection</td>
-      <td>R</td>
+      <td>S</td>
       <td>Select images and annotations and able to apply user commands (See Note 1)</td>      
     </tr>
     <tr>
       <td>SyncError</td>
       <td><code class="language-plaintext highlighter-rouge">operationoutcome</code></td>
       <td>OperationOutcome</td>
-      <td>R</td>
-      <td>Be able to notify to the user regarding the synchronization error, including the details of the error reported and the Subscriber that reported the error</td>      
+      <td>S</td>
+      <td>Notify the user regarding the synchronization error, including the details of the error reported and the Subscriber that reported the error</td>      
     </tr>
   </tbody>
 </table>
@@ -617,7 +609,9 @@ The Worklist Client shall be able to launch other applications and synchronize t
 
 ##### 1:XX.1.1.3.1 Event Handling Requirements
 
-The Worklist Client shall handle the events according to the event handling requirements defined in Table 1:XX.1.1.3.1-1:
+In Table 1:XX.1.1.3.1-1, the Received Event shows the context events defined in this profile. For each received event, Context Key specifies the context of the event and Resources specifies the FHIR resources used in the given context for the expected behavior. 
+
+The Worklist Client shall support handling all events defined in Table 1:XX.1.1.3.1-1. The Worklist Client shall support all required behaviors (“R” in Optionality). The Worklist Client may support suggested behaviors ("S" in Optionality).
 
 **Table 1:XX.1.1.3.1-1**: Event Handling Requirements
 
@@ -628,7 +622,7 @@ The Worklist Client shall handle the events according to the event handling requ
       <th>Context Key</th>
       <th>Resources</th>
       <th>Optionality</th>
-      <th>Expected Behavior</th>
+      <th>Behavior</th>
     </tr>
   </thead>
   <tbody>
@@ -637,7 +631,7 @@ The Worklist Client shall handle the events according to the event handling requ
       <td><code class="language-plaintext highlighter-rouge">report</code></td>
       <td>DiagnosticReport</td>
       <td>R</td>
-      <td>Track context and display report status</td>
+      <td>Maintain association of report context to associated patient and study.</td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">patient</code><br/><code class="language-plaintext highlighter-rouge">study</code></td>
@@ -650,34 +644,28 @@ The Worklist Client shall handle the events according to the event handling requ
       <td><code class="language-plaintext highlighter-rouge">report</code></td>
       <td>DiagnosticReport</td>
       <td>R</td>
-      <td>Remove the study from reporting worklist</td>
+      <td>Stop processing the study associated to the report context</td>
     </tr>
     <tr>
-      <td rowspan="2">DiagnosticReport-update</td>
+      <td>DiagnosticReport-update</td>
       <td><code class="language-plaintext highlighter-rouge">report</code></td>
       <td>DiagnosticReport</td>
       <td>R</td>
-      <td>Update study’s reporting status. Remove study from worklist according to its business logic.</td>
-    </tr>
-    <tr>
-      <td><code class="language-plaintext highlighter-rouge">patient</code></td>
-      <td>Patient</td>
-      <td>R</td>
-      <td>Update patient records</td>
+      <td>Reflect updated status <code class="language-plaintext highlighter-rouge">DiagnosticReport.status</code> in worklist</td>
     </tr>
     <tr>
       <td>DiagnosticReport-select</td>
-      <td><code class="language-plaintext highlighter-rouge">report</code></td>
-      <td>DiagnosticReport</td>
-      <td>R</td>
+      <td><code class="language-plaintext highlighter-rouge">select</code></td>
+      <td>ImagingStudy</td>
+      <td>S</td>
       <td>Select the study in worklist</td>
     </tr>
     <tr>
       <td>SyncError</td>
       <td><code class="language-plaintext highlighter-rouge">operationoutcome</code></td>
       <td>OperationOutcome</td>
-      <td>R</td>
-      <td>Be able to notify to the user regarding the synchronization error, including the details of the error reported and the Subscriber that reported the error</td>
+      <td>S</td>
+      <td>Notify the user regarding the synchronization error, including the details of the error reported and the Subscriber that reported the error</td>
     </tr>
   </tbody>
 </table>
@@ -700,7 +688,9 @@ The Evidence Creator shall be capable of being launched by another application. 
 
 ##### 1:XX.1.1.4.1 Event Handling Requirements
 
-The Evidence Creator shall handle the events according to the event handling requirements defined in Table 1:XX.1.1.4.1-1:
+In Table 1:XX.1.1.4.1-1, the Received Event shows the context events defined in this profile. For each received event, Context Key specifies the context of the event and Resources specifies the FHIR resources used in the given context for the expected behavior. 
+
+The Evidence Creator shall support handling all events defined in Table 1:XX.1.1.1.4-1. The Evidence Creator shall support all required behaviors (“R” in Optionality). The Evidence Creator may support suggested behaviors ("S" in Optionality).
 
 **Table 1:XX.1.1.4.1-1**: Event Handling Requirements
 
@@ -711,7 +701,7 @@ The Evidence Creator shall handle the events according to the event handling req
       <th>Context Key</th>
       <th>Resources</th>
       <th>Optionality</th>
-      <th>Expected Behavior</th>
+      <th>Behavior</th>
     </tr>
   </thead>
   <tbody>
@@ -720,7 +710,7 @@ The Evidence Creator shall handle the events according to the event handling req
       <td><code class="language-plaintext highlighter-rouge">report</code></td>
       <td>DiagnosticReport</td>
       <td>R</td>
-      <td>Track context</td>
+      <td>Maintain association of report context to associated patient and study</td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">patient</code><br/><code class="language-plaintext highlighter-rouge">study</code></td>
@@ -733,28 +723,28 @@ The Evidence Creator shall handle the events according to the event handling req
       <td><code class="language-plaintext highlighter-rouge">report</code></td>
       <td>DiagnosticReport</td>
       <td>R</td>
-      <td>Stop processing the study data</td>
+      <td>Stop processing the study data associated to the report context</td>
     </tr>
     <tr>
       <td>DiagnosticReport-update</td>
       <td>Any</td>
       <td>Any</td>
-      <td>R</td>
+      <td>S</td>
       <td>Update the report, patient or study record, or add/modify/delete received contents, if applicable.</td>
     </tr>
     <tr>
       <td>DiagnosticReport-select</td>
       <td>Any</td>
       <td>Any</td>
-      <td>R</td>
+      <td>S</td>
       <td>Process the applicable selected resources</td>
     </tr>
     <tr>
       <td>SyncError</td>
       <td><code class="language-plaintext highlighter-rouge">operationoutcome</code></td>
       <td>OperationOutcome</td>
-      <td>R</td>
-      <td>Be able to notify to the user regarding the synchronization error, including the details of the error reported and the Subscriber that reported the error</td>
+      <td>S</td>
+      <td>Notify the user regarding the synchronization error, including the details of the error reported and the Subscriber that reported the error</td>
     </tr>
   </tbody>
 </table>
@@ -769,11 +759,13 @@ If the Evidence Creator is grouped with a Content Creator to publish content eve
 
 #### 1:XX.1.1.5 Content Creator
 
-The Content Creator actor is responsible for either publishing context and/or content changes (add, modify or delete) as events to a reporting session, or selecting one or more contents and publishing the selection events, or both.
+The Content Creator is responsible for the creation and selection of the contents of the reporting session which are the basis of synchronization and collaboration between the subscribing actors.
 
-> Note: This actor is intended to be grouped with another actor (excluding the Hub) in this profile to augment the existing actor capabilities with content sharing capabilities. This actor cannot be claimed as a standalone actor since it lacks the capabilities to subscribe to a reporting session.
+> Note: This actor represents content creation / selection capabilities that may be present in implementation of other actors. As such, the Content Creator is required to be grouped with another actor. This actor cannot be claimed as a standalone actor.
 
-The Content Creator may use the sharing of content selection to enable more efficient reporting flow. For example, when a user clicks on the bounding box of a detected nodule, the grouped Image Display publishes a selection event referencing the affected images and bounding boxes as an ImagingSelection resource, and the corresponding measurements as an Observation. Upon receiving the event, the Report Creator captured the details and show them in a side panel to the user. Finally the user issues a voice command to inject hyperlink. The Report Creator, uses the selected contents as input to the voice command, automatically persisted the resources in database and then inject a hyperlink to access them in the finding section.
+For example, when an Image Display user clicks on the bounding box of a detected nodule, the grouped Content Creator publishes a selection event referencing the affected images and bounding boxes as an ImagingSelection resource, and referencing the corresponding measurements as an Observation resource. Upon receiving the event, a Report Creator might show those details in a side panel to the user. Finally the user issues a voice command to the Report Creator to inject a hyperlink, which is adding to the finding section.
+
+The Content Creator actor may publish context and/or content changes as events to a reporting session. The Content Creator may select one or more contents and publish the selection events.
 
 The specific context or content changes captured by the Content Creator depends on the grouped actor and the specific deployment scenario. For example:
 
@@ -794,7 +786,9 @@ The Watcher shall be capable of being launched by another application. When laun
 
 ##### 1:XX.1.1.6.1 Event Handling Requirements
 
-The Watcher shall handle the events according to the event handling requirements defined in Table 1:XX.1.1.6.1-1:
+In Table 1:XX.1.1.6.1-1, the Received Event shows the context events defined in this profile. For each received event, Context Key specifies the context of the event and Resources specifies the FHIR resources used in the given context for the expected behavior. 
+
+The Watcher shall support handling all events defined in Table 1:XX.1.1.6.1-1. The Watcher shall support all required behaviors (“R” in Optionality). The Watcher may support suggested behaviors ("S" in Optionality).
 
 **Table 1:XX.1.1.6.1-1**: Event Handling Requirements
 
@@ -805,7 +799,7 @@ The Watcher shall handle the events according to the event handling requirements
       <th>Context Key</th>
       <th>Resources</th>
       <th>Optionality</th>
-      <th>Expected Behavior</th>
+      <th>Behavior</th>
     </tr>
   </thead>
   <tbody>
@@ -814,7 +808,7 @@ The Watcher shall handle the events according to the event handling requirements
       <td><code class="language-plaintext highlighter-rouge">report</code></td>
       <td>DiagnosticReport</td>
       <td>R</td>
-      <td>Track context</td>
+      <td>Maintain association of report context to aassociated patient and study</td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">patient</code><br/><code class="language-plaintext highlighter-rouge">study</code></td>
@@ -833,21 +827,21 @@ The Watcher shall handle the events according to the event handling requirements
       <td>DiagnosticReport-update</td>
       <td>Any</td>
       <td>Any</td>
-      <td>R</td>
+      <td>S</td>
       <td>Update the report, patient or study record, or add/modify/delete received contents, if applicable.</td>
     </tr>
     <tr>
       <td>DiagnosticReport-select</td>
       <td>Any</td>
       <td>Any</td>
-      <td>R</td>
+      <td>S</td>
       <td>Process the applicable selected resources</td>
     </tr>
     <tr>
       <td>SyncError</td>
       <td><code class="language-plaintext highlighter-rouge">operationoutcome</code></td>
       <td>OperationOutcome</td>
-      <td>R</td>
+      <td>S</td>
       <td>Process the synchronization error, including the details of the error reported and the Subscriber that reported the error</td>
     </tr>
   </tbody>
@@ -865,28 +859,38 @@ The Hub is responsible for authorizing the following:
 - which Subscriber has permission to invoke what requests
 - which context and content a Subscriber is eligible to access and in what type (e.g. read only, write only or ready and write)
 
-> Note: This profile does not mandate an authorization mechanism.
+> Note: This profile does not mandate a specific authorization mechanism.
+
+TODO: Subscribers in a reporting session are permitted to send Request Context Change events for events beyond those explicitly defined in this profile. The Hub shall support distributing such events if a subscriber listed the event in its subscription.
+
+TODO: Define 'custom events'
 
 The Hub shall support [Request Context Change](https://build.fhir.org/ig/HL7/fhircast-docs/2-6-RequestContextChange.html) for all events. i.e. The Hub shall NOT be limited to the events prescribed in this profile to support synchronizing applications in reporting sessions.
 
 The Hub shall support [content sharing](https://build.fhir.org/ig/HL7/fhircast-docs/2-10-ContentSharing.html).
 
-The Hub shall monitor the established websocket connections. If it detected a websocket connection issue with a Subscriber, then the Hub shall
+The Hub shall monitor the established websocket connections. If it detects a websocket connection issue with a Subscriber, then the Hub shall
 - Unsubscribe the Subscriber and drop the websocket connection
 - Send a SyncError notification to other Subscribers using [RAD-X10](rad-x10.html)
 
 ##### 1:XX.1.1.7.1 Event Handling Requirements
 
-The Hub shall provide basic functionalities to all events it received, including custom events. Specifically:
-- It shall receive and send the event to all Subscribers subscribed to the event type (See [RAD-X9](rad-x9.html))
+The Hub shall provide the following functionalities for all events, including custom events. Specifically:
+- It shall receive and distribute the event to all Subscribers subscribed to that event type (See [RAD-X9](rad-x9.html))
 - It shall manage the current context in the session for all context-change events (i.e. `*-open` and `*-close` events)
-- It shall ensure proper event ordering and transaction handling for all content sharing events (i.e. `*-update` and `*-select`) events
+- It shall ensure proper event ordering and transaction handling for all content sharing events (i.e. `*-update` and `*-select` events)
+
+TODO: Add reference to FHIRcast about event ordering and transaction handling
 
 ##### 1:XX.1.1.7.2 Event Producing Requirements
 
-When received a `*-close` event, if the Hub detected that the current context is another context rather than empty (i.e. resume a previous open context), then the Hub shall automatically send a `*-open` event for the corresponding context as if it is returning a Get Current Context [RAD-X8](rad-x8.html) query.
+When a Hub has successfully processed a `*-close` event, the Hub will establish a new current context. The Hub will select one of the existing open contexts in the session to be the new current context, typically the most recently opened context (i.e. resume a previous open context). If no open context exist, then current context will be empty.  
 
-If the context has associated contents, the Hub shall also automatically send a corresponding `*-update` and/or `*-select` event for the corresponding contents as if it is returning a Get Current Context query.
+When the Hub establishes a new current context, the Hub shall send distribute a corresponding `*-open` context event as if it had received Initiate Report Context [RAD-X3] event.
+
+TODO: make similar changes.
+
+If the current context has associated contents, the Hub shall also automatically send a corresponding `*-update` and/or `*-select` event for the corresponding contents as if it is returning a Get Current Context query.
 
 > Note: These requirements are requirements from this profile. FHIRcast only requires the Hub to maintain the current context and support the Get Current Context query but not automatically send events in case of resuming a previous open context.
 
