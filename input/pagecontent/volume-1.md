@@ -1082,45 +1082,37 @@ See [Use Case #3](volume-1.html#1xx423-use-case-3-interruption-and-resume-flow) 
 
 ### 1:XX.4.2 Use Cases
 
-#### 1:XX.4.2.1 Use Case \#1: PACS Driven Reporting
+#### 1:XX.4.2.1 Use Case \#1: Basic Reporting
 
-This use case shows a simple two actors scenarios, Image Display and Report Creator, in a reporting session.
+In a basic reporting session, a user uses two systems, the Image Display and the Report Creator, to complete reporting on a study.
 
-Note that Section 1:XX.4.2.1 repeats in its entirety for additional use
-cases (replicate as Section 1:XX.4.2.2, 1:XX.4.2.3, etc.).
+##### 1:XX.4.2.1.1 Basic Reporting Use Case Description
 
-##### 1:XX.4.2.1.1 PACS Driven Reporting Use Case Description
+The Basic Reporting Use Case is intended to capture the common reporting activities happened during a reporting session.
 
-##### TODO: Add a subtitle for user perspective
-The Image Display launches the Report Creator when a reporting session starts.
+> Note: Figure 1:XX.4.2.2-1 shows a high level workflow and highlights the user interaction with the two actors involved. This use case is broken down into multiple steps. The steps shown in the diagram are not actual transactions. The interactions between the Image Display and Report Creator during a reporting session are omitted to highlight the user interactions more clearly. The hyperlinks provided in the diagram link to the subsections that describe the corresponding steps with actual transactions in details. Furthermore, the [Examples](example.html) tab contains sample events following this use case.
 
-TODO: Include the 'setup' phase to get the workspace up with the necessary applications ready
+In this use case,
+- Before reporting starts, the Image Display launches the Report Creator to join a reporting session
+- The Image Display, with the built-in worklist function, has a set of studies waiting for reporting
+- Radiologist uses the worklist to select studies to report
+- Radiologist opens a study in Image Display to view the study images and patient metadata
+- Radiologist reports on the study using the Report Creator
+- While reporting on the study, Radiologist performs measurements and adds annotations on the images using tools provided by the Image Display
+- Radiologist selects some of the measurements made and uses voice commands to auto-populate the report with the selected measurements
+- Radiologist completes and signs off the report and moves on to the next study in the worklist
+- Eventually, Radiologist finishes all studies in the reporting worklist and closes the applications
 
-TODO: Rework this paragraph
-- Worklist has a set of studies
-- Radiologist use worklist to select one study to report
-- ...
+> Note: In this use case, the Image Display handles all user needs for displaying the study while the Report Creator handles all user needs for report creation. In more complex scenarios, separate Worklist Client can be used to drive the Image Display and Report Creator, while the Image Display can launch separate Evidence Creator on demand to perform advanced visualization and measurements. See [Use Case 2](volume-1.html#1xx422-use-case-2-worklist-manager-driven-reporting) for an example.
 
-A radiologist using the worklist function in the Image Display to work through the list of studies to be reported. As the radiologist proceeds, when the Image Display displays each study in the worklist, she uses the Report Creator, loaded with the corresponding procedure for the same study, to create the diagnostic report. During reporting, she creates annotations and measurements on some of the images. These annotations and measurements are selected and populated in the report accordingly. Once she completed the report for the study, she signs off the report and proceeds with the next study in the worklist. Eventually she finishes all the studies in the worklist and close the reporting session.
-
-This is intentionally a high level description. Actors which do not interact with the users are not shown. No actual transactions are shown, instead interaction between the systems are shown with hyperlinks that connect to diagrams that shows the details.
-
-> Note: The hyperlinks provided in the diagram links to the specific detailed description of each step.
-
-> Note: In this use case, the Image Display does ... Alternatively separate Evidence Creator, Worklist Client, etc. ... See Use Case 2 ... TODO
-
-TODO: Change all transactions to be italic
-
-##### 1:XX.4.2.1.2 PACS Driven Reporting Process Flow
+##### 1:XX.4.2.1.2 Basic Reporting Process Flow
 
 <div>
 {%include ReportingFlow.svg%}
 </div>
 <br clear="all">
 
-Figure 1:XX.4.2.2-1: PACS Driven Reporting Flow in RTC-IMR Profile
-
-Furthermore, the [Examples](example.html) tab, contains sample events following this use case.
+Figure 1:XX.4.2.2-1: Basic Reporting Flow in RTC-IMR Profile
 
 ###### 1:XX.4.2.1.2.0 Common Subscription Flow
 
@@ -1131,9 +1123,11 @@ Subscribing to a reporting session involves two transactions:
 - Subscribe to Reporting Session [RAD-X1]
 - Connect to Notification Channel [RAD-X2]
 
-For a Synchronizing Application, the session is provided by the Driving Application during launch.
+A Driving Application is a `Subscriber` that can launch other applications and request context changes. It generates a unique session ID to start a new session.
 
-For a Driving Application, it generates a unique session ID to start a new session.
+A Synchronizing Application is a `Subscriber` launches by a Driving Application and listens to events in the reporting session.
+
+> Note: The same `Subscriber` can be both a Driving Application and a Synchronizing Application in a reporting session depending on the workfow. Image Display in [Use Case #2](volume-1.html#1xx422-use-case-2-worklist-manager-driven-reporting) is an example.
 
 <div>
 {%include common-subscription.svg%}
@@ -1159,7 +1153,7 @@ Note that there is no explicit creation of a session. If the Hub receives a sess
 
 The Image Display subscribes to events so that it can:
 - Receive events published by other Subscribers
-- Receive the version ID of any events which is required for concurrency control (See Section ... for more information about content sharing TODO)
+- Receive the version ID of any events necessary for content sharing (See [Responsiblities of a FHIRcast Hub and a Subcriber](https://build.fhir.org/ig/HL7/fhircast-docs/2-10-ContentSharing.html#responsibilities-of-a-fhircast-hub-and-a-subscriber) for more information)
 - Receive synchronization error events from the Hub or from other Subscribers.
 
 Once the Image Display completed its subscription, it launches the Report Creator. The Report Creator, as a Synchronizing Application, can follow the context and content events automatically.
