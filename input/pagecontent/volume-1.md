@@ -861,12 +861,6 @@ The Hub is responsible for authorizing the following:
 
 > Note: This profile does not mandate a specific authorization mechanism.
 
-TODO: Subscribers in a reporting session are permitted to send Request Context Change events for events beyond those explicitly defined in this profile. The Hub shall support distributing such events if a subscriber listed the event in its subscription.
-
-TODO: Define 'custom events'
-
-The Hub shall support [Request Context Change](https://build.fhir.org/ig/HL7/fhircast-docs/2-6-RequestContextChange.html) for all events. i.e. The Hub shall NOT be limited to the events prescribed in this profile to support synchronizing applications in reporting sessions.
-
 The Hub shall support [content sharing](https://build.fhir.org/ig/HL7/fhircast-docs/2-10-ContentSharing.html).
 
 The Hub shall monitor the established websocket connections. If it detects a websocket connection issue with a Subscriber, then the Hub shall
@@ -875,24 +869,26 @@ The Hub shall monitor the established websocket connections. If it detects a web
 
 ##### 1:XX.1.1.7.1 Event Handling Requirements
 
-The Hub shall provide the following functionalities for all events, including custom events. Specifically:
-- It shall receive and distribute the event to all Subscribers subscribed to that event type (See [RAD-X9](rad-x9.html))
-- It shall manage the current context in the session for all context-change events (i.e. `*-open` and `*-close` events)
-- It shall ensure proper event ordering and transaction handling for all content sharing events (i.e. `*-update` and `*-select` events)
+The Hub shall be able to process all valid events conforming to the FHIRcast [Event Format](https://build.fhir.org/ig/HL7/fhircast-docs/2-3-Events.html) received using FHIRcast [Request Context Change](https://build.fhir.org/ig/HL7/fhircast-docs/2-6-RequestContextChange.html) requests.
 
-TODO: Add reference to FHIRcast about event ordering and transaction handling
+> Note: This implies that the Hub cannot be limited to process events defined in this profile. The Hub is required to support other valid events regardless of whether they are defined in the FHIRcast [Event Catalog](https://build.fhir.org/ig/HL7/fhircast-docs/3_Events.html). For example, Subscribers in a reporting session are permitted to send Request Context Change requests with events (e.g. `HeartBeat`, `ImagingStudy-*`, etc.) beyond those explicitly defined in this profile.
+
+For all received events, the Hub shall support the following core behaviors:
+- It shall receive and distribute the event to all Subscribers subscribed to that event type (See [Event Notification](https://build.fhir.org/ig/HL7/fhircast-docs/2-5-EventNotification.html))
+- It shall manage the current context in the session for all context-change events (i.e. `*-open` and `*-close` events) (See [Request Context Change](https://build.fhir.org/ig/HL7/fhircast-docs/2-6-RequestContextChange.html))
+- It shall serve as a transaction coordinator to avoid lost updates and other out of sync conditions when processing content sharing events (i.e. `*-update` and `*-select` events) (See [Content Sharing](https://build.fhir.org/ig/HL7/fhircast-docs/2-10-ContentSharing.html))
+
+Additional profile requirements for specific events are defined in the corresponding transactions.
 
 ##### 1:XX.1.1.7.2 Event Producing Requirements
 
-When a Hub has successfully processed a `*-close` event, the Hub will establish a new current context. The Hub will select one of the existing open contexts in the session to be the new current context, typically the most recently opened context (i.e. resume a previous open context). If no open context exist, then current context will be empty.  
+When a Hub has successfully processed a Terminate Report Context [RAD-X4] request, the Hub will establish a new current context. The Hub will select one of the existing open contexts in the session to be the new current context, typically the most recently opened context (i.e. resume a previous open context). If no open context exist, then current context will be empty.  
 
-When the Hub establishes a new current context, the Hub shall send distribute a corresponding `*-open` context event as if it had received Initiate Report Context [RAD-X3] event.
+When the Hub establishes a new current context, the Hub shall send distribute a corresponding `DiagnosticReport-open` context event as if it had received Initiate Report Context [RAD-X3] requests.
 
-TODO: make similar changes.
+If the current context has associated contents, the Hub shall distribute corresponding `DiagnosticReport-update` and/or `DiagnosticReport-select` context events as if it had received Update Report Content [RAD-X5] and/or Select Report Content [RAD-X6] requests.
 
-If the current context has associated contents, the Hub shall also automatically send a corresponding `*-update` and/or `*-select` event for the corresponding contents as if it is returning a Get Current Context query.
-
-> Note: These requirements are requirements from this profile. FHIRcast only requires the Hub to maintain the current context and support the Get Current Context query but not automatically send events in case of resuming a previous open context.
+> Note: These requirements are limited to processing reporting events in reporting sessions as defined in this profile. These requirements are not required for other events that the Hub received and processed.
 
 ## 1:XX.2 RTC-IMR Actor Options
 
