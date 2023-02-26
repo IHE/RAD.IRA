@@ -7,7 +7,7 @@ participant "Image Display" as PACS
 participant "Report Creator" as Report
 
 User -> PACS: //Open reporting session// [[volume-1.html#1xx42121-step-1-open-reporting-session Step 1]]
-
+PACS -> Report: //Launch application//
 loop
 User -> PACS: //Select Patient and Study//
 PACS -> PACS: //Open Study and show Chest X-Ray// [[volume-1.html#1xx42122-step-2-open-study-in-context Step 2]]
