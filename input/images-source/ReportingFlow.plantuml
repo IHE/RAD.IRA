@@ -6,18 +6,18 @@ actor Radiologist as User
 participant "Image Display" as PACS
 participant "Report Creator" as Report
 
-User -> PACS: Open reporting session [[volume-1.html#1xx42121-step-1-open-reporting-session Step 1]]
+User -> PACS: //Open reporting session// [[volume-1.html#1xx42121-step-1-open-reporting-session Step 1]]
 
 loop
-User -> PACS: Select Patient and Study
-PACS -> PACS: Open Study and show Chest X-Ray [[volume-1.html#1xx42122-step-2-open-study-in-context Step 2]]
-User -> PACS: Measure area of Pneumothorax [[volume-1.html#1xx42123-step-3-add-content-optional Step 3]]
-User -> Report: Fill General Report Text
-User -> PACS: Select measurements as seen in images [[volume-1.html#1xx42124-step-4-select-content-optional Step 4]]
-User -> Report: Auto-populate report with selected measurements
-User -> Report: Sign-off Report [[volume-1.html#1xx42125-step-5-sign-off-report Step 5]]
+User -> PACS: //Select Patient and Study//
+PACS -> PACS: //Open Study and show Chest X-Ray// [[volume-1.html#1xx42122-step-2-open-study-in-context Step 2]]
+User -> PACS: //Measure area of Pneumothorax// [[volume-1.html#1xx42123-step-3-add-content-optional Step 3]]
+User -> Report: //Dictate Report//
+User -> PACS: //Select measurements as seen in images// [[volume-1.html#1xx42124-step-4-select-content-optional Step 4]]
+User -> Report: //Auto-populate report with selected measurements//
+User -> Report: //Sign-off Report// [[volume-1.html#1xx42125-step-5-sign-off-report Step 5]]
 end
 
-User->PACS: Terminate reporting session [[volume-1.html#1xx42126-step-6-terminate-reporting-session Step 6]]
+User->PACS: //Terminate reporting session// [[volume-1.html#1xx42126-step-6-terminate-reporting-session Step 6]]
 
 @enduml
