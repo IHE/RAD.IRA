@@ -1028,15 +1028,15 @@ A `Context` is a FHIR resource associated with a `Session` which indicates a sub
 
 #### 1:XX.4.1.4 Events vs Commands
 
-Communication patterns between two systems fall in two general categories: `Commands` and `Events`. In this profile, the messages that a `Subscriber` sends to the `Hub` represents an `Event`. This RTC-IMR Profile has no support for sending `Commands`.
+Communication patterns between two systems fall in two general categories: `Commands` and `Events`.
 
-TODO: Mention the initiator and the recipient(s)
+`Events` represent facts that have happened. For example, `DiagnosticReport-open` represents an event that an application opens a study for reporting. Note that an event has an initiator but no target recipient(s). It is the responsibility of any applications that are interested in such events to subscribe them. Any applications subscribed to the event will receive the event and the application can determine how to process the event. The application that is producing the event is not aware of the actions being performed by the consuming applications, unless these consuming applications in turn publishes additional events.
 
-`Events` represent facts that have happened. For example, DiagnosticReport-open represents an event that an application opens a study for reporting. Note that an event has no direct target audience. Any applications subscribed to the event will receive the event and the application can determine how to process the event. The application that is producing the event is not aware of the actions being performed by different consuming applications, unless these consuming applications in turn publishes additional events.
+On the other hand, `Commands` represent intention. In addition to an initiator, `Commands` have specific target recipient(s). For example, Send-Study represents an intention to send a study. The application that sends the commands often has direct knowledge of which applications should execute the commands, or delegate to a proxy service that has the knowledge.
 
-On the other hand, `Commands` represent intention, often associated with specific target audience(s). For example, Send-Study represents an intention to send a study. Therefore the application that sends the commands often has direct knowledge of which applications should execute the commands, or delegate to a proxy service that has the knowledge.
+In this profile, the messages that a `Subscriber` sends to the `Hub` represents an `Event`. Each event captures what has happened, and there is no explicit recipient(s) specified.
 
-TODO: Soften the text. In this profile, there is nothing explicitly define as Command in this profile. Some implementation may define a command out of band.
+> Note: Some implementations may define commands using [Extensions](https://build.fhir.org/ig/HL7/fhircast-docs/2-8-Extensions.html) or custom events with explicit recipient(s). These are out of scope of this profile.
 
 #### 1:XX.4.1.5 Event Awareness vs Event Consumption
 
