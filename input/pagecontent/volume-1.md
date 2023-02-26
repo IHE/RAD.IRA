@@ -1020,17 +1020,11 @@ The following is a representation of the interaction model.
 
 #### 1:XX.4.1.3 Long Session and Short Context
 
-A `Session` is a communication channel setup between the `Subscribers` using the `Hub`. As long as `Subscribers` are active and have events to communicate with each other, the `Session` can stay open. Therefore a `Session` has a long duration.
+A `Session` is an abstract concept representing a shared workspace, such as a user's login session across multiple applications or a shared view of one application distributed to multiple users. A session results from a user logging into an application and can encompass one or more workflows.
 
-TODO: A `Session` represents the activity of a user in a reporting session. Typically a session started ... shared workspace ... It is a scope for the events in the pub/sub model. Glossary Session: an abstract concept representing a shared workspace, such as a user's login session across multiple applications or a shared view of one application distributed to multiple users. A session results from a user logging into an application and can encompass one or more workflows.
+For instance, a reporting session is a shared workspace across multiple applications to communicate activities of a user, such as initiating a new report context when opening a study for reporting. These applications as `Subscribers` share events using the `Hub`. As long as there are `Subscribers` associated to a `Session`, the `Session` stays open. Therefore a `Session` has a long duration.
 
-TODO: What it represents (conceptually) and what it does (practically)
-
-A `Context` is used to communicate a subject on which the `Subscribers` should synchronize as appropriate to their business logic. As soon as the subject is complete, then the corresponding `Context` can be closed. Therefore a `Context` has a limited duration within a `Session`.
-
-TODO: Reference the interruption use case #3 - put it in a separate concept section.
-
-Note that occasionally a `Context` may be _interrupted_ because of _suspension_, meaning that before the `Context` is closed, another `Context` is opened (e.g. a radiologist needs to suspend the current report on a study in order to review another urgent study). In this case, the information of the previous `Context` is still maintained by the `Hub` since it is not closed, but it is _suspended_ (i.e. not the `Current Context`). Instead the `Current Context` is switched to the urgent study being opened. As soon as the user finished reviewing the urgent study and hence has closed the `Context` of the urgent study, the _suspended_ `Context` will resume to be the `Current Context` since it is the last opened `Context`.
+A `Context` is a FHIR resource associated with a `Session` which indicates a subject on which applications should synchronize as appropriate to their functionality. As soon as the subject is complete, the corresponding `Context` can be closed. Therefore a `Context` has a limited duration within a `Session`.
 
 #### 1:XX.4.1.4 Events vs Commands
 
@@ -1079,6 +1073,14 @@ Since the FHIR resources specified in the event may or may not be persisted in a
 #### 1:XX.4.1.8 Local Tracking of Context
 
 The `DiagnosticReport-open` event includes both the `report` anchor context and associated contexts `patient` and `study`. Subsequent event(s) for this anchor context will only provide the `report` context. Therefore, it is up to the Subscriber to record internally the `patient` and `study` contexts associated with the `report` anchor context if that information is relevant to its business logic. 
+
+#### 1:XX.4.1.9 Interruption and Resume
+
+Occasionally a `Context` may be _interrupted_ because of _suspension_, meaning that before the `Context` is closed, another `Context` is opened. In this case, the information of the previous `Context` is still maintained by the `Hub` since it is not closed, but it is _suspended_ (i.e. not the `Current Context`).
+
+For example, a radiologist needs to suspend the current report on a study in order to review another urgent study. When switching to the urgent study, the report context of the previously opened study is not terminated. Instead a new report context is opened for the urgent study. In this case, the `Current Context` is switched to the urgent study being opened. As soon as the user finished reviewing the urgent study and hence has closed the `Context` of the urgent study, the _suspended_ `Context` will resume to be the `Current Context` since it is the last opened `Context`.
+
+See [Use Case #3](volume-1.html#1xx423-use-case-3-interruption-and-resume-flow) for more details.
 
 ### 1:XX.4.2 Use Cases
 
