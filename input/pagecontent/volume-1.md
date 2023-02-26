@@ -1038,7 +1038,17 @@ In this profile, the messages that a `Subscriber` sends to the `Hub` represents 
 
 > Note: Some implementations may define commands using [Extensions](https://build.fhir.org/ig/HL7/fhircast-docs/2-8-Extensions.html) or custom events with explicit recipient(s). These are out of scope of this profile.
 
-#### 1:XX.4.1.5 Event Awareness vs Event Consumption
+#### 1:XX.4.1.5 Timing of Sending an Event
+
+A driving application is a subscriber that initiates a context change request. From the driving application perspective, it is desirable for all subscribers to be synchronized as soon as possible. On the other hand, FHIRcast is a network protocol which incurs a non-trivial cost to send each event. Therefore any implementation should take into account when an action is considered to be complete or stable, and hence ready to be captured and communicated as events.
+
+For example, when a user is actively making measurements or annotations, instead of capturing every change a user made (e.g. incremental changes in size or location of a shape) as an event which can result in many intermittent and partial events, an application may use specific triggers (e.g. when a user saves the changes) or an idle time threshold to detect when the user completed making the changes. The application then creates the corresponding event(s) to capture the result.
+
+On the other hand, this profile is designed to communicate _in-progress_ data as soon as possible. Therefore it is not desirable for the driving application to _wait_ too long. For example, if the driving application supports exporting measurements and annotations as DICOM SR or other DICOM objects, it is not necessary to wait until the DICOM objects are created before sending the corresponding event.
+
+This profile does not mandate any specific implementation design regarding when an application should capture the result of an action as an event. The intention is that the driving application will send an event as soon as feasible so that all subscribers in a reporting session can be synchronized and provide a good user experience.
+
+#### 1:XX.4.1.6 Event Awareness vs Event Consumption
 
 `Event Awareness` means an application, upon receiving an event from the `Hub`, has the knowledge of an event has happened.
 
@@ -1051,18 +1061,6 @@ On the other hand, from the subscribing application perspective, it is up to its
 For example, in a nodule tracking application, when the user goes through the study images, the user may keep track of (a.k.a. bookmarking) nodules observed (e.g. 1, 2, ..., 9, 10). Then once the user reviewed the full study, the user may select a subset of the nodules (e.g. 2, 3, 5, 9) identified as important to be added to the report. In this scenario, it is highly recommended that the nodule tracking application sends an event for each nodule (i.e. 1, 2, ..., 9, 10) being bookmarked so that the reporting application is aware of all the nodules the user observed (but not necessary added to the report yet). The user can then instruct the reporting application to add a subset of the nodules (i.e. 2, 3, 5, 9) to the report. Note that since the reporting application is aware of all the nodules observed by synchronizing the context with the nodule tracking application, selecting a subset of the nodules is a local operation and can be done in any order (i.e. the action is not required to only apply to the most recent context received).
 
 Note that this implies the reporting application has to keep track of all the contexts in the received events, independent of whether the context will be used in the report later. This is important because there is no `Command` defined in this profile, and the reporting application cannot request past context from the reporting application or the `Hub`. (The reporting application may provide other means to support a query mechanism, but this is out of scope of this profile).
-
-TODO: Add a counter example that too many events have negative impact. So choose wisely what are reasonable to share.
-
-#### 1:XX.4.1.6 Timing of Sending an Event
-
-On one hand, it is desirable for all subscribed applications to be synchronized with the driving application as soon as possible. On the other hand, FHIRcast is a network protocol which incurs a non-triusingl cost to send each event. Therefore any implementation should take into account when an action is considered to be complete or stable, and hence ready to be captured and communicated as events.
-
-For example, when a user is making measurements or annotations, instead of capturing every single measurement or annotation as an event, an application may use an idle time threshold to detect if the user completed the action or not.
-
-Furthermore, this profile is designed to communicate _in-progress_ data as soon as possible. Therefore it is not desirable for the driving application to _wait_ too long. For example, if the driving application supports exporting measurements and annotations as DICOM SR or other DICOM objects, it is not necessary to wait until the DICOM objects are created before sending the corresponding event.  
-
-This profile does not mandate any specific implementation design regarding when an application should capture the result of an action as an event.
 
 #### 1:XX.4.1.7 Transient Resource vs Persistent Resource
 
