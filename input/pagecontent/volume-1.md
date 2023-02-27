@@ -1190,11 +1190,7 @@ Figure 1:XX.4.2.1.2.1-2: Open Study in Context Flow in RTC-IMR Profile
 
 Sometimes the radiologist may annotate the images with markups and measurements. When this happened, the Image Display, grouped with the Content Creator, updates the report context at the Hub with new content using Update Report Content [RAD-X5]. The Hub broadcasts the event to all Synchronizing Applications.
 
-When the Report Creator receives the event, it can apply the updates according to its business logic. For example, it may automatically create a hyperlink in the report, or keeps track of the content in a panel for the user to perform other activities later.
-
-For content sharing events, the Report Creator checks if the event is in the right sequence according to the version ID. If it detected that it missed some prior events, then it queries the hub to retrieve the latest context and content and apply accordingly. 
-
-TODO: Description of version ID based verification and retrieval
+When the Report Creator receives and accepts the event, it can apply the updates according to its business logic. For example, it may automatically create a hyperlink in the report, or keeps track of the content in a panel for the user to perform other activities later.
 
 <div>
 {%include step3-add-measurements.svg%}
@@ -1205,12 +1201,11 @@ Figure 1:XX.4.2.1.2.1-3: Add Content Flow in RTC-IMR Profile
 
 ###### 1:XX.4.2.1.2.4 Step 4: Select Content (Optional)
 
-TODO: Add more specific example and language how select is used
+Occasionally it is desirable to trigger activities on subscribers based on user navigation. With FHIRcast, this can be achieved using the content selection events.
 
-TODO: Selection can be used in various way:
-- as input for a follow up action (ImagingSelecion selected as input for hyperlink)
-- bring something to focus (e.g. being the measurement to focus) and follow up action
-- It is the recipient of the event decides on what action to take, may be with input from the user rather than fully automated
+Content selection can be used in various way:
+- as input for a follow up action (e.g. images or measurements selected by a user in the Image Display as input for hyperlink in the Report Creator)
+- bring something to focus (e.g. user clicks on the measurement in a report in the Report Creator triggers the Image Display to bring the corresponding images to focus)
 
 Sometimes the radiologist selected certain elements (e.g. images, annotation, specific measurements, etc.) in the Image Display. When this happened, the Image Display, grouped with the Content Creator, sends a event to the Hub using Select Report Content [RAD-X6] indicating what contents have been selected. The Hub broadcasts the event to all Subscribers.
 
