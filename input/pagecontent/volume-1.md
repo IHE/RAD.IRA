@@ -1088,7 +1088,7 @@ In a basic reporting session, a user uses two systems, the Image Display and the
 
 ##### 1:XX.4.2.1.1 Basic Reporting Use Case Description
 
-The Basic Reporting Use Case is intended to capture the common reporting activities happened during a reporting session.
+The Basic Reporting Use Case is intended to capture the common reporting activities happened during a reporting session. The Image Display handles all user needs for displaying the study and the Report Creator handles all user needs for report creation.
 
 > Note: Figure 1:XX.4.2.2-1 shows a high level workflow and highlights the user interaction with the two actors involved. This use case is broken down into multiple steps. The steps shown in the diagram are not actual transactions. The interactions between the Image Display and Report Creator during a reporting session are omitted to highlight the user interactions more clearly. The hyperlinks provided in the diagram link to the subsections that describe the corresponding steps with actual transactions in details. Furthermore, the [Examples](example.html) tab contains sample events following this use case.
 
@@ -1103,7 +1103,7 @@ In this use case,
 - Radiologist completes and signs off the report and moves on to the next study in the worklist
 - Eventually, Radiologist finishes all studies in the reporting worklist and closes the applications
 
-> Note: In this use case, the Image Display handles all user needs for displaying the study while the Report Creator handles all user needs for report creation. In more complex scenarios, separate Worklist Client can be used to drive the Image Display and Report Creator, while the Image Display can launch separate Evidence Creator on demand to perform advanced visualization and measurements. See [Use Case 2](volume-1.html#1xx422-use-case-2-worklist-manager-driven-reporting) for an example.
+> Note: In more complex scenarios, separate Worklist Client can be used to drive the Image Display and Report Creator, while the Image Display can launch separate Evidence Creator on demand to perform advanced visualization and measurements. See [Use Case 2](volume-1.html#1xx422-use-case-2-worklist-manager-driven-reporting) for an example.
 
 ##### 1:XX.4.2.1.2 Basic Reporting Process Flow
 
@@ -1222,30 +1222,19 @@ Figure 1:XX.4.2.1.2.1-4: Select Content Flow in RTC-IMR Profile
 
 ###### 1:XX.4.2.1.2.5 Step 5: Sign-off Report
 
-The radiologist completes dictation and signs off the report on the Report Creator.
+The radiologist completes dictation and signs off the report on the Report Creator. The Report Creator sends an update event notifying about the report status change (e.g. complete normally, draft complete, sent to transcriptionist, etc.) The Image Display updates the status of the study in its worklist.
 
-TODO: Review this
-TODO: Image Display can terminate context triggered by receiving the Content Change event regarding report status.
-In this diagram, the Report Creator terminates the report context. Recall that this report context was initiated by the Image Display. Alternatively the site product may have been configured for the termination of the report context to be done by the Image Display.
+In this diagram, the Report Creator terminates the report context after it sent the report status update event. Recall that this report context was initiated by the Image Display. 
 
-The Hub broadcasts the termination event to all Subscribers and disallows any further interaction of that terminated report context.
+> Note: Alternatively, the Image Display can terminate the report context upon successfully processing the report status update event. Both scenarios are valid and which method is used is determined by site configuration of the Image Display and Report Creator.
 
-TODO: May delete
-> Note that in this use case example, the initiating Driving Application (Image Display) is not the same actor as the terminating Driving Application (Report Creator). This requires some coordination between the Image Display and the Report Creator. Such coordination is out of scope of this profile. Other arrangement is possible so that the same Image Display being both the initiating and terminating Driving Application.
+The Hub sends the update event and the termination event to all Subscribers. Once the Hub successfully processed the termination event, it disallows any further interaction of that terminated report context.
 
-Upon receiving the termination event, the Image Display updates its worklist to mark the study as reported.
+Upon receiving the termination event, the Image Display removes the study from its worklist.
 
-TODO: Support for reason to terminate the report (e.g. complete normally, drafted complete, radiologist finished and sent to transcriptionist, etc.)
-
-TODO: Describe what other actors might do upon receiving the terminating event
-
-TODO: Right before close, the Report Creator can send an update to change the report status. Make this a requirement.
+> Note: The Image Display may have different behavior when processing the termination event depending on the report status of the study. For example, it the status is *draft completed*, then the Image Display may set the study in a separate Draft worklist for later follow up.
 
 The Report Creator may have some internal mechanism to keep the report for a grace period after signed off and before sending it out to other recipients. The Report Creator persists the report according to its business logic.
-
-TODO: Describe what Image Display does when receive the message.
-
-TODO: Add at the beginning of this use case the role of each actor in this use case.
 
 <div>
 {%include step5-signoff-report.svg%}
