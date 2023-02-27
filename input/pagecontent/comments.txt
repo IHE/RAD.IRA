@@ -31,4 +31,12 @@
 - TODO: What is the expected behavior of repeated open on the same context?
 - TODO: OQ: Can returning 200 OK and later send syncerror?
 - TODO: Check consistent case for `operationoutcome`.
-- OQ: Can operationoutcome be returned in 4xx / 5xx errors?
+- OQ: Can operationoutcome be returned in 4xx / 5xx errors? Add a note that the error response is intended to have same information.
+- TODO: See Eric's email.
+- OQ: Is RAD-X11 mandatory for all subscribers?
+- TODO: Actor description
+    - Move DR-close to after DR-select
+    - Make processing the update / select gracefully, but no mandatory behavior. Give an example in use case, but not normative.
+        - Make an OQ if any behavior should be mandatory / baseline
+- Note: exercise with clincians about for each event, what is the response behavior for each actor. (how well do we foresee loose coupling to work)
+- Security Consideration section - authentication is out of scope. May use IUA or SMART on FHIR.
