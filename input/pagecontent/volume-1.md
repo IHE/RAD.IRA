@@ -1288,13 +1288,7 @@ This profile permits a new report context to be initiated before the previous re
 
 Once the *interrupting* study is complete, the Image Display terminates the report context of the *interrupting* study. The Hub removes the context of the *interrupting* study and set the current context back to the previously opened study. Note that all associated context and contents remain in the Hub.
 
-All `Synchronizing Applications` may resume to the previous report context in one of the following methods:
-- Hub sends the notification to all Subscribers to open (resume) to the previous report context
-  - Hub implicitly initiate the open event (TODO)
-- Use the Get Current Context [RAD-X8] transaction to query the Hub for which context is current
-
-TODO: Rephrase:
-When a context is terminated, who takes the lead to set the next context. e.g. The app that drives the reporting session, if there are any business logic to resume something else rather than the previous report context, that app should send a new DiagnosticReport-open.
+By default, the Hub will implicitly generate and distribute new `DiagnosticReport-open` event for the resumed report context to all subscribers (See Hub [Event Producing Requirements](volume-1.html#1xx1172-event-producing-requirements) for more details.). As a result, all subscribers will resume to the same report context. If an application has business logic to resume something else rather than the previous report context, that application should send a new Initiate Report Context [RAD-X3] event to set the new report context accordingly.
 
 <div>
 {%include interruption-and-resume.svg%}

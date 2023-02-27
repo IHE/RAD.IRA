@@ -81,7 +81,7 @@ deactivate Hub
 
 User->PACS: //Start reviewing the new study for consultation//
 
-...
+== Step 2c: Interruption Complete ==
 
 User->PACS: //Complete review for consultation and close study//
 
@@ -97,15 +97,19 @@ Hub->Report: Distribute Context Event [RAD-X9]\n(event: id = 3000,\ncontext = Di
 Report->Report: //Close study in consultation//
 Report-->Hub: //Success//
 
-opt If Report Creator does not locally maintain the context
-Report->Hub: Get Current Context [RAD-X8]
-Hub-->Report: Return current context and content
-end opt
-Report->Report: //Switch the context back to the previous study//
-
 Hub->PACS: Distribute Context Event [RAD-X9]\n(event: id = 3000,\ncontext = DiagnosticReport aaa)
-PACS->PACS: //Resume to the previously open study in context//\n//DiagnosticReport xxx, patient yyy, study zzz//
+PACS->PACS: //Close study in consultation//
 PACS-->Hub: //Success//
+
+== Step 2d: Resume Previous Report Context ==
+
+Hub->Hub: //Detect DiagnosticReport aaa remains open//\n//Generate new event to resume//\n(event: id = 4000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
+Hub->Report: Distribute Content Event [RAD-X9]\n(event: id = 4000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
+Report->Report: //Resume report xxx//
+Report-->Hub: //Success (id=4000, status = 200)//
+Hub->PACS: Distribute Content Event [RAD-X9]\n(event: id = 4000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
+PACS->PACS: //Resume study zzz//
+PACS-->Hub: //Success (id=4000, status = 200)//
 
 User->PACS: //Resume reporting on study zzz as Step 3//
 
