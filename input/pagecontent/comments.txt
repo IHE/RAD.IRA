@@ -37,6 +37,5 @@
     - Make processing the update / select gracefully, but no mandatory behavior. Give an example in use case, but not normative.
         - Make an OQ if any behavior should be mandatory / baseline
 - Note: exercise with clincians about for each event, what is the response behavior for each actor. (how well do we foresee loose coupling to work)
-- TODO: Change X3 and X4 to Open and Close
 - TODO: Change 'initiated' to 'opened' and 'terminated' to 'closed'
 - TODO: check if 'coordiate' is used. Change to 'synchronizes'

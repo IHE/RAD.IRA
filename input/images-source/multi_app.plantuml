@@ -67,7 +67,7 @@ Hub-->Report: //Confirm subscription//
 Report->Hub: Get Current Context [RAD-X8]\n(catch up with current context and content)
 
 Hub-->Report: //Return report context//\n(session 12345, event: id = 1000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
-Report->Report: //Initiate new report//\n//based on the received context//
+Report->Report: //Open new report//\n//based on the received context//
 
 == Step 5: Launch Additional Application On Demand ==
 

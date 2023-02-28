@@ -386,7 +386,7 @@ The Image Display shall be capable of being launched by another application. Whe
 The Image Display shall be able to launch other applications and synchronize them to the same report context through the Hub. It shall have the following capabilities: 
 - Start a new reporting session by generating a unique session ID and subscribing to the Hub on its own
 - Launch one or more actors and provide them the URL of the Hub actor as `hub.url` and the reporting session ID as `hub.topic`
-- Initiate or terminate (or both) report context based on some business logic
+- Open or close (or both) report context based on some business logic
 
 > Note that the actual application launch method is out of scope of this profile See [Application Launch Scenarios and Session Discovery](https://build.fhir.org/ig/HL7/fhircast-docs/4-1-launch-scenarios.html) for more details.
 
@@ -500,7 +500,7 @@ The Report Creator shall be capable of being launched by another application. Wh
 The Report Creator shall be able to launch other applications and synchronize them to the same report context through the Hub. It shall have the following capabilities: 
 - Start a new reporting session by generating a unique session ID and subscribing to the Hub on its own
 - Launch one or more actors and provide them the URL of the Hub actor as `hub.url` and the reporting session ID as `hub.topic`
-- Initiate or terminate (or both) report context based on some business logic
+- Open or close (or both) report context based on some business logic
 
 > Note that the actual application launch method is out of scope of this profile See [Application Launch Scenarios and Session Discovery](https://build.fhir.org/ig/HL7/fhircast-docs/4-1-launch-scenarios.html) for more details.
 
@@ -594,7 +594,7 @@ The Report Creator shall be grouped with a Content Creator to publish report sta
 
 The Worklist Client actor is responsible for providing a reporting worklist to the user.
 
-When a user selects studies from the worklist, the Worklist Client launches other applications (e.g. Image Display, Report Creator, etc.) if necessary. It initiates a new report context to synchronize other applications through the Hub to enable dictation on the studies.
+When a user selects studies from the worklist, the Worklist Client launches other applications (e.g. Image Display, Report Creator, etc.) if necessary. It opens a new report context to synchronize other applications through the Hub to enable dictation on the studies.
 
 When a study dictation is complete, the Worklist Client consumes the report anchor context update event so that it can mark the study as dictated and remove it from the worklist.
 
@@ -603,7 +603,7 @@ The Worklist Client shall be capable of being launched by another application. W
 The Worklist Client shall be able to launch other applications and synchronize them to the same report context through the Hub. It shall have the following capabilities: 
 - Start a new reporting session by generating a unique session ID and subscribing to the Hub on its own
 - Launch one or more actors and provide them the URL of the Hub actor as `hub.url` and the reporting session ID as `hub.topic`
-- Initiate or terminate (or both) report context based on some business logic
+- Open or close (or both) report context based on some business logic
 
 > Note that the actual application launch method is out of scope of this profile See [Application Launch Scenarios and Session Discovery](https://build.fhir.org/ig/HL7/fhircast-docs/4-1-launch-scenarios.html) for more details.
 
@@ -984,7 +984,7 @@ The following are some key concepts:
 - `Subscribers` can request the current context and associated contents from the `Hub`
 - The `Hub` can simultaneously manage multiple groups of `Subscribers` and their associated data in different `sessions`
 - Each `session` is identified by a unique “topic ID”
-- The `Subscriber` that initiates and terminates context is referred to as the Driving Application. A Driving Application usually also launches other applications, providing them with the address of the `Hub` and the `topic ID` so they can join the same `session`.
+- The `Subscriber` that opens and closes context is referred to as the Driving Application. A Driving Application usually also launches other applications, providing them with the address of the `Hub` and the `topic ID` so they can join the same `session`.
 
 TODO: Replace the FHIRcast link to the published version if ready by the time of publication.
 
@@ -1006,7 +1006,7 @@ The following is a representation of the interaction model.
 > Note: The term `Driving Application` and `Synchronizing Application` in the diagram are *convenient* terms instead of actual defined terms. They are used here to highlight the additional capabilities a driving application can do, in particular:
 > - Start a new reporting session
 > - Launch another application
-> - Initiate or terminate a report context
+> - Open or close a report context
 
 **Figure 1:XX.4,1.2-1: FHIRcast Concept Interaction Model**
 
@@ -1073,7 +1073,7 @@ The `DiagnosticReport-open` event includes both the `report` anchor context and 
 
 Occasionally a `Context` may be _interrupted_ because of _suspension_, meaning that before the `Context` is closed, another `Context` is opened. In this case, the information of the previous `Context` is still maintained by the `Hub` since it is not closed, but it is _suspended_ (i.e. not the `Current Context`).
 
-For example, a radiologist needs to suspend the current report on a study in order to review another urgent study. When switching to the urgent study, the report context of the previously opened study is not terminated. Instead a new report context is opened for the urgent study. In this case, the `Current Context` is switched to the urgent study being opened. As soon as the user finished reviewing the urgent study and hence has closed the `Context` of the urgent study, the _suspended_ `Context` will resume to be the `Current Context` since it is the last opened `Context`.
+For example, a radiologist needs to suspend the current report on a study in order to review another urgent study. When switching to the urgent study, the report context of the previously opened study is not closed. Instead a new report context is opened for the urgent study. In this case, the `Current Context` is switched to the urgent study being opened. As soon as the user finished reviewing the urgent study and hence has closed the `Context` of the urgent study, the _suspended_ `Context` will resume to be the `Current Context` since it is the last opened `Context`.
 
 See [Use Case #3](volume-1.html#1xx423-use-case-3-interruption-and-resume-flow) for more details.
 
@@ -1159,7 +1159,7 @@ Once the Image Display completed its subscription, it launches the Report Creato
 
 When launched, the first thing that the Report Creator does as a Synchronizing Application is to subscribe to the reporting session. The information about the Hub and the session is provided by the Image Display during launch.
 
-Furthermore, the Report Creator queries the Hub to get the current context to ensure it has the latest context and content. Since the reporting session has just begun, and the Image Display has not yet initiated any report context, the result of the query will be empty.
+Furthermore, the Report Creator queries the Hub to get the current context to ensure it has the latest context and content. Since the reporting session has just begun, and the Image Display has not yet opened any report context, the result of the query will be empty.
 
 <div>
 {%include step1-open-reporting-session.svg%}
@@ -1170,7 +1170,7 @@ Figure 1:XX.4.2.1.2.1-1: Open Reporting Session Flow in RTC-IMR Profile
 
 ###### 1:XX.4.2.1.2.2 Step 2: Open Study in Context
 
-When the radiologist selects a study in the worklist in the Image Display, as a Driving Application, initiates a new report context. Once the Hub accepted the event, it broadcasts the event to all Subscribers.
+When the radiologist selects a study in the worklist in the Image Display, as a Driving Application, opens a new report context. Once the Hub accepted the event, it broadcasts the event to all Subscribers.
 
 The Report Creator, as a Synchronizing Application, receives the event and opens the corresponding procedure for the study.
 
@@ -1221,11 +1221,11 @@ Figure 1:XX.4.2.1.2.1-4: Select Content Flow in RTC-IMR Profile
 
 The radiologist completes dictation and signs off the report on the Report Creator. The Report Creator sends an update event notifying about the report status change (e.g. complete normally, draft complete, sent to transcriptionist, etc.) The Image Display updates the status of the study in its worklist.
 
-In this diagram, the Report Creator terminates the report context after it sent the report status update event. Recall that this report context was initiated by the Image Display. 
+In this diagram, the Report Creator closes the report context after it sent the report status update event. Recall that this report context was opened by the Image Display. 
 
-> Note: Alternatively, the Image Display can terminate the report context upon successfully processing the report status update event. Both scenarios are valid and which method is used is determined by site configuration of the Image Display and Report Creator.
+> Note: Alternatively, the Image Display can close the report context upon successfully processing the report status update event. Both scenarios are valid and which method is used is determined by site configuration of the Image Display and Report Creator.
 
-The Hub sends the update event and the termination event to all Subscribers. Once the Hub successfully processed the termination event, it disallows any further interaction of that terminated report context.
+The Hub sends the update event and the termination event to all Subscribers. Once the Hub successfully processed the termination event, it disallows any further interaction of that closed report context.
 
 Upon receiving the termination event, the Image Display removes the study from its worklist.
 
@@ -1240,11 +1240,11 @@ The Report Creator may have some internal mechanism to keep the report for a gra
 
 Figure 1:XX.4.2.1.2.1-5: Sign-off Report Flow in RTC-IMR Profile
 
-The flow above shows the simple case with a sequential switching of report context. In this case, a report context is initiated and then terminated before the next report context is opened.
+The flow above shows the simple case with a sequential switching of report context. In this case, a report context is opened and then closed before the next report context is opened.
 
-In practice, the radiologist is likely to continue with the next study in the worklist without any awareness of the events happening behind the scene. If the initiating Driving Application and terminating Driving Application are different as in this example, then it is possible that the radiologist moves to the next study and hence the Image Display initiates a new report context before the Image Display receives the Close Report Context [RAD-X5] event of the reported study.
+In practice, the radiologist is likely to continue with the next study in the worklist without any awareness of the events happening behind the scene. If the initiating Driving Application and terminating Driving Application are different as in this example, then it is possible that the radiologist moves to the next study and hence the Image Display opens a new report context before the Image Display receives the Close Report Context [RAD-X5] event of the reported study.
 
-Such rapid context switching is supported by this profile. The Hub and each Subscriber maintain multiple open context simultaneously. As long as the context is not terminated, it still exists. Each event is associated to a particular anchor context. Therefore a Subscriber can reliably match an event to its internal state according to the context ID of the anchor context in the event. 
+Such rapid context switching is supported by this profile. The Hub and each Subscriber maintain multiple open context simultaneously. As long as the context is not closed, it still exists. Each event is associated to a particular anchor context. Therefore a Subscriber can reliably match an event to its internal state according to the context ID of the anchor context in the event. 
 
 The following diagram shows what can happen in case of rapid switching of the report context.
 
@@ -1255,7 +1255,7 @@ The following diagram shows what can happen in case of rapid switching of the re
 
 Figure 1:XX.4.2.1.2.1-5b: Rapid Context Switching Flow in RTC-IMR Profile
 
-###### 1:XX.4.2.1.2.6 Step 6: Terminate Reporting Session
+###### 1:XX.4.2.1.2.6 Step 6: Close Reporting Session
 
 Eventually, the radiologist completed all the studies in the worklist and closes the Report Creator. The Report Creator unsubscribes to the reporting session so that it will no longer receives any future events.
 
@@ -1266,7 +1266,7 @@ The Hub closes the connection to the Report Creator. Note that if there are othe
 </div>
 <br clear="all">
 
-Figure 1:XX.4.2.1.2.1-6: Terminate Reporting Session Flow in RTC-IMR Profile
+Figure 1:XX.4.2.1.2.1-6: Close Reporting Session Flow in RTC-IMR Profile
 
 #### 1:XX.4.2.2 Use Case \#2: Complex Reporting
 
@@ -1284,7 +1284,7 @@ In this use case,
 - Radiologist uses the worklist to select studies to report
 - When Radiologist opens a study in Worklist Client, Image Display automatically synchronizes and view the corresponding study images and patient metadata
 - When Radiologist clicks the dictation button on the Worklist Client to start dictation,it launches the Report Creator to join the reporting session
-- After launched, Report Creator automatically synchronizes with other applications in the reporting session. It discovers the current report context and initiate a new report for the corresponding study
+- After launched, Report Creator automatically synchronizes with other applications in the reporting session. It discovers the current report context and open a new report for the corresponding study
 - While viewing the study in Image Display, Radiologist clicks the advanced processing button in Image Display to execute the integrated Evidence Creator
 - After launched, Evidence Creator automatically synchronizes with other applications in the reporting session. It discovers the current report context and process the study accordingly
 - After finished processing, Evidence Creator shares the results back with other applications in the reporting session
@@ -1305,9 +1305,9 @@ Figure 1:XX.4.2.2-1: Complex Reporting in RTC-IMR Profile
 
 Occasionally a radiologist is interrupted while reporting on a study. She needs to open a different study (e.g. for consultation purpose) before the study that is currently in progress is ready for sign-off.
 
-This profile permits a new report context to be initiated before the previous report context is terminated. The Hub can maintain multiple anchor contexts simultaneously within a reporting session. The current context is the most recent anchor context that has been initiated but not yet terminated. This current context enables all Synchronizing Applications to be synchronized and working on the same context all the time.
+This profile permits a new report context to be opened before the previous report context is closed. The Hub can maintain multiple anchor contexts simultaneously within a reporting session. The current context is the most recent anchor context that has been opened but not yet closed. This current context enables all Synchronizing Applications to be synchronized and working on the same context all the time.
 
-Once the *interrupting* study is complete, the Image Display terminates the report context of the *interrupting* study. The Hub removes the context of the *interrupting* study and set the current context back to the previously opened study. Note that all associated context and contents remain in the Hub.
+Once the *interrupting* study is complete, the Image Display closes the report context of the *interrupting* study. The Hub removes the context of the *interrupting* study and set the current context back to the previously opened study. Note that all associated context and contents remain in the Hub.
 
 By default, the Hub will implicitly generate and distribute new `DiagnosticReport-open` event for the resumed report context to all subscribers (See Hub [Event Producing Requirements](volume-1.html#1xx1172-event-producing-requirements) for more details.). As a result, all subscribers will resume to the same report context. If an application has business logic to resume something else rather than the previous report context, that application should send a new Open Report Context [RAD-X3] event to set the new report context accordingly.
 

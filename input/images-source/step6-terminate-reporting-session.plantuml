@@ -5,7 +5,7 @@ participant "Image Display" as PACS
 participant "Hub" as Hub
 participant "Report Creator" as Report
 
-== Step 6: Terminate Reporting Session ==
+== Step 6: Close Reporting Session ==
 
 User->Report: //Close application//
 

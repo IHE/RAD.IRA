@@ -19,11 +19,11 @@ User->PACS: //Select Patient and Study//\n//to start dictation//
 PACS->Hub: Open Report Context [RAD-X3]\n//(Study context present)//
 Hub-->PACS: Return 200 OK
 Hub->Hub: //Open report context//
-Hub->Watcher: Distribute Context Event [RAD-X9]\n//(Report context initiated)//
+Hub->Watcher: Distribute Context Event [RAD-X9]\n//(Report context opened)//
 Watcher-->Hub: Return 200 OK
-Hub->PACS: Distribute Context Event [RAD-X9]\n//(Report context initiated)//
+Hub->PACS: Distribute Context Event [RAD-X9]\n//(Report context opened)//
 PACS-->Hub: Return 200 OK
-Hub->Report: Distribute Context Event [RAD-X9]\n//(Report context initiated)//
+Hub->Report: Distribute Context Event [RAD-X9]\n//(Report context opened)//
 Report-->Hub: Return 202 Accepted
 Report->Report: //Detect that the identified//\n//patient context does not//\n//match the patient referenced//\n//in the identified study context//
 Report->Hub: Notify Error [RAD-X11]\n//(with SyncError)//

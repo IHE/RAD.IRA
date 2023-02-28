@@ -34,7 +34,7 @@ Hub->Hub: //Create DiagnosticReport Context in session 12345//\n(event: id = 100
 Hub-->PACS: Accept
 
 Hub->Report: Distribute Context Event [RAD-X9]\n(event: id = 1000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
-Report->Report: //Initiate new report//\n//based on the received context//
+Report->Report: //Open new report//\n//based on the received context//
 Report-->Hub: //Success (id = 1000, status = 200)//
 
 Hub->PACS: Distribute Context Event [RAD-X9]\n(event: id = 1000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
@@ -62,8 +62,8 @@ end note
 Hub->Hub: //Create DiagnosticReport Context in session 12345//\n(event: id = 2000,\ncontext = DiagnosticReport aaa\nrelated context = Patient bbb, ImagingStudy ccc)\n[[open_study_for_reporting.html#available-context-and-content-in-hub Example]]
 note over Hub
 At this moment, the current context is DiagnosticReport aaa
-because it is the last context that has been initiated and not
-yet terminated.
+because it is the last context that has been opened and not
+yet closed.
 
 However, the anchor context DiagnosticReport xxx remains in
 the Hub's tracking since it has not yet been closed.
@@ -71,7 +71,7 @@ end note
 Hub-->PACS: Accept
 
 Hub->Report: Distribute Context Event [RAD-X9]\n(event: id = 2000,\ncontext = DiagnosticReport aaa\nrelated context = Patient bbb, ImagingStudy ccc)
-Report->Report: //Initiate new report//\n//based on the received context//
+Report->Report: //Open new report//\n//based on the received context//
 Report-->Hub: //Success (id = 2000, status = 200)//
 
 Hub->PACS: Distribute Context Event [RAD-X9]\n(event: id = 2000,\ncontext = DiagnosticReport aaa\nrelated context = Patient bbb, ImagingStudy ccc)

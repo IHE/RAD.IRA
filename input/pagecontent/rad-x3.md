@@ -1,6 +1,6 @@
 ### 2:3.X3.1 Scope
 
-This transaction is used to initiate a report context. Report contexts are initiated within an existing reporting session.
+This transaction is used to open a report context. Report contexts are opened within an existing reporting session.
 
 ### 2:3.X3.2 Actors Roles
 
@@ -8,8 +8,8 @@ This transaction is used to initiate a report context. Report contexts are initi
 
 | Role | Description | Actor(s) |
 |------|-------------|----------|
-| Sender | Initiates a report context | Image Display<br>Report Creator<br>Worklist Client |
-| Manager | Manages initiated context | Hub |
+| Sender | Opens a report context | Image Display<br>Report Creator<br>Worklist Client |
+| Manager | Manages opened context | Hub |
 {: .grid}
 
 ### 2:3.X3.3 Referenced Standards
@@ -29,14 +29,14 @@ This transaction is used to initiate a report context. Report contexts are initi
 **Figure 2:3.X3.4-1: Interaction Diagram**
 
 #### 2:3.X3.4.1 Open Report Context Request Message
-The Sender sends an event to the Manager to initiate a new report context. The Sender shall support sending such messages to more than one Manager.
+The Sender sends an event to the Manager to open a report context. The Sender shall support sending such messages to more than one Manager.
 
 The Manager shall support handling such messages from more than one Sender. 
 
 ##### 2:3.X3.4.1.1 Trigger Events
 
 A Sender uses this transaction when:
-- It determines that work should begin on a new report, and initiates a new context to coordinate that work with other Subscribers.
+- It determines that work should begin on a new report, and opens a new context to coordinate that work with other Subscribers.
 - It determines to resume a previously opened report that has not yet complete, and re-opens the same context to coordinate that work with other Subscribers.
 
 ##### 2:3.X3.4.1.2 Message Semantics
@@ -69,7 +69,7 @@ The Manager shall receive and validate the request. See 2:3.X3.4.2.2 for error c
 
 Per FHIRcast, this `report` context will become the current context in this reporting session.
 
-If the `report`, `patient` and `study` contexts in the request match an existing report context which has not been terminated, then the Manager shall update that report context and set it to be the current context.
+If the `report`, `patient` and `study` contexts in the request match an existing report context which has not been closed, then the Manager shall update that report context and set it to be the current context.
 
 #### 2:3.X3.4.2 Open Report Context Response Message
 

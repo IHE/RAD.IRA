@@ -18,6 +18,6 @@ User -> Report: //Auto-populate report with selected measurements//
 User -> Report: //Sign-off Report// [[volume-1.html#1xx42125-step-5-sign-off-report Step 5]]
 end
 
-User->PACS: //Terminate reporting session// [[volume-1.html#1xx42126-step-6-terminate-reporting-session Step 6]]
+User->PACS: //Close reporting session// [[volume-1.html#1xx42126-step-6-close-reporting-session Step 6]]
 
 @enduml
