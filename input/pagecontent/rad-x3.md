@@ -36,8 +36,8 @@ The Manager shall support handling such messages from more than one Sender.
 ##### 2:3.X3.4.1.1 Trigger Events
 
 A Sender uses this transaction when:
-- It determines that work should begin on a new report, and opens a new context to coordinate that work with other Subscribers.
-- It determines to resume a previously opened report that has not yet complete, and re-opens the same context to coordinate that work with other Subscribers.
+- It determines that work should begin on a new report, and opens a new context to synchronize that work with other Subscribers.
+- It determines to resume a previously opened report that has not yet complete, and re-opens the same context to synchronize that work with other Subscribers.
 
 ##### 2:3.X3.4.1.2 Message Semantics
 
