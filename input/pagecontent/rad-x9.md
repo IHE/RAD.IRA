@@ -51,7 +51,7 @@ The Subscriber may validate the received event according to its business logic. 
 
 The Subscriber shall handle events `[FHIR resource]-open` | `update` | `select` | `close` that it supports. The event handling requirements are defined in the Actor Description for each actor per profile.
 
-If the Subscriber accepted the event initially (i.e. return `202` Accepted) and later decided to refuse the context or failed to process the event, then it shall send a `syncerror` event back to the Manager using Notify Error [RAD-X11](rad-11.html).
+If the Subscriber accepted the event initially (i.e. return `202` Accepted) and later decided to refuse the context or failed to process the event, then it shall send a `syncerror` event back to the Manager using Notify Error [RAD-X11](rad-x11.html).
 
 ##### 2:3.X9.4.1.3.1 Handling open events
 
