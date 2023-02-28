@@ -1,4 +1,6 @@
-The Realtime Bidirectional Communication for Interactive Multimedia Report (RTC-IMR) Profile specifies how systems can  communicate efficiently in context with realtime content in order to provide a streamlined user experience during reporting.
+The Realtime Bidirectional Communication for Interactive Multimedia Report (RTC-IMR) profile helps applications that are used together during reporting (e.g. image display, report creator, clinical applications, AI tools, etc) to share information using a standard called FHIRcast. Each application can share what it is doing and the data it is creating, referred to as Context and Content, respectively. Other applications are notified so they can then intelligently synchronize their behavior or use the new data.
+
+For example, the report creator could share that the user is starting a new report, and the other applications could synchronize by opening the corresponding study. An AI tool could generate a tumor measurement and the report creator could get that data and add an entry in the report, either automatically or triggered by a command from the radiologist.
 
 # 1:XX.1 Realtime Bidirectional Communication for Interactive Multimedia Reporting
 
@@ -145,7 +147,7 @@ Table 1:XX.1-1 lists the transactions for each actor directly involved in the IM
       <td><a href="rad-x11.html">RAD TF-2: 4.X11</a></td>
     </tr>
     <tr>
-      <td rowspan="9"><a href="volume-1.html#1xx113-worklist-display">Worklist Client</a></td>
+      <td rowspan="9"><a href="volume-1.html#1xx113-worklist-client">Worklist Client</a></td>
       <td>Subscribe to Reporting Session [RAD-X1]</td>
       <td>Initiator</td>
       <td>R</td>
@@ -243,7 +245,7 @@ Table 1:XX.1-1 lists the transactions for each actor directly involved in the IM
       <td><a href="rad-x11.html">RAD TF-2: 4.X11</a></td>
     </tr>
     <tr>
-      <td rowspan="2"><a href="volume-1.html#1xx115-report-content-creator">Content Creator</a></td>
+      <td rowspan="2"><a href="volume-1.html#1xx115-content-creator">Content Creator</a></td>
       <td>Update Report Content [RAD-X5]</td>
       <td>Initiator</td>
       <td>O (Note 1)</td>
@@ -299,7 +301,7 @@ Table 1:XX.1-1 lists the transactions for each actor directly involved in the IM
       <td><a href="rad-x11.html">RAD TF-2: 4.X11</a></td>
     </tr>
     <tr>
-      <td rowspan="11"><a href="volume-1.html#1xx118-hub">Hub</a></td>
+      <td rowspan="11"><a href="volume-1.html#1xx117-hub">Hub</a></td>
       <td>Subscribe to Reporting Session [RAD-X1]</td>
       <td>Responder</td>
       <td>R</td>
@@ -1103,7 +1105,7 @@ In this use case,
 - Radiologist completes and signs off the report and moves on to the next study in the worklist
 - Eventually, Radiologist finishes all studies in the reporting worklist and closes the applications
 
-> Note: In more complex scenarios, separate Worklist Client can be used to drive the Image Display and Report Creator, while the Image Display can launch separate Evidence Creator on demand to perform advanced visualization and measurements. See [Use Case 2](volume-1.html#1xx422-use-case-2-worklist-manager-driven-reporting) for an example.
+> Note: In more complex scenarios, separate Worklist Client can be used to drive the Image Display and Report Creator, while the Image Display can launch separate Evidence Creator on demand to perform advanced visualization and measurements. See [Use Case 2](volume-1.html#1xx422-use-case-2-complex-reporting) for an example.
 
 ##### 1:XX.4.2.1.2 Basic Reporting Process Flow
 
@@ -1127,7 +1129,7 @@ A Driving Application is a `Subscriber` that can launch other applications and r
 
 A Synchronizing Application is a `Subscriber` launches by a Driving Application and listens to events in the reporting session.
 
-> Note: The same `Subscriber` can be both a Driving Application and a Synchronizing Application in a reporting session depending on the workfow. Image Display in [Use Case #2](volume-1.html#1xx422-use-case-2-worklist-manager-driven-reporting) is an example.
+> Note: The same `Subscriber` can be both a Driving Application and a Synchronizing Application in a reporting session depending on the workfow. Image Display in [Use Case #2](volume-1.html#1xx422-use-case-2-complex-reporting) is an example.
 
 <div>
 {%include common-subscription.svg%}
