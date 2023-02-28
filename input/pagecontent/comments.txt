@@ -1,5 +1,4 @@
 - Navigation (series / image level), does it need X5 and X6?
-- SMART on FHIR client side behavior needs to be added to other actors as a client behavior as well
 - check IUA
 - 1:XX.2.1: Missing an option introduction line.
 - 1:XX.4.1.3
@@ -27,7 +26,6 @@
 - TODO: EC in open question moved to close issue.
 - TODO: Are there any missing actors? Follow up Alert app - Can be done by the Watcher :)
 - TODO: Add a concept section about deployment consideration, performance expectation, etc.
-- TODO: Change X9 to 'Distribute FHIRcast Event'
 - TODO: What is the expected behavior of repeated open on the same context?
 - TODO: OQ: Can returning 200 OK and later send syncerror?
 - TODO: Check consistent case for `operationoutcome`.
@@ -39,4 +37,3 @@
     - Make processing the update / select gracefully, but no mandatory behavior. Give an example in use case, but not normative.
         - Make an OQ if any behavior should be mandatory / baseline
 - Note: exercise with clincians about for each event, what is the response behavior for each actor. (how well do we foresee loose coupling to work)
-- Security Consideration section - authentication is out of scope. May use IUA or SMART on FHIR.
