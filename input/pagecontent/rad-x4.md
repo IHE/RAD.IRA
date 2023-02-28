@@ -49,12 +49,7 @@ If the Sender retries the same request due to an error response from the Manager
 
 ##### 2:3.X4.4.1.3 Expected Actions
 
-The Manager shall validate the request as follow:
-
-* If `timestamp`, `id` or `event` are not set, then return an error
-* If `event.context` does not include `report`, then return an error
-* If the `report` context does not include `resource.id`, then return an error
-* if `event`.`hub.topic` is not a known session, then return an error
+The Manager shall receive and validate the request.
 
 If the Manager accepts the request, then
 - Per FHIRcast [Section 2.9.2 Get Current Context Response](https://build.fhir.org/ig/HL7/fhircast-docs/2-9-GetCurrentContext.html#get-current-context-response), the Manager shall set the `current context` to the newest context that was initiated by a `[FHIR resource]-open` event and has not been terminated by a corresponding `[FHIR resource]-close` event. If there is no such context, then the Manager shall set the `current context` to *empty*.
@@ -69,6 +64,14 @@ The Manager finishes processing the Close Report Context request.
 ##### 2:3.X4.4.2.2 Message Semantics
 
 This message is a [FHIRcast Request Context Change]() response. The Sender is the FHIRcast Subscriber. The Manager is the FHIRcast Hub.
+
+The Manager shall return `400` Bad Request error if:
+* If `timestamp`, `id` or `event` are not set
+* If `event.context` does not include `report`
+* If the `report` context does not include `resource.id`
+* if `event`.`hub.topic` is not a known session
+
+The Manager may return other applicable HTTP error status codes.
 
 ##### 2:3.X4.4.2.3 Expected Actions
 

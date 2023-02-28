@@ -55,12 +55,7 @@ If the Sender retries the same request due to an error response from the Manager
 
 ##### 2:3.X5.4.1.3 Expected Actions
 
-The Manager shall validate the request as follow:
-
-* If `timestamp`, `id` or `event` are not set, then return an error
-* If `event.context` does not include `report` and `updates`, then return an error
-* if `event`.`hub.topic` is not a known session, then return an error
-* If `context.versionId` does not match the latest version ID of the `report` anchor context, then return an error
+The Manager shall receive and validate the request.
 
 The Manager shall apply all actions in the request *atomically*. i.e. The Manager shall apply all actions or none of the actions.
 
@@ -77,6 +72,14 @@ The Manager finishes processing the Update Report Content request.
 ##### 2:3.X5.4.2.2 Message Semantics
 
 This message is a [FHIRcast Request Context Change]() response. The Sender is the FHIRcast Subscriber. The Manager is the FHIRcast Hub.
+
+The Manager shall return `400` Bad Request error if:
+* If `timestamp`, `id` or `event` are not set
+* If `event.context` does not include `report` and `updates`
+* if `event`.`hub.topic` is not a known session
+* If `context.versionId` does not match the latest version ID of the `report` anchor context
+
+The Manager may return other applicable HTTP error status codes.
 
 If the Manager rejected the Update Report Content request, then the Manager shall return a 4xx or 5xx HTTP error response code. In this case, the Manager shall reject all the actions in the request. In other words, if the Manager failed partially, then all the applied actions prior to the failure shall be reverted.
 

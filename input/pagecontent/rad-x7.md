@@ -70,6 +70,8 @@ The Manager shall return `400` Bad Request error if:
 - the `hub.mode` is `unsubscribe` and there is no `hub.channel.endpoint` or its value is empty
 - the `hub.channel.endpoint` does not match the websocket associated to the Subscriber
 
+The Manager may return other applicable HTTP error status codes.
+
 The HTTP body of the response shall consist of a JSON object containing an element name `hub.channel.endpoint` and a value for the WSS URL that is associated to the Subscriber.
 
 ##### 2:3.X7.4.2.3 Expected Actions
