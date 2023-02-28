@@ -1,6 +1,6 @@
 ### 2:3.X7.1 Scope
 
-This transaction is used to unsubscribe a FHIRcast session.
+This transaction is used to unsubscribe from a FHIRcast session.
 
 ### 2:3.X7.2 Actors Roles
 
@@ -10,8 +10,8 @@ The roles in this transaction are defined in the following table and may be play
 
 | Role | Description | Actor(s) |
 |------|-------------|----------|
-| Subscriber | Unsubscribes a session | Image Display<br>Report Creator<br>Worklist Client<br>Evidence Creator<br>Watcher |
-| Manager | Manages unsubscription requests | Hub |
+| Subscriber | Unsubscribes from a session | Image Display<br>Report Creator<br>Worklist Client<br>Evidence Creator<br>Watcher |
+| Manager | Removes subscriber subscription | Hub |
 {: .grid}
 
 ### 2:3.X7.3 Referenced Standards
@@ -44,9 +44,9 @@ This message is a [FHIRcast Unsubscription Request](https://build.fhir.org/ig/HL
 
 ##### 2:3.X7.4.1.3 Expected Actions
 
-The Manager shall receive and validate the message.
+The Manager shall receive and validate the message. See 2:3.X7.4.2.2 for error conditions.
 
-The Manager shall remove the Subscriber and its subscribed events from the session.
+Per FHIRcast, the Manager will remove the Subscriber from all event subscriptions in this session.
 
 The Manager shall terminate the websocket connection and delete the websocket identifier. The Manager shall not reuse the websocket identifier for other future subscriptions.
 
@@ -75,6 +75,9 @@ The Manager may return other applicable HTTP error status codes.
 The HTTP body of the response shall consist of a JSON object containing an element name `hub.channel.endpoint` and a value for the WSS URL that is associated to the Subscriber.
 
 ##### 2:3.X7.4.2.3 Expected Actions
+
+TODO:
+The Subscriber may check the returned websocket in the response
 
 If the HTTP response code is 4xx or 5xx, then the Subscriber may adjust the request and retry.
 

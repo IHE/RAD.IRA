@@ -37,7 +37,7 @@ The Manager shall support handling such messages from more than one Sender.
 
 A Sender uses this transaction when:
 - It determines that work should begin on a new report, and initiates a new context to coordinate that work with other Subscribers.
-- It determines to resume a previously opened report that has not yet complete, and initiates the same context to coordinate that work with other Subscribers.
+- It determines to resume a previously opened report that has not yet complete, and re-opens the same context to coordinate that work with other Subscribers.
 
 ##### 2:3.X3.4.1.2 Message Semantics
 
@@ -57,21 +57,19 @@ Key | Optionality | Context Requirements
 
 > Note: Rows with '*' in the Optionality column have constraints different from baseline FHIRcast Request Context Change request.
 
-If the Sender resumes a previously opened report, then the Sender shall assign a new `event.id` for the same `report`, `patient` and `study` contexts.
+If the Sender resumes a previously opened report, then the Sender shall reuse the previous `report`, `patient` and `study` contexts, but shall assign a new `event.id`.
 
-If the Sender retries the same request due to a timeout, then the Sender shall use the same `event.id` so the Manager can detect that it is a duplicate message.
+If the Sender is retrying this context change request due to not receiving a response from the Manager for a prior request, then the Sender shall use the same `event.id`. If the Manager received the original request, this allows it to detect that it is a duplicate message.
 
-If the Sender retries the same request due to an error response from the Manager, then the Sender shall assign a new `event.id` to indicate that it is a new message.
+If the Sender retries the request due to an error response from the Manager, then the Sender shall assign a new `event.id` to indicate that it is a new request.
 
 ##### 2:3.X3.4.1.3 Expected Actions
 
-The Manager shall receive and validate the request.
+The Manager shall receive and validate the request. See 2:3.X3.4.2.2 for error conditions.
 
 Per FHIRcast, this `report` context will become the current context in this reporting session.
 
-If the `report`, `patient` and `study` contexts in the request match an existing report context and the report context has not been terminated, then the Manager shall update the existing report context and set it to be the current context.
-
-> Note: In other words, the Manager brings the existing report context forward to become the new current context, rather than maintaining two separate opened report contexts with the same `report`, `patient` and `study` contexts.
+If the `report`, `patient` and `study` contexts in the request match an existing report context which has not been terminated, then the Manager shall update that report context and set it to be the current context.
 
 #### 2:3.X3.4.2 Open Report Context Response Message
 
@@ -81,13 +79,13 @@ The Manager finishes processing the Open Report Context request.
 
 ##### 2:3.X3.4.2.2 Message Semantics
 
-This message is a [FHIRcast Request Context Change]() response. The Sender is the FHIRcast Subscriber. The Manager is the FHIRcast Hub.
+This message is a [FHIRcast Request Context Change](https://build.fhir.org/ig/HL7/fhircast-docs/2-6-RequestContextChange.html#request-context-change-body) response. The Sender is the FHIRcast Subscriber. The Manager is the FHIRcast Hub.
 
 The Manager shall return `400` Bad Request error if:
 * If `timestamp`, `id` or `event` are not set
 * If `event.context` does not include `report`, `patient` and `study`
 * if `event`.`hub.topic` is not a known session
-* If `report` context in the request matches an existing report context in Manager, but either `patient` or `study` or both context do not match
+* If `report` context in the request matches an existing report context, but either `patient` or `study` context do not match
 
 The Manager may return other applicable HTTP error status codes.
 

@@ -46,13 +46,13 @@ The `event.context` shall conform to [SyncError Context](https://build.fhir.org/
 
 Per FHIRcast, the `issue[0].severity` of the `operationoutcome` context will be set to `warning`.
 
-If the Subscriber retries the same request due to a timeout, then the Subscriber shall use the same `event.id` so the Manager can detect that it is a duplicate message.
+If the Sender is retrying this context change request due to not receiving a response from the Manager for a prior request, then the Sender shall use the same `event.id`. If the Manager received the original request, this allows it to detect that it is a duplicate message.
 
-If the Subscriber retries the same request due to an error response from the Manager, then the Subscriber shall assign a new `event.id` to indicate that it is a new message.
+If the Sender retries the request due to an error response from the Manager, then the Sender shall assign a new `event.id` to indicate that it is a new request.
 
 ##### 2:3.X11.4.1.3 Expected Actions
 
-The Manager shall receive and validate the request.
+The Manager shall receive and validate the request. See 2:3.X11.4.2.2 for error conditions.
 
 #### 2:3.X11.4.2 Notify Error Response Message
 
@@ -62,7 +62,7 @@ The Manager finished processing the Notify Error request.
 
 ##### 2:3.X11.4.2.2 Message Semantics
 
-This message is a [FHIRcast Request Context Change]() response. The Subscriber is the FHIRcast Subscriber. The Manager is the FHIRcast Hub.
+This message is a [FHIRcast Request Context Change](https://build.fhir.org/ig/HL7/fhircast-docs/2-6-RequestContextChange.html#request-context-change-body) response. The Subscriber is the FHIRcast Subscriber. The Manager is the FHIRcast Hub.
 
 The Manager shall return `400` Bad Request error if:
 * If `timestamp`, `id` or `event` are not set

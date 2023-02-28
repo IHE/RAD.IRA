@@ -2,14 +2,16 @@
 
 This transaction is used to terminate a report context. All synchronizing applications are expected to close their local copy of this context.
 
+> Note: This closes the report context used for synchronization / sharing. The report instance being worked on may or may not be complete.
+
 ### 2:3.X4.2 Actors Roles
 
 **Table 2:3.X4.2-1: Actor Roles**
 
 | Role | Description | Actor(s) |
 |------|-------------|----------|
-| Sender | Terminates a report context | Image Display<br>Report Creator<br>Worklist Client |
-| Manager | Deletes report context | Hub |
+| Sender | Closes a report context | Image Display<br>Report Creator<br>Worklist Client |
+| Manager | Closes report context | Hub |
 {: .grid}
 
 ### 2:3.X4.3 Referenced Standards
@@ -35,7 +37,7 @@ The Manager shall support handling such messages from more than one Sender.
 
 ##### 2:3.X4.4.1.1 Trigger Events
 
-The Sender completes the report corresponding to this report context.
+The Sender determines no further synchronization required for this report context. The report instance being worked on may or may not be complete.
 
 ##### 2:3.X4.4.1.2 Message Semantics
 
@@ -43,17 +45,17 @@ This message is a [FHIRcast Request Context Change](https://build.fhir.org/ig/HL
 
 The `event.context` shall conform to [DiagnosticReport close Event](https://build.fhir.org/ig/HL7/fhircast-docs/3-6-2-diagnosticreport-close.html).
 
-If the Sender retries the same request due to a timeout, then the Sender shall use the same `event.id` so the Manager can detect that it is a duplicate message.
+If the Sender is retrying this context change request due to not receiving a response from the Manager for a prior request, then the Sender shall use the same `event.id`. If the Manager received the original request, this allows it to detect that it is a duplicate message.
 
-If the Sender retries the same request due to an error response from the Manager, then the Sender shall assign a new `event.id` to indicate that it is a new message.
+If the Sender retries the request due to an error response from the Manager, then the Sender shall assign a new `event.id` to indicate that it is a new request.
 
 ##### 2:3.X4.4.1.3 Expected Actions
 
-The Manager shall receive and validate the request.
+The Manager shall receive and validate the request. See 2:3.X4.4.2.2 for error conditions.
 
 If the Manager accepts the request, then
-- Per FHIRcast [Section 2.9.2 Get Current Context Response](https://build.fhir.org/ig/HL7/fhircast-docs/2-9-GetCurrentContext.html#get-current-context-response), the Manager shall set the `current context` to the newest context that was initiated by a `[FHIR resource]-open` event and has not been terminated by a corresponding `[FHIR resource]-close` event. If there is no such context, then the Manager shall set the `current context` to *empty*.
-- The Manager shall delete the `report` context of the received `DiagnosticReport-close` event, as well as all associated context and content.
+- Per FHIRcast [Section 2.9.2 Get Current Context Response](https://build.fhir.org/ig/HL7/fhircast-docs/2-9-GetCurrentContext.html#get-current-context-response), the Manager will set the `current context` to the context that was most recently opened by a `[FHIR resource]-open` event and has not been closed by a corresponding `[FHIR resource]-close` event. If there is no such context, then the Manager will set the `current context` to *empty*.
+- Per FHIRcast, the Manager will remove from the memory the `report` context of the received `DiagnosticReport-close` event, as well as all associated context and content.
 
 #### 2:3.X4.4.2 Close Report Context Response Message
 
@@ -63,7 +65,7 @@ The Manager finishes processing the Close Report Context request.
 
 ##### 2:3.X4.4.2.2 Message Semantics
 
-This message is a [FHIRcast Request Context Change]() response. The Sender is the FHIRcast Subscriber. The Manager is the FHIRcast Hub.
+This message is a [FHIRcast Request Context Change](https://build.fhir.org/ig/HL7/fhircast-docs/2-6-RequestContextChange.html#request-context-change-body) response. The Sender is the FHIRcast Subscriber. The Manager is the FHIRcast Hub.
 
 The Manager shall return `400` Bad Request error if:
 * If `timestamp`, `id` or `event` are not set

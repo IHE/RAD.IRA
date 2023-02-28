@@ -1,6 +1,6 @@
 ### 2:3.X5.1 Scope
 
-This transaction is used to add, update or remove contents in a report context.
+This transaction is used to add, change or remove contents in a report context.
 
 ### 2:3.X5.2 Actors Roles
 
@@ -8,8 +8,8 @@ This transaction is used to add, update or remove contents in a report context.
 
 | Role | Description | Actor(s) |
 |------|-------------|----------|
-| Sender | Adds, updates or removes report contents | Content Creator |
-| Manager | Manages the report contents | Hub |
+| Sender | Adds, changes or removes report contents | Content Creator |
+| Manager | Updates the report context | Hub |
 {: .grid}
 
 ### 2:3.X5.3 Referenced Standards
@@ -29,13 +29,13 @@ This transaction is used to add, update or remove contents in a report context.
 **Figure 2:3.X5.4-1: Interaction Diagram**
 
 #### 2:3.X5.4.1 Update Report Content Request Message
-The Sender sends an event to the Manager to add, update or remove content relevant to an existing report context. The Sender shall support sending such messages to more than one Manager.
+The Sender sends an event to the Manager to add, change or remove content relevant to an existing report context. The Sender shall support sending such messages to more than one Manager.
 
 The Manager shall support handling such messages from more than one Sender. 
 
 ##### 2:3.X5.4.1.1 Trigger Events
 
-The Sender determines new content should be added, existing content should be updated, or existing content should be removed for a report context.
+The Sender determines new content should be added, existing content should be changed, or existing content should be removed from a report context.
 
 ##### 2:3.X5.4.1.2 Message Semantics
 
@@ -45,23 +45,22 @@ The `event.context` shall conform to [DiagnosticReport update Event](https://bui
 
 The `event`.`context.versionId` shall be the newest version ID of the report context known to the Sender.
 
-The Sender should include all contents and referenced resources as inline [contained resources](https://www.hl7.org/fhir/references.html#contained) if possible. This is preferred as most resources in the event are transient. However, in some situations, it is beneficial to reference other resources by reference instead of by value. In this case, the Sender shall specify the `entry.fullurl` with the uri value that the full content can be retrieved.
+The Sender should include referenced resources (with applicable content changes) as inline [contained resources](https://www.hl7.org/fhir/references.html#contained) if possible. However, in some situations, it is beneficial to include other resources by reference instead of by value. In this case, the Sender shall specify the `entry.fullurl` with the uri value that the full content can be retrieved.
 
-> Note: The eventual Subscriber may or may not have permission to access the referenced resources that are not inline.
+> Note: Using contained resources is preferred as most resources in the event are transient. Also other Subscribers that receive the events may or may not have permission to access referenced resources that are not inline.
 
-If the Sender retries the same request due to a timeout, then the Sender shall use the same `event.id` so the Manager can detect that it is a duplicate message.
+If the Sender is retrying this context change request due to not receiving a response from the Manager for a prior request, then the Sender shall use the same `event.id`. If the Manager received the original request, this allows it to detect that it is a duplicate message.
 
-If the Sender retries the same request due to an error response from the Manager, then the Sender shall assign a new `event.id` to indicate that it is a new message.
+If the Sender retries the request due to an error response from the Manager, then the Sender shall assign a new `event.id` to indicate that it is a new request.
 
 ##### 2:3.X5.4.1.3 Expected Actions
 
-The Manager shall receive and validate the request.
+The Manager shall receive and validate the request. See 2:3.X5.4.2.2 for error conditions.
 
-The Manager shall apply all actions in the request *atomically*. i.e. The Manager shall apply all actions or none of the actions.
-
-> Note: The Manager is only required to apply the actions generically for any resource. For example, identify if the same resource already exist, and add, update or remove the resource as a whole accordingly. There is no requirement for the Manager to understand the deep structure of each resource and perform any validation or application logic at the resource level.
-
-If the Manager successfully apply all actions in the request, it shall assign a new version ID to the `report` anchor context.
+Per FHIRcast,
+- If the `context.versionId` in the request does not match the version ID of the `report` anchor context, then the Manager will not apply any updates.
+- The Manager will apply the set of updates in the request *atomically*. i.e. The Manager will apply all updates or none of the updates.
+- If the Manager successfully applies all updates in the request, it will assign a new version ID to the `report` anchor context.
 
 #### 2:3.X5.4.2 Update Report Content Response Message
 
@@ -71,7 +70,7 @@ The Manager finishes processing the Update Report Content request.
 
 ##### 2:3.X5.4.2.2 Message Semantics
 
-This message is a [FHIRcast Request Context Change]() response. The Sender is the FHIRcast Subscriber. The Manager is the FHIRcast Hub.
+This message is a [FHIRcast Request Context Change](https://build.fhir.org/ig/HL7/fhircast-docs/2-6-RequestContextChange.html#request-context-change-body) response. The Sender is the FHIRcast Subscriber. The Manager is the FHIRcast Hub.
 
 The Manager shall return `400` Bad Request error if:
 * If `timestamp`, `id` or `event` are not set
@@ -79,9 +78,9 @@ The Manager shall return `400` Bad Request error if:
 * if `event`.`hub.topic` is not a known session
 * If `context.versionId` does not match the latest version ID of the `report` anchor context
 
-The Manager may return other applicable HTTP error status codes.
+If the Manager rejected the Update Report Content request, then the Manager shall return a 4xx or 5xx HTTP error response code.
 
-If the Manager rejected the Update Report Content request, then the Manager shall return a 4xx or 5xx HTTP error response code. In this case, the Manager shall reject all the actions in the request. In other words, if the Manager failed partially, then all the applied actions prior to the failure shall be reverted.
+The Manager may return other applicable HTTP error status codes.
 
 ##### 2:3.X5.4.2.3 Expected Actions
 
