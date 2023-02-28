@@ -27,7 +27,7 @@ deactivate Hub
 
 ...
 
-Report->Hub: Terminate Report Context [RAD-X4]\n(event: id = 2000,\ncontext = DiagnosticReport xxx)
+Report->Hub: Close Report Context [RAD-X4]\n(event: id = 2000,\ncontext = DiagnosticReport xxx)
 activate Hub
 
 Hub->Hub: //Update DiagnosticReport context in session 12345//\n(event: id = 2000,\ncontext = DiagnosticReport xxx)
@@ -50,6 +50,6 @@ User->PACS: //Proceed to next study//
 note over PACS
 Repeat Step 2.
 end note
-PACS->Hub: Initiate Report Context [RAD-X3]
+PACS->Hub: Open Report Context [RAD-X3]
 
 @enduml

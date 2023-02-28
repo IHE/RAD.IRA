@@ -10,10 +10,10 @@ participant "Report Creator\n(as Synchronizing App\nand Driving App)" as Report
 == Step 5: Sign-Off Report and Continue with next Study ==
 
 User->Report: //Complete reporting and sign off report//
-Report->Hub: Terminate Report Context [RAD-X4] //on Study 1//\n(event: id = 1000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
+Report->Hub: Close Report Context [RAD-X4] //on Study 1//\n(event: id = 1000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
 
 User->PACS: //Click "Next study"//
-PACS->Hub: Initiate Report Context [RAD-X2] //on Study 2//\n(event: id = 1111,\ncontext = DiagnosticReport aaa\nrelated context = Patient bbb, ImagingStudy ccc)
+PACS->Hub: Open Report Context [RAD-X2] //on Study 2//\n(event: id = 1111,\ncontext = DiagnosticReport aaa\nrelated context = Patient bbb, ImagingStudy ccc)
 note over PACS
 Note that switching study happened before the
 Close Context event of the previously signed-off

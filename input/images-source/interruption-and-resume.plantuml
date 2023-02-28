@@ -20,7 +20,7 @@ Hub-->Report: //Return empty context//
 User->PACS: //Select Patient and Study//
 PACS->PACS: //Open Study and show Chest X-Ray//
 
-PACS->Hub: Initiate Report Context [RAD-X3]\n(event: id = 1000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
+PACS->Hub: Open Report Context [RAD-X3]\n(event: id = 1000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
 activate Hub
 note over PACS, Hub
 Create the following report context entry
@@ -49,7 +49,7 @@ User->User: //Received an interruption to consult on another study//
 User->PACS: //Select **Another** Patient and Study//
 PACS->PACS: //Open Study and show Chest CT//
 
-PACS->Hub: Initiate Report Context [RAD-X3]\n(event: id = 2000,\ncontext = DiagnosticReport aaa\nrelated context = Patient bbb, ImagingStudy ccc)
+PACS->Hub: Open Report Context [RAD-X3]\n(event: id = 2000,\ncontext = DiagnosticReport aaa\nrelated context = Patient bbb, ImagingStudy ccc)
 activate Hub
 note over PACS, Hub
 Create the following report context entry
@@ -85,7 +85,7 @@ User->PACS: //Start reviewing the new study for consultation//
 
 User->PACS: //Complete review for consultation and close study//
 
-PACS->Hub: Terminate Report Context [RAD-X4]\n(event: id = 3000,\ncontext = DiagnosticReport aaa)
+PACS->Hub: Close Report Context [RAD-X4]\n(event: id = 3000,\ncontext = DiagnosticReport aaa)
 note over Hub
 Hub completed tracking of context DiagnosticReport aaa
 and deleted this context.

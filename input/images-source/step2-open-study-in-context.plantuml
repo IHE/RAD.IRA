@@ -10,7 +10,7 @@ participant "Report Creator" as Report
 User->PACS: //Select Patient and Study//
 PACS->PACS: //Open Study and show Chest X-Ray//
 
-PACS->Hub: Initiate Report Context [RAD-X3]\n(event: id = 1000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
+PACS->Hub: Open Report Context [RAD-X3]\n(event: id = 1000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
 activate Hub
 
 Hub->Hub: //Create DiagnosticReport Context in session 12345//\n[[open_study_for_reporting.html#available-context-and-content-in-hub Example]]

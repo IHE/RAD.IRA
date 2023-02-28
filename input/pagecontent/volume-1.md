@@ -50,13 +50,13 @@ Table 1:XX.1-1 lists the transactions for each actor directly involved in the IM
       <td><a href="rad-x2.html">RAD TF-2: 4.X2</a></td>
     </tr>
     <tr>
-      <td>Initiate Report Context [RAD-X3]</td>
+      <td>Open Report Context [RAD-X3]</td>
       <td>Initiator</td>
       <td>R</td>
       <td><a href="rad-x3.html">RAD TF-2: 4.X3</a></td>
     </tr>
     <tr>
-      <td>Terminate Report Context [RAD-X4]</td>
+      <td>Close Report Context [RAD-X4]</td>
       <td>Initiator</td>
       <td>R</td>
       <td><a href="rad-x4.html">RAD TF-2: 4.X4</a></td>
@@ -105,13 +105,13 @@ Table 1:XX.1-1 lists the transactions for each actor directly involved in the IM
       <td><a href="rad-x2.html">RAD TF-2: 4.X2</a></td>
     </tr>
     <tr>
-      <td>Initiate Report Context [RAD-X3]</td>
+      <td>Open Report Context [RAD-X3]</td>
       <td>Initiator</td>
       <td>R</td>
       <td><a href="rad-x3.html">RAD TF-2: 4.X3</a></td>
     </tr>
     <tr>
-      <td>Terminate Report Context [RAD-X4]</td>
+      <td>Close Report Context [RAD-X4]</td>
       <td>Initiator</td>
       <td>R</td>
       <td><a href="rad-x4.html">RAD TF-2: 4.X4</a></td>
@@ -160,13 +160,13 @@ Table 1:XX.1-1 lists the transactions for each actor directly involved in the IM
       <td><a href="rad-x2.html">RAD TF-2: 4.X2</a></td>
     </tr>
     <tr>
-      <td>Initiate Report Context [RAD-X3]</td>
+      <td>Open Report Context [RAD-X3]</td>
       <td>Initiator</td>
       <td>R</td>
       <td><a href="rad-x3.html">RAD TF-2: 4.X3</a></td>
     </tr>
     <tr>
-      <td>Terminate Report Context [RAD-X4]</td>
+      <td>Close Report Context [RAD-X4]</td>
       <td>Initiator</td>
       <td>R</td>
       <td><a href="rad-x4.html">RAD TF-2: 4.X4</a></td>
@@ -314,13 +314,13 @@ Table 1:XX.1-1 lists the transactions for each actor directly involved in the IM
       <td><a href="rad-x2.html">RAD TF-2: 4.X2</a></td>
     </tr>
     <tr>
-      <td>Initiate Report Context [RAD-X3]</td>
+      <td>Open Report Context [RAD-X3]</td>
       <td>Responder</td>
       <td>R</td>
       <td><a href="rad-x3.html">RAD TF-2: 4.X3</a></td>
     </tr>
     <tr>
-      <td>Terminate Report Context [RAD-X4]</td>
+      <td>Close Report Context [RAD-X4]</td>
       <td>Responder</td>
       <td>R</td>
       <td><a href="rad-x4.html">RAD TF-2: 4.X4</a></td>
@@ -879,9 +879,9 @@ Additional profile requirements for specific events are defined in the correspon
 
 ##### 1:XX.1.1.7.2 Event Producing Requirements
 
-When a Hub has successfully processed a Terminate Report Context [RAD-X4] request, the Hub will establish a new current context. The Hub will select one of the existing open contexts in the session to be the new current context, typically the most recently opened context (i.e. resume a previous open context). If no open context exist, then current context will be empty.  
+When a Hub has successfully processed a Close Report Context [RAD-X4] request, the Hub will establish a new current context. The Hub will select one of the existing open contexts in the session to be the new current context, typically the most recently opened context (i.e. resume a previous open context). If no open context exist, then current context will be empty.  
 
-When the Hub establishes a new current context, the Hub shall send distribute a corresponding `DiagnosticReport-open` context event as if it had received Initiate Report Context [RAD-X3] requests.
+When the Hub establishes a new current context, the Hub shall send distribute a corresponding `DiagnosticReport-open` context event as if it had received Open Report Context [RAD-X3] requests.
 
 If the current context has associated contents, the Hub shall distribute corresponding `DiagnosticReport-update` and/or `DiagnosticReport-select` context events as if it had received Update Report Content [RAD-X5] and/or Select Report Content [RAD-X6] requests.
 
@@ -1242,7 +1242,7 @@ Figure 1:XX.4.2.1.2.1-5: Sign-off Report Flow in RTC-IMR Profile
 
 The flow above shows the simple case with a sequential switching of report context. In this case, a report context is initiated and then terminated before the next report context is opened.
 
-In practice, the radiologist is likely to continue with the next study in the worklist without any awareness of the events happening behind the scene. If the initiating Driving Application and terminating Driving Application are different as in this example, then it is possible that the radiologist moves to the next study and hence the Image Display initiates a new report context before the Image Display receives the Terminate Report Context [RAD-X5] event of the reported study.
+In practice, the radiologist is likely to continue with the next study in the worklist without any awareness of the events happening behind the scene. If the initiating Driving Application and terminating Driving Application are different as in this example, then it is possible that the radiologist moves to the next study and hence the Image Display initiates a new report context before the Image Display receives the Close Report Context [RAD-X5] event of the reported study.
 
 Such rapid context switching is supported by this profile. The Hub and each Subscriber maintain multiple open context simultaneously. As long as the context is not terminated, it still exists. Each event is associated to a particular anchor context. Therefore a Subscriber can reliably match an event to its internal state according to the context ID of the anchor context in the event. 
 
@@ -1309,7 +1309,7 @@ This profile permits a new report context to be initiated before the previous re
 
 Once the *interrupting* study is complete, the Image Display terminates the report context of the *interrupting* study. The Hub removes the context of the *interrupting* study and set the current context back to the previously opened study. Note that all associated context and contents remain in the Hub.
 
-By default, the Hub will implicitly generate and distribute new `DiagnosticReport-open` event for the resumed report context to all subscribers (See Hub [Event Producing Requirements](volume-1.html#1xx1172-event-producing-requirements) for more details.). As a result, all subscribers will resume to the same report context. If an application has business logic to resume something else rather than the previous report context, that application should send a new Initiate Report Context [RAD-X3] event to set the new report context accordingly.
+By default, the Hub will implicitly generate and distribute new `DiagnosticReport-open` event for the resumed report context to all subscribers (See Hub [Event Producing Requirements](volume-1.html#1xx1172-event-producing-requirements) for more details.). As a result, all subscribers will resume to the same report context. If an application has business logic to resume something else rather than the previous report context, that application should send a new Open Report Context [RAD-X3] event to set the new report context accordingly.
 
 <div>
 {%include interruption-and-resume.svg%}

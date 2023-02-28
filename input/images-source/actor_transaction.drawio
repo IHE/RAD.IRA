@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="w9eKzpSiwHvzKklawYqQ" name="Full Actors Only">
-        <mxGraphModel dx="1733" dy="1765" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="1671" dy="1901" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -197,8 +197,8 @@
                         <mxPoint x="-599" y="393" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="u-3bDec00EcQlva4bvqx-8" value="Terminate Report Context [RAD-X4]" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-                    <mxGeometry x="-589" y="363" width="198" height="30" as="geometry"/>
+                <mxCell id="u-3bDec00EcQlva4bvqx-8" value="Close Report Context [RAD-X4]" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="-589" y="363" width="179" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="u-3bDec00EcQlva4bvqx-9" value="" style="endArrow=classic;html=1;rounded=0;startArrow=none;startFill=0;endFill=1;" parent="1" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
@@ -233,8 +233,8 @@
                         <mxPoint x="-598" y="350" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="u-3bDec00EcQlva4bvqx-16" value="Initiate Report Context [RAD-X3]" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-                    <mxGeometry x="-589" y="320" width="178" height="30" as="geometry"/>
+                <mxCell id="u-3bDec00EcQlva4bvqx-16" value="Open Report Context [RAD-X3]" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="-589" y="320" width="179" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="6" value="" style="endArrow=classic;html=1;rounded=0;startArrow=none;startFill=0;endFill=1;" parent="1" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">

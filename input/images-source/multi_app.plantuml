@@ -34,11 +34,11 @@ PACS->Hub: Get Current Context [RAD-X8]\n(catch up with current context and cont
 
 Hub-->PACS: //Return empty context//
 
-== Step 3: Initiate Report Context ==
+== Step 3: Open Report Context ==
 
 Radiologist->WF: //Open study//
 
-WF->Hub: Initiate Report Context [RAD-X3]\n(session 12345, event: id = 1000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
+WF->Hub: Open Report Context [RAD-X3]\n(session 12345, event: id = 1000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
 activate Hub
 
 Hub->Hub: //Create DiagnosticReport Context in session 12345//\n(event: id = 1000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
@@ -131,7 +131,7 @@ end note
 
 Report->: //Send final report//
 
-Report->Hub: Terminate Report Context [RAD-X4]\n(session 12345, event: id = 2000,\ncontext = DiagnosticReport xxx)
+Report->Hub: Close Report Context [RAD-X4]\n(session 12345, event: id = 2000,\ncontext = DiagnosticReport xxx)
 activate Hub
 
 Hub->Hub: //Update DiagnosticReport context in session 12345//\n(event: id = 2000,\ncontext = DiagnosticReport xxx)

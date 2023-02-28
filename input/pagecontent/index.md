@@ -23,8 +23,8 @@ This guide is organized into the following sections:
 2. Volume 2: Transaction Detail
    1. [Subscribe to Reporting Session [RAD-X1]](rad-x1.html)
    2. [Connect to Notification Channel [RAD-X2]](rad-x2.html)
-   3. [Initiate Report Context [RAD-X3]](rad-x3.html)
-   4. [Terminate Report Context [RAD-X4]](rad-x4.html)
+   3. [Open Report Context [RAD-X3]](rad-x3.html)
+   4. [Close Report Context [RAD-X4]](rad-x4.html)
    5. [Update Report Content [RAD-X5]](rad-x5.html)
    6. [Select Report Content [RAD-X6]](rad-x6.html)
    7. [Unsubscribe Session [RAD-X7]](rad-x7.html)
