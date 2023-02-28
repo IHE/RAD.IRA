@@ -3,7 +3,7 @@
 title Multiple Applications Workflow
 
 actor Radiologist
-participant "Worklist Display" as WF
+participant "Worklist Client" as WF
 participant "Hub" as Hub
 participant "Image Display" as PACS
 participant "Report Creator" as Report
