@@ -1353,9 +1353,9 @@ The ATNA Profile requires actors to implement:
 
 Furthermore, for the HTTP-based transactions, this profile strongly recommends the use of ITI [Internet User Authorization](https://profiles.ihe.net/ITI/TF/Volume1/ch-34.html) (IUA) Profile to ensure that communications are only allowed for authenticated and authorized users and/or systems.
 
-Additionally, although this profile does not specify any particular method for the driving application to launch the synchronizing application, this profile strongly recommends the use of SMART on FHIR for application launching. In addition to the use of OAuth2 as specified in the ITI IUA profile, SMART on FHIR defines custom scopes that can be used by the Hub to validate if the Subscriber is authorized to invoke the transaction.
+Additionally, although this profile does not specify any particular method for an application to launch other synchronizing applications, this profile strongly recommends the use of [SMART App Launch](http://www.hl7.org/fhir/smart-app-launch/app-launch.html) for application launching. In addition to the use of OAuth2 as specified in the ITI IUA profile, FHIRcast extends SMART App Launch with FHIRcast specific OAuth2 scopes that can be used by the Hub to validate if the Subscriber is authorized to invoke the transaction. Furthermore, the authorization server returns the FHIRcast SMART launch parameters which can be used by the synchronizing applications to join the session. See [Section 4.1.1 SMART on FHIR](https://build.fhir.org/ig/HL7/fhircast-docs/4-1-launch-scenarios.html#smart-on-fhir) for more details.
 
-Note that with FHIRcast, the authentication and authorization is controlled by the HTTP requests. Once the websocket connections are established, there is no further authorization per events.
+Note that with FHIRcast, the authentication and authorization is controlled at the time of subscription and per context change request. Once the websocket connections are established, there is no further authorization for event distribution.
 
 The events as defined in this profile contain personal demographic information and clinical information. It is appropriate for products implementing the this profile to include appropriate PHI controls. Specifying such mechanisms and features is outside the scope of this profile.
 
@@ -1375,7 +1375,7 @@ Table 1:XX.6-1 describes various actors in various other profiles that might be 
   </thead>
   <tbody>
     <tr>
-      <td rowspan="2">Report Creator</td>
+      <td rowspan="3">Report Creator</td>
       <td><a href="https://www.ihe.net/uploadedFiles/Documents/Radiology/IHE_RAD_Suppl_RD.pdf">IMR Report Creator</a></td>
       <td>To produce multi-media interactive report using the context and content received.</td>
     </tr>
@@ -1384,7 +1384,11 @@ Table 1:XX.6-1 describes various actors in various other profiles that might be 
       <td>To provide authorization claims when invoking a request with another actor.</td>
     </tr>
     <tr>
-      <td rowspan="2">Image Display</td>
+      <td><a href="https://profiles.ihe.net/RAD/IMR/index.html">IMR Report Creator</a></td>
+      <td>To receive image references and measurements input from Image Display for the interactive hyperlinks.</td>
+    </tr>
+    <tr>
+      <td rowspan="3">Image Display</td>
       <td><a href="https://www.ihe.net/uploadedFiles/Documents/Radiology/IHE_RAD_TF_Vol1.pdf">SWF.b Image Display</a></td>
       <td>To display patients' studies and share context and content with other synchronized applications</td>
     </tr>
@@ -1393,7 +1397,16 @@ Table 1:XX.6-1 describes various actors in various other profiles that might be 
       <td>To provide authorization claims when invoking a request with another actor.</td>
     </tr>
     <tr>
-      <td rowspan="2">Evidence Creator</td>
+      <td><a href="https://profiles.ihe.net/RAD/IMR/index.html">IMR Image Display</a></td>
+      <td>To enhance the interactivity with the Report Creator after the Image Display is launched.</td>
+    </tr>
+    <tr>
+      <td>Worklist Client</td>
+      <td><a href="https://profiles.ihe.net/ITI/IUA/index.html">IUA Authorization Client</a></td>
+      <td>To provide authorization claims when invoking a request with another actor.</td>
+    </tr>
+    <tr>
+      <td rowspan="4">Evidence Creator</td>
       <td><a href="https://www.ihe.net/uploadedFiles/Documents/Radiology/IHE_RAD_TF_Vol1.pdf">SWF.b Evidence Creator</a></td>
       <td>To provide measurements and other evidence data and share the content with other synchronized applications.</td>
     </tr>
@@ -1402,9 +1415,21 @@ Table 1:XX.6-1 describes various actors in various other profiles that might be 
       <td>To provide authorization claims when invoking a request with another actor.</td>
     </tr>
     <tr>
-      <td>Worklist Client</td>
+      <td><a href="https://www.ihe.net/uploadedFiles/Documents/Radiology/IHE_RAD_Suppl_AIW-I.pdf">AIW-I Task Performer</a></td>
+      <td>To provide an additional method to share the output with other synchronizing applications in a reporting session.</td>
+    </tr>
+    <tr>
+      <td><a href="https://www.ihe.net/uploadedFiles/Documents/Radiology/IHE_RAD_Suppl_AIR.pdf">AIR Evidence Creator</a></td>
+      <td>To support creating the various AI results.</td>
+    </tr>
+    <tr>
+      <td rowspan="2">Watcher</td>
       <td><a href="https://profiles.ihe.net/ITI/IUA/index.html">IUA Authorization Client</a></td>
       <td>To provide authorization claims when invoking a request with another actor.</td>
+    </tr>
+    <tr>
+      <td><a href="https://profiles.ihe.net/ITI/IUA/index.html">AIW-I Watcher</a></td>
+      <td>To watch an additional infrastructure for events.</td>
     </tr>
     <tr>
       <td>Hub</td>
