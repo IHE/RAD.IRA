@@ -12,9 +12,14 @@ User->PACS: //Measure area of Pneumothorax//
 PACS->PACS: //Create content//\n//(new FHIR Observation resource)//
 
 PACS->Hub: Update Report Content [RAD-X5]\n//include Observation in content bundle//
+Hub->Hub: //Ensure request version matches//\n//current context version//
+Hub-->PACS: //Success//
 Hub->Hub: //Update content in report context//\n[[update_study_with_measurement.html#available-context-and-content-in-hub Example]]
 Hub->Report: Distribute Context Event [RAD-X9]\n//same content as received//
 Report->Report: //Insert pneumothorax area in the report//
+Report-->Hub: //Success (status = 200)//
+Hub->PACS: Distribute Context Event [RAD-X9]\n//same content as received//
+PACS-->Hub: //Success (status = 200)//
 
 User->Report: //Fill general report text//
 
