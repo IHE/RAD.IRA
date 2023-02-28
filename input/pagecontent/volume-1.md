@@ -392,9 +392,8 @@ The Image Display shall be able to launch other applications and synchronize the
 
 ##### 1:XX.1.1.1.1 Event Handling Requirements
 
-In Table 1:XX.1.1.1.1-1, the Received Event shows the context events defined in this profile. For each received event, Context Key specifies the context of the event and Resources specifies the FHIR resources used in the given context for the expected behavior. 
-
-The Image Display shall support handling all events defined in Table 1:XX.1.1.1.1-1. The Image Display shall support all required behaviors (“R” in Optionality). The Image Display may support suggested behaviors ("S" in Optionality).
+In Table 1:XX.1.1.1.1-1, for each Received Event, Context Key specifies the contexts in the received event and Resources specifies the FHIR resources used in the given context.
+The Image Display shall support all Behaviors shown as “R” in Optionality. The Image Display may support suggested behaviors ("O" in Optionality).
 
 **Table 1:XX.1.1.1.1-1**: Event Handling Requirements
 
@@ -439,39 +438,39 @@ The Image Display shall support handling all events defined in Table 1:XX.1.1.1.
     <tr>
       <td><code class="language-plaintext highlighter-rouge">updates</code></td>
       <td>ImagingStudy</td>
-      <td>S</td>
+      <td>O</td>
       <td>Display the comparison study</td>      
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">updates</code></td>
       <td>ImagingSelection</td>
-      <td>S</td>
+      <td>O</td>
       <td>Display annotations to selected images</td>      
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">updates</code></td>
       <td>Observation</td>
-      <td>S</td>
+      <td>O</td>
       <td>Display measurements and annotations</td>
     </tr>
     <tr>
       <td rowspan="2">DiagnosticReport-select</td>
       <td><code class="language-plaintext highlighter-rouge">select</code></td>
       <td>ImagingStudy</td>
-      <td>S</td>
+      <td>O</td>
       <td>Bring the comparison study to focus</td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">select</code></td>
       <td>ImagingSelection</td>
-      <td>S</td>
+      <td>O</td>
       <td>Bring selected images and annotations to focus</td>      
     </tr>
     <tr>
       <td>SyncError</td>
       <td><code class="language-plaintext highlighter-rouge">operationoutcome</code></td>
       <td>OperationOutcome</td>
-      <td>S</td>
+      <td>O</td>
       <td>Notify the user regarding the synchronization error, including the details of the error reported and the Subscriber that reported the error</td>
     </tr>
   </tbody>
@@ -507,9 +506,8 @@ The Report Creator shall be able to launch other applications and synchronize th
 
 ##### 1:XX.1.1.2.1 Event Handling Requirements
 
-In Table 1:XX.1.1.2.1-1, the Received Event shows the context events defined in this profile. For each received event, Context Key specifies the context of the event and Resources specifies the FHIR resources used in the given context for the expected behavior. 
-
-The Report Creator shall support handling all events defined in Table 1:XX.1.1.2.1-1. The Report Creator shall support all required behaviors (“R” in Optionality). The Report Creator may support suggested behaviors ("S" in Optionality).
+In Table 1:XX.1.1.2.1-1, for each Received Event, Context Key specifies the contexts in the received event and Resources specifies the FHIR resources used in the given context.
+The Report Creator shall support all Behaviors shown as “R” in Optionality. The Report Creator may support suggested behaviors ("O" in Optionality).
 
 **Table 1:XX.1.1.2.1-1**: Event Handling Requirements
 
@@ -548,39 +546,39 @@ The Report Creator shall support handling all events defined in Table 1:XX.1.1.2
       <td rowspan="3">DiagnosticReport-update</td>
       <td><code class="language-plaintext highlighter-rouge">updates</code></td>
       <td>ImagingStudy</td>
-      <td>S</td>
+      <td>O</td>
       <td>Add comparison study to report</td>      
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">updates</code></td>
       <td>ImagingSelection</td>
-      <td>S</td>
+      <td>O</td>
       <td>Add annotations of selected images to data collection for further processing</td>      
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">updates</code></td>
       <td>Observation</td>
-      <td>S</td>
+      <td>O</td>
       <td>Add measurements and annotations to data collection for further processing</td>      
     </tr>
     <tr>
       <td rowspan="2">DiagnosticReport-select</td>
       <td><code class="language-plaintext highlighter-rouge">select</code></td>
       <td>ImagingStudy</td>
-      <td>S</td>
+      <td>O</td>
       <td>Select comparison study and able to apply user commands (See Note 1)</td>      
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">select</code></td>
       <td>ImagingSelection</td>
-      <td>S</td>
+      <td>O</td>
       <td>Select images and annotations and able to apply user commands (See Note 1)</td>      
     </tr>
     <tr>
       <td>SyncError</td>
       <td><code class="language-plaintext highlighter-rouge">operationoutcome</code></td>
       <td>OperationOutcome</td>
-      <td>S</td>
+      <td>O</td>
       <td>Notify the user regarding the synchronization error, including the details of the error reported and the Subscriber that reported the error</td>      
     </tr>
   </tbody>
@@ -611,9 +609,8 @@ The Worklist Client shall be able to launch other applications and synchronize t
 
 ##### 1:XX.1.1.3.1 Event Handling Requirements
 
-In Table 1:XX.1.1.3.1-1, the Received Event shows the context events defined in this profile. For each received event, Context Key specifies the context of the event and Resources specifies the FHIR resources used in the given context for the expected behavior. 
-
-The Worklist Client shall support handling all events defined in Table 1:XX.1.1.3.1-1. The Worklist Client shall support all required behaviors (“R” in Optionality). The Worklist Client may support suggested behaviors ("S" in Optionality).
+In Table 1:XX.1.1.3.1-1, for each Received Event, Context Key specifies the contexts in the received event and Resources specifies the FHIR resources used in the given context.
+The Worklist Client shall support all Behaviors shown as “R” in Optionality. The Worklist Client may support suggested behaviors ("O" in Optionality).
 
 **Table 1:XX.1.1.3.1-1**: Event Handling Requirements
 
@@ -659,14 +656,14 @@ The Worklist Client shall support handling all events defined in Table 1:XX.1.1.
       <td>DiagnosticReport-select</td>
       <td><code class="language-plaintext highlighter-rouge">select</code></td>
       <td>ImagingStudy</td>
-      <td>S</td>
+      <td>O</td>
       <td>Select the study in worklist</td>
     </tr>
     <tr>
       <td>SyncError</td>
       <td><code class="language-plaintext highlighter-rouge">operationoutcome</code></td>
       <td>OperationOutcome</td>
-      <td>S</td>
+      <td>O</td>
       <td>Notify the user regarding the synchronization error, including the details of the error reported and the Subscriber that reported the error</td>
     </tr>
   </tbody>
@@ -690,9 +687,8 @@ The Evidence Creator shall be capable of being launched by another application. 
 
 ##### 1:XX.1.1.4.1 Event Handling Requirements
 
-In Table 1:XX.1.1.4.1-1, the Received Event shows the context events defined in this profile. For each received event, Context Key specifies the context of the event and Resources specifies the FHIR resources used in the given context for the expected behavior. 
-
-The Evidence Creator shall support handling all events defined in Table 1:XX.1.1.1.4-1. The Evidence Creator shall support all required behaviors (“R” in Optionality). The Evidence Creator may support suggested behaviors ("S" in Optionality).
+In Table 1:XX.1.1.4.1-1, for each Received Event, Context Key specifies the contexts in the received event and Resources specifies the FHIR resources used in the given context.
+The Evidence Creator shall support all Behaviors shown as “R” in Optionality. The Evidence Creator may support suggested behaviors ("O" in Optionality).
 
 **Table 1:XX.1.1.4.1-1**: Event Handling Requirements
 
@@ -731,21 +727,21 @@ The Evidence Creator shall support handling all events defined in Table 1:XX.1.1
       <td>DiagnosticReport-update</td>
       <td>Any</td>
       <td>Any</td>
-      <td>S</td>
+      <td>O</td>
       <td>Update the report, patient or study record, or add/modify/delete received contents, if applicable.</td>
     </tr>
     <tr>
       <td>DiagnosticReport-select</td>
       <td>Any</td>
       <td>Any</td>
-      <td>S</td>
+      <td>O</td>
       <td>Process the applicable selected resources</td>
     </tr>
     <tr>
       <td>SyncError</td>
       <td><code class="language-plaintext highlighter-rouge">operationoutcome</code></td>
       <td>OperationOutcome</td>
-      <td>S</td>
+      <td>O</td>
       <td>Notify the user regarding the synchronization error, including the details of the error reported and the Subscriber that reported the error</td>
     </tr>
   </tbody>
@@ -788,9 +784,8 @@ The Watcher shall be capable of being launched by another application. When laun
 
 ##### 1:XX.1.1.6.1 Event Handling Requirements
 
-In Table 1:XX.1.1.6.1-1, the Received Event shows the context events defined in this profile. For each received event, Context Key specifies the context of the event and Resources specifies the FHIR resources used in the given context for the expected behavior. 
-
-The Watcher shall support handling all events defined in Table 1:XX.1.1.6.1-1. The Watcher shall support all required behaviors (“R” in Optionality). The Watcher may support suggested behaviors ("S" in Optionality).
+In Table 1:XX.1.1.6.1-1, for each Received Event, Context Key specifies the contexts in the received event and Resources specifies the FHIR resources used in the given context.
+The Watcher shall support all Behaviors shown as “R” in Optionality. The Watcher may support suggested behaviors ("O" in Optionality).
 
 **Table 1:XX.1.1.6.1-1**: Event Handling Requirements
 
@@ -829,21 +824,21 @@ The Watcher shall support handling all events defined in Table 1:XX.1.1.6.1-1. T
       <td>DiagnosticReport-update</td>
       <td>Any</td>
       <td>Any</td>
-      <td>S</td>
+      <td>O</td>
       <td>Update the report, patient or study record, or add/modify/delete received contents, if applicable.</td>
     </tr>
     <tr>
       <td>DiagnosticReport-select</td>
       <td>Any</td>
       <td>Any</td>
-      <td>S</td>
+      <td>O</td>
       <td>Process the applicable selected resources</td>
     </tr>
     <tr>
       <td>SyncError</td>
       <td><code class="language-plaintext highlighter-rouge">operationoutcome</code></td>
       <td>OperationOutcome</td>
-      <td>S</td>
+      <td>O</td>
       <td>Process the synchronization error, including the details of the error reported and the Subscriber that reported the error</td>
     </tr>
   </tbody>
@@ -873,7 +868,7 @@ The Hub shall monitor the established websocket connections. If it detects a web
 
 The Hub shall be able to process all valid events conforming to the FHIRcast [Event Format](https://build.fhir.org/ig/HL7/fhircast-docs/2-3-Events.html) received using FHIRcast [Request Context Change](https://build.fhir.org/ig/HL7/fhircast-docs/2-6-RequestContextChange.html) requests.
 
-> Note: This implies that the Hub cannot be limited to process events defined in this profile. The Hub is required to support other valid events regardless of whether they are defined in the FHIRcast [Event Catalog](https://build.fhir.org/ig/HL7/fhircast-docs/3_Events.html). For example, Subscribers in a reporting session are permitted to send Request Context Change requests with events (e.g. `HeartBeat`, `ImagingStudy-*`, etc.) beyond those explicitly defined in this profile.
+> Note: This implies that the Hub cannot only process events defined in this profile. The Hub is required to support other valid events regardless of whether they are defined in the FHIRcast [Event Catalog](https://build.fhir.org/ig/HL7/fhircast-docs/3_Events.html). For example, Subscribers in a reporting session are permitted to send Request Context Change requests with events (e.g. `HeartBeat`, `ImagingStudy-*`, etc.) beyond those explicitly defined in this profile.
 
 For all received events, the Hub shall support the following core behaviors:
 - It shall receive and distribute the event to all Subscribers subscribed to that event type (See [Event Notification](https://build.fhir.org/ig/HL7/fhircast-docs/2-5-EventNotification.html))
