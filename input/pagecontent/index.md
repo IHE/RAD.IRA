@@ -1,7 +1,5 @@
 
-**This Implementation Guide template includes skeleton pages for each part of an IHE supplement. The instructions for how to fill out these sections can be found in the included [Supplement Template](https://github.com/IHE/supplement-template/blob/master/suppl_template.md). This supplement template should not be included in your github repo or publication. It is included here for easy reference.**
-
-**TODO: Write your executive overview here. Usually a one paragraph explanation of what problem this implementation guide solves.**
+The Realtime Bidirectional Communication for Interactive Multimedia Report (RTC-IMR) profile helps applications that are used together during reporting (e.g. image display, report creator, clinical applications, AI tools, etc) to share information using a standard called FHIRcast. Each application can share what it is doing and the data it is creating, referred to as Context and Content, respectively. Other applications are notified so they can then intelligently synchronize their behavior or use the new data.
 
 <div markdown="1" class="stu-note">
 
@@ -23,22 +21,26 @@ This guide is organized into the following sections:
    1. [Cross Profile Considerations](volume-1.html#1xx6-rtc-imr-cross-profile-considerations)
 
 2. Volume 2: Transaction Detail
-   1. [FooBar do \[domain-YY\]](domain-YY.html)
+   1. [Subscribe to Reporting Session [RAD-X1]](rad-x1.html)
+   2. [Connect to Notification Channel [RAD-X2]](rad-x2.html)
+   3. [Initiate Report Context [RAD-X3]](rad-x3.html)
+   4. [Terminate Report Context [RAD-X4]](rad-x4.html)
+   5. [Update Report Content [RAD-X5]](rad-x5.html)
+   6. [Select Report Content [RAD-X6]](rad-x6.html)
+   7. [Unsubscribe Session [RAD-X7]](rad-x7.html)
+   8. [Get Current Context [RAD-X8]](rad-x8.html)
+   9. [Distribute Context Event [RAD-X9]](rad-x9.html)
+   10. [Generate SyncError Event [RAD-X10]](rad-x10.html)
+   11. [Notify Error [RAD-X11]](rad-x11.html)
 
 3. Volume 3: Metadata and Content
-  - **TODO: point to your content profiles if you have them**
+  - N/A
 
 4. Volume 4: National Extensions
-  - **TODO: point at your national extensions if you have them**
+  - N/A
 
 5. Test Plan
   - [Test Plan](testplan.html)
-    - **TODO: point to your appendix if you have them**
-6. Other
-  - [Changes to Other Profiles](other.html)
-    - **TODO: Actor and transaction definitions, new glossary terms.**
-    - **TODO: Any changes needed to other specifications.**
-
 
 See also the [Table of Contents](toc.html) and
 the index of [Artifacts](artifacts.html) defined as part of this implementation guide.
@@ -63,7 +65,7 @@ You can also download:
 * the definition resources in [json](definitions.json.zip), [xml](definitions.xml.zip), [ttl](definitions.ttl.zip), or [csv](csvs.zip) format, or
 * the example resources in [json](examples.json.zip), [xml](examples.xml.zip) or [ttl](examples.ttl.zip) format.
 
-The source code for this Implementation Guide can be found on **TODO: Put your github repo here**
+The source code for this Implementation Guide can be found on [https://github.com/IHE/RAD.RTC-IMR](https://github.com/IHE/RAD.RTC-IMR).
 
 #### Cross Version Analysis
 
