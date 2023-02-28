@@ -43,7 +43,7 @@ The Manager accepts a notification event request and this Subscriber has listed 
 
 This message is a [FHIRcast Event Notification Request](https://build.fhir.org/ig/HL7/fhircast-docs/2-5-EventNotification.html#event-notification-request) request. The Manager is the FHIRcast Hub. The Subscriber is the FHIRcast Subscriber.
 
-Since the Manager is required to support FHIRcast [content sharing](https://build.fhir.org/ig/HL7/fhircast-docs/2-10-ContentSharing.html), it will need to manage the version ID in the event. TODO: Rework. Look at #3.
+The Manager shall support the additional requirements regarding `version id` defined in FHIRcast [content sharing](https://build.fhir.org/ig/HL7/fhircast-docs/2-10-ContentSharing.html).
 
 ##### 2:3.X9.4.1.3 Expected Actions
 
@@ -56,9 +56,6 @@ If the Subscriber accepted the event initially (i.e. return `202` Accepted) and 
 ##### 2:3.X9.4.1.3.1 Handling open events
 
 Upon receiving a `[FHIR resource]-open` event, the Subscriber will *open* the corresponding `event.context` according to its application logic. The semantics of the open event may be further described in the corresponding 'open request' transaction.
-
-TODO: Move to Volume 1 if needed
-> Note: The Subscriber may use all or a subset of the context provided. For example, a Report Creator may use the patient and study context to open the corresponding procedure and make it ready for dictation, and ignore the report context since the Report Creator will create its own. On the other hand, an Evidence Creator (such as a specialty AI application) may use only the study context to run an inference model on the study on demand, ignoring the report and patient context.
 
 > Note: For `[FHIRresource]-open` events, this may be the initial creation of the context, or an re-open of the context. Subscriber event handling for the subsequent event may differ from the first event.
 
