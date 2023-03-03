@@ -1,0 +1,43 @@
+@startuml
+
+title: Overread Draft Report
+
+actor Radiologist as User
+participant "Image Display" as PACS
+participant "Hub" as Hub
+participant "Report Creator" as Report
+
+User->Report: //Open draft report created by residence radiologist//
+
+opt Start a new reporting session if not exist
+Report->Hub: Subscribe to reporting session [RAD-Sub]\n//(session 12345)//
+Hub->Hub: //Create a new session//\n//if session ID does not exist//
+
+Report->PACS: //Launch Application//
+
+PACS->Hub: Subscribe to reporting session [RAD-Sub]\n//(session 12345)//
+note over Hub
+Hub adds Image Display to the reporting session.
+end note
+
+PACS->Hub: Get Current Context [RAD-X6]\n(catch up with current context and content)
+Hub-->PACS: //Return empty context//
+end opt
+
+Report->Hub: Open Report Context [RAD-X3]\n(event: id = 1000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
+activate Hub
+
+Hub->Hub: //Create DiagnosticReport Context in session 12345//\n[[open_study_for_reporting.html#available-context-and-content-in-hub Example]]
+Hub-->Report: Accept
+
+Hub->PACS: Distribute Context Event [RAD-X9]\n(event: id = 1000, ...)
+PACS->PACS: //Open study zzz//\n//based on the received context//
+PACS-->Hub: //Success (id = 1000, status = 200)//
+
+Hub->Report: Distribute Context Event [RAD-X9]\n(event: id = 1000, ...)
+Report-->Hub: //Success (id = 1000, status = 200)//
+deactivate Hub
+
+User->PACS: //View study associated to the draft report//
+
+@enduml

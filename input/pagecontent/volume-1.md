@@ -1340,6 +1340,17 @@ Figure 1:XX.4.2.4-2 shows two sample use cases how error handling can be used in
 
 Figure 1:XX.4.2.4-2: Error Handling Example Flows in RTC-IMR Profile
 
+#### 1:XX.4.2.5 Use Case \#5: Overread Draft Report
+
+A radiologist wants to review a draft report created by a residence. She opens the draft report in the Report Creator. The Report Creator opens a new report context for the draft report, including the corresponding patient and study context. The Image Display receives the event distributed by the Hub and opens the study in context. The radiologist reviews the study associated to the report using the Image Display.
+
+In case a reporting session has not been started when the radiologist reviews the draft report, the Report Creator can start a new reporting session and launch the Image Display to join it.
+
+<div>
+{%include report-overread.svg%}
+</div>
+<br clear="all">
+
 ## 1:XX.5 RTC-IMR Security Considerations
 
 This profile strongly recommends all actors group with an ITI ATNA Secure Application or Secure Node Actor using the Radiology Audit Trail Option.
