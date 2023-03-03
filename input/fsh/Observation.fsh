@@ -2,19 +2,7 @@ Profile:        RTC_IMR_Observation
 Parent:         Observation
 Id:             rtc-imr-observation
 Title:          "(Experimental) Imaging Observation"
-Description:    "Experimental profile on Observation for Imaging to be used in FHIRcast"
-
-// Shall reference one ServiceRequest
-* basedOn 1..* MS
-
-* basedOn ^slicing.discriminator.type = #type
-* basedOn ^slicing.discriminator.path = resolve()
-* basedOn ^slicing.rules = #open
-* basedOn ^slicing.description = "Slice based on the basedOn reference type"
-* basedOn ^slicing.ordered = false
-
-// * basedOn contains serviceRequest 1..*
-// * basedOn[serviceRequest] only Reference(IMRServiceRequest)
+Description:    "Experimental profile on Observation for quantitative and qualitative findings to be used in DiagnosticReport-update events."
 
 // Specify the category to be imaging
 * category 1..*
