@@ -51,9 +51,9 @@ Table 2:3.X3.4.1.2-1: Context Requirements
 {:.grid}
 Key | Optionality | Context Requirements
 --- | --- | --
-`report`| REQUIRED | Conform to the RTC-IMR-DiagnosticReport resource
-`patient` | REQUIRED | Conform to the RTC-IMR-Patient resource
-`study` | REQUIRED* | Conform to the RTC-IMR-ImagingStudy resource
+`report`| REQUIRED | Conform to the [DiagnosticReportContext](StructureDefinition-diagnosticreportcontext.html) resource
+`patient` | REQUIRED | Conform to the [PatientContext](StructureDefinition-patientcontext.html) resource
+`study` | REQUIRED* | Conform to the [ImagingStudyContext](StructureDefinition-imagingstudycontext.html) resource
 
 > Note: Rows with '*' in the Optionality column have constraints different from baseline FHIRcast Request Context Change request.
 
