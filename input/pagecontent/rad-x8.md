@@ -70,9 +70,7 @@ The Manager shall include the `content` key in the response. See [Content Sharin
 
 The Subscriber shall process the context as if it had received the `[FHIRresource]-open` event with the same context.
 
-The Subscriber shall process the resources in the `content` bundle as if it had received the `[FHIRresource]-update` event with the same content updates.
-
-If the content includes a resource that does not exist on the Subscriber and it is supported by the Subscriber, then the Subscriber shall create that resource with the current content as specified in the response.
+The Subscriber shall replace the set of known contents associated with the context with the resources in the `content` bundle according to its business logic. 
 
 ### 2:3.X8.5 Security Considerations
 
