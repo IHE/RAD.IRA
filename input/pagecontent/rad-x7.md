@@ -72,12 +72,11 @@ The Manager shall return `400` Bad Request error if:
 
 The Manager may return other applicable HTTP error status codes.
 
-The HTTP body of the response shall consist of a JSON object containing an element name `hub.channel.endpoint` and a value for the WSS URL that is associated to the Subscriber.
+The HTTP body of the response shall consist of a JSON object containing an element name `hub.channel.endpoint` and a value for the websocket URL that is associated to the Subscriber.
 
 ##### 2:3.X7.4.2.3 Expected Actions
 
-TODO:
-The Subscriber may check the returned websocket in the response
+The Subscriber may check the returned `hub.channel.endpoint` in the response and verify that it matches the websocket URL it requested.
 
 If the HTTP response code is 4xx or 5xx, then the Subscriber may adjust the request and retry.
 
