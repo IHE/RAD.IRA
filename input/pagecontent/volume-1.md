@@ -478,6 +478,8 @@ The Image Display shall support all Behaviors shown as “R” in Optionality. T
 
 ##### 1:XX.1.1.1.2 Event Producing Requirements
 
+If the Image Display accepted an event initially (i.e. returning `202` Accepted) and later decided to refuse the context or failed to process the event, then it shall send a `syncerror` event back to the Hub using Notify Error [RAD-X11](rad-x11.html).
+
 If the Image Display is grouped with a Content Creator to publish additional content events to a reporting session, then it shall publish events using at least one FHIR resource. The Image Display is highly recommended to publish events using one or more of the following FHIR resources that are expected to be useful in reporting:
 
 - `Patient`: patient in the anchor context
@@ -588,6 +590,8 @@ The Report Creator shall support all Behaviors shown as “R” in Optionality. 
 
 ##### 1:XX.1.1.2.2 Event Producing Requirements
 
+If the Report Creator accepted an event initially (i.e. returning `202` Accepted) and later decided to refuse the context or failed to process the event, then it shall send a `syncerror` event back to the Hub using Notify Error [RAD-X11](rad-x11.html).
+
 The Report Creator shall be grouped with a Content Creator to publish report status update using the report anchor context DiagnosticReport resource. It may support other content sharing resources.
 
 #### 1:XX.1.1.3 Worklist Client
@@ -671,7 +675,7 @@ The Worklist Client shall support all Behaviors shown as “R” in Optionality.
 
 ##### 1:XX.1.1.3.2 Event Producing Requirements
 
-None
+If the Worklist Client accepted an event initially (i.e. returning `202` Accepted) and later decided to refuse the context or failed to process the event, then it shall send a `syncerror` event back to the Hub using Notify Error [RAD-X11](rad-x11.html).
 
 #### 1:XX.1.1.4 Evidence Creator
 
@@ -748,6 +752,8 @@ The Evidence Creator shall support all Behaviors shown as “R” in Optionality
 </table>
 
 ##### 1:XX.1.1.4.2 Event Producing Requirements
+
+If the Evidence Creator accepted an event initially (i.e. returning `202` Accepted) and later decided to refuse the context or failed to process the event, then it shall send a `syncerror` event back to the Hub using Notify Error [RAD-X11](rad-x11.html).
 
 If the Evidence Creator is grouped with a Content Creator to publish content events to a reporting session, then it shall publish events using at least one FHIR resource. The Evidence Creator is highly recommended to publish events using one or more of the following FHIR resources that are expected to be useful in reporting:
 
@@ -846,7 +852,7 @@ The Watcher shall support all Behaviors shown as “R” in Optionality. The Wat
 
 ##### 1:XX.1.1.6.2 Event Producing Requirements
 
-None
+If the Watcher accepted an event initially (i.e. returning `202` Accepted) and later decided to refuse the context or failed to process the event, then it shall send a `syncerror` event back to the Hub using Notify Error [RAD-X11](rad-x11.html).
 
 #### 1:XX.1.1.7 Hub
 
@@ -1270,20 +1276,22 @@ Figure 1:XX.4.2.1.2.1-6: Close Reporting Session Flow in RTC-IMR Profile
 
 #### 1:XX.4.2.2 Use Case \#2: Complex Reporting
 
-In this complex reporting workflow, there are 5 systems collaborating closely to complete a reporting tasks:
+This reporting workflow is more complex because there are 5 systems collaborating closely:
 
 - Worklist Client: Manages a set of studies waiting for reporting
-- Image Display: Displays the select study and patient metadata
+- Image Display: Displays the selected study and patient metadata
 - Report Creator: Captures dictation from Radiologist and creates report
 - Evidence Creator: Processes study, provides advanced visualization and produces clinical results
 - Hub: Manages the different application subscriptions, maintains report context and distributes events
 
+In this diagram, a single Evidence Creator performs multiple functions. Alternatively, there can be multiple Evidence Creators, each performing a specific function.
+
 In this use case,
-- Before reporting starts, the Worklist Client launches the Image Display to join a reporting session
+- Before reporting starts, the Worklist Client launches the Image Display to join the reporting session
 - The Worklist Client has a set of studies waiting for reporting
 - Radiologist uses the worklist to select studies to report
 - When Radiologist opens a study in Worklist Client, Image Display automatically synchronizes and view the corresponding study images and patient metadata
-- When Radiologist clicks the dictation button on the Worklist Client to start dictation,it launches the Report Creator to join the reporting session
+- When Radiologist clicks the dictation button on the Worklist Client to start dictation, the Worklist Client launches the Report Creator to join the reporting session
 - After launched, Report Creator automatically synchronizes with other applications in the reporting session. It discovers the current report context and open a new report for the corresponding study
 - While viewing the study in Image Display, Radiologist clicks the advanced processing button in Image Display to execute the integrated Evidence Creator
 - After launched, Evidence Creator automatically synchronizes with other applications in the reporting session. It discovers the current report context and process the study accordingly
