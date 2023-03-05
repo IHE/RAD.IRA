@@ -1285,18 +1285,18 @@ This reporting workflow is more complex because there are 5 systems collaboratin
 In this diagram, a single Evidence Creator performs multiple functions. Alternatively, there can be multiple Evidence Creators, each performing a specific function.
 
 In this use case,
-- Before reporting starts, the Worklist Client launches the Image Display to join the reporting session
 - The Worklist Client has a set of studies waiting for reporting
 - Radiologist uses the worklist to select studies to report
-- When Radiologist opens a study in Worklist Client, Image Display automatically synchronizes and view the corresponding study images and patient metadata
-- When Radiologist clicks the dictation button on the Worklist Client to start dictation, the Worklist Client launches the Report Creator to join the reporting session
-- After launched, Report Creator automatically synchronizes with other applications in the reporting session. It discovers the current report context and open a new report for the corresponding study
+- Before reporting starts, the Worklist Client starts the reporting session and launches the Image Display and Report Creator to join the session
+- When Radiologist opens a study in Worklist Client,
+  - Image Display automatically synchronizes and views the corresponding study images and patient metadata
+  - Report Creator automatically synchronizes and opens a new report for the corresponding study
 - While viewing the study in Image Display, Radiologist clicks the advanced processing button in Image Display to execute the integrated Evidence Creator
-- After launched, Evidence Creator automatically synchronizes with other applications in the reporting session. It discovers the current report context and process the study accordingly
-- After finished processing, Evidence Creator shares the results back with other applications in the reporting session
-- Image Display automatically shows the results from Evidence Creator
+- After launched, Evidence Creator automatically synchronizes and processes the study
+- After finished processing, Evidence Creator shares the outputs back with other applications in the reporting session
+- Image Display automatically shows the outputs from Evidence Creator
 - Radiologist accepts the results in Image Display, which in turn shares the Radiologist decisions as observation with other applications in the reporting session
-- Report Creator automatically updates the report with the Radiologist decisions
+- Report Creator automatically updates the report with the Radiologist decisions according to the observation
 - Radiologist completes and signs off the report and moves on to the next study in the worklist
 - Eventually, Radiologist finishes all studies in the reporting worklist and closes the applications
 
