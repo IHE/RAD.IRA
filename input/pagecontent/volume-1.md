@@ -1115,37 +1115,6 @@ In this use case,
 
 Figure 1:XX.4.2.2-1: Basic Reporting Flow in RTC-IMR Profile
 
-###### 1:XX.4.2.1.2.0 Common Subscription Flow
-
-Subscribing to a reporting session is a common starting point for any `Subscriber` to start communicating with other `Subscribers` using the `Hub` in a reporting session.
-
-Subscribing to a reporting session involves two transactions:
-
-- Subscribe to Reporting Session [RAD-X1]
-- Connect to Notification Channel [RAD-X2]
-
-A Driving Application is a `Subscriber` that can launch other applications and request context changes. It generates a unique session ID to start a new session.
-
-A Synchronizing Application is a `Subscriber` launches by a Driving Application and listens to events in the reporting session.
-
-> Note: The same `Subscriber` can be both a Driving Application and a Synchronizing Application in a reporting session depending on the workfow. Image Display in [Use Case #2](volume-1.html#1xx422-use-case-2-complex-reporting) is an example.
-
-<div>
-{%include common-subscription.svg%}
-</div>
-<br clear="all">
-
-Figure 1:XX.4.2.1.2.0-1: Common Subscription Flow in RTC-IMR Profile
-
-To simplify the subsequent use case flows for readability, this common subscription flow will be represented as a single line as a meta transaction [RAD-Sub]. The following is an example between the Image Display and the Hub.
-
-<div>
-{%include condensed-subscription-transaction.svg%}
-</div>
-<br clear="all">
-
-Figure 1:XX.4.2.1.2.0-2: Condensed Subscription Transaction in RTC-IMR Profile
-
 ###### 1:XX.4.2.1.2.1 Step 1: Open Reporting Session
 
 When a radiologist starts reporting, the Image Display, as a Driving Application, starts a reporting session.
