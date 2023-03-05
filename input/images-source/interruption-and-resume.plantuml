@@ -9,10 +9,10 @@ participant "Report Creator" as Report
 
 PACS->Report: //Launch Application//
 
-Report->Hub: Subscribe to reporting session [RAD-Sub]
-note over Hub
-Hub adds Reporting App to the reporting session.
-end note
+Report->Hub: Subscribe to reporting session [RAD-X1]
+Hub-->Report: //Accept//\n//with hub.channel.endpoint//
+Report->Hub: Connect to Notification Channel [RAD-X2]
+Hub-->Report: //Confirm connetion//
 
 Report->Hub: Get Current Context [RAD-X6]\n(catch up with current context and content)
 Hub-->Report: //Return empty context//
@@ -22,13 +22,6 @@ PACS->PACS: //Open Study and show Chest X-Ray//
 
 PACS->Hub: Open Report Context [RAD-X3]\n(event: id = 1000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
 activate Hub
-note over PACS, Hub
-Create the following report context entry
-for session 12345:
-* DiagnosticReport
-* Patient
-* ImagingStudy
-end note
 
 Hub->Hub: //Create DiagnosticReport Context in session 12345//\n(event: id = 1000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)\n[[open_study_for_reporting.html#available-context-and-content-in-hub Example]]
 Hub-->PACS: Accept
@@ -51,13 +44,6 @@ PACS->PACS: //Open Study and show Chest CT//
 
 PACS->Hub: Open Report Context [RAD-X3]\n(event: id = 2000,\ncontext = DiagnosticReport aaa\nrelated context = Patient bbb, ImagingStudy ccc)
 activate Hub
-note over PACS, Hub
-Create the following report context entry
-for session 12345:
-* DiagnosticReport aaa
-* Patient bbb
-* ImagingStudy ccc
-end note
 
 Hub->Hub: //Create DiagnosticReport Context in session 12345//\n(event: id = 2000,\ncontext = DiagnosticReport aaa\nrelated context = Patient bbb, ImagingStudy ccc)\n[[open_study_for_reporting.html#available-context-and-content-in-hub Example]]
 note over Hub
@@ -86,12 +72,7 @@ User->PACS: //Start reviewing the new study for consultation//
 User->PACS: //Complete review for consultation and close study//
 
 PACS->Hub: Close Report Context [RAD-X4]\n(event: id = 3000,\ncontext = DiagnosticReport aaa)
-note over Hub
-Hub completed tracking of context DiagnosticReport aaa
-and deleted this context.
-
-Hub resumes context DiagnosticReport xxx as current context.
-end note
+Hub->Hub: //Close DiagnosticReport aaa//
 
 Hub->Report: Distribute Context Event [RAD-X9]\n(event: id = 3000,\ncontext = DiagnositcReport aaa)
 Report->Report: //Close study in consultation//
@@ -103,7 +84,7 @@ PACS-->Hub: //Success//
 
 == Step 2d: Resume Previous Report Context ==
 
-Hub->Hub: //Detect DiagnosticReport aaa remains open//\n//Generate new event to resume//\n(event: id = 4000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
+Hub->Hub: //Detect DiagnosticReport xxx remains open//\n//Generate new event to resume//\n(event: id = 4000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
 Hub->Report: Distribute Content Event [RAD-X9]\n(event: id = 4000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
 Report->Report: //Resume report xxx//
 Report-->Hub: //Success (id=4000, status = 200)//
