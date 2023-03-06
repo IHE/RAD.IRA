@@ -67,7 +67,7 @@ Per FHIRcast, the Manager will keep track of the selection states of all content
 
 The Manager shall ignore any selected resources in the request that are not known based on any previous `DiagnosticReport-open` or `DiagnosticReport-update` events.
 
-> Note: Unknown resources will be omitted in subsequent Distribute Content Event [RAD-X9] transaction. This allows the originating Subscriber to identify which contents were known or unknown.
+> Note: The Manager should continue to process the request and should not return an error due to unknown selected resources.
 
 #### 2:3.X6.4.2 Select Report Content Response Message
 
