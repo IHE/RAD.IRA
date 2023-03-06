@@ -1319,6 +1319,8 @@ Figure 1:XX.4.2.4-2: Error Handling Example Flows in RTC-IMR Profile
 
 A radiologist wants to review a draft report created by a residence. She opens the draft report in the Report Creator. The Report Creator opens a new report context for the draft report, including the corresponding patient and study context. The Image Display receives the event distributed by the Hub and opens the study in context. The radiologist reviews the study associated to the report using the Image Display.
 
+Later a radiologist selects a nodule measurement on the report. The Report Creator sends a content selection event for the observation. The Image Display receives the event and display the observation on the study.
+
 In case a reporting session has not been started when the radiologist reviews the draft report, the Report Creator can start a new reporting session and launch the Image Display to join it.
 
 <div>
