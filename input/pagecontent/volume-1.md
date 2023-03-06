@@ -887,9 +887,9 @@ Additional profile requirements for specific events are defined in the correspon
 
 When a Hub has successfully processed a Close Report Context [RAD-X4] request, the Hub will establish a new current context. The Hub will select one of the existing open contexts in the session to be the new current context, typically the most recently opened context (i.e. resume a previous open context). If no open context exist, then current context will be empty.  
 
-When the Hub establishes a new current context, the Hub shall send distribute a corresponding `DiagnosticReport-open` context event as if it had received Open Report Context [RAD-X3] requests.
+When the Hub establishes a new current context, the Hub shall be capable of distributing a corresponding `DiagnosticReport-open` context event as if it had received Open Report Context [RAD-X3] requests.
 
-If the current context has associated contents, the Hub shall distribute corresponding `DiagnosticReport-update` and/or `DiagnosticReport-select` context events as if it had received Update Report Content [RAD-X5] and/or Select Report Content [RAD-X6] requests.
+If the current context has associated contents, the Hub shall be capable of distributing corresponding `DiagnosticReport-update` and/or `DiagnosticReport-select` context events as if it had received Update Report Content [RAD-X5] and/or Select Report Content [RAD-X6] requests.
 
 > Note: These requirements are limited to processing reporting events in reporting sessions as defined in this profile. These requirements are not required for other events that the Hub received and processed.
 
