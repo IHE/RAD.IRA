@@ -21,6 +21,8 @@
 
 * Q: Should the Report Creator in this profile be grouped with the Report Creator in Interactive Multimedia Report (IMR) profile?<br><br>The Report Creator in this profile is generally applicable in a reporting session. On the other hand, the Report Creator in IMR can group with the Report Creator in this profile to leverage the `DiagnosticReport-* events` to create the multimedia report content. Current this grouping is mentioned in cross profile considerations, but not mandatory.
 
+* Q: Should Notify Error [RAD-X11] be mandatory for all Subscribers?<br><br>Notify Error [RAD-X11] is used when a Subscriber initially accepted an event and later returned an error due to processing error. This means technically for a Subscriber that always processes events synchronously, there is no need to support Notify Error. However, asynchronous processing is expected to be widely supported due to better scalability and user experience.
+
 #### Closed Issues
 
 * Q: Should [SMART-web-messaging](https://build.fhir.org/ig/HL7/smart-web-messaging/index.html) be included in this profile?<br><br>A: No.<br>SMART-web-messaging currently is limited to web applications running in the same browser only. If there are demand for this integration, a separate profile can be created so that implementations can document what methods they support.
