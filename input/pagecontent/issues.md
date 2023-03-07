@@ -23,6 +23,8 @@
 
 * Q: Should Notify Error [RAD-X11] be mandatory for all Subscribers?<br><br>Notify Error [RAD-X11] is used when a Subscriber initially accepted an event and later returned an error due to processing error. This means technically for a Subscriber that always processes events synchronously, there is no need to support Notify Error. However, asynchronous processing is expected to be widely supported due to better scalability and user experience.
 
+* Q: Can a Subscriber returns rich error content using OperationOutcome when it turns a 4xx / 5xx response code?<br><br>In FHIRcast, the OperationOutcome is only available in SyncError event in case of an asynchronous response. For synchronous response, it can only returns a simple HTTP error status in the response.
+
 #### Closed Issues
 
 * Q: Should [SMART-web-messaging](https://build.fhir.org/ig/HL7/smart-web-messaging/index.html) be included in this profile?<br><br>A: No.<br>SMART-web-messaging currently is limited to web applications running in the same browser only. If there are demand for this integration, a separate profile can be created so that implementations can document what methods they support.
