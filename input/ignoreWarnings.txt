@@ -3,4 +3,8 @@
 # IHE valueset that is not yet a real valueset
 Code System URI 'urn:ihe:event-type-code' is unknown so the code cannot be validated
 
+# Base FHIR specification uses non-unique identifier in 'mapping' attribute
+Rule eld-27: 'Mappings SHOULD be unique by key' Failed
 
+# Additional clarification in profile text
+The repeating element has a pattern. The pattern will apply to all the repeats (this has not been clear to all users)
