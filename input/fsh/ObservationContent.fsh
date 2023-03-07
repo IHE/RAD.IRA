@@ -1,8 +1,8 @@
 Profile:        ObservationContent
 Parent:         Observation
 Id:             ira-observation
-Title:          "(Experimental) Imaging Observation"
-Description:    "Experimental profile on Observation for quantitative and qualitative findings to be used in DiagnosticReport-update events."
+Title:          "Observation Content"
+Description:    "IHE IRA Observation Content to be used in DiagnosticReport-update"
 
 // Specify the category to be imaging
 * category 1..*
