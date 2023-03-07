@@ -422,13 +422,6 @@ The Image Display shall support all Behaviors shown as “R” in Optionality. T
       <td>Display the study images and patient metadata</td>
     </tr>
     <tr>
-      <td>DiagnosticReport-close</td>
-      <td><code class="language-plaintext highlighter-rouge">report</code></td>
-      <td>DiagnosticReport</td>
-      <td>R</td>
-      <td>Stop display the study images associated to the report context</td>      
-    </tr>
-    <tr>
       <td rowspan="4">DiagnosticReport-update</td>
       <td><code class="language-plaintext highlighter-rouge">report</code></td>
       <td>DiagnosticReport</td>
@@ -465,6 +458,13 @@ The Image Display shall support all Behaviors shown as “R” in Optionality. T
       <td>ImagingSelection</td>
       <td>O</td>
       <td>Bring selected images and annotations to focus</td>      
+    </tr>
+    <tr>
+      <td>DiagnosticReport-close</td>
+      <td><code class="language-plaintext highlighter-rouge">report</code></td>
+      <td>DiagnosticReport</td>
+      <td>R</td>
+      <td>Stop display the study images associated to the report context</td>      
     </tr>
     <tr>
       <td>SyncError</td>
@@ -538,13 +538,6 @@ The Report Creator shall support all Behaviors shown as “R” in Optionality. 
       <td>Be ready for reporting for the study. If re-open a previously opened report context, resume to the previous state of the report context when it was interrupted.</td>      
     </tr>
     <tr>
-      <td>DiagnosticReport-close</td>
-      <td><code class="language-plaintext highlighter-rouge">report</code></td>
-      <td>DiagnosticReport</td>
-      <td>R</td>
-      <td>Stop display the study report</td>      
-    </tr>
-    <tr>
       <td rowspan="3">DiagnosticReport-update</td>
       <td><code class="language-plaintext highlighter-rouge">updates</code></td>
       <td>ImagingStudy</td>
@@ -576,6 +569,13 @@ The Report Creator shall support all Behaviors shown as “R” in Optionality. 
       <td>O</td>
       <td>Select images and annotations and able to apply user commands (See Note 1)</td>      
     </tr>
+    <tr>
+      <td>DiagnosticReport-close</td>
+      <td><code class="language-plaintext highlighter-rouge">report</code></td>
+      <td>DiagnosticReport</td>
+      <td>R</td>
+      <td>Stop display the study report</td>      
+    </tr>    
     <tr>
       <td>SyncError</td>
       <td><code class="language-plaintext highlighter-rouge">operationoutcome</code></td>
@@ -643,13 +643,6 @@ The Worklist Client shall support all Behaviors shown as “R” in Optionality.
       <td>Display the patient and study metadata</td>
     </tr>
     <tr>
-      <td>DiagnosticReport-close</td>
-      <td><code class="language-plaintext highlighter-rouge">report</code></td>
-      <td>DiagnosticReport</td>
-      <td>R</td>
-      <td>Stop processing the study associated to the report context</td>
-    </tr>
-    <tr>
       <td>DiagnosticReport-update</td>
       <td><code class="language-plaintext highlighter-rouge">report</code></td>
       <td>DiagnosticReport</td>
@@ -663,6 +656,13 @@ The Worklist Client shall support all Behaviors shown as “R” in Optionality.
       <td>O</td>
       <td>Select the study in worklist</td>
     </tr>
+    <tr>
+      <td>DiagnosticReport-close</td>
+      <td><code class="language-plaintext highlighter-rouge">report</code></td>
+      <td>DiagnosticReport</td>
+      <td>R</td>
+      <td>Stop processing the study associated to the report context</td>
+    </tr>    
     <tr>
       <td>SyncError</td>
       <td><code class="language-plaintext highlighter-rouge">operationoutcome</code></td>
@@ -721,13 +721,6 @@ The Evidence Creator shall support all Behaviors shown as “R” in Optionality
       <td>Process the study data</td>
     </tr>
     <tr>
-      <td>DiagnosticReport-close</td>
-      <td><code class="language-plaintext highlighter-rouge">report</code></td>
-      <td>DiagnosticReport</td>
-      <td>R</td>
-      <td>Stop processing the study data associated to the report context</td>
-    </tr>
-    <tr>
       <td>DiagnosticReport-update</td>
       <td>Any</td>
       <td>Any</td>
@@ -741,6 +734,13 @@ The Evidence Creator shall support all Behaviors shown as “R” in Optionality
       <td>O</td>
       <td>Process the applicable selected resources</td>
     </tr>
+    <tr>
+      <td>DiagnosticReport-close</td>
+      <td><code class="language-plaintext highlighter-rouge">report</code></td>
+      <td>DiagnosticReport</td>
+      <td>R</td>
+      <td>Stop processing the study data associated to the report context</td>
+    </tr>    
     <tr>
       <td>SyncError</td>
       <td><code class="language-plaintext highlighter-rouge">operationoutcome</code></td>
@@ -820,13 +820,6 @@ The Watcher shall support all Behaviors shown as “R” in Optionality. The Wat
       <td>Process according to business logic</td>
     </tr>
     <tr>
-      <td>DiagnosticReport-close</td>
-      <td><code class="language-plaintext highlighter-rouge">report</code></td>
-      <td>DiagnosticReport</td>
-      <td>R</td>
-      <td>Stop processing the report context</td>
-    </tr>
-    <tr>
       <td>DiagnosticReport-update</td>
       <td>Any</td>
       <td>Any</td>
@@ -840,6 +833,13 @@ The Watcher shall support all Behaviors shown as “R” in Optionality. The Wat
       <td>O</td>
       <td>Process the applicable selected resources</td>
     </tr>
+    <tr>
+      <td>DiagnosticReport-close</td>
+      <td><code class="language-plaintext highlighter-rouge">report</code></td>
+      <td>DiagnosticReport</td>
+      <td>R</td>
+      <td>Stop processing the report context</td>
+    </tr>    
     <tr>
       <td>SyncError</td>
       <td><code class="language-plaintext highlighter-rouge">operationoutcome</code></td>
