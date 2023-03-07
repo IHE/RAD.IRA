@@ -1,5 +1,5 @@
 
-The Realtime Bidirectional Communication for Interactive Multimedia Report (RTC-IMR) profile helps applications that are used together during reporting (e.g. image display, report creator, clinical applications, AI tools, etc) to share information using a standard called FHIRcast. Each application can share what it is doing and the data it is creating, referred to as Context and Content, respectively. Other applications are notified so they can then intelligently synchronize their behavior or use the new data.
+The Integrated Reporting Applications (IRA) profile helps applications that are used together during reporting (e.g. image display, report creator, clinical applications, AI tools, etc) to share information using a standard called FHIRcast. Each application can share what it is doing and the data it is creating, referred to as Context and Content, respectively. Other applications are notified so they can then intelligently synchronize their behavior or use the new data.
 
 <div markdown="1" class="stu-note">
 
@@ -14,11 +14,11 @@ This guide is organized into the following sections:
 1. Volume 1:
    1. [Introduction](volume-1.html)
    1. [Actors and Transactions](volume-1.html#1xx1-realtime-bidirectional-communication-for-interactive-multimedia-reporting)
-   1. [Actor Options](volume-1.html#1xx2-rtc-imr-actor-options)
-   1. [Actor Required Groupings](volume-1.html#1xx3-rtc-imr-required-actor-groupings)
-   1. [Overview](volume-1.html#1xx4-rtc-imr-overview)
-   1. [Security Considerations](volume-1.html#1xx5-rtc-imr-security-considerations)
-   1. [Cross Profile Considerations](volume-1.html#1xx6-rtc-imr-cross-profile-considerations)
+   1. [Actor Options](volume-1.html#1xx2-ira-actor-options)
+   1. [Actor Required Groupings](volume-1.html#1xx3-ira-required-actor-groupings)
+   1. [Overview](volume-1.html#1xx4-ira-overview)
+   1. [Security Considerations](volume-1.html#1xx5-ira-security-considerations)
+   1. [Cross Profile Considerations](volume-1.html#1xx6-ira-cross-profile-considerations)
 
 2. Volume 2: Transaction Detail
    1. [Subscribe to Reporting Session [RAD-X1]](rad-x1.html)

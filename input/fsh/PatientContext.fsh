@@ -2,7 +2,7 @@ Profile:        PatientContext
 Parent:         Patient
 Id:             patientcontext
 Title:          "Patient Context"
-Description:    "IHE RTC-IMR DiagnosticReport-open patient context"
+Description:    "IHE IRA DiagnosticReport-open patient context"
 
 // Must have an identifier which is the patient ID
 * identifier 1..*

@@ -88,7 +88,7 @@ If the response is an error, then the Sender may consider retrying the request.
 
 ### 2:3.X5.5 Security Considerations
 
-See [RTC-IMR Security Considerations](volume-1.html#1xx5-rtc-imr-security-considerations)
+See [IRA Security Considerations](volume-1.html#1xx5-ira-security-considerations)
 
 #### 2:3.X5.5.1 Security Audit Considerations
 

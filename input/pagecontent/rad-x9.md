@@ -111,7 +111,7 @@ The Manager shall not change the current context in the session even if it recei
 
 ### 2:3.X9.5 Security Considerations
 
-See [RTC-IMR Security Considerations](volume-1.html#1xx5-rtc-imr-security-considerations)
+See [IRA Security Considerations](volume-1.html#1xx5-ira-security-considerations)
 
 #### 2:3.X9.5.1 Security Audit Considerations
 

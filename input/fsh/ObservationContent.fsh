@@ -1,6 +1,6 @@
 Profile:        ObservationContent
 Parent:         Observation
-Id:             rtc-imr-observation
+Id:             ira-observation
 Title:          "(Experimental) Imaging Observation"
 Description:    "Experimental profile on Observation for quantitative and qualitative findings to be used in DiagnosticReport-update events."
 

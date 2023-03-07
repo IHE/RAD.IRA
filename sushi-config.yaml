@@ -2,15 +2,15 @@
 # ───────────────────────────────────────────────────
 # the id should be lowercase made up of "ihe." + {domain acronym} + "." + {profile acronym/short-name}
 # e.g. ihe.iti.mhds, or ihe.iti.basicaudit
-id: ihe.rad.rtc-imr
-canonical: https://profiles.ihe.net/RAD/RTC-IMR
+id: ihe.rad.ira
+canonical: https://profiles.ihe.net/RAD/IRA
 version: 0.1.1
 releaseLabel: ci-build
 #releaseLabel: ballot
 #releaseLabel: Trial-Implementation
 #date: 2022-07-25
-name: IHE_RAD_RTC_IMR
-title: "Realtime Communication for Interactive Multimedia Report (RTC-IMR)"
+name: IHE_RAD_IRA
+title: "Integrated Reporting Applications"
 status: active
 publisher:
   - name: IHE Radiology Technical Committee
@@ -21,7 +21,7 @@ contact:
     telecom:
       - system: email
         value: radiology@ihe.net
-description: Realtime communication between systems to enable interactive multimedia reporting
+description: Enable multiple applications to be integrated for reporting
 license:  CC-BY-4.0
 #fhirVersion: 4.0.1
 fhirVersion: 5.0.0
@@ -55,10 +55,10 @@ resources:
 pages:
 # itemize here each narrative page. Include assigned section numbers when appropriate
   index.md:
-    title: 1:XX. RTC-IMR Home
+    title: 1:XX. IRA Home
     generation: markdown
   volume-1.md:
-    title: 1:XX. RTC-IMR Volume 1
+    title: 1:XX. IRA Volume 1
     generation: markdown
   rad-x1.md:
     title: 2:3.X1 Subscribe to Reporting Session [RAD-X1]
@@ -122,15 +122,15 @@ pages:
     generation: markdown
     
 menu:
-  RTC-IMR Home: index.html
+  IRA Home: index.html
   Volume 1:
     Introduction: volume-1.html
     Actors and Transactions: volume-1.html#1xx1-realtime-bidirectional-communication-for-interactive-multimedia-reporting
-    Actor Options: volume-1.html#1xx2-rtc-imr-actor-options
-    Required Groupings: volume-1.html#1xx3-rtc-imr-required-actor-groupings
-    Overview: volume-1.html#1xx4-rtc-imr-overview
-    Security Considerations: volume-1.html#1xx5-rtc-imr-security-considerations
-    Cross-Profile Considerations: volume-1.html#1xx6-rtc-imr-cross-profile-considerations
+    Actor Options: volume-1.html#1xx2-ira-actor-options
+    Required Groupings: volume-1.html#1xx3-ira-required-actor-groupings
+    Overview: volume-1.html#1xx4-ira-overview
+    Security Considerations: volume-1.html#1xx5-ira-security-considerations
+    Cross-Profile Considerations: volume-1.html#1xx6-ira-cross-profile-considerations
   Volume 2:
     Subscribe to Reporting Session [RAD-X1]: rad-x1.html
     Connect to Notification Channel [RAD-X2]: rad-x2.html

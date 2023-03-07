@@ -2,7 +2,7 @@ Profile:        ImagingStudyContext
 Parent:         ImagingStudy
 Id:             imagingstudycontext
 Title:          "ImagingStudy Context"
-Description:    "IHE RTC-IMR DiagnosticReport-open study context"
+Description:    "IHE IRA DiagnosticReport-open study context"
 
 // Must have an identifier which is the study instance UID
 * identifier 1..*

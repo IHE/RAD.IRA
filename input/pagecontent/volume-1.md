@@ -1,4 +1,4 @@
-The Realtime Bidirectional Communication for Interactive Multimedia Report (RTC-IMR) profile helps applications that are used together during reporting (e.g. image display, report creator, clinical applications, AI tools, etc) to share information using a standard called FHIRcast. Each application can share what it is doing and the data it is creating, referred to as Context and Content, respectively. Other applications are notified so they can then intelligently synchronize their behavior or use the new data.
+The Integrated Reporting Applications (IRA) profile helps applications that are used together during reporting (e.g. image display, report creator, clinical applications, AI tools, etc) to share information using a standard called FHIRcast. Each application can share what it is doing and the data it is creating, referred to as Context and Content, respectively. Other applications are notified so they can then intelligently synchronize their behavior or use the new data.
 
 For example, the report creator could share that the user is starting a new report, and the other applications could synchronize by opening the corresponding study. An AI tool could generate a tumor measurement and the report creator could get that data and add an entry in the report, either automatically or triggered by a command from the radiologist.
 
@@ -9,21 +9,21 @@ definitions of actors are given in the Technical Frameworks General Introduction
 IHE Transactions can be found in the Technical Frameworks General Introduction [Appendix B](https://profiles.ihe.net/GeneralIntro/ch-B.html).
 Both appendices are located at <https://profiles.ihe.net/GeneralIntro/>.
 
-Figure 1:XX.1-1 shows the actors directly involved in the RTC-IMR Profile and the relevant transactions
+Figure 1:XX.1-1 shows the actors directly involved in the IRA Profile and the relevant transactions
 between them. If needed for context, other actors that may be indirectly involved due to their participation
 in other related profiles are shown in dotted lines. Actors which have a required
-grouping are shown in conjoined boxes (see [Section 1:XX.3](#1xx3-rtc-imr-required-actor-groupings)).
+grouping are shown in conjoined boxes (see [Section 1:XX.3](#1xx3-ira-required-actor-groupings)).
 
 <div>
     <img src="actor_transaction.png" width="80%">
 </div>
 <br clear="all">
 
-**Figure 1:XX.1-1: RTC-IMR Actor Diagram**
+**Figure 1:XX.1-1: IRA Actor Diagram**
 
 Table 1:XX.1-1 lists the transactions for each actor directly involved in the IMR Profile. To claim compliance with this profile, an actor shall support all required transactions (labeled “R”) and may support the optional transactions (labeled “O”).
 
-**Table 1:XX.1-1: RTC-IMR Profile - Actors and Transactions**
+**Table 1:XX.1-1: IRA Profile - Actors and Transactions**
 
 <table class="grid">
   <thead>
@@ -893,11 +893,11 @@ If the current context has associated contents, the Hub shall be capable of dist
 
 > Note: These requirements are limited to processing reporting events in reporting sessions as defined in this profile. These requirements are not required for other events that the Hub received and processed.
 
-## 1:XX.2 RTC-IMR Actor Options
+## 1:XX.2 IRA Actor Options
 
 Options that may be selected for each actor in this implementation guide, are listed in Table 1:XX.2-1 below. Dependencies between options, when applicable, are specified in notes.
 
-**Table 1:XX.2-1: RTC-IMR - Actors and Options**
+**Table 1:XX.2-1: IRA - Actors and Options**
 
 <table class="grid">
   <thead>
@@ -946,7 +946,7 @@ Options that may be selected for each actor in this implementation guide, are li
   </tbody>
 </table>
 
-## 1:XX.3 RTC-IMR Required Actor Groupings
+## 1:XX.3 IRA Required Actor Groupings
 
 An actor from this profile (Column 1) shall implement all of the required transactions and/or
 content modules in this profile ***in addition to all*** of the requirements for the grouped actor (Column 3).
@@ -956,7 +956,7 @@ In some cases, required groupings are defined as at least one of an enumerated s
 Section 1:XX.5 describes some optional groupings that may be of interest for security
 considerations and Section 1:52.6 describes some optional groupings in other related profiles.
 
-**Table 1:XX.3-1: RTC-IMR Required Actor Groupings**
+**Table 1:XX.3-1: IRA Required Actor Groupings**
 
 | IMR Actor | Grouping Condition | Actor(s) to be grouped with | Reference |
 |-----------|--------------------|-----------------------------|-----------|
@@ -964,12 +964,12 @@ considerations and Section 1:52.6 describes some optional groupings in other rel
 | Report Creator | -- | None | -- |
 | Worklist Client | -- | None | -- |
 | Evidence Creator | -- | None | -- |
-| Content Creator | Enable producing content sharing events | RTC-IMR / Any actor | [RTC-IMR TF-1: 1.1](volume-1.html#1xx11-actors-description-and-actor-profile-requirements) |
+| Content Creator | Enable producing content sharing events | IRA / Any actor | [IRA TF-1: 1.1](volume-1.html#1xx11-actors-description-and-actor-profile-requirements) |
 | Watcher | -- | None | -- |
 | Hub | -- | None | -- |
 {: .grid}
 
-## 1:XX.4 RTC-IMR Overview
+## 1:XX.4 IRA Overview
 
 ### 1:XX.4.1 Concepts
 
@@ -1113,7 +1113,7 @@ In this use case,
 </div>
 <br clear="all">
 
-Figure 1:XX.4.2.2-1: Basic Reporting Flow in RTC-IMR Profile
+Figure 1:XX.4.2.2-1: Basic Reporting Flow in IRA Profile
 
 ###### 1:XX.4.2.1.2.1 Step 1: Open Reporting Session
 
@@ -1139,7 +1139,7 @@ Furthermore, the Report Creator queries the Hub to get the current context to en
 </div>
 <br clear="all">
 
-Figure 1:XX.4.2.1.2.1-1: Open Reporting Session Flow in RTC-IMR Profile
+Figure 1:XX.4.2.1.2.1-1: Open Reporting Session Flow in IRA Profile
 
 ###### 1:XX.4.2.1.2.2 Step 2: Open Study in Context
 
@@ -1154,7 +1154,7 @@ Furthermore, the event has a version ID. For the Image Display as a Driving Appl
 </div>
 <br clear="all">
 
-Figure 1:XX.4.2.1.2.1-2: Open Study in Context Flow in RTC-IMR Profile
+Figure 1:XX.4.2.1.2.1-2: Open Study in Context Flow in IRA Profile
 
 ###### 1:XX.4.2.1.2.3 Step 3: Add Content (Optional)
 
@@ -1167,7 +1167,7 @@ When the Report Creator receives and accepts the event, it can apply the updates
 </div>
 <br clear="all">
 
-Figure 1:XX.4.2.1.2.1-3: Add Content Flow in RTC-IMR Profile
+Figure 1:XX.4.2.1.2.1-3: Add Content Flow in IRA Profile
 
 ###### 1:XX.4.2.1.2.4 Step 4: Select Content (Optional)
 
@@ -1188,7 +1188,7 @@ Generally, selecting a content means putting the content in 'focus'. Note that t
 </div>
 <br clear="all">
 
-Figure 1:XX.4.2.1.2.1-4: Select Content Flow in RTC-IMR Profile
+Figure 1:XX.4.2.1.2.1-4: Select Content Flow in IRA Profile
 
 ###### 1:XX.4.2.1.2.5 Step 5: Sign-off Report
 
@@ -1211,7 +1211,7 @@ The Report Creator may have some internal mechanism to keep the report for a gra
 </div>
 <br clear="all">
 
-Figure 1:XX.4.2.1.2.1-5: Sign-off Report Flow in RTC-IMR Profile
+Figure 1:XX.4.2.1.2.1-5: Sign-off Report Flow in IRA Profile
 
 The flow above shows the simple case with a sequential switching of report context. In this case, a report context is opened and then closed before the next report context is opened.
 
@@ -1226,7 +1226,7 @@ The following diagram shows what can happen in case of rapid switching of the re
 </div>
 <br clear="all">
 
-Figure 1:XX.4.2.1.2.1-5b: Rapid Context Switching Flow in RTC-IMR Profile
+Figure 1:XX.4.2.1.2.1-5b: Rapid Context Switching Flow in IRA Profile
 
 ###### 1:XX.4.2.1.2.6 Step 6: Close Reporting Session
 
@@ -1239,7 +1239,7 @@ The Hub closes the connection to the Report Creator. Note that if there are othe
 </div>
 <br clear="all">
 
-Figure 1:XX.4.2.1.2.1-6: Close Reporting Session Flow in RTC-IMR Profile
+Figure 1:XX.4.2.1.2.1-6: Close Reporting Session Flow in IRA Profile
 
 #### 1:XX.4.2.2 Use Case \#2: Complex Reporting
 
@@ -1274,7 +1274,7 @@ In this use case,
 </div>
 <br clear="all">
 
-Figure 1:XX.4.2.2-1: Complex Reporting in RTC-IMR Profile
+Figure 1:XX.4.2.2-1: Complex Reporting in IRA Profile
 
 #### 1:XX.4.2.3 Use Case \#3: Interruption and Resume Flow
 
@@ -1291,7 +1291,7 @@ By default, the Hub will implicitly generate and distribute new `DiagnosticRepor
 </div>
 <br clear="all">
 
-Figure 1:XX.4.2.3-1: Interruption and Resume Flow in RTC-IMR Profile
+Figure 1:XX.4.2.3-1: Interruption and Resume Flow in IRA Profile
 
 #### 1:XX.4.2.4 Use Case \#4: Error Handling Flow
 
@@ -1304,7 +1304,7 @@ Error handling is driven by two factors:
 </div>
 <br clear="all">
 
-Figure 1:XX.4.2.4-1: Error Handling Flow in RTC-IMR Profile
+Figure 1:XX.4.2.4-1: Error Handling Flow in IRA Profile
 
 Figure 1:XX.4.2.4-2 shows two sample use cases how error handling can be used in reporting.
 
@@ -1313,7 +1313,7 @@ Figure 1:XX.4.2.4-2 shows two sample use cases how error handling can be used in
 </div>
 <br clear="all">
 
-Figure 1:XX.4.2.4-2: Error Handling Example Flows in RTC-IMR Profile
+Figure 1:XX.4.2.4-2: Error Handling Example Flows in IRA Profile
 
 #### 1:XX.4.2.5 Use Case \#5: Overread Draft Report
 
@@ -1328,7 +1328,7 @@ In case a reporting session has not been started when the radiologist reviews th
 </div>
 <br clear="all">
 
-## 1:XX.5 RTC-IMR Security Considerations
+## 1:XX.5 IRA Security Considerations
 
 This profile strongly recommends all actors group with an ITI ATNA Secure Application or Secure Node Actor using the Radiology Audit Trail Option.
 
@@ -1344,11 +1344,11 @@ Note that with FHIRcast, the authentication and authorization is controlled at t
 
 The events as defined in this profile contain personal demographic information and clinical information. It is appropriate for products implementing the this profile to include appropriate PHI controls. Specifying such mechanisms and features is outside the scope of this profile.
 
-## 1:XX.6 RTC-IMR Cross-Profile Considerations
+## 1:XX.6 IRA Cross-Profile Considerations
 
-Table 1:XX.6-1 describes various actors in various other profiles that might be useful to group with RTC-IMR Profile actors.
+Table 1:XX.6-1 describes various actors in various other profiles that might be useful to group with IRA Profile actors.
 
-**Table 1:XX.6-1: RTC-IMR - Optional Actor Groupings**
+**Table 1:XX.6-1: IRA - Optional Actor Groupings**
 
 <table class="grid">
   <thead>

@@ -81,7 +81,7 @@ The Manager may resend the error notification if it does not receive a response 
 
 ### 2:3.X10.5 Security Considerations
 
-See [RTC-IMR Security Considerations](volume-1.html#1xx5-rtc-imr-security-considerations)
+See [IRA Security Considerations](volume-1.html#1xx5-ira-security-considerations)
 
 #### 2:3.X10.5.1 Security Audit Considerations
 
