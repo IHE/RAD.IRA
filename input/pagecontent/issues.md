@@ -17,6 +17,8 @@
 
 * Q: If a Subscriber performs the event asynchronously and return `202 Accepted`, should there be a way to notify the Manager if the processing eventually completed successfully?<br><br>FHIRcast does not specify a method to notify the Hub about successful processing. Error can be communicated using syncerror.
 
+* Q: Should Hub be required to be capable of sending `DiagnosticReport-open` / `DiagnosticReport-update` / `DiagnosticReport-select` events when it resumes a previous report context?<br><br>In Hub [Event Producing Requirements](volume-1.html#1xx1172-event-producing-requirements), the Hub is required to be capable of implicitly send the corresponding `DiagnosticReport-*` event when it establishes a new context after closing a report context. If so, should the Hub be capable of support all three events, or only the `DiagnosticReport-open` event?
+
 #### Closed Issues
 
 * Q: Should [SMART-web-messaging](https://build.fhir.org/ig/HL7/smart-web-messaging/index.html) be included in this profile?<br><br>A: No.<br>SMART-web-messaging currently is limited to web applications running in the same browser only. If there are demand for this integration, a separate profile can be created so that implementations can document what methods they support.
