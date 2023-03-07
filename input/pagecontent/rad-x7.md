@@ -84,16 +84,8 @@ If the HTTP response code is 4xx or 5xx, then the Subscriber may adjust the requ
 
 See [IRA Security Considerations](volume-1.html#1xx5-ira-security-considerations)
 
-The Subscriber which is a synchronizing application should authenticate and authorize the driving application before it accepts the provided `hub.topic` and `hub.url` and sends this request.
-
 #### Security Audit Considerations
 
-''TODO: The security audit criteria ''
+Managers that support the ATNA Profile shall audit this transaction.
 
-##### Client Audit 
-
-''TODO: the specifics''
-
-##### Server Audit 
-
-''TODO: the specifics''
+This transaction corresponds to a Query Information ATNA Trigger Event.

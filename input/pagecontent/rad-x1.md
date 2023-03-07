@@ -111,14 +111,10 @@ See [IRA Security Considerations](volume-1.html#1xx5-ira-security-considerations
 
 The Subscriber which is a synchronizing application should authenticate and authorize the driving application before it accepts the provided `hub.topic` and `hub.url` and sends this request.
 
+Local policy should consider what users and systems have permissions to subscribe to events and configure appropriately. More advanced implementations of the Manager might have logic to identify Subscribers that are requesting unnecessarily broad set of events.
+
 #### Security Audit Considerations
 
-''TODO: The security audit criteria ''
+Managers that support the ATNA Profile shall audit this transaction.
 
-##### Client Audit 
-
-''TODO: the specifics''
-
-##### Server Audit 
-
-''TODO: the specifics''
+This transaction corresponds to a Query Information ATNA Trigger Event.

@@ -97,14 +97,8 @@ If the response is an error, then the Sender may consider retrying the request.
 
 See [IRA Security Considerations](volume-1.html#1xx5-ira-security-considerations)
 
+Local policy should consider what users and systems have permissions to open a report context and configure appropriately. 
+
 #### 2:3.X3.5.1 Security Audit Considerations
 
-''TODO: The security audit criteria ''
-
-##### Client Audit 
-
-''TODO: the specifics''
-
-##### Server Audit 
-
-''TODO: the specifics''
+This transaction is not associated with an ATNA Trigger Event.

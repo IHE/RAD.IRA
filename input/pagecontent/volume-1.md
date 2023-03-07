@@ -1330,6 +1330,8 @@ In case a reporting session has not been started when the radiologist reviews th
 
 ## 1:XX.5 IRA Security Considerations
 
+This profile strongly recommends all actors to consider the FHIRcast [Security Considerations](https://build.fhir.org/ig/HL7/fhircast-docs/4-3-security-considerations.html).
+
 This profile strongly recommends all actors group with an ITI ATNA Secure Application or Secure Node Actor using the Radiology Audit Trail Option.
 
 The ATNA Profile requires actors to implement:
