@@ -992,8 +992,6 @@ The following are some key concepts:
 - Each `session` is identified by a unique “topic ID”
 - The `Subscriber` that opens and closes context is referred to as the Driving Application. A Driving Application usually also launches other applications, providing them with the address of the `Hub` and the `topic ID` so they can join the same `session`.
 
-TODO: Replace the FHIRcast link to the published version if ready by the time of publication.
-
 #### 1:XX.4.1.2 Terminology and Model
 
 The terminology used in FHIRcast and adopted in this profile can be found in the [Glossary](https://build.fhir.org/ig/HL7/fhircast-docs/5_glossary.html) page.
