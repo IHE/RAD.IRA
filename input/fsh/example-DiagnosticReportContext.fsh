@@ -6,4 +6,4 @@ Usage: #example
 * status = FHIRImagingStudyStatus#unknown
 * code = LOINC#29252-4 "CT Chest WO Contrast"
 * subject = Reference(Patient/example-PatientContext)
-* imagingStudy = Reference(ImagingStudy/example-ImagingStudyContext)
+* study = Reference(ImagingStudy/example-ImagingStudyContext)

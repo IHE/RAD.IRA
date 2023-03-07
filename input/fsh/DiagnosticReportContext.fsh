@@ -8,4 +8,4 @@ Description:    "IHE RTC-IMR DiagnosticReport-open report context"
 
 * subject only Reference(Patient)
 
-* imagingStudy only Reference(ImagingStudy)
+* study only Reference(ImagingStudy)
