@@ -71,7 +71,7 @@ You can also download:
 * the definition resources in [json](definitions.json.zip), [xml](definitions.xml.zip), [ttl](definitions.ttl.zip), or [csv](csvs.zip) format, or
 * the example resources in [json](examples.json.zip), [xml](examples.xml.zip) or [ttl](examples.ttl.zip) format.
 
-The source code for this Implementation Guide can be found on [https://github.com/IHE/RAD.RTC-IMR](https://github.com/IHE/RAD.RTC-IMR).
+The source code for this Implementation Guide can be found on [https://github.com/IHE/RAD.IRA](https://github.com/IHE/RAD.IRA).
 
 #### Cross Version Analysis
 
