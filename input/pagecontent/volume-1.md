@@ -1079,6 +1079,18 @@ For example, a radiologist needs to suspend the current report on a study in ord
 
 See [Use Case #3](volume-1.html#1xx423-use-case-3-interruption-and-resume-flow) for more details.
 
+#### 1:XX.4.1.10 Deployment Considerations
+
+The Hub can be a standalone application or embedded within another application (e.g. the Image Manager, Report Creator and Worklist Client are grouped with the Hub independently). As a result, which Hub to use for the reporting session needs to be configurable during deployment.
+
+The Hub can be deployed on premises or in the cloud. The other actors may or may not be deployed in the same location as the Hub. Since this profile is aimed at providing streamline user experience for all integrated applications, the effectiveness of this profile depends on timely communications with the Hub, whether it is the context change request, or the subsequent event distribution. Therefore it is important to have a reliable low latency network connection between applications and the Hub, taking into account all the network appliances in between (e.g. firewall, reverse proxy, load balancer, etc.).
+
+#### 1:XX.4.1.11 FHIRcast Beyond Reporting
+
+FHIRcast is a generic event distribution mechanism. Most transactions in this profile are generally applicable to any events. Any applications are permitted to use FHIRcast and the Hub for use cases beyond reporting. In this case, the application may consider using different sessions and events for different purposes. For example, an Image Manager may setup a separate *advanced visualization* session with an Evidence Creator and uses `ImagingStudy-*` events for communication.
+
+Furthermore, the Hub used in these cases may be different from the Hub used for the reporting session. Therefore an application needs to be prepared to support different sessions with different Hubs, and know which session to use for what purpose.
+
 ### 1:XX.4.2 Use Cases
 
 #### 1:XX.4.2.1 Use Case \#1: Basic Reporting
