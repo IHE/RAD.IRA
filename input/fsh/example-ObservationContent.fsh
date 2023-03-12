@@ -5,7 +5,7 @@ Description: "Sample Observation Content used in DiagnosticReport-update event"
 Usage: #example
 
 * status = FHIRObservationStatus#preliminary
-* category[imaging].coding = FHIRObservation#imaging "Imaging"
+* category.coding = FHIRObservation#imaging "Imaging"
 * code = SCT#233767005 "Bilateral hilar lymph node sarcoidosis"
 * bodySite[+].coding = SCT#264128009 "Paratracheal"
 * bodySite[=].coding = SCT#24028007 "Right"
