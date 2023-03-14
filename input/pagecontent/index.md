@@ -63,28 +63,3 @@ mustSupport of true - only has a meaning on items that are minimal cardinality o
 The consuming actors should handle these elements being populated or being absent/empty. 
 Note that sometimes mustSupport will appear on elements with a minimal cardinality greater than zero (0), this is due to inheritance from a less constrained profile.
 
-### Download 
-
-You can also download:
-
-* [this entire guide](full-ig.zip),
-* the definition resources in [json](definitions.json.zip), [xml](definitions.xml.zip), [ttl](definitions.ttl.zip), or [csv](csvs.zip) format, or
-* the example resources in [json](examples.json.zip), [xml](examples.xml.zip) or [ttl](examples.ttl.zip) format.
-
-The source code for this Implementation Guide can be found on [https://github.com/IHE/RAD.IRA](https://github.com/IHE/RAD.IRA).
-
-#### Cross Version Analysis
-
-{% include cross-version-analysis.xhtml %}
-
-#### Dependency Table
-
-{% include dependency-table.xhtml %}
-
-#### Globals Table
-
-{% include globals-table.xhtml %}
-
-#### IP Statements
-
-{% include ip-statements.xhtml %}
