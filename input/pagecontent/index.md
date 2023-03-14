@@ -17,7 +17,7 @@ Links to FHIRcast will be updated to the final version when the official version
 ### Organization of This Guide
 This guide is organized into the following sections:
 
-1. Volume 1:
+1. Volume 1: Profiles
    1. [Introduction](volume-1.html)
    1. [Actors and Transactions](volume-1.html#1xx1-realtime-bidirectional-communication-for-interactive-multimedia-reporting)
    1. [Actor Options](volume-1.html#1xx2-ira-actor-options)
@@ -39,17 +39,14 @@ This guide is organized into the following sections:
    10. [Generate SyncError Event [RAD-X10]](rad-x10.html)
    11. [Notify Error [RAD-X11]](rad-x11.html)
 
-3. Volume 3: Metadata and Content
-  - N/A
+3. [Examples] (example.html)
 
-4. Volume 4: National Extensions
-  - N/A
-
-5. Test Plan
+4. Other
   - [Test Plan](testplan.html)
+  - [Changes to Other Documents] (other.html)
+  - [Downloads and Analysis] (download.html)
 
-See also the [Table of Contents](toc.html) and
-the index of [Artifacts](artifacts.html) defined as part of this implementation guide.
+See also the [Table of Contents](toc.html) and the index of [Artifacts](artifacts.html) defined as part of this implementation guide.
 
 ### Conformance Expectations
 
