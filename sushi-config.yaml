@@ -55,10 +55,10 @@ resources:
 pages:
 # itemize here each narrative page. Include assigned section numbers when appropriate
   index.md:
-    title: 1:XX. IRA Home
+    title: 1:XX IRA Home
     generation: markdown
   volume-1.md:
-    title: 1:XX. IRA Volume 1
+    title: 1:XX IRA Volume 1
     generation: markdown
   rad-x1.md:
     title: 2:3.X1 Subscribe to Reporting Session [RAD-X1]
@@ -115,10 +115,10 @@ pages:
     title: "Test Plan"
     generation: markdown
   issues.md:
-    title: Open and Closed issues
+    title: Significant Changes and Issues
     generation: markdown
   other.md:
-    title: Changes to Other Profiles
+    title: Changes to Other Documents
     generation: markdown
     
 menu:
@@ -150,6 +150,9 @@ menu:
     Select Report Content: select_study_and_observation.html
     Update Report Status: update_report_status.html
     Close Report Context: close_study_after_signoff.html
-  Test Plan: testplan.html
+  
   Artifacts: artifacts.html
-  Other: other.html
+  Other:
+    Test Plan: testplan.html
+    Changes to Other IHE Specifications: other.html
+    Download and Analysis: download.html
