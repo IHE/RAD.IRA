@@ -1,13 +1,13 @@
 ### Event-name: DiagnosticReport-open
 
 ### Trigger Event
-The Application Invoker (e.g. PACS or Worklist Orchestrator) opens a patient's study.
+The Application Invoker (e.g., PACS or Worklist Orchestrator) opens a patient's study.
 
 ### Examples
 
 #### DiagnosticReport-open Example Request
 
-The following example shows a report being opened that contains a single primary study.  Note that the diagnostic report's `imagingStudy` and `subject` attributes have references to the imaging study and patient which are also in the open request.
+The following example shows a report being opened that contains a single primary study. Note that the diagnostic report's `imagingStudy` and `subject` attributes have references to the imaging study and patient which are also in the open request.
 
 ```text
 POST https://hub.example.com/ HTTP/1.1
