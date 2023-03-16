@@ -6,8 +6,8 @@ This transaction is used to distribute notification events to subscribers. This 
 
 **Table 2:3.X9.2-1: Actor Roles**
 
-| Role | Description | Actor(s) |
-|------|-------------|----------|
+| Role | Description | Actor(s)                         |
+|------|-------------|----------------------------------|
 | Manager | Distributes notification event to Subscribers | Hub |
 | Subscriber | Receives notification events | Image Display<br>Report Creator<br>Worklist Client<br>Evidence Creator<br>Watcher |
 {: .grid}
@@ -53,7 +53,7 @@ The Subscriber shall handle events `[FHIR resource]-open` | `update` | `select` 
 
 The Subscriber shall support [content sharing](https://build.fhir.org/ig/HL7/fhircast-docs/2-10-ContentSharing.html).
 
-> Note: The Subscriber may handle the event synchronously. The Subscriber may also handle the event asynchronously by accepting the event initially (i.e. returning `202` Accepted) and processing it later.
+> Note: The Subscriber may handle the event synchronously. The Subscriber may also handle the event asynchronously by accepting the event initially (i.e., returning `202` Accepted) and processing it later.
 
 ##### 2:3.X9.4.1.3.1 Handling open events
 
@@ -103,7 +103,7 @@ The `status` shall be one of the following:
 
 ##### 2:3.X9.4.2.3 Expected Actions
 
-If the Manager receives an error confirmation message (i.e. `status` `4xx` or `5xx`) from at least one of the Subscribers, then the Manager shall send a `syncerror` event following [Notify Error](rad-x11.html) to all subscribers that subscribed to the `syncerror` event.
+If the Manager receives an error confirmation message (i.e., `status` `4xx` or `5xx`) from at least one of the Subscribers, then the Manager shall send a `syncerror` event following [Notify Error](rad-x11.html) to all subscribers that subscribed to the `syncerror` event.
 
 The Manager shall not change the current context in the session even if it receives an error confirmation message.
 
@@ -111,7 +111,7 @@ The Manager shall not change the current context in the session even if it recei
 
 ### 2:3.X9.5 Security Considerations
 
-See [IRA Security Considerations](volume-1.html#1xx5-ira-security-considerations)
+See [IRA Security Considerations](volume-1.html#1xx5-ira-security-considerations).
 
 #### 2:3.X9.5.1 Security Audit Considerations
 
