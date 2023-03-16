@@ -57,7 +57,7 @@ The Manager shall use the opened websocket connection when sending subsequent ev
 
 ##### 2:3.X2.4.2.1 Trigger Events
 
-The Manager processed the websocket connection request.
+The Manager processes the websocket connection request.
 
 ##### 2:3.X2.4.2.2 Message Semantics
 
