@@ -1,5 +1,5 @@
 
-The Integrated Reporting Applications (IRA) profile helps applications that are used together during reporting (e.g. image display, report creator, clinical applications, AI tools, etc) to share information using a standard called FHIRcast. Each application can share what it is doing and the data it is creating, referred to as Context and Content, respectively. Other applications are notified so they can then intelligently synchronize their behavior or use the new data.
+The Integrated Reporting Applications (IRA) profile helps applications that are used together during reporting (e.g., image display, report creator, clinical applications, AI tools, etc) to share information using a standard called FHIRcast. Each application can share what it is doing and the data it is creating, referred to as Context and Content, respectively. Other applications are notified so they can then intelligently synchronize their behavior or use the new data.
 
 <div markdown="1" class="stu-note">
 
@@ -9,7 +9,7 @@ IRA also uses FHIRcast 3.0.0 which is currently under development.
 
 Links to FHIRcast will be updated to the final version when the official version is published.
 
-| [Significant Changes, Open, and Closed Issues](issues.html) |
+| [Significant Changes, Open and Closed Issues](issues.html) |
 {: .grid}
 
 </div>
