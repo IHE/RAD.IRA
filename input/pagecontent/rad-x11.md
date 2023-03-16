@@ -64,11 +64,11 @@ The Manager finished processing the Notify Error request.
 
 This message is a [FHIRcast Request Context Change](https://build.fhir.org/ig/HL7/fhircast-docs/2-6-RequestContextChange.html#request-context-change-body) response. The Subscriber is the FHIRcast Subscriber. The Manager is the FHIRcast Hub.
 
-The Manager shall return `400` Bad Request error if:
-* If `timestamp`, `id` or `event` are not set
-* If `event.context` does not include `operationoutcome`
-* If the context does not conform to the [SyncError Context](https://build.fhir.org/ig/HL7/fhircast-docs/3-2-1-syncerror.html#context)
-* if `event`.`hub.topic` is not a known session
+The Manager shall return `400` Bad Request error:
+- if `timestamp`, `id` or `event` are not set
+- if `event.context` does not include `operationoutcome`
+- if the context does not conform to the [SyncError Context](https://build.fhir.org/ig/HL7/fhircast-docs/3-2-1-syncerror.html#context)
+- if `event`.`hub.topic` is not a known session
 
 The Manager may return other applicable HTTP error status codes.
 
@@ -78,7 +78,7 @@ If the response is an error, then the Subscriber may consider retrying the reque
 
 ### 2:3.X11.5 Security Considerations
 
-See [IRA Security Considerations](volume-1.html#1xx5-ira-security-considerations)
+See [IRA Security Considerations](volume-1.html#1xx5-ira-security-considerations).
 
 #### 2:3.X11.5.1 Security Audit Considerations
 
