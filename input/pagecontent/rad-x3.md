@@ -45,7 +45,7 @@ This message is a [FHIRcast Request Context Change](https://build.fhir.org/ig/HL
 
 The `event.context` shall conform to [DiagnosticReport open Event](https://build.fhir.org/ig/HL7/fhircast-docs/3-6-1-diagnosticreport-open.html).
 
-Additional, the contexts in the `event.context` shall conform to the Table 2:3.X3.4.1.2-1:
+In addition, the contexts in the `event.context` shall conform to the Table 2:3.X3.4.1.2-1:
 
 Table 2:3.X3.4.1.2-1: Context Requirements
 {:.grid}
