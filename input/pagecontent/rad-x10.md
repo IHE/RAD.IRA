@@ -39,7 +39,7 @@ The Subscriber shall support handling such messages from more than one Manager.
 ##### 2:3.X10.4.1.1 Trigger Events
 
 A Manager uses this transaction when:
-- It receives a 4xx or 5xx error response from a Subscriber when executing the Send Context Event [RAD-X9](rad-x9.html) transaction.
+- It receives a 4xx or 5xx error response from a Subscriber when executing the Send Context Event \[RAD-X9\](rad-x9.html) transaction.
 - It does not receive a `2xx` response within a predetermined time frame from a Subscriber after the Manager sent a context event.
 - It initially responded with a `202` Accepted when received a context or content change, but later rejects the request associated with the session.
 - It detects a websocket connection issue with a Subscriber.
@@ -81,7 +81,7 @@ The Manager may resend the error notification if it does not receive a response 
 
 ### 2:3.X10.5 Security Considerations
 
-See [IRA Security Considerations](volume-1.html#1xx5-ira-security-considerations)
+See [IRA Security Considerations](volume-1.html#1xx5-ira-security-considerations).
 
 #### 2:3.X10.5.1 Security Audit Considerations
 
