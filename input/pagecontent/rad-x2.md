@@ -35,13 +35,13 @@ The Manager shall support handling such messages from more than one Subscriber.
 
 ##### 2:3.X2.4.1.1 Trigger Events
 
-The Subscriber receives a successful Subscribe Reporting Session [RAD-X1] response.
+The Subscriber receives a successful Subscribe to Reporting Session [RAD-X1] response.
 
 ##### 2:3.X2.4.1.2 Message Semantics
 
 This message is a websocket connection request. The Subscriber is the Client. The Manager is the Server.
 
-The Subscriber shall send a websocket request to the `hub.channel.endpoint` websocket WSS URL received from the successful Subscribe Reporting Session [RAD-X1] response. 
+The Subscriber shall send a websocket request to the `hub.channel.endpoint` websocket WSS URL received from the successful Subscribe to Reporting Session [RAD-X1] response. 
 
 ##### 2:3.X2.4.1.3 Expected Actions
 
@@ -65,7 +65,7 @@ This is a [FHIRcast Subscription Confirmation](https://build.fhir.org/ig/HL7/fhi
 
 ##### 2:3.X2.4.2.3 Expected Actions
 
-The Subscriber will find the duration of the websocket lease in the `hub.lease_seconds` attribute of this message. When the lease expires, the Manager may drop the connection. It is the responsibility of the Subscriber to renew the subscription as needed before it expires using Subscribe Reporting Session [RAD-X1].
+The Subscriber will find the duration of the websocket lease in the `hub.lease_seconds` attribute of this message. When the lease expires, the Manager may drop the connection. It is the responsibility of the Subscriber to renew the subscription as needed before it expires using Subscribe to Reporting Session [RAD-X1].
 
 ### 2:3.X2.5 Security Considerations
 
