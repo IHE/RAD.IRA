@@ -82,7 +82,7 @@ If the HTTP response code is 4xx or 5xx, then the Subscriber may adjust the requ
 
 ### Security Considerations
 
-See [IRA Security Considerations](volume-1.html#1xx5-ira-security-considerations)
+See [IRA Security Considerations](volume-1.html#1xx5-ira-security-considerations).
 
 #### Security Audit Considerations
 

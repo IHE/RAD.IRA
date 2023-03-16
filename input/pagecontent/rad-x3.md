@@ -45,16 +45,16 @@ This message is a [FHIRcast Request Context Change](https://build.fhir.org/ig/HL
 
 The `event.context` shall conform to [DiagnosticReport open Event](https://build.fhir.org/ig/HL7/fhircast-docs/3-6-1-diagnosticreport-open.html).
 
-In addition, the contexts in the `event.context` shall conform to the Table 2:3.X3.4.1.2-1:
+In addition, the contexts in the `event.context` shall conform to the Table 2:3.X3.4.1.2-1.
 
-Table 2:3.X3.4.1.2-1: Context Requirements
+**Table 2:3.X3.4.1.2-1: Context Requirements**
+
+| Key | Optionality | Context Requirements |
+|-----|-------------|----------------------|
+| `report`| REQUIRED | Conform to the [DiagnosticReportContext](StructureDefinition-diagnosticreportcontext.html) resource |
+| `patient` | REQUIRED | Conform to the [PatientContext](StructureDefinition-patientcontext.html) resource |
+| `study` | REQUIRED\* | Conform to the [ImagingStudyContext](StructureDefinition-imagingstudycontext.html) resource |
 {:.grid}
-Key | Optionality | Context Requirements
---- | --- | --
-`report`| REQUIRED | Conform to the [DiagnosticReportContext](StructureDefinition-diagnosticreportcontext.html) resource
-`patient` | REQUIRED | Conform to the [PatientContext](StructureDefinition-patientcontext.html) resource
-`study` | REQUIRED* | Conform to the [ImagingStudyContext](StructureDefinition-imagingstudycontext.html) resource
-
 > Note: Rows with '*' in the Optionality column have constraints different from baseline FHIRcast Request Context Change request.
 
 If the Sender resumes a previously opened report, then the Sender shall reuse the previous `report`, `patient` and `study` contexts, but shall assign a new `event.id`.
@@ -82,10 +82,10 @@ The Manager finishes processing the Open Report Context request.
 This message is a [FHIRcast Request Context Change](https://build.fhir.org/ig/HL7/fhircast-docs/2-6-RequestContextChange.html#request-context-change-body) response. The Sender is the FHIRcast Subscriber. The Manager is the FHIRcast Hub.
 
 The Manager shall return `400` Bad Request error if:
-* If `timestamp`, `id` or `event` are not set
-* If `event.context` does not include `report`, `patient` and `study`
-* if `event`.`hub.topic` is not a known session
-* If `report` context in the request matches an existing report context, but either `patient` or `study` context do not match
+- If `timestamp`, `id` or `event` are not set
+- If `event.context` does not include `report`, `patient` and `study`
+- if `event`.`hub.topic` is not a known session
+- If `report` context in the request matches an existing report context, but either `patient` or `study` context do not match
 
 The Manager may return other applicable HTTP error status codes.
 

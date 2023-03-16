@@ -1,15 +1,13 @@
 ### Event-name: DiagnosticReport-update
 
 ### Trigger Event
-When a subscriber completed something that it decided it is ready to share with other subscribers.
-
-e.g. Finished analysis on a set of images and produced a set of detected nodules and the fleischner score.
+When a subscriber completed something that it decided it is ready to share with other subscribers. For example, finished analysis on a set of images and produced a set of detected nodules and the fleischner score.
 
 ### Examples
 
 #### DiagnosticReport-update Request Example
 
-The following example shows adding an imaging study to the existing diagnostic report context and a new observation.  The `context` holds the `id` and `versionId` of the diagnostic report as required in all  `DiagnosticReport-update` events.  The `Bundle` holds the addition (POST) of an imaging study and adds (POST) an observation derived from this study.
+The following example shows adding an imaging study to the existing diagnostic report context and a new observation. The `context` holds the `id` and `versionId` of the diagnostic report as required in all  `DiagnosticReport-update` events. The `Bundle` holds the addition (POST) of an imaging study and adds (POST) an observation derived from this study.
 
 ```json
 {
@@ -110,7 +108,7 @@ The following example shows adding an imaging study to the existing diagnostic r
 
 #### DiagnosticReport-update Event Example
 
-The HUB SHALL distribute a corresponding event to all applications currently subscribed to the topic. The Hub SHALL replace the `context.versionId` in the request with a new `context.versionId` generated and retained by the Hub.  The prior version, `context.priorVersionId` of the context is also provided to ensure that an application is currently in sync with the latest context prior to applying the new changes.  If the value of `context.priorVersionId` is not in agreement with the `context.versionId` last received by an application, it is recommended that the application issue a GET request to the Hub in order to retrieve the latest version of the context (note that the GET request returns the context, all existing content, and its `context.versionId`).
+The HUB SHALL distribute a corresponding event to all applications currently subscribed to the topic. The Hub SHALL replace the `context.versionId` in the request with a new `context.versionId` generated and retained by the Hub. The prior version, `context.priorVersionId` of the context is also provided to ensure that an application is currently in sync with the latest context prior to applying the new changes. If the value of `context.priorVersionId` is not in agreement with the `context.versionId` last received by an application, it is recommended that the application issue a GET request to the Hub in order to retrieve the latest version of the context (note that the GET request returns the context, all existing content, and its `context.versionId`).
 
 ```json
 {

@@ -1,6 +1,6 @@
 <div markdown="1" class="stu-note">
 
-This Test Plan page is a prototype.   We expect the maturity of the content will improve over time.  For now, we summarize high level testing scope and available tools. Comments are welcome.
+This Test Plan page is a prototype. We expect the maturity of the content will improve over time. For now, we summarize high level testing scope and available tools. Comments are welcome.
 </div>
 
 
@@ -14,7 +14,7 @@ The Examples listed in [Example](example.html) are example events. They are conf
 
 This section will be filled in as the IHE-Connectathon need drives the creation of the test plans, test procedures, test tools, and reporting.
 
-**TODO: include actor based tests, include positive and edge cases. **
+**TODO: include actor based tests, include positive and edge cases.
 
 ### Unit Test Procedure
 

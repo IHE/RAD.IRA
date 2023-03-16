@@ -1,5 +1,5 @@
 
-The Integrated Reporting Applications (IRA) profile helps applications that are used together during reporting (e.g. image display, report creator, clinical applications, AI tools, etc) to share information using a standard called FHIRcast. Each application can share what it is doing and the data it is creating, referred to as Context and Content, respectively. Other applications are notified so they can then intelligently synchronize their behavior or use the new data.
+The Integrated Reporting Applications (IRA) profile helps applications that are used together during reporting (e.g., image display, report creator, clinical applications, AI tools, etc) to share information using a standard called FHIRcast. Each application can share what it is doing and the data it is creating, referred to as Context and Content, respectively. Other applications are notified so they can then intelligently synchronize their behavior or use the new data.
 
 <div markdown="1" class="stu-note">
 
@@ -9,7 +9,7 @@ IRA also uses FHIRcast 3.0.0 which is currently under development.
 
 Links to FHIRcast will be updated to the final version when the official version is published.
 
-| [Significant Changes, Open, and Closed Issues](issues.html) |
+| [Significant Changes, Open and Closed Issues](issues.html) |
 {: .grid}
 
 </div>
@@ -17,7 +17,7 @@ Links to FHIRcast will be updated to the final version when the official version
 ### Organization of This Guide
 This guide is organized into the following sections:
 
-1. Volume 1:
+1. Volume 1: Profiles
    1. [Introduction](volume-1.html)
    1. [Actors and Transactions](volume-1.html#1xx1-realtime-bidirectional-communication-for-interactive-multimedia-reporting)
    1. [Actor Options](volume-1.html#1xx2-ira-actor-options)
@@ -39,17 +39,14 @@ This guide is organized into the following sections:
    10. [Generate SyncError Event [RAD-X10]](rad-x10.html)
    11. [Notify Error [RAD-X11]](rad-x11.html)
 
-3. Volume 3: Metadata and Content
-  - N/A
+3. [Examples] (example.html)
 
-4. Volume 4: National Extensions
-  - N/A
-
-5. Test Plan
+4. Other
   - [Test Plan](testplan.html)
+  - [Changes to Other Documents] (other.html)
+  - [Downloads and Analysis] (download.html)
 
-See also the [Table of Contents](toc.html) and
-the index of [Artifacts](artifacts.html) defined as part of this implementation guide.
+See also the [Table of Contents](toc.html) and the index of [Artifacts](artifacts.html) defined as part of this implementation guide.
 
 ### Conformance Expectations
 
@@ -63,28 +60,3 @@ mustSupport of true - only has a meaning on items that are minimal cardinality o
 The consuming actors should handle these elements being populated or being absent/empty. 
 Note that sometimes mustSupport will appear on elements with a minimal cardinality greater than zero (0), this is due to inheritance from a less constrained profile.
 
-### Download 
-
-You can also download:
-
-* [this entire guide](full-ig.zip),
-* the definition resources in [json](definitions.json.zip), [xml](definitions.xml.zip), [ttl](definitions.ttl.zip), or [csv](csvs.zip) format, or
-* the example resources in [json](examples.json.zip), [xml](examples.xml.zip) or [ttl](examples.ttl.zip) format.
-
-The source code for this Implementation Guide can be found on [https://github.com/IHE/RAD.IRA](https://github.com/IHE/RAD.IRA).
-
-#### Cross Version Analysis
-
-{% include cross-version-analysis.xhtml %}
-
-#### Dependency Table
-
-{% include dependency-table.xhtml %}
-
-#### Globals Table
-
-{% include globals-table.xhtml %}
-
-#### IP Statements
-
-{% include ip-statements.xhtml %}

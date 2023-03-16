@@ -7,7 +7,7 @@ When the user signed off the report.
 
 #### DiagnosticReport-update Request Example
 
-The following example shows updating the report context with status FINAL.  The `context` holds the `id` and `versionId` of the diagnostic report as required in all  `DiagnosticReport-update` events.  The `Bundle` holds the update (PUT) of the report context.
+The following example shows updating the report context with status FINAL. The `context` holds the `id` and `versionId` of the diagnostic report as required in all `DiagnosticReport-update` events. The `Bundle` holds the update (PUT) of the report context.
 
 ```json
 {
@@ -53,7 +53,7 @@ The following example shows updating the report context with status FINAL.  The 
 
 #### DiagnosticReport-update Event Example
 
-The HUB SHALL distribute a corresponding event to all applications currently subscribed to the topic. The Hub SHALL replace the `context.versionId` in the request with a new `context.versionId` generated and retained by the Hub.  The prior version, `context.priorVersionId` of the context is also provided to ensure that an application is currently in sync with the latest context prior to applying the new changes.  If the value of `context.priorVersionId` is not in agreement with the `context.versionId` last received by an application, it is recommended that the application issue a GET request to the Hub in order to retrieve the latest version of the context (note that the GET request returns the context, all existing content, and its `context.versionId`).
+The HUB SHALL distribute a corresponding event to all applications currently subscribed to the topic. The Hub SHALL replace the `context.versionId` in the request with a new `context.versionId` generated and retained by the Hub. The prior version, `context.priorVersionId` of the context is also provided to ensure that an application is currently in sync with the latest context prior to applying the new changes. If the value of `context.priorVersionId` is not in agreement with the `context.versionId` last received by an application, it is recommended that the application issue a GET request to the Hub in order to retrieve the latest version of the context (note that the GET request returns the context, all existing content, and its `context.versionId`).
 
 ```json
 {
