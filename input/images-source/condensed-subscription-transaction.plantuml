@@ -1,8 +1,0 @@
-@startuml
-
-participant "Image Display" as Display
-participant Hub as Hub
-
-Display->Hub: Subscribe to reporting session [RAD-Sub]
-
-@enduml
