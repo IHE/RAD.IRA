@@ -68,10 +68,10 @@ The Manager finishes processing the Close Report Context request.
 This message is a [FHIRcast Request Context Change](https://build.fhir.org/ig/HL7/fhircast-docs/2-6-RequestContextChange.html#request-context-change-body) response. The Sender is the FHIRcast Subscriber. The Manager is the FHIRcast Hub.
 
 The Manager shall return `400` Bad Request error if:
-* If `timestamp`, `id` or `event` are not set
-* If `event.context` does not include `report`
-* If the `report` context does not include `resource.id`
-* if `event`.`hub.topic` is not a known session
+- If `timestamp`, `id` or `event` are not set
+- If `event.context` does not include `report`
+- If the `report` context does not include `resource.id`
+- if `event`.`hub.topic` is not a known session
 
 The Manager may return other applicable HTTP error status codes.
 
@@ -81,7 +81,7 @@ If the response is an error, then the Sender may consider retrying the request.
 
 ### 2:3.X4.5 Security Considerations
 
-See [IRA Security Considerations](volume-1.html#1xx5-ira-security-considerations)
+See [IRA Security Considerations](volume-1.html#1xx5-ira-security-considerations).
 
 Local policy should consider what users and systems have permissions to close a report context and configure appropriately. 
 
