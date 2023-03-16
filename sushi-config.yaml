@@ -29,6 +29,7 @@ jurisdiction: 'http://unstats.un.org/unsd/methods/m49/m49.htm#001'
 #copyright: IHE http://www.ihe.net/Governance/#Intellectual_Property
 copyrightYear: 2021+
 
+
 parameters:  # see https://confluence.hl7.org/display/FHIR/Implementation+Guide+Parameters
   path-resource:
     - input/resources
@@ -120,7 +121,10 @@ pages:
   other.md:
     title: Changes to Other Documents
     generation: markdown
-    
+  download.md:
+    title: "Download and analysis"
+    generation: markdown
+
 menu:
   IRA Home: index.html
   Volume 1:
@@ -150,7 +154,6 @@ menu:
     Select Report Content: select_study_and_observation.html
     Update Report Status: update_report_status.html
     Close Report Context: close_study_after_signoff.html
-  
   Artifacts: artifacts.html
   Other:
     Test Plan: testplan.html
