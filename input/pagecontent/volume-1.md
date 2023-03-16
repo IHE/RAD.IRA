@@ -41,331 +41,331 @@ Table 1:XX.1-1 lists the transactions for each actor directly involved in the IM
       <td>Subscribe to Reporting Session [RAD-X1]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="rad-x1.html">RAD TF-2: 4.X1</a></td>
+      <td><a href="rad-x1.html">RAD TF-2: 3.X1</a></td>
     </tr>
     <tr>
       <td>Connect to Notification Channel [RAD-X2]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="rad-x2.html">RAD TF-2: 4.X2</a></td>
+      <td><a href="rad-x2.html">RAD TF-2: 3.X2</a></td>
     </tr>
     <tr>
       <td>Open Report Context [RAD-X3]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="rad-x3.html">RAD TF-2: 4.X3</a></td>
+      <td><a href="rad-x3.html">RAD TF-2: 3.X3</a></td>
     </tr>
     <tr>
       <td>Close Report Context [RAD-X4]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="rad-x4.html">RAD TF-2: 4.X4</a></td>
+      <td><a href="rad-x4.html">RAD TF-2: 3.X4</a></td>
     </tr>
     <tr>
       <td>Unsubscribe Session [RAD-X7]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="rad-x7.html">RAD TF-2: 4.X7</a></td>
+      <td><a href="rad-x7.html">RAD TF-2: 3.X7</a></td>
     </tr>
     <tr>
       <td>Get Current Context [RAD-X8]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="rad-x8.html">RAD TF-2: 4.X8</a></td>
+      <td><a href="rad-x8.html">RAD TF-2: 3.X8</a></td>
     </tr>
     <tr>
       <td>Distribute Context Event [RAD-X9]</td>
       <td>Responder</td>
       <td>R</td>
-      <td><a href="rad-x9.html">RAD TF-2: 4.X9</a></td>
+      <td><a href="rad-x9.html">RAD TF-2: 3.X9</a></td>
     </tr>
     <tr>
       <td>Generate SyncError Event [RAD-X10]</td>
       <td>Responder</td>
       <td>R</td>
-      <td><a href="rad-x10.html">RAD TF-2: 4.X10</a></td>
+      <td><a href="rad-x10.html">RAD TF-2: 3.X10</a></td>
     </tr>
     <tr>
       <td>Notify Error [RAD-X11]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="rad-x11.html">RAD TF-2: 4.X11</a></td>
+      <td><a href="rad-x11.html">RAD TF-2: 3.X11</a></td>
     </tr>
     <tr>
       <td rowspan="9"><a href="volume-1.html#1xx112-report-creator">Report Creator</a></td>
       <td>Subscribe to Reporting Session [RAD-X1]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="rad-x1.html">RAD TF-2: 4.X1</a></td>
+      <td><a href="rad-x1.html">RAD TF-2: 3.X1</a></td>
     </tr>
     <tr>
       <td>Connect to Notification Channel [RAD-X2]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="rad-x2.html">RAD TF-2: 4.X2</a></td>
+      <td><a href="rad-x2.html">RAD TF-2: 3.X2</a></td>
     </tr>
     <tr>
       <td>Open Report Context [RAD-X3]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="rad-x3.html">RAD TF-2: 4.X3</a></td>
+      <td><a href="rad-x3.html">RAD TF-2: 3.X3</a></td>
     </tr>
     <tr>
       <td>Close Report Context [RAD-X4]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="rad-x4.html">RAD TF-2: 4.X4</a></td>
+      <td><a href="rad-x4.html">RAD TF-2: 3.X4</a></td>
     </tr>
     <tr>
       <td>Unsubscribe Session [RAD-X7]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="rad-x7.html">RAD TF-2: 4.X7</a></td>
+      <td><a href="rad-x7.html">RAD TF-2: 3.X7</a></td>
     </tr>
     <tr>
       <td>Get Current Context [RAD-X8]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="rad-x8.html">RAD TF-2: 4.X8</a></td>
+      <td><a href="rad-x8.html">RAD TF-2: 3.X8</a></td>
     </tr>
     <tr>
       <td>Distribute Context Event [RAD-X9]</td>
       <td>Responder</td>
       <td>R</td>
-      <td><a href="rad-x9.html">RAD TF-2: 4.X9</a></td>
+      <td><a href="rad-x9.html">RAD TF-2: 3.X9</a></td>
     </tr>
     <tr>
       <td>Generate SyncError Event [RAD-X10]</td>
       <td>Responder</td>
       <td>R</td>
-      <td><a href="rad-x10.html">RAD TF-2: 4.X10</a></td>
+      <td><a href="rad-x10.html">RAD TF-2: 3.X10</a></td>
     </tr>
     <tr>
       <td>Notify Error [RAD-X11]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="rad-x11.html">RAD TF-2: 4.X11</a></td>
+      <td><a href="rad-x11.html">RAD TF-2: 3.X11</a></td>
     </tr>
     <tr>
       <td rowspan="9"><a href="volume-1.html#1xx113-worklist-client">Worklist Client</a></td>
       <td>Subscribe to Reporting Session [RAD-X1]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="rad-x1.html">RAD TF-2: 4.X1</a></td>
+      <td><a href="rad-x1.html">RAD TF-2: 3.X1</a></td>
     </tr>
     <tr>
       <td>Connect to Notification Channel [RAD-X2]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="rad-x2.html">RAD TF-2: 4.X2</a></td>
+      <td><a href="rad-x2.html">RAD TF-2: 3.X2</a></td>
     </tr>
     <tr>
       <td>Open Report Context [RAD-X3]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="rad-x3.html">RAD TF-2: 4.X3</a></td>
+      <td><a href="rad-x3.html">RAD TF-2: 3.X3</a></td>
     </tr>
     <tr>
       <td>Close Report Context [RAD-X4]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="rad-x4.html">RAD TF-2: 4.X4</a></td>
+      <td><a href="rad-x4.html">RAD TF-2: 3.X4</a></td>
     </tr>
     <tr>
       <td>Unsubscribe Session [RAD-X7]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="rad-x7.html">RAD TF-2: 4.X7</a></td>
+      <td><a href="rad-x7.html">RAD TF-2: 3.X7</a></td>
     </tr>
     <tr>
       <td>Get Current Context [RAD-X8]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="rad-x8.html">RAD TF-2: 4.X8</a></td>
+      <td><a href="rad-x8.html">RAD TF-2: 3.X8</a></td>
     </tr>
     <tr>
       <td>Distribute Context Event [RAD-X9]</td>
       <td>Responder</td>
       <td>R</td>
-      <td><a href="rad-x9.html">RAD TF-2: 4.X9</a></td>
+      <td><a href="rad-x9.html">RAD TF-2: 3.X9</a></td>
     </tr>
     <tr>
       <td>Generate SyncError Event [RAD-X10]</td>
       <td>Responder</td>
       <td>R</td>
-      <td><a href="rad-x10.html">RAD TF-2: 4.X10</a></td>
+      <td><a href="rad-x10.html">RAD TF-2: 3.X10</a></td>
     </tr>
     <tr>
       <td>Notify Error [RAD-X11]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="rad-x11.html">RAD TF-2: 4.X11</a></td>
+      <td><a href="rad-x11.html">RAD TF-2: 3.X11</a></td>
     </tr>
     <tr>
       <td rowspan="7"><a href="volume-1.html#1xx114-evidence-creator">Evidence Creator</a></td>
       <td>Subscribe to Reporting Session [RAD-X1]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="rad-x1.html">RAD TF-2: 4.X1</a></td>
+      <td><a href="rad-x1.html">RAD TF-2: 3.X1</a></td>
     </tr>
     <tr>
       <td>Connect to Notification Channel [RAD-X2]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="rad-x2.html">RAD TF-2: 4.X2</a></td>
+      <td><a href="rad-x2.html">RAD TF-2: 3.X2</a></td>
     </tr>
     <tr>
       <td>Unsubscribe Session [RAD-X7]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="rad-x7.html">RAD TF-2: 4.X7</a></td>
+      <td><a href="rad-x7.html">RAD TF-2: 3.X7</a></td>
     </tr>
     <tr>
       <td>Get Current Context [RAD-X8]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="rad-x8.html">RAD TF-2: 4.X8</a></td>
+      <td><a href="rad-x8.html">RAD TF-2: 3.X8</a></td>
     </tr>
     <tr>
       <td>Distribute Context Event [RAD-X9]</td>
       <td>Responder</td>
       <td>R</td>
-      <td><a href="rad-x9.html">RAD TF-2: 4.X9</a></td>
+      <td><a href="rad-x9.html">RAD TF-2: 3.X9</a></td>
     </tr>
     <tr>
       <td>Generate SyncError Event [RAD-X10]</td>
       <td>Responder</td>
       <td>R</td>
-      <td><a href="rad-x10.html">RAD TF-2: 4.X10</a></td>
+      <td><a href="rad-x10.html">RAD TF-2: 3.X10</a></td>
     </tr>
     <tr>
       <td>Notify Error [RAD-X11]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="rad-x11.html">RAD TF-2: 4.X11</a></td>
+      <td><a href="rad-x11.html">RAD TF-2: 3.X11</a></td>
     </tr>
     <tr>
       <td rowspan="2"><a href="volume-1.html#1xx115-content-creator">Content Creator</a></td>
       <td>Update Report Content [RAD-X5]</td>
       <td>Initiator</td>
       <td>O (Note 1)</td>
-      <td><a href="rad-x5.html">RAD TF-2: 4.X5</a></td>
+      <td><a href="rad-x5.html">RAD TF-2: 3.X5</a></td>
     </tr>
     <tr>
       <td>Select Report Content [RAD-X6]</td>
       <td>Initiator</td>
       <td>O (Note 1)</td>
-      <td><a href="rad-x6.html">RAD TF-2: 4.X6</a></td>
+      <td><a href="rad-x6.html">RAD TF-2: 3.X6</a></td>
     </tr>
     <tr>
       <td rowspan="7"><a href="volume-1.html#1xx116-watcher">Watcher</a></td>
       <td>Subscribe to Reporting Session [RAD-X1]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="rad-x1.html">RAD TF-2: 4.X1</a></td>
+      <td><a href="rad-x1.html">RAD TF-2: 3.X1</a></td>
     </tr>
     <tr>
       <td>Connect to Notification Channel [RAD-X2]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="rad-x2.html">RAD TF-2: 4.X2</a></td>
+      <td><a href="rad-x2.html">RAD TF-2: 3.X2</a></td>
     </tr>
     <tr>
       <td>Unsubscribe Session [RAD-X7]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="rad-x7.html">RAD TF-2: 4.X7</a></td>
+      <td><a href="rad-x7.html">RAD TF-2: 3.X7</a></td>
     </tr>
     <tr>
       <td>Get Current Context [RAD-X8]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="rad-x8.html">RAD TF-2: 4.X8</a></td>
+      <td><a href="rad-x8.html">RAD TF-2: 3.X8</a></td>
     </tr>
     <tr>
       <td>Distribute Context Event [RAD-X9]</td>
       <td>Responder</td>
       <td>R</td>
-      <td><a href="rad-x9.html">RAD TF-2: 4.X9</a></td>
+      <td><a href="rad-x9.html">RAD TF-2: 3.X9</a></td>
     </tr>
     <tr>
       <td>Generate SyncError Event [RAD-X10]</td>
       <td>Responder</td>
       <td>R</td>
-      <td><a href="rad-x10.html">RAD TF-2: 4.X10</a></td>
+      <td><a href="rad-x10.html">RAD TF-2: 3.X10</a></td>
     </tr>
     <tr>
       <td>Notify Error [RAD-X11]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="rad-x11.html">RAD TF-2: 4.X11</a></td>
+      <td><a href="rad-x11.html">RAD TF-2: 3.X11</a></td>
     </tr>
     <tr>
       <td rowspan="11"><a href="volume-1.html#1xx117-hub">Hub</a></td>
       <td>Subscribe to Reporting Session [RAD-X1]</td>
       <td>Responder</td>
       <td>R</td>
-      <td><a href="rad-x1.html">RAD TF-2: 4.X1</a></td>
+      <td><a href="rad-x1.html">RAD TF-2: 3.X1</a></td>
     </tr>
     <tr>
       <td>Connect to Notification Channel [RAD-X2]</td>
       <td>Responder</td>
       <td>R</td>
-      <td><a href="rad-x2.html">RAD TF-2: 4.X2</a></td>
+      <td><a href="rad-x2.html">RAD TF-2: 3.X2</a></td>
     </tr>
     <tr>
       <td>Open Report Context [RAD-X3]</td>
       <td>Responder</td>
       <td>R</td>
-      <td><a href="rad-x3.html">RAD TF-2: 4.X3</a></td>
+      <td><a href="rad-x3.html">RAD TF-2: 3.X3</a></td>
     </tr>
     <tr>
       <td>Close Report Context [RAD-X4]</td>
       <td>Responder</td>
       <td>R</td>
-      <td><a href="rad-x4.html">RAD TF-2: 4.X4</a></td>
+      <td><a href="rad-x4.html">RAD TF-2: 3.X4</a></td>
     </tr>
     <tr>
       <td>Update Report Content [RAD-X5]</td>
       <td>Responder</td>
       <td>R</td>
-      <td><a href="rad-x5.html">RAD TF-2: 4.X5</a></td>
+      <td><a href="rad-x5.html">RAD TF-2: 3.X5</a></td>
     </tr>
     <tr>
       <td>Select Report Content [RAD-X6]</td>
       <td>Responder</td>
       <td>R</td>
-      <td><a href="rad-x6.html">RAD TF-2: 4.X6</a></td>
+      <td><a href="rad-x6.html">RAD TF-2: 3.X6</a></td>
     </tr>
     <tr>
       <td>Unsubscribe from Session [RAD-X7]</td>
       <td>Responder</td>
       <td>R</td>
-      <td><a href="rad-x7.html">RAD TF-2: 4.X7</a></td>
+      <td><a href="rad-x7.html">RAD TF-2: 3.X7</a></td>
     </tr>
     <tr>
       <td>Get Current Context [RAD-X8]</td>
       <td>Responder</td>
       <td>R</td>
-      <td><a href="rad-x8.html">RAD TF-2: 4.X8</a></td>
+      <td><a href="rad-x8.html">RAD TF-2: 3.X8</a></td>
     </tr>
     <tr>
       <td>Distribute Context Event [RAD-X9]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="rad-x9.html">RAD TF-2: 4.X9</a></td>
+      <td><a href="rad-x9.html">RAD TF-2: 3.X9</a></td>
     </tr>
     <tr>
       <td>Generate SyncError Event [RAD-X10]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="rad-x10.html">RAD TF-2: 4.X10</a></td>
+      <td><a href="rad-x10.html">RAD TF-2: 3.X10</a></td>
     </tr>
     <tr>
       <td>Notify Error [RAD-X11]</td>
       <td>Responder</td>
       <td>R</td>
-      <td><a href="rad-x11.html">RAD TF-2: 4.X11</a></td>
+      <td><a href="rad-x11.html">RAD TF-2: 3.X11</a></td>
     </tr>
   </tbody>
 </table>
