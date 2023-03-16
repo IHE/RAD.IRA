@@ -72,11 +72,11 @@ The Manager finishes processing the Update Report Content request.
 
 This message is a [FHIRcast Request Context Change](https://build.fhir.org/ig/HL7/fhircast-docs/2-6-RequestContextChange.html#request-context-change-body) response. The Sender is the FHIRcast Subscriber. The Manager is the FHIRcast Hub.
 
-The Manager shall return `400` Bad Request error if:
-* If `timestamp`, `id` or `event` are not set
-* If `event.context` does not include `report` and `updates`
-* if `event`.`hub.topic` is not a known session
-* If `context.versionId` does not match the latest version ID of the `report` anchor context
+The Manager shall return `400` Bad Request error:
+- if `timestamp`, `id` or `event` are not set
+- if `event.context` does not include `report` and `updates`
+- if `event`.`hub.topic` is not a known session
+- if `context.versionId` does not match the latest version ID of the `report` anchor context
 
 If the Manager rejected the Update Report Content request, then the Manager shall return a 4xx or 5xx HTTP error response code.
 
@@ -88,7 +88,7 @@ If the response is an error, then the Sender may consider retrying the request.
 
 ### 2:3.X5.5 Security Considerations
 
-See [IRA Security Considerations](volume-1.html#1xx5-ira-security-considerations)
+See [IRA Security Considerations](volume-1.html#1xx5-ira-security-considerations).
 
 Local policy should consider what users and systems have permissions to update report content and configure appropriately. 
 
