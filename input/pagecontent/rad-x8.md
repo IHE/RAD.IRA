@@ -36,7 +36,7 @@ The Manager shall support handling such messages from more than one Subscriber.
 The Subscriber uses this transaction when:
 - It successfully subscribes to a session and wants to have the current context
 - It determines that it has missed some events for the current context based on receiving an context event with an unexpected version
-- It receives a `[FHIRresource]-close` event and wants to synchronize with the new current context, if any
+- It receives a `[FHIR resource]-close` event and wants to synchronize with the new current context, if any
 
 ##### 2:3.X8.4.1.2 Message Semantics
 
@@ -68,7 +68,7 @@ The Manager shall include the `content` key in the response. See [Content Sharin
 
 ##### 2:3.X8.4.2.3 Expected Actions
 
-The Subscriber shall process the context as if it had received the `[FHIRresource]-open` event with the same context.
+The Subscriber shall process the context as if it had received the `[FHIR resource]-open` event with the same context.
 
 The Subscriber shall replace the set of known contents associated with the context with the resources in the `content` bundle according to its business logic. 
 
