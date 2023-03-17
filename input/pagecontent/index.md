@@ -43,8 +43,8 @@ This guide is organized into the following sections:
 
 4. Other
   - [Test Plan](testplan.html)
-  - [Changes to Other Documents] (other.html)
-  - [Downloads and Analysis] (download.html)
+  - [Changes to Other Documents](other.html)
+  - [Downloads and Analysis](download.html)
 
 See also the [Table of Contents](toc.html) and the index of [Artifacts](artifacts.html) defined as part of this implementation guide.
 
