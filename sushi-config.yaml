@@ -21,7 +21,7 @@ contact:
     telecom:
       - system: email
         value: radiology@ihe.net
-description: Enable multiple applications to be integrated for reporting
+description: The Integrated Reporting Applications (IRA) profile helps applications that are used together during reporting (e.g., image display, report creator, clinical applications, AI tools, etc) to share information using a standard called FHIRcast. Each application can share what it is doing and the data it is creating, referred to as Context and Content, respectively. Other applications are notified so they can then intelligently synchronize their behavior or use the new data.
 license:  CC-BY-4.0
 #fhirVersion: 4.0.1
 fhirVersion: 5.0.0
