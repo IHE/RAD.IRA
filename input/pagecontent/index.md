@@ -39,7 +39,7 @@ This guide is organized into the following sections:
    10. [Generate SyncError Event [RAD-X10]](rad-x10.html)
    11. [Notify Error [RAD-X11]](rad-x11.html)
 
-3. [Examples] (example.html)
+3. [Examples](example.html)
 
 4. Other
   - [Test Plan](testplan.html)
