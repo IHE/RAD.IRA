@@ -1,0 +1,15 @@
+{
+    "package-id" : "ihe.rad.ira",
+    "version" : "1.0.0-comment",
+    "path" : "https://profiles.ihe.net/RAD/IRA/1.0.0-comment",
+    "milestone" : true,
+    "status" : "ballot",
+    "sequence" : "Releases",
+    "desc" : "Initial Public-Comment: Enable multiple applications to be integrated for reporting",
+    "descmd" : "Initial Public-Comment: Enable multiple applications to be integrated for reporting",
+    "changes" : "Initial Draft for public comment",
+    "title" : "Integrated Reporting Applications",
+    "ci-build" : "http://build.fhir.org/ig/IHE/RAD.IRA/branches/master/index.html",
+    "category" : "Imaging",
+    "introduction" : "Enable multiple applications to be integrated for reporting."
+  }
