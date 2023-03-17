@@ -49,7 +49,7 @@ The Manager shall support the additional requirements regarding `version id` def
 
 The Subscriber may validate the received event according to its business logic. If the Subscriber rejects the event, then it shall notify the Manager about the error.
 
-The Subscriber shall handle events `[FHIR resource]-open` | `update` | `select` | `close` that it supports. Handling requirements for some general types of events are described below. Profile specific event handling requirements are defined in the Actor Description for each actor per profile.
+The Subscriber shall handle events `[FHIR resource]-open` \| `update` \| `select` \| `close` that it supports. Handling requirements for some general types of events are described below. Profile specific event handling requirements are defined in the Actor Description for each actor per profile.
 
 The Subscriber shall support [content sharing](https://build.fhir.org/ig/HL7/fhircast-docs/2-10-ContentSharing.html).
 
