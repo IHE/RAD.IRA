@@ -95,7 +95,7 @@ If the response is an error, then the Sender may consider retrying the request.
 
 ### 2:3.X3.5 Security Considerations
 
-See [IRA Security Considerations](volume-1.html#1xx5-ira-security-considerations)
+See [IRA Security Considerations](volume-1.html#1xx5-ira-security-considerations).
 
 Local policy should consider what users and systems have permissions to open a report context and configure appropriately. 
 
