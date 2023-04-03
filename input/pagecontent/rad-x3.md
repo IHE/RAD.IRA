@@ -1,10 +1,10 @@
-### 2:3.X3.1 Scope
+### 2:4.X3.1 Scope
 
 This transaction is used to open a report context. Report contexts are opened within an existing reporting session.
 
-### 2:3.X3.2 Actors Roles
+### 2:4.X3.2 Actors Roles
 
-**Table 2:3.X3.2-1: Actor Roles**
+**Table 2:4.X3.2-1: Actor Roles**
 
 | Role | Description | Actor(s) |
 |------|-------------|----------|
@@ -12,13 +12,13 @@ This transaction is used to open a report context. Report contexts are opened wi
 | Manager | Manages opened context | Hub |
 {: .grid}
 
-### 2:3.X3.3 Referenced Standards
+### 2:4.X3.3 Referenced Standards
 
 **FHIRcast**: [Request Context Change](https://build.fhir.org/ig/HL7/fhircast-docs/2-6-RequestContextChange.html#request-context-change)
 
 **FHIRcast**: [DiagnosticReport open Event](https://build.fhir.org/ig/HL7/fhircast-docs/3-6-1-diagnosticreport-open.html)
 
-### 2:3.X3.4 Messages
+### 2:4.X3.4 Messages
 
 <div>
 {%include rad-x3-seq.svg%}
@@ -26,28 +26,28 @@ This transaction is used to open a report context. Report contexts are opened wi
 
 <div style="clear: left"/>
 
-**Figure 2:3.X3.4-1: Interaction Diagram**
+**Figure 2:4.X3.4-1: Interaction Diagram**
 
-#### 2:3.X3.4.1 Open Report Context Request Message
+#### 2:4.X3.4.1 Open Report Context Request Message
 The Sender sends an event to the Manager to open a report context. The Sender shall support sending such messages to more than one Manager.
 
 The Manager shall support handling such messages from more than one Sender. 
 
-##### 2:3.X3.4.1.1 Trigger Events
+##### 2:4.X3.4.1.1 Trigger Events
 
 A Sender uses this transaction when:
 - It determines that work should begin on a new report, and opens a new context to synchronize that work with other Subscribers.
 - It determines to resume a previously opened report that has not yet complete, and re-opens the same context to synchronize that work with other Subscribers.
 
-##### 2:3.X3.4.1.2 Message Semantics
+##### 2:4.X3.4.1.2 Message Semantics
 
 This message is a [FHIRcast Request Context Change](https://build.fhir.org/ig/HL7/fhircast-docs/2-6-RequestContextChange.html#request-context-change-body) request. The Sender is the FHIRcast Subscriber. The Manager is the FHIRcast Hub.
 
 The `event.context` shall conform to [DiagnosticReport open Event](https://build.fhir.org/ig/HL7/fhircast-docs/3-6-1-diagnosticreport-open.html).
 
-In addition, the contexts in the `event.context` shall conform to the Table 2:3.X3.4.1.2-1.
+In addition, the contexts in the `event.context` shall conform to the Table 2:4.X3.4.1.2-1.
 
-**Table 2:3.X3.4.1.2-1: Context Requirements**
+**Table 2:4.X3.4.1.2-1: Context Requirements**
 
 | Key | Optionality | Context Requirements |
 |-----|-------------|----------------------|
@@ -63,21 +63,21 @@ If the Sender is retrying this context change request due to not receiving a res
 
 If the Sender retries the request due to an error response from the Manager, then the Sender shall assign a new `event.id` to indicate that it is a new request.
 
-##### 2:3.X3.4.1.3 Expected Actions
+##### 2:4.X3.4.1.3 Expected Actions
 
-The Manager shall receive and validate the request. See 2:3.X3.4.2.2 for error conditions.
+The Manager shall receive and validate the request. See Section 2:4.X3.4.2.2 for error conditions.
 
 Per FHIRcast, this `report` context will become the current context in this reporting session.
 
 If the `report`, `patient` and `study` contexts in the request match an existing report context which has not been closed, then the Manager shall update that report context and set it to be the current context.
 
-#### 2:3.X3.4.2 Open Report Context Response Message
+#### 2:4.X3.4.2 Open Report Context Response Message
 
-##### 2:3.X3.4.2.1 Trigger Events
+##### 2:4.X3.4.2.1 Trigger Events
 
 The Manager finishes processing the Open Report Context request.
 
-##### 2:3.X3.4.2.2 Message Semantics
+##### 2:4.X3.4.2.2 Message Semantics
 
 This message is a [FHIRcast Request Context Change](https://build.fhir.org/ig/HL7/fhircast-docs/2-6-RequestContextChange.html#request-context-change-body) response. The Sender is the FHIRcast Subscriber. The Manager is the FHIRcast Hub.
 
@@ -89,16 +89,16 @@ The Manager shall return `400` Bad Request error if:
 
 The Manager may return other applicable HTTP error status codes.
 
-##### 2:3.X3.4.2.3 Expected Actions
+##### 2:4.X3.4.2.3 Expected Actions
 
 If the response is an error, then the Sender may consider retrying the request.
 
-### 2:3.X3.5 Security Considerations
+### 2:4.X3.5 Security Considerations
 
 See [IRA Security Considerations](volume-1.html#1xx5-ira-security-considerations).
 
 Local policy should consider what users and systems have permissions to open a report context and configure appropriately. 
 
-#### 2:3.X3.5.1 Security Audit Considerations
+#### 2:4.X3.5.1 Security Audit Considerations
 
 This transaction is not associated with an ATNA Trigger Event.
