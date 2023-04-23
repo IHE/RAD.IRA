@@ -1,12 +1,12 @@
-### 2:3.X1.1 Scope
+### 2:4.X1.1 Scope
 
 This transaction is used to subscribe to receive events associated with a reporting session. A reporting session may include reporting on multiple reports, each of which has its own context.
 
-### 2:3.X1.2 Actors Roles
+### 2:4.X1.2 Actors Roles
 
 The roles in this transaction are defined in the following table and may be played by the actors shown here:
 
-**Table 2:3.X1.2-1: Actor Roles**
+**Table 2:4.X1.2-1: Actor Roles**
 
 | Role | Description | Actor(s) |
 |------|-------------|----------|
@@ -14,11 +14,11 @@ The roles in this transaction are defined in the following table and may be play
 | Manager | Receives and manages subscription requests | Hub |
 {: .grid}
 
-### 2:3.X1.3 Referenced Standards
+### 2:4.X1.3 Referenced Standards
 
 **FHIRcast**: [Subscribing to Events](https://build.fhir.org/ig/HL7/fhircast-docs/2-4-Subscribing.html)
 
-### 2:3.X1.4 Messages
+### 2:4.X1.4 Messages
 
 <div>
 {%include rad-x1-seq.svg%}
@@ -26,15 +26,15 @@ The roles in this transaction are defined in the following table and may be play
 
 <div style="clear: left"/>
 
-**Figure 2:3.X1.4-1: Interaction Diagram**
+**Figure 2:4.X1.4-1: Interaction Diagram**
 
-#### 2:3.X1.4.1 Subscription Request Message
+#### 2:4.X1.4.1 Subscription Request Message
 
 The Subscriber sends a reporting session subscription request to the Manager. The Subscriber shall support sending such messages to more than one Manager.
 
 The Manager shall support handling such messages from more than one Subscriber. 
 
-##### 2:3.X1.4.1.1 Trigger Events
+##### 2:4.X1.4.1.1 Trigger Events
 
 A Subscriber uses this transaction when:
 - It wants to start a new reporting session
@@ -42,13 +42,13 @@ A Subscriber uses this transaction when:
 - It wants to change the event filter for its existing subscription
 - It wants to renew its existing subscription
 
-##### 2:3.X1.4.1.2 Message Semantics
+##### 2:4.X1.4.1.2 Message Semantics
 
 This message is a [FHIRcast Subscription Request](https://build.fhir.org/ig/HL7/fhircast-docs/2-4-Subscribing.html#subscription-request). The Subscriber is the FHIRcast Subscriber. The Manager is the FHIRcast Hub.
 
 The request shall have the payload with the parameters in the following table:
 
-**Table 2:3.X1.4.1.2-1: Subscription Request Parameters**
+**Table 2:4.X1.4.1.2-1: Subscription Request Parameters**
 
 | Field                 | Optionality | Type     | Description |
 | ----------------------| ----------- | -------- | ------------|
@@ -63,7 +63,7 @@ The request shall have the payload with the parameters in the following table:
 
 > Note: Rows with '*' in the Optionality column have constraints different from baseline FHIRcast Subscription Request.
 
-##### 2:3.X1.4.1.3 Expected Actions
+##### 2:4.X1.4.1.3 Expected Actions
 
 The Manager shall receive and validate the message.
 
@@ -77,15 +77,15 @@ If the Subscriber already exist, then the Manager shall:
 - Update the list of events subscribed by the Subscriber
 - Update the expiry of the Subscriber's websocket connection
 
-#### 2:3.X1.4.2 Subscription Response Message
+#### 2:4.X1.4.2 Subscription Response Message
 
 The Manager sends a response message describing the request outcome to the Subscriber.
 
-##### 2:3.X1.4.2.1 Trigger Events
+##### 2:4.X1.4.2.1 Trigger Events
 
 The Manager receives a Subscribe to Reporting Session Request message.
 
-##### 2:3.X1.4.2.2 Message Semantics
+##### 2:4.X1.4.2.2 Message Semantics
 
 This message is a [FHIRcast Subscription Response](https://build.fhir.org/ig/HL7/fhircast-docs/2-4-Subscribing.html#subscription-response). The Subscriber is the FHIRcast Subscriber. The Manager is the FHIRcast Hub.
 
@@ -97,7 +97,7 @@ The Manager shall return `400` Bad Request error if:
 
 The Manager may return other applicable HTTP error status codes.
 
-##### 2:3.X1.4.2.3 Expected Actions
+##### 2:4.X1.4.2.3 Expected Actions
 
 If the HTTP response code is `202` Accepted, the Subscriber shall extract the websocket WSS URL from `hub.channel.endpoint`.
 
@@ -105,7 +105,7 @@ The Subscriber may use the `hub.channel.endpoint` in a subsequent Connect to Not
 
 If the HTTP response code is 4xx or 5xx, then the Subscriber may adjust the request and retry.
 
-### Security Considerations
+### 2:4.X1.5 Security Considerations
 
 See [IRA Security Considerations](volume-1.html#1xx5-ira-security-considerations).
 
@@ -113,7 +113,7 @@ The Subscriber which is a synchronizing application should authenticate and auth
 
 Local policy should consider what users and systems have permissions to subscribe to events and configure appropriately. More advanced implementations of the Manager might have logic to identify Subscribers that are requesting unnecessarily broad set of events.
 
-#### Security Audit Considerations
+#### 2:4.X1.5.1Security Audit Considerations
 
 Managers that support the ATNA Profile shall audit this transaction.
 

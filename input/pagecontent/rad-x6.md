@@ -1,10 +1,10 @@
-### 2:3.X6.1 Scope
+### 2:4.X6.1 Scope
 
 This transaction is used to identify specific report contents to other subscribers for potential synchronization.
 
-### 2:3.X6.2 Actors Roles
+### 2:4.X6.2 Actors Roles
 
-**Table 2:3.X6.2-1: Actor Roles**
+**Table 2:4.X6.2-1: Actor Roles**
 
 | Role | Description | Actor(s) |
 |------|-------------|----------|
@@ -12,13 +12,13 @@ This transaction is used to identify specific report contents to other subscribe
 | Manager | Manages the selection state of contents | Hub |
 {: .grid}
 
-### 2:3.X6.3 Referenced Standards
+### 2:4.X6.3 Referenced Standards
 
 **FHIRcast**: [Content Sharing](https://build.fhir.org/ig/HL7/fhircast-docs/2-10-ContentSharing.html)
 
 **FHIRcast**: [DiagnosticReport select Event](https://build.fhir.org/ig/HL7/fhircast-docs/3-6-4-diagnosticreport-select.html)
 
-### 2:3.X6.4 Messages
+### 2:4.X6.4 Messages
 
 <div>
 {%include rad-x6-seq.svg%}
@@ -26,14 +26,14 @@ This transaction is used to identify specific report contents to other subscribe
 
 <div style="clear: left"/>
 
-**Figure 2:3.X6.4-1: Interaction Diagram**
+**Figure 2:4.X6.4-1: Interaction Diagram**
 
-#### 2:3.X6.4.1 Select Report Content Request Message
+#### 2:4.X6.4.1 Select Report Content Request Message
 The Sender sends an event to the Manager to indicate some report contents are selected. The Sender shall support sending such messages to more than one Manager.
 
 The Manager shall support handling such messages from more than one Sender. 
 
-##### 2:3.X6.4.1.1 Trigger Events
+##### 2:4.X6.4.1.1 Trigger Events
 
 The Sender determines the selection state of some report contents should be synchronized with other Subscribers. Selections may have occurred automatically or manually by a user.
 
@@ -41,7 +41,7 @@ The Sender determines that the selected content are no longer required and reset
 
 > Note: Prior selected content are automatically reset by the selection of new content. Reset is used when the current selected content should be unselected without selecting new contents. See [DiagnosticReport select Event Workflow](https://build.fhir.org/ig/HL7/fhircast-docs/3-6-4-diagnosticreport-select.html#workflow) for details.
 
-##### 2:3.X6.4.1.2 Message Semantics
+##### 2:4.X6.4.1.2 Message Semantics
 
 This message is a [FHIRcast Request Context Change](https://build.fhir.org/ig/HL7/fhircast-docs/2-6-RequestContextChange.html#request-context-change-body) request. The Sender is the FHIRcast Subscriber. The Manager is the FHIRcast Hub.
 
@@ -57,9 +57,9 @@ If the Sender is retrying this context change request due to not receiving a res
 
 If the Sender retries the request due to an error response from the Manager, then the Sender shall assign a new `event.id` to indicate that it is a new request.
 
-##### 2:3.X6.4.1.3 Expected Actions
+##### 2:4.X6.4.1.3 Expected Actions
 
-The Manager shall receive and validate the request. See 2:3.X6.4.2.2 for error conditions.
+The Manager shall receive and validate the request. See Section 2:4.X6.4.2.2 for error conditions.
 
 Per FHIRcast, the Manager will keep track of the selection states of all contents. In particular:
 - All previously selected contents will be unselected
@@ -69,13 +69,13 @@ The Manager shall ignore any selected resources in the request that are not know
 
 > Note: The Manager should continue to process the request and should not return an error due to unknown selected resources.
 
-#### 2:3.X6.4.2 Select Report Content Response Message
+#### 2:4.X6.4.2 Select Report Content Response Message
 
-##### 2:3.X6.4.2.1 Trigger Events
+##### 2:4.X6.4.2.1 Trigger Events
 
 The Manager finishes processing the Select Report Content request.
 
-##### 2:3.X6.4.2.2 Message Semantics
+##### 2:4.X6.4.2.2 Message Semantics
 
 This message is a [FHIRcast Request Context Change](https://build.fhir.org/ig/HL7/fhircast-docs/2-6-RequestContextChange.html#request-context-change-body) response. The Sender is the FHIRcast Subscriber. The Manager is the FHIRcast Hub.
 
@@ -89,16 +89,16 @@ The Manager shall return `400` Bad Request error:
 
 The Manager may return other applicable HTTP error status codes.
 
-##### 2:3.X6.4.2.3 Expected Actions
+##### 2:4.X6.4.2.3 Expected Actions
 
 If the response is an error, then the Sender may consider retrying the request.
 
-### 2:3.X6.5 Security Considerations
+### 2:4.X6.5 Security Considerations
 
 See [IRA Security Considerations](volume-1.html#1xx5-ira-security-considerations).
 
 Local policy should consider what users and systems have permissions to select report content and configure appropriately. 
 
-#### 2:3.X6.5.1 Security Audit Considerations
+#### 2:4.X6.5.1 Security Audit Considerations
 
 This transaction is not associated with an ATNA Trigger Event.
