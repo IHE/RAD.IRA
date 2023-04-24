@@ -99,8 +99,6 @@ The `status` shall be one of the following:
 - `202` Accepted if the Subscriber successfully received the event and will process the event asynchronously
 - `4xx` or `5xx` if the Subscriber failed to process the event
 
-> Note: If the Subscriber returned with `status` `202` Accepted and later failed to process the event, then the Subscriber shall send a `syncerror` event following [Notify Error](rad-x11.html).
-
 ##### 2:4.X9.4.2.3 Expected Actions
 
 If the Manager receives an error confirmation message (i.e., `status` `4xx` or `5xx`) from at least one of the Subscribers, then the Manager shall send a `syncerror` event following [Notify Error](rad-x11.html) to all subscribers that subscribed to the `syncerror` event.
