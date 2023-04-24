@@ -375,6 +375,8 @@ Table 1:XX.1-1 lists the transactions for each actor directly involved in the IM
 ### 1:XX.1.1 Actors Description and Actor Profile Requirements
 Most requirements are documented in RAD TF-2 Transactions. This section documents any additional requirements on this profile's actors.
 
+> Note: Many actor requirements below assume an understanding of FHIRcast and how this profile uses it. Please refer to the [Concept section](https://profiles.ihe.net/RAD/IRA/volume-1.html#1xx41-concepts).
+
 #### 1:XX.1.1.1 Image Display
 
 The Image Display is responsible for presenting patients' studies and relevant information to the user so that the user can make diagnostic decisions on the studies.
