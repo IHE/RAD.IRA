@@ -7,7 +7,7 @@ IRA uses FHIR R5 for the resources used in FHIRcast events.
 
 IRA uses FHIRcast 3.0.0 which is currently under development.
 
-Links to FHIRcast will be updated to the final version when the official version is published.
+Links to FHIRcast throughout this profile will be updated to the final version when the official version is published.
 
 | [Significant Changes, Open and Closed Issues](issues.html) |
 {: .grid}
