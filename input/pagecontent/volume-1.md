@@ -1126,7 +1126,7 @@ In this use case,
 </div>
 <br clear="all">
 
-Figure 1:XX.4.2.2-1: Basic Reporting Flow in IRA Profile
+Figure 1:XX.4.2.1.2-1: Basic Reporting Flow in IRA Profile
 
 ###### 1:XX.4.2.1.2.1 Step 1: Open Reporting Session
 
@@ -1167,7 +1167,7 @@ Furthermore, the event has a version ID. For the Image Display as a Driving Appl
 </div>
 <br clear="all">
 
-**Figure 1:XX.4.2.1.2.1-2: Open Study in Context Flow in IRA Profile**
+**Figure 1:XX.4.2.1.2.2-1: Open Study in Context Flow in IRA Profile**
 
 ###### 1:XX.4.2.1.2.3 Step 3: Add Content (Optional)
 
@@ -1180,7 +1180,7 @@ When the Report Creator receives and accepts the event, it can apply the updates
 </div>
 <br clear="all">
 
-**Figure 1:XX.4.2.1.2.1-3: Add Content Flow in IRA Profile**
+**Figure 1:XX.4.2.1.2.3-1: Add Content Flow in IRA Profile**
 
 ###### 1:XX.4.2.1.2.4 Step 4: Select Content (Optional)
 
@@ -1201,7 +1201,7 @@ Generally, selecting a content means putting the content in 'focus'. Note that t
 </div>
 <br clear="all">
 
-**Figure 1:XX.4.2.1.2.1-4: Select Content Flow in IRA Profile**
+**Figure 1:XX.4.2.1.2.4-1: Select Content Flow in IRA Profile**
 
 ###### 1:XX.4.2.1.2.5 Step 5: Sign-off Report
 
@@ -1224,7 +1224,7 @@ The Report Creator may have some internal mechanism to keep the report for a gra
 </div>
 <br clear="all">
 
-**Figure 1:XX.4.2.1.2.1-5: Sign-off Report Flow in IRA Profile**
+**Figure 1:XX.4.2.1.2.5-1: Sign-off Report Flow in IRA Profile**
 
 The flow above shows the simple case with a sequential switching of report context. In this case, a report context is opened and then closed before the next report context is opened.
 
@@ -1239,7 +1239,7 @@ The following diagram shows what can happen in case of rapid switching of the re
 </div>
 <br clear="all">
 
-**Figure 1:XX.4.2.1.2.1-5b: Rapid Context Switching Flow in IRA Profile**
+**Figure 1:XX.4.2.1.2.5-2: Rapid Context Switching Flow in IRA Profile**
 
 ###### 1:XX.4.2.1.2.6 Step 6: Close Reporting Session
 
@@ -1252,7 +1252,7 @@ The Hub closes the connection to the Report Creator. Note that if there are othe
 </div>
 <br clear="all">
 
-**Figure 1:XX.4.2.1.2.1-6: Close Reporting Session Flow in IRA Profile**
+**Figure 1:XX.4.2.1.2.6-1: Close Reporting Session Flow in IRA Profile**
 
 #### 1:XX.4.2.2 Use Case \#2: Complex Reporting
 
@@ -1340,6 +1340,8 @@ In case a reporting session has not been started when the radiologist reviews th
 {%include report-overread.svg%}
 </div>
 <br clear="all">
+
+**Figure 1:XX.4.2.5-1: Overread Draft Report Flows in IRA Profile**
 
 ## 1:XX.5 IRA Security Considerations
 
