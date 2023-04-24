@@ -101,7 +101,7 @@ The `status` shall be one of the following:
 
 ##### 2:4.X9.4.2.3 Expected Actions
 
-If the Manager receives an error confirmation message (i.e., `status` `4xx` or `5xx`) from at least one of the Subscribers, then the Manager shall send a `syncerror` event following [Notify Error](rad-x11.html) to all subscribers that subscribed to the `syncerror` event.
+If the Manager receives an error confirmation message (i.e., `status` `4xx` or `5xx`) from at least one of the Subscribers, then the Manager shall send a `syncerror` event using the [Generate SyncError Event](rad-x10.html) to all subscribers that subscribed to the `syncerror` event.
 
 The Manager shall not change the current context in the session even if it receives an error confirmation message.
 
