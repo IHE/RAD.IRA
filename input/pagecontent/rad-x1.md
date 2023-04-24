@@ -73,7 +73,7 @@ The Manager shall add the Subscriber and its subscribed events for the session.
 
 The Manager shall accept any events (including custom events not defined in FHIRcast [Event Library](https://build.fhir.org/ig/HL7/fhircast-docs/3_Events.html)) specified in the `hub.events` attributes.
 
-If the Subscriber already exist, then the Manager shall:
+If the Subscriber already exist in the session, then the Manager shall:
 - Update the list of events subscribed by the Subscriber
 - Update the expiry of the Subscriber's websocket connection
 
