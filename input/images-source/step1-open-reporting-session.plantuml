@@ -29,7 +29,7 @@ Hub-->Report: //Accept//\n//with hub.channel.endpoint//
 Report->Hub: Connect to Notification Channel [RAD-X2]
 Hub-->Report: //Confirm connection//
 
-Report->Hub: Get Current Context [RAD-X6]\n(catch up with current context and content)
+Report->Hub: Get Current Context [RAD-X8]\n(catch up with current context and content)
 Hub-->Report: //Return empty context//
 
 @enduml
