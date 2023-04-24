@@ -1192,11 +1192,11 @@ Occasionally it is desirable to trigger activities on subscribers based on user 
 
 Content selection can be used in various way:
 - as input for a follow up action (e.g., images or measurements selected by a user in the Image Display as input for hyperlink in the Report Creator)
-- bring something to focus (e.g., user clicks on the measurement in a report in the Report Creator triggers the Image Display to bring the corresponding images to focus)
+- bring something to focus (e.g., user clicks on a measurement in a report in the Report Creator which triggers the Image Display to bring the corresponding images to focus)
 
 Sometimes the radiologist selected certain elements (e.g., images, annotation, specific measurements, etc.) in the Image Display. When this happened, the Image Display, grouped with the Content Creator, sends a event to the Hub using Select Report Content [RAD-X6] indicating what contents have been selected. The Hub broadcasts the event to all Subscribers.
 
-When the Report Creator receives the event, it can apply the selection according to its business logic. For example, it can highlight to the user what are selected so that the user can perform some actions. In this example, the radiologist uses a voice command to insert a hyperlink in the report. The Report Creator uses the selected content to generate the hyperlink.
+When the Report Creator receives the event, it can apply the selection according to its business logic. For example, it can highlight to the user what is selected so that the user can perform an appropriate action. In this example, the radiologist uses a voice command to insert a hyperlink in the report. The Report Creator uses the selected content to generate the hyperlink.
 
 Generally, selecting a content means putting the content in 'focus'. Note that this profile is agnostic about the user interface implementation of 'focus', e.g., it may result in the selected contents being highlighted in the user interface, or it may result in the selected contents being flagged in the backend service. Specific behavior depends on the implementation.
 
