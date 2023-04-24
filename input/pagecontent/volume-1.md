@@ -1219,9 +1219,9 @@ The Hub sends the update event and the termination event to all Subscribers. Onc
 
 Upon receiving the termination event, the Image Display removes the study from its worklist.
 
-> Note: The Image Display may have different behavior when processing the termination event depending on the report status of the study. For example, it the status is *draft completed*, then the Image Display may set the study in a separate Draft worklist for later follow up.
+> Note: The Image Display may have different behavior when processing the termination event depending on the report status of the study. For example, if the status is *draft completed*, then the Image Display may set the study in a separate Draft worklist for later follow up.
 
-The Report Creator may have some internal mechanism to keep the report for a grace period after signed off and before sending it out to other recipients. The Report Creator persists the report according to its business logic.
+The Report Creator may have some internal mechanism to keep the report for a grace period after the report is signed off and before sending the report to other recipients. The Report Creator persists the report according to its business logic.
 
 <div>
 {%include step5-signoff-report.svg%}
