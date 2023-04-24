@@ -967,7 +967,7 @@ considerations and Section 1:52.6 describes some optional groupings in other rel
 | Report Creator | -- | None | -- |
 | Worklist Client | -- | None | -- |
 | Evidence Creator | -- | None | -- |
-| Content Creator | Enable producing content sharing events | IRA / Any actor | [IRA TF-1: 1.1](volume-1.html#1xx11-actors-description-and-actor-profile-requirements) |
+| Content Creator | -- | IRA / Image Display<br>IRA / Report Creator<br>IRA / Worklist Client<br>IRA / Evidence Creator | [IRA TF-1: 1.1](volume-1.html#1xx11-actors-description-and-actor-profile-requirements) |
 | Watcher | -- | None | -- |
 | Hub | -- | None | -- |
 {: .grid}
