@@ -1056,13 +1056,13 @@ This profile does not mandate any specific implementation design regarding when 
 
 #### 1:XX.4.1.6 Event Awareness vs Event Consumption
 
-`Event Awareness` means an application, upon receiving an event from the `Hub`, has the knowledge of an event has happened.
+`Event Awareness` means an application, upon receiving an event from the `Hub`, has the knowledge that an event has happened.
 
-`Event Consumption` means an application, upon receiving an event from the `Hub`, reacts to the event and performed some actions according to its business logic.
+`Event Consumption` means an application, upon receiving an event from the `Hub`, reacts to the event and performs some actions according to its business logic.
 
 This means from the content sharing application perspective, in order to synchronize the context with other applications, it may be desirable to publish events frequently so that other subscribers can be aware of the same context as in the content sharing application.
 
-On the other hand, from the subscribing application perspective, it is up to its business logic to determine how to react to the received event. This business logic may be automatic or requires additional user input.
+On the other hand, from the subscribing application perspective, it is up to its business logic to determine how to react to the received event. This business logic may be automatic or require additional user input.
 
 For example, when the user goes through the study images in Image Display (a content sharing application), for each nodule that the user identified (e.g., 1, 2, ..., 9, 10), the Image Display publishes a corresponding event. In the Report Creator (a subscribing application), for each event received, it keeps track of the nodule in its nodule tracking bookmark. Once the user finished reviewing the full study, the user uses the nodule tracking bookmark in the Report Creator and selects the top 3 (e.g., 2, 5, 9) to include in the final report. Note that since the Report Creator is aware of all the nodules observed by synchronizing the context with the Image Display, selecting a subset of the nodules to be included in the final report (i.e., event consumption) is an operation internal to the Report Creator.
 
