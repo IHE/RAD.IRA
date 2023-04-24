@@ -1160,7 +1160,7 @@ When the radiologist selects a study in the worklist in the Image Display, as a 
 
 The Report Creator, as a Synchronizing Application, receives the event and opens the corresponding procedure for the study.
 
-Furthermore, the event has a version ID. For the Image Display as a Driving Application, including the version ID when submitting the next event allows the Hub to ensure proper event sequence. For the Report Creator as a Synchronizing Application, keeping track of the version ID enables it to check if it missed any prior events. Event sequencing is important for content sharing because all updates and selects are expected to be applied in the same sequence as they are emitted by the Content Creator.
+Furthermore, the event has a version ID. For the Image Display as a Driving Application, including the version ID when submitting the next event allows the Hub to ensure proper event sequence. For the Report Creator as a Synchronizing Application, keeping track of the version ID enables it to check if it missed any prior events. Event sequencing is important for content sharing because all updates and selects are expected to be applied in the same sequence as they are emitted by one or more Content Creators (See [FHIRcast event-based content sharing](https://build.fhir.org/ig/HL7/fhircast-docs/2-10-1-ContentSharingFHIRcastMessaging.html) for details).
 
 <div>
 {%include step2-open-study-in-context.svg%}
