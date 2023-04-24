@@ -58,7 +58,7 @@ The request shall have the payload with the parameters in the following table:
 |`hub.events`           | Required*    | *string* | Shall include these five events, comma-separated: <br>`diagnosticreport-open`,<br>`diagnosticreport-close`,<br>`diagnosticreport-update`, <br>`diagnosticreport-select`,<br>`syncerror`<br><br>The Subscriber may include other events.|
 |`hub.lease_seconds`    | Optional    | *number* | The positive integer indicating the number of seconds that the Subscriber wants the subscription to be active. |
 |`hub.channel.endpoint` | Conditional | *string* | The WSS URL identifying an existing WebSocket subscription.<br><br>Required if the Subscriber wants to update or renew an existing subscription.|
- |`subscriber.name`      | Required*    | *string* | A unique identifier of the Subscriber.|
+ |`subscriber.name`      | Required*    | *string* | An explicit identifier of the Subscriber which is likely to be unique in a reporting session.|
 {: .grid}
 
 > Note: Rows with '*' in the Optionality column have constraints different from baseline FHIRcast Subscription Request.
