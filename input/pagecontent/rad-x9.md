@@ -66,7 +66,7 @@ Upon receiving a `[FHIR resource]-open` event, the Subscriber will *open* the co
 Upon receiving a `[FHIR resource]-update` event, the Subscriber:
 - Will validate if the `context.priorVersionId` in the event matches the current version ID in the local context.
     - If true, the Subscriber shall handle the update event according to its business logic.
-    - If not, this means the Subscriber missed one or more prior events. In this case, the Subscriber is responsible for subsequently retrieving the current context.
+    - If not, this means the Subscriber missed one or more prior events. In this case, the Subscriber is responsible for subsequently retrieving the current context and applying the retrieved context according to its business logic.
 - Shall update the current version ID in the local context to match the `context.versionId` from the event, even if its business logic requires no specific processing.
 - For contents of interest that are not inline in the `[FHIR resource]-update` event, the Subscriber will need to retrieve the content based on the `entry.fullurl`.
 
