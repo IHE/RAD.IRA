@@ -37,7 +37,7 @@ The Manager shall support handling such messages from more than one Sender.
 
 A Sender uses this transaction when:
 - It determines that work should begin on a new report, and opens a new context to synchronize that work with other Subscribers.
-- It determines to resume a previously opened report that has not yet complete, and re-opens the same context to synchronize that work with other Subscribers.
+- It determines to resume a previously opened report that has not yet complete, and re-opens the previous context to synchronize that work with other Subscribers.
 
 ##### 2:4.X3.4.1.2 Message Semantics
 
