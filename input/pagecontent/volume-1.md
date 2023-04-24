@@ -1094,6 +1094,8 @@ The Hub can be deployed on premises or in the cloud. The other actors may or may
 
 FHIRcast is a generic event distribution mechanism. Most transactions in this profile are generally applicable to any events. Any applications are permitted to use FHIRcast and the Hub for use cases beyond reporting. In this case, the application may consider using different sessions and events for different purposes. For example, an Image Manager may setup a separate *advanced visualization* session with an Evidence Creator and uses `ImagingStudy-*` events for communication.
 
+> Note: The FHIRcast specification [Event Format](https://build.fhir.org/ig/HL7/fhircast-docs/2-3-Events.html#event-format) indicates that [FHIR resource]-(open | close | update | select) events should be supported even for FHIR resources not included in the specification's event library.
+
 Furthermore, the Hub used in these cases may be different from the Hub used for the reporting session. Therefore an application needs to be prepared to support different sessions with different Hubs, and know which session to use for what purpose.
 
 ### 1:XX.4.2 Use Cases
