@@ -1058,7 +1058,7 @@ This profile does not mandate any specific implementation design regarding when 
 
 `Event Consumption` means an application, upon receiving an event from the `Hub`, reacts to the event and performed some actions according to its business logic.
 
-This means from the content sharing application perspective, in order to synchronize the context with other applications, it may be desirable to publish frequent events so that other subscribers can be aware of the same context as in the content sharing application.
+This means from the content sharing application perspective, in order to synchronize the context with other applications, it may be desirable to publish events frequently so that other subscribers can be aware of the same context as in the content sharing application.
 
 On the other hand, from the subscribing application perspective, it is up to its business logic to determine how to react to the received event. This business logic may be automatic or requires additional user input.
 
