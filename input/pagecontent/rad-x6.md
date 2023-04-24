@@ -47,8 +47,6 @@ This message is a [FHIRcast Request Context Change](https://build.fhir.org/ig/HL
 
 The `event.context` shall conform to [DiagnosticReport select Event](https://build.fhir.org/ig/HL7/fhircast-docs/3-6-4-diagnosticreport-select.html).
 
-The `event`.`context.versionId` shall be the newest version ID of the report context known to the Sender.
-
 The Sender shall include all selected resources in the event, including resources that were selected previously which should remain selected.
 
 > Note: This is necessary because there is an implicit unselect of any previously selected resources for each new `DiagnosticReport-select` event received. See [DiagnosticReport select Event Workflow](https://build.fhir.org/ig/HL7/fhircast-docs/3-6-4-diagnosticreport-select.html#workflow) for details.
@@ -85,7 +83,6 @@ The Manager shall return `400` Bad Request error:
 - if `timestamp`, `id` or `event` are not set
 - if `event.context` does not include `report` and `select`
 - if `event`.`hub.topic` is not a known session
-- if `context.versionId` does not match the latest version ID of the `report` anchor context
 
 The Manager may return other applicable HTTP error status codes.
 
