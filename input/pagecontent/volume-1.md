@@ -983,17 +983,17 @@ At its heart, this profile synchronizes a group of applications using a Publish 
 The following are some key concepts:
 - Participating applications are `Subscribers` that register with and communicate with a `Hub`
 - `Subscribers` do not communicate with other `Subscribers` directly.
-- Typically the `Hub` only communicates with authenticated `Subscribers`
-- When `Subscribers` generate data that needs to be made available to other applications, or perform actions that the other applications should be notified of, they *publish* it by sending an event with the relevant details to the Hub
-- The `Hub` forwards events received from Driving Applications to the other Synchronizing Applications
-- `Subscribers` can configure their subscription to limit what types of events the `Hub` sends to them.
+- The `Hub` only communicates with authenticated `Subscribers`
+- `Subscribers` can configure their subscription to limit what types of events the `Hub` forwards to them.
+- When `Subscribers` generate data that should be made available to other applications, or perform actions of which other applications should be aware, they *publish* it by sending an event request with the relevant details to the Hub
+- The `Hub` forwards accepted event requests from a `Subscriber` to other `Subscribers` subscribed to that type of event
 - `Subscribers` react to events from the `Hub` based on their internal business logic
-- `Subscribers` do not need to be explicitly aware of what other subscribers (if any) are receiving their events or how they react to them
-- The `Hub` also maintains the collection of data it has received, organized them according to the context
+- It is not necessary (nor possible) for `Subscribers` to be aware of what other `Subscribers` (if any) are receiving an event they requested to be forwarded by the `Hub`, nor how other `Subscribers` react to the event
+- The `Hub` maintains the current state of content (if any) associated with all open contexts
 - `Subscribers` can request the current context and associated contents from the `Hub`
 - The `Hub` can simultaneously manage multiple groups of `Subscribers` and their associated data in different `sessions`
 - Each `session` is identified by a unique “topic ID”
-- The `Subscriber` that opens and closes context is referred to as the Driving Application. A Driving Application usually also launches other applications, providing them with the address of the `Hub` and the `topic ID` so they can join the same `session`.
+- The `Subscriber` which opens a context typically is responsible for closing that context and is informally referred to as the Driving Application. A Driving Application (or other `Subscribers`) may launch other applications, providing them with the address of the `Hub` and the `topic ID` so they can join the same `session`.
 
 #### 1:XX.4.1.2 Terminology and Model
 
