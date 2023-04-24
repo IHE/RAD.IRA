@@ -882,6 +882,7 @@ For all received events, the Hub shall support the following core behaviors:
 - It shall receive and distribute the event to all Subscribers subscribed to that event type (see [Event Notification](https://build.fhir.org/ig/HL7/fhircast-docs/2-5-EventNotification.html))
 - It shall manage the current context in the session for all context-change events (i.e., `*-open` and `*-close` events) (see [Request Context Change](https://build.fhir.org/ig/HL7/fhircast-docs/2-6-RequestContextChange.html))
 - It shall serve as a transaction coordinator to avoid lost updates and other out of sync conditions when processing content sharing events (i.e., `*-update` and `*-select` events) (see [Content Sharing](https://build.fhir.org/ig/HL7/fhircast-docs/2-10-ContentSharing.html))
+- If it receives `*-update`, `*-select` or `*-close` events for a context that is not opened, then it shall return `409` Conflict response.
 
 Additional profile requirements for specific events are defined in the corresponding transactions.
 
