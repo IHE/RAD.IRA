@@ -1286,6 +1286,8 @@ In this use case,
 - Radiologist completes and signs off the report and moves on to the next study in the worklist
 - Eventually, Radiologist finishes all studies in the reporting worklist and closes the applications
 
+Note that at Step 7, since all the necessary applications have already been started, there is no need to relaunch the applications and re-establish their subscriptions. However, it may be desirable for some specialty applications that are not in common use to be terminated and restarted if their capabilities are later required.
+
 <div>
 {%include multi_app.svg%}
 </div>
