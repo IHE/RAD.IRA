@@ -858,7 +858,7 @@ If the Watcher accepted an event initially (i.e., returning `202` Accepted) and 
 
 #### 1:XX.1.1.7 Hub
 
-The Hub is responsible for managing event flows between Subscribers in reporting sessions and maintaining the current context and transaction of content sharing in each session.
+The Hub is responsible for managing event flows between Subscribers in reporting sessions and maintaining the current context.
 
 The Hub is responsible for authorizing the following:
 - which Subscriber has permission to invoke what requests
