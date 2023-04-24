@@ -1048,7 +1048,9 @@ A driving application is a subscriber that initiates a context change request. F
 
 For example, when a user is actively making measurements or annotations, instead of capturing every change a user made (e.g., incremental changes in size or location of a shape) as an event which can result in many intermittent and partial events, an application may use specific triggers (e.g., when a user saves the changes) or an idle time threshold to detect when the user completed making the changes. The application then creates the corresponding event(s) to capture the result.
 
-On the other hand, this profile is designed to communicate _in-progress_ data as soon as possible. Therefore it is not desirable for the driving application to _wait_ too long. For example, if the driving application supports exporting measurements and annotations as DICOM SR or other DICOM objects, it is not necessary to wait until the DICOM objects are created before sending the corresponding event.
+On the other hand, this profile is designed to communicate _in-progress_ data as soon as possible. Therefore it is not desirable for the driving application to _wait_ too long. For example, if the driving application supports exporting measurements and annotations as DICOM SR or other DICOM objects, it is not appropriate to wait until the DICOM objects are created before sending the corresponding event.
+
+A reasonable approach could be for an application to acquire a complete measurement and perhaps some measurement characteristics, then send an event request containing this information to the Hub.
 
 This profile does not mandate any specific implementation design regarding when an application should capture the result of an action as an event. The intention is that the driving application will send an event as soon as feasible so that all subscribers in a reporting session can be synchronized and provide a good user experience.
 
