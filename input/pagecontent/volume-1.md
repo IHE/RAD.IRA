@@ -1228,7 +1228,7 @@ The Report Creator may have some internal mechanism to keep the report for a gra
 
 The flow above shows the simple case with a sequential switching of report context. In this case, a report context is opened and then closed before the next report context is opened.
 
-In practice, the radiologist is likely to continue with the next study in the worklist without any awareness of the events happening behind the scene. If the initiating Driving Application and terminating Driving Application are different as in this example, then it is possible that the radiologist moves to the next study and hence the Image Display opens a new report context before the Image Display receives the Close Report Context [RAD-X5] event of the reported study.
+In practice, the radiologist is likely to continue with the next study in the worklist without any awareness of the events happening behind the scene. If the initiating Driving Application and terminating Driving Application are different as in this example, then it is possible that the radiologist moves to the next study and hence the Image Display opens a new report context before the Image Display receives the Close Report Context [RAD-X4] event of the reported study.
 
 Such rapid context switching is supported by this profile. The Hub and each Subscriber maintain multiple open context simultaneously. As long as the context is not closed, it still exists. Each event is associated to a particular anchor context. Therefore a Subscriber can reliably match an event to its internal state according to the context ID of the anchor context in the event. 
 
