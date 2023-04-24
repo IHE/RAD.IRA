@@ -3,9 +3,9 @@ The Integrated Reporting Applications (IRA) profile helps applications that are 
 
 <div markdown="1" class="stu-note">
 
-IRA uses FHIR R5 for the resources used in FHIRcast events. Specifically this includes the FHIR ImagingSelection resource. FHIR R5 is currently under development.
+IRA uses FHIR R5 for the resources used in FHIRcast events.
 
-IRA also uses FHIRcast 3.0.0 which is currently under development.
+IRA uses FHIRcast 3.0.0 which is currently under development.
 
 Links to FHIRcast will be updated to the final version when the official version is published.
 
