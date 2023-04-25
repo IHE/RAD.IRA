@@ -543,20 +543,20 @@ The Report Creator shall support all Behaviors shown as “R” in Optionality. 
       <td rowspan="3">DiagnosticReport-update</td>
       <td><code class="language-plaintext highlighter-rouge">updates</code></td>
       <td>ImagingStudy</td>
-      <td>O</td>
-      <td>Add comparison study to report</td>      
+      <td>R</td>
+      <td>Make provided comparison studies available for reference in the report</td>      
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">updates</code></td>
       <td>ImagingSelection</td>
-      <td>O</td>
-      <td>Add annotations of selected images to data collection for further processing</td>      
+      <td>R</td>
+      <td>Make images and/or annotations in the ImageSelection resource available for reference in the report</td>      
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">updates</code></td>
       <td>Observation</td>
-      <td>O</td>
-      <td>Add measurements and annotations to data collection for further processing</td>      
+      <td>R</td>
+      <td>Make provided measurements and annotations available for reference in the report</td>      
     </tr>
     <tr>
       <td rowspan="2">DiagnosticReport-select</td>
