@@ -562,13 +562,13 @@ The Report Creator shall support all Behaviors shown as “R” in Optionality. 
       <td rowspan="2">DiagnosticReport-select</td>
       <td><code class="language-plaintext highlighter-rouge">select</code></td>
       <td>ImagingStudy</td>
-      <td>O</td>
+      <td>R</td>
       <td>Select comparison study and able to apply user commands (See Note 1)</td>      
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">select</code></td>
       <td>ImagingSelection</td>
-      <td>O</td>
+      <td>R</td>
       <td>Select images and annotations and able to apply user commands (See Note 1)</td>      
     </tr>
     <tr>
