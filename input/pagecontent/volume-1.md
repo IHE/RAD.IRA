@@ -518,7 +518,7 @@ The Report Creator shall support all Behaviors shown as “R” in Optionality. 
 <table class="grid">
   <thead>
     <tr>
-      <th>Event</th>
+      <th>Received Event</th>
       <th>Context Key</th>
       <th>Resources</th>
       <th>Optionality</th>
@@ -623,7 +623,7 @@ The Worklist Client shall support all Behaviors shown as “R” in Optionality.
 <table class="grid">
   <thead>
     <tr>
-      <th>Event</th>
+      <th>Received Event</th>
       <th>Context Key</th>
       <th>Resources</th>
       <th>Optionality</th>
@@ -701,7 +701,7 @@ The Evidence Creator shall support all Behaviors shown as “R” in Optionality
 <table class="grid">
   <thead>
     <tr>
-      <th>Event</th>
+      <th>Received Event</th>
       <th>Context Key</th>
       <th>Resources</th>
       <th>Optionality</th>
@@ -800,7 +800,7 @@ The Watcher shall support all Behaviors shown as “R” in Optionality. The Wat
 <table class="grid">
   <thead>
     <tr>
-      <th>Event</th>
+      <th>Received Event</th>
       <th>Context Key</th>
       <th>Resources</th>
       <th>Optionality</th>
