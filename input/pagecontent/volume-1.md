@@ -886,16 +886,6 @@ For all received events, the Hub shall support the following core behaviors:
 
 Additional profile requirements for specific events are defined in the corresponding transactions.
 
-##### 1:XX.1.1.7.2 Event Producing Requirements
-
-When a Hub has successfully processed a Close Report Context [RAD-X4] request, the Hub will establish a new current context. The Hub will select one of the existing open contexts in the session to be the new current context, typically the most recently opened context (i.e., resume a previous open context). If no open context exist, then current context will be empty.  
-
-When the Hub establishes a new current context, the Hub shall be capable of distributing a corresponding `DiagnosticReport-open` context event as if it had received Open Report Context [RAD-X3] requests.
-
-If the current context has associated contents, the Hub shall be capable of distributing corresponding `DiagnosticReport-update` and/or `DiagnosticReport-select` context events as if it had received Update Report Content [RAD-X5] and/or Select Report Content [RAD-X6] requests.
-
-> Note: These requirements are limited to processing reporting events in reporting sessions as defined in this profile. These requirements are not required for other events that the Hub received and processed.
-
 ## 1:XX.2 IRA Actor Options
 
 Options that may be selected for each actor in this implementation guide, are listed in Table 1:XX.2-1 below. Dependencies between options, when applicable, are specified in notes.
@@ -1013,7 +1003,7 @@ The following is a representation of the interaction model.
 > Note: The term `Driving Application` and `Synchronizing Application` in the diagram are *convenient* terms instead of actual defined terms. They are used here to highlight the additional capabilities a driving application can do, in particular:
 > - Start a new reporting session
 > - Launch another application
-> - Open or close a report context
+> - Open (including resume) or close a report context
 
 **Figure 1:XX.4.1.2-1: FHIRcast Concept Interaction Model**
 
@@ -1076,13 +1066,21 @@ Since the FHIR resources specified in the event may or may not be persisted in a
 
 The `DiagnosticReport-open` event includes both the `report` anchor context and associated contexts `patient` and `study`. Subsequent event(s) for this anchor context will only provide the `report` context. Therefore, it is up to the Subscriber to record internally the `patient` and `study` contexts associated with the `report` anchor context if that information is relevant to its business logic. 
 
-#### 1:XX.4.1.9 Interruption and Resume
+#### 1:XX.4.1.9 Interruption and Resume Report Context
 
-Occasionally a `Context` may be _interrupted_ because of _suspension_, meaning that before the `Context` is closed, another `Context` is opened. In this case, the information of the previous `Context` is still maintained by the `Hub` since it is not closed, but it is _suspended_ (i.e., not the `Current Context`).
+Occasionally a report context may be _interrupted_ because of _suspension_, meaning that before an initial report context is closed, a driving application opens a subsequent report context. For example, a radiologist needs to suspend a report on a study in order to review an urgent study.
 
-For example, a radiologist needs to suspend the current report on a study in order to review another urgent study. When switching to the urgent study, the report context of the previously opened study is not closed. Instead a new report context is opened for the urgent study. In this case, the `Current Context` is switched to the urgent study being opened. As soon as the user finished reviewing the urgent study and hence has closed the `Context` of the urgent study, the _suspended_ `Context` will resume to be the `Current Context` since it is the last opened `Context`.
+The `Hub` switches the `Current Context` to the urgent study being opened. The `Hub` distributes the open event to all subscribers to keep them synchronized. The initial report context is still maintained by the `Hub` since it is not closed, but it is _suspended_ (i.e., not the `Current Context`). 
+
+When the user finishes reviewing the urgent study, the report context of the urgent study is closed and all subscribers receive the close event. The `Hub` has been configured to set the `Current Context` to *empty* after closing the `Current Context`.
+
+The driving application sends a *new* open event for the _suspended_ report context to make it the new `Current Context`. All subscribers receive the open event and resume to the _suspended_ report context. Alternatively the driving application could choose to open any other report context as appropriate.
 
 See [Use Case #3](volume-1.html#1xx423-use-case-3-interruption-and-resume-flow) for more details.
+
+The `Hub` may alternatively have been configured to force immediate resumption of the _suspended_ report context. See [Close Report Context](rad-x4.html) for details.
+
+TODO: The last paragraph may be deleted after FHIRcast discussion.
 
 #### 1:XX.4.1.10 Deployment Considerations
 
