@@ -864,7 +864,7 @@ The Hub is responsible for authorizing the following:
 - which Subscriber has permission to invoke what requests
 - which context and content a Subscriber is eligible to access and in what type (e.g., read only, write only or ready and write)
 
-> Note: This profile does not mandate a specific authorization mechanism.
+> Note: This profile does not mandate a specific authorization mechanism. See Cross Profile Considerations section for recommendations.
 
 The Hub shall support [content sharing](https://build.fhir.org/ig/HL7/fhircast-docs/2-10-ContentSharing.html).
 
