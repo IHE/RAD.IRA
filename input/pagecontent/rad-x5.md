@@ -79,6 +79,10 @@ The Manager shall return `400` Bad Request error:
 - if `event.context` does not include `report` and `updates`
 - if `event`.`hub.topic` is not a known session
 - if `context.versionId` does not match the latest version ID of the `report` anchor context
+- if `updates` context key includes an entry to delete the `patient` context or update the patient ID in the resource `identifier`
+- if `updates` context key includes an entry to delete the `study` context or update the study instance UID or accession number in the resource `identifier`
+
+> Note: If the report context is opened with incorrect patient and/or study, the Subscriber should close the report context and open a new report context with the correct patient and/or study context, rather than using a DiagnosticReport-update event to correct the context.
 
 If the Manager rejected the Update Report Content request, then the Manager shall return a 4xx or 5xx HTTP error response code.
 
