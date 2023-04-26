@@ -541,10 +541,10 @@ The Report Creator shall support all Behaviors shown as “R” in Optionality. 
     </tr>
     <tr>
       <td rowspan="3">DiagnosticReport-update</td>
-      <td><code class="language-plaintext highlighter-rouge">updates</code></td>
-      <td>ImagingStudy</td>
+      <td><code class="language-plaintext highlighter-rouge">report</code></td>
+      <td>DiagnosticReport</td>
       <td>R</td>
-      <td>Make provided comparison studies available for reference in the report</td>      
+      <td>Make provided comparison studies available (defined in associatedStudy extension attribute) for reference in the report</td>      
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">updates</code></td>
@@ -561,15 +561,15 @@ The Report Creator shall support all Behaviors shown as “R” in Optionality. 
     <tr>
       <td rowspan="2">DiagnosticReport-select</td>
       <td><code class="language-plaintext highlighter-rouge">select</code></td>
-      <td>ImagingStudy</td>
+      <td>ImagingSelection</td>
       <td>R</td>
-      <td>Select comparison study and able to apply user commands (See Note 1)</td>      
+      <td>Put images and/or annotations <i>in focus</i> and able to apply user commands (See Note 1)</td>      
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">select</code></td>
-      <td>ImagingSelection</td>
+      <td>Observation</td>
       <td>R</td>
-      <td>Select images and annotations and able to apply user commands (See Note 1)</td>      
+      <td>Put measurements and annotations <i>in focus</i> and able to apply user commands (See Note 1)</td>      
     </tr>
     <tr>
       <td>DiagnosticReport-close</td>
