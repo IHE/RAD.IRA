@@ -394,7 +394,7 @@ The Image Display shall be able to launch other applications and synchronize the
 
 ##### 1:XX.1.1.1.1 Event Handling Requirements
 
-In Table 1:XX.1.1.1.1-1, for each Received Event, Context Key specifies the contexts in the received event and Resources specifies the FHIR resources used in the given context.
+In Table 1:XX.1.1.1.1-1, for each Received Event, Context Key specifies the context in the received event (including the special `updates` and `select` contexts used in content sharing) and Resources specifies the FHIR resources used in the given context.
 The Image Display shall support all Behaviors shown as “R” in Optionality. The Image Display may support suggested behaviors ("O" in Optionality).
 
 **Table 1:XX.1.1.1.1-1: Event Handling Requirements**
@@ -516,7 +516,7 @@ The Report Creator shall be able to launch other applications and synchronize th
 
 ##### 1:XX.1.1.2.1 Event Handling Requirements
 
-In Table 1:XX.1.1.2.1-1, for each Received Event, Context Key specifies the contexts in the received event and Resources specifies the FHIR resources used in the given context.
+In Table 1:XX.1.1.2.1-1, for each Received Event, Context Key specifies the context in the received event (including the special `updates` and `select` contexts used in content sharing) and Resources specifies the FHIR resources used in the given context.
 The Report Creator shall support all Behaviors shown as “R” in Optionality. The Report Creator may support suggested behaviors ("O" in Optionality).
 
 **Table 1:XX.1.1.2.1-1: Event Handling Requirements**
@@ -627,7 +627,7 @@ The Worklist Client shall be able to launch other applications and synchronize t
 
 ##### 1:XX.1.1.3.1 Event Handling Requirements
 
-In Table 1:XX.1.1.3.1-1, for each Received Event, Context Key specifies the contexts in the received event and Resources specifies the FHIR resources used in the given context.
+In Table 1:XX.1.1.3.1-1, for each Received Event, Context Key specifies the context in the received event (including the special `updates` and `select` contexts used in content sharing) and Resources specifies the FHIR resources used in the given context.
 The Worklist Client shall support all Behaviors shown as “R” in Optionality. The Worklist Client may support suggested behaviors ("O" in Optionality).
 
 **Table 1:XX.1.1.3.1-1: Event Handling Requirements**
@@ -711,7 +711,7 @@ The Evidence Creator shall be capable of being launched by another application. 
 
 ##### 1:XX.1.1.4.1 Event Handling Requirements
 
-In Table 1:XX.1.1.4.1-1, for each Received Event, Context Key specifies the contexts in the received event and Resources specifies the FHIR resources used in the given context.
+In Table 1:XX.1.1.4.1-1, for each Received Event, Context Key specifies the context in the received event (including the special `updates` and `select` contexts used in content sharing) and Resources specifies the FHIR resources used in the given context.
 The Evidence Creator shall support all Behaviors shown as “R” in Optionality. The Evidence Creator may support suggested behaviors ("O" in Optionality).
 
 **Table 1:XX.1.1.4.1-1: Event Handling Requirements**
@@ -816,7 +816,7 @@ The Watcher shall be capable of being launched by another application. When laun
 
 ##### 1:XX.1.1.6.1 Event Handling Requirements
 
-In Table 1:XX.1.1.6.1-1, for each Received Event, Context Key specifies the contexts in the received event and Resources specifies the FHIR resources used in the given context.
+In Table 1:XX.1.1.6.1-1, for each Received Event, Context Key specifies the context in the received event (including the special `updates` and `select` contexts used in content sharing) and Resources specifies the FHIR resources used in the given context.
 The Watcher shall support all Behaviors shown as “R” in Optionality. The Watcher may support suggested behaviors ("O" in Optionality).
 
 **Table 1:XX.1.1.6.1-1: Event Handling Requirements**
