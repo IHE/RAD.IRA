@@ -69,8 +69,12 @@ Upon receiving a `[FHIR resource]-update` event, the Subscriber:
     - If not, this means the Subscriber missed one or more prior events. In this case, the Subscriber is responsible for subsequently retrieving the current context and applying the retrieved context according to its business logic.
 - Shall update the current version ID in the local context to match the `context.versionId` from the event, even if its business logic requires no specific processing.
 - For contents of interest that are not inline in the `[FHIR resource]-update` event, the Subscriber will need to retrieve the content based on the `entry.fullurl`.
+
+TODO: Rework the following requirements
+
+- Ignore update that the anchor context is unknown to the Subscriber
+- Process all -update events and synchronize
 - May process a subset of updates specified in the `updates` context key according to its business logic.
-    - Shall stay synchronized for relevant subset of updates 
 
 ##### 2:4.X9.4.1.3.3 Handling select events
 
