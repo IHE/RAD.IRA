@@ -411,17 +411,23 @@ The Image Display shall support all Behaviors shown as “R” in Optionality. T
   </thead>
   <tbody>
     <tr>
-      <td rowspan="2">DiagnosticReport-open</td>
+      <td rowspan="3">DiagnosticReport-open</td>
       <td><code class="language-plaintext highlighter-rouge">report</code></td>
       <td>DiagnosticReport</td>
       <td>R</td>
       <td>Maintain association of report context to associated patient and study</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">patient</code><br/><code class="language-plaintext highlighter-rouge">study</code></td>
-      <td>Patient<br/>ImagingStudy</td>
+      <td><code class="language-plaintext highlighter-rouge">patient</code></td>
+      <td>Patient</td>
       <td>R</td>
-      <td>Display the study images and patient metadata</td>
+      <td>Display the patient metadata</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">study</code></td>
+      <td>ImagingStudy</td>
+      <td>R</td>
+      <td>Display the study images</td>
     </tr>
     <tr>
       <td rowspan="4">DiagnosticReport-update</td>
@@ -431,10 +437,10 @@ The Image Display shall support all Behaviors shown as “R” in Optionality. T
       <td>Reflect updated status (<code class="language-plaintext highlighter-rouge">DiagnosticReport.status</code>) in worklist</td>      
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">updates</code></td>
-      <td>ImagingStudy</td>
+      <td><code class="language-plaintext highlighter-rouge">report</code></td>
+      <td>DiagnosticReport</td>
       <td>O</td>
-      <td>Display the comparison study</td>      
+      <td>Display the comparison study (<code class="language-plaintext highlighter-rouge">DiagnosticReport.associatedStudy</code>)</td>      
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">updates</code></td>
@@ -527,15 +533,21 @@ The Report Creator shall support all Behaviors shown as “R” in Optionality. 
   </thead>
   <tbody>
     <tr>
-      <td rowspan="2">DiagnosticReport-open</td>
+      <td rowspan="3">DiagnosticReport-open</td>
       <td><code class="language-plaintext highlighter-rouge">report</code></td>
       <td>DiagnosticReport</td>
       <td>R</td>
       <td>Maintain association of report context to associated patient and study</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">patient</code><br/><code class="language-plaintext highlighter-rouge">study</code></td>
-      <td>Patient<br/>ImagingStudy</td>
+      <td><code class="language-plaintext highlighter-rouge">patient</code></td>
+      <td>Patient</td>
+      <td>R</td>
+      <td>Be ready for reporting for the patient. If re-open a previously opened report context, resume to the previous state of the report context when it was interrupted.</td>      
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">study</code></td>
+      <td>ImagingStudy</td>
       <td>R</td>
       <td>Be ready for reporting for the study. If re-open a previously opened report context, resume to the previous state of the report context when it was interrupted.</td>      
     </tr>
@@ -563,13 +575,13 @@ The Report Creator shall support all Behaviors shown as “R” in Optionality. 
       <td><code class="language-plaintext highlighter-rouge">select</code></td>
       <td>ImagingSelection</td>
       <td>R</td>
-      <td>Put images and/or annotations <i>in focus</i> and able to apply user commands (See Note 1)</td>      
+      <td>Bring images and/or annotations <i>to focus</i> and able to apply user commands (See Note 1)</td>      
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">select</code></td>
       <td>Observation</td>
       <td>R</td>
-      <td>Put measurements and annotations <i>in focus</i> and able to apply user commands (See Note 1)</td>      
+      <td>Bring measurements and annotations <i>to focus</i> and able to apply user commands (See Note 1)</td>      
     </tr>
     <tr>
       <td>DiagnosticReport-close</td>
@@ -632,17 +644,23 @@ The Worklist Client shall support all Behaviors shown as “R” in Optionality.
   </thead>
   <tbody>
     <tr>
-      <td rowspan="2">DiagnosticReport-open</td>
+      <td rowspan="3">DiagnosticReport-open</td>
       <td><code class="language-plaintext highlighter-rouge">report</code></td>
       <td>DiagnosticReport</td>
       <td>R</td>
       <td>Maintain association of report context to associated patient and study.</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">patient</code><br/><code class="language-plaintext highlighter-rouge">study</code></td>
-      <td>Patient<br/>ImagingStudy</td>
+      <td><code class="language-plaintext highlighter-rouge">patient</code></td>
+      <td>Patient</td>
       <td>R</td>
-      <td>Display the patient and study metadata</td>
+      <td>Display the patient metadata</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">study</code></td>
+      <td>ImagingStudy</td>
+      <td>R</td>
+      <td>Display the study metadata</td>
     </tr>
     <tr>
       <td>DiagnosticReport-update</td>
@@ -710,15 +728,21 @@ The Evidence Creator shall support all Behaviors shown as “R” in Optionality
   </thead>
   <tbody>
     <tr>
-      <td rowspan="2">DiagnosticReport-open</td>
+      <td rowspan="3">DiagnosticReport-open</td>
       <td><code class="language-plaintext highlighter-rouge">report</code></td>
       <td>DiagnosticReport</td>
       <td>R</td>
       <td>Maintain association of report context to associated patient and study</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">patient</code><br/><code class="language-plaintext highlighter-rouge">study</code></td>
-      <td>Patient<br/>ImagingStudy</td>
+      <td><code class="language-plaintext highlighter-rouge">patient</code></td>
+      <td>Patient</td>
+      <td>R</td>
+      <td>Process the patient data</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">study</code></td>
+      <td>ImagingStudy</td>
       <td>R</td>
       <td>Process the study data</td>
     </tr>
@@ -809,15 +833,21 @@ The Watcher shall support all Behaviors shown as “R” in Optionality. The Wat
   </thead>
   <tbody>
     <tr>
-      <td rowspan="2">DiagnosticReport-open</td>
+      <td rowspan="3">DiagnosticReport-open</td>
       <td><code class="language-plaintext highlighter-rouge">report</code></td>
       <td>DiagnosticReport</td>
       <td>R</td>
       <td>Maintain association of report context to associated patient and study</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">patient</code><br/><code class="language-plaintext highlighter-rouge">study</code></td>
-      <td>Patient<br/>ImagingStudy</td>
+      <td><code class="language-plaintext highlighter-rouge">patient</code></td>
+      <td>Patient</td>
+      <td>R</td>
+      <td>Process according to business logic</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">study</code></td>
+      <td>ImagingStudy</td>
       <td>R</td>
       <td>Process according to business logic</td>
     </tr>
