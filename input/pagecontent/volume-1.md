@@ -1112,13 +1112,26 @@ The `Hub` may alternatively have been configured to force immediate resumption o
 
 TODO: The last paragraph may be deleted after FHIRcast discussion.
 
-#### 1:XX.4.1.10 Deployment Considerations
+#### 1:XX.4.1.10 Subscriber Local State
+
+A Subscriber may keep track of received contexts (open or close) and associated contents in some local states for enhanced operation behaviors. For example,
+
+- Keeping track of all open contexts that have not yet been closed enables the Subscriber to detect if the received DiagnosticReport-open event is regarding a new report context or as a result of re-opening a previously interrupted report context.  
+- Keeping track of updates and selection enables the Subscriber to resume more quickly and comprehensively from interruption because [Get Current Context](rad-x8.html) is a separate request and it only returns current contexts and contents but not selection
+
+If a Subscriber uses local state to keep track of received contexts and contents, then it should consider the lifecycle of this local state. For example,
+
+- How long should open contexts be maintained?
+- How to detect if open contexts become stale?
+- How to handle stale contexts?
+
+#### 1:XX.4.1.11 Deployment Considerations
 
 The Hub can be a standalone application or embedded within another application (e.g., the Image Manager, Report Creator and Worklist Client are grouped with the Hub independently). As a result, which Hub to use for the reporting session needs to be configurable during deployment.
 
 The Hub can be deployed on premises or in the cloud. The other actors may or may not be deployed in the same location as the Hub. Since this profile is aimed at providing streamline user experience for all integrated applications, the effectiveness of this profile depends on timely communications with the Hub, whether it is the context change request, or the subsequent event distribution. Therefore it is important to have a reliable low latency network connection between applications and the Hub, taking into account all the network appliances in between (e.g., firewall, reverse proxy, load balancer, etc.).
 
-#### 1:XX.4.1.11 FHIRcast Beyond Reporting
+#### 1:XX.4.1.12 FHIRcast Beyond Reporting
 
 FHIRcast is a generic event distribution mechanism. Most transactions in this profile are generally applicable to any events. Any applications are permitted to use FHIRcast and the Hub for use cases beyond reporting. In this case, the application may consider using different sessions and events for different purposes. For example, an Image Manager may setup a separate *advanced visualization* session with an Evidence Creator and uses `ImagingStudy-*` events for communication.
 
