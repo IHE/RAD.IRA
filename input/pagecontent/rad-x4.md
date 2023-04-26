@@ -57,13 +57,7 @@ The Manager shall receive and validate the request. See 2:3.X4.4.2.2 for error c
 
 If the Manager accepts the request, then per FHIRcast, the Manager will remove from memory the `report` context of the received `DiagnosticReport-close` event, as well as all associated context and content.
 
-The Manager shall be configurable to either:
-- Set the `current context` to *empty* regardless of whether the Manager is aware of any other existing opened report contexts.
-- Set the `current context` to the report context that was most recently opened by a `[FHIR resource]-open` event and has not been closed by a corresponding `[FHIR resource]-close` event per FHIRcast [Section 2.9.2 Get Current Context Response](https://build.fhir.org/ig/HL7/fhircast-docs/2-9-GetCurrentContext.html#get-current-context-response).
-
-TODO: Second bullet may be dropped after FHIRcast agreement.
-
-> Note: Setting the `current context` to *empty* differs from the standard FHIRcast default behavior.
+Per FHIRcast, the Manager shall set the `current context` to *empty*.
 
 #### 2:4.X4.4.2 Close Report Context Response Message
 
