@@ -20,6 +20,8 @@ This transaction is used to terminate a report context. All synchronizing applic
 
 **FHIRcast**: [DiagnosticReport close Event](https://build.fhir.org/ig/HL7/fhircast-docs/3-6-2-diagnosticreport-close.html)
 
+**FHIR R5**: [DiagnosticReport resource](https://hl7.org/fhir/R5/diagnosticreport.html)
+
 ### 2:3.X4.4 Messages
 
 <div>

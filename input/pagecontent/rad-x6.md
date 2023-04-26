@@ -18,6 +18,8 @@ This transaction is used to identify specific report contents to other subscribe
 
 **FHIRcast**: [DiagnosticReport select Event](https://build.fhir.org/ig/HL7/fhircast-docs/3-6-4-diagnosticreport-select.html)
 
+**FHIR R5**: [DiagnosticReport resource](https://hl7.org/fhir/R5/diagnosticreport.html)
+
 ### 2:4.X6.4 Messages
 
 <div>

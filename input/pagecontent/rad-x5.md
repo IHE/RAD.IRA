@@ -18,6 +18,8 @@ This transaction is used to add, change or remove contents in a report context.
 
 **FHIRcast**: [DiagnosticReport update Event](https://build.fhir.org/ig/HL7/fhircast-docs/3-6-3-diagnosticreport-update.html)
 
+**FHIR R5**: [DiagnosticReport resource](https://hl7.org/fhir/R5/diagnosticreport.html)
+
 ### 2:4.X5.4 Messages
 
 <div>

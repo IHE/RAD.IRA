@@ -18,6 +18,12 @@ This transaction is used to open a report context. Report contexts are opened wi
 
 **FHIRcast**: [DiagnosticReport open Event](https://build.fhir.org/ig/HL7/fhircast-docs/3-6-1-diagnosticreport-open.html)
 
+**FHIR R5**: [DiagnosticReport resource](https://hl7.org/fhir/R5/diagnosticreport.html)
+
+**FHIR R5**: [Patient resource](https://hl7.org/fhir/R5/patient.html)
+
+**FHIR R5**: [ImagingStudy resource](https://hl7.org/fhir/R5/imagingstudy.html)
+
 ### 2:4.X3.4 Messages
 
 <div>
