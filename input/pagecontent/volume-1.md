@@ -556,7 +556,7 @@ The Report Creator shall support all Behaviors shown as “R” in Optionality. 
       <td><code class="language-plaintext highlighter-rouge">report</code></td>
       <td>DiagnosticReport</td>
       <td>R</td>
-      <td>Make provided comparison studies available (defined in associatedStudy extension attribute) for reference in the report</td>      
+      <td>Make provided report updates (e.g. change in status, add/remove comparison studies available defined in associatedStudy extension attribute, etc.) for reference in the report</td>      
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">updates</code></td>
