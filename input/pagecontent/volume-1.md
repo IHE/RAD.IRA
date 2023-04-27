@@ -672,9 +672,9 @@ The Worklist Client shall support all Behaviors shown as “R” in Optionality.
     <tr>
       <td>DiagnosticReport-select</td>
       <td><code class="language-plaintext highlighter-rouge">select</code></td>
-      <td>ImagingStudy</td>
+      <td>Any</td>
       <td>O</td>
-      <td>Highlight the study in worklist as <i>in focus</i></td>
+      <td>Process selected resources if applicable</td>
     </tr>
     <tr>
       <td>DiagnosticReport-close</td>
@@ -692,6 +692,8 @@ The Worklist Client shall support all Behaviors shown as “R” in Optionality.
     </tr>
   </tbody>
 </table>
+
+> Note 1: This does not trigger the Worklist Client to change the report context to the referenced study in the event.
 
 ##### 1:XX.1.1.3.2 Event Producing Requirements
 
