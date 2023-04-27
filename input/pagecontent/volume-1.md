@@ -674,7 +674,7 @@ The Worklist Client shall support all Behaviors shown as “R” in Optionality.
       <td><code class="language-plaintext highlighter-rouge">select</code></td>
       <td>ImagingStudy</td>
       <td>O</td>
-      <td>Select the study in worklist</td>
+      <td>Highlight the study in worklist as <i>in focus</i></td>
     </tr>
     <tr>
       <td>DiagnosticReport-close</td>
