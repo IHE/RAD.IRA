@@ -46,7 +46,7 @@ The `event.context` shall conform to [SyncError Context](https://build.fhir.org/
 
 Per FHIRcast, the `issue[0].severity` of the `operationoutcome` context will be set to `warning`.
 
-If the Sender is retrying this context change request due to not receiving a response from the Manager for a prior request, then the Sender shall use the same `event.id`. If the Manager received the original request, this allows it to detect that it is a duplicate message.
+If the Sender is resending this error event due to not receiving a response from the Manager for a prior request, then the Sender shall use the same `event.id`. If the Manager received the original request, this allows it to detect that it is a duplicate message.
 
 If the Sender retries the request due to an error response from the Manager, then the Sender shall assign a new `event.id` to indicate that it is a new request.
 
