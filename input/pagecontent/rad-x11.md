@@ -42,6 +42,8 @@ The Subscriber failed to successfully process an context event that the Subscrib
 
 This message is a [FHIRcast Request Context Change](https://build.fhir.org/ig/HL7/fhircast-docs/2-6-RequestContextChange.html#request-context-change-body) request. The Subscriber is the FHIRcast Subscriber. The Manager is the FHIRcast Hub.
 
+TODO: Check or add a note.
+
 The `event.context` shall conform to [SyncError Context](https://build.fhir.org/ig/HL7/fhircast-docs/3-2-1-syncerror.html#context).
 
 Per FHIRcast, the `issue[0].severity` of the `operationoutcome` context will be set to `warning`.
@@ -52,7 +54,7 @@ If the Sender retries the request due to an error response from the Manager, the
 
 ##### 2:4.X11.4.1.3 Expected Actions
 
-The Manager shall receive and validate the request. See 2:3.X11.4.2.2 for error conditions.
+The Manager shall receive, validate and process the request. See 2:3.X11.4.2.2 for error conditions.
 
 #### 2:4.X11.4.2 Notify Error Response Message
 
