@@ -431,13 +431,13 @@ The Image Display shall support all Behaviors shown as “R” in Optionality. T
     </tr>
     <tr>
       <td rowspan="4">DiagnosticReport-update</td>
-      <td><code class="language-plaintext highlighter-rouge">report</code></td>
+      <td><code class="language-plaintext highlighter-rouge">updates</code></td>
       <td>DiagnosticReport</td>
       <td>R</td>
       <td>Reflect updated status (<code class="language-plaintext highlighter-rouge">DiagnosticReport.status</code>) in worklist</td>      
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">report</code></td>
+      <td><code class="language-plaintext highlighter-rouge">updates</code></td>
       <td>DiagnosticReport</td>
       <td>O</td>
       <td>Display the comparison study (<code class="language-plaintext highlighter-rouge">DiagnosticReport.associatedStudy</code>)</td>      
@@ -664,7 +664,7 @@ The Worklist Client shall support all Behaviors shown as “R” in Optionality.
     </tr>
     <tr>
       <td>DiagnosticReport-update</td>
-      <td><code class="language-plaintext highlighter-rouge">report</code></td>
+      <td><code class="language-plaintext highlighter-rouge">updates</code></td>
       <td>DiagnosticReport</td>
       <td>R</td>
       <td>Reflect updated status <code class="language-plaintext highlighter-rouge">DiagnosticReport.status</code> in worklist</td>
