@@ -239,7 +239,7 @@ Table 1:XX.1-1 lists the transactions for each actor directly involved in the IM
       <td><a href="rad-x11.html">RAD TF-2: 3.X11</a></td>
     </tr>
     <tr>
-      <td rowspan="7"><a href="volume-1.html#1xx115-resumable-evidence-creator">Resumable Evidence Creator</a></td>
+      <td rowspan="7"><a href="volume-1.html#1xx115-stateless-evidence-creator">Stateless Evidence Creator</a></td>
       <td>Subscribe to Reporting Session [RAD-X1]</td>
       <td>Initiator</td>
       <td>R</td>
