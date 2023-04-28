@@ -532,10 +532,9 @@ If the Image Display accepted an event initially (i.e., returning `202` Accepted
 
 If the Image Display is grouped with a Content Creator to publish additional content events to a reporting session, then it shall publish events using at least one FHIR resource. The Image Display is highly recommended to publish events using one or more of the following FHIR resources that are expected to be useful in reporting:
 
-- `Patient`: patient in the anchor context
-- `ImagingStudy`: imaging study in either the anchor context (i.e., the study subject to be reported) or as additional studies (e.g., a comparison study)
 - `ImagingSelection`: image / series references and simple annotations
 - `Observation`: measurements and annotations
+- `DiagnosticReport`: add/remove associated (e.g. comparison) study
 
 #### 1:XX.1.1.2 Report Creator
 
@@ -649,6 +648,8 @@ The Report Creator shall support all Behaviors shown as “R” in Optionality. 
 If the Report Creator accepted an event initially (i.e., returning `202` Accepted) and later decided to refuse the context or failed to process the event, then it shall send a `syncerror` event back to the Hub using Notify Error [RAD-X11](rad-x11.html).
 
 The Report Creator shall be grouped with a Content Creator to publish report status update using the report anchor context DiagnosticReport resource. It may support other content sharing resources.
+
+- `Observation`: clinical findings or impressions
 
 #### 1:XX.1.1.3 Worklist Client
 
@@ -837,7 +838,7 @@ TODO:
 The Stateless Evidence Creator has the same requirements as an Evidence Creator, except that it is not required to support resume capabilities as described in ...
 i.e. It is permitted to not maintain a local state [ref] ...
 
-#### 1:XX.1.1.5 Content Creator
+#### 1:XX.1.1.6 Content Creator
 
 The Content Creator is responsible for the creation and selection of the contents of the reporting session which are the basis of synchronization and collaboration between the subscribing actors.
 
@@ -856,7 +857,7 @@ The specific context or content changes captured by the Content Creator depends 
 | Image Display | Comparison study used during reporting | ImagingStudy |
 {: .grid}
 
-#### 1:XX.1.1.6 Watcher
+#### 1:XX.1.1.7 Watcher
 
 The Watcher is responsible for listening to events in a session and perform actions according to it business logic. The specific actions are out of scope of this profile.
 
@@ -864,12 +865,12 @@ For example, the Watcher consumes the initiation and termination of report conte
 
 The Watcher shall be capable of being launched by another application. When launched, it shall use the provided `hub.url` and `hub.topic` to join a reporting session.
 
-##### 1:XX.1.1.6.1 Event Handling Requirements
+##### 1:XX.1.1.7.1 Event Handling Requirements
 
 In Table 1:XX.1.1.7.1-1, for each Received Event, Context Key specifies the context in the received event (including the special `updates` and `select` contexts used in content sharing) and Resources specifies the FHIR resources used in the given context.
 The Watcher shall support all Behaviors shown as “R” in Optionality. The Watcher may support suggested behaviors ("O" in Optionality).
 
-**Table 1:XX.1.1.6.1-1: Event Handling Requirements**
+**Table 1:XX.1.1.7.1-1: Event Handling Requirements**
 
 <table class="grid">
   <thead>
@@ -932,11 +933,11 @@ The Watcher shall support all Behaviors shown as “R” in Optionality. The Wat
   </tbody>
 </table>
 
-##### 1:XX.1.1.6.2 Event Producing Requirements
+##### 1:XX.1.1.7.2 Event Producing Requirements
 
 If the Watcher accepted an event initially (i.e., returning `202` Accepted) and later decided to refuse the context or failed to process the event, then it shall send a `syncerror` event back to the Hub using Notify Error [RAD-X11](rad-x11.html).
 
-#### 1:XX.1.1.7 Hub
+#### 1:XX.1.1.8 Hub
 
 The Hub is responsible for managing event flows between Subscribers in reporting sessions and maintaining the current context.
 
@@ -952,7 +953,7 @@ The Hub shall monitor the established websocket connections. If it detects a web
 - Unsubscribe the Subscriber and drop the websocket connection
 - Send a SyncError notification to other Subscribers using [RAD-X10](rad-x10.html)
 
-##### 1:XX.1.1.7.1 Event Handling Requirements
+##### 1:XX.1.1.8.1 Event Handling Requirements
 
 The Hub shall be able to process all valid events conforming to the FHIRcast [Event Format](https://build.fhir.org/ig/HL7/fhircast-docs/2-3-Events.html) received using FHIRcast [Request Context Change](https://build.fhir.org/ig/HL7/fhircast-docs/2-6-RequestContextChange.html) requests.
 
