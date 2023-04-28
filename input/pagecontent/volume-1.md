@@ -37,7 +37,7 @@ Table 1:XX.1-1 lists the transactions for each actor directly involved in the IM
   </thead>
   <tbody>
     <tr>
-      <td rowspan="9"><a href="volume-1.html#1xx111-image-display">Image Display</a></td>
+      <td rowspan="8"><a href="volume-1.html#1xx111-image-display">Image Display</a></td>
       <td>Subscribe to Reporting Session [RAD-X1]</td>
       <td>Initiator</td>
       <td>R</td>
@@ -54,12 +54,6 @@ Table 1:XX.1-1 lists the transactions for each actor directly involved in the IM
       <td>Initiator</td>
       <td>R</td>
       <td><a href="rad-x3.html">RAD TF-2: 3.X3</a></td>
-    </tr>
-    <tr>
-      <td>Close Report Context [RAD-X4]</td>
-      <td>Initiator</td>
-      <td>R</td>
-      <td><a href="rad-x4.html">RAD TF-2: 3.X4</a></td>
     </tr>
     <tr>
       <td>Unsubscribe Session [RAD-X7]</td>
@@ -92,7 +86,7 @@ Table 1:XX.1-1 lists the transactions for each actor directly involved in the IM
       <td><a href="rad-x11.html">RAD TF-2: 3.X11</a></td>
     </tr>
     <tr>
-      <td rowspan="9"><a href="volume-1.html#1xx112-report-creator">Report Creator</a></td>
+      <td rowspan="10"><a href="volume-1.html#1xx112-report-creator">Report Creator</a></td>
       <td>Subscribe to Reporting Session [RAD-X1]</td>
       <td>Initiator</td>
       <td>R</td>
@@ -115,6 +109,12 @@ Table 1:XX.1-1 lists the transactions for each actor directly involved in the IM
       <td>Initiator</td>
       <td>R</td>
       <td><a href="rad-x4.html">RAD TF-2: 3.X4</a></td>
+    </tr>
+    <tr>
+      <td>Update Report Status [RAD-X12]</td>
+      <td>Initiator</td>
+      <td>R</td>
+      <td><a href="rad-x12.html">RAD TF-2: 3.X12</a></td>
     </tr>
     <tr>
       <td>Unsubscribe Session [RAD-X7]</td>
@@ -147,7 +147,7 @@ Table 1:XX.1-1 lists the transactions for each actor directly involved in the IM
       <td><a href="rad-x11.html">RAD TF-2: 3.X11</a></td>
     </tr>
     <tr>
-      <td rowspan="9"><a href="volume-1.html#1xx113-worklist-client">Worklist Client</a></td>
+      <td rowspan="8"><a href="volume-1.html#1xx113-worklist-client">Worklist Client</a></td>
       <td>Subscribe to Reporting Session [RAD-X1]</td>
       <td>Initiator</td>
       <td>R</td>
@@ -164,12 +164,6 @@ Table 1:XX.1-1 lists the transactions for each actor directly involved in the IM
       <td>Initiator</td>
       <td>R</td>
       <td><a href="rad-x3.html">RAD TF-2: 3.X3</a></td>
-    </tr>
-    <tr>
-      <td>Close Report Context [RAD-X4]</td>
-      <td>Initiator</td>
-      <td>R</td>
-      <td><a href="rad-x4.html">RAD TF-2: 3.X4</a></td>
     </tr>
     <tr>
       <td>Unsubscribe Session [RAD-X7]</td>
@@ -245,7 +239,50 @@ Table 1:XX.1-1 lists the transactions for each actor directly involved in the IM
       <td><a href="rad-x11.html">RAD TF-2: 3.X11</a></td>
     </tr>
     <tr>
-      <td rowspan="2"><a href="volume-1.html#1xx115-content-creator">Content Creator</a></td>
+      <td rowspan="7"><a href="volume-1.html#1xx115-resumable-evidence-creator">Resumable Evidence Creator</a></td>
+      <td>Subscribe to Reporting Session [RAD-X1]</td>
+      <td>Initiator</td>
+      <td>R</td>
+      <td><a href="rad-x1.html">RAD TF-2: 3.X1</a></td>
+    </tr>
+    <tr>
+      <td>Connect to Notification Channel [RAD-X2]</td>
+      <td>Initiator</td>
+      <td>R</td>
+      <td><a href="rad-x2.html">RAD TF-2: 3.X2</a></td>
+    </tr>
+    <tr>
+      <td>Unsubscribe Session [RAD-X7]</td>
+      <td>Initiator</td>
+      <td>R</td>
+      <td><a href="rad-x7.html">RAD TF-2: 3.X7</a></td>
+    </tr>
+    <tr>
+      <td>Get Current Context [RAD-X8]</td>
+      <td>Initiator</td>
+      <td>R</td>
+      <td><a href="rad-x8.html">RAD TF-2: 3.X8</a></td>
+    </tr>
+    <tr>
+      <td>Distribute Context Event [RAD-X9]</td>
+      <td>Responder</td>
+      <td>R</td>
+      <td><a href="rad-x9.html">RAD TF-2: 3.X9</a></td>
+    </tr>
+    <tr>
+      <td>Generate SyncError Event [RAD-X10]</td>
+      <td>Responder</td>
+      <td>R</td>
+      <td><a href="rad-x10.html">RAD TF-2: 3.X10</a></td>
+    </tr>
+    <tr>
+      <td>Notify Error [RAD-X11]</td>
+      <td>Initiator</td>
+      <td>R</td>
+      <td><a href="rad-x11.html">RAD TF-2: 3.X11</a></td>
+    </tr>    
+    <tr>
+      <td rowspan="2"><a href="volume-1.html#1xx116-content-creator">Content Creator</a></td>
       <td>Update Report Content [RAD-X5]</td>
       <td>Initiator</td>
       <td>O (Note 1)</td>
@@ -258,7 +295,7 @@ Table 1:XX.1-1 lists the transactions for each actor directly involved in the IM
       <td><a href="rad-x6.html">RAD TF-2: 3.X6</a></td>
     </tr>
     <tr>
-      <td rowspan="7"><a href="volume-1.html#1xx116-watcher">Watcher</a></td>
+      <td rowspan="7"><a href="volume-1.html#1xx117-watcher">Watcher</a></td>
       <td>Subscribe to Reporting Session [RAD-X1]</td>
       <td>Initiator</td>
       <td>R</td>
@@ -301,7 +338,7 @@ Table 1:XX.1-1 lists the transactions for each actor directly involved in the IM
       <td><a href="rad-x11.html">RAD TF-2: 3.X11</a></td>
     </tr>
     <tr>
-      <td rowspan="11"><a href="volume-1.html#1xx117-hub">Hub</a></td>
+      <td rowspan="11"><a href="volume-1.html#1xx118-hub">Hub</a></td>
       <td>Subscribe to Reporting Session [RAD-X1]</td>
       <td>Responder</td>
       <td>R</td>
@@ -388,7 +425,7 @@ The Image Display shall be capable of being launched by another application. Whe
 The Image Display shall be able to launch other applications and synchronize them to the same report context through the Hub. It shall have the following capabilities: 
 - Start a new reporting session by generating a unique session ID and subscribing to the Hub on its own
 - Launch one or more actors and provide them the URL of the Hub actor as `hub.url` and the reporting session ID as `hub.topic`
-- Open or close (or both) report context based on some business logic
+- Open report context based on some business logic
 
 > Note that the actual application launch method is out of scope of this profile. See [Application Launch Scenarios and Session Discovery](https://build.fhir.org/ig/HL7/fhircast-docs/4-1-launch-scenarios.html) for more details.
 
@@ -621,7 +658,7 @@ The Worklist Client shall be capable of being launched by another application. W
 The Worklist Client shall be able to launch other applications and synchronize them to the same report context through the Hub. It shall have the following capabilities: 
 - Start a new reporting session by generating a unique session ID and subscribing to the Hub on its own
 - Launch one or more actors and provide them the URL of the Hub as `hub.url` and the reporting session ID as `hub.topic`
-- Open or close (or both) report context based on some business logic
+- Open report context based on some business logic
 
 > Note that the actual application launch method is out of scope of this profile. See [Application Launch Scenarios and Session Discovery](https://build.fhir.org/ig/HL7/fhircast-docs/4-1-launch-scenarios.html) for more details.
 
@@ -789,7 +826,11 @@ If the Evidence Creator is grouped with a Content Creator to publish content eve
 - `Observation`: measurements and annotations
 - `DocumentReference`: results from IHE AI Results Profile using the [JSON Representation of DICOM SR](https://www.dicomstandard.org/News-dir/ftsup/docs/sups/Sup219.pdf), or other documents |
 
-#### 1:XX.1.1.5 Content Creator
+#### 1:XX.1.1.5 Resumable Evidence Creator
+
+The Resumable Evidence Creator is an [Evidence Creator](volume-1.html#1xx114-evidence-creator). Additionally, when it is interrupted and later resumed to a previously opened report context, the Resumable Evidence Creator shall be capable of resuming to the same state prior to the interruption.
+
+#### 1:XX.1.1.6 Content Creator
 
 The Content Creator is responsible for the creation and selection of the contents of the reporting session which are the basis of synchronization and collaboration between the subscribing actors.
 
@@ -808,7 +849,7 @@ The specific context or content changes captured by the Content Creator depends 
 | Image Display | Comparison study used during reporting | ImagingStudy |
 {: .grid}
 
-#### 1:XX.1.1.6. Watcher
+#### 1:XX.1.1.7 Watcher
 
 The Watcher is responsible for listening to events in a session and perform actions according to it business logic. The specific actions are out of scope of this profile.
 
@@ -816,12 +857,12 @@ For example, the Watcher consumes the initiation and termination of report conte
 
 The Watcher shall be capable of being launched by another application. When launched, it shall use the provided `hub.url` and `hub.topic` to join a reporting session.
 
-##### 1:XX.1.1.6.1 Event Handling Requirements
+##### 1:XX.1.1.7.1 Event Handling Requirements
 
-In Table 1:XX.1.1.6.1-1, for each Received Event, Context Key specifies the context in the received event (including the special `updates` and `select` contexts used in content sharing) and Resources specifies the FHIR resources used in the given context.
+In Table 1:XX.1.1.7.1-1, for each Received Event, Context Key specifies the context in the received event (including the special `updates` and `select` contexts used in content sharing) and Resources specifies the FHIR resources used in the given context.
 The Watcher shall support all Behaviors shown as “R” in Optionality. The Watcher may support suggested behaviors ("O" in Optionality).
 
-**Table 1:XX.1.1.6.1-1: Event Handling Requirements**
+**Table 1:XX.1.1.7.1-1: Event Handling Requirements**
 
 <table class="grid">
   <thead>
@@ -884,11 +925,11 @@ The Watcher shall support all Behaviors shown as “R” in Optionality. The Wat
   </tbody>
 </table>
 
-##### 1:XX.1.1.6.2 Event Producing Requirements
+##### 1:XX.1.1.7.2 Event Producing Requirements
 
 If the Watcher accepted an event initially (i.e., returning `202` Accepted) and later decided to refuse the context or failed to process the event, then it shall send a `syncerror` event back to the Hub using Notify Error [RAD-X11](rad-x11.html).
 
-#### 1:XX.1.1.7 Hub
+#### 1:XX.1.1.8 Hub
 
 The Hub is responsible for managing event flows between Subscribers in reporting sessions and maintaining the current context.
 
@@ -904,7 +945,7 @@ The Hub shall monitor the established websocket connections. If it detects a web
 - Unsubscribe the Subscriber and drop the websocket connection
 - Send a SyncError notification to other Subscribers using [RAD-X10](rad-x10.html)
 
-##### 1:XX.1.1.7.1 Event Handling Requirements
+##### 1:XX.1.1.8.1 Event Handling Requirements
 
 The Hub shall be able to process all valid events conforming to the FHIRcast [Event Format](https://build.fhir.org/ig/HL7/fhircast-docs/2-3-Events.html) received using FHIRcast [Request Context Change](https://build.fhir.org/ig/HL7/fhircast-docs/2-6-RequestContextChange.html) requests.
 
@@ -954,6 +995,11 @@ Options that may be selected for each actor in this implementation guide, are li
       <td>-</td>
     </tr>
     <tr>
+      <td>Resumable Evidence Creator</td>
+      <td>No options defined</td>
+      <td>-</td>
+    </tr>
+    <tr>
       <td>Content Creator</td>
       <td>No options defined</td>
       <td>–</td>
@@ -983,13 +1029,14 @@ considerations and Section 1:52.6 describes some optional groupings in other rel
 
 **Table 1:XX.3-1: IRA Required Actor Groupings**
 
-| IMR Actor | Grouping Condition | Actor(s) to be grouped with | Reference |
+| IRA Actor | Grouping Condition | Actor(s) to be grouped with | Reference |
 |-----------|--------------------|-----------------------------|-----------|
 | Image Display | -- | None | -- |
 | Report Creator | -- | None | -- |
 | Worklist Client | -- | None | -- |
 | Evidence Creator | -- | None | -- |
-| Content Creator | -- | IRA / Image Display<br>IRA / Report Creator<br>IRA / Worklist Client<br>IRA / Evidence Creator | [IRA TF-1: 1.1](volume-1.html#1xx11-actors-description-and-actor-profile-requirements) |
+| Resumable Evidence Creator | -- | None | -- |
+| Content Creator | -- | IRA / Image Display<br>IRA / Report Creator<br>IRA / Worklist Client<br>IRA / Evidence Creator<br>IRA / Resumable Evidence Creator | [IRA TF-1: 1.1](volume-1.html#1xx11-actors-description-and-actor-profile-requirements) |
 | Watcher | -- | None | -- |
 | Hub | -- | None | -- |
 {: .grid}
@@ -1458,6 +1505,23 @@ Table 1:XX.6-1 describes various actors in various other profiles that might be 
     </tr>
     <tr>
       <td rowspan="4">Evidence Creator</td>
+      <td><a href="https://www.ihe.net/uploadedFiles/Documents/Radiology/IHE_RAD_TF_Vol1.pdf">SWF.b Evidence Creator</a></td>
+      <td>To provide measurements and other evidence data and share the content with other synchronized applications.</td>
+    </tr>
+    <tr>
+      <td><a href="https://profiles.ihe.net/ITI/IUA/index.html">IUA Authorization Client</a></td>
+      <td>To provide authorization claims when invoking a request with another actor.</td>
+    </tr>
+    <tr>
+      <td><a href="https://www.ihe.net/uploadedFiles/Documents/Radiology/IHE_RAD_Suppl_AIW-I.pdf">AIW-I Task Performer</a></td>
+      <td>To provide an additional method to share the output with other synchronizing applications in a reporting session.</td>
+    </tr>
+    <tr>
+      <td><a href="https://www.ihe.net/uploadedFiles/Documents/Radiology/IHE_RAD_Suppl_AIR.pdf">AIR Evidence Creator</a></td>
+      <td>To support creating the various AI results.</td>
+    </tr>
+    <tr>
+      <td rowspan="4">Resumable Evidence Creator</td>
       <td><a href="https://www.ihe.net/uploadedFiles/Documents/Radiology/IHE_RAD_TF_Vol1.pdf">SWF.b Evidence Creator</a></td>
       <td>To provide measurements and other evidence data and share the content with other synchronized applications.</td>
     </tr>
