@@ -28,17 +28,17 @@ This guide is organized into the following sections:
 
 2. Volume 2: Transaction Detail
    1. [Subscribe to Reporting Session [RAD-X1]](rad-x1.html)
-   2. [Connect to Notification Channel [RAD-X2]](rad-x2.html)
-   3. [Open Report Context [RAD-X3]](rad-x3.html)
-   4. [Close Report Context [RAD-X4]](rad-x4.html)
-   5. [Update Report Content [RAD-X5]](rad-x5.html)
-   6. [Select Report Content [RAD-X6]](rad-x6.html)
-   7. [Update Report Status [RAD-X12]](rad-x12.html)
-   8. [Unsubscribe Session [RAD-X7]](rad-x7.html)
-   9. [Get Current Context [RAD-X8]](rad-x8.html)
-   10. [Distribute Context Event [RAD-X9]](rad-x9.html)
-   11. [Generate SyncError Event [RAD-X10]](rad-x10.html)
-   12. [Notify Error [RAD-X11]](rad-x11.html)
+   1. [Connect to Notification Channel [RAD-X2]](rad-x2.html)
+   1. [Open Report Context [RAD-X3]](rad-x3.html)
+   1. [Close Report Context [RAD-X4]](rad-x4.html)
+   1. [Update Report Content [RAD-X5]](rad-x5.html)
+   1. [Select Report Content [RAD-X6]](rad-x6.html)
+   1. [Update Report Status [RAD-X12]](rad-x12.html)
+   1. [Unsubscribe Session [RAD-X7]](rad-x7.html)
+   1. [Get Current Context [RAD-X8]](rad-x8.html)
+   1. [Distribute Context Event [RAD-X9]](rad-x9.html)
+   1. [Generate SyncError Event [RAD-X10]](rad-x10.html)
+   1. [Notify Error [RAD-X11]](rad-x11.html)
 
 3. [Examples](example.html)
 
