@@ -434,6 +434,8 @@ The Image Display shall be able to launch other applications and synchronize the
 
 > Note that the actual application launch method is out of scope of this profile. See [Application Launch Scenarios and Session Discovery](https://build.fhir.org/ig/HL7/fhircast-docs/4-1-launch-scenarios.html) for more details.
 
+The Image Display shall maintain local context and local states (See [Subscriber Local Context and Local State](volume-1.html#1xx4110-subscriber-local-context-and-local-state) for details).
+
 ##### 1:XX.1.1.1.1 Event Handling Requirements
 
 In Table 1:XX.1.1.1.1-1, for each Received Event, Context Key specifies the context in the received event (including the special `updates` and `select` contexts used in content sharing) and Resources specifies the FHIR resources used in the given context.
@@ -555,6 +557,8 @@ The Report Creator shall be able to launch other applications and synchronize th
 
 > Note that the actual application launch method is out of scope of this profile. See [Application Launch Scenarios and Session Discovery](https://build.fhir.org/ig/HL7/fhircast-docs/4-1-launch-scenarios.html) for more details.
 
+The Report Creator shall maintain local context and local states (See [Subscriber Local Context and Local State](volume-1.html#1xx4110-subscriber-local-context-and-local-state) for details).
+
 ##### 1:XX.1.1.2.1 Event Handling Requirements
 
 In Table 1:XX.1.1.2.1-1, for each Received Event, Context Key specifies the context in the received event (including the special `updates` and `select` contexts used in content sharing) and Resources specifies the FHIR resources used in the given context.
@@ -668,6 +672,8 @@ The Worklist Client shall be able to launch other applications and synchronize t
 
 > Note that the actual application launch method is out of scope of this profile. See [Application Launch Scenarios and Session Discovery](https://build.fhir.org/ig/HL7/fhircast-docs/4-1-launch-scenarios.html) for more details.
 
+The Worklist Client shall maintain local context and local states (See [Subscriber Local Context and Local State](volume-1.html#1xx4110-subscriber-local-context-and-local-state) for details).
+
 ##### 1:XX.1.1.3.1 Event Handling Requirements
 
 In Table 1:XX.1.1.3.1-1, for each Received Event, Context Key specifies the context in the received event (including the special `updates` and `select` contexts used in content sharing) and Resources specifies the FHIR resources used in the given context.
@@ -753,6 +759,8 @@ Alternatively the Evidence Creator may capture the evidence data (e.g., lung nod
 The Evidence Creator may be a standalone application such as an Specialty AI application, or it may be grouped with another actor such as Image Display.
 
 The Evidence Creator shall be capable of being launched by another application. When launched, it shall use the provided `hub.url` and `hub.topic` to join a reporting session.
+
+The Evidence Creator shall maintain local context and local states (See [Subscriber Local Context and Local State](volume-1.html#1xx4110-subscriber-local-context-and-local-state) for details).
 
 ##### 1:XX.1.1.4.1 Event Handling Requirements
 
@@ -1169,14 +1177,22 @@ The `Hub` may alternatively have been configured to force immediate resumption o
 
 TODO: The last paragraph may be deleted after FHIRcast discussion.
 
-#### 1:XX.4.1.10 Subscriber Local State
+#### 1:XX.4.1.10 Subscriber Local Context and Local State
 
-A Subscriber may keep track of received contexts (open or close) and associated contents in some local states for enhanced operation behaviors. For example,
+Upon receiving an event from the `Hub`, a Subscriber processes it according to its business logic and maintains `local context`. This `local context` keeps track of received contexts and its status (open or close), as well as applicable associated contents.
 
-- Keeping track of all open contexts that have not yet been closed enables the Subscriber to detect if the received DiagnosticReport-open event is regarding a new report context or as a result of re-opening a previously interrupted report context.  
-- Keeping track of updates and selection enables the Subscriber to resume more quickly and comprehensively from interruption because [Get Current Context](rad-x8.html) is a separate request and it only returns current contexts and contents but not selection
+Furthermore, a Subscriber may maintain `local state` associated to a `local context`. This `local state` may keep track of application specific information, such as
 
-If a Subscriber uses local state to keep track of received contexts and contents, then it should consider the lifecycle of this local state. For example,
+- layout of the viewports
+- image frames displayed in each viewport
+- any user activity (e.g. user selected the image frame in a viewport)
+
+Maintaining `local context` and `local state` enables the Subscriber to provide the following capabilities:
+
+- The Subscriber can detect if the received DiagnosticReport-open event is regarding a new report context or is re-opening a previously interrupted report context  
+- In case the DiagnosticReport-open event is re-opening a previously interrupted report context,the Subscriber can resume the application state closely resemble to what was left before the interruption  
+
+It is the responsibility of the Subscriber to manage its `local context` and `local state`. For example,
 
 - How long should open contexts be maintained?
 - How to detect if open contexts become stale?
