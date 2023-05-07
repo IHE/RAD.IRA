@@ -33,11 +33,12 @@ This guide is organized into the following sections:
    4. [Close Report Context [RAD-X4]](rad-x4.html)
    5. [Update Report Content [RAD-X5]](rad-x5.html)
    6. [Select Report Content [RAD-X6]](rad-x6.html)
-   7. [Unsubscribe Session [RAD-X7]](rad-x7.html)
-   8. [Get Current Context [RAD-X8]](rad-x8.html)
-   9. [Distribute Context Event [RAD-X9]](rad-x9.html)
-   10. [Generate SyncError Event [RAD-X10]](rad-x10.html)
-   11. [Notify Error [RAD-X11]](rad-x11.html)
+   7. [Update Report Status [RAD-X12]](rad-x12.html)
+   8. [Unsubscribe Session [RAD-X7]](rad-x7.html)
+   9. [Get Current Context [RAD-X8]](rad-x8.html)
+   10. [Distribute Context Event [RAD-X9]](rad-x9.html)
+   11. [Generate SyncError Event [RAD-X10]](rad-x10.html)
+   12. [Notify Error [RAD-X11]](rad-x11.html)
 
 3. [Examples](example.html)
 
