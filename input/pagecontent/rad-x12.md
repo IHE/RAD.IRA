@@ -47,7 +47,7 @@ The `event.context` shall conform to [DiagnosticReport update Event](https://bui
 
 The `event`.`context.versionId` shall be the newest version ID of the report context known to the Sender.
 
-The Sender should include a `DiagnosticReport` resource with updated status. The Sender may include other applicable content changes as inline [contained resources](https://www.hl7.org/fhir/references.html#contained). However, in some situations, it is beneficial to include other resources by reference instead of by value. In this case, the Sender shall specify the `entry.fullurl` with the uri value that the full content can be retrieved.
+The Sender shall include a `DiagnosticReport` resource with updated status (conform to [DiagnosticReportStatusUpdate](StructureDefinition-diagnosticreportstatusupdate.html)). The Sender may include other applicable content changes as inline [contained resources](https://www.hl7.org/fhir/references.html#contained). However, in some situations, it is beneficial to include other resources by reference instead of by value. In this case, the Sender shall specify the `entry.fullurl` with the uri value that the full content can be retrieved.
 
 > Note: Using contained resources is preferred as most resources in the event are transient. Also other Subscribers that receive the events may or may not have permission to access referenced resources that are not inline.
 
