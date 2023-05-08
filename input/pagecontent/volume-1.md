@@ -858,9 +858,7 @@ If the Evidence Creator is grouped with a Content Creator to publish content eve
 
 #### 1:XX.1.1.5 Stateless Evidence Creator
 
-TODO:
-The Stateless Evidence Creator has the same requirements as an Evidence Creator, except that it is not required to support resume capabilities as described in ...
-i.e. It is permitted to not maintain a local state [ref] ...
+The Stateless Evidence Creator has the same requirements as the Evidence Creator, except that it is *not* required to detect if the received DiagnosticReport-open event is a new report context or a report context that is resumed, and it is *not* required to restore application state in case of resuming a report context (See Evidence Creator [Event Handling Requirements](volume-1.html#1xx1141-event-handling-requirements) for details).
 
 #### 1:XX.1.1.6 Content Creator
 
