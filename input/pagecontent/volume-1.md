@@ -434,8 +434,6 @@ The Image Display shall be able to launch other applications and synchronize the
 
 > Note that the actual application launch method is out of scope of this profile. See [Application Launch Scenarios and Session Discovery](https://build.fhir.org/ig/HL7/fhircast-docs/4-1-launch-scenarios.html) for more details.
 
-The Image Display shall maintain local context and local states (See [Subscriber Local Context and Local State](volume-1.html#1xx4110-subscriber-local-context-and-local-state) for details).
-
 ##### 1:XX.1.1.1.1 Event Handling Requirements
 
 In Table 1:XX.1.1.1.1-1, for each Received Event, Context Key specifies the context in the received event (including the special `updates` and `select` contexts used in content sharing) and Resources specifies the FHIR resources used in the given context.
@@ -528,6 +526,12 @@ The Image Display shall support all Behaviors shown as “R” in Optionality. T
   </tbody>
 </table>
 
+In addition to the requirements in the Table 1:XX.1.1.1.1-1, when received a DiagnosticReport-open event, the Image Display shall detect if the report context is a new report context or a report context that is resumed.
+
+> Note: The DiagnosticReport-open event does not explicitly indicate if the report context is new or resumed. See [Subscriber Local Context and Local State](volume-1.html#1xx4110-subscriber-local-context-and-local-state) for design considerations.
+
+If the report context is resumed, then the Image Display shall be able to restore the application to the same state associated to the report context as before the interruption.
+
 ##### 1:XX.1.1.1.2 Event Producing Requirements
 
 If the Image Display accepted an event initially (i.e., returning `202` Accepted) and later decided to refuse the context or failed to process the event, then it shall send a `syncerror` event back to the Hub using Notify Error [RAD-X11](rad-x11.html).
@@ -556,8 +560,6 @@ The Report Creator shall be able to launch other applications and synchronize th
 - Open or close (or both) report context based on some business logic
 
 > Note that the actual application launch method is out of scope of this profile. See [Application Launch Scenarios and Session Discovery](https://build.fhir.org/ig/HL7/fhircast-docs/4-1-launch-scenarios.html) for more details.
-
-The Report Creator shall maintain local context and local states (See [Subscriber Local Context and Local State](volume-1.html#1xx4110-subscriber-local-context-and-local-state) for details).
 
 ##### 1:XX.1.1.2.1 Event Handling Requirements
 
@@ -647,6 +649,12 @@ The Report Creator shall support all Behaviors shown as “R” in Optionality. 
 
 > Note 1: The Report Creator may provide application logic that can make use of the selected resources. For example, a nodule (as `ImagingSelection`) and corresponding measurements (as `Observation`) are selected. Then the radiologist issues a voice command "insert hyperlink". In this case, the Report Creator applies the command with the selected resources and insert a hyperlink reference to the nodule with measurement.
 
+In addition to the requirements in the Table 1:XX.1.1.2.1-1, when received a DiagnosticReport-open event, the Report Creator shall detect if the report context is a new report context or a report context that is resumed.
+
+> Note: The DiagnosticReport-open event does not explicitly indicate if the report context is new or resumed. See [Subscriber Local Context and Local State](volume-1.html#1xx4110-subscriber-local-context-and-local-state) for design considerations.
+
+If the report context is resumed, then the Report Creator shall be able to restore the application to the same state associated to the report context as before the interruption.
+
 ##### 1:XX.1.1.2.2 Event Producing Requirements
 
 If the Report Creator accepted an event initially (i.e., returning `202` Accepted) and later decided to refuse the context or failed to process the event, then it shall send a `syncerror` event back to the Hub using Notify Error [RAD-X11](rad-x11.html).
@@ -671,8 +679,6 @@ The Worklist Client shall be able to launch other applications and synchronize t
 - Open report context based on some business logic
 
 > Note that the actual application launch method is out of scope of this profile. See [Application Launch Scenarios and Session Discovery](https://build.fhir.org/ig/HL7/fhircast-docs/4-1-launch-scenarios.html) for more details.
-
-The Worklist Client shall maintain local context and local states (See [Subscriber Local Context and Local State](volume-1.html#1xx4110-subscriber-local-context-and-local-state) for details).
 
 ##### 1:XX.1.1.3.1 Event Handling Requirements
 
@@ -744,6 +750,12 @@ The Worklist Client shall support all Behaviors shown as “R” in Optionality.
 
 > Note 1: This does not trigger the Worklist Client to change the report context to the referenced study in the event.
 
+In addition to the requirements in the Table 1:XX.1.1.3.1-1, when received a DiagnosticReport-open event, the Worklist Client shall detect if the report context is a new report context or a report context that is resumed.
+
+> Note: The DiagnosticReport-open event does not explicitly indicate if the report context is new or resumed. See [Subscriber Local Context and Local State](volume-1.html#1xx4110-subscriber-local-context-and-local-state) for design considerations.
+
+If the report context is resumed, then the Worklist Client shall be able to restore the application to the same state associated to the report context as before the interruption.
+
 ##### 1:XX.1.1.3.2 Event Producing Requirements
 
 If the Worklist Client accepted an event initially (i.e., returning `202` Accepted) and later decided to refuse the context or failed to process the event, then it shall send a `syncerror` event back to the Hub using Notify Error [RAD-X11](rad-x11.html).
@@ -759,8 +771,6 @@ Alternatively the Evidence Creator may capture the evidence data (e.g., lung nod
 The Evidence Creator may be a standalone application such as an Specialty AI application, or it may be grouped with another actor such as Image Display.
 
 The Evidence Creator shall be capable of being launched by another application. When launched, it shall use the provided `hub.url` and `hub.topic` to join a reporting session.
-
-The Evidence Creator shall maintain local context and local states (See [Subscriber Local Context and Local State](volume-1.html#1xx4110-subscriber-local-context-and-local-state) for details).
 
 ##### 1:XX.1.1.4.1 Event Handling Requirements
 
@@ -830,6 +840,12 @@ The Evidence Creator shall support all Behaviors shown as “R” in Optionality
   </tbody>
 </table>
 
+In addition to the requirements in the Table 1:XX.1.1.4.1-1, when received a DiagnosticReport-open event, the Evidence Creator shall detect if the report context is a new report context or a report context that is resumed.
+
+> Note: The DiagnosticReport-open event does not explicitly indicate if the report context is new or resumed. See [Subscriber Local Context and Local State](volume-1.html#1xx4110-subscriber-local-context-and-local-state) for design considerations.
+
+If the report context is resumed, then the Evidence Creator shall be able to restore the application to the same state associated to the report context as before the interruption.
+
 ##### 1:XX.1.1.4.2 Event Producing Requirements
 
 If the Evidence Creator accepted an event initially (i.e., returning `202` Accepted) and later decided to refuse the context or failed to process the event, then it shall send a `syncerror` event back to the Hub using Notify Error [RAD-X11](rad-x11.html).
@@ -864,6 +880,12 @@ The specific context or content changes captured by the Content Creator depends 
 | Evidence Creator | Image references<br>Bounding Boxes | ImagingSelection<br>Observation |
 | Image Display | Comparison study used during reporting | ImagingStudy |
 {: .grid}
+
+The Content Creator shall only publish DiagnosticReport-select events for user initiated selection.
+
+When the grouped actor restores the application to a previous known state due to resuming a report context, if there are any contents known to be selected by the user prior to the interruption and the grouped actor is the originator of the corresponding DiagnosticReport-select event, then
+- The grouped actor shall prompt the user if the selections are still valid
+- If valid, then the Content Creator shall send a DiagnosticReport-select event for the selected resources
 
 #### 1:XX.1.1.7 Watcher
 
