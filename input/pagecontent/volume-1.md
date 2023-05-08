@@ -1187,15 +1187,11 @@ Occasionally a report context may be _interrupted_ because of _suspension_, mean
 
 The `Hub` switches the `Current Context` to the urgent study being opened. The `Hub` distributes the open event to all subscribers to keep them synchronized. The initial report context is still maintained by the `Hub` since it is not closed, but it is _suspended_ (i.e., not the `Current Context`). 
 
-When the user finishes reviewing the urgent study, the report context of the urgent study is closed and all subscribers receive the close event. The `Hub` has been configured to set the `Current Context` to *empty* after closing the `Current Context`.
+When the user finishes reviewing the urgent study, the report context of the urgent study is closed and all subscribers receive the close event. The `Hub` set the `Current Context` to *empty* after closing the `Current Context`.
 
 The driving application sends a *new* open event for the _suspended_ report context to make it the new `Current Context`. All subscribers receive the open event and resume to the _suspended_ report context. Alternatively the driving application could choose to open any other report context as appropriate.
 
 See [Use Case #3](volume-1.html#1xx423-use-case-3-interruption-and-resume-flow) for more details.
-
-The `Hub` may alternatively have been configured to force immediate resumption of the _suspended_ report context. See [Close Report Context](rad-x4.html) for details.
-
-TODO: The last paragraph may be deleted after FHIRcast discussion.
 
 #### 1:XX.4.1.10 Subscriber Local Context and Local State
 
