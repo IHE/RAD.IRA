@@ -84,14 +84,14 @@ PACS-->Hub: //Success//
 
 == Step 2d: Resume Previous Report Context ==
 
-Hub->Hub: //Detect DiagnosticReport xxx remains open//\n//Generate new event to resume//\n(event: id = 4000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
-Hub->Report: Distribute Content Event [RAD-X9]\n(event: id = 4000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
-Report->Report: //Resume report xxx//
-Report-->Hub: //Success (id=4000, status = 200)//
-Hub->PACS: Distribute Content Event [RAD-X9]\n(event: id = 4000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
-PACS->PACS: //Resume study zzz//
-PACS-->Hub: //Success (id=4000, status = 200)//
+User->PACS: //Resume reporting on study zzz//
+PACS->PACS: //Restore application state for study zzz//
+PACS->Hub: Open Report Context [RAD-X3]\n(event: id = 4000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
 
-User->PACS: //Resume reporting on study zzz as Step 3//
+Hub->Report: Distribute Context Event [RAD-X9]\n(event: id = 4000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
+Report->Report: //Detected report context xxx is previously opened//\n//Resume report xxx//\n//and restore application state//
+Report-->Hub: //Success (id=4000, status = 200)//
+Hub->PACS: Distribute Context Event [RAD-X9]\n(event: id = 4000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
+PACS-->Hub: //Success (id=4000, status = 200)//
 
 @enduml
