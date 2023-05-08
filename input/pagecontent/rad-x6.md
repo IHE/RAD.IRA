@@ -63,10 +63,6 @@ If the Sender retries the request due to an error response from the Manager, the
 
 The Manager shall receive and validate the request. See Section 2:4.X6.4.2.2 for error conditions.
 
-Per FHIRcast, the Manager will keep track of the selection states of all contents. In particular:
-- All previously selected contents will be unselected
-- All referenced resources in the request will be selected
-
 The Manager shall ignore any selected resources in the request that are not known based on any previous `DiagnosticReport-open` or `DiagnosticReport-update` events.
 
 > Note: The Manager should continue to process the request and should not return an error due to unknown selected resources.
