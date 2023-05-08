@@ -10,7 +10,7 @@ participant "Report Creator" as Report
 User->PACS: //Select measurements as seen in images//\n//as current focus//
 
 PACS->Hub: Select Report Content [RAD-X6]
-Hub->Hub: //Mark selected contents//\n[[select_study_and_observation.html#available-context-and-content-in-hub Example]]
+Hub->Hub: //Check selected resources//\n[[select_study_and_observation.html#available-context-and-content-in-hub Example]]
 Hub-->PACS: //Success//
 
 Hub->Report: Distribute Context Event [RAD-X9]
