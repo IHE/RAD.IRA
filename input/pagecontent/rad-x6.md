@@ -37,11 +37,13 @@ The Manager shall support handling such messages from more than one Sender.
 
 ##### 2:4.X6.4.1.1 Trigger Events
 
-The Sender determines the selection state of some report contents should be synchronized with other Subscribers. Selections may have occurred automatically or manually by a user.
+The Sender determines the selection state of some report contents should be synchronized with other Subscribers.
 
 The Sender determines that the selected content are no longer required and reset the selection.
 
 > Note: Prior selected content are automatically reset by the selection of new content. Reset is used when the current selected content should be unselected without selecting new contents. See [DiagnosticReport select Event Workflow](https://build.fhir.org/ig/HL7/fhircast-docs/3-6-4-diagnosticreport-select.html#workflow) for details.
+
+Selections are initiated manually by a user, or automatically for reset only.
 
 ##### 2:4.X6.4.1.2 Message Semantics
 
