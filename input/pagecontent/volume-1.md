@@ -1431,9 +1431,9 @@ Occasionally a radiologist is interrupted while reporting on a study. She needs 
 
 This profile permits a new report context to be opened before the previous report context is closed. The Hub can maintain multiple anchor contexts simultaneously within a reporting session. The current context is the most recent anchor context that has been opened but not yet closed. This current context enables all Synchronizing Applications to be synchronized and working on the same context all the time.
 
-Once the *interrupting* study is complete, the Image Display closes the report context of the *interrupting* study. The Hub removes the context of the *interrupting* study and set the current context back to the previously opened study. Note that all associated context and contents remain in the Hub.
+Once the *interrupting* study is complete, the Image Display closes the report context of the *interrupting* study. The Hub removes the context of the *interrupting* study and set the current context to *empty*. The Image Display, as the Driving Application in this example, resumes the report context back to the previously opened study. It restores its application state associated to the report context the same as prior to the interruption and then re-opens the same report context to the Hub. Note that all associated context and contents remain in the Hub.
 
-By default, the Hub will implicitly generate and distribute new `DiagnosticReport-open` event for the resumed report context to all subscribers (see Hub [Event Producing Requirements](volume-1.html#1xx1172-event-producing-requirements) for more details.). As a result, all subscribers will resume to the same report context. If an application has business logic to resume something else rather than the previous report context, that application should send a new Open Report Context [RAD-X3] event to set the new report context accordingly.
+As a result, all subscribers will resume to the same report context. If an application has business logic to resume something else rather than the previous report context, that application should send a new Open Report Context [RAD-X3] event to set the new report context accordingly.
 
 <div>
 {%include interruption-and-resume.svg%}
