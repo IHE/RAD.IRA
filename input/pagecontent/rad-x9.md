@@ -79,10 +79,10 @@ TODO: Rework the following requirements
 ##### 2:4.X9.4.1.3.3 Handling select events
 
 Upon receiving a `[FHIR resource]-select` event, the Subscriber:
-- Will validate if the `context.priorVersionId` in the event matches the current version ID in the local context as described in Section 2:4.X9.4.1.3.2.
-- Shall track which of the resources in the local context are currently selected and be capable of using applicable selected resources in subsequent user commands according to its business logic.
-- Shall update the current version ID in the local context to match the `context.versionId` from the event, even if its business logic requires no specific processing.
-- Shall ignore any resources selected in the event that are not known to the Subscriber
+- Shall unselect all previously selected contents
+- Shall select all applicable resources in the local context according to the referenced resources in the event
+- Shell be capable of using applicable selected resources in subsequent user commands according to its business logic.
+- Shall ignore any resources referenced in the event that are not known to the Subscriber
 
 ##### 2:4.X9.4.1.3.4 Handling close events
 
