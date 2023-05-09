@@ -80,7 +80,7 @@ pages:
     title: 2:3.X6 Select Report Content [RAD-X6]
     generation: markdown
   rad-x12.md:
-    title: 2:3.X12 Update Report Status [RAD-X12]
+    title: 2:3.X12 Notify Report Status Change [RAD-X12]
     generation: markdown
   rad-x7.md:
     title: 2:3.X7 Unsubscribe Session [RAD-X7]
@@ -145,7 +145,7 @@ menu:
     Close Report Context [RAD-X4]: rad-x4.html
     Update Report Content [RAD-X5]: rad-x5.html
     Select Report Content [RAD-X6]: rad-x6.html
-    Update Report Status [RAD-X12]: rad-x12.html
+    Notify Report Status Change [RAD-X12]: rad-x12.html
     Unsubscribe Session [RAD-X7]: rad-x7.html
     Get Current Context [RAD-X8]: rad-x8.html
     Distribute Context Event [RAD-X9]: rad-x9.html
@@ -156,7 +156,7 @@ menu:
     Open Report Context: open_study_for_reporting.html
     Update Report Content: update_study_with_measurement.html
     Select Report Content: select_study_and_observation.html
-    Update Report Status: update_report_status.html
+    Notify Report Status Change: update_report_status.html
     Close Report Context: close_study_after_signoff.html
   Artifacts: artifacts.html
   Other:
