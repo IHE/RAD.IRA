@@ -61,6 +61,8 @@ Upon receiving a `[FHIR resource]-open` event, the Subscriber will *open* the co
 
 > Note: `[FHIR resource]-open` events occur when a context is initially created and when it is re-opened. Subscriber event handling may differ for these two cases.
 
+The Subscriber shall keep track of the `context.versionId` in the local context.
+
 ##### 2:4.X9.4.1.3.2 Handling update events
 
 Upon receiving a `[FHIR resource]-update` event, the Subscriber:
