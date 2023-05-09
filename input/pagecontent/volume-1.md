@@ -521,11 +521,11 @@ The Image Display shall support all Behaviors shown as “R” in Optionality. T
   </tbody>
 </table>
 
-In addition to the requirements in the Table 1:XX.1.1.1.1-1, when received a DiagnosticReport-open event, the Image Display shall detect if the report context is a new report context or a report context that is resumed.
+If the report context is resumed, then the Image Display shall be able to restore the application to the same state associated to the report context as before the interruption.
 
 > Note: The DiagnosticReport-open event does not explicitly indicate if the report context is new or resumed. See [Subscriber Local Context and Local State](volume-1.html#1xx4110-subscriber-local-context-and-local-state) for design considerations.
 
-If the report context is resumed, then the Image Display shall be able to restore the application to the same state associated to the report context as before the interruption.
+TODO: Figure out what baseline requirements to avoid disfunctionality. Or may be just leave it to product implementation?
 
 ##### 1:XX.1.1.1.2 Event Producing Requirements
 
@@ -1176,35 +1176,35 @@ Since the FHIR resources specified in the event may or may not be persisted in a
 
 The `DiagnosticReport-open` event includes both the `report` anchor context and associated contexts `patient` and `study`. Subsequent event(s) for this anchor context will only provide the `report` context. Therefore, it is up to the Subscriber to record internally the `patient` and `study` contexts associated with the `report` anchor context if that information is relevant to its business logic. 
 
-#### 1:XX.4.1.9 Interruption and Resume Report Context
+#### 1:XX.4.1.9 Suspend and Resume Report Context
 
-Occasionally a report context may be _interrupted_ because of _suspension_, meaning that before an initial report context is closed, a driving application opens a subsequent report context. For example, a radiologist needs to suspend a report on a study in order to review an urgent study.
+Occasionally a report context may be _suspended_, meaning that a driving application opens a subsequent report context without closing an initial report context. For example, a radiologist needs to suspend a report on a study in order to review an urgent study.
 
 The `Hub` switches the `Current Context` to the urgent study being opened. The `Hub` distributes the open event to all subscribers to keep them synchronized. The initial report context is still maintained by the `Hub` since it is not closed, but it is _suspended_ (i.e., not the `Current Context`). 
 
-When the user finishes reviewing the urgent study, the report context of the urgent study is closed and all subscribers receive the close event. The `Hub` set the `Current Context` to *empty* after closing the `Current Context`.
+When the user finishes reviewing the urgent study, the report context of the urgent study is closed and all subscribers receive the close event. The `Hub` sets the `Current Context` to *empty* after closing the `Current Context`.
 
-The driving application sends a *new* open event for the _suspended_ report context to make it the new `Current Context`. All subscribers receive the open event and resume to the _suspended_ report context. Alternatively the driving application could choose to open any other report context as appropriate.
+The driving application sends a *new* open event for the _suspended_ report context to make it the `Current Context`. All subscribers receive the open event and resume to the _suspended_ report context. Alternatively the driving application could choose to open any other report context as appropriate.
 
 See [Use Case #3](volume-1.html#1xx423-use-case-3-interruption-and-resume-flow) for more details.
 
-#### 1:XX.4.1.10 Subscriber Local Context and Local State
+#### 1:XX.4.1.10 Resuming contexts: Subscriber Local Context and Local State
 
-Upon receiving an event from the `Hub`, a Subscriber processes it according to its business logic and maintains `local context`. This `local context` keeps track of received contexts and its status (open or close), as well as applicable associated contents.
+`Local context` and `local state` refers to the information specific to each Subscriber that it maintains locally for each report context in the session that it participates in. When resuming to a previous context, this information, if present, would enable the subscribing application to restore to the same state associated to the report context as before the suspension.
 
-Furthermore, a Subscriber may maintain `local state` associated to a `local context`. This `local state` may keep track of application specific information, such as
+`Local context` refers to the Subscriber's view / copy of the shared context maintained in the Hub.
+
+`Local state` refers to information related to a given context that is not replicated into the Hub This `local state` may keep track of application specific information, such as
 
 - layout of the viewports
 - image frames displayed in each viewport
 - any user activity (e.g. user selected the image frame in a viewport)
 
-Maintaining `local context` and `local state` enables the Subscriber to provide the following capabilities:
+Upon receiving events from the `Hub`, a Subscriber maintains its `local context` according to its need. i.e. the Subscriber is not to maintained a full copy of the context that is in the Hub, since some parts of the context may not be relevant to the Subscriber activities.
 
-- The Subscriber can detect if the received DiagnosticReport-open event is regarding a new report context or is re-opening a previously interrupted report context  
-- In case the DiagnosticReport-open event is re-opening a previously interrupted report context,the Subscriber can resume the application state closely resemble to what was left before the interruption  
+It is up to the Subscriber to decide on implementation details, such as:
 
-It is the responsibility of the Subscriber to manage its `local context` and `local state`. For example,
-
+- How much state that it can resume?
 - How long should open contexts be maintained?
 - How to detect if open contexts become stale?
 - How to handle stale contexts?
