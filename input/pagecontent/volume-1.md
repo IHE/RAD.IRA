@@ -414,11 +414,6 @@ Most requirements are documented in RAD TF-2 Transactions. This section document
 
 > Note: Many actor requirements below assume an understanding of FHIRcast and how this profile uses it. Please refer to the [Concept section](https://profiles.ihe.net/RAD/IRA/volume-1.html#1xx41-concepts).
 
-#### 1:XX.1.1.0 General Actor Description
-
-TODO:
-All actors except Stateless Evidence Creator and Watcher require to support the interruption and resume requirements.
-
 #### 1:XX.1.1.1 Image Display
 
 The Image Display is responsible for presenting patients' studies and relevant information to the user so that the user can make diagnostic decisions on the studies.
