@@ -27,9 +27,9 @@ This transaction is used to retrieve the current context for a given session and
 **Figure 2:4.X8.4-1: Interaction Diagram**
 
 #### 2:4.X8.4.1 Get Current Context Request Message
-The Subscriber requests the current context and its contents for an identified session. The Subscriber shall support sending such messages to more than one Manager.
+The Subscriber requests the current context and its contents for an identified session.
 
-The Manager shall support handling such messages from more than one Subscriber. 
+The Subscriber shall support sending such messages to more than one Manager. The Manager shall support handling such messages from more than one Subscriber. 
 
 ##### 2:4.X8.4.1.1 Trigger Events
 

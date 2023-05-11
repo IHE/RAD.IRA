@@ -31,9 +31,9 @@ This transaction is used to add, change or remove contents in a report context.
 **Figure 2:4.X5.4-1: Interaction Diagram**
 
 #### 2:4.X5.4.1 Update Report Content Request Message
-The Sender sends an event to the Manager to add, change or remove content relevant to an existing report context, other than the report status. The Sender shall support sending such messages to more than one Manager.
+The Sender sends an event to the Manager to add, change or remove content relevant to an existing report context, other than the report status.
 
-The Manager shall support handling such messages from more than one Sender. 
+The Sender shall support sending such messages to more than one Manager. The Manager shall support handling such messages from more than one Sender. 
 
 ##### 2:4.X5.4.1.1 Trigger Events
 

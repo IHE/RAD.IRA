@@ -30,9 +30,9 @@ The roles in this transaction are defined in the following table and may be play
 
 #### 2:4.X1.4.1 Subscription Request Message
 
-The Subscriber sends a reporting session subscription request to the Manager. The Subscriber shall support sending such messages to more than one Manager.
+The Subscriber sends a reporting session subscription request to the Manager.
 
-The Manager shall support handling such messages from more than one Subscriber. 
+The Subscriber shall support sending such messages to more than one Manager. The Manager shall support handling such messages from more than one Subscriber. 
 
 ##### 2:4.X1.4.1.1 Trigger Events
 

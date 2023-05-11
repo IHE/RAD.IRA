@@ -31,9 +31,9 @@ This transaction is used to identify specific report contents to other subscribe
 **Figure 2:4.X6.4-1: Interaction Diagram**
 
 #### 2:4.X6.4.1 Select Report Content Request Message
-The Sender sends an event to the Manager to indicate some report contents are selected. The Sender shall support sending such messages to more than one Manager.
+The Sender sends an event to the Manager to indicate some report contents are selected.
 
-The Manager shall support handling such messages from more than one Sender. 
+The Sender shall support sending such messages to more than one Manager. The Manager shall support handling such messages from more than one Sender. 
 
 ##### 2:4.X6.4.1.1 Trigger Events
 

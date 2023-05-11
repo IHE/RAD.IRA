@@ -33,9 +33,9 @@ This transaction is used to terminate a report context. All synchronizing applic
 **Figure 2:4.X4.4-1: Interaction Diagram**
 
 #### 2:4.X4.4.1 Close Report Context Request Message
-The Sender sends an event to the Manager to terminate an existing report context. The Sender shall support sending such messages to more than one Manager.
+The Sender sends an event to the Manager to terminate an existing report context.
 
-The Manager shall support handling such messages from more than one Sender. 
+The Sender shall support sending such messages to more than one Manager. The Manager shall support handling such messages from more than one Sender. 
 
 ##### 2:4.X4.4.1.1 Trigger Events
 

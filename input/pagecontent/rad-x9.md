@@ -31,9 +31,9 @@ This transaction is used to distribute notification events to subscribers. This 
 **Figure 2:4.X9.4-1: Interaction Diagram**
 
 #### 2:4.X9.4.1 Notification Message
-The Manager sends the received notification events to Subscribers that listed this event type in their subscription. The Manager shall support sending such messages to more than one Subscriber.
+The Manager sends the received notification events to Subscribers that listed this event type in their subscription.
 
-The Subscriber shall support handling such messages from more than one Manager. 
+The Manager shall support sending such messages to more than one Subscriber. The Subscriber shall support handling such messages from more than one Manager. 
 
 ##### 2:4.X9.4.1.1 Trigger Events
 

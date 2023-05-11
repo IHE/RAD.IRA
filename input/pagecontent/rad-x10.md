@@ -32,9 +32,9 @@ This transaction is used to distribute notification events to subscribers about 
 
 #### 2:4.X10.4.1 Error Notification Message
 
-The Manager sends an error event to Subscribers indicating that it detected an error. Manager shall support sending such messages to more than one Subscribers.
+The Manager sends an error event to Subscribers indicating that it detected an error.
 
-The Subscriber shall support handling such messages from more than one Manager. 
+The Manager shall support sending such messages to more than one Subscribers. The Subscriber shall support handling such messages from more than one Manager. 
 
 ##### 2:4.X10.4.1.1 Trigger Events
 

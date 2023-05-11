@@ -30,9 +30,9 @@ This transaction is used to send error notifications when a Subscriber initially
 
 #### 2:4.X11.4.1 Notify Error Message
 
-The Subscriber sends an error event to the Manager indicating that it failed to process a notification. The Subscriber shall support sending such messages to more than one Manager.
+The Subscriber sends an error event to the Manager indicating that it failed to process a notification.
 
-The Manager shall support handling such messages from more than one Subscriber. 
+The Subscriber shall support sending such messages to more than one Manager. The Manager shall support handling such messages from more than one Subscriber. 
 
 ##### 2:4.X11.4.1.1 Trigger Events
 

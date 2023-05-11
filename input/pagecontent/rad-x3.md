@@ -35,9 +35,9 @@ This transaction is used to open a report context. Report contexts are opened wi
 **Figure 2:4.X3.4-1: Interaction Diagram**
 
 #### 2:4.X3.4.1 Open Report Context Request Message
-The Sender sends an event to the Manager to open a report context. The Sender shall support sending such messages to more than one Manager.
+The Sender sends an event to the Manager to open a report context.
 
-The Manager shall support handling such messages from more than one Sender. 
+The Sender shall support sending such messages to more than one Manager. The Manager shall support handling such messages from more than one Sender. 
 
 ##### 2:4.X3.4.1.1 Trigger Events
 

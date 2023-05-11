@@ -30,9 +30,9 @@ The roles in this transaction are defined in the following table and may be play
 
 #### 2:3.47.4.1 Unsubscribe Session Request Message
 
-The Subscriber sends a unsubscribe request to the Manager. The Subscriber shall support sending such messages to more than one Manager.
+The Subscriber sends a unsubscribe request to the Manager.
 
-The Manager shall support handling such messages from more than one Subscriber. 
+The Subscriber shall support sending such messages to more than one Manager. The Manager shall support handling such messages from more than one Subscriber. 
 
 ##### 2:4.x7.4.1.1 Trigger Events
 
