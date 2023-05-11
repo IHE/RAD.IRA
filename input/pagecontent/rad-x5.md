@@ -31,7 +31,7 @@ This transaction is used to add, change or remove contents in a report context.
 **Figure 2:4.X5.4-1: Interaction Diagram**
 
 #### 2:4.X5.4.1 Update Report Content Request Message
-The Sender sends an event to the Manager to add, change or remove content relevant to an existing report context, other than the report status.
+The Sender sends an event to the Manager to add, change or remove content relevant to an existing report context.
 
 The Sender shall support sending such messages to more than one Manager. The Manager shall support handling such messages from more than one Sender. 
 
@@ -79,7 +79,6 @@ The Manager shall return `400` Bad Request error:
 - if `event.context` does not include `report` and `updates`
 - if `event`.`hub.topic` is not a known session
 - if `context.versionId` does not match the latest version ID of the `report` anchor context
-- if `updates` context key includes an entry to update report status of the `report` context
 - if `updates` context key includes an entry to delete the `patient` context or update the patient ID in the resource `identifier`
 - if `updates` context key includes an entry to delete the `study` context or update the study instance UID or accession number in the resource `identifier`
 
