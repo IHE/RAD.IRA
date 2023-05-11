@@ -33,7 +33,6 @@ This guide is organized into the following sections:
    1. [Close Report Context [RAD-X4]](rad-x4.html)
    1. [Update Report Content [RAD-X5]](rad-x5.html)
    1. [Select Report Content [RAD-X6]](rad-x6.html)
-   1. [Update Report Status [RAD-X12]](rad-x12.html)
    1. [Unsubscribe Session [RAD-X7]](rad-x7.html)
    1. [Get Current Context [RAD-X8]](rad-x8.html)
    1. [Distribute Context Event [RAD-X9]](rad-x9.html)

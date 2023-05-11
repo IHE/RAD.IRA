@@ -86,7 +86,7 @@ Table 1:XX.1-1 lists the transactions for each actor directly involved in the IM
       <td><a href="rad-x11.html">RAD TF-2: 3.X11</a></td>
     </tr>
     <tr>
-      <td rowspan="10"><a href="volume-1.html#1xx112-report-creator">Report Creator</a></td>
+      <td rowspan="9"><a href="volume-1.html#1xx112-report-creator">Report Creator</a></td>
       <td>Subscribe to Reporting Session [RAD-X1]</td>
       <td>Initiator</td>
       <td>R</td>
@@ -109,12 +109,6 @@ Table 1:XX.1-1 lists the transactions for each actor directly involved in the IM
       <td>Initiator</td>
       <td>R</td>
       <td><a href="rad-x4.html">RAD TF-2: 3.X4</a></td>
-    </tr>
-    <tr>
-      <td>Update Report Status [RAD-X12]</td>
-      <td>Initiator</td>
-      <td>R</td>
-      <td><a href="rad-x12.html">RAD TF-2: 3.X12</a></td>
     </tr>
     <tr>
       <td>Unsubscribe Session [RAD-X7]</td>
