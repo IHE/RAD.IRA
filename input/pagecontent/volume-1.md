@@ -654,7 +654,7 @@ If the report context is resumed, then the Report Creator shall be able to resto
 
 If the Report Creator accepted an event initially (i.e., returning `202` Accepted) and later decided to refuse the context or failed to process the event, then it shall send a `syncerror` event back to the Hub using Notify Error [RAD-X11](rad-x11.html).
 
-The Report Creator shall be grouped with a Content Creator to publish report status update using the report anchor context DiagnosticReport resource. It may support other content sharing resources.
+The Report Creator shall be grouped with a Content Creator to publish report status update associated to the report anchor context. In the `DiagnosticReport-update` context change request, the report status update shall be specified in `DiagnosticReport.status` in the `update` context key. It may support other content sharing resources.
 
 - `Observation`: clinical findings or impressions
 
