@@ -41,7 +41,7 @@ The Manager shall support sending such messages to more than one Subscribers. Th
 A Manager sends an Error Notification message when:
 - It receives a 4xx or 5xx error response from a Subscriber when executing the [Distribute Context Event](rad-x9.html) transaction.
 - It does not receive a `2xx` response within a predetermined time frame from a Subscriber after the Manager sent a context event.
-- It initially responded with a `202` Accepted when received a context or content change, but later rejects the request associated with the session.
+- It initially responded with a `202` Accepted when received a context or content change, but later determines that it is unable to synchronize with the content in the event.
 - It detects a websocket connection issue with a Subscriber.
 
 ##### 2:4.X10.4.1.2 Message Semantics
