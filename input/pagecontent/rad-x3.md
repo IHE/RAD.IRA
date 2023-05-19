@@ -91,7 +91,6 @@ The Manager shall return `400` Bad Request error if:
 - If `timestamp`, `id` or `event` are not set
 - If `event.context` does not include `report`, `patient` and `study`
 - if `event`.`hub.topic` is not a known session
-- If `report` context in the request matches an existing report context, but either `patient` or `study` context do not match
 
 The Manager may return other applicable HTTP error status codes.
 
