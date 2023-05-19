@@ -1287,6 +1287,8 @@ Furthermore, the event has a version ID. For the Image Display as a Driving Appl
 > Note: Amending a report uses the same workflow as in Step 2. A *new* report context is opened with the same patient and study context as the original report. 
 >
 > Having opened the new report context, it will be up to the Report Creator to determine whether the original report is being amended or a new report is being added to the study. A *new* report context is used in either case because the report context associated with the original report was transient and is no longer available for use.
+>
+> It is possible that actors such as the Report Creator may choose to populate content related to the original report back into the new report context, e.g. to facilitate further editing.
 
 ###### 1:XX.4.2.1.2.3 Step 3: Add Content (Optional)
 
