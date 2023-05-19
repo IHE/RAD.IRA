@@ -1284,9 +1284,9 @@ Furthermore, the event has a version ID. For the Image Display as a Driving Appl
 
 **Figure 1:XX.4.2.1.2.2-1: Open Study in Context Flow in IRA Profile**
 
-> Note: Generally, amending an existing report uses the exact same workflow in Step 2. A *new* report context is opened with the same patient and study context as the existing report. Based on the patient and study context, the Report Creator will identify that a report already exist and open it for amendment. A *new* report context is used because the report context is transient and does not identify the existing report.
+> Note: Amending a report uses the same workflow as in Step 2. A *new* report context is opened with the same patient and study context as the original report. 
 >
-> However, if the Report Creator persisted the report as a FHIR DiagnosticReport resource, and the Driving Application (i.e. Image Display in this example) has access to the report, then the Image Display may use the actual DiagnosticReport resource as the report context in the amendment case.
+> Having opened the new report context, it will be up to the Report Creator to determine whether the original report is being amended or a new report is being added to the study. A *new* report context is used in either case because the report context associated with the original report was transient and is no longer available for use.
 
 ###### 1:XX.4.2.1.2.3 Step 3: Add Content (Optional)
 
