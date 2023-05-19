@@ -525,11 +525,17 @@ TODO: Make the same change to other actors.
 
 If the Image Display accepted an event initially (i.e., returning `202` Accepted) and later decided to refuse the context or failed to process the event, then it shall send a `syncerror` event back to the Hub using Notify Error [RAD-X11](rad-x11.html).
 
-If the Image Display is grouped with a Content Creator to publish additional content events to a reporting session, then it shall publish events using at least one FHIR resource. The Image Display is highly recommended to publish events using one or more of the following FHIR resources that are expected to be useful in reporting:
+If the Image Display is grouped with a Content Creator to publish additional content events to a reporting session, then it shall publish events using at least one FHIR resource. The Image Display is expected to publish events using one or more of the following FHIR resources:
+
+TODO: Change highly recommended to 'expected'.
 
 - `ImagingSelection`: image / series references and simple annotations
 - `Observation`: measurements and annotations
 - `DiagnosticReport`: add/remove associated (e.g. comparison) study
+
+> Note: The FHIR resources which the actor can publish as FHIRcast contents are documented in its CapabilityStatement.
+
+TODO: Copy this to all other actors.
 
 #### 1:XX.1.1.2 Report Creator
 
