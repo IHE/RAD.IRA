@@ -1320,7 +1320,9 @@ Generally, selecting a content means putting the content in 'focus'. Note that t
 
 ###### 1:XX.4.2.1.2.5 Step 5: Sign-off Report
 
-The radiologist completes dictation and signs off the report on the Report Creator. The Report Creator sends an update event notifying about the report status change (e.g., complete normally, draft complete, sent to transcriptionist, etc.) The Image Display updates the status of the study in its worklist.
+The radiologist completes dictation and signs off the report on the Report Creator. The Report Creator sends an update event notifying about the report status change (e.g., draft, preliminary, final, amended, etc.) The Image Display updates the status of the study in its worklist.
+
+> Note: The report status is a critical attribute in a reporting workflow. Usually the Report Creator is the *owner* of the report status. Alternatives of other content creators modifying the report status would need to be approached carefully.
 
 In this diagram, the Report Creator closes the report context after it sent the report status update event. Recall that this report context was opened by the Image Display. 
 
