@@ -515,11 +515,9 @@ The Image Display shall support all Behaviors shown as “R” in Optionality. T
   </tbody>
 </table>
 
-If the report context is resumed, then the Image Display shall be able to restore the application to the same state associated to the report context as before the interruption.
+If the report context is resumed, then the Image Display shall be able to restore the application to a state associated to the report context closely resemble the application state before the interruption.
 
-> Note: The DiagnosticReport-open event does not explicitly indicate if the report context is new or resumed. See [Subscriber Local Context and Local State](volume-1.html#1xx4110-subscriber-local-context-and-local-state) for design considerations.
-
-TODO: Figure out what baseline requirements to avoid disfunctionality. Or may be just leave it to product implementation?
+> Note: The DiagnosticReport-open event does not explicitly indicate if the report context is new or resumed. See [Subscriber Local Context and Local State](volume-1.html#1xx4110-resuming-contexts-subscriber-local-context-and-local-state) for design considerations.
 
 ##### 1:XX.1.1.1.2 Event Producing Requirements
 
@@ -638,11 +636,9 @@ The Report Creator shall support all Behaviors shown as “R” in Optionality. 
 
 > Note 1: The Report Creator may provide application logic that can make use of the selected resources. For example, a nodule (as `ImagingSelection`) and corresponding measurements (as `Observation`) are selected. Then the radiologist issues a voice command "insert hyperlink". In this case, the Report Creator applies the command with the selected resources and insert a hyperlink reference to the nodule with measurement.
 
-In addition to the requirements in the Table 1:XX.1.1.2.1-1, when received a DiagnosticReport-open event, the Report Creator shall detect if the report context is a new report context or a report context that is resumed.
+If the report context is resumed, then the Report Creator shall be able to restore the application to a state associated to the report context closely resemble the application state before the interruption.
 
-> Note: The DiagnosticReport-open event does not explicitly indicate if the report context is new or resumed. See [Subscriber Local Context and Local State](volume-1.html#1xx4110-subscriber-local-context-and-local-state) for design considerations.
-
-If the report context is resumed, then the Report Creator shall be able to restore the application to the same state associated to the report context as before the interruption.
+> Note: The DiagnosticReport-open event does not explicitly indicate if the report context is new or resumed. See [Subscriber Local Context and Local State](volume-1.html#1xx4110-resuming-contexts-subscriber-local-context-and-local-state) for design considerations.
 
 ##### 1:XX.1.1.2.2 Event Producing Requirements
 
@@ -739,11 +735,9 @@ The Worklist Client shall support all Behaviors shown as “R” in Optionality.
 
 > Note 1: This does not trigger the Worklist Client to change the report context to the referenced study in the event.
 
-In addition to the requirements in the Table 1:XX.1.1.3.1-1, when received a DiagnosticReport-open event, the Worklist Client shall detect if the report context is a new report context or a report context that is resumed.
+If the report context is resumed, then the Worklist Client shall be able to restore the application to a state associated to the report context closely resemble the application state before the interruption.
 
-> Note: The DiagnosticReport-open event does not explicitly indicate if the report context is new or resumed. See [Subscriber Local Context and Local State](volume-1.html#1xx4110-subscriber-local-context-and-local-state) for design considerations.
-
-If the report context is resumed, then the Worklist Client shall be able to restore the application to the same state associated to the report context as before the interruption.
+> Note: The DiagnosticReport-open event does not explicitly indicate if the report context is new or resumed. See [Subscriber Local Context and Local State](volume-1.html#1xx4110-resuming-contexts-subscriber-local-context-and-local-state) for design considerations.
 
 ##### 1:XX.1.1.3.2 Event Producing Requirements
 
@@ -829,11 +823,9 @@ The Evidence Creator shall support all Behaviors shown as “R” in Optionality
   </tbody>
 </table>
 
-In addition to the requirements in the Table 1:XX.1.1.4.1-1, when received a DiagnosticReport-open event, the Evidence Creator shall detect if the report context is a new report context or a report context that is resumed.
+If the report context is resumed, then the Evidence Creator shall be able to restore the application to a state associated to the report context closely resemble the application state before the interruption.
 
-> Note: The DiagnosticReport-open event does not explicitly indicate if the report context is new or resumed. See [Subscriber Local Context and Local State](volume-1.html#1xx4110-subscriber-local-context-and-local-state) for design considerations.
-
-If the report context is resumed, then the Evidence Creator shall be able to restore the application to the same state associated to the report context as before the interruption.
+> Note: The DiagnosticReport-open event does not explicitly indicate if the report context is new or resumed. See [Subscriber Local Context and Local State](volume-1.html#1xx4110-resuming-contexts-subscriber-local-context-and-local-state) for design considerations.
 
 ##### 1:XX.1.1.4.2 Event Producing Requirements
 
