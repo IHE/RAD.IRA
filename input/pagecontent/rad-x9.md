@@ -37,7 +37,7 @@ The Manager shall support sending such messages to more than one Subscriber. The
 
 ##### 2:4.X9.4.1.1 Trigger Events
 
-The Manager accepts a notification event request and this Subscriber has listed this event type in its subscription.
+The Manager accepts a notification event request (e.g. context events, syncerror events or other infrastructure events such as heartbeat events) and this Subscriber has listed this event type in its subscription.
 
 ##### 2:4.X9.4.1.2 Message Semantics
 
