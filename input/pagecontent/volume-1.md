@@ -515,7 +515,7 @@ The Image Display shall support all Behaviors shown as “R” in Optionality. T
   </tbody>
 </table>
 
-If the report context is resumed, then the Image Display shall be able to restore the application to a state associated to the report context closely resemble the application state before the interruption.
+If the report context is resumed, then the Image Display shall be able to restore the application to a state associated to the report context closely resemble the application state before the suspension.
 
 > Note: The DiagnosticReport-open event does not explicitly indicate if the report context is new or resumed. See [Subscriber Local Context and Local State](volume-1.html#1xx4110-resuming-contexts-subscriber-local-context-and-local-state) for design considerations.
 
@@ -577,13 +577,13 @@ The Report Creator shall support all Behaviors shown as “R” in Optionality. 
       <td><code class="language-plaintext highlighter-rouge">patient</code></td>
       <td>Patient</td>
       <td>R</td>
-      <td>Be ready for reporting for the patient. If re-open a previously opened report context, resume to the previous state of the report context when it was interrupted.</td>      
+      <td>Be ready for reporting for the patient. If re-open a previously opened report context, resume to the previous state of the report context when it was suspended.</td>      
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">study</code></td>
       <td>ImagingStudy</td>
       <td>R</td>
-      <td>Be ready for reporting for the study. If re-open a previously opened report context, resume to the previous state of the report context when it was interrupted.</td>      
+      <td>Be ready for reporting for the study. If re-open a previously opened report context, resume to the previous state of the report context when it was suspended.</td>      
     </tr>
     <tr>
       <td rowspan="3">DiagnosticReport-update</td>
@@ -636,7 +636,7 @@ The Report Creator shall support all Behaviors shown as “R” in Optionality. 
 
 > Note 1: The Report Creator may provide application logic that can make use of the selected resources. For example, a nodule (as `ImagingSelection`) and corresponding measurements (as `Observation`) are selected. Then the radiologist issues a voice command "insert hyperlink". In this case, the Report Creator applies the command with the selected resources and insert a hyperlink reference to the nodule with measurement.
 
-If the report context is resumed, then the Report Creator shall be able to restore the application to a state associated to the report context closely resemble the application state before the interruption.
+If the report context is resumed, then the Report Creator shall be able to restore the application to a state associated to the report context closely resemble the application state before the suspension.
 
 > Note: The DiagnosticReport-open event does not explicitly indicate if the report context is new or resumed. See [Subscriber Local Context and Local State](volume-1.html#1xx4110-resuming-contexts-subscriber-local-context-and-local-state) for design considerations.
 
@@ -735,7 +735,7 @@ The Worklist Client shall support all Behaviors shown as “R” in Optionality.
 
 > Note 1: This does not trigger the Worklist Client to change the report context to the referenced study in the event.
 
-If the report context is resumed, then the Worklist Client shall be able to restore the application to a state associated to the report context closely resemble the application state before the interruption.
+If the report context is resumed, then the Worklist Client shall be able to restore the application to a state associated to the report context closely resemble the application state before the suspension.
 
 > Note: The DiagnosticReport-open event does not explicitly indicate if the report context is new or resumed. See [Subscriber Local Context and Local State](volume-1.html#1xx4110-resuming-contexts-subscriber-local-context-and-local-state) for design considerations.
 
@@ -823,7 +823,7 @@ The Evidence Creator shall support all Behaviors shown as “R” in Optionality
   </tbody>
 </table>
 
-If the report context is resumed, then the Evidence Creator shall be able to restore the application to a state associated to the report context closely resemble the application state before the interruption.
+If the report context is resumed, then the Evidence Creator shall be able to restore the application to a state associated to the report context closely resemble the application state before the suspension.
 
 > Note: The DiagnosticReport-open event does not explicitly indicate if the report context is new or resumed. See [Subscriber Local Context and Local State](volume-1.html#1xx4110-resuming-contexts-subscriber-local-context-and-local-state) for design considerations.
 
@@ -862,7 +862,7 @@ The specific context or content changes captured by the Content Creator depends 
 
 The Content Creator shall only publish DiagnosticReport-select events for user initiated selection.
 
-When the grouped actor restores the application to a previous known state due to resuming a report context, if there are any contents known to be selected by the user prior to the interruption and the grouped actor is the originator of the corresponding DiagnosticReport-select event, then
+When the grouped actor restores the application to a previous known state due to resuming a report context, if there are any contents known to be selected by the user prior to the suspension and the grouped actor is the originator of the corresponding DiagnosticReport-select event, then
 - The grouped actor shall prompt the user if the selections are still valid
 - If valid, then the Content Creator shall send a DiagnosticReport-select event for the selected resources
 
@@ -1172,7 +1172,7 @@ When the user finishes reviewing the urgent study, the report context of the urg
 
 The driving application sends a *new* open event for the _suspended_ report context to make it the `Current Context`. All subscribers receive the open event and resume to the _suspended_ report context. Alternatively the driving application could choose to open any other report context as appropriate.
 
-See [Use Case #3](volume-1.html#1xx423-use-case-3-interruption-and-resume-flow) for more details.
+See [Use Case #3](volume-1.html#1xx423-use-case-3-suspend-and-resume-flow) for more details.
 
 #### 1:XX.4.1.10 Resuming contexts: Subscriber Local Context and Local State
 
@@ -1406,13 +1406,13 @@ Note that at Step 7, since all the necessary applications have already been star
 
 **Figure 1:XX.4.2.2-1: Complex Reporting in IRA Profile**
 
-#### 1:XX.4.2.3 Use Case \#3: Interruption and Resume Flow
+#### 1:XX.4.2.3 Use Case \#3: Suspend and Resume Flow
 
 Occasionally a radiologist is interrupted while reporting on a study. She needs to open a different study (e.g., for consultation purpose) before the study that is currently in progress is ready for sign-off.
 
 This profile permits a new report context to be opened before the previous report context is closed. The Hub can maintain multiple anchor contexts simultaneously within a reporting session. The current context is the most recent anchor context that has been opened but not yet closed. This current context enables all Synchronizing Applications to be synchronized and working on the same context all the time.
 
-Once the *interrupting* study is complete, the Image Display closes the report context of the *interrupting* study. The Hub removes the context of the *interrupting* study and set the current context to *empty*. The Image Display, as the Driving Application in this example, resumes the report context back to the previously opened study. It restores its application state associated to the report context the same as prior to the interruption and then re-opens the same report context to the Hub. Note that all associated context and contents remain in the Hub.
+Once the *interrupting* study is complete, the Image Display closes the report context of the *interrupting* study. The Hub removes the context of the *interrupting* study and set the current context to *empty*. The Image Display, as the Driving Application in this example, resumes the report context back to the previously opened study. It restores its application state associated to the report context closely resemble to the state prior to the suspension and then re-opens the same report context to the Hub. Note that all associated context and contents remain in the Hub.
 
 As a result, all subscribers will resume to the same report context. If an application has business logic to resume something else rather than the previous report context, that application should send a new Open Report Context [RAD-X3] event to set the new report context accordingly.
 
@@ -1421,7 +1421,7 @@ As a result, all subscribers will resume to the same report context. If an appli
 </div>
 <br clear="all">
 
-**Figure 1:XX.4.2.3-1: Interruption and Resume Flow in IRA Profile**
+**Figure 1:XX.4.2.3-1: Suspend and Resume Flow in IRA Profile**
 
 #### 1:XX.4.2.4 Use Case \#4: Error Handling Flow
 

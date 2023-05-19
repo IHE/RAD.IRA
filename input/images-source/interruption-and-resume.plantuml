@@ -35,9 +35,9 @@ PACS->PACS: //No action required//
 PACS-->Hub: //Success (id = 1000, status = 200)//
 deactivate Hub
 
-== Step 2b: Interruption Occurred ==
+== Step 2b: Suspension Occurred ==
 
-User->User: //Received an interruption to consult on another study//
+User->User: //Suspend current study to consult on another study//
 
 User->PACS: //Select **Another** Patient and Study//
 PACS->PACS: //Open Study and show Chest CT//
@@ -67,7 +67,7 @@ deactivate Hub
 
 User->PACS: //Start reviewing the new study for consultation//
 
-== Step 2c: Interruption Complete ==
+== Step 2c: Suspension Complete ==
 
 User->PACS: //Complete review for consultation and close study//
 
@@ -95,7 +95,7 @@ Hub->PACS: Distribute Context Event [RAD-X9]\n(event: id = 4000,\ncontext = Diag
 PACS-->Hub: //Success (id=4000, status = 200)//
 
 group Resync User Selection
-PACS->PACS: //Identified markups selected by user prior to interruption//
+PACS->PACS: //Identified markups selected by user prior to suspension//
 PACS->User: //Prompt user to confirm selection//
 User-->PACS: //Confirmed//
 PACS->Hub: Select Report Content [RAD-X6]

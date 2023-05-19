@@ -19,7 +19,7 @@ It is important to note that as soon as a Change Proposal is approved, it carrie
     - Two applications context sharing (e.g., between PACS (Image Display) and Reporting System (Report Creator)
     - Multiple applications context sharing (e.g., Worklist (Worklist Client) drives PACS (Image Display) and Reporting System (Report Creator), and PACS in turn drives a Specialty App (Evidence Creator))
     - Content sharing in additional to context sharing (e.g., share measurement and image references)
-    - Interruption and Resume
+    - Suspend and Resume
     - Error handling from any synchronizing application
       
 - Q: Should the Evidence Creator actor be required to support content sharing and update the context with evidence data it generated?<br><br>An Evidence Creator supports creating evidence data such as measurements, annotations, etc. However, it may not support capturing the evidence using FHIR resources and not able to share them back to the reporting session using Update Request Content [RAD-X5]. Therefore there may be two levels of support on this profile by an Evidence Creator: (1) as a consumer only, (2) can also publish evidence as FHIR resources and share back to the reporting session.
