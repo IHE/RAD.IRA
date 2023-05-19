@@ -515,7 +515,9 @@ The Image Display shall support all Behaviors shown as “R” in Optionality. T
   </tbody>
 </table>
 
-If the report context is resumed, then the Image Display shall be able to restore the application to a state associated to the report context closely resemble the application state before the suspension.
+If the report context is resumed, then the Image Display shall be able to restore the application to a state associated to that report context prior to suspension. It is the responsibility of the implementation to determine what elements of application state are significant to the user to be restored when the application resumes the report context.
+
+TODO: Make the same change to other actors.
 
 > Note: The DiagnosticReport-open event does not explicitly indicate if the report context is new or resumed. See [Subscriber Local Context and Local State](volume-1.html#1xx4110-resuming-contexts-subscriber-local-context-and-local-state) for design considerations.
 
