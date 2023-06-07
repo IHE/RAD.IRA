@@ -525,8 +525,6 @@ If the Image Display accepted an event initially (i.e., returning `202` Accepted
 
 If the Image Display is grouped with a Content Creator to publish additional content events to a reporting session, then it shall publish events using at least one FHIR resource. The Image Display is expected to publish events using one or more of the following FHIR resources:
 
-TODO: Change highly recommended to 'expected'.
-
 - `ImagingSelection`: image / series references and simple annotations
 - `Observation`: measurements and annotations
 - `DiagnosticReport`: add/remove associated (e.g. comparison) study
@@ -839,7 +837,7 @@ If the report context is resumed, then the Evidence Creator shall be able to res
 
 If the Evidence Creator accepted an event initially (i.e., returning `202` Accepted) and later decided to refuse the context or failed to process the event, then it shall send a `syncerror` event back to the Hub using Notify Error [RAD-X11](rad-x11.html).
 
-If the Evidence Creator is grouped with a Content Creator to publish content events to a reporting session, then it shall publish events using at least one FHIR resource. The Evidence Creator is highly recommended to publish events using one or more of the following FHIR resources that are expected to be useful in reporting:
+If the Evidence Creator is grouped with a Content Creator to publish content events to a reporting session, then it shall publish events using at least one FHIR resource. The Evidence Creator is expected to publish events using one or more of the following FHIR resources that are expected to be useful in reporting:
 
 - `ImagingSelection`: image / series references and simple annotations such as bounding boxes
 - `Observation`: measurements and annotations
