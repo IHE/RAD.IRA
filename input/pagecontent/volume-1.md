@@ -414,7 +414,7 @@ The Image Display is responsible for presenting patients' studies and relevant i
 
 The Image Display provides tools for the user to navigate images in a study. It may include a worklist component that let the user select studies to read. It may also include tools to create evidence data such as annotations, key images, etc.
 
-The Image Display shall be capable of being launched by another application. When launched, it shall use the provided `hub.url` and `hub.topic` to join a reporting session.
+When the Image Display starts up, it shall obtain `hub.url` and `hub.topic` to join a reporting session.
 
 The Image Display shall be able to launch other applications and synchronize them to the same report context through the Hub. It shall have the following capabilities: 
 - Start a new reporting session by generating a unique session ID and subscribing to the Hub on its own
@@ -547,7 +547,7 @@ In order to complete a study dictation, the Report Creator:
 
 The Report Creator provides tools for the user to insert report content such as findings and impressions. The Report Creator may use the report content shared by other applications through the Hub (e.g., image references shared by Image Display, or measurements shared by Evidence Creator) to directly update the report (e.g., insert measurements) or generate derived report content (e.g., inject hyperlinks from image references)
 
-The Report Creator shall be capable of being launched by another application. When launched, it shall use the provided `hub.url` and `hub.topic` to join a reporting session.
+When the Report Creator starts up, it shall obtain `hub.url` and `hub.topic` to join a reporting session.
 
 The Report Creator shall be able to launch other applications and synchronize them to the same report context through the Hub. It shall have the following capabilities: 
 - Start a new reporting session by generating a unique session ID and subscribing to the Hub on its own
@@ -664,7 +664,7 @@ When a user selects studies from the worklist, the Worklist Client launches othe
 
 When a study dictation is complete, the Worklist Client consumes the report anchor context update event so that it can mark the study as dictated and remove it from the worklist.
 
-The Worklist Client shall be capable of being launched by another application. When launched, it shall use the provided `hub.url` and `hub.topic` to join a reporting session.
+When the Worklist Client starts up, it shall obtain `hub.url` and `hub.topic` to join a reporting session.
 
 The Worklist Client shall be able to launch other applications and synchronize them to the same report context through the Hub. It shall have the following capabilities: 
 - Start a new reporting session by generating a unique session ID and subscribing to the Hub on its own
@@ -761,7 +761,9 @@ Alternatively the Evidence Creator may capture the evidence data (e.g., lung nod
 
 The Evidence Creator may be a standalone application such as an Specialty AI application, or it may be grouped with another actor such as Image Display.
 
-The Evidence Creator shall be capable of being launched by another application. When launched, it shall use the provided `hub.url` and `hub.topic` to join a reporting session.
+When the Evidence Creator starts up, it shall obtain `hub.url` and `hub.topic` to join a reporting session.
+
+> Note that the actual application launch method is out of scope of this profile. See [Application Launch Scenarios and Session Discovery](https://build.fhir.org/ig/HL7/fhircast-docs/4-1-launch-scenarios.html) for more details.
 
 ##### 1:XX.1.1.4.1 Event Handling Requirements
 
@@ -880,7 +882,9 @@ The Watcher is responsible for listening to events in a session and perform acti
 
 For example, the Watcher consumes the initiation and termination of report contexts and calculates the turnaround time for different types of studies in different departments. Another example is that the Watcher monitors how often an Evidence Creator publishes content sharing events and correlates how effective an AI application is with respect to the turnaround time by comparison and time before and after the Evidence Creator is deployed.
 
-The Watcher shall be capable of being launched by another application. When launched, it shall use the provided `hub.url` and `hub.topic` to join a reporting session.
+When the Watcher starts up, it shall obtain `hub.url` and `hub.topic` to join a reporting session.
+
+> Note that the actual application launch method is out of scope of this profile. See [Application Launch Scenarios and Session Discovery](https://build.fhir.org/ig/HL7/fhircast-docs/4-1-launch-scenarios.html) for more details.
 
 ##### 1:XX.1.1.7.1 Event Handling Requirements
 
