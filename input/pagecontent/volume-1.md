@@ -531,8 +531,6 @@ If the Image Display is grouped with a Content Creator to publish additional con
 
 > Note: The FHIR resources which the actor can publish as FHIRcast contents are documented in its CapabilityStatement.
 
-TODO: Copy this to all other actors.
-
 #### 1:XX.1.1.2 Report Creator
 
 The Report Creator is responsible for producing a diagnostic report for patients' studies.
@@ -652,6 +650,8 @@ The Report Creator shall be grouped with a Content Creator to publish report sta
 
 - `Observation`: clinical findings or impressions
 
+> Note: The FHIR resources which the actor can publish as FHIRcast contents are documented in its CapabilityStatement.
+
 #### 1:XX.1.1.3 Worklist Client
 
 The Worklist Client is responsible for providing a reporting worklist to the user.
@@ -747,6 +747,8 @@ If the report context is resumed, then the Worklist Client shall be able to rest
 
 If the Worklist Client accepted an event initially (i.e., returning `202` Accepted) and later decided to refuse the context or failed to process the event, then it shall send a `syncerror` event back to the Hub using Notify Error [RAD-X11](rad-x11.html).
 
+> Note: The FHIR resources which the actor can publish as FHIRcast contents are documented in its CapabilityStatement.
+
 #### 1:XX.1.1.4 Evidence Creator
 
 The Evidence Creator is responsible for consuming events in the reporting session and producing evidence data such as annotations, measurements, key image references, etc. for the patients' studies. For example, it may detect lung nodules and produce measurements and bounding boxes of the nodules detected.
@@ -841,7 +843,9 @@ If the Evidence Creator is grouped with a Content Creator to publish content eve
 
 - `ImagingSelection`: image / series references and simple annotations such as bounding boxes
 - `Observation`: measurements and annotations
-- `DocumentReference`: results from IHE AI Results Profile using the [JSON Representation of DICOM SR](https://www.dicomstandard.org/News-dir/ftsup/docs/sups/Sup219.pdf), or other documents |
+- `DocumentReference`: results from IHE AI Results Profile using the [JSON Representation of DICOM SR](https://www.dicomstandard.org/News-dir/ftsup/docs/sups/Sup219.pdf), or other documents
+
+> Note: The FHIR resources which the actor can publish as FHIRcast contents are documented in its CapabilityStatement.
 
 #### 1:XX.1.1.5 Stateless Evidence Creator
 
@@ -953,6 +957,8 @@ The Watcher shall support all Behaviors shown as “R” in Optionality. The Wat
 ##### 1:XX.1.1.7.2 Event Producing Requirements
 
 If the Watcher accepted an event initially (i.e., returning `202` Accepted) and later decided to refuse the context or failed to process the event, then it shall send a `syncerror` event back to the Hub using Notify Error [RAD-X11](rad-x11.html).
+
+> Note: The FHIR resources which the actor can publish as FHIRcast contents are documented in its CapabilityStatement.
 
 #### 1:XX.1.1.8 Hub
 
