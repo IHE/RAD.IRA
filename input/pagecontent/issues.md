@@ -38,6 +38,8 @@ It is important to note that as soon as a Change Proposal is approved, it carrie
 
 - Q: Can a Subscriber returns rich error content using OperationOutcome when it turns a 4xx / 5xx response code?<br><br>In FHIRcast, the OperationOutcome is only available in SyncError event in case of an asynchronous response. For synchronous response, it can only returns a simple HTTP error status in the response.
 
+- Q: Should the event includes the originating sender?<br><br>Currently FHIRcast event does not include the originating sender. However, having this information enables a Subscriber to make decisions on whether it should process the message and how, if the processing of the event depends on who originates it.
+
 #### Closed Issues
 
 - Q: Should [SMART-web-messaging](https://build.fhir.org/ig/HL7/smart-web-messaging/index.html) be included in this profile?<br><br>A: No.<br>SMART-web-messaging currently is limited to web applications running in the same browser only. If there are demand for this integration, a separate profile can be created so that implementations can document what methods they support.
