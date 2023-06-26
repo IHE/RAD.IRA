@@ -83,7 +83,7 @@
         * How to communicate the second context is supposed to be open in parallel of the first context? or as a replacemenet?
 
 . FHIRcast requires the hub to automatically send the last *-open context event to all new subscribers.
-    * Alternatively, my preference is that we can require the subscribers to always send a Get Context Event [RAD-X6] request upon initial subscription complete to get the latest context and content. This is newly introduced with the DiagnosticReport events.
+    * Alternatively, my preference is that we can require the subscribers to always send a Get Context Event [RAD-151] request upon initial subscription complete to get the latest context and content. This is newly introduced with the DiagnosticReport events.
 
 . For content sharing, FHIRcast requires the hub to keep track of the latest context and content and defined a version for each. This is necessary so that the Get Current Context request can get the latest information (e.g. in case the subscriber has an race condition with version conflict).
     * However, this requires the Hub to be aware of how to apply all events in a consistent way with respect to all subscribers.

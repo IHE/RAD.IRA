@@ -1,4 +1,4 @@
-The sample events in this section follow the flow defined in [Use Case #1: Basic Reporting](volume-1.html#1xx421-use-case-1-basic-reporting).
+The sample events in this section follow the flow defined in [Use Case #1: Basic Reporting](volume-1.html#153421-use-case-1-basic-reporting).
 
 - [Open Report Context](open_study_for_reporting.html)
 - [Update Report Content](update_study_with_measurement.html)

@@ -2,28 +2,28 @@ The Integrated Reporting Applications (IRA) Profile helps applications that are 
 
 For example, the report creator could share that the user is starting a new report, and the other applications could synchronize by opening the corresponding study. An AI tool could generate a tumor measurement and the report creator could get that data and add an entry in the report, either automatically or triggered by a command from the radiologist.
 
-# 1:XX.1 Realtime Bidirectional Communication for Interactive Multimedia Reporting
+# 1:53.1 Realtime Bidirectional Communication for Interactive Multimedia Reporting
 
 This section defines the actors, transactions, and/or content modules in this profile. General
 definitions of actors are given in the Technical Frameworks General Introduction [Appendix A](https://profiles.ihe.net/GeneralIntro/ch-A.html).
 IHE Transactions can be found in the Technical Frameworks General Introduction [Appendix B](https://profiles.ihe.net/GeneralIntro/ch-B.html).
 Both appendices are located at <https://profiles.ihe.net/GeneralIntro/>.
 
-Figure 1:XX.1-1 shows the actors directly involved in the IRA Profile and the relevant transactions
+Figure 1:53.1-1 shows the actors directly involved in the IRA Profile and the relevant transactions
 between them. If needed for context, other actors that may be indirectly involved due to their participation
 in other related profiles are shown in dotted lines. Actors which have a required
-grouping are shown in conjoined boxes (see [Section 1:XX.3](#1xx3-ira-required-actor-groupings)).
+grouping are shown in conjoined boxes (see [Section 1:53.3](#1533-ira-required-actor-groupings)).
 
 <div>
     <img src="actor_transaction.png" width="80%">
 </div>
 <br clear="all">
 
-**Figure 1:XX.1-1: IRA Actor Diagram**
+**Figure 1:53.1-1: IRA Actor Diagram**
 
-Table 1:XX.1-1 lists the transactions for each actor directly involved in the IMR Profile. To claim compliance with this profile, an actor shall support all required transactions (labeled “R”) and may support the optional transactions (labeled “O”).
+Table 1:53.1-1 lists the transactions for each actor directly involved in the IMR Profile. To claim compliance with this profile, an actor shall support all required transactions (labeled “R”) and may support the optional transactions (labeled “O”).
 
-**Table 1:XX.1-1: IRA Profile - Actors and Transactions**
+**Table 1:53.1-1: IRA Profile - Actors and Transactions**
 
 <table class="grid">
   <thead>
@@ -37,378 +37,378 @@ Table 1:XX.1-1 lists the transactions for each actor directly involved in the IM
   </thead>
   <tbody>
     <tr>
-      <td rowspan="8"><a href="volume-1.html#1xx111-image-display">Image Display</a></td>
-      <td>Subscribe to Reporting Session [RAD-X1]</td>
+      <td rowspan="8"><a href="volume-1.html#153111-image-display">Image Display</a></td>
+      <td>Subscribe to Reporting Session [RAD-146]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="rad-x1.html">RAD TF-2: 3.X1</a></td>
+      <td><a href="rad-146.html">RAD TF-2: 4.146</a></td>
     </tr>
     <tr>
-      <td>Connect to Notification Channel [RAD-X2]</td>
+      <td>Connect to Notification Channel [RAD-147]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="rad-x2.html">RAD TF-2: 3.X2</a></td>
+      <td><a href="rad-147.html">RAD TF-2: 4.147</a></td>
     </tr>
     <tr>
-      <td>Open Report Context [RAD-X3]</td>
+      <td>Open Report Context [RAD-148]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="rad-x3.html">RAD TF-2: 3.X3</a></td>
+      <td><a href="rad-148.html">RAD TF-2: 4.148</a></td>
     </tr>
     <tr>
-      <td>Unsubscribe Session [RAD-X7]</td>
+      <td>Unsubscribe Session [RAD-152]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="rad-x7.html">RAD TF-2: 3.X7</a></td>
+      <td><a href="rad-152.html">RAD TF-2: 4.152</a></td>
     </tr>
     <tr>
-      <td>Get Current Context [RAD-X8]</td>
+      <td>Get Current Context [RAD-153]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="rad-x8.html">RAD TF-2: 3.X8</a></td>
+      <td><a href="rad-153.html">RAD TF-2: 4.153</a></td>
     </tr>
     <tr>
-      <td>Distribute Context Event [RAD-X9]</td>
+      <td>Distribute Context Event [RAD-154]</td>
       <td>Responder</td>
       <td>R</td>
-      <td><a href="rad-x9.html">RAD TF-2: 3.X9</a></td>
+      <td><a href="rad-154.html">RAD TF-2: 4.154</a></td>
     </tr>
     <tr>
-      <td>Generate SyncError Event [RAD-X10]</td>
+      <td>Generate SyncError Event [RAD-155]</td>
       <td>Responder</td>
       <td>R</td>
-      <td><a href="rad-x10.html">RAD TF-2: 3.X10</a></td>
+      <td><a href="rad-155.html">RAD TF-2: 4.155</a></td>
     </tr>
     <tr>
-      <td>Notify Error [RAD-X11]</td>
+      <td>Notify Error [RAD-156]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="rad-x11.html">RAD TF-2: 3.X11</a></td>
+      <td><a href="rad-156.html">RAD TF-2: 4.156</a></td>
     </tr>
     <tr>
-      <td rowspan="9"><a href="volume-1.html#1xx112-report-creator">Report Creator</a></td>
-      <td>Subscribe to Reporting Session [RAD-X1]</td>
+      <td rowspan="9"><a href="volume-1.html#153112-report-creator">Report Creator</a></td>
+      <td>Subscribe to Reporting Session [RAD-146]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="rad-x1.html">RAD TF-2: 3.X1</a></td>
+      <td><a href="rad-146.html">RAD TF-2: 4.146</a></td>
     </tr>
     <tr>
-      <td>Connect to Notification Channel [RAD-X2]</td>
+      <td>Connect to Notification Channel [RAD-147]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="rad-x2.html">RAD TF-2: 3.X2</a></td>
+      <td><a href="rad-147.html">RAD TF-2: 4.147</a></td>
     </tr>
     <tr>
-      <td>Open Report Context [RAD-X3]</td>
+      <td>Open Report Context [RAD-148]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="rad-x3.html">RAD TF-2: 3.X3</a></td>
+      <td><a href="rad-148.html">RAD TF-2: 4.148</a></td>
     </tr>
     <tr>
-      <td>Close Report Context [RAD-X4]</td>
+      <td>Close Report Context [RAD-149]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="rad-x4.html">RAD TF-2: 3.X4</a></td>
+      <td><a href="rad-149.html">RAD TF-2: 4.149</a></td>
     </tr>
     <tr>
-      <td>Unsubscribe Session [RAD-X7]</td>
+      <td>Unsubscribe Session [RAD-152]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="rad-x7.html">RAD TF-2: 3.X7</a></td>
+      <td><a href="rad-152.html">RAD TF-2: 4.152</a></td>
     </tr>
     <tr>
-      <td>Get Current Context [RAD-X8]</td>
+      <td>Get Current Context [RAD-153]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="rad-x8.html">RAD TF-2: 3.X8</a></td>
+      <td><a href="rad-153.html">RAD TF-2: 4.153</a></td>
     </tr>
     <tr>
-      <td>Distribute Context Event [RAD-X9]</td>
+      <td>Distribute Context Event [RAD-154]</td>
       <td>Responder</td>
       <td>R</td>
-      <td><a href="rad-x9.html">RAD TF-2: 3.X9</a></td>
+      <td><a href="rad-154.html">RAD TF-2: 4.154</a></td>
     </tr>
     <tr>
-      <td>Generate SyncError Event [RAD-X10]</td>
+      <td>Generate SyncError Event [RAD-155]</td>
       <td>Responder</td>
       <td>R</td>
-      <td><a href="rad-x10.html">RAD TF-2: 3.X10</a></td>
+      <td><a href="rad-155.html">RAD TF-2: 4.155</a></td>
     </tr>
     <tr>
-      <td>Notify Error [RAD-X11]</td>
+      <td>Notify Error [RAD-156]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="rad-x11.html">RAD TF-2: 3.X11</a></td>
+      <td><a href="rad-156.html">RAD TF-2: 4.156</a></td>
     </tr>
     <tr>
-      <td rowspan="8"><a href="volume-1.html#1xx113-worklist-client">Worklist Client</a></td>
-      <td>Subscribe to Reporting Session [RAD-X1]</td>
+      <td rowspan="8"><a href="volume-1.html#153113-worklist-client">Worklist Client</a></td>
+      <td>Subscribe to Reporting Session [RAD-146]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="rad-x1.html">RAD TF-2: 3.X1</a></td>
+      <td><a href="rad-146.html">RAD TF-2: 4.146</a></td>
     </tr>
     <tr>
-      <td>Connect to Notification Channel [RAD-X2]</td>
+      <td>Connect to Notification Channel [RAD-147]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="rad-x2.html">RAD TF-2: 3.X2</a></td>
+      <td><a href="rad-147.html">RAD TF-2: 4.147</a></td>
     </tr>
     <tr>
-      <td>Open Report Context [RAD-X3]</td>
+      <td>Open Report Context [RAD-148]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="rad-x3.html">RAD TF-2: 3.X3</a></td>
+      <td><a href="rad-148.html">RAD TF-2: 4.148</a></td>
     </tr>
     <tr>
-      <td>Unsubscribe Session [RAD-X7]</td>
+      <td>Unsubscribe Session [RAD-152]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="rad-x7.html">RAD TF-2: 3.X7</a></td>
+      <td><a href="rad-152.html">RAD TF-2: 4.152</a></td>
     </tr>
     <tr>
-      <td>Get Current Context [RAD-X8]</td>
+      <td>Get Current Context [RAD-153]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="rad-x8.html">RAD TF-2: 3.X8</a></td>
+      <td><a href="rad-153.html">RAD TF-2: 4.153</a></td>
     </tr>
     <tr>
-      <td>Distribute Context Event [RAD-X9]</td>
+      <td>Distribute Context Event [RAD-154]</td>
       <td>Responder</td>
       <td>R</td>
-      <td><a href="rad-x9.html">RAD TF-2: 3.X9</a></td>
+      <td><a href="rad-154.html">RAD TF-2: 4.154</a></td>
     </tr>
     <tr>
-      <td>Generate SyncError Event [RAD-X10]</td>
+      <td>Generate SyncError Event [RAD-155]</td>
       <td>Responder</td>
       <td>R</td>
-      <td><a href="rad-x10.html">RAD TF-2: 3.X10</a></td>
+      <td><a href="rad-155.html">RAD TF-2: 4.155</a></td>
     </tr>
     <tr>
-      <td>Notify Error [RAD-X11]</td>
+      <td>Notify Error [RAD-156]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="rad-x11.html">RAD TF-2: 3.X11</a></td>
+      <td><a href="rad-156.html">RAD TF-2: 4.156</a></td>
     </tr>
     <tr>
-      <td rowspan="7"><a href="volume-1.html#1xx114-evidence-creator">Evidence Creator</a></td>
-      <td>Subscribe to Reporting Session [RAD-X1]</td>
+      <td rowspan="7"><a href="volume-1.html#153114-evidence-creator">Evidence Creator</a></td>
+      <td>Subscribe to Reporting Session [RAD-146]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="rad-x1.html">RAD TF-2: 3.X1</a></td>
+      <td><a href="rad-146.html">RAD TF-2: 4.146</a></td>
     </tr>
     <tr>
-      <td>Connect to Notification Channel [RAD-X2]</td>
+      <td>Connect to Notification Channel [RAD-147]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="rad-x2.html">RAD TF-2: 3.X2</a></td>
+      <td><a href="rad-147.html">RAD TF-2: 4.147</a></td>
     </tr>
     <tr>
-      <td>Unsubscribe Session [RAD-X7]</td>
+      <td>Unsubscribe Session [RAD-152]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="rad-x7.html">RAD TF-2: 3.X7</a></td>
+      <td><a href="rad-152.html">RAD TF-2: 4.152</a></td>
     </tr>
     <tr>
-      <td>Get Current Context [RAD-X8]</td>
+      <td>Get Current Context [RAD-153]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="rad-x8.html">RAD TF-2: 3.X8</a></td>
+      <td><a href="rad-153.html">RAD TF-2: 4.153</a></td>
     </tr>
     <tr>
-      <td>Distribute Context Event [RAD-X9]</td>
+      <td>Distribute Context Event [RAD-154]</td>
       <td>Responder</td>
       <td>R</td>
-      <td><a href="rad-x9.html">RAD TF-2: 3.X9</a></td>
+      <td><a href="rad-154.html">RAD TF-2: 4.154</a></td>
     </tr>
     <tr>
-      <td>Generate SyncError Event [RAD-X10]</td>
+      <td>Generate SyncError Event [RAD-155]</td>
       <td>Responder</td>
       <td>R</td>
-      <td><a href="rad-x10.html">RAD TF-2: 3.X10</a></td>
+      <td><a href="rad-155.html">RAD TF-2: 4.155</a></td>
     </tr>
     <tr>
-      <td>Notify Error [RAD-X11]</td>
+      <td>Notify Error [RAD-156]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="rad-x11.html">RAD TF-2: 3.X11</a></td>
+      <td><a href="rad-156.html">RAD TF-2: 4.156</a></td>
     </tr>
     <tr>
-      <td rowspan="7"><a href="volume-1.html#1xx115-stateless-evidence-creator">Stateless Evidence Creator</a></td>
-      <td>Subscribe to Reporting Session [RAD-X1]</td>
+      <td rowspan="7"><a href="volume-1.html#153115-stateless-evidence-creator">Stateless Evidence Creator</a></td>
+      <td>Subscribe to Reporting Session [RAD-146]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="rad-x1.html">RAD TF-2: 3.X1</a></td>
+      <td><a href="rad-146.html">RAD TF-2: 4.146</a></td>
     </tr>
     <tr>
-      <td>Connect to Notification Channel [RAD-X2]</td>
+      <td>Connect to Notification Channel [RAD-147]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="rad-x2.html">RAD TF-2: 3.X2</a></td>
+      <td><a href="rad-147.html">RAD TF-2: 4.147</a></td>
     </tr>
     <tr>
-      <td>Unsubscribe Session [RAD-X7]</td>
+      <td>Unsubscribe Session [RAD-152]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="rad-x7.html">RAD TF-2: 3.X7</a></td>
+      <td><a href="rad-152.html">RAD TF-2: 4.152</a></td>
     </tr>
     <tr>
-      <td>Get Current Context [RAD-X8]</td>
+      <td>Get Current Context [RAD-153]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="rad-x8.html">RAD TF-2: 3.X8</a></td>
+      <td><a href="rad-153.html">RAD TF-2: 4.153</a></td>
     </tr>
     <tr>
-      <td>Distribute Context Event [RAD-X9]</td>
+      <td>Distribute Context Event [RAD-154]</td>
       <td>Responder</td>
       <td>R</td>
-      <td><a href="rad-x9.html">RAD TF-2: 3.X9</a></td>
+      <td><a href="rad-154.html">RAD TF-2: 4.154</a></td>
     </tr>
     <tr>
-      <td>Generate SyncError Event [RAD-X10]</td>
+      <td>Generate SyncError Event [RAD-155]</td>
       <td>Responder</td>
       <td>R</td>
-      <td><a href="rad-x10.html">RAD TF-2: 3.X10</a></td>
+      <td><a href="rad-155.html">RAD TF-2: 4.155</a></td>
     </tr>
     <tr>
-      <td>Notify Error [RAD-X11]</td>
+      <td>Notify Error [RAD-156]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="rad-x11.html">RAD TF-2: 3.X11</a></td>
+      <td><a href="rad-156.html">RAD TF-2: 4.156</a></td>
     </tr>    
     <tr>
-      <td rowspan="2"><a href="volume-1.html#1xx116-content-creator">Content Creator</a></td>
-      <td>Update Report Content [RAD-X5]</td>
+      <td rowspan="2"><a href="volume-1.html#153116-content-creator">Content Creator</a></td>
+      <td>Update Report Content [RAD-150]</td>
       <td>Initiator</td>
       <td>O (Note 1)</td>
-      <td><a href="rad-x5.html">RAD TF-2: 3.X5</a></td>
+      <td><a href="rad-150.html">RAD TF-2: 4.150</a></td>
     </tr>
     <tr>
-      <td>Select Report Content [RAD-X6]</td>
+      <td>Select Report Content [RAD-151]</td>
       <td>Initiator</td>
       <td>O (Note 1)</td>
-      <td><a href="rad-x6.html">RAD TF-2: 3.X6</a></td>
+      <td><a href="rad-151.html">RAD TF-2: 4.151</a></td>
     </tr>
     <tr>
-      <td rowspan="7"><a href="volume-1.html#1xx117-watcher">Watcher</a></td>
-      <td>Subscribe to Reporting Session [RAD-X1]</td>
+      <td rowspan="7"><a href="volume-1.html#153117-watcher">Watcher</a></td>
+      <td>Subscribe to Reporting Session [RAD-146]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="rad-x1.html">RAD TF-2: 3.X1</a></td>
+      <td><a href="rad-146.html">RAD TF-2: 4.146</a></td>
     </tr>
     <tr>
-      <td>Connect to Notification Channel [RAD-X2]</td>
+      <td>Connect to Notification Channel [RAD-147]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="rad-x2.html">RAD TF-2: 3.X2</a></td>
+      <td><a href="rad-147.html">RAD TF-2: 4.147</a></td>
     </tr>
     <tr>
-      <td>Unsubscribe Session [RAD-X7]</td>
+      <td>Unsubscribe Session [RAD-152]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="rad-x7.html">RAD TF-2: 3.X7</a></td>
+      <td><a href="rad-152.html">RAD TF-2: 4.152</a></td>
     </tr>
     <tr>
-      <td>Get Current Context [RAD-X8]</td>
+      <td>Get Current Context [RAD-153]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="rad-x8.html">RAD TF-2: 3.X8</a></td>
+      <td><a href="rad-153.html">RAD TF-2: 4.153</a></td>
     </tr>
     <tr>
-      <td>Distribute Context Event [RAD-X9]</td>
+      <td>Distribute Context Event [RAD-154]</td>
       <td>Responder</td>
       <td>R</td>
-      <td><a href="rad-x9.html">RAD TF-2: 3.X9</a></td>
+      <td><a href="rad-154.html">RAD TF-2: 4.154</a></td>
     </tr>
     <tr>
-      <td>Generate SyncError Event [RAD-X10]</td>
+      <td>Generate SyncError Event [RAD-155]</td>
       <td>Responder</td>
       <td>R</td>
-      <td><a href="rad-x10.html">RAD TF-2: 3.X10</a></td>
+      <td><a href="rad-155.html">RAD TF-2: 4.155</a></td>
     </tr>
     <tr>
-      <td>Notify Error [RAD-X11]</td>
+      <td>Notify Error [RAD-156]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="rad-x11.html">RAD TF-2: 3.X11</a></td>
+      <td><a href="rad-156.html">RAD TF-2: 4.156</a></td>
     </tr>
     <tr>
-      <td rowspan="11"><a href="volume-1.html#1xx118-hub">Hub</a></td>
-      <td>Subscribe to Reporting Session [RAD-X1]</td>
+      <td rowspan="11"><a href="volume-1.html#153118-hub">Hub</a></td>
+      <td>Subscribe to Reporting Session [RAD-146]</td>
       <td>Responder</td>
       <td>R</td>
-      <td><a href="rad-x1.html">RAD TF-2: 3.X1</a></td>
+      <td><a href="rad-146.html">RAD TF-2: 4.146</a></td>
     </tr>
     <tr>
-      <td>Connect to Notification Channel [RAD-X2]</td>
+      <td>Connect to Notification Channel [RAD-147]</td>
       <td>Responder</td>
       <td>R</td>
-      <td><a href="rad-x2.html">RAD TF-2: 3.X2</a></td>
+      <td><a href="rad-147.html">RAD TF-2: 4.147</a></td>
     </tr>
     <tr>
-      <td>Open Report Context [RAD-X3]</td>
+      <td>Open Report Context [RAD-148]</td>
       <td>Responder</td>
       <td>R</td>
-      <td><a href="rad-x3.html">RAD TF-2: 3.X3</a></td>
+      <td><a href="rad-148.html">RAD TF-2: 4.148</a></td>
     </tr>
     <tr>
-      <td>Close Report Context [RAD-X4]</td>
+      <td>Close Report Context [RAD-149]</td>
       <td>Responder</td>
       <td>R</td>
-      <td><a href="rad-x4.html">RAD TF-2: 3.X4</a></td>
+      <td><a href="rad-149.html">RAD TF-2: 4.149</a></td>
     </tr>
     <tr>
-      <td>Update Report Content [RAD-X5]</td>
+      <td>Update Report Content [RAD-150]</td>
       <td>Responder</td>
       <td>R</td>
-      <td><a href="rad-x5.html">RAD TF-2: 3.X5</a></td>
+      <td><a href="rad-150.html">RAD TF-2: 4.150</a></td>
     </tr>
     <tr>
-      <td>Select Report Content [RAD-X6]</td>
+      <td>Select Report Content [RAD-151]</td>
       <td>Responder</td>
       <td>R</td>
-      <td><a href="rad-x6.html">RAD TF-2: 3.X6</a></td>
+      <td><a href="rad-151.html">RAD TF-2: 4.151</a></td>
     </tr>
     <tr>
-      <td>Unsubscribe from Session [RAD-X7]</td>
+      <td>Unsubscribe from Session [RAD-152]</td>
       <td>Responder</td>
       <td>R</td>
-      <td><a href="rad-x7.html">RAD TF-2: 3.X7</a></td>
+      <td><a href="rad-152.html">RAD TF-2: 4.152</a></td>
     </tr>
     <tr>
-      <td>Get Current Context [RAD-X8]</td>
+      <td>Get Current Context [RAD-153]</td>
       <td>Responder</td>
       <td>R</td>
-      <td><a href="rad-x8.html">RAD TF-2: 3.X8</a></td>
+      <td><a href="rad-153.html">RAD TF-2: 4.153</a></td>
     </tr>
     <tr>
-      <td>Distribute Context Event [RAD-X9]</td>
+      <td>Distribute Context Event [RAD-154]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="rad-x9.html">RAD TF-2: 3.X9</a></td>
+      <td><a href="rad-154.html">RAD TF-2: 4.154</a></td>
     </tr>
     <tr>
-      <td>Generate SyncError Event [RAD-X10]</td>
+      <td>Generate SyncError Event [RAD-155]</td>
       <td>Initiator</td>
       <td>R</td>
-      <td><a href="rad-x10.html">RAD TF-2: 3.X10</a></td>
+      <td><a href="rad-155.html">RAD TF-2: 4.155</a></td>
     </tr>
     <tr>
-      <td>Notify Error [RAD-X11]</td>
+      <td>Notify Error [RAD-156]</td>
       <td>Responder</td>
       <td>R</td>
-      <td><a href="rad-x11.html">RAD TF-2: 3.X11</a></td>
+      <td><a href="rad-156.html">RAD TF-2: 4.156</a></td>
     </tr>
   </tbody>
 </table>
 
 > Note 1: A Content Creator shall support at least one of the update or select transactions.
 
-### 1:XX.1.1 Actors Description and Actor Profile Requirements
+### 1:53.1.1 Actors Description and Actor Profile Requirements
 Most requirements are documented in RAD TF-2 Transactions. This section documents any additional requirements on this profile's actors.
 
-> Note: Many actor requirements below assume an understanding of FHIRcast and how this profile uses it. Please refer to the [Concept section](https://profiles.ihe.net/RAD/IRA/volume-1.html#1xx41-concepts).
+> Note: Many actor requirements below assume an understanding of FHIRcast and how this profile uses it. Please refer to the [Concept section](https://profiles.ihe.net/RAD/IRA/volume-1.html#15341-concepts).
 
-#### 1:XX.1.1.1 Image Display
+#### 1:53.1.1.1 Image Display
 
 The Image Display is responsible for presenting patients' studies and relevant information to the user so that the user can make diagnostic decisions on the studies.
 
@@ -423,12 +423,12 @@ The Image Display shall be able to launch other applications and synchronize the
 
 > Note that the actual application launch method is out of scope of this profile. See [Application Launch Scenarios and Session Discovery](https://build.fhir.org/ig/HL7/fhircast-docs/4-1-launch-scenarios.html) for more details.
 
-##### 1:XX.1.1.1.1 Event Handling Requirements
+##### 1:53.1.1.1.1 Event Handling Requirements
 
-In Table 1:XX.1.1.1.1-1, for each Received Event, Context Key specifies the context in the received event (including the special `updates` and `select` contexts used in content sharing) and Resources specifies the FHIR resources used in the given context.
+In Table 1:53.1.1.1.1-1, for each Received Event, Context Key specifies the context in the received event (including the special `updates` and `select` contexts used in content sharing) and Resources specifies the FHIR resources used in the given context.
 The Image Display shall support all Behaviors shown as “R” in Optionality. The Image Display may support suggested behaviors ("O" in Optionality).
 
-**Table 1:XX.1.1.1.1-1: Event Handling Requirements**
+**Table 1:53.1.1.1.1-1: Event Handling Requirements**
 
 <table class="grid">
   <thead>
@@ -517,11 +517,11 @@ The Image Display shall support all Behaviors shown as “R” in Optionality. T
 
 If the report context is resumed, then the Image Display shall be able to restore the application to a state associated to that report context prior to suspension. It is the responsibility of the implementation to determine what elements of application state are significant to the user to be restored when the application resumes the report context.
 
-> Note: The DiagnosticReport-open event does not explicitly indicate if the report context is new or resumed. See [Subscriber Local Context and Local State](volume-1.html#1xx4110-resuming-contexts-subscriber-local-context-and-local-state) for design considerations.
+> Note: The DiagnosticReport-open event does not explicitly indicate if the report context is new or resumed. See [Subscriber Local Context and Local State](volume-1.html#1534110-resuming-contexts-subscriber-local-context-and-local-state) for design considerations.
 
-##### 1:XX.1.1.1.2 Event Producing Requirements
+##### 1:53.1.1.1.2 Event Producing Requirements
 
-If the Image Display accepted an event initially (i.e., returning `202` Accepted) and later decided to refuse the context or failed to process the event, then it shall send a `syncerror` event back to the Hub using Notify Error [RAD-X11](rad-x11.html).
+If the Image Display accepted an event initially (i.e., returning `202` Accepted) and later decided to refuse the context or failed to process the event, then it shall send a `syncerror` event back to the Hub using Notify Error [RAD-156](rad-156.html).
 
 If the Image Display is grouped with a Content Creator to publish additional content events to a reporting session, then it shall publish events using at least one FHIR resource. The Image Display is expected to publish events using one or more of the following FHIR resources:
 
@@ -531,7 +531,7 @@ If the Image Display is grouped with a Content Creator to publish additional con
 
 > Note: The FHIR resources which the actor can publish as FHIRcast contents are documented in its CapabilityStatement.
 
-#### 1:XX.1.1.2 Report Creator
+#### 1:53.1.1.2 Report Creator
 
 The Report Creator is responsible for producing a diagnostic report for patients' studies.
 
@@ -550,12 +550,12 @@ The Report Creator shall be able to launch other applications and synchronize th
 
 > Note that the actual application launch method is out of scope of this profile. See [Application Launch Scenarios and Session Discovery](https://build.fhir.org/ig/HL7/fhircast-docs/4-1-launch-scenarios.html) for more details.
 
-##### 1:XX.1.1.2.1 Event Handling Requirements
+##### 1:53.1.1.2.1 Event Handling Requirements
 
-In Table 1:XX.1.1.2.1-1, for each Received Event, Context Key specifies the context in the received event (including the special `updates` and `select` contexts used in content sharing) and Resources specifies the FHIR resources used in the given context.
+In Table 1:53.1.1.2.1-1, for each Received Event, Context Key specifies the context in the received event (including the special `updates` and `select` contexts used in content sharing) and Resources specifies the FHIR resources used in the given context.
 The Report Creator shall support all Behaviors shown as “R” in Optionality. The Report Creator may support suggested behaviors ("O" in Optionality).
 
-**Table 1:XX.1.1.2.1-1: Event Handling Requirements**
+**Table 1:53.1.1.2.1-1: Event Handling Requirements**
 
 <table class="grid">
   <thead>
@@ -640,11 +640,11 @@ The Report Creator shall support all Behaviors shown as “R” in Optionality. 
 
 If the report context is resumed, then the Report Creator shall be able to restore the application to a state associated to that report context prior to suspension. It is the responsibility of the implementation to determine what elements of application state are significant to the user to be restored when the application resumes the report context.
 
-> Note: The DiagnosticReport-open event does not explicitly indicate if the report context is new or resumed. See [Subscriber Local Context and Local State](volume-1.html#1xx4110-resuming-contexts-subscriber-local-context-and-local-state) for design considerations.
+> Note: The DiagnosticReport-open event does not explicitly indicate if the report context is new or resumed. See [Subscriber Local Context and Local State](volume-1.html#1534110-resuming-contexts-subscriber-local-context-and-local-state) for design considerations.
 
-##### 1:XX.1.1.2.2 Event Producing Requirements
+##### 1:53.1.1.2.2 Event Producing Requirements
 
-If the Report Creator accepted an event initially (i.e., returning `202` Accepted) and later decided to refuse the context or failed to process the event, then it shall send a `syncerror` event back to the Hub using Notify Error [RAD-X11](rad-x11.html).
+If the Report Creator accepted an event initially (i.e., returning `202` Accepted) and later decided to refuse the context or failed to process the event, then it shall send a `syncerror` event back to the Hub using Notify Error [RAD-156](rad-156.html).
 
 The Report Creator shall be grouped with a Content Creator to publish report status update associated to the report anchor context. In the `DiagnosticReport-update` context change request, the report status update shall be specified in `DiagnosticReport.status` in the `update` context key. It may support other content sharing resources.
 
@@ -652,7 +652,7 @@ The Report Creator shall be grouped with a Content Creator to publish report sta
 
 > Note: The FHIR resources which the actor can publish as FHIRcast contents are documented in its CapabilityStatement.
 
-#### 1:XX.1.1.3 Worklist Client
+#### 1:53.1.1.3 Worklist Client
 
 The Worklist Client is responsible for providing a reporting worklist to the user.
 
@@ -669,12 +669,12 @@ The Worklist Client shall be able to launch other applications and synchronize t
 
 > Note that the actual application launch method is out of scope of this profile. See [Application Launch Scenarios and Session Discovery](https://build.fhir.org/ig/HL7/fhircast-docs/4-1-launch-scenarios.html) for more details.
 
-##### 1:XX.1.1.3.1 Event Handling Requirements
+##### 1:53.1.1.3.1 Event Handling Requirements
 
-In Table 1:XX.1.1.3.1-1, for each Received Event, Context Key specifies the context in the received event (including the special `updates` and `select` contexts used in content sharing) and Resources specifies the FHIR resources used in the given context.
+In Table 1:53.1.1.3.1-1, for each Received Event, Context Key specifies the context in the received event (including the special `updates` and `select` contexts used in content sharing) and Resources specifies the FHIR resources used in the given context.
 The Worklist Client shall support all Behaviors shown as “R” in Optionality. The Worklist Client may support suggested behaviors ("O" in Optionality).
 
-**Table 1:XX.1.1.3.1-1: Event Handling Requirements**
+**Table 1:53.1.1.3.1-1: Event Handling Requirements**
 
 <table class="grid">
   <thead>
@@ -741,15 +741,15 @@ The Worklist Client shall support all Behaviors shown as “R” in Optionality.
 
 If the report context is resumed, then the Worklist Client shall be able to restore the application to a state associated to that report context prior to suspension. It is the responsibility of the implementation to determine what elements of application state are significant to the user to be restored when the application resumes the report context.
 
-> Note: The DiagnosticReport-open event does not explicitly indicate if the report context is new or resumed. See [Subscriber Local Context and Local State](volume-1.html#1xx4110-resuming-contexts-subscriber-local-context-and-local-state) for design considerations.
+> Note: The DiagnosticReport-open event does not explicitly indicate if the report context is new or resumed. See [Subscriber Local Context and Local State](volume-1.html#1534110-resuming-contexts-subscriber-local-context-and-local-state) for design considerations.
 
-##### 1:XX.1.1.3.2 Event Producing Requirements
+##### 1:53.1.1.3.2 Event Producing Requirements
 
-If the Worklist Client accepted an event initially (i.e., returning `202` Accepted) and later decided to refuse the context or failed to process the event, then it shall send a `syncerror` event back to the Hub using Notify Error [RAD-X11](rad-x11.html).
+If the Worklist Client accepted an event initially (i.e., returning `202` Accepted) and later decided to refuse the context or failed to process the event, then it shall send a `syncerror` event back to the Hub using Notify Error [RAD-156](rad-156.html).
 
 > Note: The FHIR resources which the actor can publish as FHIRcast contents are documented in its CapabilityStatement.
 
-#### 1:XX.1.1.4 Evidence Creator
+#### 1:53.1.1.4 Evidence Creator
 
 The Evidence Creator is responsible for consuming events in the reporting session and producing evidence data such as annotations, measurements, key image references, etc. for the patients' studies. For example, it may detect lung nodules and produce measurements and bounding boxes of the nodules detected.
 
@@ -763,12 +763,12 @@ When the Evidence Creator starts up, it shall obtain `hub.url` and `hub.topic` t
 
 > Note that the actual application launch method is out of scope of this profile. See [Application Launch Scenarios and Session Discovery](https://build.fhir.org/ig/HL7/fhircast-docs/4-1-launch-scenarios.html) for more details.
 
-##### 1:XX.1.1.4.1 Event Handling Requirements
+##### 1:53.1.1.4.1 Event Handling Requirements
 
-In Table 1:XX.1.1.4.1-1, for each Received Event, Context Key specifies the context in the received event (including the special `updates` and `select` contexts used in content sharing) and Resources specifies the FHIR resources used in the given context.
+In Table 1:53.1.1.4.1-1, for each Received Event, Context Key specifies the context in the received event (including the special `updates` and `select` contexts used in content sharing) and Resources specifies the FHIR resources used in the given context.
 The Evidence Creator shall support all Behaviors shown as “R” in Optionality. The Evidence Creator may support suggested behaviors ("O" in Optionality).
 
-**Table 1:XX.1.1.4.1-1: Event Handling Requirements**
+**Table 1:53.1.1.4.1-1: Event Handling Requirements**
 
 <table class="grid">
   <thead>
@@ -833,11 +833,11 @@ The Evidence Creator shall support all Behaviors shown as “R” in Optionality
 
 If the report context is resumed, then the Evidence Creator shall be able to restore the application to a state associated to that report context prior to suspension. It is the responsibility of the implementation to determine what elements of application state are significant to the user to be restored when the application resumes the report context.
 
-> Note: The DiagnosticReport-open event does not explicitly indicate if the report context is new or resumed. See [Subscriber Local Context and Local State](volume-1.html#1xx4110-resuming-contexts-subscriber-local-context-and-local-state) for design considerations.
+> Note: The DiagnosticReport-open event does not explicitly indicate if the report context is new or resumed. See [Subscriber Local Context and Local State](volume-1.html#1534110-resuming-contexts-subscriber-local-context-and-local-state) for design considerations.
 
-##### 1:XX.1.1.4.2 Event Producing Requirements
+##### 1:53.1.1.4.2 Event Producing Requirements
 
-If the Evidence Creator accepted an event initially (i.e., returning `202` Accepted) and later decided to refuse the context or failed to process the event, then it shall send a `syncerror` event back to the Hub using Notify Error [RAD-X11](rad-x11.html).
+If the Evidence Creator accepted an event initially (i.e., returning `202` Accepted) and later decided to refuse the context or failed to process the event, then it shall send a `syncerror` event back to the Hub using Notify Error [RAD-156](rad-156.html).
 
 If the Evidence Creator is grouped with a Content Creator to publish content events to a reporting session, then it shall publish events using at least one FHIR resource. The Evidence Creator is expected to publish events using one or more of the following FHIR resources that are expected to be useful in reporting:
 
@@ -847,11 +847,11 @@ If the Evidence Creator is grouped with a Content Creator to publish content eve
 
 > Note: The FHIR resources which the actor can publish as FHIRcast contents are documented in its CapabilityStatement.
 
-#### 1:XX.1.1.5 Stateless Evidence Creator
+#### 1:53.1.1.5 Stateless Evidence Creator
 
-The Stateless Evidence Creator has the same requirements as the Evidence Creator, except that it is *not* required to detect if the received DiagnosticReport-open event is a new report context or a report context that is resumed, and it is *not* required to restore application state in case of resuming a report context (See Evidence Creator [Event Handling Requirements](volume-1.html#1xx1141-event-handling-requirements) for details).
+The Stateless Evidence Creator has the same requirements as the Evidence Creator, except that it is *not* required to detect if the received DiagnosticReport-open event is a new report context or a report context that is resumed, and it is *not* required to restore application state in case of resuming a report context (See Evidence Creator [Event Handling Requirements](volume-1.html#1531141-event-handling-requirements) for details).
 
-#### 1:XX.1.1.6 Content Creator
+#### 1:53.1.1.6 Content Creator
 
 The Content Creator is responsible for the creation and selection of the contents of the reporting session which are the basis of synchronization and collaboration between the subscribing actors.
 
@@ -876,7 +876,7 @@ When the grouped actor restores the application to a previous known state due to
 - The grouped actor shall prompt the user if the selections are still valid
 - If valid, then the Content Creator shall send a DiagnosticReport-select event for the selected resources
 
-#### 1:XX.1.1.7 Watcher
+#### 1:53.1.1.7 Watcher
 
 The Watcher is responsible for listening to events in a session and perform actions according to it business logic. The specific actions are out of scope of this profile.
 
@@ -886,12 +886,12 @@ When the Watcher starts up, it shall obtain `hub.url` and `hub.topic` to join a 
 
 > Note that the actual application launch method is out of scope of this profile. See [Application Launch Scenarios and Session Discovery](https://build.fhir.org/ig/HL7/fhircast-docs/4-1-launch-scenarios.html) for more details.
 
-##### 1:XX.1.1.7.1 Event Handling Requirements
+##### 1:53.1.1.7.1 Event Handling Requirements
 
-In Table 1:XX.1.1.7.1-1, for each Received Event, Context Key specifies the context in the received event (including the special `updates` and `select` contexts used in content sharing) and Resources specifies the FHIR resources used in the given context.
+In Table 1:53.1.1.7.1-1, for each Received Event, Context Key specifies the context in the received event (including the special `updates` and `select` contexts used in content sharing) and Resources specifies the FHIR resources used in the given context.
 The Watcher shall support all Behaviors shown as “R” in Optionality. The Watcher may support suggested behaviors ("O" in Optionality).
 
-**Table 1:XX.1.1.7.1-1: Event Handling Requirements**
+**Table 1:53.1.1.7.1-1: Event Handling Requirements**
 
 <table class="grid">
   <thead>
@@ -954,13 +954,13 @@ The Watcher shall support all Behaviors shown as “R” in Optionality. The Wat
   </tbody>
 </table>
 
-##### 1:XX.1.1.7.2 Event Producing Requirements
+##### 1:53.1.1.7.2 Event Producing Requirements
 
-If the Watcher accepted an event initially (i.e., returning `202` Accepted) and later decided to refuse the context or failed to process the event, then it shall send a `syncerror` event back to the Hub using Notify Error [RAD-X11](rad-x11.html).
+If the Watcher accepted an event initially (i.e., returning `202` Accepted) and later decided to refuse the context or failed to process the event, then it shall send a `syncerror` event back to the Hub using Notify Error [RAD-156](rad-156.html).
 
 > Note: The FHIR resources which the actor can publish as FHIRcast contents are documented in its CapabilityStatement.
 
-#### 1:XX.1.1.8 Hub
+#### 1:53.1.1.8 Hub
 
 The Hub is responsible for managing event flows between Subscribers in reporting sessions and maintaining the current context.
 
@@ -968,15 +968,15 @@ The Hub is responsible for authorizing the following:
 - which Subscriber has permission to invoke what requests
 - which context and content a Subscriber is eligible to access and in what type (e.g., read only, write only or ready and write)
 
-> Note: This profile does not mandate a specific authorization mechanism. See [Cross Profile Considerations](volume-1.html#1xx6-ira-cross-profile-considerations) for recommendations.
+> Note: This profile does not mandate a specific authorization mechanism. See [Cross Profile Considerations](volume-1.html#1536-ira-cross-profile-considerations) for recommendations.
 
 The Hub shall support [content sharing](https://build.fhir.org/ig/HL7/fhircast-docs/2-10-ContentSharing.html).
 
 The Hub shall monitor the established websocket connections. If it detects a websocket connection issue with a Subscriber, then the Hub shall
 - Unsubscribe the Subscriber and drop the websocket connection
-- Send a SyncError notification to other Subscribers using [RAD-X10](rad-x10.html)
+- Send a SyncError notification to other Subscribers using [RAD-155](rad-155.html)
 
-##### 1:XX.1.1.8.1 Event Handling Requirements
+##### 1:53.1.1.8.1 Event Handling Requirements
 
 The Hub shall be able to process all valid events conforming to the FHIRcast [Event Format](https://build.fhir.org/ig/HL7/fhircast-docs/2-3-Events.html) received using FHIRcast [Request Context Change](https://build.fhir.org/ig/HL7/fhircast-docs/2-6-RequestContextChange.html) requests.
 
@@ -990,11 +990,11 @@ For all received events, the Hub shall support the following core behaviors:
 
 Additional profile requirements for specific events are defined in the corresponding transactions.
 
-## 1:XX.2 IRA Actor Options
+## 1:53.2 IRA Actor Options
 
-Options that may be selected for each actor in this implementation guide, are listed in Table 1:XX.2-1 below. Dependencies between options, when applicable, are specified in notes.
+Options that may be selected for each actor in this implementation guide, are listed in Table 1:53.2-1 below. Dependencies between options, when applicable, are specified in notes.
 
-**Table 1:XX.2-1: IRA - Actors and Options**
+**Table 1:53.2-1: IRA - Actors and Options**
 
 <table class="grid">
   <thead>
@@ -1048,17 +1048,17 @@ Options that may be selected for each actor in this implementation guide, are li
   </tbody>
 </table>
 
-## 1:XX.3 IRA Required Actor Groupings
+## 1:53.3 IRA Required Actor Groupings
 
 An actor from this profile (Column 1) shall implement all of the required transactions and/or
 content modules in this profile ***in addition to all*** of the requirements for the grouped actor (Column 3).
 
 In some cases, required groupings are defined as at least one of an enumerated set of possible actors; this is designated by merging column one into a single cell spanning multiple potential grouped actors. Notes are used to highlight this situation.
 
-Section 1:XX.5 describes some optional groupings that may be of interest for security
+Section 1:53.5 describes some optional groupings that may be of interest for security
 considerations and Section 1:52.6 describes some optional groupings in other related profiles.
 
-**Table 1:XX.3-1: IRA Required Actor Groupings**
+**Table 1:53.3-1: IRA Required Actor Groupings**
 
 | IRA Actor | Grouping Condition | Actor(s) to be grouped with | Reference |
 |-----------|--------------------|-----------------------------|-----------|
@@ -1067,16 +1067,16 @@ considerations and Section 1:52.6 describes some optional groupings in other rel
 | Worklist Client | -- | None | -- |
 | Evidence Creator | -- | None | -- |
 | Resumable Evidence Creator | -- | None | -- |
-| Content Creator | -- | IRA / Image Display<br>IRA / Report Creator<br>IRA / Worklist Client<br>IRA / Evidence Creator<br>IRA / Resumable Evidence Creator | [IRA TF-1: 1.1](volume-1.html#1xx11-actors-description-and-actor-profile-requirements) |
+| Content Creator | -- | IRA / Image Display<br>IRA / Report Creator<br>IRA / Worklist Client<br>IRA / Evidence Creator<br>IRA / Resumable Evidence Creator | [IRA TF-1: 1.1](volume-1.html#15311-actors-description-and-actor-profile-requirements) |
 | Watcher | -- | None | -- |
 | Hub | -- | None | -- |
 {: .grid}
 
-## 1:XX.4 IRA Overview
+## 1:53.4 IRA Overview
 
-### 1:XX.4.1 Concepts
+### 1:53.4.1 Concepts
 
-#### 1:XX.4.1.1 Publish and Subscribe Model
+#### 1:53.4.1.1 Publish and Subscribe Model
 
 At its heart, this profile synchronizes a group of applications using a Publish and Subscribe model as implemented by [FHIRcast](https://build.fhir.org/ig/HL7/fhircast-docs/index.html) which in turn is an implementation of [WebSub](https://www.w3.org/TR/websub/).
 
@@ -1095,13 +1095,13 @@ The following are some key concepts:
 - Each `session` is identified by a unique “topic ID”
 - The `Subscriber` which opens a context typically is responsible for closing that context and is informally referred to as the Driving Application. A Driving Application (or other `Subscribers`) may launch other applications, providing them with the address of the `Hub` and the `topic ID` so they can join the same `session`.
 
-#### 1:XX.4.1.2 Terminology and Model
+#### 1:53.4.1.2 Terminology and Model
 
 The terminology used in FHIRcast and adopted in this profile can be found in the [Glossary](https://build.fhir.org/ig/HL7/fhircast-docs/5_glossary.html) page.
 
 The following is a representation of the data model.
 
-**Figure 1:XX.4.1.2-1: FHIRcast Concept Data Model**
+**Figure 1:53.4.1.2-1: FHIRcast Concept Data Model**
 
 <div>
     <img src="data_model.png" width="80%">
@@ -1115,14 +1115,14 @@ The following is a representation of the interaction model.
 > - Launch another application
 > - Open (including resume) or close a report context
 
-**Figure 1:XX.4.1.2-1: FHIRcast Concept Interaction Model**
+**Figure 1:53.4.1.2-1: FHIRcast Concept Interaction Model**
 
 <div>
     <img src="interaction_model.png" width="80%">
 </div>
 <br clear="all">
 
-#### 1:XX.4.1.3 Long Session and Short Context
+#### 1:53.4.1.3 Long Session and Short Context
 
 A `Session` is an abstract concept representing a shared workspace, such as a user's login session across multiple applications or a shared view of one application distributed to multiple users. A session results from a user logging into an application and can encompass one or more workflows.
 
@@ -1130,7 +1130,7 @@ For instance, a reporting session is a shared workspace across multiple applicat
 
 A `Context` is a FHIR resource associated with a `Session` which indicates a subject on which applications should synchronize as appropriate to their functionality. As soon as the subject is complete, the corresponding `Context` can be closed. Therefore a `Context` has a limited duration within a `Session`.
 
-#### 1:XX.4.1.4 Events vs Commands
+#### 1:53.4.1.4 Events vs Commands
 
 Communication patterns between two systems fall in two general categories: `Commands` and `Events`.
 
@@ -1142,7 +1142,7 @@ In this profile, the messages that a `Subscriber` sends to the `Hub` represents 
 
 > Note: Some implementations may define commands using [Extensions](https://build.fhir.org/ig/HL7/fhircast-docs/2-8-Extensions.html) or custom events with explicit recipient(s). These are out of scope of this profile.
 
-#### 1:XX.4.1.5 Timing of Sending an Event
+#### 1:53.4.1.5 Timing of Sending an Event
 
 A driving application is a subscriber that initiates a context change request. From the driving application perspective, it is desirable for all subscribers to be synchronized as soon as possible. On the other hand, FHIRcast is a network protocol which incurs a non-trivial cost to send each event. Therefore any implementation should take into account when an action is considered to be complete or stable, and hence ready to be captured and communicated as events.
 
@@ -1154,7 +1154,7 @@ A reasonable approach could be for an application to acquire a complete measurem
 
 This profile does not mandate any specific implementation design regarding when an application should capture the result of an action as an event. The intention is that the driving application will send an event as soon as feasible so that all subscribers in a reporting session can be synchronized and provide a good user experience.
 
-#### 1:XX.4.1.6 Event Awareness vs Event Consumption
+#### 1:53.4.1.6 Event Awareness vs Event Consumption
 
 `Event Awareness` means an application, upon receiving an event from the `Hub`, has the knowledge that an event has happened.
 
@@ -1166,17 +1166,17 @@ On the other hand, from the subscribing application perspective, it is up to its
 
 For example, when the user goes through the study images in Image Display (a content sharing application), for each nodule that the user identified (e.g., 1, 2, ..., 9, 10), the Image Display publishes a corresponding event. In the Report Creator (a subscribing application), for each event received, it keeps track of the nodule in its nodule tracking bookmark. Once the user finished reviewing the full study, the user uses the nodule tracking bookmark in the Report Creator and selects the top 3 (e.g., 2, 5, 9) to include in the final report. Note that since the Report Creator is aware of all the nodules observed by synchronizing the context with the Image Display, selecting a subset of the nodules to be included in the final report (i.e., event consumption) is an operation internal to the Report Creator.
 
-#### 1:XX.4.1.7 Transient Resource vs Persistent Resource
+#### 1:53.4.1.7 Transient Resource vs Persistent Resource
 
 FHIRcast uses FHIR resources to capture the context and content in an event. These FHIR resources may be transient, meaning that they do not necessarily exist in any system, nor are they expected to be persisted by any system. Furthermore, even an application decides to persist the FHIR resource(s), it is not required to use the same resource ID in the event as the ID of the persisted resource. The application can generate new IDs instead.
 
 Since the FHIR resources specified in the event may or may not be persisted in any FHIR server, to differentiate between the two cases, this profile defines that transient resources are identified by relative references (e.g., Patient/12345) and persisted resources that already exist are identified by full URL (e.g., http://myserver.com/Patient/12345).
 
-#### 1:XX.4.1.8 Local Tracking of Context
+#### 1:53.4.1.8 Local Tracking of Context
 
 The `DiagnosticReport-open` event includes both the `report` anchor context and associated contexts `patient` and `study`. Subsequent event(s) for this anchor context will only provide the `report` context. Therefore, it is up to the Subscriber to record internally the `patient` and `study` contexts associated with the `report` anchor context if that information is relevant to its business logic. 
 
-#### 1:XX.4.1.9 Suspend and Resume Report Context
+#### 1:53.4.1.9 Suspend and Resume Report Context
 
 Occasionally a report context may be _suspended_, meaning that a driving application opens a subsequent report context without closing an initial report context. For example, a radiologist needs to suspend a report on a study in order to review an urgent study.
 
@@ -1186,9 +1186,9 @@ When the user finishes reviewing the urgent study, the report context of the urg
 
 The driving application sends a *new* open event for the _suspended_ report context to make it the `Current Context`. All subscribers receive the open event and resume to the _suspended_ report context. Alternatively the driving application could choose to open any other report context as appropriate.
 
-See [Use Case #3](volume-1.html#1xx423-use-case-3-suspend-and-resume-flow) for more details.
+See [Use Case #3](volume-1.html#153423-use-case-3-suspend-and-resume-flow) for more details.
 
-#### 1:XX.4.1.10 Resuming contexts: Subscriber Local Context and Local State
+#### 1:53.4.1.10 Resuming contexts: Subscriber Local Context and Local State
 
 `Local context` and `local state` refers to the information specific to each Subscriber that it maintains locally for each report context in the session that it participates in. When resuming to a previous context, this information, if present, would enable the subscribing application to restore to the same state associated to the report context as before the suspension.
 
@@ -1209,13 +1209,13 @@ It is up to the Subscriber to decide on implementation details, such as:
 - How to detect if open contexts become stale?
 - How to handle stale contexts?
 
-#### 1:XX.4.1.11 Deployment Considerations
+#### 1:53.4.1.11 Deployment Considerations
 
 The Hub can be a standalone application or embedded within another application (e.g., the Image Manager, Report Creator and Worklist Client are grouped with the Hub independently). As a result, which Hub to use for the reporting session needs to be configurable during deployment.
 
 The Hub can be deployed on premises or in the cloud. The other actors may or may not be deployed in the same location as the Hub. Since this profile is aimed at providing streamline user experience for all integrated applications, the effectiveness of this profile depends on timely communications with the Hub, whether it is the context change request, or the subsequent event distribution. Therefore it is important to have a reliable low latency network connection between applications and the Hub, taking into account all the network appliances in between (e.g., firewall, reverse proxy, load balancer, etc.).
 
-#### 1:XX.4.1.12 FHIRcast Beyond Reporting
+#### 1:53.4.1.12 FHIRcast Beyond Reporting
 
 FHIRcast is a generic event distribution mechanism. Most transactions in this profile are generally applicable to any events. Any applications are permitted to use FHIRcast and the Hub for use cases beyond reporting. In this case, the application may consider using different sessions and events for different purposes. For example, an Image Manager may setup a separate *advanced visualization* session with an Evidence Creator and uses `ImagingStudy-*` events for communication.
 
@@ -1223,17 +1223,17 @@ FHIRcast is a generic event distribution mechanism. Most transactions in this pr
 
 Furthermore, the Hub used in these cases may be different from the Hub used for the reporting session. Therefore an application needs to be prepared to support different sessions with different Hubs, and know which session to use for what purpose.
 
-### 1:XX.4.2 Use Cases
+### 1:53.4.2 Use Cases
 
-#### 1:XX.4.2.1 Use Case \#1: Basic Reporting
+#### 1:53.4.2.1 Use Case \#1: Basic Reporting
 
 In a basic reporting session, a user uses two systems, the Image Display and the Report Creator, to complete reporting on a study.
 
-##### 1:XX.4.2.1.1 Basic Reporting Use Case Description
+##### 1:53.4.2.1.1 Basic Reporting Use Case Description
 
 The Basic Reporting Use Case is intended to capture the common reporting activities happened during a reporting session. The Image Display handles all user needs for displaying the study and the Report Creator handles all user needs for report creation.
 
-> Note: Figure 1:XX.4.2.2-1 shows a high level workflow and highlights the user interaction with the two actors involved. This use case is broken down into multiple steps. The steps shown in the diagram are not actual transactions. The interactions between the Image Display and Report Creator during a reporting session are omitted to highlight the user interactions more clearly. The hyperlinks provided in the diagram link to the subsections that describe the corresponding steps with actual transactions in details. Furthermore, the [Examples](example.html) tab contains sample events following this use case.
+> Note: Figure 1:53.4.2.2-1 shows a high level workflow and highlights the user interaction with the two actors involved. This use case is broken down into multiple steps. The steps shown in the diagram are not actual transactions. The interactions between the Image Display and Report Creator during a reporting session are omitted to highlight the user interactions more clearly. The hyperlinks provided in the diagram link to the subsections that describe the corresponding steps with actual transactions in details. Furthermore, the [Examples](example.html) tab contains sample events following this use case.
 
 In this use case,
 - Before reporting starts, the Image Display launches the Report Creator to join a reporting session
@@ -1246,18 +1246,18 @@ In this use case,
 - Radiologist completes and signs off the report and moves on to the next study in the worklist
 - Eventually, Radiologist finishes all studies in the reporting worklist and closes the applications
 
-> Note: In more complex scenarios, separate Worklist Client can be used to drive the Image Display and Report Creator, while the Image Display can launch separate Evidence Creator on demand to perform advanced visualization and measurements. See [Use Case 2](volume-1.html#1xx422-use-case-2-complex-reporting) for an example.
+> Note: In more complex scenarios, separate Worklist Client can be used to drive the Image Display and Report Creator, while the Image Display can launch separate Evidence Creator on demand to perform advanced visualization and measurements. See [Use Case 2](volume-1.html#153422-use-case-2-complex-reporting) for an example.
 
-##### 1:XX.4.2.1.2 Basic Reporting Process Flow
+##### 1:53.4.2.1.2 Basic Reporting Process Flow
 
 <div>
 {%include ReportingFlow.svg%}
 </div>
 <br clear="all">
 
-Figure 1:XX.4.2.1.2-1: Basic Reporting Flow in IRA Profile
+Figure 1:53.4.2.1.2-1: Basic Reporting Flow in IRA Profile
 
-###### 1:XX.4.2.1.2.1 Step 1: Open Reporting Session
+###### 1:53.4.2.1.2.1 Step 1: Open Reporting Session
 
 When a radiologist starts reporting, the Image Display, as a Driving Application, starts a reporting session.
 
@@ -1281,9 +1281,9 @@ Furthermore, the Report Creator queries the Hub to get the current context to en
 </div>
 <br clear="all">
 
-**Figure 1:XX.4.2.1.2.1-1: Open Reporting Session Flow in IRA Profile**
+**Figure 1:53.4.2.1.2.1-1: Open Reporting Session Flow in IRA Profile**
 
-###### 1:XX.4.2.1.2.2 Step 2: Open Study in Context
+###### 1:53.4.2.1.2.2 Step 2: Open Study in Context
 
 When the radiologist selects a study in the worklist in the Image Display, as a Driving Application, opens a new report context. Once the Hub accepted the event, it broadcasts the event to all Subscribers.
 
@@ -1296,7 +1296,7 @@ Furthermore, the event has a version ID. For the Image Display as a Driving Appl
 </div>
 <br clear="all">
 
-**Figure 1:XX.4.2.1.2.2-1: Open Study in Context Flow in IRA Profile**
+**Figure 1:53.4.2.1.2.2-1: Open Study in Context Flow in IRA Profile**
 
 > Note: Amending a report uses the same workflow as in Step 2. A *new* report context is opened with the same patient and study context as the original report. 
 >
@@ -1304,9 +1304,9 @@ Furthermore, the event has a version ID. For the Image Display as a Driving Appl
 >
 > It is possible that actors such as the Report Creator may choose to populate content related to the original report back into the new report context, e.g. to facilitate further editing.
 
-###### 1:XX.4.2.1.2.3 Step 3: Add Content (Optional)
+###### 1:53.4.2.1.2.3 Step 3: Add Content (Optional)
 
-Sometimes the radiologist may annotate the images with markups and measurements. When this happened, the Image Display, grouped with the Content Creator, updates the report context at the Hub with new content using Update Report Content [RAD-X5]. The Hub broadcasts the event to all Synchronizing Applications.
+Sometimes the radiologist may annotate the images with markups and measurements. When this happened, the Image Display, grouped with the Content Creator, updates the report context at the Hub with new content using Update Report Content [RAD-150]. The Hub broadcasts the event to all Synchronizing Applications.
 
 When the Report Creator receives and accepts the event, it can apply the updates according to its business logic. For example, it may automatically create a hyperlink in the report, or keeps track of the content in a panel for the user to perform other activities later.
 
@@ -1315,9 +1315,9 @@ When the Report Creator receives and accepts the event, it can apply the updates
 </div>
 <br clear="all">
 
-**Figure 1:XX.4.2.1.2.3-1: Add Content Flow in IRA Profile**
+**Figure 1:53.4.2.1.2.3-1: Add Content Flow in IRA Profile**
 
-###### 1:XX.4.2.1.2.4 Step 4: Select Content (Optional)
+###### 1:53.4.2.1.2.4 Step 4: Select Content (Optional)
 
 Occasionally it is desirable to trigger activities on subscribers based on user navigation. With FHIRcast, this can be achieved using the content selection events.
 
@@ -1325,7 +1325,7 @@ Content selection can be used in various way:
 - as input for a follow up action (e.g., images or measurements selected by a user in the Image Display as input for hyperlink in the Report Creator)
 - bring something to focus (e.g., user clicks on a measurement in a report in the Report Creator which triggers the Image Display to bring the corresponding images to focus)
 
-Sometimes the radiologist selected certain elements (e.g., images, annotation, specific measurements, etc.) in the Image Display. When this happened, the Image Display, grouped with the Content Creator, sends a event to the Hub using Select Report Content [RAD-X6] indicating what contents have been selected. The Hub broadcasts the event to all Subscribers.
+Sometimes the radiologist selected certain elements (e.g., images, annotation, specific measurements, etc.) in the Image Display. When this happened, the Image Display, grouped with the Content Creator, sends a event to the Hub using Select Report Content [RAD-151] indicating what contents have been selected. The Hub broadcasts the event to all Subscribers.
 
 When the Report Creator receives the event, it can apply the selection according to its business logic. For example, it can highlight to the user what is selected so that the user can perform an appropriate action. In this example, the radiologist uses a voice command to insert a hyperlink in the report. The Report Creator uses the selected content to generate the hyperlink.
 
@@ -1336,9 +1336,9 @@ Generally, selecting a content means putting the content in 'focus'. Note that t
 </div>
 <br clear="all">
 
-**Figure 1:XX.4.2.1.2.4-1: Select Content Flow in IRA Profile**
+**Figure 1:53.4.2.1.2.4-1: Select Content Flow in IRA Profile**
 
-###### 1:XX.4.2.1.2.5 Step 5: Sign-off Report
+###### 1:53.4.2.1.2.5 Step 5: Sign-off Report
 
 The radiologist completes dictation and signs off the report on the Report Creator. The Report Creator sends an update event notifying about the report status change (e.g., draft, preliminary, final, amended, etc.) The Image Display updates the status of the study in its worklist.
 
@@ -1361,11 +1361,11 @@ The Report Creator may have some internal mechanism to keep the report for a gra
 </div>
 <br clear="all">
 
-**Figure 1:XX.4.2.1.2.5-1: Sign-off Report Flow in IRA Profile**
+**Figure 1:53.4.2.1.2.5-1: Sign-off Report Flow in IRA Profile**
 
 The flow above shows the simple case with a sequential switching of report context. In this case, a report context is opened and then closed before the next report context is opened.
 
-In practice, the radiologist is likely to continue with the next study in the worklist without any awareness of the events happening behind the scene. If the initiating Driving Application and terminating Driving Application are different as in this example, then it is possible that the radiologist moves to the next study and hence the Image Display opens a new report context before the Image Display receives the Close Report Context [RAD-X4] event of the reported study.
+In practice, the radiologist is likely to continue with the next study in the worklist without any awareness of the events happening behind the scene. If the initiating Driving Application and terminating Driving Application are different as in this example, then it is possible that the radiologist moves to the next study and hence the Image Display opens a new report context before the Image Display receives the Close Report Context [RAD-149] event of the reported study.
 
 Such rapid context switching is supported by this profile. The Hub and each Subscriber maintain multiple open contexts simultaneously. As long as the context is not closed, it still exists. Each event is associated to a particular anchor context. Therefore a Subscriber can reliably match an event to its internal state according to the context ID of the anchor context in the event. 
 
@@ -1376,9 +1376,9 @@ The following diagram shows what can happen in case of rapid switching of the re
 </div>
 <br clear="all">
 
-**Figure 1:XX.4.2.1.2.5-2: Rapid Context Switching Flow in IRA Profile**
+**Figure 1:53.4.2.1.2.5-2: Rapid Context Switching Flow in IRA Profile**
 
-###### 1:XX.4.2.1.2.6 Step 6: Close Reporting Session
+###### 1:53.4.2.1.2.6 Step 6: Close Reporting Session
 
 Eventually, the radiologist completed all the studies in the worklist and closes the Report Creator. The Report Creator unsubscribes to the reporting session so that it will no longer receives any future events.
 
@@ -1389,9 +1389,9 @@ The Hub closes the connection to the Report Creator. Note that if there are othe
 </div>
 <br clear="all">
 
-**Figure 1:XX.4.2.1.2.6-1: Close Reporting Session Flow in IRA Profile**
+**Figure 1:53.4.2.1.2.6-1: Close Reporting Session Flow in IRA Profile**
 
-#### 1:XX.4.2.2 Use Case \#2: Complex Reporting
+#### 1:53.4.2.2 Use Case \#2: Complex Reporting
 
 This reporting workflow is more complex because there are 5 systems collaborating closely:
 
@@ -1426,9 +1426,9 @@ Note that at Step 7, since all the necessary applications have already been star
 </div>
 <br clear="all">
 
-**Figure 1:XX.4.2.2-1: Complex Reporting in IRA Profile**
+**Figure 1:53.4.2.2-1: Complex Reporting in IRA Profile**
 
-#### 1:XX.4.2.3 Use Case \#3: Suspend and Resume Flow
+#### 1:53.4.2.3 Use Case \#3: Suspend and Resume Flow
 
 Occasionally a radiologist is interrupted while reporting on a study. She needs to open a different study (e.g., for consultation purpose) before the study that is currently in progress is ready for sign-off.
 
@@ -1436,16 +1436,16 @@ This profile permits a new report context to be opened before the previous repor
 
 Once the *interrupting* study is complete, the Image Display closes the report context of the *interrupting* study. The Hub removes the context of the *interrupting* study and set the current context to *empty*. The Image Display, as the Driving Application in this example, resumes the report context back to the previously opened study. It restores its application state associated to the report context prior to suspension and then re-opens the same report context to the Hub. Note that all associated context and contents remain in the Hub.
 
-As a result, all subscribers will resume to the same report context. If an application has business logic to resume something else rather than the previous report context, that application should send a new Open Report Context [RAD-X3] event to set the new report context accordingly.
+As a result, all subscribers will resume to the same report context. If an application has business logic to resume something else rather than the previous report context, that application should send a new Open Report Context [RAD-148] event to set the new report context accordingly.
 
 <div>
 {%include interruption-and-resume.svg%}
 </div>
 <br clear="all">
 
-**Figure 1:XX.4.2.3-1: Suspend and Resume Flow in IRA Profile**
+**Figure 1:53.4.2.3-1: Suspend and Resume Flow in IRA Profile**
 
-#### 1:XX.4.2.4 Use Case \#4: Error Handling Flow
+#### 1:53.4.2.4 Use Case \#4: Error Handling Flow
 
 Error handling is driven by two factors:
 - Synchronous vs Asynchronous
@@ -1456,18 +1456,18 @@ Error handling is driven by two factors:
 </div>
 <br clear="all">
 
-**Figure 1:XX.4.2.4-1: Error Handling Flow in IRA Profile**
+**Figure 1:53.4.2.4-1: Error Handling Flow in IRA Profile**
 
-Figure 1:XX.4.2.4-2 shows two sample use cases how error handling can be used in reporting.
+Figure 1:53.4.2.4-2 shows two sample use cases how error handling can be used in reporting.
 
 <div>
 {%include syncerror_use_case.svg%}
 </div>
 <br clear="all">
 
-**Figure 1:XX.4.2.4-2: Error Handling Example Flows in IRA Profile**
+**Figure 1:53.4.2.4-2: Error Handling Example Flows in IRA Profile**
 
-#### 1:XX.4.2.5 Use Case \#5: Overread Draft Report
+#### 1:53.4.2.5 Use Case \#5: Overread Draft Report
 
 A radiologist wants to review a draft report created by a residence. She opens the draft report in the Report Creator. The Report Creator opens a new report context for the draft report, including the corresponding patient and study context. The Image Display receives the event distributed by the Hub and opens the study in context. The radiologist reviews the study associated to the report using the Image Display.
 
@@ -1480,9 +1480,9 @@ In case a reporting session has not been started when the radiologist reviews th
 </div>
 <br clear="all">
 
-**Figure 1:XX.4.2.5-1: Overread Draft Report Flows in IRA Profile**
+**Figure 1:53.4.2.5-1: Overread Draft Report Flows in IRA Profile**
 
-## 1:XX.5 IRA Security Considerations
+## 1:53.5 IRA Security Considerations
 
 This profile strongly recommends all actors to consider the FHIRcast [Security Considerations](https://build.fhir.org/ig/HL7/fhircast-docs/4-3-security-considerations.html).
 
@@ -1500,11 +1500,11 @@ Note that with FHIRcast, the authentication and authorization is controlled at t
 
 The events as defined in this profile contain personal demographic information and clinical information. It is appropriate for products implementing the this profile to include appropriate PHI controls. Specifying such mechanisms and features is outside the scope of this profile.
 
-## 1:XX.6 IRA Cross-Profile Considerations
+## 1:53.6 IRA Cross-Profile Considerations
 
-Table 1:XX.6-1 describes various actors in various other profiles that might be useful to group with IRA Profile actors.
+Table 1:53.6-1 describes various actors in various other profiles that might be useful to group with IRA Profile actors.
 
-**Table 1:XX.6-1: IRA - Optional Actor Groupings**
+**Table 1:53.6-1: IRA - Optional Actor Groupings**
 
 <table class="grid">
   <thead>

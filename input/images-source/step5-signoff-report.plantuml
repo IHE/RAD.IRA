@@ -13,29 +13,29 @@ Report->Report: //Persist report//
 User->Report: //Sign off report//
 Report->Report: //Set report status to FINAL//
 
-Report->Hub: Update Report Content [RAD-X5]\n(event: id = 1500,\ncontext = DiagnosticReport xxx, update status FINAL)
+Report->Hub: Update Report Content [RAD-150]\n(event: id = 1500,\ncontext = DiagnosticReport xxx, update status FINAL)
 activate Hub
 
 Hub->Hub: //Update DiagnosticReport context in session 12345//\n(event: id = 1500,\ncontext = DiagnosticReport xxx, status FINAL)\n[[update_report_status.html#available-context-and-content-in-hub Example]]
 
-Hub->PACS: Distribute Context Event [RAD-X9]\n(event: id = 1500 ...)
+Hub->PACS: Distribute Context Event [RAD-154]\n(event: id = 1500 ...)
 PACS->PACS: //Update study status//
 PACS-->Hub: //Success (id = 1500, status = 200)//
-Hub->Report: Distribute Context Event [RAD-X9]\n(event: id = 1500 ...)
+Hub->Report: Distribute Context Event [RAD-154]\n(event: id = 1500 ...)
 Report-->Hub: //Success (id = 1500, status = 200)//
 deactivate Hub
 
 ...
 
-Report->Hub: Close Report Context [RAD-X4]\n(event: id = 2000,\ncontext = DiagnosticReport xxx)
+Report->Hub: Close Report Context [RAD-149]\n(event: id = 2000,\ncontext = DiagnosticReport xxx)
 activate Hub
 
 Hub->Hub: //Update DiagnosticReport context in session 12345//\n(event: id = 2000,\ncontext = DiagnosticReport xxx)
 
-Hub->PACS: Distribute Context Event [RAD-X9]\n(event: id = 2000,\ncontext = DiagnosticReport xxx)
+Hub->PACS: Distribute Context Event [RAD-154]\n(event: id = 2000,\ncontext = DiagnosticReport xxx)
 PACS->PACS: //Drop study from worklist//
 PACS-->Hub: //Success (id = 2000, status = 200)//
-Hub->Report: Distribute Context Event [RAD-X9]\n(event: id = 2000,\ncontext = DiagnosticReport xxx)
+Hub->Report: Distribute Context Event [RAD-154]\n(event: id = 2000,\ncontext = DiagnosticReport xxx)
 Report-->Hub: //Success (id = 2000, status = 200)//
 
 Hub->Hub: //Delete DiagnosticReport context in session 12345//\n(context = DiagnosticReport xxx)\n[[close_study_after_signoff.html#available-context-and-content-in-hub Example]]
@@ -50,6 +50,6 @@ User->PACS: //Proceed to next study//
 note over PACS
 Repeat Step 2.
 end note
-PACS->Hub: Open Report Context [RAD-X3]
+PACS->Hub: Open Report Context [RAD-148]
 
 @enduml
