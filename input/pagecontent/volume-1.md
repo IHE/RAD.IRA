@@ -521,7 +521,9 @@ If the report context is resumed, then the Image Display shall be able to restor
 
 ##### 1:53.1.1.1.2 Event Producing Requirements
 
-If the Image Display is grouped with a Content Creator to publish additional content events to a reporting session, then it shall publish events using at least one FHIR resource. The Image Display is expected to publish events using one or more of the following FHIR resources:
+When the Image Display wants to publish content events into a reporting session, then it shall be grouped with a Content Creator to enable it to publish events using one or more FHIR resources. See [Section 1:53.1.1.6](volume-1.html#153116-content-creator) for details.
+
+The Image Display is expected to publish events using one or more of the following FHIR resources:
 
 - `ImagingSelection`: image / series references and simple annotations
 - `Observation`: measurements and annotations
@@ -741,7 +743,7 @@ If the report context is resumed, then the Worklist Client shall be able to rest
 
 ##### 1:53.1.1.3.2 Event Producing Requirements
 
-If the Worklist Client is grouped with a Content Creator to publish content events to a reporting session, then it shall publish events using at least one FHIR resource.
+When the Worklist Client wants to publish content events into a reporting session, then it shall be grouped with a Content Creator to enable it to publish events using one or more FHIR resources. See [Section 1:53.1.1.6](volume-1.html#153116-content-creator) for details.
 
 > Note: The FHIR resources which the actor can publish as FHIRcast contents are documented in its CapabilityStatement.
 
@@ -833,7 +835,9 @@ If the report context is resumed, then the Evidence Creator shall be able to res
 
 ##### 1:53.1.1.4.2 Event Producing Requirements
 
-If the Evidence Creator is grouped with a Content Creator to publish content events to a reporting session, then it shall publish events using at least one FHIR resource. The Evidence Creator is expected to publish events using one or more of the following FHIR resources that are expected to be useful in reporting:
+When the Evidence Creator wants to publish content events into a reporting session, then it shall be grouped with a Content Creator to enable it to publish events using one or more FHIR resources. See [Section 1:53.1.1.6](volume-1.html#153116-content-creator) for details.
+
+The Evidence Creator is expected to publish events using one or more of the following FHIR resources that are expected to be useful in reporting:
 
 - `ImagingSelection`: image / series references and simple annotations such as bounding boxes
 - `Observation`: measurements and annotations
@@ -950,7 +954,7 @@ The Watcher shall support all Behaviors shown as “R” in Optionality. The Wat
 
 ##### 1:53.1.1.7.2 Event Producing Requirements
 
-If the Watcher is grouped with a Content Creator to publish content events to a reporting session, then it shall publish events using at least one FHIR resource.
+When the Watcher wants to publish content events into a reporting session, then it shall be grouped with a Content Creator to enable it to publish events using one or more FHIR resources. See [Section 1:53.1.1.6](volume-1.html#153116-content-creator) for details.
 
 > Note: The FHIR resources which the actor can publish as FHIRcast contents are documented in its CapabilityStatement.
 
