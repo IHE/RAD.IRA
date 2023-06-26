@@ -419,7 +419,6 @@ When the Image Display starts up, it shall obtain `hub.url` and `hub.topic` to j
 The Image Display shall be able to launch other applications and synchronize them to the same report context through the Hub. It shall have the following capabilities: 
 - Start a new reporting session by generating a unique session ID and subscribing to the Hub on its own
 - Launch one or more actors and provide them the URL of the Hub actor as `hub.url` and the reporting session ID as `hub.topic`
-- Open report context based on some business logic
 
 > Note that the actual application launch method is out of scope of this profile. See [Application Launch Scenarios and Session Discovery](https://build.fhir.org/ig/HL7/fhircast-docs/4-1-launch-scenarios.html) for more details.
 
@@ -546,7 +545,6 @@ When the Report Creator starts up, it shall obtain `hub.url` and `hub.topic` to 
 The Report Creator shall be able to launch other applications and synchronize them to the same report context through the Hub. It shall have the following capabilities: 
 - Start a new reporting session by generating a unique session ID and subscribing to the Hub on its own
 - Launch one or more actors and provide them the URL of the Hub as `hub.url` and the reporting session ID as `hub.topic`
-- Open or close (or both) report context based on some business logic
 
 > Note that the actual application launch method is out of scope of this profile. See [Application Launch Scenarios and Session Discovery](https://build.fhir.org/ig/HL7/fhircast-docs/4-1-launch-scenarios.html) for more details.
 
@@ -663,7 +661,6 @@ When the Worklist Client starts up, it shall obtain `hub.url` and `hub.topic` to
 The Worklist Client shall be able to launch other applications and synchronize them to the same report context through the Hub. It shall have the following capabilities: 
 - Start a new reporting session by generating a unique session ID and subscribing to the Hub on its own
 - Launch one or more actors and provide them the URL of the Hub as `hub.url` and the reporting session ID as `hub.topic`
-- Open report context based on some business logic
 
 > Note that the actual application launch method is out of scope of this profile. See [Application Launch Scenarios and Session Discovery](https://build.fhir.org/ig/HL7/fhircast-docs/4-1-launch-scenarios.html) for more details.
 
