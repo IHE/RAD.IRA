@@ -521,8 +521,6 @@ If the report context is resumed, then the Image Display shall be able to restor
 
 ##### 1:53.1.1.1.2 Event Producing Requirements
 
-If the Image Display accepted an event initially (i.e., returning `202` Accepted) and later decided to refuse the context or failed to process the event, then it shall send a `syncerror` event back to the Hub using Notify Error [RAD-156](rad-156.html).
-
 If the Image Display is grouped with a Content Creator to publish additional content events to a reporting session, then it shall publish events using at least one FHIR resource. The Image Display is expected to publish events using one or more of the following FHIR resources:
 
 - `ImagingSelection`: image / series references and simple annotations
@@ -644,8 +642,6 @@ If the report context is resumed, then the Report Creator shall be able to resto
 
 ##### 1:53.1.1.2.2 Event Producing Requirements
 
-If the Report Creator accepted an event initially (i.e., returning `202` Accepted) and later decided to refuse the context or failed to process the event, then it shall send a `syncerror` event back to the Hub using Notify Error [RAD-156](rad-156.html).
-
 The Report Creator shall be grouped with a Content Creator to publish report status update associated to the report anchor context. In the `DiagnosticReport-update` context change request, the report status update shall be specified in `DiagnosticReport.status` in the `update` context key. It may support other content sharing resources.
 
 - `Observation`: clinical findings or impressions
@@ -745,7 +741,7 @@ If the report context is resumed, then the Worklist Client shall be able to rest
 
 ##### 1:53.1.1.3.2 Event Producing Requirements
 
-If the Worklist Client accepted an event initially (i.e., returning `202` Accepted) and later decided to refuse the context or failed to process the event, then it shall send a `syncerror` event back to the Hub using Notify Error [RAD-156](rad-156.html).
+If the Worklist Client is grouped with a Content Creator to publish content events to a reporting session, then it shall publish events using at least one FHIR resource.
 
 > Note: The FHIR resources which the actor can publish as FHIRcast contents are documented in its CapabilityStatement.
 
@@ -836,8 +832,6 @@ If the report context is resumed, then the Evidence Creator shall be able to res
 > Note: The DiagnosticReport-open event does not explicitly indicate if the report context is new or resumed. See [Subscriber Local Context and Local State](volume-1.html#1534110-resuming-contexts-subscriber-local-context-and-local-state) for design considerations.
 
 ##### 1:53.1.1.4.2 Event Producing Requirements
-
-If the Evidence Creator accepted an event initially (i.e., returning `202` Accepted) and later decided to refuse the context or failed to process the event, then it shall send a `syncerror` event back to the Hub using Notify Error [RAD-156](rad-156.html).
 
 If the Evidence Creator is grouped with a Content Creator to publish content events to a reporting session, then it shall publish events using at least one FHIR resource. The Evidence Creator is expected to publish events using one or more of the following FHIR resources that are expected to be useful in reporting:
 
@@ -956,7 +950,7 @@ The Watcher shall support all Behaviors shown as “R” in Optionality. The Wat
 
 ##### 1:53.1.1.7.2 Event Producing Requirements
 
-If the Watcher accepted an event initially (i.e., returning `202` Accepted) and later decided to refuse the context or failed to process the event, then it shall send a `syncerror` event back to the Hub using Notify Error [RAD-156](rad-156.html).
+If the Watcher is grouped with a Content Creator to publish content events to a reporting session, then it shall publish events using at least one FHIR resource.
 
 > Note: The FHIR resources which the actor can publish as FHIRcast contents are documented in its CapabilityStatement.
 
