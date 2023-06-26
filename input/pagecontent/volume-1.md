@@ -854,7 +854,9 @@ The Content Creator is responsible for the creation and selection of the content
 
 For example, when an Image Display user clicks on the bounding box of a detected nodule, the grouped Content Creator publishes a selection event referencing the affected images and bounding boxes as an ImagingSelection resource, and referencing the corresponding measurements as an Observation resource. Upon receiving the event, a Report Creator might show those details in a side panel to the user. Finally the user issues a voice command to the Report Creator to inject a hyperlink, which is adding to the finding section.
 
-The Content Creator may publish context and/or content changes as events to a reporting session. The Content Creator may select one or more contents and publish the selection events.
+The Content Creator shall support at least one of the following capabilities:
+- Publish context and/or content changes as events to a reporting session.
+- Select one or more contents and publish the selection events.
 
 The specific context or content changes captured by the Content Creator depends on the grouped actor and the specific deployment scenario. For example:
 
