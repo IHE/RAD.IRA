@@ -1493,9 +1493,9 @@ Furthermore, for the HTTP-based transactions, this profile strongly recommends t
 
 Additionally, although this profile does not specify any particular method for an application to launch other synchronizing applications, this profile strongly recommends the use of [SMART App Launch](http://www.hl7.org/fhir/smart-app-launch/app-launch.html) for application launching. In addition to the use of OAuth2 as specified in the ITI IUA Profile, FHIRcast extends SMART App Launch with FHIRcast specific OAuth2 scopes that can be used by the Hub to validate if the Subscriber is authorized to invoke the transaction. Furthermore, the authorization server returns the FHIRcast SMART launch parameters which can be used by the synchronizing applications to join the session. See [Section 4.1.1 SMART on FHIR](https://build.fhir.org/ig/HL7/fhircast-docs/4-1-launch-scenarios.html#smart-on-fhir) for more details.
 
-Note that with FHIRcast, the authentication and authorization is controlled at the time of subscription and per context change request. Once the websocket connections are established, there is no further authorization for event distribution.
-
 The events as defined in this profile contain personal demographic information and clinical information. It is appropriate for products implementing the this profile to include appropriate PHI controls. Specifying such mechanisms and features is outside the scope of this profile.
+
+> Note: Once the websocket connections are established, the Hub will distribute events to Subscribers according to their subscription. If some contents are not appropriate for certain Subscribers (e.g. A Subscriber should not receive any PHI), then separate sessions may be considered.
 
 ## 1:53.6 IRA Cross-Profile Considerations
 
