@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="w9eKzpSiwHvzKklawYqQ" name="Full Actors Only">
-        <mxGraphModel dx="2006" dy="1850" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="1479" dy="1850" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -63,7 +63,7 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="u-3bDec00EcQlva4bvqx-22" value="Resumable Evidence Creator" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
+                <mxCell id="u-3bDec00EcQlva4bvqx-22" value="Stateless Evidence Creator" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
                     <mxGeometry x="-10" y="-130" width="80" height="80" as="geometry"/>
                 </mxCell>
                 <mxCell id="31" style="edgeStyle=none;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endArrow=none;endFill=0;" parent="1" source="R6qVMPqXuL_3hM2V6tge-17" target="gMexnicsG44GviGb2K0t-4" edge="1">
