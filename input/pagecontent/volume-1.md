@@ -1023,7 +1023,7 @@ Options that may be selected for each actor in this implementation guide, are li
       <td>-</td>
     </tr>
     <tr>
-      <td>Resumable Evidence Creator</td>
+      <td>Stateless Evidence Creator</td>
       <td>No options defined</td>
       <td>-</td>
     </tr>
@@ -1064,7 +1064,7 @@ considerations and Section 1:52.6 describes some optional groupings in other rel
 | Worklist Client | -- | None | -- |
 | Evidence Creator | -- | None | -- |
 | Resumable Evidence Creator | -- | None | -- |
-| Content Creator | -- | IRA / Image Display<br>IRA / Report Creator<br>IRA / Worklist Client<br>IRA / Evidence Creator<br>IRA / Resumable Evidence Creator | [IRA TF-1: 1.1](volume-1.html#15311-actors-description-and-actor-profile-requirements) |
+| Content Creator | -- | IRA / Image Display<br>IRA / Report Creator<br>IRA / Worklist Client<br>IRA / Evidence Creator<br>IRA / Stateless Evidence Creator | [IRA TF-1: 1.1](volume-1.html#15311-actors-description-and-actor-profile-requirements) |
 | Watcher | -- | None | -- |
 | Hub | -- | None | -- |
 {: .grid}
