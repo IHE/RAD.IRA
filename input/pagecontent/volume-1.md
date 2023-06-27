@@ -410,7 +410,7 @@ Most requirements are documented in RAD TF-2 Transactions. This section document
 
 #### 1:53.1.1.1 Image Display
 
-The Image Display is responsible for presenting patients' studies and relevant information to the user so that the user can make diagnostic decisions on the studies.
+The Image Display presents patients' studies and relevant information to the user so that the user can make diagnostic decisions on the studies.
 
 The Image Display provides tools for the user to navigate images in a study. It may include a worklist component that let the user select studies to read. It may also include tools to create evidence data such as annotations, key images, etc.
 
@@ -532,7 +532,7 @@ The Image Display is expected to publish events using one or more of the followi
 
 #### 1:53.1.1.2 Report Creator
 
-The Report Creator is responsible for producing a diagnostic report for patients' studies.
+The Report Creator produces a diagnostic report for patients' studies.
 
 In order to complete a study dictation, the Report Creator:
 - May launch other applications and synchronize them to the same report context through the Hub
@@ -650,7 +650,7 @@ The Report Creator shall be grouped with a Content Creator to publish report sta
 
 #### 1:53.1.1.3 Worklist Client
 
-The Worklist Client is responsible for providing a reporting worklist to the user.
+The Worklist Client provides a reporting worklist to the user.
 
 When a user selects studies from the worklist, the Worklist Client launches other applications (e.g., Image Display, Report Creator, etc.) if necessary. It opens a new report context to synchronize other applications through the Hub to enable dictation on the studies.
 
@@ -746,7 +746,7 @@ When the Worklist Client wants to publish content events into a reporting sessio
 
 #### 1:53.1.1.4 Evidence Creator
 
-The Evidence Creator is responsible for consuming events in the reporting session and producing evidence data such as annotations, measurements, key image references, etc. for the patients' studies. For example, it may detect lung nodules and produce measurements and bounding boxes of the nodules detected.
+The Evidence Creator consumes events in the reporting session and producing evidence data such as annotations, measurements, key image references, etc. for the patients' studies. For example, it may detect lung nodules and produce measurements and bounding boxes of the nodules detected.
 
 The Evidence Creator may capture the evidence data in format such as DICOM SR and shared with other systems using methods outside of this profile (e.g., as Evidence Creator in the IHE AIR Profile). In this case, other synchronizing applications in the same reporting session may not be aware of the evidence data created by the Evidence Creator.
 
@@ -848,7 +848,7 @@ The Stateless Evidence Creator has the same requirements as the Evidence Creator
 
 #### 1:53.1.1.6 Content Creator
 
-The Content Creator is responsible for the creation and selection of the contents of the reporting session which are the basis of synchronization and collaboration between the subscribing actors.
+The Content Creator creates and selects additional contents in report contexts of the reporting session which are the basis of synchronization and collaboration between the subscribing actors.
 
 > Note: This actor represents content creation / selection capabilities that may be present in implementation of other actors. As such, the Content Creator is required to be grouped with another actor. This actor cannot be claimed as a standalone actor.
 
@@ -875,7 +875,7 @@ When the grouped actor restores the application to a previous known state due to
 
 #### 1:53.1.1.7 Watcher
 
-The Watcher is responsible for listening to events in a session and perform actions according to it business logic. The specific actions are out of scope of this profile.
+The Watcher listens to events in a session and perform actions according to it business logic. The specific actions are out of scope of this profile.
 
 For example, the Watcher consumes the initiation and termination of report contexts and calculates the turnaround time for different types of studies in different departments. Another example is that the Watcher monitors how often an Evidence Creator publishes content sharing events and correlates how effective an AI application is with respect to the turnaround time by comparison and time before and after the Evidence Creator is deployed.
 
@@ -959,9 +959,9 @@ When the Watcher wants to publish content events into a reporting session, then 
 
 #### 1:53.1.1.8 Hub
 
-The Hub is responsible for managing event flows between Subscribers in reporting sessions and maintaining the current context.
+The Hub manages event flows between Subscribers in reporting sessions and maintaining the current context.
 
-The Hub is responsible for authorizing the following:
+The Hub authorizes the following:
 - which Subscriber has permission to invoke what requests
 - which context and content a Subscriber is eligible to access and in what type (e.g., read only, write only or ready and write)
 
