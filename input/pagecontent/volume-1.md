@@ -2,8 +2,7 @@ The Integrated Reporting Applications (IRA) Profile helps applications that are 
 
 For example, the report creator could share that the user is starting a new report, and the other applications could synchronize by opening the corresponding study. An AI tool could generate a tumor measurement and the report creator could get that data and add an entry in the report, either automatically or triggered by a command from the radiologist.
 
-# 1:53.1 Realtime Bidirectional Communication for Interactive Multimedia Reporting
-
+# 1:53.1 Integrating Reporting Applications
 This section defines the actors, transactions, and/or content modules in this profile. General
 definitions of actors are given in the Technical Frameworks General Introduction [Appendix A](https://profiles.ihe.net/GeneralIntro/ch-A.html).
 IHE Transactions can be found in the Technical Frameworks General Introduction [Appendix B](https://profiles.ihe.net/GeneralIntro/ch-B.html).
