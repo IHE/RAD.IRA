@@ -523,12 +523,6 @@ If the report context is resumed, then the Image Display shall be able to restor
 
 When the Image Display wants to publish content events into a reporting session, then it shall be grouped with a Content Creator to enable it to publish events using one or more FHIR resources. See [Section 1:53.1.1.6](volume-1.html#153116-content-creator) for details.
 
-The Image Display is expected to publish events using one or more of the following FHIR resources:
-
-- `ImagingSelection`: image / series references and simple annotations
-- `Observation`: measurements and annotations
-- `DiagnosticReport`: add/remove associated (e.g. comparison) study
-
 > Note: The FHIR resources which the actor can publish as FHIRcast contents are documented in its CapabilityStatement.
 
 #### 1:53.1.1.2 Report Creator
@@ -643,9 +637,9 @@ If the report context is resumed, then the Report Creator shall be able to resto
 
 ##### 1:53.1.1.2.2 Event Producing Requirements
 
-The Report Creator shall be grouped with a Content Creator to publish report status update associated to the report anchor context. In the `DiagnosticReport-update` context change request, the report status update shall be specified in `DiagnosticReport.status` in the `update` context key. It may support other content sharing resources.
+The Report Creator shall be grouped with a Content Creator to publish report status update associated to the report anchor context. In the `DiagnosticReport-update` context change request, the report status update shall be specified in `DiagnosticReport.status` in the `update` context key.
 
-- `Observation`: clinical findings or impressions
+The Report Creator may publish other content update. See [Section 1:53.1.1.6](volume-1.html#153116-content-creator) for details.
 
 > Note: The FHIR resources which the actor can publish as FHIRcast contents are documented in its CapabilityStatement.
 
@@ -835,12 +829,6 @@ If the report context is resumed, then the Evidence Creator shall be able to res
 
 When the Evidence Creator wants to publish content events into a reporting session, then it shall be grouped with a Content Creator to enable it to publish events using one or more FHIR resources. See [Section 1:53.1.1.6](volume-1.html#153116-content-creator) for details.
 
-The Evidence Creator is expected to publish events using one or more of the following FHIR resources that are expected to be useful in reporting:
-
-- `ImagingSelection`: image / series references and simple annotations such as bounding boxes
-- `Observation`: measurements and annotations
-- `DocumentReference`: results from IHE AI Results Profile using the [JSON Representation of DICOM SR](https://www.dicomstandard.org/News-dir/ftsup/docs/sups/Sup219.pdf), or other documents
-
 > Note: The FHIR resources which the actor can publish as FHIRcast contents are documented in its CapabilityStatement.
 
 #### 1:53.1.1.5 Stateless Evidence Creator
@@ -859,14 +847,18 @@ The Content Creator shall support at least one of the following capabilities:
 - Publish context and/or content changes as events to a reporting session.
 - Select one or more contents and publish the selection events.
 
-The specific context or content changes captured by the Content Creator depends on the grouped actor and the specific deployment scenario. For example:
+The Content Creator shall use the specified FHIR resources for the given purpose:
 
-| Grouped Actor | Potential Use | Relevant Resource |
-| -- | -- | -- |
-| Report Creator | Communicate report status update | DiagnosticReport |
-| Evidence Creator | Image references<br>Bounding Boxes | ImagingSelection<br>Observation |
-| Image Display | Comparison study used during reporting | ImagingStudy |
+| Usage | FHIR Resource |
+| -- | -- |
+| Report status update | DiagnosticReport |
+| Comparison study used during reporting | DiagnosticReport |
+| DICOM series or image references (including image or non-image objects such as GPSP, Structured Report, Segmentation, etc.) | ImagingSelection |
+| 2D or 3D regions within an imaging study frame of reference (See Note) | ImagingSelection |
+| Measurements or textual annotations | Observation |
 {: .grid}
+
+The Content Creator may use other resources for purposes other than those defined in this profile.
 
 The Content Creator shall only publish DiagnosticReport-select events for user initiated selection.
 
@@ -1507,7 +1499,7 @@ Table 1:53.6-1 describes various actors in various other profiles that might be 
 <table class="grid">
   <thead>
     <tr>
-      <th>IMR Actor</th>
+      <th>IRA Actor</th>
       <th>Might group with</th>
       <th>Potential Purpose</th>
     </tr>
@@ -1516,7 +1508,7 @@ Table 1:53.6-1 describes various actors in various other profiles that might be 
     <tr>
       <td rowspan="3">Report Creator</td>
       <td><a href="https://www.ihe.net/uploadedFiles/Documents/Radiology/IHE_RAD_Suppl_RD.pdf">IMR Report Creator</a></td>
-      <td>To produce multi-media interactive report using the context and content received.</td>
+      <td>To produce multi-media interactive report using the context and content (e.g. image references, measurements, etc.) received in a reporting session.<br><br>To share report contents (e.g. findings, impressions) with other Subscribers in a reporting session.</td>
     </tr>
     <tr>
       <td><a href="https://profiles.ihe.net/ITI/IUA/index.html">IUA Authorization Client</a></td>
