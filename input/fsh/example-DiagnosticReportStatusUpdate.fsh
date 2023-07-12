@@ -1,5 +1,5 @@
 Instance: example-DiagnosticReportStatusUpdate
-InstanceOf: DiagnosticReportStatusUpdate
+InstanceOf: DiagnosticReportUpdate
 Title: "DiagnosticReport Status Update example"
 Description: "Sample Report Status Update used in DiagnosticReport-update event"
 Usage: #example
