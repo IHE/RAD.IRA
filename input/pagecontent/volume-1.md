@@ -1214,6 +1214,19 @@ FHIRcast is a generic event distribution mechanism. Most transactions in this pr
 
 Furthermore, the Hub used in these cases may be different from the Hub used for the reporting session. Therefore an application needs to be prepared to support different sessions with different Hubs, and know which session to use for what purpose.
 
+#### 1:53.4.1.13 Navigation Synchronization
+
+Occasionally, a user may want to synchronize navigation across multiple applications and perform some actions according to the selected content. For example, the user navigates to an image frame with an observed nodule in the Image Display, and the Report Creator automatically keeps track of the image frame. Then the user can issue a voice command 'insert hyperlink' and the Report Creator automatically inserts a hyperlink based on the selected image frame.
+
+To achieve this navigation synchronization, IRA uses FHIRcast [DiagnosticReport-select](https://build.fhir.org/ig/HL7/fhircast-docs/3-6-4-DiagnosticReport-select.html) event. It is important to note the following characteristics of the FHIRcast `*-select` events:
+
+- There is a single selection within a session
+- A new selection implicitly unselect any previously selected resources
+
+As a result, selection is intended for user initiated navigation synchronization. It is not suitable for automatic background navigation synchronization due to potential race condition.
+
+Furthermore, due to the implicit unselect semantics, if multiple items are intended to be selected and processed together, then it is necessary to select all the items first and then send a single `DiagnosticReport-select` event with all selected items, rather than sending multiple select events, each with a single item.
+
 ### 1:53.4.2 Use Cases
 
 #### 1:53.4.2.1 Use Case \#1: Basic Reporting
