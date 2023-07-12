@@ -813,7 +813,7 @@ The Evidence Creator shall support all Behaviors shown as “R” in Optionality
       <td><code class="language-plaintext highlighter-rouge">report</code></td>
       <td>DiagnosticReport</td>
       <td>R</td>
-      <td>Stop processing the study data associated to the report context</td>
+      <td>Stop sharing new content to the report context</td>
     </tr>    
     <tr>
       <td>SyncError</td>
@@ -937,7 +937,7 @@ The Watcher shall support all Behaviors shown as “R” in Optionality. The Wat
       <td><code class="language-plaintext highlighter-rouge">report</code></td>
       <td>DiagnosticReport</td>
       <td>R</td>
-      <td>Stop processing the report context</td>
+      <td>Process according to business logic</td>
     </tr>    
     <tr>
       <td>SyncError</td>
