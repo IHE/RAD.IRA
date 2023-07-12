@@ -2,7 +2,7 @@
 
 ### Significant Changes From Previous Revision 
 
-This is the first public comment release of the IRA Implementation Guide.
+This is the trial implementation release of the IRA Implementation Guide.
 
 ## Issues
 
