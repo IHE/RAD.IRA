@@ -1156,11 +1156,9 @@ On the other hand, from the subscribing application perspective, it is up to its
 
 For example, when the user goes through the study images in Image Display (a content sharing application), for each nodule that the user identified (e.g., 1, 2, ..., 9, 10), the Image Display publishes a corresponding event. In the Report Creator (a subscribing application), for each event received, it keeps track of the nodule in its nodule tracking bookmark. Once the user finished reviewing the full study, the user uses the nodule tracking bookmark in the Report Creator and selects the top 3 (e.g., 2, 5, 9) to include in the final report. Note that since the Report Creator is aware of all the nodules observed by synchronizing the context with the Image Display, selecting a subset of the nodules to be included in the final report (i.e., event consumption) is an operation internal to the Report Creator.
 
-#### 1:53.4.1.7 Transient Resource vs Persistent Resource
+#### 1:53.4.1.7 FHIRcast event-based content sharing vs FHIR server based content sharing
 
-FHIRcast uses FHIR resources to capture the context and content in an event. These FHIR resources may be transient, meaning that they do not necessarily exist in any system, nor are they expected to be persisted by any system. Furthermore, even an application decides to persist the FHIR resource(s), it is not required to use the same resource ID in the event as the ID of the persisted resource. The application can generate new IDs instead.
-
-Since the FHIR resources specified in the event may or may not be persisted in any FHIR server, to differentiate between the two cases, this profile defines that transient resources are identified by relative references (e.g., Patient/12345) and persisted resources that already exist are identified by full URL (e.g., http://myserver.com/Patient/12345).
+FHIRcast uses FHIR resources to capture the context and content in an event. These FHIR resources may be transient, meaning that they do not necessarily exist in any system, nor are they expected to be persisted by any system. Furthermore, even an application decides to persist the FHIR resource(s), it is not required to use the same resource ID in the event as the ID of the persisted resource. The application can generate new IDs instead. See [Content Sharing](https://build.fhir.org/ig/HL7/fhircast-docs/2-10-ContentSharing.html) for details.
 
 #### 1:53.4.1.8 Local Tracking of Context
 
