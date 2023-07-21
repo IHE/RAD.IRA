@@ -466,7 +466,7 @@ The Image Display shall support all Behaviors shown as “R” in Optionality. T
       <td><code class="language-plaintext highlighter-rouge">updates</code></td>
       <td>DiagnosticReport</td>
       <td>R</td>
-      <td>Reflect updated status (<code class="language-plaintext highlighter-rouge">DiagnosticReport.status</code>) in worklist</td>      
+      <td>Display the updated status value (<code class="language-plaintext highlighter-rouge">DiagnosticReport.status</code>) </td>      
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">updates</code></td>
@@ -574,13 +574,13 @@ The Report Creator shall support all Behaviors shown as “R” in Optionality. 
       <td><code class="language-plaintext highlighter-rouge">patient</code></td>
       <td>Patient</td>
       <td>R</td>
-      <td>Be ready for reporting for the patient. If re-open a previously opened report context, resume to the previous state of the report context when it was suspended.</td>      
+      <td>Be ready for reporting for the patient. If re-opening a previously opened report context, resume to the previous state of the report context when it was suspended.</td>      
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">study</code></td>
       <td>ImagingStudy</td>
       <td>R</td>
-      <td>Be ready for reporting for the study. If re-open a previously opened report context, resume to the previous state of the report context when it was suspended.</td>      
+      <td>Be ready for reporting for the study. If re-opening a previously opened report context, resume to the previous state of the report context when it was suspended.</td>      
     </tr>
     <tr>
       <td rowspan="3">DiagnosticReport-update</td>
@@ -606,20 +606,20 @@ The Report Creator shall support all Behaviors shown as “R” in Optionality. 
       <td><code class="language-plaintext highlighter-rouge">select</code></td>
       <td>ImagingSelection</td>
       <td>R</td>
-      <td>Bring images and/or annotations <i>to focus</i> and able to apply user commands (See Note 1)</td>      
+      <td>Bring images and/or annotations <i>to focus</i> and be able to apply user commands (See Note 1)</td>      
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">select</code></td>
       <td>Observation</td>
       <td>R</td>
-      <td>Bring measurements and annotations <i>to focus</i> and able to apply user commands (See Note 1)</td>      
+      <td>Bring measurements and annotations <i>to focus</i> and be able to apply user commands (See Note 1)</td>      
     </tr>
     <tr>
       <td>DiagnosticReport-close</td>
       <td><code class="language-plaintext highlighter-rouge">report</code></td>
       <td>DiagnosticReport</td>
       <td>R</td>
-      <td>Stop display the study report</td>      
+      <td>Stop display of the study report</td>      
     </tr>    
     <tr>
       <td>SyncError</td>
