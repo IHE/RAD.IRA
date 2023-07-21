@@ -425,7 +425,7 @@ The Image Display shall be able to launch other applications and synchronize the
 
 ##### 1:53.1.1.1.1 Event Handling Requirements
 
-In Table 1:53.1.1.1.1-1 specifies behavior requirements for the Image Display when it receives FHIRcast events.
+Table 1:53.1.1.1.1-1 specifies behavior requirements for the Image Display when it receives FHIRcast events.
 
 The Image Display shall support all Behaviors shown as “R” in Optionality. The Image Display may support suggested behaviors ("O" in Optionality). For each Received Event in the table, 'Context Key' identifies the context in the Received Event, and 'Resources' specifies the FHIR resource used in the given context.
 
@@ -546,7 +546,7 @@ The Report Creator shall be able to launch other applications and synchronize th
 
 ##### 1:53.1.1.2.1 Event Handling Requirements
 
-In Table 1:53.1.1.2.1-1 specifies behavior requirements for the Report Creator when it receives FHIRcast events.
+Table 1:53.1.1.2.1-1 specifies behavior requirements for the Report Creator when it receives FHIRcast events.
 
 The Report Creator shall support all Behaviors shown as “R” in Optionality. The Report Creator may support suggested behaviors ("O" in Optionality). For each Received Event in the table, 'Context Key' identifies the context in the Received Event, and 'Resources' specifies the FHIR resource used in the given context.
 
@@ -641,7 +641,7 @@ If the report context is resumed, then the Report Creator shall be able to resto
 
 The Report Creator shall be grouped with a Content Creator to publish report status update associated to the report anchor context. In the `DiagnosticReport-update` context change request, the report status update shall be specified in `DiagnosticReport.status` in the `update` context key.
 
-The Report Creator may publish other content update. See [Section 1:53.1.1.6](volume-1.html#153116-content-creator) for details.
+The Report Creator may publish other content updates. See [Section 1:53.1.1.6](volume-1.html#153116-content-creator) for details.
 
 > Note: The Report Creator documents the FHIR Resources it can publish as FHIRcast content in its CapabilityStatement.
 
@@ -649,9 +649,7 @@ The Report Creator may publish other content update. See [Section 1:53.1.1.6](vo
 
 The Worklist Client provides a reporting worklist to the user.
 
-When a user selects studies from the worklist, the Worklist Client launches other applications (e.g., Image Display, Report Creator, etc.) if necessary. It opens a new report context to synchronize other applications through the Hub to enable dictation on the studies.
-
-When a study dictation is complete, the Worklist Client consumes the report anchor context update event so that it can mark the study as dictated and remove it from the worklist.
+When a user selects a study from the worklist, the Worklist Client opens a new report context to synchronize other applications through the Hub to enable dictation on the studies.  The Worklist Client may also launch other applications (e.g., Image Display, Report Creator, etc.) if necessary. 
 
 When the Worklist Client starts up, it shall obtain `hub.url` and `hub.topic` to join a reporting session.
 
@@ -661,9 +659,11 @@ The Worklist Client shall be able to launch other applications and synchronize t
 
 > Note that the actual application launch method is out of scope of this profile. See [Application Launch Scenarios and Session Discovery](https://build.fhir.org/ig/HL7/fhircast-docs/4-1-launch-scenarios.html) for more details.
 
+When a study dictation is complete, the Worklist Client consumes the report anchor context update event so that it can mark the study as dictated and remove it from the worklist.
+
 ##### 1:53.1.1.3.1 Event Handling Requirements
 
-In Table 1:53.1.1.3.1-1 specifies behavior requirements for the Worklist Client when it receives FHIRcast events.
+Table 1:53.1.1.3.1-1 specifies behavior requirements for the Worklist Client when it receives FHIRcast events.
 
 The Worklist Client shall support all Behaviors shown as “R” in Optionality. The Worklist Client may support suggested behaviors ("O" in Optionality). For each Received Event in the table, 'Context Key' identifies the context in the Received Event, and 'Resources' specifies the FHIR resource used in the given context.
 
@@ -704,7 +704,7 @@ The Worklist Client shall support all Behaviors shown as “R” in Optionality.
       <td><code class="language-plaintext highlighter-rouge">updates</code></td>
       <td>DiagnosticReport</td>
       <td>R</td>
-      <td>Reflect updated status <code class="language-plaintext highlighter-rouge">DiagnosticReport.status</code> in worklist</td>
+      <td>Reflect updated status <code class="language-plaintext highlighter-rouge">DiagnosticReport.status</code> in the worklist</td>
     </tr>
     <tr>
       <td>DiagnosticReport-select</td>
