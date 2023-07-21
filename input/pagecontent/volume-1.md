@@ -1384,7 +1384,7 @@ The following diagram shows what can happen in case of rapid switching of the re
 
 ###### 1:53.4.2.1.2.6 Step 6: Close Reporting Session
 
-Eventually, the radiologist completes all the studies in the worklist and closes the Report Creator. The Report Creator unsubscribes to the reporting session so that it will no longer receives any future events.
+Eventually, the radiologist completes all the studies in the worklist and closes the Report Creator. The Report Creator unsubscribes to the reporting session so that it will no longer receive any future events.
 
 The Hub closes the connection to the Report Creator. Note that if there are other Subscribers on the same session, those applications are not affected and will continue to receive notification on the session.
 
@@ -1418,7 +1418,7 @@ In this use case,
 - When launched, Evidence Creator automatically synchronizes and processes the study
 - After finished processing, Evidence Creator shares the outputs back with other applications in the reporting session
 - Image Display automatically shows the outputs from Evidence Creator
-- Radiologist accepts the results in Image Display, which in turn shares the the radiologist's decisions as observation with other applications in the reporting session
+- Radiologist accepts the results in Image Display, which in turn shares the radiologist's decisions as observation with other applications in the reporting session
 - Report Creator automatically updates the report with the radiologist decisions according to the observation
 - Radiologist completes and signs off the report and moves on to the next study in the worklist
 - Eventually, the radiologist finishes all studies in the reporting worklist and closes the applications
