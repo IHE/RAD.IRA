@@ -631,7 +631,7 @@ The Report Creator shall support all Behaviors shown as “R” in Optionality. 
   </tbody>
 </table>
 
-> Note 1: The Report Creator may provide application logic that can make use of the selected resources. For example, a nodule (as `ImagingSelection`) and corresponding measurements (as `Observation`) are selected. Then the radiologist issues a voice command "insert hyperlink". In this case, the Report Creator applies the command with the selected resources and insert a hyperlink reference to the nodule with measurement.
+> Note 1: The Report Creator may provide application logic that can make use of the selected resources. For example, a nodule (as `ImagingSelection`) and corresponding measurements (as `Observation`) are selected. Then the radiologist issues a voice command "insert hyperlink". In this case, the Report Creator applies the command with the selected resources and inserts a hyperlink reference to the nodule with measurement.
 
 If the report context is resumed, then the Report Creator shall be able to restore the application to a state associated to that report context prior to suspension. It is the responsibility of the implementation to determine what elements of application state are significant to the user to be restored when the application resumes the report context.
 
@@ -643,7 +643,7 @@ The Report Creator shall be grouped with a Content Creator to publish report sta
 
 The Report Creator may publish other content update. See [Section 1:53.1.1.6](volume-1.html#153116-content-creator) for details.
 
-> Note: The FHIR resources which the actor can publish as FHIRcast contents are documented in its CapabilityStatement.
+> Note: The Report Creator documents the FHIR Resources it can publish as FHIRcast content in its CapabilityStatement.
 
 #### 1:53.1.1.3 Worklist Client
 
