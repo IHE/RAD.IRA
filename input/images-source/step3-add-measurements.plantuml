@@ -3,7 +3,7 @@
 actor Radiologist as User
 participant "Image Display /\nContent Creator" as PACS
 participant "Hub" as Hub
-participant "Report Creator /\nContent Creator" as Report
+participant "Report Creator" as Report
 
 == Step 3: Add Contents (Optional) ==
 
