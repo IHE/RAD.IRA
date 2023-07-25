@@ -730,8 +730,6 @@ The Worklist Client shall support all Behaviors shown as “R” in Optionality.
   </tbody>
 </table>
 
-> Note 1: This does not trigger the Worklist Client to change the report context to the referenced study in the event.
-
 If the report context is resumed, then the Worklist Client shall be able to restore the application to a state associated to that report context prior to suspension. It is the responsibility of the implementation to determine what elements of application state are significant to the user to be restored when the application resumes the report context.
 
 > Note: The DiagnosticReport-open event does not explicitly indicate if the report context is new or resumed. See [Subscriber Local Context and Local State](volume-1.html#1534110-resuming-contexts-subscriber-local-context-and-local-state) for design considerations.
