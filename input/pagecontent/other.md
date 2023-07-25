@@ -12,7 +12,7 @@ This section modifies other IHE profiles or the General Introduction appendices 
 | ----------------------------- | ------------------------------------------------------------------------------------------|
 | Hub | The Hub actor is responsible for managing event flows between Subscribers in reporting sessions and maintaining the current context and transaction of content sharing in each session. |
 | Worklist Client | The Worklist Client actor is responsible for providing a reporting worklist to the user. |
-| Stateless Evidence Creator | TO DO|
+| Stateless Evidence Creator | The Stateless Evidence Creator actor is an Evidence Creator that is not responsible for maintaining its application state when its operations are suspended and resumed. |
 {:.grid .table-striped}
 
 
