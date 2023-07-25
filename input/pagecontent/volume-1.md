@@ -1056,14 +1056,16 @@ considerations and Section 1:52.6 describes some optional groupings in other rel
 | IRA Actor | Grouping Condition | Actor(s) to be grouped with | Reference |
 |-----------|--------------------|-----------------------------|-----------|
 | Image Display | -- | None | -- |
-| Report Creator | -- | None | -- |
+| Report Creator | -- | IRA / Content Creator | [RAD TF-1: 53.1.1.2](volume-1.html#153112-report-creator) |
 | Worklist Client | -- | None | -- |
 | Evidence Creator | -- | None | -- |
-| Resumable Evidence Creator | -- | None | -- |
-| Content Creator | -- | IRA / Image Display<br>IRA / Report Creator<br>IRA / Worklist Client<br>IRA / Evidence Creator<br>IRA / Stateless Evidence Creator | [IRA TF-1: 1.1](volume-1.html#15311-actors-description-and-actor-profile-requirements) |
+| Stateless Evidence Creator | -- | None | -- |
+| Content Creator (Note 1) | -- | IRA / Image Display<br>IRA / Report Creator<br>IRA / Worklist Client<br>IRA / Evidence Creator<br>IRA / Stateless Evidence Creator | [RAD TF-1: 53.1.1](volume-1.html#15311-actors-description-and-actor-profile-requirements) |
 | Watcher | -- | None | -- |
 | Hub | -- | None | -- |
 {: .grid}
+
+> Note 1: The Content Creator shall be grouped with at least one of the Actors in Column 3.
 
 ## 1:53.4 IRA Overview
 
