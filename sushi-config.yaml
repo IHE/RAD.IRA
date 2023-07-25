@@ -113,7 +113,7 @@ pages:
     title: Close Report Context
     generation: markdown
   testplan.md:
-    title: "Test Plan"
+    title: Test Plan
     generation: markdown
   issues.md:
     title: Significant Changes and Issues
@@ -122,7 +122,7 @@ pages:
     title: Changes to Other Documents
     generation: markdown
   download.md:
-    title: "Download and analysis"
+    title: Download and analysis
     generation: markdown
 
 menu:
