@@ -1080,7 +1080,7 @@ The following are some key concepts:
 - The `Hub` only communicates with authenticated `Subscribers`
 - `Subscribers` do not communicate with other `Subscribers` directly.
 - When `Subscribers` generate data that should be made available to other applications, or perform actions of which other applications should be aware, they *publish* it by sending an event request with the relevant details to the Hub
-- The `Subscriber` which opens a context typically is responsible for closing that context and is informally referred to as the Driving Application. A Driving Application (or other `Subscribers`) may launch other applications, providing them with the address of the `Hub` and the `topic ID` so they can join the same `session`.
+- A Starting Application is a `Subscriber` that may launch other applications, providing them with the address of the `Hub` and the `topic ID` so they can join the same `session`.
 - The `Hub` forwards accepted event requests from a `Subscriber` to other `Subscribers` subscribed to that type of event
 - `Subscribers` can configure their subscription to limit what types of events the `Hub` forwards to them.
 - `Subscribers` react to events from the `Hub` based on their internal business logic
@@ -1105,12 +1105,7 @@ Figure 1:53.4.1.2-1 is a representation of the data model.
 
 Figure 1:53.4.1.2-2 is a representation of the interaction model.
 
-> Note: The term `Driving Application` and `Synchronizing Application` in the diagram are *convenient* terms instead of actual defined terms. They are used here to highlight the additional capabilities a driving application can do, in particular:
-> - Start a new reporting session
-> - Launch another application
-> - Open (including resume) or close a report context
-
-**Figure 1:53.4.1.2-2: FHIRcast Concept Interaction Model**
+**Figure 1:53.4.1.2-2: IRA Concept Interaction Model**
 
 <div>
     <img src="interaction_model.png" width="80%">
@@ -1139,15 +1134,15 @@ On the other hand, `Commands` represent intention. In addition to an initiator, 
 
 #### 1:53.4.1.5 Timing of Sending an Event
 
-A driving application is a subscriber that initiates a context change request. From the driving application perspective, it is desirable for all subscribers to be synchronized as soon as possible. On the other hand, FHIRcast is a network protocol which incurs a non-trivial cost to send each event. Therefore, a driving application should take into account when an action is considered to be complete or stable, and hence ready to be captured and communicated as events.
+A starting application is a subscriber that initiates a context change request. From the starting application perspective, it is desirable for all subscribers to be synchronized as soon as possible. On the other hand, FHIRcast is a network protocol which incurs a non-trivial cost to send each event. Therefore, a starting application should take into account when an action is considered to be complete or stable, and hence ready to be captured and communicated as events.
 
-For example, when a user is actively making measurements or annotations, instead of capturing every change a user makes (e.g., incremental changes in size or location of a shape) as an event which can result in many intermittent and partial events, a driving application may use specific triggers (e.g., when a user saves the changes) or an idle time threshold to detect when the user completed making the changes. The application then creates the corresponding event(s) to capture the result.
+For example, when a user is actively making measurements or annotations, instead of capturing every change a user makes (e.g., incremental changes in size or location of a shape) as an event which can result in many intermittent and partial events, a starting application may use specific triggers (e.g., when a user saves the changes) or an idle time threshold to detect when the user completed making the changes. The application then creates the corresponding event(s) to capture the result.
 
-On the other hand, this profile is designed to communicate _in-progress_ data as soon as possible. Therefore it is not desirable for the driving application to _wait_ too long. For example, if the driving application supports exporting measurements and annotations as DICOM SR or other DICOM objects, it is not appropriate to wait until the DICOM objects are created before sending the corresponding event.
+On the other hand, this profile is designed to communicate _in-progress_ data as soon as possible. Therefore it is not desirable for the starting application to _wait_ too long. For example, if the starting application supports exporting measurements and annotations as DICOM SR or other DICOM objects, it is not appropriate to wait until the DICOM objects are created before sending the corresponding event.
 
 A reasonable approach could be for an application to acquire a complete measurement and perhaps some measurement characteristics, then send an event request containing this information to the Hub.
 
-This profile does not mandate any specific implementation design regarding when a driving application should capture the result of an action as an event. The intention is that the driving application will send an event as soon as feasible so that all subscribers in a reporting session can be synchronized and provide a good user experience.
+This profile does not mandate any specific implementation design regarding when a starting application should capture the result of an action as an event. The intention is that the starting application will send an event as soon as feasible so that all subscribers in a reporting session can be synchronized and provide a good user experience.
 
 #### 1:53.4.1.6 Event Awareness vs Event Consumption
 
@@ -1155,7 +1150,7 @@ This profile does not mandate any specific implementation design regarding when 
 
 `Event Consumption` means a synchronizing application, upon receiving an event from the `Hub`, reacts to the event and performs some actions according to its business logic.
 
-This means from the content sharing application perspective, in order to synchronize the context with other applications, it may be desirable for a driving application to publish events frequently so that other subscribers can be aware of the same context as in the content sharing application.
+This means from the content sharing application perspective, in order to synchronize the context with other applications, it may be desirable for a starting application to publish events frequently so that other subscribers can be aware of the same context as in the content sharing application.
 
 On the other hand, from the subscribing application perspective, it is up to its business logic to determine how to react to the received event. This business logic may be automatic or require additional user input.
 
@@ -1171,13 +1166,13 @@ The `DiagnosticReport-open` event includes both the `report` anchor context and 
 
 #### 1:53.4.1.9 Suspend and Resume Report Context
 
-Occasionally a report context may be _suspended_, meaning that a driving application opens a subsequent report context without closing an initial report context. For example, a radiologist needs to suspend a report on a study in order to review an urgent study.
+Occasionally a report context may be _suspended_, meaning that a starting application opens a subsequent report context without closing an initial report context. For example, a radiologist needs to suspend a report on a study in order to review an urgent study.
 
 The `Hub` switches the `Current Context` to the urgent study being opened. The `Hub` distributes the open event to all subscribers to keep them synchronized. The initial report context is still maintained by the `Hub` since it is not closed, but it is _suspended_ (i.e., not the `Current Context`). 
 
 When the user finishes reviewing the urgent study, the report context of the urgent study is closed and all subscribers receive the close event. The `Hub` sets the `Current Context` to *empty* after closing the `Current Context`.
 
-The driving application sends a *new* open event for the _suspended_ report context to make it the `Current Context`. All subscribers receive the open event and resume to the _suspended_ report context. Alternatively the driving application could choose to open any other report context as appropriate.
+The starting application sends a *new* open event for the _suspended_ report context to make it the `Current Context`. All subscribers receive the open event and resume to the _suspended_ report context. Alternatively the starting application could choose to open any other report context as appropriate.
 
 See [Use Case #3](volume-1.html#153423-use-case-3-suspend-and-resume-flow) for more details.
 
@@ -1263,7 +1258,7 @@ Figure 1:53.4.2.1.2-1: Basic Reporting Flow in IRA Profile
 
 ###### 1:53.4.2.1.2.1 Step 1: Open Reporting Session
 
-When a radiologist starts reporting, the Image Display, as a Driving Application, starts a reporting session.
+When a radiologist starts reporting, the Image Display, as a Starting Application, starts a reporting session.
 
 Note that there is no explicit creation of a session. If the Hub receives a session (i.e., topic ID) that does not already exist, then the Hub will automatically create the session and add the subscriber (i.e., Image Display) to the session.
 
@@ -1274,7 +1269,7 @@ The Image Display subscribes to events so that it can:
 
 Once the Image Display completes its subscription, it launches the Report Creator. The Report Creator, as a Synchronizing Application, can follow the context and content events automatically.
 
-> Note that *launching* the Report Creator (or any Synchronizing Application) by the Image Display (or any Driving Application) may be implemented in different ways. For example, the Synchronizing Application can be started and terminated, or it can be put in focus and minimized when not needed but kept running in the background for efficiency, or any combination thereof.
+> Note that *launching* the Report Creator (or any Synchronizing Application) by the Image Display (or any Starting Application) may be implemented in different ways. For example, the Synchronizing Application can be started and terminated, or it can be put in focus and minimized when not needed but kept running in the background for efficiency, or any combination thereof.
 
 When launched, the first thing that the Report Creator does as a Synchronizing Application is to subscribe to the reporting session. The information about the Hub and the session is provided by the Image Display during launch.
 
@@ -1289,11 +1284,11 @@ Furthermore, the Report Creator queries the Hub to get the current context to en
 
 ###### 1:53.4.2.1.2.2 Step 2: Open Study in Context
 
-When the radiologist selects a study in the worklist, the Image Display, as a Driving Application, opens a new report context. Once the Hub accepts the event, it broadcasts the event to all Subscribers.
+When the radiologist selects a study in the worklist, the Image Display, as a Starting Application, opens a new report context. Once the Hub accepts the event, it broadcasts the event to all Subscribers.
 
 The Report Creator, as a Synchronizing Application, receives the event and opens the corresponding procedure for the study.
 
-Furthermore, the event has a version ID. For the Image Display as a Driving Application, including the version ID when submitting the next event allows the Hub to ensure proper event sequence. For the Report Creator as a Synchronizing Application, keeping track of the version ID enables it to check if it missed any prior events. Event sequencing is important for content sharing because all updates and selects are expected to be applied in the same sequence as they are emitted by one or more Content Creators (See [FHIRcast event-based content sharing](https://build.fhir.org/ig/HL7/fhircast-docs/2-10-1-ContentSharingFHIRcastMessaging.html) for details).
+Furthermore, the event has a version ID. For the Image Display as a Starting Application, including the version ID when submitting the next event allows the Hub to ensure proper event sequence. For the Report Creator as a Synchronizing Application, keeping track of the version ID enables it to check if it missed any prior events. Event sequencing is important for content sharing because all updates and selects are expected to be applied in the same sequence as they are emitted by one or more Content Creators (See [FHIRcast event-based content sharing](https://build.fhir.org/ig/HL7/fhircast-docs/2-10-1-ContentSharingFHIRcastMessaging.html) for details).
 
 <div>
 {%include step2-open-study-in-context.svg%}
@@ -1369,7 +1364,7 @@ The Report Creator may have some internal mechanism to keep the report for a gra
 
 The flow above shows the simple case with a sequential switching of report context. In this case, a report context is opened and then closed before the next report context is opened.
 
-In practice, the radiologist is likely to continue with the next study in the worklist without any awareness of the events happening behind the scene. If the initiating Driving Application and terminating Driving Application are different as in this example, then it is possible that the radiologist moves to the next study; hence the Image Display opens a new report context before the Image Display receives the Close Report Context [RAD-149] event of the reported study.
+In practice, the radiologist is likely to continue with the next study in the worklist without any awareness of the events happening behind the scene. If the initiating Starting Application and terminating Starting Application are different as in this example, then when the radiologist moves to the next study, it is possible that the Image Display opens a new report context before the Image Display receives the Close Report Context [RAD-149] event of the reported study.
 
 Such rapid context switching is supported by this profile. The Hub and each Subscriber maintains multiple open contexts simultaneously. As long as the context is not closed, it still exists. Each event is associated to a particular anchor context. Therefore a Subscriber can reliably match an event to its internal state according to the context ID of the anchor context in the event. 
 
@@ -1438,7 +1433,7 @@ Occasionally a radiologist is interrupted while reporting on a study. She needs 
 
 This profile permits a new report context to be opened before the previous report context is closed. The Hub can maintain multiple anchor contexts simultaneously within a reporting session. The current context is the most recent anchor context that has been opened but not yet closed. This current context enables all Synchronizing Applications to be synchronized and working on the same context all the time.
 
-Once the *interrupting* study is complete, the Image Display closes the report context of the *interrupting* study. The Hub removes the context of the *interrupting* study and set the current context to *empty*. The Image Display, as the Driving Application in this example, resumes the report context back to the previously opened study. It restores its application state associated to the report context prior to suspension and then re-opens the same report context to the Hub. Note that all associated context and contents remain in the Hub.
+Once the *interrupting* study is complete, the Image Display closes the report context of the *interrupting* study. The Hub removes the context of the *interrupting* study and set the current context to *empty*. The Image Display, as the Starting Application in this example, resumes the report context back to the previously opened study. It restores its application state associated to the report context prior to suspension and then re-opens the same report context to the Hub. Note that all associated context and contents remain in the Hub.
 
 As a result, all subscribers will resume to the same report context. If an application has business logic to resume something else rather than the previous report context, that application should send a new Open Report Context [RAD-148] event to set the new report context accordingly.
 
