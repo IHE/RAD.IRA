@@ -851,11 +851,15 @@ The Content Creator shall support at least one of the following capabilities:
 - Publish context and/or content changes as events to a reporting session.
 - Select one or more contents and publish the selection events.
 
-The Content Creator shall use the specified FHIR resources for the given purpose:
+TODO: Add a table number, rephrase with a verb first.
 
-| Usage | FHIR Resource |
+The Content Creator shall use the specified FHIR resource if it implements any of the capabilities listed in Table 1:53.1.1.6-1:
+
+Table: 1:53.1.1.6-1
+
+| Capability | FHIR Resource |
 | -- | -- |
-| Report status update | DiagnosticReport |
+| Update report status  | DiagnosticReport |
 | Comparison study used during reporting | DiagnosticReport |
 | DICOM series or image references (including image or non-image objects such as GPSP, Structured Report, Segmentation, etc.) | ImagingSelection |
 | 2D or 3D regions within an imaging study frame of reference (See Note) | ImagingSelection |
