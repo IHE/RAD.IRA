@@ -1,42 +1,41 @@
 <mxfile host="65bd71144e">
     <diagram id="w9eKzpSiwHvzKklawYqQ" name="Full Actors Only">
-        <mxGraphModel dx="1479" dy="1850" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="2014" dy="1753" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
-                <mxCell id="3" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;endArrow=none;endFill=0;" parent="1" source="gMexnicsG44GviGb2K0t-1" target="gMexnicsG44GviGb2K0t-4" edge="1">
+                <mxCell id="3" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=none;endFill=0;" parent="1" source="gMexnicsG44GviGb2K0t-1" target="gMexnicsG44GviGb2K0t-4" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="-320" y="410" as="targetPoint"/>
                         <Array as="points">
-                            <mxPoint x="-740"/>
-                            <mxPoint x="-740" y="450"/>
+                            <mxPoint x="-400" y="-10"/>
                         </Array>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="gMexnicsG44GviGb2K0t-1" value="Report Creator" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
-                    <mxGeometry x="-780" y="-130" width="80" height="80" as="geometry"/>
+                    <mxGeometry x="-440" y="-130" width="80" height="80" as="geometry"/>
                 </mxCell>
                 <mxCell id="u-3bDec00EcQlva4bvqx-18" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=none;endFill=0;" parent="1" source="gMexnicsG44GviGb2K0t-2" target="gMexnicsG44GviGb2K0t-4" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
-                            <mxPoint x="-470"/>
+                            <mxPoint x="-510"/>
                             <mxPoint x="-400"/>
                         </Array>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="gMexnicsG44GviGb2K0t-2" value="Image&lt;br&gt;Display" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
-                    <mxGeometry x="-510" y="-130" width="80" height="80" as="geometry"/>
+                    <mxGeometry x="-550" y="-130" width="80" height="80" as="geometry"/>
                 </mxCell>
                 <mxCell id="2" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=none;endFill=0;" parent="1" source="gMexnicsG44GviGb2K0t-3" target="gMexnicsG44GviGb2K0t-4" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
-                            <mxPoint x="-330"/>
+                            <mxPoint x="-285"/>
                             <mxPoint x="-400"/>
                         </Array>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="gMexnicsG44GviGb2K0t-3" value="Worklist&lt;br&gt;Client" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
-                    <mxGeometry x="-370" y="-130" width="80" height="80" as="geometry"/>
+                    <mxGeometry x="-325" y="-130" width="80" height="80" as="geometry"/>
                 </mxCell>
                 <mxCell id="gMexnicsG44GviGb2K0t-4" value="Hub" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
                     <mxGeometry x="-440" y="390" width="80" height="80" as="geometry"/>
@@ -210,86 +209,14 @@
                         <mxPoint x="-379" y="298" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="11" value="Notify Error [RAD-156]" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-                    <mxGeometry x="-700" y="271.5" width="130" height="30" as="geometry"/>
-                </mxCell>
-                <mxCell id="12" value="" style="endArrow=classic;html=1;rounded=0;startArrow=none;startFill=0;endFill=1;" parent="1" edge="1">
-                    <mxGeometry width="50" height="50" relative="1" as="geometry">
-                        <mxPoint x="-710" y="19.5" as="sourcePoint"/>
-                        <mxPoint x="-710" y="49.5" as="targetPoint"/>
-                    </mxGeometry>
-                </mxCell>
-                <mxCell id="13" value="Subscribe to Reporting Session [RAD-146]" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-                    <mxGeometry x="-700" y="19.5" width="230" height="30" as="geometry"/>
-                </mxCell>
-                <mxCell id="14" value="" style="endArrow=none;html=1;rounded=0;startArrow=classic;startFill=1;endFill=0;" parent="1" edge="1">
-                    <mxGeometry width="50" height="50" relative="1" as="geometry">
-                        <mxPoint x="-709" y="185.5" as="sourcePoint"/>
-                        <mxPoint x="-709" y="215.5" as="targetPoint"/>
-                    </mxGeometry>
-                </mxCell>
-                <mxCell id="15" value="Distribute Context Event [RAD-154]" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-                    <mxGeometry x="-700" y="185.5" width="200" height="30" as="geometry"/>
-                </mxCell>
-                <mxCell id="16" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" edge="1">
-                    <mxGeometry width="50" height="50" relative="1" as="geometry">
-                        <mxPoint x="-709" y="59.5" as="sourcePoint"/>
-                        <mxPoint x="-709" y="89.5" as="targetPoint"/>
-                    </mxGeometry>
-                </mxCell>
-                <mxCell id="17" value="Connect to Notification Channel [RAD-147]" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-                    <mxGeometry x="-700" y="59.5" width="240" height="30" as="geometry"/>
-                </mxCell>
                 <mxCell id="18" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
-                        <mxPoint x="-709" y="352.5" as="sourcePoint"/>
-                        <mxPoint x="-709" y="382.5" as="targetPoint"/>
+                        <mxPoint x="-380" y="350" as="sourcePoint"/>
+                        <mxPoint x="-380" y="380" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="19" value="Close Report Context [RAD-149]" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-                    <mxGeometry x="-699" y="352.5" width="179" height="30" as="geometry"/>
-                </mxCell>
-                <mxCell id="20" value="" style="endArrow=classic;html=1;rounded=0;startArrow=none;startFill=0;endFill=1;" parent="1" edge="1">
-                    <mxGeometry width="50" height="50" relative="1" as="geometry">
-                        <mxPoint x="-709" y="140.5" as="sourcePoint"/>
-                        <mxPoint x="-709" y="170.5" as="targetPoint"/>
-                    </mxGeometry>
-                </mxCell>
-                <mxCell id="21" value="Get Current Context [RAD-153]" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-                    <mxGeometry x="-700" y="140.5" width="170" height="30" as="geometry"/>
-                </mxCell>
-                <mxCell id="22" value="" style="endArrow=none;html=1;rounded=0;startArrow=classic;startFill=1;endFill=0;" parent="1" edge="1">
-                    <mxGeometry width="50" height="50" relative="1" as="geometry">
-                        <mxPoint x="-710" y="225.5" as="sourcePoint"/>
-                        <mxPoint x="-710" y="255.5" as="targetPoint"/>
-                    </mxGeometry>
-                </mxCell>
-                <mxCell id="23" value="Generate SyncError Event [RAD-155]" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-                    <mxGeometry x="-700" y="225.5" width="210" height="30" as="geometry"/>
-                </mxCell>
-                <mxCell id="24" value="" style="endArrow=classic;html=1;rounded=0;startArrow=none;startFill=0;endFill=1;" parent="1" edge="1">
-                    <mxGeometry width="50" height="50" relative="1" as="geometry">
-                        <mxPoint x="-710" y="99.5" as="sourcePoint"/>
-                        <mxPoint x="-710" y="129.5" as="targetPoint"/>
-                    </mxGeometry>
-                </mxCell>
-                <mxCell id="25" value="Unsubscribe Session [RAD-152]" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-                    <mxGeometry x="-700" y="99.5" width="180" height="30" as="geometry"/>
-                </mxCell>
-                <mxCell id="26" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" edge="1">
-                    <mxGeometry width="50" height="50" relative="1" as="geometry">
-                        <mxPoint x="-708" y="309.5" as="sourcePoint"/>
-                        <mxPoint x="-708" y="339.5" as="targetPoint"/>
-                    </mxGeometry>
-                </mxCell>
-                <mxCell id="27" value="Open Report Context [RAD-148]" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-                    <mxGeometry x="-699" y="309.5" width="179" height="30" as="geometry"/>
-                </mxCell>
-                <mxCell id="28" value="" style="endArrow=classic;html=1;rounded=0;startArrow=none;startFill=0;endFill=1;" parent="1" edge="1">
-                    <mxGeometry width="50" height="50" relative="1" as="geometry">
-                        <mxPoint x="-709" y="267.5" as="sourcePoint"/>
-                        <mxPoint x="-709" y="297.5" as="targetPoint"/>
-                    </mxGeometry>
+                    <mxGeometry x="-370" y="350" width="179" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="VWrqGPMbiMX-ikQacddM-1" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">

@@ -38,7 +38,7 @@ Table 1:53.1-1 lists the transactions for each actor directly involved in the IM
   </thead>
   <tbody>
     <tr>
-      <td rowspan="8"><a href="volume-1.html#153111-image-display">Image Display</a></td>
+      <td rowspan="9"><a href="volume-1.html#153111-image-display">Image Display</a></td>
       <td>Subscribe to Reporting Session [RAD-146]</td>
       <td>Initiator</td>
       <td>R</td>
@@ -55,6 +55,12 @@ Table 1:53.1-1 lists the transactions for each actor directly involved in the IM
       <td>Initiator</td>
       <td>R</td>
       <td><a href="rad-148.html">RAD TF-2: 4.148</a></td>
+    </tr>
+    <tr>
+      <td>Close Report Context [RAD-149]</td>
+      <td>Initiator</td>
+      <td>O</td>
+      <td><a href="rad-149.html">RAD TF-2: 4.149</a></td>
     </tr>
     <tr>
       <td>Unsubscribe Session [RAD-152]</td>
@@ -142,7 +148,7 @@ Table 1:53.1-1 lists the transactions for each actor directly involved in the IM
       <td><a href="rad-156.html">RAD TF-2: 4.156</a></td>
     </tr>
     <tr>
-      <td rowspan="8"><a href="volume-1.html#153113-worklist-client">Worklist Client</a></td>
+      <td rowspan="9"><a href="volume-1.html#153113-worklist-client">Worklist Client</a></td>
       <td>Subscribe to Reporting Session [RAD-146]</td>
       <td>Initiator</td>
       <td>R</td>
@@ -159,6 +165,12 @@ Table 1:53.1-1 lists the transactions for each actor directly involved in the IM
       <td>Initiator</td>
       <td>R</td>
       <td><a href="rad-148.html">RAD TF-2: 4.148</a></td>
+    </tr>
+    <tr>
+      <td>Close Report Context [RAD-149]</td>
+      <td>Initiator</td>
+      <td>O</td>
+      <td><a href="rad-149.html">RAD TF-2: 4.149</a></td>
     </tr>
     <tr>
       <td>Unsubscribe Session [RAD-152]</td>
