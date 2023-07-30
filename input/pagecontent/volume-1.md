@@ -823,7 +823,7 @@ The Evidence Creator shall support all Behaviors shown as “R” in Optionality
       <td><code class="language-plaintext highlighter-rouge">report</code></td>
       <td>DiagnosticReport</td>
       <td>R</td>
-      <td>Stop sharing new content to the report context (See Note 1)</td>
+      <td>Stop display the study and stop sharing new content to the report context (See Note 1)</td>
     </tr>    
     <tr>
       <td>SyncError</td>
@@ -835,7 +835,7 @@ The Evidence Creator shall support all Behaviors shown as “R” in Optionality
   </tbody>
 </table>
 
-> Note 1: TODO Add display requirement here. The Evidence Creator is not prohibited to continue processing the context and content according to its business logic.
+> Note 1: If the Evidence Creator is displaying the study associated to the report context, then it shall stop displaying the study. The Evidence Creator is not prohibited to continue processing the context and content according to its business logic. For example, capturing the results of its processing in a DICOM SR object.
 
 If the report context is resumed, then the Evidence Creator shall be able to restore the application to a state associated to that report context prior to suspension. It is the responsibility of the implementation to determine what elements of application state are significant to the user to be restored when the application resumes the report context.
 
