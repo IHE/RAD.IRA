@@ -1448,7 +1448,13 @@ Occasionally a radiologist is interrupted while reporting on a study. She needs 
 
 This profile permits a new report context to be opened before the previous report context is closed. The Hub can maintain multiple anchor contexts simultaneously within a reporting session. The current context is the most recent anchor context that has been opened but not yet closed. This current context enables all Synchronizing Applications to be synchronized and working on the same context all the time.
 
-Once the *interrupting* study is complete, the Image Display closes the report context of the *interrupting* study. The Hub removes the context of the *interrupting* study and set the current context to *empty*. The Image Display, as the Starting Application in this example, resumes the report context back to the previously opened study. It restores its application state associated to the report context prior to suspension and then re-opens the same report context to the Hub. Note that all associated context and contents remain in the Hub.
+Once the *interrupting* study is complete, the Report Creator closes the report context of the *interrupting* study. The Hub removes the context of the *interrupting* study and set the current context to *empty*.
+
+> Note: In some situations, the user can complete the work required for the *interrupting* study without using the Report Creator. In these occasions, the Image Display (or Worklist Client, not shown in the diagram) is permitted to close the report context.
+>
+> In this situation, although not required by the user to complete the task, the Report Creator may still open the report context, synchronize and eventually close the report context as usual.
+
+The Image Display, as the Starting Application in this example, resumes the report context back to the previously opened study. It restores its application state associated to the report context prior to suspension and then re-opens the same report context to the Hub. Note that all associated context and contents remain in the Hub.
 
 As a result, all subscribers will resume to the same report context. If an application has business logic to resume something else rather than the previous report context, that application should send a new Open Report Context [RAD-148] event to set the new report context accordingly.
 

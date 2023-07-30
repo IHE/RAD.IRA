@@ -69,18 +69,18 @@ User->PACS: //Start reviewing the new study for consultation//
 
 == Step 2c: Suspension Complete ==
 
-User->PACS: //Complete review for consultation and close study//
+User->Report: //Complete review for consultation and close study//
 
-PACS->Hub: Close Report Context [RAD-149]\n(event: id = 3000,\ncontext = DiagnosticReport aaa)
+Report->Hub: Close Report Context [RAD-149]\n(event: id = 3000,\ncontext = DiagnosticReport aaa)
 Hub->Hub: //Close DiagnosticReport aaa//
 
-Hub->Report: Distribute Context Event [RAD-154]\n(event: id = 3000,\ncontext = DiagnositcReport aaa)
+Hub->PACS: Distribute Context Event [RAD-154]\n(event: id = 3000,\ncontext = DiagnositcReport aaa)
+PACS->PACS: //Close study in consultation//
+PACS-->Hub: //Success//ß
+
+Hub->Report: Distribute Context Event [RAD-154]\n(event: id = 3000,\ncontext = DiagnosticReport aaa)
 Report->Report: //Close study in consultation//
 Report-->Hub: //Success//
-
-Hub->PACS: Distribute Context Event [RAD-154]\n(event: id = 3000,\ncontext = DiagnosticReport aaa)
-PACS->PACS: //Close study in consultation//
-PACS-->Hub: //Success//
 
 == Step 2d: Resume Previous Report Context ==
 
