@@ -1373,9 +1373,9 @@ The Report Creator may have some internal mechanism to keep the report for a gra
 
 **Figure 1:53.4.2.1.2.5-1: Sign-off Report Flow in IRA Profile**
 
-TODO:
-- In common case, Report Creator is the actor to close the context. Occasionally, Image Display or Worklist Client can close the report context, but be careful.
-- The Report Creator, if it receives the report close context, it may save the content and re-open the context if necessary
+> Note 1: It is important to note that in common cases, Report Creator is the actor to close the report context. Occasionally, Image Display or Worklist Client can close the report context. This should be carefully considered and ensure all actors are configured appropriately. See [Use Case #3: Suspend and Resume Flow](volume-1.html#153423-use-case-3-suspend-and-resume-flow) for example.
+
+> Note 2: The Report Creator, if it receives the report close context, it may save the content and re-open the context if necessary.
 
 The flow above shows the simple case with a sequential switching of report context. In this case, a report context is opened and then closed before the next report context is opened.
 
