@@ -1,13 +1,13 @@
 <mxfile host="65bd71144e">
     <diagram id="REENpzGBm39CdS1Fk5RU" name="Interaction Model">
-        <mxGraphModel dx="1720" dy="1628" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="1744" dy="2048" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
                 <mxCell id="yhTjSWiZqmDCel7jHeYI-7" value="" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#1ba1e2;fontColor=#ffffff;strokeColor=#006EAF;" parent="1" vertex="1">
                     <mxGeometry x="570" y="-45" width="180" height="325" as="geometry"/>
                 </mxCell>
-                <mxCell id="uQy_RtOWi2RNMos_5whO-6" value="Distribute Context Event (WSS)" style="edgeStyle=none;html=1;exitX=1.007;exitY=0.319;exitDx=0;exitDy=0;entryX=0.007;entryY=0.591;entryDx=0;entryDy=0;startArrow=none;startFill=0;endArrow=classic;endFill=1;exitPerimeter=0;entryPerimeter=0;" parent="1" edge="1" target="yhTjSWiZqmDCel7jHeYI-31">
+                <mxCell id="uQy_RtOWi2RNMos_5whO-6" value="Distribute Context Event (WSS)" style="edgeStyle=none;html=1;exitX=1.007;exitY=0.319;exitDx=0;exitDy=0;entryX=0.007;entryY=0.591;entryDx=0;entryDy=0;startArrow=none;startFill=0;endArrow=classic;endFill=1;exitPerimeter=0;entryPerimeter=0;" parent="1" target="yhTjSWiZqmDCel7jHeYI-31" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="291.4699999999998" y="70.78999999999996" as="sourcePoint"/>
                         <mxPoint x="568.56" y="69.90000000000009" as="targetPoint"/>
@@ -53,25 +53,25 @@
                 <mxCell id="yhTjSWiZqmDCel7jHeYI-9" value="Content Creator" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
                     <mxGeometry x="600" y="220.5" width="120" height="41" as="geometry"/>
                 </mxCell>
-                <mxCell id="yhTjSWiZqmDCel7jHeYI-22" value="Open Report Context (HTTPS)" style="edgeStyle=none;html=1;entryX=-0.005;entryY=0.171;entryDx=0;entryDy=0;startArrow=none;startFill=0;endArrow=classic;endFill=1;entryPerimeter=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" edge="1" source="yhTjSWiZqmDCel7jHeYI-28">
-                    <mxGeometry relative="1" as="geometry">
-                        <mxPoint x="-180" y="20" as="sourcePoint"/>
-                        <mxPoint x="77.86999999999983" y="20.1099999999999" as="targetPoint"/>
-                        <Array as="points">
-                            <mxPoint x="-101.08" y="20"/>
-                        </Array>
-                    </mxGeometry>
-                </mxCell>
-                <mxCell id="yhTjSWiZqmDCel7jHeYI-23" value="Get Current Context (HTTPS)" style="edgeStyle=none;html=1;entryX=0.007;entryY=0.35;entryDx=0;entryDy=0;startArrow=classic;startFill=1;endArrow=none;endFill=0;entryPerimeter=0;exitX=1.007;exitY=0.173;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" edge="1" target="yhTjSWiZqmDCel7jHeYI-31">
+                <mxCell id="yhTjSWiZqmDCel7jHeYI-23" value="Get Current Context (HTTPS)" style="edgeStyle=none;html=1;entryX=0.007;entryY=0.35;entryDx=0;entryDy=0;startArrow=classic;startFill=1;endArrow=none;endFill=0;entryPerimeter=0;exitX=1.007;exitY=0.173;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" target="yhTjSWiZqmDCel7jHeYI-31" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="290.3899999999998" y="29.960000000000065" as="sourcePoint"/>
                         <mxPoint x="565.4999999999999" y="30.105000000000047" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="yhTjSWiZqmDCel7jHeYI-27" value="Send SyncError Event (HTTPS)" style="edgeStyle=none;html=1;entryX=0.007;entryY=0.861;entryDx=0;entryDy=0;startArrow=classic;startFill=1;endArrow=none;endFill=0;entryPerimeter=0;exitX=1.007;exitY=0.173;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" edge="1" target="yhTjSWiZqmDCel7jHeYI-31">
+                <mxCell id="yhTjSWiZqmDCel7jHeYI-27" value="Send SyncError Event (HTTPS)" style="edgeStyle=none;html=1;entryX=0.007;entryY=0.861;entryDx=0;entryDy=0;startArrow=classic;startFill=1;endArrow=none;endFill=0;entryPerimeter=0;exitX=1.007;exitY=0.173;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" target="yhTjSWiZqmDCel7jHeYI-31" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="289.9999999999999" y="117.00000000000004" as="sourcePoint"/>
                         <mxPoint x="565.11" y="117.14500000000002" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="2" style="edgeStyle=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="yhTjSWiZqmDCel7jHeYI-28">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="80" y="100" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="-190" y="20"/>
+                            <mxPoint x="-190" y="100"/>
+                        </Array>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="yhTjSWiZqmDCel7jHeYI-28" value="Image Display" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
@@ -80,27 +80,27 @@
                 <mxCell id="yhTjSWiZqmDCel7jHeYI-29" value="Report Creator" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
                     <mxGeometry x="-330" y="80" width="120" height="41" as="geometry"/>
                 </mxCell>
+                <mxCell id="3" style="edgeStyle=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="yhTjSWiZqmDCel7jHeYI-30">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="80" y="100" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="-190" y="180"/>
+                            <mxPoint x="-190" y="100"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
                 <mxCell id="yhTjSWiZqmDCel7jHeYI-30" value="Worklist Client" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
                     <mxGeometry x="-330" y="160" width="120" height="41" as="geometry"/>
                 </mxCell>
                 <mxCell id="yhTjSWiZqmDCel7jHeYI-31" value="All Actors&lt;br&gt;(Except Hub and Content Creator)" style="whiteSpace=wrap;html=1;rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
                     <mxGeometry x="600" y="-30" width="120" height="170" as="geometry"/>
                 </mxCell>
-                <mxCell id="yd1TJxAHhISrKpIfhg0g-1" value="Open / Close Report Context (HTTPS)" style="edgeStyle=none;html=1;entryX=-0.005;entryY=0.171;entryDx=0;entryDy=0;startArrow=none;startFill=0;endArrow=classic;endFill=1;entryPerimeter=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1">
+                <mxCell id="yd1TJxAHhISrKpIfhg0g-1" value="Open / Close Report Context (HTTPS)" style="edgeStyle=none;html=1;entryX=-0.005;entryY=0.171;entryDx=0;entryDy=0;startArrow=none;startFill=0;endArrow=classic;endFill=1;entryPerimeter=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" edge="1" source="yhTjSWiZqmDCel7jHeYI-29">
                     <mxGeometry relative="1" as="geometry">
-                        <mxPoint x="-207.87" y="100.5" as="sourcePoint"/>
+                        <mxPoint x="-180" y="100" as="sourcePoint"/>
                         <mxPoint x="79.99999999999989" y="100.1099999999999" as="targetPoint"/>
                         <Array as="points">
                             <mxPoint x="-98.95" y="100"/>
-                        </Array>
-                    </mxGeometry>
-                </mxCell>
-                <mxCell id="yd1TJxAHhISrKpIfhg0g-2" value="Open Report Context (HTTPS)" style="edgeStyle=none;html=1;entryX=-0.005;entryY=0.171;entryDx=0;entryDy=0;startArrow=none;startFill=0;endArrow=classic;endFill=1;entryPerimeter=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1">
-                    <mxGeometry relative="1" as="geometry">
-                        <mxPoint x="-207.87" y="180.5" as="sourcePoint"/>
-                        <mxPoint x="79.99999999999989" y="180.1099999999999" as="targetPoint"/>
-                        <Array as="points">
-                            <mxPoint x="-98.95" y="180"/>
                         </Array>
                     </mxGeometry>
                 </mxCell>
@@ -108,7 +108,7 @@
         </mxGraphModel>
     </diagram>
     <diagram id="u37TdR3Up0tB3ALFowDp" name="Data Model">
-        <mxGraphModel dx="1720" dy="528" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="1744" dy="948" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
