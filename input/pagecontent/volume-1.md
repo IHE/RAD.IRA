@@ -1220,22 +1220,21 @@ The Hub can be a standalone application or embedded within another application (
 
 The Hub can be deployed on premises or in the cloud. The other actors may or may not be deployed in the same location as the Hub. Since this profile is aimed at providing streamline user experience for all integrated applications, the effectiveness of this profile depends on timely communications with the Hub, whether it is the context change request, or the subsequent event distribution. Therefore it is important to have a reliable low latency network connection between applications and the Hub, taking into account all the network appliances in between (e.g., firewall, reverse proxy, load balancer, etc.).
 
-#### 1:53.4.1.12 Application Synchronization
+#### 1:53.4.1.12 Selection Synchronization
 
-TODO: Change the example to navigating to an image frame and Evidence Creator automatically triggers AI inference model execution on the referenced image frame, or tumor analysis and prior comparison.
+When a user selects some content in an application, for example, an image frame with an observed nodule in the Image Display, this can trigger the application to send a [DiagnosticReport-select](https://build.fhir.org/ig/HL7/fhircast-docs/3-6-4-DiagnosticReport-select.html) event referencing the corresponding selected content (e.g. an image frame). This event enables other applications to trigger corresponding synchronization logic based on the selected content. There are several different behavioral patterns a receiving application can implement:
 
-TODO: Explain responder application B has selection response behavior X. This means that when the user makes a selection in application A, that this triggers app B to (automatically) perform accordingly. Observed that this might be bidirectional.
+- A receiving application can react to the selected content directly. For example, an Evidence Creator can retrieve the referenced image frame in the event and trigger a nodule analysis algorithm comparing this nodule with a same nodule in a prior study.
+- A receiving application can react to the selected content indirectly. For example, a Report Creator can keep track of the referenced image frame in the event. Then the user can issue a voice command (e.g. 'insert hyperlink') to the Report Creator which triggers the Report Creator to insert a hyperlink in the report based on the selected image frame. 
 
-TODO: Distinguish the behavior that App B synchronizes right away without any further user interaction, vs coordinated App B that the user can interact based on the event received.
+These behavioral patterns can be bidirectional. For example, an Evidence Creator selects a nodule in its analysis, which triggers the Evidence Creator to sends a DiagnosicReport-select event referencing this nodule and the corresponding image frame. Upon receiving this event, the Image Display displays the referenced image frame along with other annotations automatically.
 
-Occasionally, a user may want to synchronize navigation across multiple applications and perform some actions according to the selected content. For example, the user navigates to an image frame with an observed nodule in the Image Display, and the Report Creator automatically keeps track of the image frame. Then the user can issue a voice command 'insert hyperlink' and the Report Creator automatically inserts a hyperlink based on the selected image frame.
-
-To achieve this navigation synchronization, IRA uses FHIRcast [DiagnosticReport-select](https://build.fhir.org/ig/HL7/fhircast-docs/3-6-4-DiagnosticReport-select.html) event. It is important to note the following characteristics of the FHIRcast `*-select` events:
+It is important to note the following characteristics of the FHIRcast `*-select` events:
 
 - There is a single selection within a session
 - A new selection implicitly unselect any previously selected resources
 
-As a result, selection is intended for user initiated navigation synchronization. It is not suitable for automatic background navigation synchronization due to potential race condition.
+As a result, selection is intended for user initiated synchronization. It is not suitable for automatic background navigation synchronization due to potential race condition.
 
 Furthermore, due to the implicit unselect semantics, if multiple items are intended to be selected and processed together, then it is necessary to select all the items first and then send a single `DiagnosticReport-select` event with all selected items, rather than sending multiple select events, each with a single item.
 
