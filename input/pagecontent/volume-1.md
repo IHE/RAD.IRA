@@ -1448,7 +1448,7 @@ Occasionally a radiologist is interrupted while reporting on a study. She needs 
 
 This profile permits a new report context to be opened before the previous report context is closed. The Hub can maintain multiple anchor contexts simultaneously within a reporting session. The current context is the most recent anchor context that has been opened but not yet closed. This current context enables all Synchronizing Applications to be synchronized and working on the same context all the time.
 
-Once the *interrupting* study is complete, the Report Creator closes the report context of the *interrupting* study. The Hub removes the context of the *interrupting* study and set the current context to *empty*.
+Once the *interrupting* study is complete, the Report Creator closes the report context of the *interrupting* study. The Hub removes the context of the *interrupting* study and sets the current context to *empty*.
 
 > Note: In some situations, the user can complete the work required for the *interrupting* study without using the Report Creator. In these occasions, the Image Display (or Worklist Client, not shown in the diagram) is permitted to close the report context.
 >
