@@ -59,7 +59,7 @@ Table 1:53.1-1 lists the transactions for each actor directly involved in the IM
     <tr>
       <td>Close Report Context [RAD-149]</td>
       <td>Initiator</td>
-      <td>O</td>
+      <td>R</td>
       <td><a href="rad-149.html">RAD TF-2: 4.149</a></td>
     </tr>
     <tr>
@@ -169,7 +169,7 @@ Table 1:53.1-1 lists the transactions for each actor directly involved in the IM
     <tr>
       <td>Close Report Context [RAD-149]</td>
       <td>Initiator</td>
-      <td>O</td>
+      <td>R</td>
       <td><a href="rad-149.html">RAD TF-2: 4.149</a></td>
     </tr>
     <tr>
