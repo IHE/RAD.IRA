@@ -1220,7 +1220,13 @@ The Hub can be a standalone application or embedded within another application (
 
 The Hub can be deployed on premises or in the cloud. The other actors may or may not be deployed in the same location as the Hub. Since this profile is aimed at providing streamline user experience for all integrated applications, the effectiveness of this profile depends on timely communications with the Hub, whether it is the context change request, or the subsequent event distribution. Therefore it is important to have a reliable low latency network connection between applications and the Hub, taking into account all the network appliances in between (e.g., firewall, reverse proxy, load balancer, etc.).
 
-#### 1:53.4.1.12 Navigation Synchronization
+#### 1:53.4.1.12 Application Synchronization
+
+TODO: Change the example to navigating to an image frame and Evidence Creator automatically triggers AI inference model execution on the referenced image frame, or tumor analysis and prior comparison.
+
+TODO: Explain responder application B has selection response behavior X. This means that when the user makes a selection in application A, that this triggers app B to (automatically) perform accordingly. Observed that this might be bidirectional.
+
+TODO: Distinguish the behavior that App B synchronizes right away without any further user interaction, vs coordinated App B that the user can interact based on the event received.
 
 Occasionally, a user may want to synchronize navigation across multiple applications and perform some actions according to the selected content. For example, the user navigates to an image frame with an observed nodule in the Image Display, and the Report Creator automatically keeps track of the image frame. Then the user can issue a voice command 'insert hyperlink' and the Report Creator automatically inserts a hyperlink based on the selected image frame.
 
