@@ -1452,7 +1452,7 @@ Once the *interrupting* study is complete, the Report Creator closes the report 
 
 > Note: In some situations, the user can complete the work required for the *interrupting* study without using the Report Creator. In these occasions, the Image Display (or Worklist Client, not shown in the diagram) is permitted to close the report context.
 >
-> In this situation, although not required by the user to complete the task, the Report Creator may still open the report context, synchronize and eventually close the report context as usual.
+> If the Report Creator business logic determines that the 'close' event sent by the Image Display was premature and the Report Creator still needed to do some work, then the Report Creator may 're-open' the report context, synchronize and close the report context.
 
 The Image Display, as the Starting Application in this example, resumes the report context back to the previously opened study. It restores its application state associated to the report context prior to suspension and then re-opens the same report context to the Hub. Note that all associated context and contents remain in the Hub.
 
