@@ -2,10 +2,15 @@
 The Integrated Reporting Applications (IRA) profile helps applications that are used together during reporting (e.g., image display, report creator, clinical applications, AI tools, etc) to share information using a standard called FHIRcast. Each application can share what it is doing and the data it is creating, referred to as Context and Content, respectively. Other applications are notified so they can then intelligently synchronize their behavior or use the new data.
 
 <div markdown="1" class="stu-note">
+**IMPORTANT**: IRA is NOT yet recommended for production use.
+
+Profiles released for Trial Implementation by IHE Radiology typically ARE expected to be stable enough for production use, however this release of IRA is intended for experimental implementation and feedback.
 
 IRA uses FHIR R5 for the resources used in FHIRcast events.
 
 IRA uses FHIRcast 3.0.0 which is currently under development.
+
+Experimental implementation feedback may result in backward incompatible changes to the profile.
 
 Links to FHIRcast throughout this profile will be updated to the final version when the official version is published.
 
