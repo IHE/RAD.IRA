@@ -18,3 +18,6 @@ The valueSet reference http://dicom.nema.org/medical/dicom/current/output/chtml/
 The valueSet reference http://dicom.nema.org/medical/dicom/current/output/chtml/part04/sect_B.5.html#table_B.5-1 on element ImagingStudy.series.instance.sopClass could not be resolved
 ValueSet http://dicom.nema.org/medical/dicom/current/output/chtml/part16/sect_CID_7010.html not found
 ValueSet http://dicom.nema.org/medical/dicom/current/output/chtml/part04/sect_B.5.html#table_B.5-1 not found
+
+# Base FHIR StructuredDefinition includes attributes for trial use, but are not used in IRA
+Reference to draft item http://hl7.org/fhir/standards-status|1.0.0
