@@ -21,3 +21,6 @@ ValueSet http://dicom.nema.org/medical/dicom/current/output/chtml/part04/sect_B.
 
 # Base FHIR StructuredDefinition includes attributes for trial use, but are not used in IRA
 Reference to draft item http://hl7.org/fhir/standards-status|1.0.0
+
+# Unknown parameters generated in the ImplementationGuide by the tools
+Unknown Parameters: [apply-wg=true]
