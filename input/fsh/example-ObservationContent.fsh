@@ -21,3 +21,13 @@ Usage: #example
 * subject = Reference(Patient/example-PatientContext)
 * effectiveDateTime = 2020-12-31T23:50:50-05:00
 * derivedFrom = Reference(ImagingSelection/example-ImagingSelectionContent)
+* performer = Reference(Organization/example-Organization)
+
+
+Instance: example-Organization
+InstanceOf: Organization
+Title: "Observation Performer Example"
+Description: "Example of a performer for observation, representing the organization that responsible for the content in this resource."
+Usage: #example
+
+* name = "Example Medical Center"
