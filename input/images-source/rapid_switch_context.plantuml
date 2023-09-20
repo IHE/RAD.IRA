@@ -3,17 +3,17 @@
 title Rapid Context Switch Workflow
 
 actor Radiologist as User
-participant "Image Display\n(as Driving App\nand Content Sharing App)" as PACS
+participant "Image Display" as PACS
 participant "Hub" as Hub
-participant "Report Creator\n(as Synchronizing App\nand Driving App)" as Report
+participant "Report Creator" as Report
 
 == Step 5: Sign-Off Report and Continue with next Study ==
 
 User->Report: //Complete reporting and sign off report//
-Report->Hub: Close Report Context [RAD-X4] //on Study 1//\n(event: id = 1000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
+Report->Hub: Close Report Context [RAD-149] //on Study 1//\n(event: id = 1000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
 
 User->PACS: //Click "Next study"//
-PACS->Hub: Open Report Context [RAD-X2] //on Study 2//\n(event: id = 1111,\ncontext = DiagnosticReport aaa\nrelated context = Patient bbb, ImagingStudy ccc)
+PACS->Hub: Open Report Context [RAD-147] //on Study 2//\n(event: id = 1111,\ncontext = DiagnosticReport aaa\nrelated context = Patient bbb, ImagingStudy ccc)
 note over PACS
 Note that switching study happened before the
 Close Context event of the previously signed-off
@@ -26,7 +26,7 @@ The existing context DiagnosticReport xxx remains
 in the Hub but it is not the active context.
 end note
 
-Hub->PACS: Distribute Context Event [RAD-X9] //of previous study//\n(event: id = 1000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
+Hub->PACS: Distribute Context Event [RAD-154] //of previous study//\n(event: id = 1000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
 note over Hub
 It is NOT an error if the *-close event
 does not match the most recent *-open event.
@@ -41,7 +41,7 @@ end note
 
 PACS-->Hub: //Success//
 
-Hub->Report: Distribute Context Event [RAD-X3]\n//of previous study//\n(event: id = 1000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
+Hub->Report: Distribute Context Event [RAD-148]\n//of previous study//\n(event: id = 1000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
 Report->Report: //no action required//
 Report-->Hub: //Success//
 

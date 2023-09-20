@@ -7,7 +7,7 @@ Description:    "IHE IRA DiagnosticReport-open patient context"
 // Must have an identifier which is the patient ID
 * identifier 1..*
 
-* identifier ^slicing.discriminator.type = #pattern
+* identifier ^slicing.discriminator.type = #value
 * identifier ^slicing.discriminator.path = type
 * identifier ^slicing.rules = #open
 * identifier ^slicing.description = "Slice based on the identifier.system"

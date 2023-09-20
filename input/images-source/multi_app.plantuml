@@ -10,12 +10,12 @@ participant "Report Creator" as Report
 participant "Evidence Creator" as Special
 
 == Step 1: Prepare Reporting Session ==
-WF->Hub: Subscribe to Reporting Session [RAD-X1]\n(session 12345:\nevents = DiagnosticReport-*, syncerror)
+WF->Hub: Subscribe to Reporting Session [RAD-146]\n(session 12345:\nevents = DiagnosticReport-*, syncerror)
 
 Hub->Hub: //Create Reporting Session with ID 12345//
 
 Hub-->WF: //Accept//\n//with hub.channel.endpoint//
-WF->Hub: Connect to Notification Channel [RAD-X2]
+WF->Hub: Connect to Notification Channel [RAD-147]
 Hub-->WF: //Confirm connection//
 
 == Step 2: Launch Applications in Reporting Session ==
@@ -23,21 +23,21 @@ Hub-->WF: //Confirm connection//
 par Launching Image Display and Report Creator simultaneously
 WF->PACS: //Launch Application (Image Display)//\n//in session 12345//
 
-PACS->Hub: Subscribe to Reporting Session [RAD-X1]\n(session 12345:\nevents = DiagnosticReport-*, syncerror)
+PACS->Hub: Subscribe to Reporting Session [RAD-146]\n(session 12345:\nevents = DiagnosticReport-*, syncerror)
 Hub-->PACS: //Accept//\n//with hub.channel.endpoint//
-PACS->Hub: Connect to Notification Channel [RAD-X2]
+PACS->Hub: Connect to Notification Channel [RAD-147]
 Hub-->PACS: //Confirm connection//
-PACS->Hub: Get Current Context [RAD-X8]\n(catch up with current context and content)
+PACS->Hub: Get Current Context [RAD-153]\n(catch up with current context and content)
 
 Hub-->PACS: //Return empty context//
 else
 WF->Report: //Launch Application (Report Creator)//\n//in session 12345//
 
-Report->Hub: Subscribe to Reporting Session [RAD-X1]\n(session 12345:\nevents = DiagnosticReport-*, syncerror)
+Report->Hub: Subscribe to Reporting Session [RAD-146]\n(session 12345:\nevents = DiagnosticReport-*, syncerror)
 Hub-->Report: //Accept//\n//with hub.channel.endpoint//
-Report->Hub: Connect to Notification Channel [RAD-X2]
+Report->Hub: Connect to Notification Channel [RAD-147]
 Hub-->Report: //Confirm connection//
-Report->Hub: Get Current Context [RAD-X8]\n(catch up with current context and content)
+Report->Hub: Get Current Context [RAD-153]\n(catch up with current context and content)
 
 Hub-->Report: //Return empty context//
 end
@@ -46,20 +46,20 @@ end
 
 Radiologist->WF: //Open study//
 
-WF->Hub: Open Report Context [RAD-X3]\n(session 12345, event: id = 1000,\nanchor context = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
+WF->Hub: Open Report Context [RAD-148]\n(session 12345, event: id = 1000,\nanchor context = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
 activate Hub
 
 Hub->Hub: //Create DiagnosticReport Context in session 12345//\n(anchor context = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
 Hub-->WF: Accept
 
-Hub->WF: Distribute Context Event [RAD-X9]\n(session 12345, event: id = 1000,\nanchor context = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
+Hub->WF: Distribute Context Event [RAD-154]\n(session 12345, event: id = 1000,\nanchor context = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
 WF-->Hub: //Success (id = 1000, status = 200)//
 
-Hub->PACS: Distribute Context Event [RAD-X9]\n(session 12345, event: id = 1000,\nanchor context = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
+Hub->PACS: Distribute Context Event [RAD-154]\n(session 12345, event: id = 1000,\nanchor context = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
 PACS->PACS: //Display study zzz//
 PACS-->Hub: //Success (id = 1000, status = 200)//
 
-Hub->Report: Distribute Context Event [RAD-X9]\n(session 12345, event: id = 1000,\nanchor context = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
+Hub->Report: Distribute Context Event [RAD-154]\n(session 12345, event: id = 1000,\nanchor context = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
 Report->Report: //Open new report for study zzz//
 Report-->Hub: //Success (id = 1000, status = 200)//
 
@@ -76,33 +76,33 @@ launches additional application to join the
 session on demand.
 end note
 
-Special->Hub: Subscribe to Reporting Session [RAD-X1]\n(session 12345:\nevents = DiagnosticReport-open, DiagnosticReport-close, syncerror)
+Special->Hub: Subscribe to Reporting Session [RAD-146]\n(session 12345:\nevents = DiagnosticReport-open, DiagnosticReport-close, syncerror)
 note over Special
 Only subscribe to DiagnosticReport-open and
 DiagnosticReport-close events as well as syncerror
 end note
 
 Hub-->Special: //Accept//\n//with hub.channel.endpoint//
-Special->Hub: Connect to Notification Channel [RAD-X2]
+Special->Hub: Connect to Notification Channel [RAD-147]
 Hub-->Special: //Confirm connection//
-Special->Hub: Get Current Context [RAD-X8] //on session 12345//\n(catch up with current context and content)
+Special->Hub: Get Current Context [RAD-153] //on session 12345//\n(catch up with current context and content)
 
 Hub-->Special: //Return report context//\n(session 12345:\nanchor context = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
 Special->Special: //Process study zzz//\n//(Create bounding boxes on potential nodules)//
 
-Special->Hub: Update Report Content [RAD-X5]\n(session 12345, event: id = 2000,\nanchor context = DiagnosticReport xxx, add ImagingSelection qqq)
+Special->Hub: Update Report Content [RAD-150]\n(session 12345, event: id = 2000,\nanchor context = DiagnosticReport xxx, add ImagingSelection qqq)
 activate Hub
 
 Hub-->Special: Accept
 
-Hub->WF: Distribute Context Event [RAD-X9]\n(session 12345, event: id = 2000,\nanchor context = DiagnosticReport xxx, add ImagingSelection qqq)
+Hub->WF: Distribute Context Event [RAD-154]\n(session 12345, event: id = 2000,\nanchor context = DiagnosticReport xxx, add ImagingSelection qqq)
 WF-->Hub: //Success (id = 2000, status = 200)//
 
-Hub->PACS: Distribute Context Event [RAD-X9]\n(session 12345, event: id = 2000,\nanchor context = DiagnosticReport xxx, add ImagingSelection qqq)
+Hub->PACS: Distribute Context Event [RAD-154]\n(session 12345, event: id = 2000,\nanchor context = DiagnosticReport xxx, add ImagingSelection qqq)
 PACS->PACS: //Display bounding box (from ImagingSelection qqq)//\n//on study zzz//
 PACS-->Hub: //Success (id = 2000, status = 200)//
 
-Hub->Report: Distribute Context Event [RAD-X9]\n(session 12345, event: id = 2000,\nanchor context = DiagnosticReport xxx, add ImagingSelection qqq)
+Hub->Report: Distribute Context Event [RAD-154]\n(session 12345, event: id = 2000,\nanchor context = DiagnosticReport xxx, add ImagingSelection qqq)
 Report-->Hub: //Success (id = 2000, status = 200)//
 deactivate Hub
 
@@ -112,14 +112,14 @@ Special->: //Persist results (e.g. DICOM SR)//\n//for patient record//
 
 Radiologist->PACS: //Verify and accept results from Evidence Creator//
 
-PACS->Hub: Update Report Content [RAD-X5]\n(session 12345, event: id = 3000,\nanchor context = DiagnosticReport xxx, add Observation abc)
+PACS->Hub: Update Report Content [RAD-150]\n(session 12345, event: id = 3000,\nanchor context = DiagnosticReport xxx, add Observation abc)
 activate Hub
-Hub->Report: Distribute Context Event [RAD-X9]\n(session 12345, event: id = 3000,\nanchor context = DiagnosticReport xxx, add Observation abc)
+Hub->Report: Distribute Context Event [RAD-154]\n(session 12345, event: id = 3000,\nanchor context = DiagnosticReport xxx, add Observation abc)
 Report->Report: //Update report with contents//\n//from Observation abc//
 Report-->Hub: //Success (id = 3000, status = 200)//
-Hub->PACS: Distribute Context Event [RAD-X9]\n(session 12345, event: id = 3000,\nanchor context = DiagnosticReport xxx, add Observation abc)
+Hub->PACS: Distribute Context Event [RAD-154]\n(session 12345, event: id = 3000,\nanchor context = DiagnosticReport xxx, add Observation abc)
 PACS-->Hub: //Success (id = 3000, status = 200)//
-Hub->WF: Distribute Context Event [RAD-X9]\n(session 12345, event: id = 3000,\nanchor context = DiagnosticReport xxx, add Observation abc)
+Hub->WF: Distribute Context Event [RAD-154]\n(session 12345, event: id = 3000,\nanchor context = DiagnosticReport xxx, add Observation abc)
 WF-->Hub: //Success (id = 3000, status = 200)//
 deactivate Hub
 
@@ -130,38 +130,38 @@ Report->Report: //Set report status to FINAL//
 
 Report->: //Send final report//
 
-Report->Hub: Update Report Content [RAD-X5]\n(event: id = 4000,\nanchor context = DiagnosticReport xxx, update status FINAL)
+Report->Hub: Update Report Content [RAD-150]\n(event: id = 4000,\nanchor context = DiagnosticReport xxx, update status FINAL)
 activate Hub
 
 Hub->Hub: //Update DiagnosticReport context in session 12345//\nanchor context = DiagnosticReport xxx, status FINAL)
 
-Hub->PACS: Distribute Context Event [RAD-X9]\n(event: id = 4000 ...)
+Hub->PACS: Distribute Context Event [RAD-154]\n(event: id = 4000 ...)
 PACS->PACS: //Update study status//
 PACS-->Hub: //Success (id = 4000, status = 200)//
-Hub->Report: Distribute Context Event [RAD-X9]\n(event: id = 4000 ...)
+Hub->Report: Distribute Context Event [RAD-154]\n(event: id = 4000 ...)
 Report-->Hub: //Success (id = 4000, status = 200)//
-Hub->WF: Distribute Context Event [RAD-X9]\n(event: id = 4000 ...)
+Hub->WF: Distribute Context Event [RAD-154]\n(event: id = 4000 ...)
 WF->WF: //Update study status//
 WF-->Hub: //Success (id = 4000, status = 200)//
 deactivate Hub
 
-Report->Hub: Close Report Context [RAD-X4]\n(session 12345, event: id = 5000,\nanchor context = DiagnosticReport xxx)
+Report->Hub: Close Report Context [RAD-149]\n(session 12345, event: id = 5000,\nanchor context = DiagnosticReport xxx)
 activate Hub
 
 Hub->Hub: //Update DiagnosticReport context in session 12345//\n(event: id = 5000,\nanchor context = DiagnosticReport xxx)
 
-Hub->WF: Distribute Context Event [RAD-X9]\n(session 12345, event: id = 5000,\nanchor context = DiagnosticReport xxx)
+Hub->WF: Distribute Context Event [RAD-154]\n(session 12345, event: id = 5000,\nanchor context = DiagnosticReport xxx)
 WF->WF: //Drop study zzz from worklist//
 WF-->Hub: //Success (id = 5000, status = 200)//
 
-Hub->PACS: Distribute Context Event [RAD-X9]\n(session 12345, event: id = 5000,\nanchor context = DiagnosticReport xxx)
+Hub->PACS: Distribute Context Event [RAD-154]\n(session 12345, event: id = 5000,\nanchor context = DiagnosticReport xxx)
 PACS->PACS: //Close study zzz//
 PACS-->Hub: //Success (id = 5000, status = 200)//
 
-Hub->Report: Distribute Context Event [RAD-X9]\n(session 12345, event: id = 5000,\nanchor context = DiagnosticReport xxx)
+Hub->Report: Distribute Context Event [RAD-154]\n(session 12345, event: id = 5000,\nanchor context = DiagnosticReport xxx)
 Report-->Hub: //Success (id = 5000, status = 200)//
 
-Hub->Special: Distribute Context Event [RAD-X9]\n(session 12345, event: id = 5000,\nanchor context = DiagnosticReport xxx)
+Hub->Special: Distribute Context Event [RAD-154]\n(session 12345, event: id = 5000,\nanchor context = DiagnosticReport xxx)
 Special->Special: //Minimize application//
 Special-->Hub: //Success (id = 5000, status = 200)//
 
@@ -176,18 +176,18 @@ have already been started, there is no need to relaunch
 the applications and establish the subscription.
 end note
 
-WF->Hub: Initial Report Context [RAD-X3]\n(session 12345, event: id = 6000,\nanchor context = DiagnosticReport kkk)
+WF->Hub: Initial Report Context [RAD-148]\n(session 12345, event: id = 6000,\nanchor context = DiagnosticReport kkk)
 activate Hub
-Hub->PACS: Distribute Context Event [RAD-X9]
-Hub->Report: Distribute Context Event [RAD-X9]
-Hub->WF: Distribute Context Event [RAD-X9]
-Hub->Special: Distribute Context Event [RAD-X9]
+Hub->PACS: Distribute Context Event [RAD-154]
+Hub->Report: Distribute Context Event [RAD-154]
+Hub->WF: Distribute Context Event [RAD-154]
+Hub->Special: Distribute Context Event [RAD-154]
 deactivate Hub
 
 == Step 8: Close Applications ==
 
 Radiologist->WF: //Close application//
-WF->Hub: Unsubscribe Session [RAD-X7]\n(session 12345)
+WF->Hub: Unsubscribe Session [RAD-152]\n(session 12345)
 Hub-->WF: //Accept//
 Hub->Hub: //Close channel to Worklist Client//
 

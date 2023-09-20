@@ -19,3 +19,6 @@ Description:    "IHE IRA Observation Content to be used in DiagnosticReport-upda
 
 * derivedFrom contains imagingStudy 0..1
 * derivedFrom[imagingStudy] only Reference(ImagingStudy)
+
+* derivedFrom contains imagingSelection 0..*
+* derivedFrom[imagingSelection] only Reference(ImagingSelection)

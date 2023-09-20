@@ -1,7 +1,7 @@
 Instance:   example-ObservationContent
 InstanceOf: ObservationContent
 Title:      "Observation Content example"
-Description: "Sample Observation Content used in DiagnosticReport-update event"
+Description: "Sample Observation Content used in DiagnosticReport-update event. The Observation includes a reference to the ImagingSelection in which the observation is derived from."
 Usage: #example
 
 * status = FHIRObservationStatus#preliminary
@@ -20,4 +20,14 @@ Usage: #example
 * component[=].valueQuantity.unit = UCUM#cm "cm"
 * subject = Reference(Patient/example-PatientContext)
 * effectiveDateTime = 2020-12-31T23:50:50-05:00
-* derivedFrom = Reference(ImagingStudy/example-ImagingStudyContext)
+* derivedFrom = Reference(ImagingSelection/example-ImagingSelectionContent)
+* performer = Reference(Organization/example-Organization)
+
+
+Instance: example-Organization
+InstanceOf: Organization
+Title: "Observation Performer Example"
+Description: "Example of a performer for observation, representing the organization that responsible for the content in this resource."
+Usage: #example
+
+* name = "Example Medical Center"

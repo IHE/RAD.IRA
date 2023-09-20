@@ -9,32 +9,32 @@ participant "Watcher" as Watcher
 == Case 1: Hub detected error ==
 
 User->PACS: //Select Patient and Study//\n//to start dictation//
-PACS->Hub: Open Report Context [RAD-X3]\n//(Study context missing)//
+PACS->Hub: Open Report Context [RAD-148]\n//(Study context missing)//
 Hub->Hub: //Detect missing study context//
 Hub-->PACS: Return 400 Bad Request
 
 == Case 2: Subscriber detected error ==
 
 User->PACS: //Select Patient and Study//\n//to start dictation//
-PACS->Hub: Open Report Context [RAD-X3]\n//(Study context present)//
+PACS->Hub: Open Report Context [RAD-148]\n//(Study context present)//
 Hub-->PACS: Return 200 OK
 Hub->Hub: //Open report context//
-Hub->Watcher: Distribute Context Event [RAD-X9]\n//(Report context opened)//
+Hub->Watcher: Distribute Context Event [RAD-154]\n//(Report context opened)//
 Watcher-->Hub: Return 200 OK
-Hub->PACS: Distribute Context Event [RAD-X9]\n//(Report context opened)//
+Hub->PACS: Distribute Context Event [RAD-154]\n//(Report context opened)//
 PACS-->Hub: Return 200 OK
-Hub->Report: Distribute Context Event [RAD-X9]\n//(Report context opened)//
+Hub->Report: Distribute Context Event [RAD-154]\n//(Report context opened)//
 Report-->Hub: Return 202 Accepted
 Report->Report: //Detect that the identified//\n//patient context does not//\n//match the patient referenced//\n//in the identified study context//
-Report->Hub: Notify Error [RAD-X11]\n//(with SyncError)//
+Report->Hub: Notify Error [RAD-156]\n//(with SyncError)//
 Hub-->Report: Return 200 OK
-Hub->Watcher: Distribute Context Event [RAD-X9]\n//(SyncError received)//
+Hub->Watcher: Distribute Context Event [RAD-154]\n//(SyncError received)//
 Watcher-->Hub: Return 200 OK
 Watcher->Watcher: //Update dashboard with error//
-Hub->PACS: Distribute Context Event [RAD-X9]\n//(SyncError received)//
+Hub->PACS: Distribute Context Event [RAD-154]\n//(SyncError received)//
 PACS-->Hub: Return 200 OK
 PACS->User: //Display error to user//
-Hub->Report: Distribute Context Event [RAD-X9]\n//(SyncError received)//
+Hub->Report: Distribute Context Event [RAD-154]\n//(SyncError received)//
 Report-->Hub: Return 200 OK
 
 @enduml

@@ -8,39 +8,39 @@ participant "Subscribers" as Receiver
 
 == Synchronous Event Processing Error from Hub ==
 
-Requester->Hub: //Any context / content change events//\n//e.g. RAD-X3, RAD-X4, RAD-X5, RAD-X6//
+Requester->Hub: //Any context / content change events//\n//e.g. RAD-148, RAD-149, RAD-150, RAD-151//
 Hub->Hub: //Failed request//
 Hub-->Requester: Return error\nwith HTTP 4xx or 5xx error codes
 
 == Asynchronous Event Processing Error from Hub ==
 
-Requester->Hub: //Any context / content change events//\n//e.g. RAD-X3, RAD-X4, RAD-X5, RAD-X6//
+Requester->Hub: //Any context / content change events//\n//e.g. RAD-148, RAD-149, RAD-150, RAD-151//
 Hub->Hub: Return HTTP 202 Accepted
 ...
 Hub->Hub: //Failed processing// 
 Hub->Hub: //Generate syncerror event//
-Hub->Requester: Distribute SyncError Event [RAD-X10]
+Hub->Requester: Generate SyncError Event [RAD-155]
 
 == Synchronous Event Processing Error from Subscriber ==
-Hub->Receiver: Distribute Context Event [RAD-X9]
+Hub->Receiver: Distribute Context Event [RAD-154]
 Receiver-->Hub: Return HTTP 4xx or 5xx error codes
 Hub->Hub: //Generate syncerror event//
-Hub->Requester: Distribute SyncError Event [RAD-X10]
-Hub->Receiver: Distribute SyncError Event [RAD-X10]
+Hub->Requester: Generate SyncError Event [RAD-155]
+Hub->Receiver: Generate SyncError Event [RAD-155]
 
 == Asynchronous Event Processing Error from Subscriber ==
-Hub->Receiver: Distribute Context Event [RAD-X9]
+Hub->Receiver: Distribute Context Event [RAD-154]
 Receiver-->Hub: Return HTTP 202 Accepted
 Receiver->Receiver: //Failed processing//
-Receiver->Hub: Notify Error [RAD-X11]
+Receiver->Hub: Notify Error [RAD-156]
 Hub-->Receiver: Return HTTP 200 OK
-Hub->Requester: Distribute Context Event [RAD-X9]
-Hub->Receiver: Distribute Context Event [RAD-X9]
+Hub->Requester: Distribute Context Event [RAD-154]
+Hub->Receiver: Distribute Context Event [RAD-154]
 
 == Subscriber Network Error ==
 Hub->x Receiver: //Failed websocket heartbeat check//
 Hub->Hub: //Remove Receiver from subscription//
 Hub->Hub: //Generate syncerror event//
-Hub->Requester: Distribute SyncError Event [RAD-X10]
+Hub->Requester: Generate SyncError Event [RAD-155]
 
 @enduml

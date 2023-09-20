@@ -10,26 +10,26 @@ participant "Report Creator" as Report
 User->PACS: //Open reporting session//
 PACS->PACS: //Ready to start reporting//\n//(Generate new session ID)//
 
-PACS->Hub: Subscribe to reporting session [RAD-X1]\n//(session 12345)//
+PACS->Hub: Subscribe to reporting session [RAD-146]\n//(session 12345)//
 Hub->Hub: //Create a new session//\n//if session ID does not exist//
 
 Hub->Hub: //Add Image Display to session//
 
 Hub-->PACS: //Accept//\n//with hub.channel.endpoint//
-PACS->Hub: Connect to Notification Channel [RAD-X2]
+PACS->Hub: Connect to Notification Channel [RAD-147]
 Hub-->PACS: //Confirm connection//
 
 PACS->Report: //Launch Application//
 
-Report->Hub: Subscribe to reporting session [RAD-X1]\n//(session 12345)//
+Report->Hub: Subscribe to reporting session [RAD-146]\n//(session 12345)//
 
 Hub->Hub: //Add Report Creator to session//
 
 Hub-->Report: //Accept//\n//with hub.channel.endpoint//
-Report->Hub: Connect to Notification Channel [RAD-X2]
+Report->Hub: Connect to Notification Channel [RAD-147]
 Hub-->Report: //Confirm connection//
 
-Report->Hub: Get Current Context [RAD-X6]\n(catch up with current context and content)
+Report->Hub: Get Current Context [RAD-153]\n(catch up with current context and content)
 Hub-->Report: //Return empty context//
 
 @enduml

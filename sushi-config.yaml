@@ -56,43 +56,43 @@ parameters:  # see https://confluence.hl7.org/display/FHIR/Implementation+Guide+
 pages:
 # itemize here each narrative page. Include assigned section numbers when appropriate
   index.md:
-    title: 1:XX IRA Home
+    title: 1:53 IRA Home
     generation: markdown
   volume-1.md:
-    title: 1:XX IRA Volume 1
+    title: 1:53 IRA Volume 1
     generation: markdown
-  rad-x1.md:
-    title: 2:3.X1 Subscribe to Reporting Session [RAD-X1]
+  rad-146.md:
+    title: 2:4.146 Subscribe to Reporting Session [RAD-146]
     generation: markdown
-  rad-x2.md:
-    title: 2:3.X2 Connect to Notification Channel [RAD-X2]
+  rad-147.md:
+    title: 2:4.147 Connect to Notification Channel [RAD-147]
     generation: markdown
-  rad-x3.md:
-    title: 2:3.X3 Open Report Context [RAD-X3]
+  rad-148.md:
+    title: 2:4.148 Open Report Context [RAD-148]
     generation: markdown
-  rad-x4.md:
-    title: 2:3.X4 Close Report Context [RAD-X4]
+  rad-149.md:
+    title: 2:4.149 Close Report Context [RAD-149]
     generation: markdown
-  rad-x5.md:
-    title: 2:3.X5 Update Report Content [RAD-X5]
+  rad-150.md:
+    title: 2:4.150 Update Report Content [RAD-150]
     generation: markdown
-  rad-x6.md:
-    title: 2:3.X6 Select Report Content [RAD-X6]
+  rad-151.md:
+    title: 2:4.151 Select Report Content [RAD-151]
     generation: markdown
-  rad-x7.md:
-    title: 2:3.X7 Unsubscribe Session [RAD-X7]
+  rad-152.md:
+    title: 2:4.152 Unsubscribe Session [RAD-152]
     generation: markdown
-  rad-x8.md:
-    title: 2:3.X8 Get Current Context [RAD-X8]
+  rad-153.md:
+    title: 2:4.153 Get Current Context [RAD-153]
     generation: markdown
-  rad-x9.md:
-    title: 2:3.X9 Distribute Context Event [RAD-X9]
+  rad-154.md:
+    title: 2:4.154 Distribute Context Event [RAD-154]
     generation: markdown
-  rad-x10.md:
-    title: 2:3.X10 Generate SyncError Event [RAD-X10]
+  rad-155.md:
+    title: 2:4.155 Generate SyncError Event [RAD-155]
     generation: markdown
-  rad-x11.md:
-    title: 2:3.X11 Notify Error [RAD-X11]
+  rad-156.md:
+    title: 2:4.156 Notify Error [RAD-156]
     generation: markdown
   example.md:
     title: Introduction to Examples
@@ -113,7 +113,7 @@ pages:
     title: Close Report Context
     generation: markdown
   testplan.md:
-    title: "Test Plan"
+    title: Test Plan
     generation: markdown
   issues.md:
     title: Significant Changes and Issues
@@ -122,37 +122,37 @@ pages:
     title: Changes to Other Documents
     generation: markdown
   download.md:
-    title: "Download and analysis"
+    title: Download and analysis
     generation: markdown
 
 menu:
   IRA Home: index.html
   Volume 1:
     Introduction: volume-1.html
-    Actors and Transactions: volume-1.html#1xx1-realtime-bidirectional-communication-for-interactive-multimedia-reporting
-    Actor Options: volume-1.html#1xx2-ira-actor-options
-    Required Groupings: volume-1.html#1xx3-ira-required-actor-groupings
-    Overview: volume-1.html#1xx4-ira-overview
-    Security Considerations: volume-1.html#1xx5-ira-security-considerations
-    Cross-Profile Considerations: volume-1.html#1xx6-ira-cross-profile-considerations
+    Actors and Transactions: volume-1.html#1531-integrating-reporting-applications
+    Actor Options: volume-1.html#1532-ira-actor-options
+    Required Groupings: volume-1.html#1533-ira-required-actor-groupings
+    Overview: volume-1.html#1534-ira-overview
+    Security Considerations: volume-1.html#1535-ira-security-considerations
+    Cross-Profile Considerations: volume-1.html#1536-ira-cross-profile-considerations
   Volume 2:
-    Subscribe to Reporting Session [RAD-X1]: rad-x1.html
-    Connect to Notification Channel [RAD-X2]: rad-x2.html
-    Open Report Context [RAD-X3]: rad-x3.html
-    Close Report Context [RAD-X4]: rad-x4.html
-    Update Report Content [RAD-X5]: rad-x5.html
-    Select Report Content [RAD-X6]: rad-x6.html
-    Unsubscribe Session [RAD-X7]: rad-x7.html
-    Get Current Context [RAD-X8]: rad-x8.html
-    Distribute Context Event [RAD-X9]: rad-x9.html
-    Generate SyncError Event [RAD-X10]: rad-x10.html
-    Notify Error [RAD-X11]: rad-x11.html
+    Subscribe to Reporting Session [RAD-146]: rad-146.html
+    Connect to Notification Channel [RAD-147]: rad-147.html
+    Open Report Context [RAD-148]: rad-148.html
+    Close Report Context [RAD-149]: rad-149.html
+    Update Report Content [RAD-150]: rad-150.html
+    Select Report Content [RAD-151]: rad-151.html
+    Unsubscribe Session [RAD-152]: rad-152.html
+    Get Current Context [RAD-153]: rad-153.html
+    Distribute Context Event [RAD-154]: rad-154.html
+    Generate SyncError Event [RAD-155]: rad-155.html
+    Notify Error [RAD-156]: rad-156.html
   Examples:
     Introduction: example.html
     Open Report Context: open_study_for_reporting.html
     Update Report Content: update_study_with_measurement.html
     Select Report Content: select_study_and_observation.html
-    Update Report Status: update_report_status.html
+    Notify Report Status Change: update_report_status.html
     Close Report Context: close_study_after_signoff.html
   Artifacts: artifacts.html
   Other:

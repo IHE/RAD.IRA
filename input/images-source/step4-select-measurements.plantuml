@@ -3,17 +3,17 @@
 actor Radiologist as User
 participant "Image Display" as PACS
 participant "Hub" as Hub
-participant "Report Creator" as Report
+participant "Report Creator /\nContent Creator" as Report
 
 == Step 4: Select Contents (Optional) ==
 
 User->PACS: //Select measurements as seen in images//\n//as current focus//
 
-PACS->Hub: Select Report Content [RAD-X6]
-Hub->Hub: //Mark selected contents//\n[[select_study_and_observation.html#available-context-and-content-in-hub Example]]
+PACS->Hub: Select Report Content [RAD-151]
+Hub->Hub: //Check selected resources//\n[[select_study_and_observation.html#available-context-and-content-in-hub Example]]
 Hub-->PACS: //Success//
 
-Hub->Report: Distribute Context Event [RAD-X9]
+Hub->Report: Distribute Context Event [RAD-154]
 
 Report->Report: //Select referenced report content//
 note over Report
@@ -24,7 +24,7 @@ end note
 
 Report-->Hub: //Success (status = 200)//
 
-Hub->PACS: Distribute Context Event [RAD-X9]
+Hub->PACS: Distribute Context Event [RAD-154]
 PACS-->Hub: //Success (status = 200)//
 
 User->Report: //Auto-populate report with selected measurements//\n//e.g. Insert Hyperlink via a voice command//

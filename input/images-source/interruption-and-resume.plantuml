@@ -9,40 +9,40 @@ participant "Report Creator" as Report
 
 PACS->Report: //Launch Application//
 
-Report->Hub: Subscribe to reporting session [RAD-X1]
+Report->Hub: Subscribe to reporting session [RAD-146]
 Hub-->Report: //Accept//\n//with hub.channel.endpoint//
-Report->Hub: Connect to Notification Channel [RAD-X2]
+Report->Hub: Connect to Notification Channel [RAD-147]
 Hub-->Report: //Confirm connetion//
 
-Report->Hub: Get Current Context [RAD-X6]\n(catch up with current context and content)
+Report->Hub: Get Current Context [RAD-151]\n(catch up with current context and content)
 Hub-->Report: //Return empty context//
 
 User->PACS: //Select Patient and Study//
 PACS->PACS: //Open Study and show Chest X-Ray//
 
-PACS->Hub: Open Report Context [RAD-X3]\n(event: id = 1000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
+PACS->Hub: Open Report Context [RAD-148]\n(event: id = 1000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
 activate Hub
 
 Hub->Hub: //Create DiagnosticReport Context in session 12345//\n(event: id = 1000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)\n[[open_study_for_reporting.html#available-context-and-content-in-hub Example]]
 Hub-->PACS: Accept
 
-Hub->Report: Distribute Context Event [RAD-X9]\n(event: id = 1000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
+Hub->Report: Distribute Context Event [RAD-154]\n(event: id = 1000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
 Report->Report: //Open new report//\n//based on the received context//
 Report-->Hub: //Success (id = 1000, status = 200)//
 
-Hub->PACS: Distribute Context Event [RAD-X9]\n(event: id = 1000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
+Hub->PACS: Distribute Context Event [RAD-154]\n(event: id = 1000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
 PACS->PACS: //No action required//
 PACS-->Hub: //Success (id = 1000, status = 200)//
 deactivate Hub
 
-== Step 2b: Interruption Occurred ==
+== Step 2b: Suspension Occurred ==
 
-User->User: //Received an interruption to consult on another study//
+User->User: //Suspend current study to consult on another study//
 
 User->PACS: //Select **Another** Patient and Study//
 PACS->PACS: //Open Study and show Chest CT//
 
-PACS->Hub: Open Report Context [RAD-X3]\n(event: id = 2000,\ncontext = DiagnosticReport aaa\nrelated context = Patient bbb, ImagingStudy ccc)
+PACS->Hub: Open Report Context [RAD-148]\n(event: id = 2000,\ncontext = DiagnosticReport aaa\nrelated context = Patient bbb, ImagingStudy ccc)
 activate Hub
 
 Hub->Hub: //Create DiagnosticReport Context in session 12345//\n(event: id = 2000,\ncontext = DiagnosticReport aaa\nrelated context = Patient bbb, ImagingStudy ccc)\n[[open_study_for_reporting.html#available-context-and-content-in-hub Example]]
@@ -56,42 +56,55 @@ the Hub's tracking since it has not yet been closed.
 end note
 Hub-->PACS: Accept
 
-Hub->Report: Distribute Context Event [RAD-X9]\n(event: id = 2000,\ncontext = DiagnosticReport aaa\nrelated context = Patient bbb, ImagingStudy ccc)
+Hub->Report: Distribute Context Event [RAD-154]\n(event: id = 2000,\ncontext = DiagnosticReport aaa\nrelated context = Patient bbb, ImagingStudy ccc)
 Report->Report: //Open new report//\n//based on the received context//
 Report-->Hub: //Success (id = 2000, status = 200)//
 
-Hub->PACS: Distribute Context Event [RAD-X9]\n(event: id = 2000,\ncontext = DiagnosticReport aaa\nrelated context = Patient bbb, ImagingStudy ccc)
+Hub->PACS: Distribute Context Event [RAD-154]\n(event: id = 2000,\ncontext = DiagnosticReport aaa\nrelated context = Patient bbb, ImagingStudy ccc)
 PACS->PACS: //No action required//
 PACS-->Hub: //Success (id = 2000, status = 200)//
 deactivate Hub
 
 User->PACS: //Start reviewing the new study for consultation//
 
-== Step 2c: Interruption Complete ==
+== Step 2c: Suspension Complete ==
 
-User->PACS: //Complete review for consultation and close study//
+User->Report: //Complete review for consultation and close study//
 
-PACS->Hub: Close Report Context [RAD-X4]\n(event: id = 3000,\ncontext = DiagnosticReport aaa)
+Report->Hub: Close Report Context [RAD-149]\n(event: id = 3000,\ncontext = DiagnosticReport aaa)
 Hub->Hub: //Close DiagnosticReport aaa//
 
-Hub->Report: Distribute Context Event [RAD-X9]\n(event: id = 3000,\ncontext = DiagnositcReport aaa)
+Hub->PACS: Distribute Context Event [RAD-154]\n(event: id = 3000,\ncontext = DiagnositcReport aaa)
+PACS->PACS: //Close study in consultation//
+PACS-->Hub: //Success//ß
+
+Hub->Report: Distribute Context Event [RAD-154]\n(event: id = 3000,\ncontext = DiagnosticReport aaa)
 Report->Report: //Close study in consultation//
 Report-->Hub: //Success//
 
-Hub->PACS: Distribute Context Event [RAD-X9]\n(event: id = 3000,\ncontext = DiagnosticReport aaa)
-PACS->PACS: //Close study in consultation//
-PACS-->Hub: //Success//
-
 == Step 2d: Resume Previous Report Context ==
 
-Hub->Hub: //Detect DiagnosticReport xxx remains open//\n//Generate new event to resume//\n(event: id = 4000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
-Hub->Report: Distribute Content Event [RAD-X9]\n(event: id = 4000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
-Report->Report: //Resume report xxx//
+User->PACS: //Resume reporting on study zzz//
+PACS->PACS: //Restore application state for study zzz//
+PACS->Hub: Open Report Context [RAD-148]\n(event: id = 4000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
+
+Hub->Report: Distribute Context Event [RAD-154]\n(event: id = 4000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
+Report->Report: //Detected report context xxx is previously opened//\n//Resume report xxx//\n//and restore application state//
 Report-->Hub: //Success (id=4000, status = 200)//
-Hub->PACS: Distribute Content Event [RAD-X9]\n(event: id = 4000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
-PACS->PACS: //Resume study zzz//
+Hub->PACS: Distribute Context Event [RAD-154]\n(event: id = 4000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
 PACS-->Hub: //Success (id=4000, status = 200)//
 
-User->PACS: //Resume reporting on study zzz as Step 3//
+group Resync User Selection
+PACS->PACS: //Identified markups selected by user prior to suspension//
+PACS->User: //Prompt user to confirm selection//
+User-->PACS: //Confirmed//
+PACS->Hub: Select Report Content [RAD-151]
+
+Hub->Report: Distribute Context Event [RAD-154]
+Report->Report: //Select referenced report content//
+Report-->Hub: //Success (status = 200)//
+Hub->PACS: Distribute Context Event [RAD-154]
+PACS-->Hub: //Success (status = 200)//
+end group
 
 @enduml

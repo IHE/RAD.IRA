@@ -20,36 +20,36 @@ note over Hub
 Hub adds Image Display to the reporting session.
 end note
 
-PACS->Hub: Get Current Context [RAD-X6]\n(catch up with current context and content)
+PACS->Hub: Get Current Context [RAD-151]\n(catch up with current context and content)
 Hub-->PACS: //Return empty context//
 end opt
 
-Report->Hub: Open Report Context [RAD-X3]\n(event: id = 1000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
+Report->Hub: Open Report Context [RAD-148]\n(event: id = 1000,\ncontext = DiagnosticReport xxx\nrelated context = Patient yyy, ImagingStudy zzz)
 activate Hub
 
 Hub->Hub: //Create DiagnosticReport Context in session 12345//\n[[open_study_for_reporting.html#available-context-and-content-in-hub Example]]
 Hub-->Report: Accept
 
-Hub->PACS: Distribute Context Event [RAD-X9]\n(event: id = 1000, ...)
+Hub->PACS: Distribute Context Event [RAD-154]\n(event: id = 1000, ...)
 PACS->PACS: //Open study zzz//
 PACS-->Hub: //Success (id = 1000, status = 200)//
 
-Hub->Report: Distribute Context Event [RAD-X9]\n(event: id = 1000, ...)
+Hub->Report: Distribute Context Event [RAD-154]\n(event: id = 1000, ...)
 Report-->Hub: //Success (id = 1000, status = 200)//
 deactivate Hub
 
 User->PACS: //View study associated to the draft report//
 
 User->Report: //Select nodule measurement in reoprt//
-Report->Hub: Select Report Content [RAD-X6]\n(event: id = 2000,\ncontext = DiagnosticReport xxx\ncontent = Observation abc)
+Report->Hub: Select Report Content [RAD-151]\n(event: id = 2000,\ncontext = DiagnosticReport xxx\ncontent = Observation abc)
 activate Hub
 Hub-->Report: //Success (id = 2000, status = 200)//
 
-Hub->PACS: Distribute Context Event [RAD-X9]\n(event: id = 2000, ...)
+Hub->PACS: Distribute Context Event [RAD-154]\n(event: id = 2000, ...)
 PACS->PACS: //Display measurement in Observation abc//\n//on study zzz//
 PACS-->Hub: //Success (id = 2000, status = 200)//
 
-Hub->Report: Distribute Context Event [RAD-X9]\n(event: id = 2000, ...)
+Hub->Report: Distribute Context Event [RAD-154]\n(event: id = 2000, ...)
 Report-->Hub: //Success (id = 2000, status = 200)//
 deactivate Hub
 
