@@ -1,9 +1,6 @@
 == Suppressed Messages ==
 # instructions for ignoreWarnings.txt https://confluence.hl7.org/pages/viewpage.action?pageId=66938614#ImplementationGuideParameters-ManagingWarningsandHints
 
-# Base FHIR specification uses non-unique identifier in 'mapping' attribute
-Rule eld-27: 'Mappings SHOULD be unique by key' Failed
-
 # Base FHIR generated StructuredDefinition references deprecated item
 Reference to deprecated item http://hl7.org/fhir/ValueSet/jurisdiction|5.0.0
 
@@ -22,5 +19,3 @@ ValueSet http://dicom.nema.org/medical/dicom/current/output/chtml/part04/sect_B.
 # Base FHIR StructuredDefinition includes attributes for trial use, but are not used in IRA
 Reference to draft item http://hl7.org/fhir/standards-status|1.0.0
 
-# Unknown parameters generated in the ImplementationGuide by the tools
-Unknown Parameters: [apply-wg=true]

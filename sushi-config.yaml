@@ -4,11 +4,11 @@
 # e.g. ihe.iti.mhds, or ihe.iti.basicaudit
 id: ihe.rad.ira
 canonical: https://profiles.ihe.net/RAD/IRA
-version: 1.0.0-ci
-releaseLabel: ci-build
+version: 1.0.0
+#releaseLabel: ci-build
 #releaseLabel: ballot
-#releaseLabel: Trial-Implementation
-#date: 2023-03-17
+releaseLabel: Trial-Implementation
+date: 2023-10-02
 name: IHE_RAD_IRA
 title: "Integrated Reporting Applications"
 status: active
