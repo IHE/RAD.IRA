@@ -61,7 +61,7 @@ A: No, it is not mandatory.<br>
 Notify Error [RAD-156] is used when a Subscriber initially accepted an event and later returned an error due to processing error. This means technically for a Subscriber that always processes events synchronously, there is no need to support Notify Error. Due to the nature of the expected use cases and the additional complexity in asynchronous processing, not all Subscribers will support it and hence no need to use Notify Error.<br><br>
 
 Q: Should SMART on FHIR application launch be available as a named option?<br><br>
-A: No<br>
+A: No.<br>
 IRA is not prescribing a specific application launching mechanism. There are many different mechanisms used in deployment today.<br><br>
 
 Q: Is there a need for the Subscriber to notify the Manager when asynchronous (return `202 Accepted`) processing completed successfully?<br><br>
