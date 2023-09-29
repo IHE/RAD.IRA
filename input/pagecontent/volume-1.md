@@ -983,7 +983,7 @@ The Hub shall support [content sharing](https://build.fhir.org/ig/HL7/fhircast-d
 
 The Hub shall monitor the established websocket connections. If it detects a websocket connection issue with a Subscriber, then the Hub shall:
 - Unsubscribe the Subscriber and drop the websocket connection
-- Send a SyncError notification to other Subscribers using \[RAD-155\](rad-155.html)
+- Send a SyncError notification to other Subscribers using \[[RAD-155](rad-155.html)\]
 
 ##### 1:53.1.1.8.1 Event Handling Requirements
 
