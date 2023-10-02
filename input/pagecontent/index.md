@@ -24,7 +24,7 @@ This guide is organized into the following sections:
 
 1. Volume 1: Profiles
    1. [Introduction](volume-1.html)
-   1. [Actors and Transactions](volume-1.html#1531-integrating-reporting-applications)
+   1. [Actors and Transactions](volume-1.html#1531-ira-actors-transactions-and-content-modules)
    1. [Actor Options](volume-1.html#1532-ira-actor-options)
    1. [Actor Required Groupings](volume-1.html#1533-ira-required-actor-groupings)
    1. [Overview](volume-1.html#1534-ira-overview)
