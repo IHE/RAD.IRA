@@ -8,7 +8,7 @@ version: 1.0.0
 #releaseLabel: ci-build
 #releaseLabel: ballot
 releaseLabel: Trial-Implementation
-date: 2023-10-02
+date: 2023-10-04
 name: IHE_RAD_IRA
 title: "Integrated Reporting Applications"
 status: active
