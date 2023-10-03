@@ -382,7 +382,7 @@ Table 1:53.1-1 lists the transactions for each actor directly involved in the IM
       <td><a href="rad-151.html">RAD TF-2: 4.151</a></td>
     </tr>
     <tr>
-      <td>Unsubscribe from Session [RAD-152]</td>
+      <td>Unsubscribe Session [RAD-152]</td>
       <td>Responder</td>
       <td>R</td>
       <td><a href="rad-152.html">RAD TF-2: 4.152</a></td>
