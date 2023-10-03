@@ -4,7 +4,7 @@ For example, the report creator could share that the user is starting a new repo
 
 Note that there are often other supporting activities happening during reporting. For example, an Image Display triggers a tumor analysis application to detect any tumors exist in the study. These supporting activities are out of scope in this profile.
 
-# 1:53.1 Integrating Reporting Applications
+# 1:53.1 IRA Actors, Transactions, and Content Modules
 This section defines the actors, transactions, and/or content modules in this profile. General
 definitions of actors are given in the Technical Frameworks General Introduction [Appendix A](https://profiles.ihe.net/GeneralIntro/ch-A.html).
 IHE Transactions can be found in the Technical Frameworks General Introduction [Appendix B](https://profiles.ihe.net/GeneralIntro/ch-B.html).
@@ -382,7 +382,7 @@ Table 1:53.1-1 lists the transactions for each actor directly involved in the IM
       <td><a href="rad-151.html">RAD TF-2: 4.151</a></td>
     </tr>
     <tr>
-      <td>Unsubscribe from Session [RAD-152]</td>
+      <td>Unsubscribe Session [RAD-152]</td>
       <td>Responder</td>
       <td>R</td>
       <td><a href="rad-152.html">RAD TF-2: 4.152</a></td>
@@ -417,9 +417,9 @@ Table 1:53.1-1 lists the transactions for each actor directly involved in the IM
 > Note 1: A Content Creator shall support at least one of the update or select transactions.
 
 ### 1:53.1.1 Actors Description and Actor Profile Requirements
-Most requirements are documented in RAD TF-2 Transactions. This section documents any additional requirements on this profile's actors.
+Most requirements are documented in RAD TF-2: Transactions. This section documents any additional requirements on this profile's actors.
 
-> Note: Many actor requirements below assume an understanding of FHIRcast and how this profile uses it. Please refer to the [Concept section](https://profiles.ihe.net/RAD/IRA/volume-1.html#15341-concepts).
+> Note: Many actor requirements below assume an understanding of FHIRcast and how this profile uses it. Please refer to the [Concepts](https://profiles.ihe.net/RAD/IRA/volume-1.html#15341-concepts) section.
 
 #### 1:53.1.1.1 Image Display
 
@@ -599,7 +599,7 @@ The Report Creator shall support all Behaviors shown as “R” in Optionality. 
       <td><code class="language-plaintext highlighter-rouge">updates</code></td>
       <td>DiagnosticReport</td>
       <td>R</td>
-      <td>Make provided report updates (e.g. change in status, add/remove comparison studies available defined in associatedStudy extension attribute, etc.) for reference in the report</td>      
+      <td>Make provided report updates (e.g., change in status, add/remove comparison studies available defined in associatedStudy extension attribute, etc.) for reference in the report</td>      
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">updates</code></td>
@@ -860,8 +860,8 @@ The Content Creator creates and selects additional contents in report contexts o
 For example, when an Image Display user clicks on the bounding box of a detected nodule, the grouped Content Creator publishes a selection event referencing the affected images and bounding boxes as an ImagingSelection resource, and referencing the corresponding measurements as an Observation resource. Upon receiving the event, a Report Creator might show those details in a side panel to the user. Finally the user issues a voice command to the Report Creator to inject a hyperlink, which is adding to the finding section.
 
 The Content Creator shall support at least one of the following capabilities:
-- Publish context and/or content changes as events to a reporting session.
-- Select one or more contents and publish the selection events.
+- Publish context and/or content changes as events to a reporting session
+- Select one or more contents and publish the selection events
 
 The Content Creator shall use the specified FHIR resource if it implements any of the capabilities listed in Table 1:53.1.1.6-1:
 
@@ -896,7 +896,7 @@ When the Watcher starts up, it shall obtain `hub.url` and `hub.topic` to join a 
 
 ##### 1:53.1.1.7.1 Event Handling Requirements
 
-In Table 1:53.1.1.7.1-1 specifies behavior requirements for the Watcher when it receives FHIRcast events.
+Table 1:53.1.1.7.1-1 specifies behavior requirements for the Watcher when it receives FHIRcast events.
 
 The Watcher shall support all Behaviors shown as “R” in Optionality. The Watcher may support suggested behaviors ("O" in Optionality). For each Received Event in the table, 'Context Key' identifies the context in the Received Event, and 'Resources' specifies the FHIR resource used in the given context.
 
@@ -983,7 +983,7 @@ The Hub shall support [content sharing](https://build.fhir.org/ig/HL7/fhircast-d
 
 The Hub shall monitor the established websocket connections. If it detects a websocket connection issue with a Subscriber, then the Hub shall:
 - Unsubscribe the Subscriber and drop the websocket connection
-- Send a SyncError notification to other Subscribers using [RAD-155](rad-155.html)
+- Send a SyncError notification to other Subscribers using \[[RAD-155](rad-155.html)\]
 
 ##### 1:53.1.1.8.1 Event Handling Requirements
 
@@ -1082,7 +1082,7 @@ considerations and Section 1:52.6 describes some optional groupings in other rel
 | Hub | -- | None | -- |
 {: .grid}
 
-> Note 1: The Content Creator shall be grouped with at least one of the Actors in Column 3.
+> Note 1: The Content Creator shall be grouped with at least one of the actors in Column 3.
 
 ## 1:53.4 IRA Overview
 
@@ -1095,11 +1095,11 @@ At its heart, this profile synchronizes a group of applications using a Publish 
 The following are some key concepts:
 - Participating applications are `Subscribers` that register with and communicate with a `Hub`
 - The `Hub` only communicates with authenticated `Subscribers`
-- `Subscribers` do not communicate with other `Subscribers` directly.
+- `Subscribers` do not communicate with other `Subscribers` directly
 - When `Subscribers` generate data that should be made available to other applications, or perform actions of which other applications should be aware, they *publish* it by sending an event request with the relevant details to the Hub
-- A Starting Application is a `Subscriber` that may launch other applications, providing them with the address of the `Hub` and the `topic ID` so they can join the same `session`.
+- A Starting Application is a `Subscriber` that may launch other applications, providing them with the address of the `Hub` and the `topic ID` so they can join the same `session`
 - The `Hub` forwards accepted event requests from a `Subscriber` to other `Subscribers` subscribed to that type of event
-- `Subscribers` can configure their subscription to limit what types of events the `Hub` forwards to them.
+- `Subscribers` can configure their subscription to limit what types of events the `Hub` forwards to them
 - `Subscribers` react to events from the `Hub` based on their internal business logic
 - It is not necessary (nor possible) for `Subscribers` to be aware of what other `Subscribers` (if any) are receiving an event they requested to be forwarded by the `Hub`, nor how other `Subscribers` react to the event
 - The `Hub` maintains the current state of content (if any) associated with all open contexts
@@ -1109,7 +1109,7 @@ The following are some key concepts:
 
 #### 1:53.4.1.2 Terminology and Model
 
-The terminology used in FHIRcast and adopted in this profile can be found in the [Glossary](https://build.fhir.org/ig/HL7/fhircast-docs/5_glossary.html) page.
+The terminology used in FHIRcast and adopted in this profile can be found in the [FHIRcast Glossary](https://build.fhir.org/ig/HL7/fhircast-docs/5_glossary.html).
 
 Figure 1:53.4.1.2-1 is a representation of the data model.
 
@@ -1120,14 +1120,16 @@ Figure 1:53.4.1.2-1 is a representation of the data model.
 </div>
 <br clear="all">
 
-Figure 1:53.4.1.2-2 is a representation of the interaction model.
+**Figure 1:53.4.1.2-1: FHIRcast Concept Data Model**
 
-**Figure 1:53.4.1.2-2: IRA Concept Interaction Model**
+Figure 1:53.4.1.2-2 is a representation of the interaction model.
 
 <div>
     <img src="interaction_model.png" width="80%">
 </div>
 <br clear="all">
+
+**Figure 1:53.4.1.2-2: IRA Concept Interaction Model**
 
 #### 1:53.4.1.3 Long Session and Short Context
 
@@ -1203,9 +1205,9 @@ See [Use Case #3](volume-1.html#153423-use-case-3-suspend-and-resume-flow) for m
 
 - layout of the viewports
 - image frames displayed in each viewport
-- any user activity (e.g. user selected the image frame in a viewport)
+- any user activity (e.g., user selected the image frame in a viewport)
 
-Upon receiving events from the `Hub`, a Subscriber maintains its `local context` according to its need. i.e. the Subscriber is not to maintained a full copy of the context that is in the Hub, since some parts of the context may not be relevant to the Subscriber activities.
+Upon receiving events from the `Hub`, a Subscriber maintains its `local context` according to its need. i.e., the Subscriber is not to maintained a full copy of the context that is in the Hub, since some parts of the context may not be relevant to the Subscriber activities.
 
 It is up to the Subscriber to decide on implementation details, such as:
 
@@ -1222,10 +1224,10 @@ The Hub can be deployed on premises or in the cloud. The other actors may or may
 
 #### 1:53.4.1.12 Selection Synchronization
 
-When a user selects some content in an application, for example, an image frame with an observed nodule in the Image Display, this can trigger the application to send a [DiagnosticReport-select](https://build.fhir.org/ig/HL7/fhircast-docs/3-6-4-DiagnosticReport-select.html) event referencing the corresponding selected content (e.g. an image frame). This event enables other applications to trigger corresponding synchronization logic based on the selected content. There are several different behavioral patterns a receiving application can implement:
+When a user selects some content in an application, for example, an image frame with an observed nodule in the Image Display, this can trigger the application to send a [DiagnosticReport-select](https://build.fhir.org/ig/HL7/fhircast-docs/3-6-4-DiagnosticReport-select.html) event referencing the corresponding selected content (e.g., an image frame). This event enables other applications to trigger corresponding synchronization logic based on the selected content. There are several different behavioral patterns a receiving application can implement:
 
 - A receiving application can react to the selected content directly. For example, an Evidence Creator can retrieve the referenced image frame in the event and trigger a nodule analysis algorithm comparing this nodule with a same nodule in a prior study.
-- A receiving application can react to the selected content indirectly. For example, a Report Creator can keep track of the referenced image frame in the event. Then the user can issue a voice command (e.g. 'insert hyperlink') to the Report Creator which triggers the Report Creator to insert a hyperlink in the report based on the selected image frame. 
+- A receiving application can react to the selected content indirectly. For example, a Report Creator can keep track of the referenced image frame in the event. Then the user can issue a voice command (e.g., 'insert hyperlink') to the Report Creator which triggers the Report Creator to insert a hyperlink in the report based on the selected image frame. 
 
 These behavioral patterns can be bidirectional. For example, an Evidence Creator selects a nodule in its analysis, which triggers the Evidence Creator to sends a DiagnosicReport-select event referencing this nodule and the corresponding image frame. Upon receiving this event, the Image Display displays the referenced image frame along with other annotations automatically.
 
@@ -1270,7 +1272,7 @@ In this use case,
 </div>
 <br clear="all">
 
-Figure 1:53.4.2.1.2-1: Basic Reporting Flow in IRA Profile
+**Figure 1:53.4.2.1.2-1: Basic Reporting Flow in IRA Profile**
 
 ###### 1:53.4.2.1.2.1 Step 1: Open Reporting Session
 
@@ -1317,7 +1319,7 @@ Furthermore, the event has a version ID. For the Image Display as a Starting App
 >
 > Having opened the new report context, it will be up to the Report Creator to determine whether the original report is being amended or a new report is being added to the study. A *new* report context is used in either case because the report context associated with the original report was transient and is no longer available for use.
 >
-> It is possible that actors such as the Report Creator may choose to populate content related to the original report back into the new report context, e.g. to facilitate further editing.
+> It is possible that actors such as the Report Creator may choose to populate content related to the original report back into the new report context, e.g., to facilitate further editing.
 
 ###### 1:53.4.2.1.2.3 Step 3: Add Content (Optional)
 
@@ -1523,7 +1525,7 @@ Additionally, although this profile does not specify any particular method for a
 
 The events as defined in this profile contain personal demographic information and clinical information. It is appropriate for products implementing the this profile to include appropriate PHI controls. Specifying such mechanisms and features is outside the scope of this profile.
 
-> Note: Once the websocket connections are established, the Hub will distribute events to Subscribers according to their subscription. If some contents are not appropriate for certain Subscribers (e.g. A Subscriber should not receive any PHI), then separate sessions may be considered.
+> Note: Once the websocket connections are established, the Hub will distribute events to Subscribers according to their subscription. If some contents are not appropriate for certain Subscribers (e.g., a Subscriber should not receive any PHI), then separate sessions may be considered.
 
 ## 1:53.6 IRA Cross-Profile Considerations
 
@@ -1543,7 +1545,7 @@ Table 1:53.6-1 describes various actors in various other profiles that might be 
     <tr>
       <td rowspan="3">Report Creator</td>
       <td><a href="https://profiles.ihe.net/RAD/IMR/index.html">IMR Report Creator</a></td>
-      <td>To produce multi-media interactive report using the context and content (e.g. image references, measurements, etc.) received in a reporting session.<br><br>To share report contents (e.g. findings, impressions) with other Subscribers in a reporting session.</td>
+      <td>To produce multi-media interactive report using the context and content (e.g., image references, measurements, etc.) received in a reporting session.<br><br>To share report contents (e.g., findings, impressions) with other Subscribers in a reporting session.</td>
     </tr>
     <tr>
       <td><a href="https://profiles.ihe.net/ITI/IUA/index.html">IUA Authorization Client</a></td>

@@ -1,10 +1,10 @@
 
-The Integrated Reporting Applications (IRA) profile helps applications that are used together during reporting (e.g., image display, report creator, clinical applications, AI tools, etc) to share information using a standard called FHIRcast. Each application can share what it is doing and the data it is creating, referred to as Context and Content, respectively. Other applications are notified so they can then intelligently synchronize their behavior or use the new data.
+The Integrated Reporting Applications (IRA) profile helps applications that are used together during reporting (e.g., image display, report creator, clinical applications, AI tools, etc.) to share information using a standard called FHIRcast. Each application can share what it is doing and the data it is creating, referred to as Context and Content, respectively. Other applications are notified so they can then intelligently synchronize their behavior or use the new data.
 
 <div markdown="1" class="stu-note">
 **IMPORTANT**: IRA is NOT yet recommended for production use.
 
-Profiles released for Trial Implementation by IHE Radiology typically ARE expected to be stable enough for production use, however this release of IRA is intended for experimental implementation and feedback.
+Profiles released for Trial Implementation by IHE Radiology typically ARE expected to be stable enough for production use; however, this release of IRA is intended for experimental implementation and feedback.
 
 IRA uses FHIR R5 for the resources used in FHIRcast events.
 
@@ -24,7 +24,7 @@ This guide is organized into the following sections:
 
 1. Volume 1: Profiles
    1. [Introduction](volume-1.html)
-   1. [Actors and Transactions](volume-1.html#1531-integrating-reporting-applications)
+   1. [Actors and Transactions](volume-1.html#1531-ira-actors-transactions-and-content-modules)
    1. [Actor Options](volume-1.html#1532-ira-actor-options)
    1. [Actor Required Groupings](volume-1.html#1533-ira-required-actor-groupings)
    1. [Overview](volume-1.html#1534-ira-overview)
@@ -47,9 +47,9 @@ This guide is organized into the following sections:
 3. [Examples](example.html)
 
 4. Other
+  - [Changes to Other IHE Documents](other.html)
+  - [Download and Analysis](download.html)
   - [Test Plan](testplan.html)
-  - [Changes to Other Documents](other.html)
-  - [Downloads and Analysis](download.html)
 
 See also the [Table of Contents](toc.html) and the index of [Artifacts](artifacts.html) defined as part of this implementation guide.
 
