@@ -3,18 +3,13 @@
 This Test Plan page is a prototype. We expect the maturity of the content will improve over time. For now, we summarize high level testing scope and available tools. Comments are welcome.
 </div>
 
-
-**TODO: fill in the goals of the testing.
-
 ## Introduction
 
 Overall test plan leverages the profiles and Examples shown on the [Artifacts Summary](artifacts.html). The [Profiles](artifacts.html#structures-resource-profiles) listed are describing the constraints that would be adhered to by actors claiming conformance to this implementation guide. Thus any applicable Resources that are known to have been published by an app or server MUST be conformant to these profiles as appropriate.
 
 The Examples listed in [Example](example.html) are example events. They are conformant to the profiles.
 
-This section will be filled in as the IHE-Connectathon need drives the creation of the test plans, test procedures, test tools, and reporting.
-
-**TODO: include actor based tests, include positive and edge cases.
+> Note: This section will be filled in as the IHE-Connectathon need drives the creation of the test plans, test procedures, test tools, and reporting.
 
 ### Unit Test Procedure
 
